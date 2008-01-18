@@ -4,7 +4,7 @@ version = '0.1'
 
 setup(name='osha.theme',
       version=version,
-      description="An installable theme for Plone 3.0",
+      description="Plone theme for OSHA web site",
       long_description="""\
 """,
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
@@ -15,10 +15,10 @@ setup(name='osha.theme',
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='web zope plone theme',
-      author='Syslabcom',
-      author_email='info@syslab.com',
-      url='https://svn.syslab.com/svn/',
+      keywords='osha plone theme webcouturier',
+      author='Denis Mishunov',
+      author_email='denis@webcouturier.com',
+      url='http://www.webcouturier.com',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['osha'],

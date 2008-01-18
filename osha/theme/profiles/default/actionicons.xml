@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<action-icons xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+ <action-icon category="plone" action_id="accessibility"
+              title="Accessibility" priority="0"
+              icon_expr="icon_accessibility.gif"
+              i18n:attributes="title"/>
+ <action-icon category="plone" action_id="sitemap"
+              title="Site Map" priority="0"
+              icon_expr="icon_sitemap.gif"
+              i18n:attributes="title"/>      
+ <action-icon category="plone" action_id="disclaimer"
+              title="Site Map" priority="0"
+              icon_expr="icon_disclaimer.gif"
+              i18n:attributes="title"/>    
+ <action-icon category="plone" action_id="copyright"
+              title="Copyright" priority="0"
+              icon_expr="icon_copyright.gif"
+              i18n:attributes="title"/>   
+ <action-icon category="plone" action_id="plone_setup"
+              title="Site Setup" priority="0"
+              icon_expr="icon_siteupdate.gif"
+              i18n:attributes="title"/>                                           
+</action-icons>

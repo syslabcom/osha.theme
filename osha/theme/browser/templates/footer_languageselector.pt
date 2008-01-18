@@ -1,0 +1,25 @@
+<tal:language
+    tal:define="available view/available;
+                languages view/languages;">
+    <ul id="portal-footer-languageselector"
+        tal:condition="python:available and len(languages)>=2">
+
+        <li tal:repeat="lang languages">
+            <span tal:define="code lang/code;
+                              selected lang/selected;
+                              is_last repeat/lang/end"
+                  tal:omit-tag="selected">
+
+                <a href=""
+                   tal:define="name lang/native"
+                   tal:attributes="href string:${here/absolute_url}/switchLanguage?set_language=${code};
+                                   title name">
+                    <span tal:replace="name">language name</span>
+                </a>
+                <span class="breadcrumbSeparator" tal:condition="not: is_last">|</span>
+
+            </span>
+        </li>
+
+    </ul>
+</tal:language>

@@ -1,4 +1,66 @@
 <?xml version="1.0"?>
 <object>
+    
+    <order manager="plone.portaltop" skinname="OSHA Plone Theme"
+           based-on="Plone Default">              
+      <viewlet name="osha.path_bar"
+               insert-before="plone.path_bar" />                           
+    </order>
+    
+    <order manager="plone.portalheader" skinname="OSHA Plone Theme"
+           based-on="Plone Default">    
+      <viewlet name="osha.logo"
+               insert-after="plone.skip_links" />           
+      <viewlet name="osha.topactions"
+               insert-after="plone.logo" />               
+      <viewlet name="osha.topdropdowns"
+               insert-after="osha.topactions" />               
+    </order>
+    
+    <order manager="osha.header.topactions" skinname="OSHA Plone Theme"
+           based-on="Plone Default">              
+      <viewlet name="plone.personal_bar"
+               insert-before="*" />                           
+      <viewlet name="osha.languageselector"
+               insert-after="plone.personal_bar" />               
+    </order>    
+    
+    <order manager="osha.header.dropdowns" skinname="OSHA Plone Theme"
+           based-on="Plone Default">              
+      <viewlet name="osha.languageselector"
+               insert-before="*" />                                         
+      <viewlet name="osha.networkchooser"
+               insert-after="osha.languageselector" />               
+    </order>
+    
+    <order manager="plone.portalfooter" skinname="OSHA Plone Theme"
+           based-on="Plone Default"> 
+      <viewlet name="osha.footer.actions"
+               insert-before="*" />              
+      <viewlet name="osha.footer.languageselector"
+               insert-after="osha.footer.actions" />
+    </order>    
+
+    <hidden manager="plone.portalheader" skinname="OSHA Plone Theme">
+      <viewlet name="plone.logo" />        
+      <viewlet name="plone.searchbox" />  
+      <viewlet name="plone.global_sections" />      
+      <viewlet name="plone.site_actions" />      
+    </hidden>
+    
+    <hidden manager="plone.portaltop" skinname="OSHA Plone Theme">
+      <viewlet name="plone.personal_bar" />
+      <viewlet name="plone.path_bar" />  
+      <viewlet name="plone.app.i18n.locales.languageselector" />      
+    </hidden>
+
+    <hidden manager="plone.belowcontentbody" skinname="OSHA Plone Theme">
+      <viewlet name="plone.abovecontenttitle.documentactions" />
+    </hidden>    
+    
+    <hidden manager="plone.portalfooter" skinname="OSHA Plone Theme">
+      <viewlet name="plone.footer" />
+      <viewlet name="plone.colophon" />      
+    </hidden>    
 
 </object>

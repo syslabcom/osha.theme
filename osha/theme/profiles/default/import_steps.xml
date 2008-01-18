@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <import-steps>
   <import-step id="osha.theme.various"
-               version="20080107-01"
+               version="20071207-01"
                handler="osha.theme.setuphandlers.setupVarious"
-               title="OSHA Theme: miscellaneous import steps">
+               title="OSHA Plone Theme: miscellaneous import steps">
     <dependency step="skins" />
     Various import steps that are not handled by GS import/export
     handlers.

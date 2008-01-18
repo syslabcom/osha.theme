@@ -1,13 +1,13 @@
 Metadata-Version: 1.0
 Name: osha.theme
-Version: 0.1dev
-Summary: An installable theme for Plone 3.0
-Home-page: https://svn.syslab.com/svn/
-Author: Syslabcom
-Author-email: info@syslab.com
+Version: 0.1dev-r136
+Summary: Plone theme for OSHA web site
+Home-page: http://www.webcouturier.com
+Author: Denis Mishunov
+Author-email: denis@webcouturier.com
 License: GPL
 Description: UNKNOWN
-Keywords: web zope plone theme
+Keywords: osha plone theme webcouturier
 Platform: UNKNOWN
 Classifier: Framework :: Plone
 Classifier: Framework :: Zope2

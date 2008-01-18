@@ -1,0 +1,4 @@
+<div id="osha-topactions">
+    <div tal:replace="structure provider:osha.header.topactions" />
+    <div class="visualClearRight"><!-- --></div>
+</div>

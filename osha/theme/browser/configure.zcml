@@ -3,28 +3,119 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="osha.theme">
 
-    <!-- 'OSHA Theme' Zope 3 browser layer -->
+    <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
     <interface
         interface=".interfaces.IThemeSpecific"
         type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="OSHA Theme"
+        name="OSHA Plone Theme"
         />
-
-    <!-- Viewlets registration -->
-    <!-- Zope 3 browser resources -->
-
-    <!-- Resource directory for images -->
-    <browser:resourceDirectory
-        name="osha.theme.images"
-        directory="images"
+        
+    <!-- Viewlet manager that will wrap top actions -->
+    <browser:viewletManager
+        name="osha.header.topactions"
+        provides=".interfaces.IOSHAHeaderTopactions"
+        permission="zope2.View"
         layer=".interfaces.IThemeSpecific"
-        />
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />  
 
-    <!-- Resource directory for stylesheets -->
-    <browser:resourceDirectory
-        name="osha.theme.stylesheets"
-        directory="stylesheets"
+    <!-- Viewlet manager for top dropdowns with language selector -->
+    <browser:viewletManager
+        name="osha.header.dropdowns"
+        provides=".interfaces.IOSHAHeaderDropdowns"
+        permission="zope2.View"
         layer=".interfaces.IThemeSpecific"
+        class="plone.app.viewletmanager.manager.OrderedViewletManager"
+        />              
+        
+    <!-- The portal header -->
+    <browser:viewlet
+        name="osha.topactions"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        template="templates/osha_topactions.pt"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+        />  
+        
+    <!-- The portal header -->
+    <browser:viewlet
+        name="osha.topdropdowns"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        template="templates/osha_topdropdowns.pt"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+        />                      
+        
+    <!-- The personal bar -->
+    <browser:viewlet
+        name="plone.personal_bar"
+        manager=".interfaces.IOSHAHeaderTopactions"
+        class="plone.app.layout.viewlets.common.PersonalBarViewlet"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+        /> 
+        
+    <!-- The site actions -->
+    <browser:viewlet
+        name="plone.site_actions"
+        manager=".interfaces.IOSHAHeaderTopactions"
+        class=".viewlets.OSHASiteActionsViewlet"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+        />        
+        
+    <!-- The top language selector bar -->
+    <browser:viewlet  
+        name="osha.languageselector"
+        manager=".interfaces.IOSHAHeaderDropdowns"
+        class=".viewlets.OSHALanguageSelector"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View"
+        />   
+        
+    <!-- The bottom language selector bar -->
+    <browser:viewlet  
+        name="osha.footer.languageselector"
+        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+        class=".viewlets.OSHAFooterLanguageSelector"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View"
+        />        
+        
+    <!-- The language selector bar -->
+    <browser:viewlet  
+        name="osha.networkchooser"
+        manager=".interfaces.IOSHAHeaderDropdowns"
+        class=".viewlets.OSHANetworkchooser"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View"
+        />  
+        
+    <!-- The breadcrumbs -->
+    <browser:viewlet
+        name="osha.path_bar"
+        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+        class=".viewlets.OSHAPathBarViewlet"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+        /> 
+        
+    <!-- The bottom language selector bar -->
+    <browser:viewlet  
+        name="osha.footer.actions"
+        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+        class=".viewlets.OSHAFooterActions"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View"
         />
+        
+    <!-- The logo -->
+    <browser:viewlet
+        name="osha.logo"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".viewlets.OSHALogoViewlet"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+        />                                        
 
 </configure>

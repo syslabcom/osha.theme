@@ -1,47 +1,48 @@
-title:string=OSHA Theme's color, font, logo and border defaults
+title:string=OSHA Plone Theme's color, font, logo and border defaults
 
-plone_skin:string=OSHA Theme
+plone_skin:string=OSHA Plone Theme
 
-logoName:string=logo.jpg
+logoName:string=logo.gif
 
-fontFamily:string="Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif
-fontBaseSize:string=69%
-fontColor:string=Black
-fontSmallSize:string=85%
+fontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
+fontBaseSize:string=70%
+fontColor:string=#191919
+fontSmallSize:string=95%
 
 backgroundColor:string=White
 
-linkColor:string=#436976
+linkColor:string=#144989
 linkActiveColor:string=Red
-linkVisitedColor:string=Purple
+linkVisitedColor:string=#666666
 
 borderWidth:string=1px
 borderStyle:string=solid
 borderStyleAnnotations:string=dashed
 
-globalBorderColor:string=#8cacbb
-globalBackgroundColor:string=#dee7ec
-globalFontColor:string=#436976
+globalBorderColor:string=#AAB1C5
+globalBackgroundColor:string=#C5CBD8
+globalFontColor:string=#000
 
-headingFontFamily:string="Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif
+headingFontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
 
-contentViewBorderColor:string=#74ae0b
-contentViewBackgroundColor:string=#cde2a7
-contentViewFontColor:string=#578308
+contentViewBorderColor:string=#AAB1C5
+contentViewBackgroundColor:string=#E6E8ED
+contentViewFontColor:string=#000
 
-inputFontColor:string=Black
+inputFontColor:string=#191919
 
-textTransform:string=lowercase
+textTransform:string=none
 
-evenRowBackgroundColor:string=#eef3f5 
+evenRowBackgroundColor:string=transparent 
 oddRowBackgroundColor:string=transparent
 
 notifyBorderColor:string=#ffa500
 notifyBackgroundColor:string=#ffce7b
 
-discreetColor:string=#76797c
+discreetColor:string=#666666
 helpBackgroundColor:string=#ffffe1
 
 portalMinWidth:string=70em
-columnOneWidth:string=16em
-columnTwoWidth:string=16em
+columnContentWidth:string=68%
+columnOneWidth:string=16%
+columnTwoWidth:string=16%

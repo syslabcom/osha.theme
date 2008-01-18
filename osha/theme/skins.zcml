@@ -3,12 +3,10 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="osha.theme">
 
-   <!-- File System Directory Views registration -->
-   <cmf:registerDirectory
-       name="osha_theme_custom_images"/>
-   <cmf:registerDirectory
-       name="osha_theme_custom_templates"/>
-   <cmf:registerDirectory
-       name="osha_theme_styles"/>
+   <cmf:registerDirectory name="osha_theme_custom_images"/>
+   <cmf:registerDirectory name="osha_theme_custom_templates"/>
+   <cmf:registerDirectory name="osha_theme_styles"/>
+   <cmf:registerDirectory name="osha_theme_tableless"/>   
+   <cmf:registerDirectory name="osha_theme_scripts"/>   
 
 </configure>

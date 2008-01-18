@@ -1,0 +1,76 @@
+<div id="footeractions-wrapper">
+    
+    <ul id="portal-footeractions"
+        i18n:domain="plone">
+        
+        <tal:document-actions 
+             condition="view/document_actions"
+             repeat="action view/document_actions">             
+            <li tal:attributes="id string:footeraction-${action/id}"
+                tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
+                            is_last repeat/action/end">
+
+                <img alt="" src=""
+                     tal:attributes="src string:${view/portal_url}/$icon;
+                                     alt action/title" />                
+                <a href=""
+                   tal:define="title action/title;
+                               id action/id;"
+                   i18n:attributes="title"
+                   i18n:translate=""
+                   tal:content="title"
+                   tal:attributes="href action/url;
+                                   title title;"
+                >Footer action</a>
+                <span class="breadcrumbSeparator" tal:condition="not: is_last">|</span>
+            </li>  
+        </tal:document-actions>
+        
+        <tal:footer-actions 
+             condition="view/footer_actions"
+             repeat="action view/footer_actions">       
+             <li class="breadcrumbSeparator">|</li>      
+             <li tal:attributes="id string:footeraction-${action/id}"
+                 tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
+                             is_last repeat/action/end">
+
+                 <img alt="" src=""
+                      tal:attributes="src string:${view/portal_url}/$icon;
+                                      alt action/title" />                
+                 <a href=""
+                   tal:define="title action/title;
+                               id action/id;"
+                   i18n:attributes="title"
+                   i18n:translate=""
+                   tal:content="title"
+                   tal:attributes="href action/url;
+                                   title title;"
+                >Footer action</a>
+            </li>  
+        </tal:footer-actions>    
+        
+       <tal:site-actions 
+             condition="view/site_actions"
+             repeat="action view/site_actions">  
+            <li class="breadcrumbSeparator">|</li>                        
+            <li tal:attributes="id string:footeraction-${action/id}"
+                 tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
+                             is_last repeat/action/end">
+
+                <img alt="" src=""
+                     tal:attributes="src string:${view/portal_url}/$icon;
+                                     alt action/title" />                
+                <a href=""
+                   tal:define="title action/title;
+                               id action/id;"
+                   i18n:attributes="title"
+                   i18n:translate=""
+                   tal:content="title"
+                   tal:attributes="href action/url;
+                                   title title;"
+                >Footer action</a>
+            </li>  
+        </tal:site-actions>
+
+    </ul>
+</div>

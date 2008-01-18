@@ -1,0 +1,117 @@
+<div i18n:domain="osha"
+     tal:define="formAction view/action"
+     id="portal-network">
+    <strong class="hiddenStructure" 
+            i18n:translate="heading_network">OSHA Network</strong>            
+    <form name="networkchooser" 
+          action=""
+          tal:attributes="action formAction"> 
+         
+      <!-- The code below is the plain HTML version of code as it should be generated.
+           Please follow this guide when working with the real business logic in the viewlet
+      -->
+        
+          <div class="dropdown">
+               <label for="euNetwork"
+                      class="hiddenStructure"
+                      i18n:translate="">European Network</label>
+               <select id="euNetwork" name="eu_network" 
+                      onkeyup="" onChange="">                           
+                  <option value="" i18n:translate="">European Network</option>
+                  <option value="osha.europa.eu">EU Europe</option>
+                  <option value="">--------</option>
+                  <option value="at.osha.europa.eu">AT Austria</option>
+                  <option value="be.osha.europa.eu">BE Belgium</option>
+                  <option value="bg.osha.europa.eu">BG Bulgaria</option>
+                  <option value="cy.osha.europa.eu">CY Cyprus</option>
+                  <option value="cz.osha.europa.eu">CZ Czech Republic</option>
+               </select>
+               <noscript>
+                  <input name="form.button.GoEuNetwork" type="submit" value="Go" />
+               </noscript> 
+
+          </div>
+          <div class="dropdown">
+               <label for="intNetwork"
+                      class="hiddenStructure" 
+                      i18n:translate="">International Network</label>
+              <select id="intNetwork" name="int_network" onkeyup=""
+                      onChange="">                            
+                  <option value="" i18n:translate="">International Network</option>
+                  <option value="www.ilo.org/public/english/protection/euportal/en">ILO ILO</option>
+                  <option value="eu.ioha.net/">IOHA International Occupational</option>
+                  <option value="eu.ioha.net/">Hygiene Association</option>
+                  <option value="www.who.int/occupational_health/en/">WHO World Health Organisation</option>
+                  <option value="">--------</option>
+                  <option value="www.nohsc-eu.gov.au">AU Australia</option>
+                  <option value="www.eu-ccohs.org">CAN Canada</option>
+               </select>
+               <noscript>
+                  <input name="form.button.GoIntNetwork" type="submit" value="Go" />
+               </noscript> 
+          </div>
+          
+          <!-- END of plain HTML code -->
+    
+    
+        <!-- START of generated code.
+             The code below has been copied from global_netwrok_form.pt
+             of the previous skin's verion
+        -->
+        <div tal:content="nothing"
+             tal:omit-tag="">
+        
+         <div id="portal-network"
+            tal:define="eu_portal python:portal.restrictedTraverse('/osha/portal', nothing);
+                        to_utf8 nocall:utiltool/to_utf8">
+            <div class="dropdown"
+                 tal:define="sites eu_portal/portal_properties/osha_properties/eu_network|portal_properties/osha_properties/eu_network|python:[]"
+                 tal:condition="sites">
+                 <label for="euNetwork"><span class="hiddenLabel" i18n:translate="">European Network</span></label>
+                <select id="euNetwork" name="eu_network" onkeyup="crosslinkNetwork(this.options[this.options.selectedIndex].value)"
+                        onChange="crosslinkNetwork(this.options[this.options.selectedIndex].value)">                           
+                    <option value="" i18n:translate="">European Network</option>
+                    <tal:block repeat="site sites">
+                    <option tal:define="elems python:site.split('|');
+                            haslink python:test(1<len(site), 1, 0)" 
+                            tal:attributes="value python: test(haslink, elems[-1], '')"><span
+                            tal:condition="haslink" i18n:translate="" tal:omit-tag=""
+                            tal:content="python:to_utf8(elems[0])" /><span tal:condition="not:haslink"
+                            tal:replace="string:--------" /></option>
+                    </tal:block>
+                 </select>
+                 <noscript>
+                    <input name="form.button.GoEuNetwork" type="submit" value="Go">
+                 </noscript> 
+
+            </div>
+            <div class="dropdown"
+                 tal:define="sites eu_portal/portal_properties/osha_properties/int_network|portal_properties/osha_properties/int_network|python:[]"
+                 tal:condition="sites">
+                 <label for="intNetwork"><span class="hiddenLabel" i18n:translate="">International Network</span></label>
+                <select id="intNetwork" name="int_network" onkeyup="gotoURL(this.options[this.options.selectedIndex].value)"
+                        onChange="gotoURL(this.options[this.options.selectedIndex].value)">                            
+                    <option value="" i18n:translate="">International Network</option>
+                    <tal:block repeat="site sites">
+                    <option tal:define="elems python:site.split('|');
+                            haslink python:test(1<len(site), 1, 0)" 
+                            tal:attributes="value python: test(haslink, elems[-1], '')"><span
+                            tal:condition="haslink" i18n:translate="" tal:omit-tag=""
+                            tal:content="python:to_utf8(elems[0])" /><span tal:condition="not:haslink"
+                            tal:replace="string:--------" /></option>
+                    </tal:block>
+                 </select>
+                 <noscript>
+                    <input name="form.button.GoIntNetwork" type="submit" value="Go">
+                 </noscript> 
+ 
+            </div>
+        </div> 
+        
+        </div>
+        
+        <!-- END of generated code -->
+        
+    </form>
+    
+</div>

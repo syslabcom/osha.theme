@@ -1,0 +1,155 @@
+/*
+** Plone style sheet - Invisible and accessibility-related elements.
+**
+** Style sheet documentation can be found at http://plone.org/documentation
+**
+** You should preferrably use ploneCustom.css to add your own CSS classes and to
+** customize your portal, as these are the base fundaments of Plone, and will
+** change and be refined in newer versions. Keeping your changes in
+** ploneCustom.css will make it easier to upgrade.
+**
+** Feel free to use whole or parts of this for your own designs, but give credit
+** where credit is due.
+**
+*/
+
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+
+/* New navtree styles */
+
+.portletNavigationTree {
+    padding: 0; 
+    list-style: none !important;
+    list-style-image: none !important; 
+    line-height: 1em;
+    border:none;
+    background: #E6E8ED;
+}
+.portletNavigationTree .portletItem {
+    padding: 0;
+    border: none;
+}
+.navTree {
+    list-style: none; 
+    list-style-image: none; 
+}
+.navTreeItem {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+.navTreeItem a,
+dd.portletItem .navTreeItem a {
+    display: block;
+    text-decoration: none;
+    padding: 0.3em 1em 0.4em;
+    line-height: normal;
+    color: &dtml-globalFontColor;;
+}
+.navTreeItem a:hover,
+dd.portletItem .navTreeItem a:hover {
+    background-color: &dtml-contentViewBorderColor;;
+    color: &dtml-globalFontColor;;
+}
+.navTreeCurrentItem,
+.navTreeItemInPath {
+    background: &dtml-contentViewBorderColor;;
+    color: &dtml-globalFontColor;;
+}
+/*.navTreeCurrentItem.navTreeFolderish,
+.navTreeItemInPath {
+    background-image: url("&dtml-portal_url;/submenu.gif");
+    background-position: 9px 50%;
+    background-repeat: no-repeat;
+    padding-left: 24px !important;    
+}*/
+
+li.navTreeCurrentNode.navTreeFolderish a.navTreeCurrentItem,
+li.navTreeCurrentNode.navTreeFolderish a.navTreeCurrentItem:hover,
+li.navTreeItemInPath a.navTreeItemInPath,
+li.navTreeItemInPath a.navTreeItemInPath:hover {
+    display: block;
+    background-image: url("&dtml-portal_url;/submenu.gif");
+    background-position: 9px 50%;
+    background-repeat: no-repeat;
+    padding-left: 24px !important;    
+}
+
+/* Another workaround for broken Internet Explorer */
+/** html li.navTreeCurrentNode a,
+* html li.navTreeCurrentNode a:hover {
+    height: 1.6em;
+}*/
+
+/*
+** LOWER NAVIGATION LEVELS STYLES 
+*/
+
+.navTreeLevel0 { margin: 0;}
+
+.navTreeLevel0 * ul {
+    background: #F7F8F9;
+    padding-bottom: 1px; 
+    margin: 0;   
+}
+.navTreeLevel0 * ul .navTreeCurrentItem,
+.navTreeLevel0 * ul .navTreeItemInPath {
+    background: &dtml-contentViewBackgroundColor;;
+}
+.navTreeLevel0 * ul li {
+    border-left:3px solid &dtml-contentViewBackgroundColor;;
+    border-right:1px solid &dtml-contentViewBackgroundColor;;
+    border-top:1px solid &dtml-contentViewBackgroundColor;;
+    list-style: none;
+    list-style-image: none;
+}
+.navTreeLevel0 * ul a,
+dd.portletItem .navTreeLevel0 * ul .navTreeItem a {
+    background:transparent url('&dtml-portal_url;/link.gif') 6px 50% no-repeat;
+    padding-left:21px;
+}
+.navTreeLevel1 .navTreeLevel0 * ul a:hover,
+dd.portletItem .navTreeLevel0 * ul .navTreeItem a:hover {
+    background-color: &dtml-contentViewBackgroundColor;;
+}
+
+dd.portletItem .navTreeLevel0 * ul a.navTreeCurrentItem,
+dd.portletItem .navTreeLevel0 * ul a.navTreeCurrentItem:hover {
+    background: &dtml-contentViewBackgroundColor;;
+}
+
+dd.portletItem .navTreeLevel0 * ul li.navTreeCurrentNode.navTreeFolderish a.navTreeCurrentItem,
+dd.portletItem .navTreeLevel0 * ul li.navTreeCurrentNode.navTreeFolderish a.navTreeCurrentItem:hover {
+    background-image: url("&dtml-portal_url;/submenu.gif");
+    background-position: 6px 50%;
+    background-repeat: no-repeat;   
+}
+
+dd.portletItem .navTreeLevel0 * ul li.navTreeItemInPath a.navTreeItemInPath,
+dd.portletItem .navTreeLevel0 * ul li.navTreeItemInPath a.navTreeItemInPath:hover {
+    background: &dtml-contentViewBackgroundColor; url("&dtml-portal_url;/submenu.gif") 6px 50% no-repeat;
+}
+
+.navTreeLevel1 .navTreeLevel1 * ul a:hover,
+dd.portletItem .navTreeLevel1 * ul .navTreeItem a:hover {
+    background-color: transparent;
+}
+.navTreeLevel2 li.navTreeCurrentNode div {
+    background-color: &dtml-contentViewBackgroundColor;;    
+}
+.navTreeLevel2 li.navTreeCurrentNode ul div {
+    background-color: #F7F8F9;    
+}
+
+.navTreeLevel1 * ul li {
+    border-right: none;
+}
+
+.navTreeLevel1 ul li div {padding-left:12px;}
+.navTreeLevel2 ul li div {padding-left:24px;}
+.navTreeLevel3 ul li div {padding-left:36px;}
+
+
+/* </dtml-with> */

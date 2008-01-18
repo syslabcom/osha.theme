@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object name="portal_skins" allow_any="False" cookie_persistence="False"
-   default_skin="OSHA Theme">
+   default_skin="OSHA Plone Theme">
 
  <object name="osha_theme_custom_images"
     meta_type="Filesystem Directory View"
@@ -11,14 +11,24 @@
  <object name="osha_theme_styles"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_styles"/>
+ <object name="osha_theme_tableless"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_tableless"/>    
+ <object name="osha_theme_scripts"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_scripts"/>    
 
- <skin-path name="OSHA Theme" based-on="Plone Default">
+ <skin-path name="OSHA Plone Theme" based-on="Plone Default">
   <layer name="osha_theme_custom_images"
      insert-after="custom"/>
   <layer name="osha_theme_custom_templates"
      insert-after="osha_theme_custom_images"/>
   <layer name="osha_theme_styles"
      insert-after="osha_theme_custom_templates"/>
+  <layer name="osha_theme_tableless"
+     insert-after="osha_theme_styles"/>    
+  <layer name="osha_theme_scripts"
+     insert-after="osha_theme_tableless"/>      
  </skin-path>
 
 </object>

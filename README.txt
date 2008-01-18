@@ -4,4 +4,4 @@ osha.theme Package Readme
 Overview
 --------
 
-An installable theme for Plone 3.0
+Plone theme for OSHA web site

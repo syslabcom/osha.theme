@@ -5,9 +5,9 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="OSHA Theme"
+      title="OSHA Plone Theme"
       directory="profiles/default"
-      description='Extension profile for the "OSHA Theme" Plone theme.'
+      description='Extension profile for the "OSHA Plone Theme" Plone theme.'
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 

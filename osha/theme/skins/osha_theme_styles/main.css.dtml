@@ -1,0 +1,145 @@
+/*
+  This file is based on the ploneCustom.css.dtml file shipped with Plone.
+
+  <dtml-with base_properties> (do not remove this)
+  <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
+*/
+
+.visualClearRight {
+    clear: right;
+}
+#portal-header {
+    border-bottom:1px solid &dtml-contentViewBorderColor;;
+    background:&dtml-contentViewBackgroundColor; url('&dtml-portal_url;/topbanner2.jpg') 100% 50% no-repeat;
+    float:left;
+    height:92px;
+    width:100%;
+    margin-top:-1px; /* compensate 1px height hidden DIV with Skip-to-... links */
+    position:relative;
+}
+#portal-logo {
+    float:left;
+}
+dl.portlet #portal-logo,
+dl.portlet #portal-header,
+dl.portlet #portal-personaltools {
+    float:none;
+    height:auto;
+}
+#osha-topactions {
+    background: &dtml-globalBackgroundColor;;
+    margin:0 104px 0 201px;
+    padding:0.6em 0em;
+}
+dl.portlet #osha-topactions {
+    margin-left: 0;
+}
+#siteactions-wrapper h2 {
+    color: &dtml-linkColor;;
+    font-size:1em;
+    margin:0;
+    padding: 0 1em;
+}
+#osha-topdropdowns {
+    margin:10px 104px 0 201px;
+    position:relative;
+}
+#portal-network {
+    padding:0 1em;
+}
+.dropdown {
+    background: transparent url('&dtml-portal_url;/select.gif') 0% 50% no-repeat;
+    padding-left: 1.5em;
+    float: left;
+    margin-right: 1em;
+}
+.dropdown select {
+    font-size: 94%;
+}
+#portal-footer-languageselector {
+    border-top: 1px solid &dtml-globalBackgroundColor;;
+    text-align: center;
+    color: #808080;
+    padding-top:5px;
+    margin-top:3px;
+    font-size: &dtml-fontSmallSize;;
+}
+#portal-footer-languageselector li {
+    display: inline;
+}
+#portal-footer-languageselector li a {
+    color: #808080;
+    text-decoration: none;
+}
+#portal-footer-languageselector .breadcrumbSeparator {
+    font-size: 100%;
+}
+#footeractions-wrapper {
+    text-align: center;
+    font-size: &dtml-fontSmallSize;;    
+    margin-top:1em;
+}
+ul#portal-footeractions {
+    margin: 0;
+    padding: 0;
+}
+ul#portal-footeractions li {
+    display: inline;
+}
+ul#portal-footeractions li a {
+    text-decoration: none;
+}
+ul#portal-footeractions .breadcrumbSeparator {
+    color: #808080;
+}
+h2.headline {
+    margin-top: 0;
+    background:&dtml-globalBackgroundColor;;
+    padding:0.3em 0.5em !important;
+    margin-bottom: 1em;
+}
+.contentViews {
+    margin-top: 1px;
+}
+.documentEditable .documentContent {
+    padding-top: 1em !important;
+}
+
+/*
+** PORTLETS STYLES 
+*/
+
+.portlet {
+    margin-top: 0;
+    background: #fff;
+}
+.portlet,
+.portletHeader,
+.portletItem,
+.portletFooter {
+    border-color: &dtml-globalBackgroundColor;;
+}
+.portletHeader {
+    line-height:2em;
+    font-weight: bold;
+    margin-bottom:-1px;
+}
+.portletItem {
+    padding: 0.5em;
+    border-top:1px dashed &dtml-globalBackgroundColor;;
+}
+.portletFooter {
+    padding: 0.25em 0.5em;
+    border-style:solid solid none;
+}
+.portletItemDetails {
+    text-align:left;
+}
+
+
+
+/* </dtml-with> */
+
+/* Latest version of the documentation on pre-defined properties from Plone 
+   can be found in CMFPlone/skins/plone_styles/ploneCustom.css.dtml */
+
