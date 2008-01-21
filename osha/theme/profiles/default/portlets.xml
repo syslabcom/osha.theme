@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<portlets>    
+    <portlet
+        addview="osha.AlertService"
+        title="Alert Service"
+        description="Provides the link to updates on topics of your choice." />    
+</portlets>

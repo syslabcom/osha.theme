@@ -1,0 +1,30 @@
+<dl class="portlet portletAlertService"
+    i18n:domain="osha"
+    tal:define="portlet_icon view/icon">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              i18n:translate="box_events">
+            Alert Service
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+        <tal:icon condition="portlet_icon">
+            <img tal:replace="structure portlet_icon" />
+        </tal:icon>
+        <a href="subscribe_form">Updates on topics of your choice
+            <br/>
+            - Subscribe -
+        </a>
+    </dd>
+
+    <dd class="portletFooter">
+        <strong id="numalertsubscribers">1340</strong> 
+        <span i18n:translate="text_subscribers"
+              tal:omit-tag="">subscribers</span>
+    </dd>
+
+</dl>

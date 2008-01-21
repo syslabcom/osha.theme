@@ -16,6 +16,15 @@
      portlet="plone.app.portlets.portlets.events.IEventsPortlet" 
      layer="osha.theme.browser.interfaces.IThemeSpecific" 
      template="events.pt" 
-     />      
+     />   
+     
+ <!-- Alert Service portlet -->
+ <plone:portlet
+     name="osha.AlertService"
+     interface=".alertservice.IAlertServicePortlet"
+     assignment=".alertservice.Assignment"
+     renderer=".alertservice.Renderer"
+     addview=".alertservice.AddForm"
+     />        
 
 </configure>

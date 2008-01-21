@@ -1,3 +1,11 @@
+from zope.component import getUtility
+from zope.component import getMultiAdapter
+
+from plone.portlets.interfaces import IPortletAssignmentMapping
+from plone.portlets.interfaces import IPortletManager
+
+from osha.theme import portlets
+
 def setupVarious(context):
     
     # Ordinarily, GenericSetup handlers check for the existence of XML files.
@@ -7,5 +15,16 @@ def setupVarious(context):
     
     if context.readDataFile('osha.theme_various.txt') is None:
         return
+                
+    portal = context.getSite()
+    assignPortlets(portal)
         
-    # Add additional setup code here
+def assignPortlets(portal):
+    rightColumn = getUtility(IPortletManager, name=u'plone.rightcolumn',
+            context=portal)
+    
+    right = getMultiAdapter((portal, rightColumn,), IPortletAssignmentMapping,
+            context=portal)                 
+
+    if u'alertservice' not in right:
+        right[u'alertservice'] = portlets.alertservice.Assignment()
