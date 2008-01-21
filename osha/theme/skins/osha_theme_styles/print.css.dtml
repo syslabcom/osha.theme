@@ -94,6 +94,10 @@ div.top,
  #kss-spinner,
  #review-history,
  .listingBar,
-.visualNoPrint {
+.visualNoPrint,
+#osha-topactions,
+#osha-topdropdowns,
+#footeractions-wrapper,
+#portal-footer-languageselector {
     display: none;
 }
