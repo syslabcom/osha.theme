@@ -12,9 +12,10 @@
     </dt>
 
     <dd class="portletItem">
-        <tal:icon condition="portlet_icon">
+        <span class="image-right"
+              tal:condition="portlet_icon">
             <img tal:replace="structure portlet_icon" />
-        </tal:icon>
+        </span>
         <a href="subscribe_form">Updates on topics of your choice
             <br/>
             - Subscribe -

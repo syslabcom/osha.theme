@@ -136,6 +136,44 @@ h2.headline {
     text-align:left;
 }
 
+/* special portlets' styles */
+dl.portletAlertService {
+    background-color: #90C27E;
+}
+dl.portletAlertService dt.portletHeader {
+    background-color: #09AB11;
+}
+
+dl.portletFreeNewsletter {
+    background-color: #F2E39E;
+}
+dl.portletFreeNewsletter dt.portletHeader {
+    background-color: #FFD201;
+}
+
+dl.portletCampaigns {
+    background-color: #C8CBCC;
+}
+dl.portletCampaigns dt.portletHeader {
+    background-color: #858C90;
+}
+dl.portletCampaigns dd.portletFooter {
+    background-color: #fff;
+}
+
+dl.portletAlertService dd.portletFooter,
+dl.portletFreeNewsletter dd.portletFooter,
+dl.portletCampaigns dd.portletFooter {
+    text-align: left;
+    clear: right;
+}
+dl.portletAlertService .image-right,
+dl.portletFreeNewsletter .image-right,
+dl.portletCampaigns .image-right {
+    border: none;
+    margin: 0;
+}
+
 
 
 /* </dtml-with> */
