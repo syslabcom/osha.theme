@@ -1,0 +1,17 @@
+/* <dtml-var "enableHTTPCompression(request=REQUEST, debug=1, js=1)"> (this is for http compression) */
+
+portal_url = '<dtml-var portal_url>';
+
+function osha_gotoURL (x) {
+    if (x=='') {
+        document.forms['networkchooser'].reset();
+        return;
+    } else {
+        if(x.substr(5, 11)=='http://') {
+            loc = x;
+        } else {
+            loc = 'http://'+x;
+        }
+        window.location.href = loc
+    }
+}

@@ -10,21 +10,18 @@
       <!-- The code below is the plain HTML version of code as it should be generated.
            Please follow this guide when working with the real business logic in the viewlet
       -->
-        
           <div class="dropdown">
                <label for="euNetwork"
                       class="hiddenStructure"
                       i18n:translate="">European Network</label>
                <select id="euNetwork" name="eu_network" 
-                      onkeyup="" onChange="">                           
+                      onkeyup="osha_gotoURL(this.options[this.options.selectedIndex].value)" 
+                      onChange="osha_gotoURL(this.options[this.options.selectedIndex].value)"
+                      tal:define="sites view/getEuropeanNetwork">                           
                   <option value="" i18n:translate="">European Network</option>
-                  <option value="osha.europa.eu">EU Europe</option>
-                  <option value="">--------</option>
-                  <option value="at.osha.europa.eu">AT Austria</option>
-                  <option value="be.osha.europa.eu">BE Belgium</option>
-                  <option value="bg.osha.europa.eu">BG Bulgaria</option>
-                  <option value="cy.osha.europa.eu">CY Cyprus</option>
-                  <option value="cz.osha.europa.eu">CZ Czech Republic</option>
+                  <option tal:repeat="site sites"
+                          tal:attributes="value python:site[1]" 
+                          tal:content="python:site[0]">Site name</option>
                </select>
                <noscript>
                   <input name="form.button.GoEuNetwork" type="submit" value="Go" />
@@ -35,16 +32,14 @@
                <label for="intNetwork"
                       class="hiddenStructure" 
                       i18n:translate="">International Network</label>
-              <select id="intNetwork" name="int_network" onkeyup=""
-                      onChange="">                            
+              <select id="intNetwork" name="int_network" 
+                      onkeyup="osha_gotoURL(this.options[this.options.selectedIndex].value)"
+                      onChange="osha_gotoURL(this.options[this.options.selectedIndex].value)"
+                      tal:define="sites view/getInternationalNetwork">
                   <option value="" i18n:translate="">International Network</option>
-                  <option value="www.ilo.org/public/english/protection/euportal/en">ILO ILO</option>
-                  <option value="eu.ioha.net/">IOHA International Occupational</option>
-                  <option value="eu.ioha.net/">Hygiene Association</option>
-                  <option value="www.who.int/occupational_health/en/">WHO World Health Organisation</option>
-                  <option value="">--------</option>
-                  <option value="www.nohsc-eu.gov.au">AU Australia</option>
-                  <option value="www.eu-ccohs.org">CAN Canada</option>
+                  <option tal:repeat="site sites"
+                          tal:attributes="value python:site[1]" 
+                          tal:content="python:site[0]">Site name</option>
                </select>
                <noscript>
                   <input name="form.button.GoIntNetwork" type="submit" value="Go" />
@@ -56,7 +51,7 @@
     
         <!-- START of generated code.
              The code below has been copied from global_netwrok_form.pt
-             of the previous skin's verion
+             of the previous skin's version
         -->
         <div tal:content="nothing"
              tal:omit-tag="">

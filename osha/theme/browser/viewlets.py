@@ -8,6 +8,8 @@ from Products.CMFCore.utils import getToolByName
 
 from plone.app.i18n.locales.browser.selector import LanguageSelector
 
+from osha.theme.config import *
+
 
 class OSHALanguageSelector(LanguageSelector):
 
@@ -20,6 +22,18 @@ class OSHASiteActionsViewlet(common.SiteActionsViewlet):
 class OSHANetworkchooser(common.ViewletBase):
 
     render = ViewPageTemplateFile('templates/network_chooser.pt')
+
+    def getGermanNetwork(self):
+        """ returns the sites from the European Network """
+        return GERMAN_NETWORK
+        
+    def getEuropeanNetwork(self):
+        """ returns the sites from the European Network """
+        return EUROPEAN_NETWORK
+    
+    def getInternationalNetwork(self):
+        """ returns the sites from the European Network """
+        return INTERNATIONAL_NETWORK
     
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),
