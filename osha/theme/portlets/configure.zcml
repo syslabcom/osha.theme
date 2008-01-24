@@ -27,4 +27,31 @@
      addview=".alertservice.AddForm"
      />        
 
+ <!-- OSHMail portlet -->
+ <plone:portlet
+     name="osha.FreeNewsletter"
+     interface=".oshmail.IOSHMailPortlet"
+     assignment=".oshmail.Assignment"
+     renderer=".oshmail.Renderer"
+     addview=".oshmail.AddForm"
+     />        
+
+ <!-- Campaigns portlet -->
+ <plone:portlet
+     name="osha.Campaigns"
+     interface=".campaigns.ICampaignsPortlet"
+     assignment=".campaigns.Assignment"
+     renderer=".campaigns.Renderer"
+     addview=".campaigns.AddForm"
+     />        
+
+ <!-- FirstTime portlet -->
+ <plone:portlet
+     name="osha.FirstTime"
+     interface=".firsttime.IFirstTimePortlet"
+     assignment=".firsttime.Assignment"
+     renderer=".firsttime.Renderer"
+     addview=".firsttime.AddForm"
+     />        
+     
 </configure>

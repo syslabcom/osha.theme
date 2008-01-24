@@ -1,0 +1,43 @@
+<dl class="portlet portletCampaigns"
+    i18n:domain="osha"
+    tal:define="portlet_icon view/icon;
+                portlet_icon_ew2007 view/icon_ew2007">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              i18n:translate="box_campaigns">
+            Campaigns
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+        <dl>        
+            <dt class="portletHeader">
+                <span class="tile" 
+                      i18n:translate="portlet_campaign_ew2007_title">
+                    European campaign 2007
+                </span>
+            </dt>
+            <dd class="portletItem">
+                <span class="image-right"
+                      tal:condition="portlet_icon_ew2007">
+                    <img tal:replace="structure portlet_icon_ew2007" />
+                </span>
+                <a href="http://ew2007.osha.europa.eu" 
+                    i18n:translate="portlet_campaign_ew2007_text">
+                    Lighten the load!
+                </a>
+              
+            </dd>        
+        </dl>
+    </dd>
+
+    <dd class="portletFooter">
+        <strong id="numalertsubscribers">1340</strong> 
+        <span i18n:translate="text_subscribers"
+              tal:omit-tag="">subscribers</span>
+    </dd>
+
+</dl>

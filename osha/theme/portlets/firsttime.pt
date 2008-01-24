@@ -1,0 +1,16 @@
+<dl class="portlet portletFirstTime"
+    i18n:domain="osha">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              i18n:translate="box_firsttime">
+            <a href="/help">
+                First time here?
+            </a>
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+
+</dl>
