@@ -17,7 +17,7 @@ def setupVarious(context):
         return
                 
     portal = context.getSite()
-    assignPortlets(portal)
+    #assignPortlets(portal)
         
 def assignPortlets(portal):
     rightColumn = getUtility(IPortletManager, name=u'plone.rightcolumn',
