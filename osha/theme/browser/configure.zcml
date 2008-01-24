@@ -74,13 +74,14 @@
         />   
         
     <!-- The bottom language selector bar -->
-    <browser:viewlet  
+    <!-- api: we will probably not need this anymore as we are going to use Linguaplone and have unique urls per lang -->
+    <!--browser:viewlet  
         name="osha.footer.languageselector"
         manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
         class=".viewlets.OSHAFooterLanguageSelector"
         layer=".interfaces.IThemeSpecific"
         permission="zope2.View"
-        />        
+        /-->        
         
     <!-- The language selector bar -->
     <browser:viewlet  
