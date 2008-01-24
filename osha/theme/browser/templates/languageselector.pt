@@ -1,7 +1,8 @@
 <tal:language
     tal:define="available view/available;
                 languages view/languages;
-                showFlags view/showFlags;">
+                showFlags view/showFlags;
+                preflang  python:here.portal_languages.getPreferredLanguage()">
     <ul id="portal-languageselector"
         tal:condition="python:available and len(languages)>=2">
 
@@ -34,11 +35,11 @@
 
         <li tal:condition="not: showFlags">
             <select style="font-size: 94%;"
-                    onchange=""
+                    onchange=""                  
                     tal:attributes="onchange string:window.location='${context/absolute_url}/switchLanguage?set_language=' + this.options[this.selectedIndex].value">
                 <option tal:repeat="lang languages"
-                        tal:content="lang/native"
-                        tal:attributes="selected lang/selected;
+                        tal:content="lang/native"                        
+                        tal:attributes="selected python: preflang==lang['code'] and 'selected' or '' ;
                                         value lang/code">Language</option>
             </select>
         </li>
