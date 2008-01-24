@@ -35,9 +35,8 @@
     </dd>
 
     <dd class="portletFooter">
-        <strong id="numalertsubscribers">1340</strong> 
-        <span i18n:translate="text_subscribers"
-              tal:omit-tag="">subscribers</span>
+    [no footer]
+
     </dd>
 
 </dl>
