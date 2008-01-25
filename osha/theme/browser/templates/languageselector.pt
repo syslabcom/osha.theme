@@ -15,7 +15,7 @@
                 <a href=""
                    tal:define="flag lang/flag;
                                name lang/native"
-                   tal:attributes="href string:${here/absolute_url}/switchLanguage?set_language=${code};
+                   tal:attributes="href lang/url;
                                    title name">
                     <tal:flag condition="flag">
                         <img width="14"
@@ -36,13 +36,15 @@
         <li tal:condition="not: showFlags">
             <select style="font-size: 94%;"
                     onchange=""                  
-                    tal:attributes="onchange string:window.location='${context/absolute_url}/switchLanguage?set_language=' + this.options[this.selectedIndex].value">
+                    tal:attributes="onchange string:window.location= this.options[this.selectedIndex].getAttributeNode('url').value 
+                    ">
                 <option tal:repeat="lang languages"
-                        tal:content="lang/native"                        
+                        tal:content="lang/native"
+                        url="test"
                         tal:attributes="selected python: preflang==lang['code'] and 'selected' or '' ;
-                                        value lang/code">Language</option>
+                                        value lang/code;
+                                        url lang/url">Language</option>
             </select>
         </li>
-
     </ul>
 </tal:language>

@@ -7,11 +7,12 @@ from Acquisition import aq_base
 from Products.CMFCore.utils import getToolByName
 
 from plone.app.i18n.locales.browser.selector import LanguageSelector
+from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 
 from osha.theme.config import *
 
 
-class OSHALanguageSelector(LanguageSelector):
+class OSHALanguageSelector(TranslatableLanguageSelector):
 
     render = ViewPageTemplateFile('templates/languageselector.pt')
     

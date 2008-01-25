@@ -71,6 +71,7 @@
         class=".viewlets.OSHALanguageSelector"
         layer=".interfaces.IThemeSpecific"
         permission="zope2.View"
+        for="Products.LinguaPlone.interfaces.ITranslatable"
         />   
         
     <!-- The bottom language selector bar -->
