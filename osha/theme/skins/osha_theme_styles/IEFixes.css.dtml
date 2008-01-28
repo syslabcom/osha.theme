@@ -207,6 +207,10 @@ dd.portletItem .navTreeItem a {
 }
 * html #portal-column-content {
     display:inline;
+    overflow: hidden;
+}
+#portal-column-two {
+    position:relative;
 }
 
 /* Hides from IE-Mac \*/

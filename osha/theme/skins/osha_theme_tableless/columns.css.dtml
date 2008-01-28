@@ -37,7 +37,7 @@
     width: <dtml-var columnContentWidth missing="68%">;
     padding: 0;
     margin: 0 0 0 <dtml-var columnOneWidth missing="16%">;
-    overflow: hidden;    
+/*    overflow: hidden;    */
 }
 #portal-column-two {
     float: left;    
