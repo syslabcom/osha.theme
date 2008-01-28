@@ -33,6 +33,18 @@
                insert-after="osha.languageselector" />               
     </order>
     
+    <order manager="plone.contentviews" skinname="OSHA Plone Theme"
+           based-on="Plone Default">              
+      <viewlet name="osha.abovecontentportlets"
+               insert-before="*" />             
+    </order>    
+    
+    <order manager="plone.belowcontent" skinname="OSHA Plone Theme"
+           based-on="Plone Default">              
+      <viewlet name="osha.belowcontentportlets"
+               insert-after="*" />             
+    </order>    
+    
     <order manager="plone.portalfooter" skinname="OSHA Plone Theme"
            based-on="Plone Default"> 
       <viewlet name="osha.footer.actions"

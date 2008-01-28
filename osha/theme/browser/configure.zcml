@@ -2,6 +2,8 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="osha.theme">
+    
+    <include package="plone.app.portlets" />    
 
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
     <interface
@@ -118,6 +120,40 @@
         class=".viewlets.OSHALogoViewlet"
         layer=".interfaces.IThemeSpecific"
         permission="zope2.View" 
-        />                                        
+        />
+      
+    <!-- Above content portlets -->  
+    <browser:viewlet
+        name="osha.abovecontentportlets"
+        manager="plone.app.layout.viewlets.interfaces.IContentViews"
+        template="templates/abovecontent_portlets.pt"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+    />  
+    
+    <browser:page
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
+        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+        name="manage-oshaabove"
+        template="templates/manage_osha_above.pt"
+        permission="plone.app.portlets.ManagePortlets"
+    />  
+    
+    <!-- Above content portlets -->  
+    <browser:viewlet
+        name="osha.belowcontentportlets"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        template="templates/belowcontent_portlets.pt"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+    />  
+    
+    <browser:page
+        for="plone.portlets.interfaces.ILocalPortletAssignable"
+        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+        name="manage-oshabelow"
+        template="templates/manage_osha_below.pt"
+        permission="plone.app.portlets.ManagePortlets"
+    />                                                    
 
 </configure>
