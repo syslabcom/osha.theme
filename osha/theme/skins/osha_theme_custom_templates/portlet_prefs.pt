@@ -9,8 +9,7 @@
                groups python:controlPanel.getGroups('site');
                getIconFor nocall:putils/getIconFor">
 
-<td id="portal-column-one">
-<div class="visualPadding">
+<div id="portal-column-one">
 
 <dl class="portlet"
     id="portlet-prefs">
@@ -52,7 +51,6 @@
 </dl>
 
 </div>
-</td>
 
 
 </metal:portlet>
