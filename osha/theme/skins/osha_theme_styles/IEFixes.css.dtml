@@ -217,4 +217,8 @@ dd.portletItem .navTreeItem a {
 * html #portal-column-content { height: 1%; }
 /* End hide from IE-Mac */
 
+* html #belowcontent-portlets dl.portlet {
+    margin-left: 0.5%;
+}
+
 /* </dtml-with> */
