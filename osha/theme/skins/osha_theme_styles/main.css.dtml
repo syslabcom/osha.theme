@@ -180,8 +180,8 @@ dl.portletCampaigns .image-right {
 
 #belowcontent-portlets dl.portlet {
     float: left;
-    width: 48%;
-    margin: 0 1%;
+    width: 47%;
+    margin: 0 1% 0 1%;
 }
 
 
