@@ -14,4 +14,10 @@
       addview="osha.AlertService"
       title="Alert Service"
       description="Provides the link to updates on topics of your choice." />    
+      
+  <portlet
+      addview="osha.Campaigns"
+      title="Campaigns"
+      description="Currently running campaigns." />  
+          
 </portlets>

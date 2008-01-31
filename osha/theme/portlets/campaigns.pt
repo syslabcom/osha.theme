@@ -13,25 +13,48 @@
     </dt>
 
     <dd class="portletItem">
-        <dl>        
-            <dt class="portletHeader">
-                <span class="tile" 
-                      i18n:translate="portlet_campaign_ew2007_title">
-                    European campaign 2007
-                </span>
-            </dt>
-            <dd class="portletItem">
-                <span class="image-right"
-                      tal:condition="portlet_icon_ew2007">
-                    <img tal:replace="structure portlet_icon_ew2007" />
-                </span>
-                <a href="http://ew2007.osha.europa.eu" 
-                    i18n:translate="portlet_campaign_ew2007_text">
-                    Lighten the load!
-                </a>
-              
-            </dd>        
-        </dl>
+        
+        <h4 class="campaignHeader">European Campaign 2007</h4>
+        <div class="campaignContent">
+            <span class="image-right"
+                  tal:condition="portlet_icon_ew2007">
+                <img tal:replace="structure portlet_icon_ew2007" />
+            </span>
+            <a href="http://ew2007.osha.europa.eu" 
+               i18n:translate="portlet_campaign_ew2007_text">
+               Lighten the load!
+            </a>
+        </div>
+    </dd>
+    
+    <dd class="portletItem">
+        
+        <h4 class="campaignHeader">European Campaign 2007</h4>
+        <div class="campaignContent">
+            <span class="image-right"
+                  tal:condition="portlet_icon_ew2007">
+                <img tal:replace="structure portlet_icon_ew2007" />
+            </span>
+            <a href="http://ew2007.osha.europa.eu" 
+               i18n:translate="portlet_campaign_ew2007_text">
+               Lighten the load!
+            </a>
+        </div>
+    </dd>
+    
+    <dd class="portletItem">
+        
+        <h4 class="campaignHeader">European Campaign 2007</h4>
+        <div class="campaignContent">
+            <span class="image-right"
+                  tal:condition="portlet_icon_ew2007">
+                <img tal:replace="structure portlet_icon_ew2007" />
+            </span>
+            <a href="http://ew2007.osha.europa.eu" 
+               i18n:translate="portlet_campaign_ew2007_text">
+               Lighten the load!
+            </a>
+        </div>
     </dd>
 
     <dd class="portletFooter">

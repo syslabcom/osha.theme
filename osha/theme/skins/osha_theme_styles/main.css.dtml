@@ -155,10 +155,24 @@ dl.portletCampaigns {
     background-color: #C8CBCC;
 }
 dl.portletCampaigns dt.portletHeader {
-    background-color: #858C90;
+    background-color: #C8CBCC;
 }
 dl.portletCampaigns dd.portletFooter {
     background-color: #fff;
+}
+.portletCampaigns .portletItem {
+    padding: 0 0 0.5em;
+}
+h4.campaignHeader {
+    font-size: 1em;
+    background: #858C90;
+    line-height: 2em;
+    padding: 0 1em;
+    margin-top: 0;
+    clear: right;
+}
+.campaignContent {
+    padding: 0 0.5em;
 }
 
 dl.portletAlertService dd.portletFooter,
@@ -171,9 +185,8 @@ dl.portletAlertService .image-right,
 dl.portletFreeNewsletter .image-right,
 dl.portletCampaigns .image-right {
     border: none;
-    margin: 0;
+    margin: 0 0 0.5em 0;
 }
-
 #belowcontent-portlets {
     margin: 1em 0;
 }
