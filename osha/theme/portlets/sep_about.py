@@ -39,10 +39,7 @@ class Renderer(base.Renderer):
         return self.context.Title()
         
     def about_documents(self):    
-        about = getattr(self.context, 'about', None)
-        if about is None:
-            return []
-        return about.getFolderContents()
+        return self.context.getFolderContents({'portal_type': 'Document'})
         
     @memoize
     def _data(self):

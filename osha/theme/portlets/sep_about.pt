@@ -38,8 +38,8 @@
     </dd>
     
     <dd class="portletFooter">
-        <a href="about/" i18n:domain="plone" i18n:translate="box_morelink"
-              >More...</a>
+        <!--a href="" i18n:domain="plone" i18n:translate="box_morelink"
+              >More...</a-->
     </dd>
 
 </dl>
