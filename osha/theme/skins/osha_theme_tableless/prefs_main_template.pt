@@ -4,15 +4,7 @@
     <metal:block fill-slot="top_slot"
                  tal:define="dummy python:request.set('disable_border',1)" />
 
-    <metal:override fill-slot="column_one_slot">
-        <metal:override define-slot="column_one_slot">
-            <metal:prefs use-macro="here/portlet_prefs/macros/portlet" />
-        </metal:override>
-    </metal:override>
-
-    <metal:override fill-slot="column_two_slot" />
-
-    <metal:override fill-slot="content">
+    <!-- <metal:override fill-slot="content">
       <metal:slot define-slot="prefs_configlet_content">
         <metal:block metal:use-macro="here/main_template/macros/content">
           <metal:override metal:fill-slot="main">
@@ -22,6 +14,48 @@
           </metal:override>
         </metal:block>
       </metal:slot>
+    </metal:override> -->
+    
+    <metal:override fill-slot="columns_wrapper">
+    <div id="portal-columns" class="visualColumnHideTwo">          
+      
+      <div id="content-column-background">     
+          <div id="reset-column">
+          <div id="right-column-background">
+              
+              <div class="content-column clearfix">
+ 
+              <tal:comment replace="nothing"> Start of main content block </tal:comment>
+              <div id="portal-column-content"
+                  tal:define="tabindex python:Iterator(mainSlot=False)">
+
+                  <metal:slot define-slot="prefs_configlet_content">
+                    <metal:block metal:use-macro="here/main_template/macros/content">
+                      <metal:override metal:fill-slot="main">
+                        <metal:slot metal:define-slot="prefs_configlet_main" tal:content="nothing">
+                          Page body text
+                        </metal:slot>
+                      </metal:override>
+                    </metal:block>
+                  </metal:slot>
+                  
+              </div>
+              <tal:comment replace="nothing"> End of main content block </tal:comment>
+      
+              <tal:comment replace="nothing"> Start of the left column </tal:comment>
+              <metal:override define-slot="column_one_slot">
+                  <metal:prefs use-macro="here/portlet_prefs/macros/portlet" />
+              </metal:override>
+              <tal:comment replace="nothing"> End of the left column </tal:comment>
+          
+              </div>
+          
+          </div>
+          </div>
+      </div>
+      
+      </div>
+
     </metal:override>
 
   </tal:block>

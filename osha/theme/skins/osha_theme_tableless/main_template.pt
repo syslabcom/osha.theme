@@ -75,6 +75,7 @@
 
       <div class="visualClear" id="clear-space-before-wrapper-table"><!-- --></div>
       
+      <metal:block define-slot="columns_wrapper">
       <div id="portal-columns" 
            tal:attributes="class string:${hidecolumns}">          
       
@@ -176,6 +177,7 @@
       </div>
       
       </div>
+      </metal:block>
       <tal:comment replace="nothing"> end column wrapper </tal:comment>
 
       <div class="visualClear" id="clear-space-before-footer"><!-- --></div>
