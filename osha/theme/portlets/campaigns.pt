@@ -58,8 +58,7 @@
     </dd>
 
     <dd class="portletFooter">
-    [no footer]
-
+        <a href="/campaigns" i18n:domain="plone" i18n:translate="box_morelink">More...</a>
     </dd>
 
 </dl>
