@@ -193,13 +193,13 @@ dl.portletCampaigns .image-right {
     margin: 0 0 0.5em 0;
 }
 #belowcontent-portlets {
-    margin: 1em 0 1em 1em;
+    margin: 1em 0 ;
 }
 
 #belowcontent-portlets dl.portlet {
     float: left;
     width: 48%;
-    margin: 0 1% 0 1%;
+    margin: 0 2% 1% 0%;
 }
 
 /* Styles for SEP markup images */
@@ -215,6 +215,14 @@ dl.portletCampaigns .image-right {
     padding: 4px;
 }
 
+/* The SEP search database box used in sep_view */
+.searchDatabaseBox {
+    padding: 1em;
+    margin-right:2%;
+    font-weight: bold;
+    border: 1px solid #E6E8ED;
+    background-color: #F7F8F9;
+}
 
 /* </dtml-with> */
 
