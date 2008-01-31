@@ -39,7 +39,7 @@ class Renderer(base.Renderer):
         return self.context.Title()
         
     def about_documents(self):    
-        return self.context.getFolderContents({'portal_type': 'Document'})
+        return self.context.getFolderContents(contentFilter={'portal_type': ['Document', 'RichDocument', 'File']})
         
     @memoize
     def _data(self):

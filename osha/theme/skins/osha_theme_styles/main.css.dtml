@@ -202,7 +202,18 @@ dl.portletCampaigns .image-right {
     margin: 0 1% 0 1%;
 }
 
-
+/* Styles for SEP markup images */
+.figure-box {
+    float: left;
+    margin-right: 1em;
+}
+.figure img {
+    display: block;
+    background-color: #fff;
+    margin: 0px 0px 0px 0px;
+    border: 0px solid #a9a9a9;
+    padding: 4px;
+}
 
 
 /* </dtml-with> */
