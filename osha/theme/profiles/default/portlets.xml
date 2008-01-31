@@ -19,5 +19,26 @@
       addview="osha.Campaigns"
       title="Campaigns"
       description="Currently running campaigns." />  
+
+  <portlet
+      addview="osha.EW2007"
+      title="EW2007"
+      description="EW2007 Campaign portlet." />  
+
+  <portlet
+      addview="osha.FirstTime"
+      title="First Time"
+      description="Provides the link to an overview over the site." />  
+
+  <portlet
+      addview="osha.FreeNewsletter"
+      title="Free Newsletter"
+      description="Monthly review of strategic news." />  
+
+  <portlet
+      addview="osha.SEPAbout"
+      title="Single Entry Point - About"
+      description="Lists all static documents within the about folder of a single entry point." />  
+
           
 </portlets>

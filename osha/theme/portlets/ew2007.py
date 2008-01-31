@@ -9,20 +9,20 @@ from plone.portlets.interfaces import IPortletDataProvider
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 
-class IOSHMailPortlet(IPortletDataProvider):
+class IEW2007Portlet(IPortletDataProvider):
     
     pass
 
 class Assignment(base.Assignment):
-    implements(IOSHMailPortlet)
+    implements(IEW2007Portlet)
 
     @property
     def title(self):
-        return _(u"Free Newsletter")
+        return _(u"European Campaign 2007")
 
 class Renderer(base.Renderer):
 
-    render = ViewPageTemplateFile('oshmail.pt')
+    render = ViewPageTemplateFile('ew2007.pt')
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
@@ -36,8 +36,8 @@ class Renderer(base.Renderer):
         return self._data()
         
     def icon(self):
-        icon = self.portal.restrictedTraverse('portlet_newsletter_icon.png')
-        return icon.tag(title='Free Newsletter')
+        icon = self.portal.restrictedTraverse('portlet_campaigns_ew2007_icon.gif')
+        return icon.tag(title='European Campaign 2007')
 
     @memoize
     def _data(self):
@@ -45,9 +45,9 @@ class Renderer(base.Renderer):
 
 
 class AddForm(base.NullAddForm):
-    form_fields = form.Fields(IOSHMailPortlet)
-    label = _(u"Add Free Newsletter Portlet")
-    description = _(u"Monthly review of strategic news.")
+    form_fields = form.Fields(IEW2007Portlet)
+    label = _(u"Add EW2007 Portlet")
+    description = _(u"European Campaign 2007")
 
     def create(self):
         return Assignment()

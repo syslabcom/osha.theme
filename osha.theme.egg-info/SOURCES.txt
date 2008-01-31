@@ -29,9 +29,13 @@ osha/theme/browser/__init__.py
 osha/theme/browser/configure.zcml
 osha/theme/browser/interfaces.py
 osha/theme/browser/viewlets.py
+osha/theme/browser/templates/abovecontent_portlets.pt
+osha/theme/browser/templates/belowcontent_portlets.pt
 osha/theme/browser/templates/footer_actions.pt
 osha/theme/browser/templates/footer_languageselector.pt
 osha/theme/browser/templates/languageselector.pt
+osha/theme/browser/templates/manage_osha_above.pt
+osha/theme/browser/templates/manage_osha_below.pt
 osha/theme/browser/templates/network_chooser.pt
 osha/theme/browser/templates/osha_topactions.pt
 osha/theme/browser/templates/osha_topdropdowns.pt
@@ -51,6 +55,8 @@ osha/theme/portlets/navigation.py
 osha/theme/portlets/navigation_recurse.pt
 osha/theme/portlets/oshmail.pt
 osha/theme/portlets/oshmail.py
+osha/theme/portlets/sep_about.pt
+osha/theme/portlets/sep_about.py
 osha/theme/profiles/default/actionicons.xml
 osha/theme/profiles/default/actions.xml
 osha/theme/profiles/default/cssregistry.xml
@@ -75,6 +81,7 @@ osha/theme/skins/osha_theme_custom_images/arrowUpAlternative.gif
 osha/theme/skins/osha_theme_custom_images/bullet.gif
 osha/theme/skins/osha_theme_custom_images/button_bg.gif
 osha/theme/skins/osha_theme_custom_images/call_icon.gif
+osha/theme/skins/osha_theme_custom_images/dummyimage80.gif
 osha/theme/skins/osha_theme_custom_images/edit_box.gif
 osha/theme/skins/osha_theme_custom_images/event_icon.gif
 osha/theme/skins/osha_theme_custom_images/favicon.ico
@@ -135,7 +142,6 @@ osha/theme/skins/osha_theme_custom_images/site_icon.gif
 osha/theme/skins/osha_theme_custom_images/square_empty.gif
 osha/theme/skins/osha_theme_custom_images/submenu.gif
 osha/theme/skins/osha_theme_custom_images/topbanner2.jpg
-osha/theme/skins/osha_theme_scripts/hide_columns.py
 osha/theme/skins/osha_theme_scripts/osha.js.dtml
 osha/theme/skins/osha_theme_scripts/osha.js.dtml.metadata
 osha/theme/skins/osha_theme_styles/IEFixes.css.dtml
@@ -147,3 +153,5 @@ osha/theme/skins/osha_theme_styles/print.css.dtml
 osha/theme/skins/osha_theme_styles/public.css.dtml
 osha/theme/skins/osha_theme_tableless/columns.css.dtml
 osha/theme/skins/osha_theme_tableless/main_template.pt
+osha/theme/skins/osha_theme_tableless/portlet_prefs.pt
+osha/theme/skins/osha_theme_tableless/prefs_main_template.pt

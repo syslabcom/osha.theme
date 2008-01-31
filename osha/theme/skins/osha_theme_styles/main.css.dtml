@@ -150,7 +150,12 @@ dl.portletFreeNewsletter {
 dl.portletFreeNewsletter dt.portletHeader {
     background-color: #FFD201;
 }
-
+dl.portletEW2007 {
+    background-color: #C8CBCC;
+}
+dl.portletEW2007 dt.portletHeader {
+    background-color: #858C90;
+}    
 dl.portletCampaigns {
     background-color: #C8CBCC;
 }
@@ -188,7 +193,7 @@ dl.portletCampaigns .image-right {
     margin: 0 0 0.5em 0;
 }
 #belowcontent-portlets {
-    margin: 1em 0;
+    margin: 1em 0 1em 1em;
 }
 
 #belowcontent-portlets dl.portlet {

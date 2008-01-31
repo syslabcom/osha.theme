@@ -9,20 +9,20 @@ from plone.portlets.interfaces import IPortletDataProvider
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 
-class IOSHMailPortlet(IPortletDataProvider):
+class ISEPAboutPortlet(IPortletDataProvider):
     
     pass
 
 class Assignment(base.Assignment):
-    implements(IOSHMailPortlet)
+    implements(ISEPAboutPortlet)
 
     @property
     def title(self):
-        return _(u"Free Newsletter")
+        return _(u"Single Entry Point - About")
 
 class Renderer(base.Renderer):
 
-    render = ViewPageTemplateFile('oshmail.pt')
+    render = ViewPageTemplateFile('sep_about.pt')
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
@@ -35,19 +35,24 @@ class Renderer(base.Renderer):
     def available(self):
         return self._data()
         
-    def icon(self):
-        icon = self.portal.restrictedTraverse('portlet_newsletter_icon.png')
-        return icon.tag(title='Free Newsletter')
-
+    def sep_title(self):
+        return self.context.Title()
+        
+    def about_documents(self):    
+        about = getattr(self.context, 'about', None)
+        if about is None:
+            return []
+        return about.getFolderContents()
+        
     @memoize
     def _data(self):
         return True
 
 
 class AddForm(base.NullAddForm):
-    form_fields = form.Fields(IOSHMailPortlet)
-    label = _(u"Add Free Newsletter Portlet")
-    description = _(u"Monthly review of strategic news.")
+    form_fields = form.Fields(ISEPAboutPortlet)
+    label = _(u"Add Single Entry Point - About Portlet")
+    description = _(u"Lists all static documents within the about folder of a single entry point.")
 
     def create(self):
         return Assignment()
