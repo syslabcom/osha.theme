@@ -12,4 +12,8 @@
    <include file="skins.zcml" />
    <include file="profiles.zcml" />
 
+    <adapter factory=".adapter.QueryBuilder" />
+    <adapter factory=".adapter.NavtreeStrategy" />
+
+
 </configure>
