@@ -224,6 +224,14 @@ dl.portletCampaigns .image-right {
     background-color: #F7F8F9;
 }
 
+/* additional workflow state colors */
+.state-checked {
+    color: #8D9211 !important;
+}
+.state-to_amend {
+    color: #780000 !important;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 
