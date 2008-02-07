@@ -48,6 +48,8 @@ osha/theme/portlets/campaigns.pt
 osha/theme/portlets/campaigns.py
 osha/theme/portlets/configure.zcml
 osha/theme/portlets/events.pt
+osha/theme/portlets/ew2007.pt
+osha/theme/portlets/ew2007.py
 osha/theme/portlets/firsttime.pt
 osha/theme/portlets/firsttime.py
 osha/theme/portlets/navigation.pt
@@ -81,6 +83,7 @@ osha/theme/skins/osha_theme_custom_images/arrowUpAlternative.gif
 osha/theme/skins/osha_theme_custom_images/bullet.gif
 osha/theme/skins/osha_theme_custom_images/button_bg.gif
 osha/theme/skins/osha_theme_custom_images/call_icon.gif
+osha/theme/skins/osha_theme_custom_images/database_search.gif
 osha/theme/skins/osha_theme_custom_images/dummyimage80.gif
 osha/theme/skins/osha_theme_custom_images/edit_box.gif
 osha/theme/skins/osha_theme_custom_images/event_icon.gif
@@ -99,6 +102,8 @@ osha/theme/skins/osha_theme_custom_images/icon_siteupdate.gif
 osha/theme/skins/osha_theme_custom_images/icon_translations.gif
 osha/theme/skins/osha_theme_custom_images/icon_unlink.gif
 osha/theme/skins/osha_theme_custom_images/job_icon.gif
+osha/theme/skins/osha_theme_custom_images/large_arrow_left.gif
+osha/theme/skins/osha_theme_custom_images/large_arrow_right.gif
 osha/theme/skins/osha_theme_custom_images/link.gif
 osha/theme/skins/osha_theme_custom_images/link_external.gif
 osha/theme/skins/osha_theme_custom_images/logo.gif
@@ -141,6 +146,7 @@ osha/theme/skins/osha_theme_custom_images/select_lang.gif
 osha/theme/skins/osha_theme_custom_images/site_icon.gif
 osha/theme/skins/osha_theme_custom_images/square_empty.gif
 osha/theme/skins/osha_theme_custom_images/submenu.gif
+osha/theme/skins/osha_theme_custom_images/theme_image_MSD.gif
 osha/theme/skins/osha_theme_custom_images/topbanner2.jpg
 osha/theme/skins/osha_theme_scripts/osha.js.dtml
 osha/theme/skins/osha_theme_scripts/osha.js.dtml.metadata
