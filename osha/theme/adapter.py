@@ -61,7 +61,7 @@ class QueryBuilder(object):
 #            query['path'] = {'query' : rootPath, 'depth' : 2}
 #        else:
 #            query['path'] = {'query' : currentPath, 'navtree' : 1}
-        query['path'] = {'query' : rootPath, 'navtree' : 1, 'navtree_start': 2}
+        query['path'] = {'query' : rootPath, 'navtree' : 1, 'navtree_start': 1}
 
         topLevel = portlet.topLevel or navtree_properties.getProperty('topLevel', 0)
         topLevel = 0
@@ -87,7 +87,6 @@ class QueryBuilder(object):
             query['review_state'] = navtree_properties.getProperty('wf_states_to_show', ())
 
         self.query = query
-        print query
         
     def __call__(self):
         return self.query
@@ -114,7 +113,9 @@ class NavtreeStrategy(SitemapNavtreeStrategy):
         currentFolderOnly = portlet.currentFolderOnly or navtree_properties.getProperty('currentFolderOnlyInNavtree', False)
         topLevel = portlet.topLevel or navtree_properties.getProperty('topLevel', 0)
         #self.rootPath = getRootPath(context, currentFolderOnly, topLevel, portlet.root)
-        self.rootPath = "%s/%s" % (getRootPath(context, currentFolderOnly, topLevel, portlet.root), portal_languages.getPreferredLanguage())
+        self.rootPath = "%s/%s" % ( getRootPath(context, currentFolderOnly, topLevel, portlet.root), portal_languages.getPreferredLanguage())
+        if "//" in self.rootPath:
+            self.rootPath = self.rootPath.replace("//","/")
         self.showAllParents = False
 
 
