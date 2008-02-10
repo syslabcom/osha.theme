@@ -6,7 +6,7 @@ from Acquisition import aq_base
 
 from Products.CMFCore.utils import getToolByName
 
-from plone.app.i18n.locales.browser.selector import LanguageSelector
+#from plone.app.i18n.locales.browser.selector import LanguageSelector
 from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 
 from osha.theme.config import *
@@ -48,7 +48,7 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
     
     render =  ViewPageTemplateFile('templates/path_bar.pt')
     
-class OSHAFooterLanguageSelector(LanguageSelector):
+class OSHAFooterLanguageSelector(TranslatableLanguageSelector):
 
     render = ViewPageTemplateFile('templates/footer_languageselector.pt')
     
