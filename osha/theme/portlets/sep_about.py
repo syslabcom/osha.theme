@@ -8,6 +8,8 @@ from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFCore.utils import getToolByName
+
 
 class ISEPAboutPortlet(IPortletDataProvider):
     
@@ -39,7 +41,10 @@ class Renderer(base.Renderer):
         return self.context.Title()
         
     def about_documents(self):    
-        return self.context.getFolderContents(contentFilter={'portal_type': ['Document', 'RichDocument', 'File']})
+        portal_catalog = getToolByName(self.context, 'portal_catalog')
+        return portal_catalog(portal_type= ('Document', 'RichDocument', 'File', 'Link'), 
+                              path='/'.join(self.context.getPhysicalPath())
+                             )
         
     @memoize
     def _data(self):
