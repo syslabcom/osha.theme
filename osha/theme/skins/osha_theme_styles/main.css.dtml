@@ -219,7 +219,6 @@ dl.portletCampaigns .image-right {
 .searchDatabaseBox {
     padding: 1em;
     margin-right:2%;
-    margin-left:2%;
     font-weight: bold;
     border: 1px solid #E6E8ED;
     background-color: #F7F8F9;
