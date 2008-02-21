@@ -67,14 +67,26 @@
         />        
         
     <!-- The top language selector bar -->
-    <browser:viewlet  
-        name="osha.languageselector"
-        manager=".interfaces.IOSHAHeaderDropdowns"
-        class=".viewlets.OSHALanguageSelector"
-        layer=".interfaces.IThemeSpecific"
-        permission="zope2.View"
-        for="Products.LinguaPlone.interfaces.ITranslatable"
-        />   
+        <!-- For translatable items -->
+        <browser:viewlet  
+            name="osha.languageselector"
+            manager=".interfaces.IOSHAHeaderDropdowns"
+            class=".viewlets.OSHALanguageSelector"
+            layer=".interfaces.IThemeSpecific"
+            permission="zope2.View"
+            for="Products.LinguaPlone.interfaces.ITranslatable"
+            />
+        
+        <!-- For the rest of the soup -->
+        <browser:viewlet  
+            name="osha.languageselector"
+            manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+            class="plone.app.i18n.locales.browser.selector.LanguageSelector"
+            layer=".interfaces.IThemeSpecific"
+            permission="zope2.View"
+            for="*"
+            />
+        
         
     <!-- The bottom language selector bar -->
     <!-- api: we will probably not need this anymore as we are going to use Linguaplone and have unique urls per lang -->
