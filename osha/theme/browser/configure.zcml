@@ -168,4 +168,14 @@
         permission="plone.app.portlets.ManagePortlets"
     />                                                    
 
+
+    <browser:page
+        for="*"
+        name="rss-feeds"
+        class=".rssfeeds.RSSFeedsView"
+        permission="zope2.View"
+    />
+
+
+
 </configure>

@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+<body>
+
+<metal:main fill-slot="main">   
+
+<style type="text/css">
+.feedlist dl dt {font-weight: bold; margin-top:5px;}
+.feedlist dl dd {}
+.feedlist .sepline {margin: 5px 0px 10px 0px; border-bottom: 1px dashed #999;}
+</style>
+
+<h1 i18n:translate="heading_agency_rss">Agency RSS Feeds</h1>
+
+<p i18n:translate="description_agency_rss">
+    This page contains an overview over the RSS (<a target="wikipedia" href="http://en.wikipedia.org/wiki/RSS">What is RSS?</a>) feeds currently available at osha.europa.eu. Subscribe to our RSS (Really Simple Syndication) feeds to get information delivered directly to your desktop!
+</p>
+
+<p i18n:translate="help_use_aggregator">
+    <b>To view one of the feeds in your RSS Aggregator</b> (<a href="http://en.wikipedia.org/wiki/Aggregators" target="wikipedia">What is an Aggregator?</a>):
+</p>    
+<ol>
+    <li i18n:translate="help_use_aggregator_step1">
+        Copy the URL/shortcut that corresponds to the topic that interests you.</li>
+    <li i18n:translate="help_use_aggregator_step2">
+        Paste the URL into your reader.</li>
+</ol>
+
+<p i18n:translate="help_use_online_service">
+    <b>If you use an online RSS service, use a shortcut:</b>
+</p>
+<ol>
+    <li i18n:translate="help_use_online_service_step1">
+    Click on the shortcut button for your service.</li>
+    <li i18n:translate="help_use_online_service_step2">
+    Click the "Add to Any" button, if your service is not in the list</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<dl class="portalMessage">
+    <dt i18n:translate="label_note">Note</dt>
+    <dd i18n:translate="note_language">
+        The current language is <span tal:replace="view/currlang"/>. If you want to subscribe to feeds in another language, change the language of this page first.
+    </dd>
+</dl>
+
+<p>&nbsp;</p>
+
+<h1 i18n:translate="heading_general_information">General Information</h1>
+
+<dl class="feedlist" 
+    tal:define="feeds view/type_feeds">
+
+    <tal:feeds repeat="feed feeds">
+    <dt>
+        <img tal:attributes="src feed/icon; alt feed/title" /> 
+        <a tal:attributes="href feed/url">
+            <span i18n:translate="label_latest" tal:omit-tag="">Latest</span> 
+            <span tal:replace="feed/title" />
+        </a>
+    </dt>
+    <dd>
+        <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
+        <a tal:attributes="href feed/url" tal:content="feed/url">     
+            http://osha.europa.eu/rssfeeds/news/RSS
+        </a> <br/>
+        <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
+        <span tal:replace="structure python:view.quick_buttons(url=feed['url'], title=feed['title'])" />
+    </dd>
+
+    <div class="sepline" tal:condition="not:repeat/feed/end"></div>
+    
+    </tal:feeds>   
+
+</dl>
+
+<p>&nbsp;</p>
+
+<h1 i18n:translate="heading_themes">Themes (including related news, events, publications and press releases)</h1>
+
+<dl class="feedlist" 
+    tal:define="feeds view/subject_feeds">
+
+    <tal:feeds repeat="feed feeds">
+    <dt>
+        <img tal:attributes="src feed/icon; alt feed/title" /> 
+        <a tal:attributes="href feed/url">
+            <span i18n:translate="label_theme" tal:omit-tag="">Theme</span> 
+            <span tal:replace="feed/title" />
+        </a>
+    </dt>
+    <dd>
+        <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
+        <a tal:attributes="href feed/url" tal:content="feed/url">     
+            http://osha.europa.eu/rssfeeds/news/RSS
+        </a> <br/>
+        <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
+        <span tal:replace="structure python:view.quick_buttons(url=feed['url'], title=feed['title'])" />
+    </dd>
+
+    <div class="sepline"></div>
+    
+    </tal:feeds>   
+
+</dl>
+
+</metal:main>
+</body>
+</html>
