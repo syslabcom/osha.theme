@@ -81,7 +81,7 @@
         <!-- For the rest of the soup -->
         <browser:viewlet  
             name="osha.languageselector"
-            manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+            manager=".interfaces.IOSHAHeaderDropdowns"
             class="plone.app.i18n.locales.browser.selector.LanguageSelector"
             layer=".interfaces.IThemeSpecific"
             permission="zope2.View"
