@@ -39,9 +39,7 @@ dl.portlet #osha-topactions {
     font-size:1em;
     margin:0;
     padding: 0 1em;
-    border-bottom-style: none;
-    border-bottom-width: 0px;
-    border-bottom-color: none;  
+    border-bottom: none;  
 }
 #osha-topdropdowns {
     margin:10px 104px 0 201px;
