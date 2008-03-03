@@ -13,13 +13,17 @@ from osha.theme.config import *
 
 
 class OSHALanguageSelector(TranslatableLanguageSelector):
+    """ Override LinguaPlone's language selector to provide our own template
+        This is used for content that is LinguaPlone translatable """
 
     render = ViewPageTemplateFile('templates/languageselector.pt')
-    
+
+
 class OSHASiteActionsViewlet(common.SiteActionsViewlet):
 
     render = ViewPageTemplateFile('templates/site_actions.pt')
-    
+
+
 class OSHANetworkchooser(common.ViewletBase):
 
     render = ViewPageTemplateFile('templates/network_chooser.pt')
