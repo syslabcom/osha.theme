@@ -53,10 +53,13 @@ h6 a {
     text-decoration: none;
 }
 h1 {
-    font-size: 130%;
+    font-size: 160%;
 }
 h2 {
-    font-size: 120%;
+    font-size: 140%;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: gray;    
 }
 h3 {
     font-size: 110%;
