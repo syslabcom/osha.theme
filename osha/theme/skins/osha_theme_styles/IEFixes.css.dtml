@@ -204,10 +204,10 @@ dd.portletItem .navTreeItem a {
 
 * html #visual-portal-wrapper {
     height: 1%;
+    overflow: visible;
 }
 * html #portal-column-content {
     display:inline;
-    overflow: hidden;
 }
 #portal-column-two {
     position:relative;
