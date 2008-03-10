@@ -11,7 +11,7 @@
                             is_last repeat/action/end">
 
                 <img alt="" src=""
-                     tal:attributes="src string:${view/portal_url}/$icon;
+                     tal:attributes="src string:${view/site_url}/$icon;
                                      alt action/title" />                
                 <a href=""
                    tal:define="title action/title;
@@ -35,7 +35,7 @@
                              is_last repeat/action/end">
 
                  <img alt="" src=""
-                      tal:attributes="src string:${view/portal_url}/$icon;
+                      tal:attributes="src string:${view/site_url}/$icon;
                                       alt action/title" />                
                  <a href=""
                    tal:define="title action/title;
@@ -58,7 +58,7 @@
                              is_last repeat/action/end">
 
                 <img alt="" src=""
-                     tal:attributes="src string:${view/portal_url}/$icon;
+                     tal:attributes="src string:${view/site_url}/$icon;
                                      alt action/title" />                
                 <a href=""
                    tal:define="title action/title;

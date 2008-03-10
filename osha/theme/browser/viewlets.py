@@ -67,7 +67,7 @@ class OSHAFooterActions(common.ViewletBase):
                                             name=u'plone_portal_state')    
                                             
         self.portal = portal_state.portal() 
-        self.portal_url = portal_state.portal_url()                                   
+        self.site_url = portal_state.portal_url()                                   
                                         
         self.portal_actionicons = aq_base(getToolByName(self.context, 'portal_actionicons'))
                                                 
