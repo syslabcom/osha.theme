@@ -6,6 +6,7 @@ from Products.Archetypes.utils import DisplayList
 from slc.alertservice import AlertMessageFactory as _
 
 from slc.alertservice.interfaces import ISubjectGetter
+from slc.alertservice.interfaces import ITypesGetter
 
 
 
@@ -26,4 +27,21 @@ class SubjectGetter(object):
             if subj in vocab_keys:
                 trans = vd[subj][0] or subj
                 DL.add(subj, trans)
+        return DL
+
+
+class TypesGetter(object):
+
+    def __call__(self, context):
+        # do some hardcoding...
+        seach_types = [ ('OSH_Link', _(u'OSH links'))
+                  , ('News Item', _(u'News'))
+                  , ('Event', _(u'Events'))
+                  , ('Publication', _(u'Publications'))
+                  , ('CaseStudy', _(u'Case studies'))
+                  ]
+        DL = DisplayList()
+        for st in seach_types:
+            DL.add(st[0], st[1])
+
         return DL

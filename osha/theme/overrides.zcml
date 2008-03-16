@@ -3,10 +3,15 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="osha.theme">
 
-     <!-- Overwrite subscription utility for the alertservice -->
+     <!-- Overwrite subscription utilites for the alertservice -->
      <utility factory=".alertservice.SubjectGetter" 
               provides="slc.alertservice.interfaces.ISubjectGetter"
               name="alertservice.subjectgetter"
             />
+
+     <utility factory=".alertservice.TypesGetter"
+            provides="slc.alertservice.interfaces.ITypesGetter"
+            name="alertservice.typesgetter"
+             />
 
 </configure>
