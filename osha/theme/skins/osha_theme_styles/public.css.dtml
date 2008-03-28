@@ -5,6 +5,19 @@
   <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
 */
 
+/* Compatibility with old style templates */
+.documentActions {
+    display:none;
+}
+.documentActions ul {
+    display:none;
+}
+.documentActions li {
+    display:none;
+}
+.documentActions a {
+    display: none;
+}
 
 
 /* Accessibility elements, applied by JS */
