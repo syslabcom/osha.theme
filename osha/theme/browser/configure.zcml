@@ -184,5 +184,18 @@
         permission="zope2.View"
     />
 
+    <browser:page
+        for="*"
+        name="index_atoz"
+        class=".index_atoz.IndexAtoZView"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for="*"
+        name="index_providers"
+        class=".index_providers.IndexProvidersView"
+        permission="zope2.View"
+    />
 
 </configure>

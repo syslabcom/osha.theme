@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+
+<div metal:fill-slot="main" i18n:domain="osha"
+       tal:define="Subject string:msd;
+                   results python:view.searchByKeyword(Subject=Subject);
+                   resultsByLetter view/resultsByLetter;
+                   resultsList python:resultsByLetter[0];
+                   resultsMap python:resultsByLetter[1];
+                   ">
+
+    <div>
+        <strong>This is a Prototype!</strong>
+        <h1 class="documentFirstHeading">Index A-Z</h1>
+
+        <div style="text-align:center" tal:define="alphabet view/getAlphabet; 
+                         ">
+            <span tal:repeat="alpha alphabet">
+                
+                <a href="" tal:attributes="href string:${request/URL}?Subject=${Subject}&letter=${alpha}"
+                   tal:condition="python:results.get(alpha, None)">                
+                    <strong style="font-size: larger" tal:content="alpha" />
+                </a>
+                
+                <span tal:condition="python:not results.get(alpha, None)" tal:content="alpha"/> 
+                
+                <span tal:omit-tag="" tal:condition="not:repeat/alpha/end">|</span> 
+            
+            </span>
+            
+        </div>    
+
+        <div tal:condition="view/getLetter">
+            <h2 tal:content="view/getLetter">Letter</h2>
+            <ul>
+                <li tal:repeat="key resultsList"> 
+                    <span tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "/>
+                    <div tal:repeat="record python:resultsMap.get(key)">
+                        <h3 tal:content="record/Title"/>
+                        <span tal:replace="structure record/Description"/>
+                    </div>
+                </li>
+            </ul>
+        </div>    
+        
+
+
+    </div>
+
+
+
+</div>
+</html>
