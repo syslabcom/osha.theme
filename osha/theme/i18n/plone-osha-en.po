@@ -1,0 +1,21 @@
+# archgenxml generated POT File
+# Wolfgang Thomas <info@syslab.com>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: osha.theme\n"
+"POT-Creation-Date: Thu Dec  6 15:16:31 2007\n"
+"PO-Revision-Date: Thu Dec  6 15:16:31 2007\n"
+"Last-Translator: Wolfgang Thomas <info@syslab.com>\n"
+"Language-Team: Wolfgang Thomas <info@syslab.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: plone\n"
+
+
+msgid "label_schema_default"
+msgstr "Main"
