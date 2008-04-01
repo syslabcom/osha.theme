@@ -177,5 +177,12 @@
     />
 
 
+    <browser:page
+        for="*"
+        name="publications-overview"
+        class=".publications.PublicationsSearchView"
+        permission="zope2.View"
+    />
+
 
 </configure>

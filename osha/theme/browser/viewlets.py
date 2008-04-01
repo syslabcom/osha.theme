@@ -108,3 +108,4 @@ class OSHALogoViewlet(common.LogoViewlet):
         self.logo_tag = portal.restrictedTraverse(logoName).tag()
 
         self.portal_title = portal_state.portal_title()
+
