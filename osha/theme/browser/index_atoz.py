@@ -1,5 +1,5 @@
 import Acquisition, time
-from plone.memoize.view import memoize
+from plone.memoize import ram
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
@@ -12,23 +12,23 @@ class IndexAtoZView(BrowserView):
     def __call__(self):
         self.request.set('disable_border', True)
         context = Acquisition.aq_inner(self.context)        
+        
         portal_vocabularies = getToolByName(context, 'portal_vocabularies')
         portal_languages = getToolByName(context, 'portal_languages')
-        lang = portal_languages.getPreferredLanguage()
-        self.lang = lang
-        thesaurus = portal_vocabularies.MultilingualThesaurus
-        manager = thesaurus._getManager()
-        self.manager = manager 
-        term_dict = manager.term_dict
-        self.term_dict = term_dict
+        
+        self.lang = portal_languages.getPreferredLanguage()
+        self.manager = portal_vocabularies.MultilingualThesaurus._getManager() 
+        self.term_dict = self.manager.term_dict
+        self.Subject = self.request.get('Subject', context.getProperty('keyword', None))
+        self.letter = self.request.get('letter', '').upper()
+        self.term_id = self.request.get('term_id', '')
                 
         return self.template() 
         
-    #@memoize
+        
     def getAlphabet(self):
-        start = time.time()
-        context = Acquisition.aq_inner(self.context)        
-
+        """ fetch the whole alphabet """
+        
         initials = {}
         for term_id in self.term_dict.keys():   
             caption = self.manager.getTermCaptionById(term_id, self.lang).strip()
@@ -39,36 +39,45 @@ class IndexAtoZView(BrowserView):
             section.append(caption)
             initials[initial] = section
             
-        stop = time.time()
-        self.duration_alphabet = stop-start
         self.initials = initials
         alphabet = initials.keys()
         alphabet.sort()
         self.alphabet = alphabet
         return alphabet
+
+    def _searchCatalog_cachekey(method, self):
+        return ("published_by_subject_alllanguages", self.Subject)    
         
-    def resultsByKeyword(self, Subject=None):
+    @ram.cache(_searchCatalog_cachekey)
+    def _searchCatalog(self):
+        """ search the catalog for all items on a subject 
+            this is to be cached 
+        """
+        start = time.time()
+
+        context = Acquisition.aq_inner(self.context)        
+        portal_catalog = getToolByName(context, 'portal_catalog')
+
+        query = {'Language': '', 
+                 'Subject': self.Subject, 
+                 'review_state': 'published'
+                }
+        results = portal_catalog(query)                
+        stop = time.time()
+        print "Catalog time is %s" % (stop-start)
+        return results        
+        
+        
+    def resultsByKeyword(self):
         """ search all objects which are categorized on given Subject
             and order them by alphabetical thesaurus term 
             E.g.
                 {'A': [brain, brain]}
         """
         start = time.time()
-        context = Acquisition.aq_inner(self.context)        
-
-        if Subject is None:
-            Subject = context.getProperty('keyword', context.request.get('Subject', None))
-        if Subject is None:
-            return 
-                        
-        portal_catalog = getToolByName(context, 'portal_catalog')
-
-        query = {'Language': '', 
-                 'Subject': Subject, 
-                 'review_state': 'published'
-                }
-        results = portal_catalog(query)                
-
+                                
+        results = self._searchCatalog()
+        
         caption_termid = {}
         captions = {}
         for result in results:
@@ -93,19 +102,7 @@ class IndexAtoZView(BrowserView):
         print "search duration %s secs" % (stop-start)
         return captions
         
-    def getLetter(self):
-        letter = self.context.request.get('letter', '').upper()
-        return letter
 
-    def getTerm_id(self):
-        term_id = self.context.request.get('term_id', '')
-        return term_id
-
-    def getCaptionById(self, term_id):
-        return self.manager.getTermCaptionById(term_id, self.lang)
-
-    def getIdByCaption(self, caption):
-        return self.caption_termid.get(caption, '')
         
     def resultsByLetter(self, letter=None):
         """ returns the sorted resultmap by letter based on the search above """
@@ -118,6 +115,7 @@ class IndexAtoZView(BrowserView):
         reskeys = results.keys()
         reskeys.sort()
         return (reskeys, results)
+        
         
     def resultsByTermId(self, letter=None, term_id=None):
         """ returns the results sorted by ? based on letter and term_id
@@ -135,3 +133,19 @@ class IndexAtoZView(BrowserView):
         resmap = self.captions.get(letter, {})        
         results = resmap.get(self.getCaptionById(term_id), [])
         return results
+        
+        
+    def getSubject(self):
+        return self.Subject
+
+    def getLetter(self):
+        return self.letter
+
+    def getTerm_id(self):
+        return self.term_id
+
+    def getCaptionById(self, term_id):
+        return self.manager.getTermCaptionById(term_id, self.lang)
+
+    def getIdByCaption(self, caption):
+        return self.caption_termid.get(caption, '')        

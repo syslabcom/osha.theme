@@ -5,14 +5,14 @@
 
 
 <div metal:fill-slot="main" i18n:domain="osha"
-       tal:define="Subject string:msd;
-                   resultsByKeyword python:view.resultsByKeyword(Subject=Subject);
+       tal:define="resultsByKeyword view/resultsByKeyword;
                    resultsByLetter view/resultsByLetter;
                    resultsByTermId view/resultsByTermId;
                    resultsList python:resultsByLetter[0];
                    resultsMap python:resultsByLetter[1];
-                   letter request/letter | view/getLetter |string:;
-                   term_id request/term_id | view/getTerm_id |string:;
+                   Subject view/Subject |string:;
+                   letter view/getLetter |string:;
+                   term_id view/getTerm_id |string:;
                    Batch python:modules['Products.CMFPlone'].Batch;
                    DateTime python:modules['DateTime'].DateTime;
                    b_size python:10;b_start python:0;
@@ -20,13 +20,19 @@
                    desc_length site_properties/search_results_description_length;
                    desc_ellipsis site_properties/ellipsis;
                    provider_helper here/@@provider_helper;
+                   template_id string:@@index_atoz;
                    ">
 
   <style type="text/css">
   #db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; } 
   </style>
 
-    <div>
+    <div tal:condition="python:not Subject or Subject==''">
+        You need to call this template with a valid Subject parameter.
+    </div>
+    
+    <div tal:condition="Subject">
+        
         <h1 class="documentFirstHeading">Index A-Z: <span tal:content="Subject" i18n_translate=""/> </h1>
 
         <div style="text-align:center" tal:define="alphabet view/getAlphabet; 
@@ -60,11 +66,11 @@
                        tal:attributes="href string:${request/URL}?Subject=${Subject}&letter=${letter}&term_id=${term_id}"/>
                 </li>
             </ul>
-        </div>    
         
         
         
         
+            <div tal:condition="view/getTerm_id">
 
             <h2>
                 <span i18n:translate="heading_search_results">
@@ -83,12 +89,15 @@
                 </span>
             </span>
 
+
             <div tal:condition="not: resultsByTermId">
                 <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
             </div>
 
             <div tal:condition="resultsByTermId"
                  tal:define="batch python:Batch(resultsByTermId, b_size, int(b_start), orphan=1);">
+
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
             
             <dl id="db_results">
             <tal:results repeat="result batch">
@@ -105,7 +114,8 @@
                                item_pubdate result/effective;
                                item_creator result/Creator;
                                gc python:here.portal_languages.getNameForLanguageCode;
-                               ">
+                               "
+                        condition="result">
     
                 <dt>
                     <div tal:condition="python: result.getRemoteProviderUID and str(result.getRemoteProviderUID)!=''">
@@ -206,7 +216,9 @@
             
             <div metal:use-macro="here/batch_macros/macros/navigation" />
         
-
+            </div>    
+          </div>    
+        
         </div>
 
     </div>
