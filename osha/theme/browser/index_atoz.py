@@ -65,7 +65,22 @@ class IndexAtoZView(BrowserView):
         results = portal_catalog(query)                
         stop = time.time()
         print "Catalog time is %s" % (stop-start)
-        return results        
+        # The brain objects fetch the values potentially lazy only if needed. 
+        # This may be bad for caching and seems to result in the hard to debug 
+        # ConnectionStateError: Shouldn't load state for 0x3768d0 when the connection is closed error. 
+        # I therefore copy the results over into a static datastructure.
+        sres = []
+        schema = portal_catalog.schema()
+        for result in results:
+            staticbrain = {}
+            for key in schema:
+                staticbrain[key] = result[key]
+            staticbrain['getURL'] = result.getURL()
+            staticbrain['getPath'] = result.getPath()
+            
+            sres.append(staticbrain)
+            
+        return sres
         
         
     def resultsByKeyword(self):
