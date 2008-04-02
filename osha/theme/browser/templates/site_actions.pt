@@ -9,7 +9,7 @@
 
         <li tal:repeat="saction view/site_actions"
             tal:attributes="id string:siteaction-${saction/id}"><a
-               href=""
+               href="" rel="nofollow"
                tal:define="title saction/title;
                            id saction/id;
                            accesskey python: accesskeys.get(id, '');"

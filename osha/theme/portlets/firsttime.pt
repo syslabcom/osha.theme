@@ -5,7 +5,7 @@
         <span class="portletTopLeft"></span>
         <span class="tile"
               i18n:translate="box_firsttime">
-            <a href="/help">
+            <a rel="nofollow" href="/help">
                 First time here?
             </a>
         </span>

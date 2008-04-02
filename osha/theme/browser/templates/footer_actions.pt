@@ -13,7 +13,7 @@
                 <img alt="" src=""
                      tal:attributes="src string:${view/site_url}/$icon;
                                      alt action/title" />                
-                <a href=""
+                <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
                    i18n:attributes="title"
@@ -37,7 +37,7 @@
                  <img alt="" src=""
                       tal:attributes="src string:${view/site_url}/$icon;
                                       alt action/title" />                
-                 <a href=""
+                 <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
                    i18n:attributes="title"
@@ -60,7 +60,7 @@
                 <img alt="" src=""
                      tal:attributes="src string:${view/site_url}/$icon;
                                      alt action/title" />                
-                <a href=""
+                <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
                    i18n:attributes="title"

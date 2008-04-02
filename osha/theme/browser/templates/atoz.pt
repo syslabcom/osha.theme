@@ -42,7 +42,7 @@
                          ">
             <span tal:repeat="alpha alphabet">
                 
-                <a href="" 
+                <a href="" rel="nofollow"
                    tal:attributes="href string:${request/URL}?Subject=${Subject}&letter=${alpha}"
                    tal:condition="python:resultsByKeyword.get(alpha, None)">                
                     <strong style="font-size: larger" tal:content="alpha" />
@@ -66,7 +66,8 @@
                 <tal:repeat tal:repeat="key resultsList">
                 <li tal:define="key_term_id python:view.getIdByCaption(key)"
                     tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
-                    <a tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
+                    <a href="" rel="nofollow"
+                       tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
                        tal:attributes="href string:${request/URL}?Subject=${Subject}&letter=${letter}&term_id=${key_term_id};"/>
                 </li>
                 </tal:repeat>
@@ -128,10 +129,10 @@
                          style="float: right; border: 1px solid gray; width: 30%">
                          <span i18n:translate="provider_of_information">Provider of this information:</span><br />
                         <p tal:repeat="provider providers">
-                            <a href="" tal:attributes="href provider/absolute_url"><span
+                            <a href="" rel="nofollow" tal:attributes="href provider/absolute_url"><span
                                 tal:replace="provider/Title"></span></a><br />
                                 <img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
-                                <a class="link" href="" tal:attributes="href provider/getRemoteUrl"><span 
+                                <a class="link" href="" rel="nofollow" tal:attributes="href provider/getRemoteUrl"><span 
                             i18n:translate="provider_goto_url">Go to provider's website</span></a>
                         </p>
                       </span>
@@ -163,7 +164,7 @@
                     </tal:sme>
     
                     <img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
-                    <a href="#" tal:attributes="href url" i18n:translate="link_goto_site">
+                    <a href="#" rel="nofollow" tal:attributes="href url" i18n:translate="link_goto_site">
                         <strong>Goto this site</strong>
                     </a>
                     

@@ -19,7 +19,7 @@
                       onChange="osha_gotoURL(this.options[this.options.selectedIndex].value)"
                       tal:define="sites view/getEuropeanNetwork">                           
                   <option value="" i18n:translate="">European Network</option>
-                  <option tal:repeat="site sites"
+                  <option rel="nofollow" tal:repeat="site sites" 
                           tal:attributes="value python:site[1]" 
                           tal:content="python:site[0]">Site name</option>
                </select>
@@ -37,7 +37,7 @@
                       onChange="osha_gotoURL(this.options[this.options.selectedIndex].value)"
                       tal:define="sites view/getInternationalNetwork">
                   <option value="" i18n:translate="">International Network</option>
-                  <option tal:repeat="site sites"
+                  <option rel="nofollow" tal:repeat="site sites" 
                           tal:attributes="value python:site[1]" 
                           tal:content="python:site[0]">Site name</option>
                </select>
@@ -67,7 +67,8 @@
                         onChange="crosslinkNetwork(this.options[this.options.selectedIndex].value)">                           
                     <option value="" i18n:translate="">European Network</option>
                     <tal:block repeat="site sites">
-                    <option tal:define="elems python:site.split('|');
+                    <option rel="nofollow"
+                            tal:define="elems python:site.split('|');
                             haslink python:test(1<len(site), 1, 0)" 
                             tal:attributes="value python: test(haslink, elems[-1], '')"><span
                             tal:condition="haslink" i18n:translate="" tal:omit-tag=""
@@ -88,7 +89,7 @@
                         onChange="gotoURL(this.options[this.options.selectedIndex].value)">                            
                     <option value="" i18n:translate="">International Network</option>
                     <tal:block repeat="site sites">
-                    <option tal:define="elems python:site.split('|');
+                    <option rel="nofollow" tal:define="elems python:site.split('|');
                             haslink python:test(1<len(site), 1, 0)" 
                             tal:attributes="value python: test(haslink, elems[-1], '')"><span
                             tal:condition="haslink" i18n:translate="" tal:omit-tag=""
