@@ -112,7 +112,12 @@ class IndexAtoZView(BrowserView):
                 
         self.captions = captions
         self.caption_termid = caption_termid
-        
+
+        initials = self.captions.keys()
+        initials.sort()
+        if not self.letter:
+            self.letter = initials[0]
+            
         stop = time.time()
         print "search duration %s secs" % (stop-start)
         return captions
