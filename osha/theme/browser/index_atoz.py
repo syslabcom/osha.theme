@@ -74,7 +74,8 @@ class IndexAtoZView(BrowserView):
             term_ids = result['getMTSubject'] or []
             for term_id in term_ids:
                 caption = self.manager.getTermCaptionById(term_id, self.lang)
-                if len(caption)==0:
+                if not caption or len(caption)==0:
+                    print "Caption error", caption
                     continue
                 initial = caption[0].upper()
                 section = captions.get(initial, {})
