@@ -25,6 +25,9 @@
 
   <style type="text/css">
   #db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; } 
+  #keylist { list-decoration: none; }
+  #keylist li { padding: 3px; margin:0; }
+  .current_term { background-color: #ccc; }
   </style>
 
     <div tal:condition="python:not Subject or Subject==''">
@@ -59,12 +62,14 @@
             <h2>
                 <span tal:content="view/getLetter">Letter</span>
             </h2>
-            <ul>
-                <li tal:repeat="key resultsList"> 
-                    <a tal:define="term_id python:view.getIdByCaption(key)"
-                       tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
-                       tal:attributes="href string:${request/URL}?Subject=${Subject}&letter=${letter}&term_id=${term_id}"/>
+            <ul id="keylist">
+                <tal:repeat tal:repeat="key resultsList">
+                <li tal:define="key_term_id python:view.getIdByCaption(key)"
+                    tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
+                    <a tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
+                       tal:attributes="href string:${request/URL}?Subject=${Subject}&letter=${letter}&term_id=${key_term_id};"/>
                 </li>
+                </tal:repeat>
             </ul>
         
         
