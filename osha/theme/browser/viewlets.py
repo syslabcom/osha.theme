@@ -52,6 +52,20 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
     
     render =  ViewPageTemplateFile('templates/path_bar.pt')
     
+    def update(self):
+        super(common.PathBarViewlet, self).update()
+
+        self.navigation_root_url = self.portal_state.navigation_root_url()
+
+        self.is_rtl = self.portal_state.is_rtl()
+
+        breadcrumbs_view = getMultiAdapter((self.context, self.request),
+                                           name='breadcrumbs_view')
+        self.breadcrumbs = breadcrumbs_view.breadcrumbs()    
+        # we dont want the first level to show up. This is an easy approach...
+        if len(self.breadcrumbs)>0:
+            self.breadcrumbs = self.breadcrumbs[1:]
+    
 class OSHAFooterLanguageSelector(TranslatableLanguageSelector):
 
     render = ViewPageTemplateFile('templates/footer_languageselector.pt')
