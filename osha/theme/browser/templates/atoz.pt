@@ -64,7 +64,6 @@
         
         
         
-        <div tal:condition="resultsByTermId">        
 
             <h2>
                 <span i18n:translate="heading_search_results">
@@ -206,7 +205,6 @@
             
             <div metal:use-macro="here/batch_macros/macros/navigation" />
         
-            </div>
 
         </div>
 
