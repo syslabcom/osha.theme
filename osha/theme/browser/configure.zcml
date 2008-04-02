@@ -198,4 +198,13 @@
         permission="zope2.View"
     />
 
+
+  <browser:page
+      name="sitemap.xml.gz"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".sitemap.SiteMapView"
+      permission="zope2.Public"
+      layer=".interfaces.IThemeSpecific"
+     />
+
 </configure>
