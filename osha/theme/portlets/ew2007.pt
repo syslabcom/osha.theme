@@ -16,13 +16,13 @@
               tal:condition="portlet_icon">
             <img tal:replace="structure portlet_icon" />
         </span>
-        <a href="http://ew2007.osha.europa.eu/"> Lighten the load"
+        <a href="http://ew2007.osha.europa.eu/?sourceid=ew2007banner"> Lighten the load"
         </a>
         <div class="visualClear"></div>
     </dd>
 
     <dd class="portletFooter">
-        <a href="http://ew2007.osha.europa.eu/" i18n:domain="plone" i18n:translate="box_morelink"
+        <a href="http://ew2007.osha.europa.eu/?sourceid=ew2007banner" i18n:domain="plone" i18n:translate="box_morelink"
               >More...</a>
     </dd>
 

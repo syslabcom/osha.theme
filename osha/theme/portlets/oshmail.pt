@@ -16,7 +16,7 @@
               tal:condition="portlet_icon">
             <img tal:replace="structure portlet_icon" />
         </span>
-        <a href="http://osha.europa.eu/oshmail/"> Monthly review of strategic news
+        <a href="http://osha.europa.eu/oshmail/?sourceid=oshmailbanner"> Monthly review of strategic news
             <br/>
             - Subscribe -
         </a>

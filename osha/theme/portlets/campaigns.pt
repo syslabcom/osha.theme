@@ -20,46 +20,14 @@
                   tal:condition="portlet_icon_ew2007">
                 <img tal:replace="structure portlet_icon_ew2007" />
             </span>
-            <a href="http://ew2007.osha.europa.eu" 
+            <a href="http://ew2007.osha.europa.eu/?sourceid=campaignsbanner" 
                i18n:translate="portlet_campaign_ew2007_text">
                Lighten the load!
             </a>
         </div>
     </dd>
-
-<!--    
-    <dd class="portletItem">
-        
-        <h4 class="campaignHeader">European Campaign 2007</h4>
-        <div class="campaignContent">
-            <span class="image-right"
-                  tal:condition="portlet_icon_ew2007">
-                <img tal:replace="structure portlet_icon_ew2007" />
-            </span>
-            <a href="http://ew2007.osha.europa.eu" 
-               i18n:translate="portlet_campaign_ew2007_text">
-               Lighten the load!
-            </a>
-        </div>
-    </dd>
-    
-    <dd class="portletItem">
-        
-        <h4 class="campaignHeader">European Campaign 2007</h4>
-        <div class="campaignContent">
-            <span class="image-right"
-                  tal:condition="portlet_icon_ew2007">
-                <img tal:replace="structure portlet_icon_ew2007" />
-            </span>
-            <a href="http://ew2007.osha.europa.eu" 
-               i18n:translate="portlet_campaign_ew2007_text">
-               Lighten the load!
-            </a>
-        </div>
-    </dd>
--->
     <dd class="portletFooter">
-        <a href="/campaigns" i18n:domain="plone" i18n:translate="box_morelink">More...</a>
+        <a href="/campaigns?sourceid=campaignsbanner" i18n:domain="plone" i18n:translate="box_morelink">More...</a>
     </dd>
 
 </dl>
