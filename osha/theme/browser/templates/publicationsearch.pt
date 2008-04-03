@@ -89,7 +89,7 @@
 
 
 
-  <div tal:condition="python:keywords or SearchableText">
+  <div xtal:condition="python:keywords or SearchableText">
     <div tal:define="query python:{'portal_type': 'File',
                                    'object_implements': 'slc.publications.interfaces.IPublicationEnhanced',
                                    'Subject':keywords,
