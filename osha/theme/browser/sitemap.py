@@ -46,6 +46,9 @@ class SiteMapView(BaseView):
         }        
         
         for item in catalog.searchResults({'Language': 'all'}):
+            # We only want to link them in the search form results
+            if item.portal_type in ['OSH_Link', 'RiskAssessmentLink', 'CaseStudy', 'Provider']:
+                continue
             try:
                 lastmod = item.modified.ISO8601()
             except:
