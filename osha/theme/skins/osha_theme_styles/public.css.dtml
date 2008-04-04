@@ -4,6 +4,11 @@
   <dtml-with base_properties> (do not remove this)
   <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
 */
+/* fix for using snap */
+#snap_com_shot_main button {
+visibility: inherit;
+}
+
 
 /* Compatibility with old style templates */
 .documentActions {
