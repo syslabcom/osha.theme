@@ -52,53 +52,76 @@
             </div>
         </div--> 
 
+        <span tal:condition="here/getRemoteLanguage">
+            <label i18n:translate="RemoteProvider_label_remoteLanguage">Remote Language</label>
+            <p>
+                <metal:field use-macro="python:here.widget('remoteLanguage', mode='view')">
+                Remote Language
+                </metal:field>
+            </p>
+        </span>
 
 
-        <h2 i18n:translate="label_schema_contact_person" i18n:domain="plone">Contact Person</h2>
+        <h2 i18n:translate="label_schema_Contact" i18n:domain="plone">Contact Person</h2>
+       
+        <span tal:condition="here/getContact_name"> 
+            <label i18n:translate="RemoteProvider_label_contact_name">Name</label>
+            <div >
+                <metal:field use-macro="python:here.widget('contact_name', mode='view')">
+                Name
+                </metal:field>
+            </div>
+            <br />
+        </span>
         
-        <label i18n:translate="RemoteProvider_label_contact_name">Name</label>
-        <div >
-            <metal:field use-macro="python:here.widget('contact_name', mode='view')">
-            Name
-            </metal:field>
-        </div>
-<br/>
-        <label i18n:translate="RemoteProvider_label_address">Address</label>
-        <div >
-            <metal:field use-macro="python:here.widget('address', mode='view')">
-            Address
-            </metal:field>
-        </div>
+        <span tal:condition="here/getAddress">
+            <label i18n:translate="RemoteProvider_label_address">Address</label>
+            <div >
+                <metal:field use-macro="python:here.widget('address', mode='view')">
+                Address
+                </metal:field>
+            </div>
+            <br />
+        </span>
         
-        <br/>
-        <label i18n:translate="RemoteProvider_label_phone">Phone</label>
-        <p >
-            <metal:field use-macro="python:here.widget('phone', mode='view')">
-            Phone
-            </metal:field>
-        </p>
+        <span tal:condition="here/getPhone">
+            <label i18n:translate="RemoteProvider_label_phone">Phone</label>
+            <div>
+                <metal:field use-macro="python:here.widget('phone', mode='view')">
+                Phone
+                </metal:field>
+            </div>
+            <br />
+        </span>
+        
+        <span tal:condition="here/getFax">
+            <label i18n:translate="RemoteProvider_label_fax">Fax</label>
+            <div>
+                <metal:field use-macro="python:here.widget('fax', mode='view')">
+                Fax
+                </metal:field>
+            </div>
+            <br />
+        </span>
 
-        <label i18n:translate="RemoteProvider_label_fax">Fax</label>
-        <p >
-            <metal:field use-macro="python:here.widget('fax', mode='view')">
-            Fax
-            </metal:field>
-        </p>
-
-
-        <label i18n:translate="RemoteProvider_label_remoteLanguage">Remote Language</label>
-        <p>
-            <metal:field use-macro="python:here.widget('remoteLanguage', mode='view')">
-            Remote Language
-            </metal:field>
-        </p>
-
-        <label i18n:translate="RemoteProvider_label_sme">SME relevant?</label>
-        <p>
-            <metal:field use-macro="python:here.widget('sme', mode='view')">
-            SME
-            </metal:field>
-        </p>
+        <span tal:condition="here/getEmail">
+            <label>Email</label>
+            <div>
+                <metal:field use-macro="python:here.widget('email', mode='view')">
+                URL
+                </metal:field>
+            </div>
+            <br />
+        </span>
+        
+        <span tal:condition="here/getContact_url">
+            <label>Contact URL</label>
+            <div>
+                <metal:field use-macro="python:here.widget('contact_url', mode='view')">
+                URL
+                </metal:field>
+            </div>
+        </span>
 
 
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
