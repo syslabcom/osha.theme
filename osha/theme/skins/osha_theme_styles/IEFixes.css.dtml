@@ -202,11 +202,14 @@ dd.portletItem .navTreeItem a {
 ** TABLELESS STYLES 
 */
 
-* html #visual-portal-wrapper {
+#visual-portal-wrapper {
     height: 1%;
-    overflow: visible;
+    overflow: hidden;
 }
-* html #portal-column-content {
+* html #visual-portal-wrapper {
+    overflow: visible;    
+}
+#portal-column-content {
     display:inline;
 }
 #portal-column-two {
