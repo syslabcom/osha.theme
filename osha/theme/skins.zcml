@@ -8,5 +8,6 @@
    <cmf:registerDirectory name="osha_theme_styles"/>
    <cmf:registerDirectory name="osha_theme_tableless"/>   
    <cmf:registerDirectory name="osha_theme_scripts"/>   
+   <cmf:registerDirectory name="osha_theme_ew2005"/>   
 
 </configure>
