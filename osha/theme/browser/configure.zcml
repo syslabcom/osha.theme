@@ -29,7 +29,7 @@
         layer=".interfaces.IThemeSpecific"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
-
+        
     <!-- The portal header -->
     <browser:viewlet
         name="osha.topactions"
@@ -106,7 +106,16 @@
         layer=".interfaces.IThemeSpecific"
         permission="zope2.View"
         />
-
+        
+	<!-- Variable Area for Campaign Sites -->
+    <browser:viewlet  
+        name="osha.campaignarea"
+        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+        class=".viewlets.OSHACampaignAreaViewlet"
+        layer=".interfaces.IThemeSpecific"
+        permission="zope2.View" 
+        />
+        
     <!-- The breadcrumbs -->
     <browser:viewlet
         name="osha.path_bar"
@@ -115,6 +124,7 @@
         layer=".interfaces.IThemeSpecific"
         permission="zope2.View" 
         />
+        
 
     <!-- The bottom language selector bar -->
     <browser:viewlet  
