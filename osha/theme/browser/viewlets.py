@@ -65,6 +65,47 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
         # we dont want the first level to show up. This is an easy approach...
         if len(self.breadcrumbs)>0:
             self.breadcrumbs = self.breadcrumbs[1:]
+                
+class OSHACampaignAreaViewlet(common.ViewletBase):
+    
+    render =  ViewPageTemplateFile('templates/osha_campaignarea.pt')
+    
+    def update(self):
+        portal_state = getMultiAdapter((self.context, self.request),
+                                            name=u'plone_portal_state')
+        langtool = getToolByName(self.context, 'portal_languages', None) 
+        bound = langtool.getLanguageBindings()
+        current_lang = bound[0]                                           
+
+        self.navigation_root_url = portal_state.navigation_root_url()
+
+
+        portal = portal_state.portal()
+        
+        logoName = ''
+        
+        if(hasattr(portal.restrictedTraverse('base_properties'), 'campaignLogoName')):
+            logoName = portal.restrictedTraverse('base_properties').campaignLogoName
+       
+        if logoName != '':
+            cLogoName = ''
+            if current_lang != 'en':
+                try:
+                    init = portal.restrictedTraverse('base_properties').campaignLogoName
+                    file_name = init.split(".")
+                    file_name[0] = file_name[0] + "_" + current_lang 
+                    cLogoName = ".".join(file_name)
+                except:
+                    logoName = portal.restrictedTraverse('base_properties').campaignLogoName
+                    pass
+    
+            try:
+                self.campaign_logo_tag = portal.restrictedTraverse(cLogoName).tag()
+            except:
+                self.campaign_logo_tag = portal.restrictedTraverse(logoName).tag()
+                
+        else:
+            self.campaign_logo_tag = ''
     
 class OSHAFooterLanguageSelector(TranslatableLanguageSelector):
 
