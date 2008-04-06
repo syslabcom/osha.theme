@@ -16,7 +16,10 @@
     directory="osha.theme:skins/osha_theme_tableless"/>    
  <object name="osha_theme_scripts"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_scripts"/>    
+    directory="osha.theme:skins/osha_theme_scripts"/>   
+ <object name="osha_theme_healthyworkplaces"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_2005"/>    
 
  <skin-path name="OSHA Plone Theme" based-on="Plone Default">
   <layer name="osha_theme_custom_images"
