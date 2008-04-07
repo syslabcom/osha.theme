@@ -192,7 +192,6 @@
                       results res;
                       ">
 
-        query: <span tal:replace="query" />  
         <!--h1>Filtered by:
             <span tal:condition="python:keywords"><span tal:replace="keywords"/></span>
         </h1-->
@@ -228,7 +227,7 @@
                            item_cas result/getCas|string:;
                            item_einecs result/getEinecs|string:;
                            item_remoteLanguage result/getRemoteLanguage|string:;
-                           item_provider result/Provider | string:;                           
+                           item_subject result/Subject | python:[];                           
                            item_modified result/modified;
                            item_pubdate result/effective;
                            item_creator result/Creator;
@@ -274,22 +273,13 @@
                 <span class="documentByLine">
                     <tal:modified>
                         <tal:mod i18n:translate="box_item_published">
-                          Publication date
+                          Publication date:
                         </tal:mod>
                         <span tal:replace="python:toLocalizedTime(item_pubdate, long_format=0)"
                             tal:on-error="python:toLocalizedTime('2000/01/01', long_format=0)">
                           August 16, 2001 at 23:35:59
                         </span>                        
                     </tal:modified> 
-                    <tal:name tal:condition="item_provider">
-                          <span i18n:translate="label_by_author">
-                            by
-                              <span tal:content="item_provider"
-                                    i18n:name="author">
-                                European Agency
-                              </span>
-                          </span>
-                    </tal:name>
                     <br tal:condition="item_einecs|item_cas"/>
                     <tal:einecs condition="item_einecs">
                         &mdash;
@@ -313,7 +303,16 @@
                         <span tal:repeat="lang item_remoteLanguage" tal:omit-tag="">
                             <span tal:replace="python:gc(lang)"/>
                         </span>
-                    </tal:remotelanguage>       
+                    </tal:remotelanguage>    
+                    <br tal:condition="item_subject"/>
+                    <tal:Subject>
+                        <tal:desc i18n:translate="box_item_subject">
+                          Themes containing this item:
+                        </tal:desc>
+                        <tal:repeat repeat="subject item_subject">
+                            <span i18n:translate="" tal:content="subject"/>
+                        </tal:repeat>
+                    </tal:Subject>   
                 </span>
             </dd>
             
@@ -322,11 +321,12 @@
         </dl>
         
         <div metal:use-macro="here/batch_macros/macros/navigation" />
-        
-        <!--script language="javascript" src="http://thumbnails.iwebtool.com/src.js?border=004891" type="text/javascript"></script-->
 
+        <!-- Snapshot code -->
         <script type="text/javascript" src="http://shots.snap.com/ss/9546198046d69719d86ad9ba1aee068e/snap_shots.js"></script>
     </div>
+    <span style="color:#ccc;">query: <span tal:replace="query" /></span>  
+    
   </div>
 
 
