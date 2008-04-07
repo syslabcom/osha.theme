@@ -208,6 +208,13 @@
         permission="zope2.View"
     />
 
+    <browser:page
+        for="*"
+        name="db_filter"
+        class=".dbfilter.DBFilterView"
+        permission="zope2.View"
+    />
+
 
   <browser:page
       name="sitemap.xml.gz"
