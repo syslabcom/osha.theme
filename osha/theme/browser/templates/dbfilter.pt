@@ -14,38 +14,37 @@
   <style type="text/css">
     #searchfields { background-color: #F3F6FF; border: 1px solid gray; padding:5px 10px; clear: both; height: 1%; }
 
-    .column1 { float: left; width: 40%; padding-right: 10px; border-right: 1px dotted gray; }
-    .column2 { float: right; width: 55%; padding-left: 10px; border-left: none;}
+    .column1 { float: left; width: 40%; padding-right: 10px; border-right:none; }
+    .column2 { float: right; width: 55%; padding-left: 10px; border-left:  1px dotted gray;}
     
     .column2 .field_default, 
-    .column2 .field_nace { xwidth: 300px; padding: 2px 0; }
+    .column2 .field_vocabularypicker { xwidth: 300px; padding: 2px 0; }
     .column2 .field_default input, 
     .column2 .field_default select { width: 300px; }
-    .column2 .field_nace #quicksearch_nace { width: 200px; }
-    .column2 .field_nace .searchButton { width: 80px; }
+    .column2 .field_vocabularypicker #quicksearch_nace { width: 200px; }
+    .column2 .field_vocabularypicker .searchButton { width: 80px; }
     
     #db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; } 
-    .column1 input.input_checkbox,
-    #nace li label input { width: 2em; border: none; background: transparent; padding: 0; }
+    .column1 input.input_checkbox, #multilingual_thesaurus li label input,
+    #nace li label input { width: 1.2em; border: none; background: transparent; padding: 0; }
+     
 </style>
 </metal:cssslot>
 
 
 <div metal:fill-slot="main" i18n:domain="osha"
        tal:define="local_keyword python:here.getProperty('keyword', '');
-                   local_portal_types python:here.getProperty('search_portal_types', None);
                    keywords request/keywords| local_keyword |string:;
                    subcategory request/subcategory | string:;
                    object_implements request/object_implements | string:;
                    SearchableText request/SearchableText|string:;
-                   DBTYPES python:['OSH_Link', 'RiskAssessmentLink', 'CaseStudy', 'Provider', 'File'];
-                   portal_type request/portal_type|local_portal_types;
-                   portal_type python:portal_type and portal_type or DBTYPES;
+                   multilingual_thesaurus request/multilingual_thesaurus|string:;
                    nace request/nace|string:;
                    nace python:nace==[''] and '' or nace;
                    category request/category|string:;
                    getRemoteLanguage request/getRemoteLanguage|string:;
                    getCountry request/getCountry|string:;
+                   search_portal_types view/search_portal_types;
                    Batch python:modules['Products.CMFPlone'].Batch;
                    DateTime python:modules['DateTime'].DateTime;
                    b_size python:10;b_start python:0;
@@ -53,7 +52,6 @@
                    desc_length site_properties/search_results_description_length;
                    desc_ellipsis site_properties/ellipsis;
                    searchterm request/SearchableText|nothing;
-                   index python: 'index' in here.objectIds() and getattr(here,'index', None) or here;
                    ">
 
     <div class="figure-box">
@@ -73,7 +71,7 @@
              tal:replace="structure search_img/tag" />
         <span tal:condition="local_keyword">
             <span tal:omit-tag="" i18n:translate="label_search_database_on">Search the Link Database on</span> 
-            <span tal:replace="index/Title" />
+            <span tal:replace="here/Title" />
         </span>
         <span tal:condition="not:local_keyword">
             <span tal:omit-tag="" i18n:translate="label_search_database">Search the Link Database</span>
@@ -94,13 +92,10 @@
    
     <br />
     <a tal:attributes="href here/absolute_url" class="link-parent">
-        Back to <span tal:replace="index/Title" />
+        Back to <span tal:replace="here/Title" />
     </a>
 
-    
-    <!--h2 i18n:translate="label_search_osh_links">Search OSH Links:</h2-->
-            
-    
+
     <form tal:attributes="action template/id" method="get">
       
       <div id="searchfields">
@@ -123,12 +118,12 @@
                 </div>
                 
 
-                <div tal:repeat="T DBTYPES">
+                <div tal:repeat="T view/search_types">
                     <input class="input_checkbox" type="checkbox" 
-                           name="portal_type:list"
-                           tal:attributes="value T;
-                                           checked python: 'checked' and T in portal_type;" />
-                    <span tal:content="python:here.portal_types.getTypeInfo(T).Title()" />
+                           name="search_portal_types:list"
+                           tal:attributes="value python:T[1];
+                                           checked python: 'checked' and T[2] or ''" />
+                    <span tal:content="python:T[0]" />
                 </div>
 
             </div>            
@@ -152,10 +147,17 @@
 
                 <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>
             </div>
-            <div class="field_nace"
+            
+            <div class="field_vocabularypicker"
                  tal:define="level python:2;
                              portal_type string:OSH_Link">
                           <metal:use use-macro="here/filter_macros/macros/NACE"></metal:use>
+            </div> 
+
+            <div class="field_vocabularypicker"
+                 tal:define="level python:2;
+                             portal_type string:OSH_Link">
+                          <metal:use use-macro="here/filter_macros/macros/MultilingualThesaurus"></metal:use>
             </div> 
                
           </div>
@@ -185,21 +187,12 @@
     
     <br clear="all"><br>
 
-     <div tal:define="query python:{'portal_type': portal_type,
-                                       'Subject':keywords,
-                                       'nace':nace,
-                                       'getRemoteLanguage':getRemoteLanguage,
-                                       'subcategory':subcategory,
-                                       'getCountry':getCountry,
-                                       'SearchableText':SearchableText,
-                                       'sort_on': 'effective',
-                                       'sort_order':'reverse',
-                                       'object_implements': object_implements,
-                                       'Language': ''};
-                         res python:here.portal_catalog(query);
-                         results res;
-                        ">
-        <!-- query: <span tal:replace="query" />  -->
+     <div tal:define="query view/buildQuery;
+                      res python:here.portal_catalog(query);
+                      results res;
+                      ">
+
+        query: <span tal:replace="query" />  
         <!--h1>Filtered by:
             <span tal:condition="python:keywords"><span tal:replace="keywords"/></span>
         </h1-->
@@ -250,7 +243,6 @@
                     <p tal:repeat="provider providers">
                         <a rel="nofollow" href="" tal:attributes="href provider/absolute_url"><span
                             tal:replace="provider/Title"></span></a><br />
-                            <img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
                             <a rel="nofollow" class="link" href="" tal:attributes="href provider/getRemoteUrl" tal:content="provider/getRemoteUrl"></a>
                     </p>
                   </span>
@@ -273,7 +265,6 @@
 
                 <br />
                 
-                <img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
                 <a rel="nofollow" href="#" tal:attributes="href url" i18n:translate="link_goto_site">
                     <strong tal:content="url">http://Goto this site</strong>
                 </a>
