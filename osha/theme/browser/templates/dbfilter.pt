@@ -249,10 +249,10 @@
 
                     <img tal:attributes="src string:${result/getIcon};
                                      alt string:Link icon" />
-                    <span tal:replace="title" />
+                    <a tal:content="title" tal:attributes="href result_url" rel="nofollow" />
                         
                     <tal:notanon condition="not:isAnon">
-                        [<a rel="nofollow" href="#" tal:attributes="href result_url">Edit</a>]
+                        [<a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a>]
                     </tal:notanon>
             <div class="visualClear" ></div>
             </dt>
@@ -260,13 +260,13 @@
             <dd>                              
 
                 <p tal:define="descr result/Description" 
-                   tal:content="structure descr" />
+                   tal:content="python:view.cropHtmlText(descr, 200)" />
 
-                <br />
+                <!--br />
                 
                 <a rel="nofollow" href="#" tal:attributes="href url" i18n:translate="link_goto_site">
                     <strong tal:content="url">http://Goto this site</strong>
-                </a>
+                </a-->
                 
                 <br />
                 
@@ -280,7 +280,7 @@
                           August 16, 2001 at 23:35:59
                         </span>                        
                     </tal:modified> 
-                    <br tal:condition="item_einecs|item_cas"/>
+                    <!--br tal:condition="item_einecs|item_cas"/>
                     <tal:einecs condition="item_einecs">
                         &mdash;
                         <tal:einecstrans i18n:translate="box_item_einecs">
@@ -294,7 +294,7 @@
                              CAS:
                         </tal:castrans>
                         <span tal:replace="item_cas" />
-                    </tal:cas>
+                    </tal:cas-->
                     <br tal:condition="item_remoteLanguage"/>
                     <tal:remotelanguage condition="item_remoteLanguage">
                         <tal:remotelanguagetrans i18n:translate="box_item_remotelanguage">
