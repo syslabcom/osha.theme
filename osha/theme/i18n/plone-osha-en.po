@@ -19,3 +19,6 @@ msgstr ""
 
 msgid "label_schema_default"
 msgstr "Main"
+
+msgid "help_categories"
+msgstr "Choose the most relevant categories. This will decide where the information is displayed"
