@@ -34,7 +34,6 @@ class QueryBuilder(object):
     def __init__(self, context, portlet):
         self.context = context
         self.portlet = portlet
-        print "I am in the site root and I am a navi query builder"
         
         portal_properties = getToolByName(context, 'portal_properties')
         navtree_properties = getattr(portal_properties, 'navtree_properties')
@@ -114,7 +113,6 @@ class NavtreeStrategy(SitemapNavtreeStrategy):
         portal_root = portal_url.getPortalPath()
         
         self.rootPath = "%s/%s" % ( portal_root, portal_languages.getPreferredLanguage())
-        print self.rootPath
         if "//" in self.rootPath:
             self.rootPath = self.rootPath.replace("//","/")
         self.showAllParents = False
