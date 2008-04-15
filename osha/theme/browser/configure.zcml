@@ -196,6 +196,14 @@
 
     <browser:page
         for="*"
+        name="index_alphabetical"
+        class=".index_alphabetical.IndexAlphabetical"
+        permission="zope2.View"
+    />
+
+
+    <browser:page
+        for="*"
         name="index_atoz"
         class=".index_atoz.IndexAtoZView"
         permission="zope2.View"
