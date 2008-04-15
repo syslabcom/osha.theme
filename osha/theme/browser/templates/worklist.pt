@@ -16,17 +16,21 @@
     .column1 { float: left; width: 55%; padding-right: 10px; }
     .column2 { float: right; width: 40%; padding-left: 10px; border-left: 1px dotted gray; }
     
-    .column1 select { width: 100%; }
+    .column1 select,
+      .column2 li  { width: 100%; }
     .column2 .field_default, 
-    .column2 .field_nace { width: 260px; padding: 2px 0; }
+    .column2 .field_vocab { width: 100%; padding: 2px 0; }
+    .column2 .field_vocab input { width: 50%; }
+    .column2 .field_vocab .searchButton { width: 20%; }
+    .column2 input[type="checkbox"] { vertical-align: left; width: 5%;}
     .column2 .field_default input, 
-    .column2 .field_default select { width: 260px; }
-    .column2 .field_nace #quicksearch_subcategory { width: 160px; }
-    .column2 .field_nace .searchButton { width: 80px; }
+    .column2 .field_default select { width: 100%; }
+
     
     #wf_results { width: 100%; margin-top: 2em; }
     #wf_results th { background-color: #C5CBD8; border-bottom: 1px dotted gray; padding: 3px; }
     #wf_results td { background-color: transparent; border-bottom: 1px dotted gray; padding: 3px; }
+    .fieldRequired  {visibility: hidden}
     
   </style>
 
@@ -55,7 +59,8 @@
 <div metal:fill-slot="main" i18n:domain="osha"
        tal:define="keywords request/keywords|string:;
                    SearchableText request/SearchableText|string:;
-                   nace request/NACE|string:;
+                   nace request/nace|string:;
+                   multilingual_thesaurus request/multilingual_thesaurus|string:;
                    subcategory request/subcategory|string:;
                    getRemoteLanguage request/getRemoteLanguage|string:;
                    country request/country|string:;
@@ -118,10 +123,15 @@
             <div class="field_default">
                <metal:use use-macro="here/filter_macros/macros/RemoteUrl_compact"></metal:use>
             </div> 
-            <div class="field_nace">
+            <div class="field_vocab">
                <metal:use use-macro="here/filter_macros/macros/Subcategory"></metal:use>
-            </div> 
-            
+            </div>
+            <div class="field_vocab">
+               <metal:use use-macro="here/filter_macros/macros/NACE"></metal:use>
+            </div>
+            <div class="field_vocab">
+               <metal:use use-macro="here/filter_macros/macros/MultilingualThesaurus"></metal:use>
+            </div>
           </div>
          
 
@@ -132,7 +142,7 @@
         <div class="formControls">
           <input class="context" type="submit" value="Search" />
           <input  class="context" type="reset" value="Reset" 
-                    tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
+                    tal:attributes="onclick string:window.location='${here/absolute_url}/@@worklist?Creator='" />
         </div>
         
     </form>
@@ -142,6 +152,10 @@
         or subcategory or getRemoteLanguage or country">
     <div tal:define="subcategory python:[x for x in subcategory if x];
                      subcategory python:len(subcategory) and subcategory or '';
+                     nace python:[x for x in nace if x];
+                     nace python:len(nace) and nace or '';
+                     multilingual_thesaurus python:[x for x in multilingual_thesaurus if x];
+                     multilingual_thesaurus python:len(multilingual_thesaurus) and multilingual_thesaurus or '';
                      getRemoteUrl python:getRemoteUrl.replace('+', '\+');
                     query python:{'portal_type': ['OSH_Link', 'CaseStudy', 'Provider', 'RiskAssessmentLink'],
                                    'review_state':review_state,
@@ -151,12 +165,14 @@
                                    'SearchableText':SearchableText,
                                    'country' : country,
                                    'getRemoteLanguage': getRemoteLanguage,
+                                   'nace' : nace,
+                                   'multilingual_thesaurus': multilingual_thesaurus,
                                    'sort_on': 'modified',
                                    'sort_order':'desc'};
                      res python:here.portal_catalog(query);
                      results res;
                     ">
-            <!-- query: <span tal:replace="query" /> -->
+            <!-- query: <span tal:replace="query" />  -->
         <h2>
           <span i18n:translate="heading_search_results">
               Search results
