@@ -223,6 +223,12 @@
         permission="zope2.View"
     />
 
+    <browser:page
+        for="*"
+        name="worklist"
+        class=".worklist.WorklistView"
+        permission="zope2.View"
+    />
 
   <browser:page
       name="sitemap.xml.gz"
