@@ -4,6 +4,14 @@
 
  <include package="plone.app.portlets" />
  
+ <!-- Custom news portlet -->
+ <plone:portletRenderer 
+     portlet="plone.app.portlets.portlets.news.INewsPortlet" 
+     layer="osha.theme.browser.interfaces.IThemeSpecific" 
+     class=".news.Renderer" 
+     />    
+
+
  <!-- Custom navigation portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
