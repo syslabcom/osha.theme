@@ -11,6 +11,12 @@
      class=".news.Renderer" 
      />    
 
+ <!-- Custom events portlet -->
+ <plone:portletRenderer 
+     portlet="plone.app.portlets.portlets.events.IEventsPortlet" 
+     layer="osha.theme.browser.interfaces.IThemeSpecific" 
+     class=".events.Renderer" 
+     />    
 
  <!-- Custom navigation portlet -->
  <plone:portletRenderer 
@@ -19,12 +25,6 @@
      class=".navigation.Renderer" 
      />    
      
- <!-- Custom events portlet -->
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.events.IEventsPortlet" 
-     layer="osha.theme.browser.interfaces.IThemeSpecific" 
-     template="events.pt" 
-     />   
      
  <!-- Alert Service portlet -->
  <plone:portlet

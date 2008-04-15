@@ -1,18 +1,17 @@
-from plone.app.portlets.portlets import news
-from Products.AdvancedQuery import Or, Eq, And, In
+from plone.app.portlets.portlets import events
+from DateTime import DateTime
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.memoize.instance import memoize
 from Acquisition import aq_inner
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 
-class Renderer(news.Renderer):
+class Renderer(events.Renderer):
     """Dynamically override standard header for news portlet"""
     
-    _template = ViewPageTemplateFile('news.pt')
-        
+    _template = ViewPageTemplateFile('events.pt')
+
     # Add respect to INavigationRoot
-    # Add support for isNews flag
     @memoize
     def _data(self):
         context = aq_inner(self.context)
@@ -21,10 +20,10 @@ class Renderer(news.Renderer):
         navigation_root_path = portal_state.navigation_root_path()
         limit = self.data.count
         state = self.data.state
-        
-        queryA = Eq('portal_type', 'News Item')
-        queryB = Eq('isNews', True)
-        queryBoth = In('review_state', state) & Eq('path', navigation_root_path) 
-        query = And(Or(queryA, queryB), queryBoth)
-        return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
-
+        return catalog(portal_type='Event',
+                       review_state=state,
+                       path=navigation_root_path,
+                       end={'query': DateTime(),
+                            'range': 'min'},
+                       sort_on='start',
+                       sort_limit=limit)[:limit]
