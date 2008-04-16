@@ -53,8 +53,8 @@
                 </tal:publication_date>
                 <span:notanon tal:condition="not:isAnon">
                     <tal:modified>
-                        <tal:label i18n:translate="box_item_modified">
-                          Last modified:
+                        |<tal:label i18n:translate="box_item_modified">
+                         Last modified:
                         </tal:label>
                         <span tal:replace="python:toLocalizedTime(item_modified, long_format=1)"
                             tal:on-error="python:toLocalizedTime('2000/01/01', long_format=0)">
@@ -62,7 +62,7 @@
                         </span>
                     </tal:modified>
                     <tal:creator define="author python:mtool.getMemberInfo(item_creator)" >
-                        <tal:label i18n:translate="box_item_creator">
+                        |<tal:label i18n:translate="box_item_creator">
                             Creator:
                         </tal:label>
                         <span tal:replace="python:author and author['fullname'] or item_creator">
@@ -70,7 +70,7 @@
                         </span>
                     </tal:creator>
                     <tal:review_state define="state result/review_state">
-                        <tal:label i18n:translate="box_item_review_state">
+                        |<tal:label i18n:translate="box_item_review_state">
                             Review state:
                         </tal:label>
                         <span tal:attributes="class string:state-$state" tal:content="state">
