@@ -27,8 +27,8 @@
                  tal:condition="python:provuid and len(provuid)">
               
               <fieldset tal:define="providers python:provider_helper.getMyProviders(result)"
-                        style="float: right; border: 1px solid gray; padding: 0 5px 0 5px; width: 25%; margin:0 0 0 5px;">
-                 <legend i18n:translate="provider_of_information">Provider of this information</legend>
+                        style="float: right; padding: 0 5px 0 5px; width: 25%; margin:0 0 0 5px;">
+                 <legend style="padding-top:0px;" i18n:translate="provider_of_information">Provider of this information</legend>
 
                 <p tal:repeat="provider providers">
                     <a href="" rel="nofollow" tal:attributes="href provider/absolute_url"><span
