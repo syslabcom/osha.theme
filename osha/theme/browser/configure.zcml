@@ -12,7 +12,7 @@
         class=".oshaview.OSHA"
         permission="zope.Public"
         allowed_interface=".interfaces.IOSHA"
-        allowed_attributes="cropHtmlText"
+        allowed_attributes="cropHtmlText getSingleEntryPoints getSingleEntryPointsBySubject"
         />
 
 
@@ -232,7 +232,6 @@
         name="db_filter"
         class=".dbfilter.DBFilterView"
         permission="zope2.View"
-        allowed_attributes="cropHtmlText"
     />
 
     <browser:page

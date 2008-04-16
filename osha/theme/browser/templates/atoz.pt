@@ -159,7 +159,7 @@
                                url result/getRemoteUrl | result_url;
                                title result/Title|string:;
                                item_cas result/getCas|string:;
-                               item_subject result/getSubject|python:[];
+                               item_subject result/Subject|python:[];
                                item_einecs result/getEinecs|string:;
                                item_remoteLanguage result/getRemoteLanguage|string:;                               
                                tem_provider result/Provider | string:;                           

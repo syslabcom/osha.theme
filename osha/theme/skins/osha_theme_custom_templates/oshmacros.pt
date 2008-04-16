@@ -9,6 +9,7 @@
   <body>
 
     <metal:macro define-macro="searchresults">
+      <tal:defines define="oshaview python:context.restrictedTraverse('@@osha');">
 
         <dt tal:define="remoteProviderUID python: getattr(result, 'getRemoteProviderUID' , []);
             remoteProviderUID python:len(remoteProviderUID) or False">
@@ -63,16 +64,22 @@
 
                 <br tal:condition="item_subject"/>
                 <tal:Subject condition="item_subject">
+
                     <tal:desc i18n:translate="box_item_subject">
                       Themes containing this item:
                     </tal:desc>
-                    <tal:repeat repeat="subject item_subject">
-                        <span i18n:translate="" tal:content="subject"/>
-                    </tal:repeat>
+                    <tal:define define="seplist python:oshaview.getSingleEntryPointsBySubject(item_subject)">
+                        <tal:repeat repeat="sep seplist">
+                                  <a tal:attributes="href sep/url"
+                                     tal:content="sep/title" /> 
+                                     <span tal:omit-tag="" tal:condition="not:repeat/sep/end">|</span> 
+                        </tal:repeat>
+                    </tal:define>
                 </tal:Subject>
             </span>
         </dd>
-
+        
+      </tal:defines>
     </metal:macro>
 
   </body>
