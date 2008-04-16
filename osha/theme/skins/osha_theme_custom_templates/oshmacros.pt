@@ -11,46 +11,72 @@
     <metal:macro define-macro="searchresults">
       <tal:defines define="oshaview python:context.restrictedTraverse('@@osha');">
 
-        <dt tal:define="remoteProviderUID python: getattr(result, 'getRemoteProviderUID' , []);
-            remoteProviderUID python:len(remoteProviderUID) or False">
-            <div tal:condition="remoteProviderUID">
+        <dt>
+            <img tal:attributes="src string:${result/getIcon};
+                             alt string:Link icon" />
+            <a tal:content="title" tal:attributes="href result_url" rel="nofollow" />
+                
+            <span:notanon tal:condition="not:isAnon" style="font-weight: normal;" >
+                [<a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a> |
+                <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/content_status_history">Modify workflow</a>]
+            </span:notanon>
+        </dt>
+
+        <dd>
+            <div tal:condition="python:len( getattr(result, 'getRemoteProviderUID' , []))">
               <span tal:define="providers python:provider_helper.getMyProviders(result)"
                  style="float: right; border: 1px solid gray; width: 30%">
                  <span i18n:translate="provider_of_information">Provider of this information:</span><br />
                 <p tal:repeat="provider providers">
                     <a href="" rel="nofollow" tal:attributes="href provider/absolute_url"><span
                         tal:replace="provider/Title"></span></a><br />
-                        <img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
+                        <!--img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
                         <a class="link" href="" rel="nofollow" tal:attributes="href provider/getRemoteUrl"><span 
-                    i18n:translate="provider_goto_url">Go to provider's website</span></a>
+                    i18n:translate="provider_goto_url">Go to provider's website</span></a-->
                 </p>
               </span>
             </div>
-
-            <img tal:attributes="src string:${result/getIcon};
-                             alt string:Link icon" />
-            <a tal:content="title" tal:attributes="href result_url" rel="nofollow" />
-                
-            <tal:notanon condition="not:isAnon">
-                [<a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a>]
-            </tal:notanon>
-        <div class="visualClear" ></div>
-        </dt>
-
-        <dd>
+            
             <p tal:define="descr result/Description" 
                tal:content="python:here.restrictedTraverse('@@osha').cropHtmlText(descr, 200)" />
 
             <span class="documentByLine">
-                <tal:modified>
-                    <tal:mod i18n:translate="box_item_published">
+                <tal:publication_date>
+                    <tal:label i18n:translate="box_item_published">
                       Publication date:
-                    </tal:mod>
+                    </tal:label>
                     <span tal:replace="python:toLocalizedTime(item_pubdate, long_format=0)"
                         tal:on-error="python:toLocalizedTime('2000/01/01', long_format=0)">
                       August 16, 2001 at 23:35:59
                     </span>
-                </tal:modified> 
+                </tal:publication_date>
+                <span:notanon tal:condition="not:isAnon">
+                    <tal:modified>
+                        <tal:label i18n:translate="box_item_modified">
+                          Last modified:
+                        </tal:label>
+                        <span tal:replace="python:toLocalizedTime(item_modified, long_format=1)"
+                            tal:on-error="python:toLocalizedTime('2000/01/01', long_format=0)">
+                          August 16, 2001 at 23:35:59
+                        </span>
+                    </tal:modified>
+                    <tal:creator define="author python:mtool.getMemberInfo(item_creator)" >
+                        <tal:label i18n:translate="box_item_creator">
+                            Creator:
+                        </tal:label>
+                        <span tal:replace="python:author and author['fullname'] or item_creator">
+                            OSHA
+                        </span>
+                    </tal:creator>
+                    <tal:review_state define="state result/review_state">
+                        <tal:label i18n:translate="box_item_review_state">
+                            Review state:
+                        </tal:label>
+                        <span tal:attributes="class string:state-$state" tal:content="state">
+                            review state
+                        </span>
+                    </tal:review_state>
+                </span:notanon>
 
                 <br tal:condition="item_remoteLanguage"/>
                 <tal:remotelanguage condition="item_remoteLanguage">
@@ -77,6 +103,7 @@
                     </tal:define>
                 </tal:Subject>
             </span>
+            <div class="visualClear" ></div>
         </dd>
         
       </tal:defines>
