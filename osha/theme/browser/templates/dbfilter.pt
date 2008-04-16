@@ -221,13 +221,12 @@
         <tal:results repeat="result batch">
         <tal:entry define="provider_helper here/@@provider_helper;
                            result_url result/getURL;
-                           result_url string:$result_url/view;
                            url result/getRemoteUrl | result_url;
                            title result/Title|string:;
                            item_cas result/getCas|string:;
                            item_einecs result/getEinecs|string:;
                            item_remoteLanguage result/getRemoteLanguage|string:;
-                           item_subject result/Subject | python:[];                           
+                           item_subject result/Subject | python:[];
                            item_modified result/modified;
                            item_pubdate result/effective;
                            item_creator result/Creator;
