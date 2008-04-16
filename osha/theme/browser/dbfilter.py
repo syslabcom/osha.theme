@@ -7,7 +7,8 @@ class DBFilterView(BrowserView):
     """View for displaying the sep content filter page at /en/good_practice/topics/xx
     """
     template = ViewPageTemplateFile('templates/dbfilter.pt')
-    
+    template.id = "dbfilter"
+
     def __call__(self):
         self.request.set('disable_border', True)
 

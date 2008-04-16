@@ -9,7 +9,8 @@ class WorklistView(DBFilterView):
     """View for displaying the worklist (filter plus result list)
     """
     template = ViewPageTemplateFile('templates/worklist.pt')
-    
+    template.id = "worklist"
+
     def __call__(self):
         self.request.set('disable_border', True)
 
