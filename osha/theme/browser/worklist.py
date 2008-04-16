@@ -3,7 +3,9 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
-class WorklistView(BrowserView):
+from osha.theme.browser.dbfilter import DBFilterView
+
+class WorklistView(DBFilterView):
     """View for displaying the worklist (filter plus result list)
     """
     template = ViewPageTemplateFile('templates/worklist.pt')
@@ -12,3 +14,35 @@ class WorklistView(BrowserView):
         self.request.set('disable_border', True)
 
         return self.template() 
+
+    def buildQuery(self):
+        """ Build the query based on the request """
+        context = Acquisition.aq_inner(self.context)
+        query = super(WorklistView, self).buildQuery()
+
+        Creator = self.request.get('Creator', '')
+        if Creator:
+            query.update(dict(Creator=Creator))
+
+        country = self.request.get('country', '')
+        if country:
+            query.update(dict(country=country))
+
+        # remove wrongly formatted subcategory from query
+        if query.has_key('subcategory'):
+            del query['subcategory']
+        subcategory = list(self.request.get('subcategory', ''))
+        if '' in subcategory:
+            subcategory.remove('')
+        if subcategory:
+            query.update({'subcategory':subcategory})
+
+        getRemoteUrl = self.request.get('getRemoteUrl', '')
+        if getRemoteUrl:
+            query.update(dict(getRemoteUrl=getRemoteUrl))
+
+        review_state = self.request.get('review_state', '')
+        if review_state:
+            query.update(dict(review_state=review_state))
+
+        return query

@@ -31,6 +31,9 @@
     #wf_results th { background-color: #C5CBD8; border-bottom: 1px dotted gray; padding: 3px; }
     #wf_results td { background-color: transparent; border-bottom: 1px dotted gray; padding: 3px; }
     .fieldRequired  {visibility: hidden}
+
+    .column1 input.input_checkbox, #multilingual_thesaurus li label input,
+        #nace li label input { width: 1.2em; border: none; background: transparent; padding: 0; }
     
   </style>
 
@@ -64,6 +67,7 @@
                    subcategory request/subcategory|string:;
                    getRemoteLanguage request/getRemoteLanguage|string:;
                    country request/country|string:;
+                   search_portal_types view/search_portal_types;
                    review_state request/review_state|string:;
                    Creator request/Creator|member/getName|member/getUserName|string:;
                    getRemoteUrl request/getRemoteUrl|string:;
@@ -85,7 +89,7 @@
 
     <form tal:attributes="action template/id" method="get">
     
-      <div id="searchfields" tal:define="view here/@@vocabulary_helper">
+      <div id="searchfields">
       
          <div class="column1">
             <metal:use use-macro="here/filter_macros/macros/SearchableText_compact"></metal:use>
@@ -103,7 +107,22 @@
               <metal:use use-macro="here/filter_macros/macros/ReviewState_compact"></metal:use>
             </div>
             
-            
+            <div class="field">
+                <label i18n:translate="label_database"> Database </label><br>
+                
+                <div class="formHelp" i18n:translate="help_database_search">
+                    Select the database types you want to search.
+                </div>
+
+                <div tal:repeat="T view/search_types">
+                    <input class="input_checkbox" type="checkbox" 
+                           name="search_portal_types:list"
+                           tal:attributes="value python:T[1];
+                                           checked python: 'checked' and T[2] or ''" />
+                    <span tal:content="python:T[0]" />
+                </div>
+            </div>
+                        
           </div>
           
           <div class="column2">
@@ -114,7 +133,9 @@
             <div class="field_default">
                <metal:use use-macro="here/filter_macros/macros/Author_compact"></metal:use>
             </div> 
-             <div class="field_default" tal:define="portal_type string:OSH_Link">
+             <div class="field_default" 
+                tal:define="portal_type string:OSH_Link;
+                    value country">
               <metal:use use-macro="here/filter_macros/macros/Country_compact"></metal:use>
             </div>
             <div class="field_default">
@@ -133,7 +154,6 @@
                <metal:use use-macro="here/filter_macros/macros/MultilingualThesaurus"></metal:use>
             </div>
           </div>
-         
 
         </div>
        
@@ -148,31 +168,11 @@
     </form>
     <br clear="all"><br>
     
-  <div tal:condition="python:SearchableText or review_state or Creator or getRemoteUrl 
-        or subcategory or getRemoteLanguage or country">
-    <div tal:define="subcategory python:[x for x in subcategory if x];
-                     subcategory python:len(subcategory) and subcategory or '';
-                     nace python:[x for x in nace if x];
-                     nace python:len(nace) and nace or '';
-                     multilingual_thesaurus python:[x for x in multilingual_thesaurus if x];
-                     multilingual_thesaurus python:len(multilingual_thesaurus) and multilingual_thesaurus or '';
-                     getRemoteUrl python:getRemoteUrl.replace('+', '\+');
-                    query python:{'portal_type': ['OSH_Link', 'CaseStudy', 'Provider', 'RiskAssessmentLink'],
-                                   'review_state':review_state,
-                                   'subcategory':subcategory,
-                                   'getRemoteUrl': getRemoteUrl,
-                                   'Creator': Creator,
-                                   'SearchableText':SearchableText,
-                                   'country' : country,
-                                   'getRemoteLanguage': getRemoteLanguage,
-                                   'nace' : nace,
-                                   'multilingual_thesaurus': multilingual_thesaurus,
-                                   'sort_on': 'modified',
-                                   'sort_order':'desc'};
-                     res python:here.portal_catalog(query);
-                     results res;
-                    ">
-            <!-- query: <span tal:replace="query" />  -->
+     <div tal:define="query view/buildQuery;
+                  results python:here.portal_catalog(query);">
+
+        <!-- query: <span tal:replace="query" /> -->
+
         <h2>
           <span i18n:translate="heading_search_results">
               Search results
@@ -189,56 +189,35 @@
             <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
         </div>
 
-
     <div tal:condition="results"
-          tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
-
-        <table cellpadding="0" cellspacing="0" border="0" id="wf_results">
-        <tr>
-          <th>&nbsp;</th>
-          <th>Title</th>
-          
-          <th>Last modified / Creator</th>
-          <th>Review State</th>
-        </tr>
+         tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+        
+        <dl id="db_results">
         <tal:results repeat="result batch">
-            <tal:entry define="result_url result/getURL;
-                               url string:$result_url/view?searchterm=${searchterm};
-                               title result/Title|string:;
-                               title python:title.strip()!='' and title or result.getId;
-                               ">
-                <tr>
-                  <td>
-                    <img tal:attributes="src string:${result/getIcon};
-                                         alt string:Link icon"
-                              tal:on-error="nothing" />
-                  </td>
-                  <td>
-                    <a href="#" tal:attributes="href url" >
-                        <span tal:replace="python:title" /><br />
-                       <nobr>[ <a href="" tal:attributes="href string:$result_url/edit">Edit</a>
-                    | <a href="" tal:attributes="href string:$result_url/content_status_history">Modify workflow</a> ]</nobr>
-                    </a>
-                  </td>
-                  <td>
-                      <nobr><span tal:on-error="nothing" tal:replace="python:toLocalizedTime(result['modified'])"/></nobr><br />
-                      <span tal:define="item_creator result/Creator;
-                            author python:mtool.getMemberInfo(item_creator)" 
-                            tal:replace="python:author and author['fullname'] or item_creator"/>
-                  </td>
-                  <td>
-                    <span tal:define="state result/review_state" tal:attributes="class string:state-$state"
-                        tal:content="state"/>
-                  </td>
-                 </tr>
-            </tal:entry>
+        <tal:entry define="provider_helper here/@@provider_helper;
+                           result_url result/getURL;
+                           url result/getRemoteUrl | result_url;
+                           title result/Title|string:;
+                           item_remoteLanguage result/getRemoteLanguage|string:;
+                           item_subject result/Subject | python:[];
+                           item_modified result/modified;
+                           item_pubdate result/effective;
+                           item_creator result/Creator;
+                           gc python:here.portal_languages.getNameForLanguageCode;
+                           ">
+            
+            <metal:macro use-macro="here/oshmacros/macros/searchresults" />
+
+        </tal:entry>
         </tal:results>
-        </table>
-        <br><br>
+        </dl>
+        
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 
-       </div>
-     </div>
+        <!-- Snapshot code -->
+        <script type="text/javascript" src="http://shots.snap.com/ss/9546198046d69719d86ad9ba1aee068e/snap_shots.js"></script>
+    </div>
+
     </div>
   </div>
 
