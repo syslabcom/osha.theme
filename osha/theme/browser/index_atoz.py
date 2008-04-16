@@ -133,7 +133,7 @@ class IndexAtoZView(BrowserView):
             
         results = self.captions.get(letter, {})
         reskeys = results.keys()
-        reskeys.sort()
+        reskeys.sort(lambda x,y: cmp(x.lower(), y.lower()))
         return (reskeys, results)
         
         

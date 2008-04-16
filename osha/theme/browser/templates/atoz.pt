@@ -2,7 +2,16 @@
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="osha">
-
+      
+<metal:cssslot fill-slot="css_slot">
+  <style type="text/css">
+  #db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; } 
+  .keylist {  list-style-type: none !important; list-style-image: none !important;}
+  .keylist li { padding: 1px; margin:0; }
+  .current_term { background-color: #ccc; }
+  .resultcol {float:left; width:33%}
+  </style>
+</metal:cssslot>
 
 <div metal:fill-slot="main" i18n:domain="osha"
        tal:define="resultsByKeyword view/resultsByKeyword;
@@ -23,12 +32,7 @@
                    template_id string:@@index_atoz;
                    ">
 
-  <style type="text/css">
-  #db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; } 
-  #keylist { list-decoration: none; }
-  #keylist li { padding: 3px; margin:0; }
-  .current_term { background-color: #ccc; }
-  </style>
+
 
     <div tal:condition="python:not Subject or Subject==''">
         You need to call this template with a valid Subject parameter.
@@ -58,23 +62,66 @@
 
 
 
-        <div tal:condition="view/getLetter">
+        <div tal:condition="view/getLetter" 
+             tal:define="lenresults python:len(resultsList);
+                         modulo python: lenresults % 3;
+                         itemspercol python:modulo == 0 and lenresults/3 or lenresults/3+1;
+                         colA python:resultsList[:itemspercol];
+                         colB python:resultsList[itemspercol:2*itemspercol];
+                         colC python:resultsList[2*itemspercol:]">
             <h2>
                 <span tal:content="view/getLetter">Letter</span>
             </h2>
-            <ul id="keylist">
-                <tal:repeat tal:repeat="key resultsList">
-                <li tal:define="key_term_id python:view.getIdByCaption(key)"
-                    tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
-                    <a href="" rel="nofollow"
-                       tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
-                       tal:attributes="href string:${request/URL}?Subject=${Subject}&letter=${letter}&term_id=${key_term_id};"/>
-                </li>
-                </tal:repeat>
-            </ul>
+            <div id="resultcolA" class="resultcol">
+                <ul class="keylist" >
+                    <tal:repeat tal:repeat="key colA">
+                    <li tal:define="key_term_id python:view.getIdByCaption(key)"
+                        tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
+                        <a href="" rel="nofollow"
+                           tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
+                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
+                    </li>
+                    </tal:repeat>
+                </ul>                
+            </div>
+            <div id="resultcolB" class="resultcol">
+                <ul class="keylist">
+                    <tal:repeat tal:repeat="key colB">
+                    <li tal:define="key_term_id python:view.getIdByCaption(key)"
+                        tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
+                        <a href="" rel="nofollow"
+                           tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
+                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
+                    </li>
+                    </tal:repeat>
+                </ul>                
+            </div>
+            <div id="resultcolC" class="resultcol">
+                <ul class="keylist">
+                    <tal:repeat tal:repeat="key colC">
+                    <li tal:define="key_term_id python:view.getIdByCaption(key)"
+                        tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
+                        <a href="" rel="nofollow"
+                           tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
+                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
+                    </li>
+                    </tal:repeat>
+                </ul>                
+            </div>    
         
         
-        
+            <div class="visualClear"></div>
+
+            <div tal:condition="not:view/getTerm_id">
+                <hr>
+                <p>
+                <span i18n:translate="info_no_results">
+                    Click a term to display the results.
+                </span>
+                </p>            
+                
+            </div>
+                    
         
             <div tal:condition="view/getTerm_id">
 
