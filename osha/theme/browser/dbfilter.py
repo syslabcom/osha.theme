@@ -74,7 +74,9 @@ class DBFilterView(BrowserView):
         if getRemoteLanguage:
             query.update({'getRemoteLanguage':getRemoteLanguage})
 
-        subcategory = self.request.get('subcategory', '')        
+        subcategory = self.request.get('subcategory', '')
+        if '' in subcategory:
+            subcategory.remove('')
         if subcategory:
             query.update({'subcategory':subcategory})
 
