@@ -164,7 +164,7 @@
         <div class="formControls">
           <input class="context" type="submit" value="Search" />
           <input  class="context" type="reset" value="Reset" 
-                    tal:attributes="onclick string:window.location='${here/absolute_url}/{template/getId}?Creator='" />
+                    tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}?Creator='" />
         </div>
         
     </form>

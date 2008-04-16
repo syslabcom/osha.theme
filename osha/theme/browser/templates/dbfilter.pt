@@ -182,7 +182,7 @@
                    i18n:attributes="value label_search;"
                    />
           <input  class="context" type="reset" value="Reset" 
-                tal:attributes="onclick string:window.location='${here/absolute_url}/{template/getId}'" />
+                tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
         
         </div>
     </form>
