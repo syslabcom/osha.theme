@@ -113,9 +113,8 @@
                                title result/Title|string:;
                                item_cas result/getCas|string:;
                                item_einecs result/getEinecs|string:;
-                               item_remoteLanguage result/getRemoteLanguage|string:;
-                               item_sme result/getSme | nothing;
-                               item_provider result/Provider | string:;                           
+                               item_remoteLanguage result/getRemoteLanguage|string:;                               
+                               tem_provider result/Provider | string:;                           
                                item_modified result/modified;
                                item_pubdate result/effective;
                                item_creator result/Creator;
@@ -155,14 +154,7 @@
     
                     <br />
                     
-                    <tal:sme condition="item_sme">
-                        <span class="pullquote">
-                            <tal:smetrans i18n:translate="box_item_sme">
-                                Relevant for SME's
-                            </tal:smetrans>
-                        </span>
-                    </tal:sme>
-    
+   
                     <img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
                     <a href="#" rel="nofollow" tal:attributes="href url" i18n:translate="link_goto_site">
                         <strong>Goto this site</strong>

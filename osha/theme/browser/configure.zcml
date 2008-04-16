@@ -221,6 +221,7 @@
         name="db_filter"
         class=".dbfilter.DBFilterView"
         permission="zope2.View"
+        allowed_attributes="cropHtmlText"
     />
 
     <browser:page
