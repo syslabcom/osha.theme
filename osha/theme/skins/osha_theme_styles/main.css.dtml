@@ -253,7 +253,7 @@ dl.portletCampaigns .image-right {
 #wf_results { width: 100%; margin-top: 2em; }
 #wf_results th { background-color: #C5CBD8; border-bottom: 1px dotted gray; padding: 3px; }
 #wf_results td { background-color: transparent; border-bottom: 1px dotted gray; padding: 3px; }
-.fieldRequired  {visibility: hidden}
+.filter_column1 .fieldRequired, .filter_column2 .fieldRequired   {visibility: hidden}
 
 .filter_column1 input.input_checkbox, #multilingual_thesaurus li label input,
     #nace li label input { width: 1.2em; border: none; background: transparent; padding: 0; }
