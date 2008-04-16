@@ -7,11 +7,11 @@
 <metal:cssslot fill-slot="css_slot">
 
 
-  <style type="text/css" media="all" tal:condition="exists: portal/riskassessment_styles.css"
+  <!--style type="text/css" media="all" tal:condition="exists: portal/riskassessment_styles.css"
          tal:content="string:@import url($portal_url/riskassessment_styles.css);">
-  </style>
+  </style-->
 
-  <style type="text/css">
+  <!--style type="text/css">
     #searchfields { background-color: #F3F6FF; border: 1px solid gray; padding:5px 10px; clear: both; height: 1%; }
 
     .column1 { float: left; width: 40%; padding-right: 10px; border-right:none; }
@@ -28,7 +28,7 @@
     .column1 input.input_checkbox, #multilingual_thesaurus li label input,
     #nace li label input { width: 1.2em; border: none; background: transparent; padding: 0; }
      
-</style>
+</style-->
 </metal:cssslot>
 
 
@@ -98,10 +98,12 @@
 
     <form tal:attributes="action template/id" method="get">
       
-      <div id="searchfields">
+      <div id="filter_searchfields">
       
-        <div class="column1">
-            <metal:use use-macro="here/filter_macros/macros/SearchableText_compact"></metal:use>
+        <div class="filter_column1">
+           <div class="field_default">
+                <metal:use use-macro="here/filter_macros/macros/SearchableText_compact"></metal:use>
+            </div>
             <div class="columnBottom field">
               <div class="formHelp">
                 Filter your search by selecting one or more of the filters.
@@ -130,7 +132,7 @@
            
         </div>
           
-         <div class="column2">
+         <div class="filter_column2">
 
             <div class="field_default">
                <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
@@ -148,13 +150,13 @@
                 <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>
             </div>
             
-            <div class="field_vocabularypicker"
+            <div class="field_vocab"
                  tal:define="level python:2;
                              portal_type string:OSH_Link">
                           <metal:use use-macro="here/filter_macros/macros/NACE"></metal:use>
             </div> 
 
-            <div class="field_vocabularypicker"
+            <div class="field_vocab"
                  tal:define="level python:2;
                              portal_type string:OSH_Link">
                           <metal:use use-macro="here/filter_macros/macros/MultilingualThesaurus"></metal:use>
@@ -180,7 +182,7 @@
                    i18n:attributes="value label_search;"
                    />
           <input  class="context" type="reset" value="Reset" 
-                tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
+                tal:attributes="onclick string:window.location='${here/absolute_url}/db_filter'" />
         
         </div>
     </form>

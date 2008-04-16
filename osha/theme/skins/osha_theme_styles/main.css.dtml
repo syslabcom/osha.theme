@@ -233,6 +233,36 @@ dl.portletCampaigns .image-right {
     color: #780000 !important;
 }
 
+
+/* styles for filter + result type views */
+.filter_column1 { float: left; width: 48%; padding-right: 10px; }
+.filter_column2 { float: right; width: 48%; padding-left: 10px; border-left: 1px dotted gray; }
+
+.filter_column1 select,
+  .filter_column2 li  { width: 80%; }
+.filter_column1 .field_default, .filter_column2 .field_default, 
+.filter_column2 .field_vocab { width: 100%; padding: 2px 0; }
+.filter_column2 .field_vocab input { width: 50%; }
+.filter_column2 .field_vocab .searchButton { width: 15%; }
+.filter_column2 input[type="checkbox"] { vertical-align: left; width: 5%;}
+.filter_column1 .field_default input,
+.filter_column2 .field_default input, 
+.filter_column2 .field_default select { width: 80%; }
+
+
+#wf_results { width: 100%; margin-top: 2em; }
+#wf_results th { background-color: #C5CBD8; border-bottom: 1px dotted gray; padding: 3px; }
+#wf_results td { background-color: transparent; border-bottom: 1px dotted gray; padding: 3px; }
+.fieldRequired  {visibility: hidden}
+
+.filter_column1 input.input_checkbox, #multilingual_thesaurus li label input,
+    #nace li label input { width: 1.2em; border: none; background: transparent; padding: 0; }
+
+#filter_searchfields { height: 1%; background-color: #F3F6FF; border: 1px solid gray !important; padding:5px 10px; clear: both; overflow: hidden; }
+
+#db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; } 
+
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 
