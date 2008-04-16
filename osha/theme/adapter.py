@@ -52,9 +52,15 @@ class QueryBuilder(object):
         # Construct the path query
         preferred_path = "/%s" % portal_languages.getPreferredLanguage()
         
-        #rootPath = getNavigationRoot(context, relativeRoot=portlet.root)
-        #rootPath = getNavigationRoot(context, relativeRoot=preferred_path)
+        rootPathX = getNavigationRoot(context, relativeRoot=portlet.root)
+        rootPathY = getNavigationRoot(context, relativeRoot=preferred_path)
+        
         rootPath = portal_url.getPortalPath()+preferred_path
+
+        print "X: portlet.root based. rootPath: %s, portlet.root: %s" %(rootPathX, portlet.root)
+        print "Y: preferred_path based. rootPath: %s, preferred_path: %s" %(rootPathY, preferred_path)
+        print "Current: rootPath+preferred_path: %s %s" %(rootPath, preferred_path)
+
         currentPath = '/'.join(context.getPhysicalPath())
 
         # If we are above the navigation root, a navtree query would return

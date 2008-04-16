@@ -212,7 +212,6 @@
         permission="zope2.View"
     />
 
-
     <browser:page
         for="*"
         name="index_atoz"
