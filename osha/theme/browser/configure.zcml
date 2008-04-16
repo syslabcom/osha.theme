@@ -5,6 +5,17 @@
 
     <include package="plone.app.portlets" />
 
+    <!-- OSHA Tool view -->
+    <browser:page
+        for="*"
+        name="osha"
+        class=".oshaview.OSHA"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IOSHA"
+        allowed_attributes="cropHtmlText"
+        />
+
+
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
     <interface
         interface=".interfaces.IThemeSpecific"

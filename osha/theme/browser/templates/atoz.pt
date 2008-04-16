@@ -112,6 +112,7 @@
                                url result/getRemoteUrl | result_url;
                                title result/Title|string:;
                                item_cas result/getCas|string:;
+                               item_subject result/getSubject|python:[];
                                item_einecs result/getEinecs|string:;
                                item_remoteLanguage result/getRemoteLanguage|string:;                               
                                tem_provider result/Provider | string:;                           
@@ -122,7 +123,7 @@
                                "
                         condition="result">
     
-                <dt>
+<!--                <dt>
                     <div tal:condition="python: result.get('getRemoteProviderUID') and str(result.get('getRemoteProviderUID', ''))!=''">
                       <span tal:define="providers python:provider_helper.getMyProviders(result)"
                          style="float: right; border: 1px solid gray; width: 30%">
@@ -207,6 +208,8 @@
                         </tal:remotelanguage>       
                     </span>
                 </dd>
+                -->
+            <metal:macro use-macro="here/oshmacros/macros/searchresults" />
                 
             </tal:entry>
             </tal:results>

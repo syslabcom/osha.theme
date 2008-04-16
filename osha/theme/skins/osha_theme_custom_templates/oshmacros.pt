@@ -11,17 +11,20 @@
     <metal:macro define-macro="searchresults">
 
             <dt>
-                <div tal:condition="python: result.getRemoteProviderUID and str(result.getRemoteProviderUID)!=''">
-                  <span tal:define="providers python:provider_helper.getMyProviders(result)"
-                     style="float: right; border: 1px solid gray; width: 30%">
-                     <span i18n:translate="provider_of_information">Provider of this information:</span><br />
-                    <p tal:repeat="provider providers">
-                        <a rel="nofollow" href="" tal:attributes="href provider/absolute_url"><span
-                            tal:replace="provider/Title"></span></a><br />
-                            <a rel="nofollow" class="link" href="" tal:attributes="href provider/getRemoteUrl" tal:content="provider/getRemoteUrl"></a>
-                    </p>
-                  </span>
-                </div>
+                   <div tal:condition="python: result.get('getRemoteProviderUID') and str(result.get('getRemoteProviderUID', ''))!=''">
+                      <span tal:define="providers python:provider_helper.getMyProviders(result)"
+                         style="float: right; border: 1px solid gray; width: 30%">
+                         <span i18n:translate="provider_of_information">Provider of this information:</span><br />
+                        <p tal:repeat="provider providers">
+                            <a href="" rel="nofollow" tal:attributes="href provider/absolute_url"><span
+                                tal:replace="provider/Title"></span></a><br />
+                                <img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
+                                <a class="link" href="" rel="nofollow" tal:attributes="href provider/getRemoteUrl"><span 
+                            i18n:translate="provider_goto_url">Go to provider's website</span></a>
+                        </p>
+                      </span>
+                    </div>                
+                
 
                     <img tal:attributes="src string:${result/getIcon};
                                      alt string:Link icon" />
@@ -36,15 +39,8 @@
             <dd>                              
 
                 <p tal:define="descr result/Description" 
-                   tal:content="python:view.cropHtmlText(descr, 200)" />
+                   tal:content="python:here.restrictedTraverse('@@osha').cropHtmlText(descr, 200)" />
 
-                <!--br />
-                
-                <a rel="nofollow" href="#" tal:attributes="href url" i18n:translate="link_goto_site">
-                    <strong tal:content="url">http://Goto this site</strong>
-                </a-->
-                
-                <br />
                 
                 <span class="documentByLine">
                     <tal:modified>
@@ -56,21 +52,7 @@
                           August 16, 2001 at 23:35:59
                         </span>                        
                     </tal:modified> 
-                    <!--br tal:condition="item_einecs|item_cas"/>
-                    <tal:einecs condition="item_einecs">
-                        &mdash;
-                        <tal:einecstrans i18n:translate="box_item_einecs">
-                            EINECS: 
-                        </tal:einecstrans>
-                        <span tal:replace="item_einecs" />
-                    </tal:einecs>
-                    <tal:cas condition="item_cas">
-                        &mdash;
-                        <tal:castrans i18n:translate="box_item_cas">
-                             CAS:
-                        </tal:castrans>
-                        <span tal:replace="item_cas" />
-                    </tal:cas-->
+
                     <br tal:condition="item_remoteLanguage"/>
                     <tal:remotelanguage condition="item_remoteLanguage">
                         <tal:remotelanguagetrans i18n:translate="box_item_remotelanguage">
@@ -80,8 +62,9 @@
                             <span tal:replace="python:gc(lang)"/>
                         </span>
                     </tal:remotelanguage>    
+
                     <br tal:condition="item_subject"/>
-                    <tal:Subject>
+                    <tal:Subject condition="item_subject">
                         <tal:desc i18n:translate="box_item_subject">
                           Themes containing this item:
                         </tal:desc>
