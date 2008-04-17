@@ -63,8 +63,8 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
                                            name='breadcrumbs_view')
         self.breadcrumbs = breadcrumbs_view.breadcrumbs()    
         # we dont want the first level to show up. This is an easy approach...
-        if len(self.breadcrumbs)>0:
-            self.breadcrumbs = self.breadcrumbs[1:]
+#        if len(self.breadcrumbs)>0:
+#            self.breadcrumbs = self.breadcrumbs[1:]
                 
 class OSHACampaignAreaViewlet(common.ViewletBase):
     
