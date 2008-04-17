@@ -80,5 +80,15 @@
      renderer=".sep_about.Renderer"
      addview=".sep_about.AddForm"
      />        
-     
+
+ <!-- Custom Search portlet -->
+    <plone:portlet
+        name="osha.GoogleSearch"
+        interface=".search.ISearchPortlet"
+        assignment=".search.Assignment"
+        renderer=".search.Renderer"
+        addview=".search.AddForm"
+        editview=".search.EditForm"
+        />
+
 </configure>

@@ -40,5 +40,9 @@
       title="Single Entry Point - About"
       description="Lists all static documents within the about folder of a single entry point." />  
 
+  <portlet
+      addview="osha.GoogleSearch"
+      title="Google Search"
+      description="Search the realm of OSHA using Google CSE" /> 
           
 </portlets>

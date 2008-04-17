@@ -1,0 +1,60 @@
+<dl class="portlet portletSearch"
+    i18n:domain="plone">
+
+  <dt class="portletHeader">
+      <span class="portletTopLeft"></span>
+      <a class="tile"
+         tal:attributes="href view/search_form"
+         i18n:translate="box_search">Search</a>
+      <span class="portletTopRight"></span>
+  </dt>
+
+    <dd class="portletItem">
+      <form name="searchform" action="search"
+            tal:define="livesearch view/enable_livesearch;"
+             tal:attributes="action string:${view/portal_url}/google_search_results"> 
+        <div class="LSBox">
+       <input type="hidden" name="cref" value="http://mig.osha.europa.eu/google_test_cse2"
+              xtal:attributes="value string:guha_cse" />
+       <input type="hidden" value="google-coop-np" name="client"/>
+       <input type="hidden" name="cof" value="FORID:9" />
+
+       <input name="q"
+              class="inputLabel" 
+              type="text" 
+              size="18"
+              value=""
+              tal:attributes="value request/q|nothing" />
+
+        <input name="sa"
+               class="searchButton"
+               type="submit"
+               value="Search"
+               i18n:attributes="value label_search;" />
+               
+            <input id="google_search"
+                class="noborder"
+                type="hidden" 
+                name="google_search"
+                value = "1"
+                />
+  
+          <div class="LSResult" style="" tal:condition="livesearch">
+            <div class="LSShadow"></div>
+          </div>
+        </div>
+      </form>
+      <div class="visualClear"><!-- --></div>
+    </dd>
+    
+    <dd class="portletFooter">
+        <a href="#"
+         class="tile"
+         tal:attributes="href view/search_form"
+         i18n:translate="label_advanced_search">
+        Advanced Search&hellip;
+        </a>
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>
