@@ -28,7 +28,7 @@
         name="osha.header.topactions"
         provides=".interfaces.IOSHAHeaderTopactions"
         permission="zope2.View"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
 
@@ -37,7 +37,7 @@
         name="osha.header.dropdowns"
         provides=".interfaces.IOSHAHeaderDropdowns"
         permission="zope2.View"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
         
@@ -46,7 +46,7 @@
         name="osha.topactions"
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         template="templates/osha_topactions.pt"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
 
@@ -56,7 +56,7 @@
         name="osha.topdropdowns"
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         template="templates/osha_topdropdowns.pt"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
 
@@ -65,7 +65,7 @@
         name="plone.personal_bar"
         manager=".interfaces.IOSHAHeaderTopactions"
         class="plone.app.layout.viewlets.common.PersonalBarViewlet"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
 
@@ -74,7 +74,7 @@
         name="plone.site_actions"
         manager=".interfaces.IOSHAHeaderTopactions"
         class=".viewlets.OSHASiteActionsViewlet"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
 
@@ -84,7 +84,7 @@
             name="osha.languageselector"
             manager=".interfaces.IOSHAHeaderDropdowns"
             class=".viewlets.OSHALanguageSelector"
-            layer=".interfaces.IThemeSpecific"
+            layer=".interfaces.IOSHAThemeLayer"
             permission="zope2.View"
             for="Products.LinguaPlone.interfaces.ITranslatable"
             />
@@ -94,7 +94,7 @@
             name="osha.languageselector"
             manager=".interfaces.IOSHAHeaderDropdowns"
             class="plone.app.i18n.locales.browser.selector.LanguageSelector"
-            layer=".interfaces.IThemeSpecific"
+            layer=".interfaces.IOSHAThemeLayer"
             permission="zope2.View"
             for="*"
             />
@@ -105,7 +105,7 @@
         name="osha.footer.languageselector"
         manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
         class=".viewlets.OSHAFooterLanguageSelector"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
         /-->
 
@@ -114,7 +114,7 @@
         name="osha.networkchooser"
         manager=".interfaces.IOSHAHeaderDropdowns"
         class=".viewlets.OSHANetworkchooser"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
         />
         
@@ -123,7 +123,7 @@
         name="osha.campaignarea"
         manager="plone.app.layout.viewlets.interfaces.IPortalTop"
         class=".viewlets.OSHACampaignAreaViewlet"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
         
@@ -132,7 +132,7 @@
         name="osha.path_bar"
         manager="plone.app.layout.viewlets.interfaces.IPortalTop"
         class=".viewlets.OSHAPathBarViewlet"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
         
@@ -142,7 +142,7 @@
         name="osha.footer.actions"
         manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
         class=".viewlets.OSHAFooterActions"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
         />
 
@@ -151,7 +151,7 @@
         name="osha.logo"
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         class=".viewlets.OSHALogoViewlet"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
 
@@ -160,7 +160,7 @@
         name="osha.abovecontentportlets"
         manager="plone.app.layout.viewlets.interfaces.IContentViews"
         template="templates/abovecontent_portlets.pt"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
     />
 
@@ -177,7 +177,7 @@
         name="osha.belowcontentportlets"
         manager="plone.app.layout.viewlets.interfaces.IBelowContent"
         template="templates/belowcontent_portlets.pt"
-        layer=".interfaces.IThemeSpecific"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
     />
 
@@ -245,7 +245,7 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class=".sitemap.SiteMapView"
       permission="zope2.Public"
-      layer=".interfaces.IThemeSpecific"
+      layer=".interfaces.IOSHAThemeLayer"
      />
 
 </configure>

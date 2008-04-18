@@ -4,6 +4,10 @@ from zope.viewlet.interfaces import IViewletManager
 
 from plone.portlets.interfaces import IPortletManager
 
+class IOSHAThemeLayer(Interface):
+    """ Marker Interface used by BrowserLayer
+    """
+    
 class IThemeSpecific(IDefaultPloneLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """

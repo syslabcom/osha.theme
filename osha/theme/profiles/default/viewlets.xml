@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <object>
     
-    <order manager="plone.portaltop" skinname="OSHA Plone Theme"
+    <order manager="plone.portaltop" skinname="*"
            based-on="Plone Default"> 
       <viewlet name="osha.campaignarea"
                insert-after="plone.personal_bar" />               
@@ -9,7 +9,7 @@
                insert-after="osha.campaignarea" />                           
     </order>
     
-    <order manager="plone.portalheader" skinname="OSHA Plone Theme"
+    <order manager="plone.portalheader" skinname="*"
            based-on="Plone Default">    
       <viewlet name="osha.logo"
                insert-after="plone.skip_links" />           
@@ -19,7 +19,7 @@
                insert-after="osha.topactions" />               
     </order>
     
-    <order manager="osha.header.topactions" skinname="OSHA Plone Theme"
+    <order manager="osha.header.topactions" skinname="*"
            based-on="Plone Default">              
       <viewlet name="plone.personal_bar"
                insert-before="*" />                           
@@ -27,7 +27,7 @@
                insert-after="plone.personal_bar" />               
     </order>    
     
-    <order manager="osha.header.dropdowns" skinname="OSHA Plone Theme"
+    <order manager="osha.header.dropdowns" skinname="*"
            based-on="Plone Default">              
       <viewlet name="osha.languageselector"
                insert-before="*" />                                         
@@ -35,19 +35,19 @@
                insert-after="osha.languageselector" />               
     </order>
     
-    <order manager="plone.contentviews" skinname="OSHA Plone Theme"
+    <order manager="plone.contentviews" skinname="*"
            based-on="Plone Default">              
       <viewlet name="osha.abovecontentportlets"
                insert-before="*" />             
     </order>    
     
-    <order manager="plone.belowcontent" skinname="OSHA Plone Theme"
+    <order manager="plone.belowcontent" skinname="*"
            based-on="Plone Default">              
       <viewlet name="osha.belowcontentportlets"
                insert-after="*" />             
     </order>    
     
-    <order manager="plone.portalfooter" skinname="OSHA Plone Theme"
+    <order manager="plone.portalfooter" skinname="*"
            based-on="Plone Default"> 
       <viewlet name="osha.footer.actions"
                insert-before="*" />              
@@ -55,24 +55,24 @@
                insert-after="osha.footer.actions" />
     </order>    
 
-    <hidden manager="plone.portalheader" skinname="OSHA Plone Theme">
+    <hidden manager="plone.portalheader" skinname="*">
       <viewlet name="plone.logo" />        
       <viewlet name="plone.searchbox" />  
       <viewlet name="plone.global_sections" />      
       <viewlet name="plone.site_actions" />      
     </hidden>
-    
-    <hidden manager="plone.portaltop" skinname="OSHA Plone Theme">
+        
+    <hidden manager="plone.portaltop" skinname="*">
       <viewlet name="plone.personal_bar" />
       <viewlet name="plone.path_bar" />  
       <viewlet name="plone.app.i18n.locales.languageselector" />      
     </hidden>
 
-    <hidden manager="plone.belowcontentbody" skinname="OSHA Plone Theme">
+    <hidden manager="plone.belowcontentbody" skinname="*">
       <viewlet name="plone.abovecontenttitle.documentactions" />
     </hidden>    
     
-    <hidden manager="plone.portalfooter" skinname="OSHA Plone Theme">
+    <hidden manager="plone.portalfooter" skinname="*">
       <viewlet name="plone.footer" />
       <viewlet name="plone.colophon" />      
     </hidden>    

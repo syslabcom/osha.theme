@@ -1,0 +1,4 @@
+    <layers>
+        <layer name="plone.browserlayer.tests" 
+               interface="osha.theme.browser.interfaces.IOSHAThemeLayer" />
+    </layers>

@@ -17,9 +17,9 @@
  <object name="osha_theme_scripts"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_scripts"/>   
- <object name="osha_theme_healthyworkplaces"
+ <object name="osha_theme_ew2005"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_2005"/>    
+    directory="osha.theme:skins/osha_theme_ew2005"/>    
 
  <skin-path name="OSHA Plone Theme" based-on="Plone Default">
   <layer name="osha_theme_custom_images"
@@ -32,6 +32,11 @@
      insert-after="osha_theme_styles"/>    
   <layer name="osha_theme_scripts"
      insert-after="osha_theme_tableless"/>      
+ </skin-path>
+
+ <skin-path name="EW2005" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_ew2005"
+     insert-after="custom"/>
  </skin-path>
 
 </object>
