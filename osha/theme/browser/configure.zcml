@@ -240,6 +240,13 @@
         permission="zope2.View"
     />
 
+    <browser:page
+        for="*"
+        name="broken-link-log"
+        class=".brokenlinks.BrokenLinkLog"
+        permission="zope2.View"
+    />
+
   <browser:page
       name="sitemap.xml.gz"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"

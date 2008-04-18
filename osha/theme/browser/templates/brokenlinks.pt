@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      >
+
+  <metal:css fill-slot='css_slot'>
+  <link type='text/css'
+      rel='stylesheet'
+      media='all'
+      title='Linkchecker Stylesheet'
+      tal:condition='here/lc_colors.css'
+      tal:attributes='href here/lc_colors.css/absolute_url' />
+  <style type="text/css">
+    .color_red {color: red;}    
+    .color_orange {color: orange;}    
+    .odd { background-color: #eee;}
+  </style>    
+  </metal:css>
+  
+  <metal:block metal:fill-slot="main"
+    tal:define="links view/broken_links;
+                Batch python:modules['Products.CMFPlone'].Batch;
+                b_size  python:50;
+                b_start python:0;
+                b_start request/b_start | b_start;
+                searchterm request/SearchableText|nothing;
+                ">
+    
+    <h1 i18n:translate="header_all_links_in_state">
+      All links in state <span i18n:name="state"
+                             i18n:translate="" 
+                             tal:content="request/link_state |string:red or orange" />
+    </h1>
+    
+    <a tal:attributes="href string:${here/portal_url}/lc_balanced_score_card"
+       i18n:translate="label_up_to_scorecard" 
+       class="link-parent">
+      Up to balanced score card
+    </a>
+    
+    <metal:block use-macro="here/lc_macros/macros/batchTable">
+      <metal:block fill-slot="header_cols">
+        <th i18n:translate="link_header_document">
+          Page containing the broken link
+        </th>
+      </metal:block>
+
+      <metal:block fill-slot="body_cols">
+        <td> 
+          <a class="navItem navLevel1"
+             tal:attributes="href link/path;
+                             title link/path" 
+                             > 
+            <span class="navItemText" 
+                    tal:content="link/path">
+              url
+            </span>
+          </a>
+        </td>
+      </metal:block>
+    </metal:block>
+  </metal:block>
+</html>
+
+
+
