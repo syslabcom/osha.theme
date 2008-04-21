@@ -9,7 +9,7 @@
   <body>
 
     <metal:macro define-macro="searchresults">
-      <tal:defines define="oshaview python:context.restrictedTraverse('@@osha');">
+      <tal:defines define="oshaview python:context.restrictedTraverse('@@oshaview');">
 
         <dt>
             <img tal:attributes="src string:${result/getIcon};

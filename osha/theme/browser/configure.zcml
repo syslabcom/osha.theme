@@ -8,7 +8,7 @@
     <!-- OSHA Tool view -->
     <browser:page
         for="*"
-        name="osha"
+        name="oshaview"
         class=".oshaview.OSHA"
         permission="zope.Public"
         allowed_interface=".interfaces.IOSHA"
