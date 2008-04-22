@@ -55,24 +55,24 @@
                insert-after="osha.footer.actions" />
     </order>    
 
-    <hidden manager="plone.portalheader" skinname="*">
+    <hidden manager="plone.portalheader" skinname="OSHA Plone Theme" based-on="Plone Default">
       <viewlet name="plone.logo" />        
       <viewlet name="plone.searchbox" />  
       <viewlet name="plone.global_sections" />      
       <viewlet name="plone.site_actions" />      
     </hidden>
         
-    <hidden manager="plone.portaltop" skinname="*">
+    <hidden manager="plone.portaltop" skinname="OSHA Plone Theme">
       <viewlet name="plone.personal_bar" />
       <viewlet name="plone.path_bar" />  
       <viewlet name="plone.app.i18n.locales.languageselector" />      
     </hidden>
 
-    <hidden manager="plone.belowcontentbody" skinname="*">
+    <hidden manager="plone.belowcontentbody" skinname="OSHA Plone Theme">
       <viewlet name="plone.abovecontenttitle.documentactions" />
     </hidden>    
     
-    <hidden manager="plone.portalfooter" skinname="*">
+    <hidden manager="plone.portalfooter" skinname="OSHA Plone Theme">
       <viewlet name="plone.footer" />
       <viewlet name="plone.colophon" />      
     </hidden>    
