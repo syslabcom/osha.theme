@@ -41,7 +41,7 @@
             </div>
             
             <p tal:define="descr result/Description" 
-               tal:content="python:here.restrictedTraverse('@@osha').cropHtmlText(descr, 200)" />
+               tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
 
             <span class="documentByLine">
                 <tal:publication_date>
