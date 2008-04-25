@@ -34,9 +34,75 @@
      insert-after="osha_theme_tableless"/>      
  </skin-path>
 
+ <skin-path name="HealthyWorkplaces" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_healthyworkplaces"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="HWI" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_hwi"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="EW2007" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_ew2007"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="EW2006" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_ew2006"
+     insert-after="custom"/>
+ </skin-path>
+
  <skin-path name="EW2005" based-on="OSHA Plone Theme">
   <layer name="osha_theme_ew2005"
      insert-after="custom"/>
  </skin-path>
+
+ <skin-path name="EW2004" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_ew2004"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="EW2003" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_ew2003"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="EW2002" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_ew2002"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="EW2001" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_ew2001"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="EW2000" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_ew2000"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="NewOSHEra" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_newoshera"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="RiskObservatory" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_riskobservatory"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="SME" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_sme"
+     insert-after="custom"/>
+ </skin-path>
+
+ <skin-path name="WorkingOnSafety" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_wos"
+     insert-after="custom"/>
+ </skin-path>
+
 
 </object>
