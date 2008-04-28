@@ -1,0 +1,6 @@
+<metal:block define-macro="campaign_area">
+    <tal:block condition="cmp_logo_tag">
+        <img src="campaign_logo.jpg" alt=""
+             tal:replace="structure cmp_logo_tag" />
+    </tal:block>
+</metal:block>
