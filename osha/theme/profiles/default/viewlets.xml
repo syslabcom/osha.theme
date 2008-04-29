@@ -77,4 +77,28 @@
       <viewlet name="plone.colophon" />      
     </hidden>    
 
+<!-- test for EW2005 -->
+
+    <hidden manager="plone.portalheader" skinname="EW2005">
+      <viewlet name="plone.logo" />        
+      <viewlet name="plone.searchbox" />  
+      <viewlet name="plone.global_sections" />      
+      <viewlet name="plone.site_actions" />      
+    </hidden>
+        
+    <hidden manager="plone.portaltop" skinname="EW2005">
+      <viewlet name="plone.personal_bar" />
+      <viewlet name="plone.path_bar" />  
+      <viewlet name="plone.app.i18n.locales.languageselector" />      
+    </hidden>
+
+    <hidden manager="plone.belowcontentbody" skinname="EW2005">
+      <viewlet name="plone.abovecontenttitle.documentactions" />
+    </hidden>    
+    
+    <hidden manager="plone.portalfooter" skinname="EW2005">
+      <viewlet name="plone.footer" />
+      <viewlet name="plone.colophon" />      
+    </hidden>    
+
 </object>
