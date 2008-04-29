@@ -5,14 +5,14 @@ plone_skin:string=OSHA Plone Theme
 logoName:string=logo.gif
 campaignLogoName:string=campaign_logo.gif
 
-primaryColor1:string=#858C90
-primaryColor2:string=#A6ACAE
-primaryColor3:string=#C8CBCC
-primaryColor4:string=#DEE0E0
-primaryColor5:string=#EDEEEF
+primaryColor1:string=#9FAB0E
+primaryColor2:string=#B9C710
+primaryColor3:string=#E3E99F
+primaryColor4:string=#F0F3CC
+primaryColor5:string=#F8F9E7
 primaryColor6:string=#FFFFFF
 
-secondaryColor5:string=#C8CBCC
+secondaryColor5:string=#E3E99F
 
 fontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
 fontBaseSize:string=70%
@@ -21,22 +21,22 @@ fontSmallSize:string=95%
 
 backgroundColor:string=White
 
-linkColor:string=#871265
-linkActiveColor:string=#F04F11
-linkVisitedColor:string=#C23E0C
+linkColor:string=#5C6806
+linkActiveColor:string=#1357AA
+linkVisitedColor:string=#73828D
 
 borderWidth:string=1px
 borderStyle:string=solid
 borderStyleAnnotations:string=dashed
 
-globalBorderColor:string=#A6ACAE
-globalBackgroundColor:string=#A6ACAE
+globalBorderColor:string=#B9C710
+globalBackgroundColor:string=#B9C710
 globalFontColor:string=#191919
 
 headingFontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
 
-contentViewBorderColor:string=#858C90
-contentViewBackgroundColor:string=#C8CBCC
+contentViewBorderColor:string=#9FAB0E
+contentViewBackgroundColor:string=#E3E99F
 contentViewFontColor:string=#578308
 
 inputFontColor:string=#191919
