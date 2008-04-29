@@ -1,10 +1,25 @@
 from zope.component import getUtility
 from zope.component import getMultiAdapter
-
+from persistent.dict import PersistentDict
+from plone.app.viewletmanager.interfaces import IViewletSettingsStorage
 from plone.portlets.interfaces import IPortletAssignmentMapping
 from plone.portlets.interfaces import IPortletManager
+from Products.CMFCore.utils import getToolByName
 
 from osha.theme import portlets
+
+
+def helpViewletManager(portal):
+    """ Viewlet storage works only for skins that have been hidden once before
+        With this we perform a kind of registration for skins
+    """        
+    portal_skins = getToolByName(portal, 'portal_skins')
+    skins = portal_skins.getSkinSelections()
+    
+    storage = getUtility(IViewletSettingsStorage)
+    
+    for skin in skins:
+        storage._hidden.setdefault(skin, PersistentDict())
 
 def setupVarious(context):
     
@@ -17,14 +32,5 @@ def setupVarious(context):
         return
                 
     portal = context.getSite()
-    #assignPortlets(portal)
-        
-def assignPortlets(portal):
-    rightColumn = getUtility(IPortletManager, name=u'plone.rightcolumn',
-            context=portal)
-    
-    right = getMultiAdapter((portal, rightColumn,), IPortletAssignmentMapping,
-            context=portal)                 
+    helpViewletManager(portal)
 
-    if u'alertservice' not in right:
-        right[u'alertservice'] = portlets.alertservice.Assignment()
