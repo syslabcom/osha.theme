@@ -157,8 +157,7 @@
             </div> 
 
             <div class="field_vocab"
-                 tal:define="level python:2;
-                             portal_type string:OSH_Link">
+                 tal:define="portal_type string:OSH_Link">
                           <metal:use use-macro="here/filter_macros/macros/MultilingualThesaurus"></metal:use>
             </div> 
                
