@@ -37,7 +37,7 @@ headingFontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, san
 
 contentViewBorderColor:string=#F9C83D
 contentViewBackgroundColor:string=#FDE9B1
-contentViewFontColor:string=#578308
+contentViewFontColor:string=#000
 
 inputFontColor:string=#191919
 
