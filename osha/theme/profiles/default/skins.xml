@@ -41,6 +41,27 @@
  <object name="osha_theme_ew2007"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_ew2007"/>     
+ <object name="osha_theme_hwi"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_hwi"/>     
+ <object name="osha_theme_newoshera"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_newoshera"/>     
+ <object name="osha_theme_riskobservatory"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_riskobservatory"/>     
+ <object name="osha_theme_healthyworkplaces"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_healthyworkplaces"/>     
+ <object name="osha_theme_sme"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_sme"/>     
+ <object name="osha_theme_wos"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_wos"/>     
+
+
+
 
  <skin-path name="OSHA Plone Theme" based-on="Plone Default">
   <layer name="osha_theme_custom_images"
