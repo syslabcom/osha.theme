@@ -17,6 +17,7 @@
  <object name="osha_theme_scripts"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_scripts"/>   
+    
  <object name="osha_theme_ew2000"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_ew2000"/>    
@@ -41,6 +42,7 @@
  <object name="osha_theme_ew2007"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_ew2007"/>     
+    
  <object name="osha_theme_hwi"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_hwi"/>     

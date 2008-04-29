@@ -1,0 +1,18 @@
+<style type="text/css">dl.portletMoreAbout .portletItem ul {list-style-image: url(bullet.gif);</style>
+<dl class="portlet portletMoreAbout"
+    i18n:domain="osha"
+    tal:define="title view/title"
+    tal:condition="view/content">
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:replace="title" />
+        <a tal:condition="view/editable" tal:attributes="href view/editlink">[edit]</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem even"
+        tal:define="plone_view context/@@plone;">
+        <span tal:replace="structure view/content" />
+    </dd>
+        
+</dl>

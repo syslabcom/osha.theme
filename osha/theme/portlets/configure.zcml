@@ -91,4 +91,14 @@
         editview=".search.EditForm"
         />
 
+ <!-- More About portlet -->
+     <plone:portlet
+         name="osha.MoreAbout"
+         interface=".moreabout.IMoreAboutPortlet"
+         assignment=".moreabout.Assignment"
+         renderer=".moreabout.Renderer"
+         addview=".moreabout.AddForm"
+         />        
+
+
 </configure>

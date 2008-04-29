@@ -193,6 +193,15 @@ dl.portletCampaigns .image-right {
     border: none;
     margin: 0 0 0.5em 0;
 }
+
+dl.portletMoreAbout .portletItem ul {
+    list-style-image: url(bullet.gif);
+    list-style-type:square;
+    padding-left: 15px;
+    line-height: 1.2em;
+}
+
+
 #belowcontent-portlets {
     margin: 1em 0 ;
 }

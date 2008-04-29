@@ -44,5 +44,11 @@
       addview="osha.GoogleSearch"
       title="Google Search"
       description="Search the realm of OSHA using Google CSE" /> 
+
+  <portlet
+      addview="osha.MoreAbout"
+      title="More About Portlet"
+      description="Lists the contents of a file named portlet_moreabout in the current context." />  
+
           
 </portlets>
