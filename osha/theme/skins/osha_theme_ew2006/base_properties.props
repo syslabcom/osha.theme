@@ -5,26 +5,16 @@ plone_skin:string=OSHA Plone Theme
 logoName:string=logo.gif
 campaignLogoName:string=campaign_logo.gif
 
-<<<<<<< .mine
+
 primaryColor1:string=#488FCC
 primaryColor2:string=#91BCE0
 primaryColor3:string=#B6D2EB
 primaryColor4:string=#D1E3F2
 primaryColor5:string=#E4EEF7
-=======
-primaryColor1:string=#858C90
-primaryColor2:string=#A6ACAE
-primaryColor3:string=#C8CBCC
-primaryColor4:string=#DEE0E0
-primaryColor5:string=#EDEEEF
->>>>>>> .r1063
+
 primaryColor6:string=#FFFFFF
 
-<<<<<<< .mine
 secondaryColor5:string=#B6D2EB
-=======
-secondaryColor5:string=#C8CBCC
->>>>>>> .r1063
 
 fontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
 fontBaseSize:string=70%
@@ -33,38 +23,22 @@ fontSmallSize:string=95%
 
 backgroundColor:string=White
 
-<<<<<<< .mine
 linkColor:string=#265C88
 linkActiveColor:string=#1357AA
 linkVisitedColor:string=#73828D
-=======
-linkColor:string=#871265
-linkActiveColor:string=#F04F11
-linkVisitedColor:string=#C23E0C
->>>>>>> .r1063
 
 borderWidth:string=1px
 borderStyle:string=solid
 borderStyleAnnotations:string=dashed
 
-<<<<<<< .mine
 globalBorderColor:string=#91BCE0
 globalBackgroundColor:string=#91BCE0
-=======
-globalBorderColor:string=#A6ACAE
-globalBackgroundColor:string=#A6ACAE
->>>>>>> .r1063
 globalFontColor:string=#191919
 
 headingFontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
 
-<<<<<<< .mine
 contentViewBorderColor:string=#488FCC
 contentViewBackgroundColor:string=#B6D2EB
-=======
-contentViewBorderColor:string=#858C90
-contentViewBackgroundColor:string=#C8CBCC
->>>>>>> .r1063
 contentViewFontColor:string=#578308
 
 inputFontColor:string=#191919
