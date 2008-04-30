@@ -1,8 +1,8 @@
+<tal:cond condition="view/content">
 <style type="text/css">dl.portletMoreAbout .portletItem ul {list-style-image: url(bullet.gif);</style>
 <dl class="portlet portletMoreAbout"
     i18n:domain="osha"
-    tal:define="title view/title"
-    tal:condition="view/content">
+    tal:define="title view/title">
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <span tal:replace="title" />
@@ -16,3 +16,4 @@
     </dd>
         
 </dl>
+</tal:cond>
