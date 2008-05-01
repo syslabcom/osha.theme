@@ -1,0 +1,62 @@
+/*
+ *  This is the file where you put your CSS changes. 
+ *  You should preferrably use this and override the 
+ *  relevant properties you want to change here instead 
+ *  of customizing plone.css to survive upgrades. Writing
+ *  your own plone.css only makes sense for very heavy 
+ *  customizations. Useful variables from Plone are 
+ *  documented at the bottom of this file.
+ */
+ 
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+
+#portal-columns {
+    background: &dtml-primaryColor4;;
+}
+
+dl.portlet {
+	  background: &dtml-primaryColor3;;
+} 
+
+.portletNavigationTree {
+    background: &dtml-primaryColor3;;
+}
+
+.navTreeItem a:hover,
+dd.portletItem .navTreeItem a:hover {
+    background-color: &dtml-primaryColor1;;
+}
+.navTreeCurrentItem,
+.navTreeItemInPath {
+    background: &dtml-primaryColor1;;
+}
+
+#portal-header {
+    background-image: url('&dtml-portal_url;/topbanner2.gif') !important;
+}
+    
+#osha-campaignarea {
+    background: #D2ADCF url(bg_campaign_area.jpg) bottom left repeat-x;
+    text-align: left;
+}
+
+#campaign_logo2 {
+    float: right;
+    width: 100px;
+    height: 58px;
+    background: #D2ADCF url(&dtml-portal_url;/img_campaign_area.jpg) top left repeat-x;
+    
+}
+#siteactions-wrapper {
+    padding: 0 !important;
+    height: 58px !important;
+}
+
+#osha-topdropdowns {
+
+}
+
+/* </dtml-with> */
+

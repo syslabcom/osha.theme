@@ -1,0 +1,57 @@
+title:string=OSHA Plone Theme's color, font, logo and border defaults
+
+plone_skin:string=OSHA Plone Theme
+
+logoName:string=logo.gif
+
+primaryColor1:string=#547481
+primaryColor2:string=#6CA4BB
+primaryColor3:string=#ACCFDE
+primaryColor4:string=#C8DFE9
+primaryColor5:string=#E3EFF4
+primaryColor6:string=#FFFFFF
+
+secondaryColor5:string=#ACCFDE
+
+fontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
+fontBaseSize:string=70%
+fontColor:string=#191919
+fontSmallSize:string=95%
+
+backgroundColor:string=White
+
+linkColor:string=#354A53
+linkActiveColor:string=#1357AA
+linkVisitedColor:string=#73828D
+
+borderWidth:string=1px
+borderStyle:string=solid
+borderStyleAnnotations:string=dashed
+
+globalBorderColor:string=#6CA4BB
+globalBackgroundColor:string=#6CA4BB
+globalFontColor:string=#191919
+
+headingFontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
+
+contentViewBorderColor:string=#547481
+contentViewBackgroundColor:string=#ACCFDE
+contentViewFontColor:string=#000
+
+inputFontColor:string=#191919
+
+textTransform:string=none
+
+evenRowBackgroundColor:string=transparent 
+oddRowBackgroundColor:string=transparent
+
+notifyBorderColor:string=#ffa500
+notifyBackgroundColor:string=#ffce7b
+
+discreetColor:string=#666666
+helpBackgroundColor:string=#ffffe1
+
+portalMinWidth:string=70em
+columnContentWidth:string=68%
+columnOneWidth:string=16%
+columnTwoWidth:string=16%

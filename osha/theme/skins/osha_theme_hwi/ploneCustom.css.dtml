@@ -1,0 +1,69 @@
+/*
+ *  This is the file where you put your CSS changes. 
+ *  You should preferrably use this and override the 
+ *  relevant properties you want to change here instead 
+ *  of customizing plone.css to survive upgrades. Writing
+ *  your own plone.css only makes sense for very heavy 
+ *  customizations. Useful variables from Plone are 
+ *  documented at the bottom of this file.
+ */
+ 
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+
+body {
+    background: transparent url(&dtml-portal_url;/logobackground.gif) no-repeat !important;
+}
+
+#portal-columns {
+    background: &dtml-primaryColor4;;
+}
+
+dl.portlet {
+	  background: &dtml-primaryColor3;;
+} 
+
+.contentViews,
+.contentActions { 
+    font-size: &dtml-fontSmallSize;;
+}
+
+.dropdown select,
+#portal-languageselector select {
+    font-size: 110% !important;
+}
+
+.portletNavigationTree {
+    background: &dtml-primaryColor3;;
+}
+
+.navTreeItem a:hover,
+dd.portletItem .navTreeItem a:hover {
+    background-color: &dtml-primaryColor1;;
+}
+.navTreeCurrentItem,
+.navTreeItemInPath {
+    background: &dtml-primaryColor1;;
+}
+
+#osha-campaignarea {
+    background-color: #ffffff;
+    border-bottom: 1px solid &dtml-primaryColor1;;
+    text-align: center;
+}
+
+
+#seminars {
+    background-image: url(&dtml-portal_url;//hwi_seminar_icon.gif) !important;
+    background-position: 8px 5px !important;
+    background-repeat: no-repeat !important;
+    height: 26px;
+    font-weight: bold;
+    padding-top: 6px;
+    padding-bottom: 12px;
+    padding-left: 50px;
+}
+
+/* </dtml-with> */
+
