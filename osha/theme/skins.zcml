@@ -15,6 +15,12 @@
    <cmf:registerDirectory name="osha_theme_ew2004"/>    
    <cmf:registerDirectory name="osha_theme_ew2005"/>    
    <cmf:registerDirectory name="osha_theme_ew2006"/>    
-   <cmf:registerDirectory name="osha_theme_ew2007"/>   
+   <cmf:registerDirectory name="osha_theme_ew2007"/>      
+   <cmf:registerDirectory name="osha_theme_sme"/>     
+   <cmf:registerDirectory name="osha_theme_hwi"/>     
+   <cmf:registerDirectory name="osha_theme_newoshera"/>     
+   <cmf:registerDirectory name="osha_theme_healthyworkplaces"/>     
+   <cmf:registerDirectory name="osha_theme_wos"/>     
+   <cmf:registerDirectory name="osha_theme_riskobservatory"/>     
 
 </configure>
