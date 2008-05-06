@@ -23,7 +23,7 @@ class DBFilterView(BrowserView):
         
         TYPES = [ 
             ('OSH Link', 'OSH_Link', 'OSH_Link' in search_portal_types) ,
-            ('Risk Assessment Link', 'RiskAssessmentLink', 'RiskAssessmentLink' in search_portal_types) ,
+            ('Risk Assessment Link', 'RALink', 'RALink' in search_portal_types) ,
             ('Case Study', 'CaseStudy', 'CaseStudy' in search_portal_types) ,
             ('Provider', 'Provider', 'Provider' in search_portal_types) ,
             ('Publication', 'Publication', 'Publication' in search_portal_types)
