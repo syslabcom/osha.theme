@@ -51,7 +51,7 @@ class Renderer(base.Renderer):
                 
     def _getfile(self):
         context = Acquisition.aq_inner(self.context)
-        portlet_moreabout = getattr(context, 'portlet_moreabout', None)
+        portlet_moreabout = getattr(context, 'more-about', None)
         if portlet_moreabout is None:
             return None        
         return portlet_moreabout
