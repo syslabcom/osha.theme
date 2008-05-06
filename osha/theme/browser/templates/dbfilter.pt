@@ -192,7 +192,7 @@
                       results python:here.portal_catalog(query);">
 
         <!--h1>Filtered by:
-            <span tal:condition="python:keywords"><span tal:replace="keywords"/></span>
+            <span tal:replace="query"/>
         </h1-->
         
         
