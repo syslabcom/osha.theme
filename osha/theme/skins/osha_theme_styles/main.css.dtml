@@ -200,7 +200,9 @@ dl.portletMoreAbout .portletItem ul {
     padding-left: 15px;
     line-height: 1.2em;
 }
-
+dl.portletMoreAbout .portletItem {
+    background-color: &dtml-contentViewBackgroundColor;
+}
 
 #belowcontent-portlets {
     margin: 1em 0 ;
