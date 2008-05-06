@@ -23,6 +23,7 @@
         </dt>
 
         <dd>
+          <metal:macro define-macro="provider">
             <div tal:define="provuid python: getattr(result, 'getRemoteProviderUID' , [])"
                  tal:condition="python:provuid and len(provuid)">
               
@@ -39,6 +40,7 @@
                 </p>
               </fieldset>
             </div>
+          </metal:macro>
             
             <p tal:define="descr result/Description" 
                tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
