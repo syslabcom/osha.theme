@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+  <metal:block fill-slot="base">
+    <tal:block tal:define="dummy python:request.set('disable_border', 1)" tal:replace="nothing" />
+  </metal:block>
+
+
+<body>
+
+<div metal:fill-slot="main" i18n:domain="osha">
+
+    <h1 i18n:translate="heading_siteupdate" class="documentFirstHeading"
+        i18n:domain="osha">Site Update</h1>
+
+        <metal:block tal:define="results view/results;
+                                 b_start python:request.get('b_start', 0);
+                                 Batch python:modules['Products.CMFPlone'].Batch;
+                                 batch python:Batch(results, 20, int(b_start), orphan=1);
+                                 currday python:None">
+
+            <div class="fakeList" tal:condition="results">
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+            <dl>
+              <tal:block repeat="item batch">
+                <div tal:define="day python: item[0]; ob python:item[1]; newday python:day!=currday; currday day;">
+
+                    <dt tal:condition="newday" tal:content="python:toLocalizedTime(ob.get('modified'))">New date</dt>
+                    <dd>
+                        <a href=""
+                           tal:attributes="href ob/getURL"
+                           tal:content="ob/Title">entry</a> <br/>
+                           <span tal:replace="ob/Description" />
+                    </dd>                    
+                    
+                </div>
+              </tal:block>
+            </dl>
+            </div>
+
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+        </metal:block>
+
+</div>
+
+</body>
+
+</html>
+

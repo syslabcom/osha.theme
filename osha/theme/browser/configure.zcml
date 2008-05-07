@@ -221,6 +221,13 @@
 
     <browser:page
         for="*"
+        name="site_update"
+        class=".site_update.SiteUpdateView"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for="*"
         name="index_providers"
         class=".index_providers.IndexProvidersView"
         permission="zope2.View"
