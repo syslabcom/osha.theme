@@ -1,3 +1,4 @@
+import Acquisition
 from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
@@ -8,6 +9,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFCore.utils import getToolByName
 
 class IAlertServicePortlet(IPortletDataProvider):
     
@@ -39,6 +41,16 @@ class Renderer(base.Renderer):
         icon = self.portal.restrictedTraverse('portlet_alertservice_icon.gif')
         return icon.tag(title='Alert Service')
 
+    @memoize
+    def num_subscribers(self):
+        context = Acquisition.aq_inner(self.context)
+        portal_alerts = getToolByName(context, 'portal_alertservice')
+        try:
+            n = len(portal_alerts.nprofiles.objectIds())
+        except:
+            n=''
+        return n
+        
     @memoize
     def _data(self):
         return True

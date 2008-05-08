@@ -3,9 +3,9 @@
 
   <dt class="portletHeader">
       <span class="portletTopLeft"></span>
-      <a class="tile"
+      <a class="tile" i18n:domain="osha"
          tal:attributes="href view/search_form"
-         i18n:translate="box_search">Search</a>
+         i18n:translate="Looking for something specific?">Search</a>
       <span class="portletTopRight"></span>
   </dt>
 

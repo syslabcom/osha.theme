@@ -48,6 +48,10 @@ dl.portlet #osha-topactions {
 #portal-network {
     padding:0 1em;
 }
+#portal-siteactions {
+    font-size: 10px;
+}
+
 .dropdown {
     background: transparent url('&dtml-portal_url;/select.gif') 0% 50% no-repeat;
     padding-left: 1.5em;
@@ -157,6 +161,11 @@ dl.portletEW2007 {
 dl.portletEW2007 dt.portletHeader {
     background-color: #858C90;
 }    
+dl.portletFirstTime dt.portletHeader {
+    line-height: 1.2em;
+    padding-top:5px;
+    padding-bottom: 5px;
+}
 dl.portletCampaigns {
     background-color: #C8CBCC;
 }

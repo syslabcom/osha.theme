@@ -5,7 +5,7 @@
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <span class="tile"
-              i18n:translate="box_alertservice">
+              i18n:translate="Alert Service">
             Alert Service
         </span>
         <span class="portletTopRight"></span>
@@ -16,15 +16,14 @@
               tal:condition="portlet_icon">
             <img tal:replace="structure portlet_icon" />
         </span>
-        <a rel="nofollow" href="http://osha.europa.eu/subscribe_form?sourceid=alertbanner">Updates on topics of your choice
-            <br/>
-            - Subscribe -
+        <a rel="nofollow" href="http://osha.europa.eu/subscribe_form?sourceid=alertbanner">
+        <span tal:omit-tag="" i18n:translate="portlet_alertservice_text">Updates on topics of your choice</span>
         </a>
     </dd>
 
     <dd class="portletFooter">
-        <strong id="numalertsubscribers">1340</strong> 
-        <span i18n:translate="text_subscribers"
+        <strong id="numalertsubscribers" tal:content="view/num_subscribers">1340</strong> 
+        <span i18n:translate="box_oshmail_subscribers"
               tal:omit-tag="">subscribers</span>
     </dd>
 

@@ -1,3 +1,4 @@
+import Acquisition
 from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
@@ -8,6 +9,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFCore.utils import getToolByName
 
 class IOSHMailPortlet(IPortletDataProvider):
     
@@ -38,6 +40,12 @@ class Renderer(base.Renderer):
     def icon(self):
         icon = self.portal.restrictedTraverse('portlet_newsletter_icon.png')
         return icon.tag(title='Free Newsletter')
+
+    @memoize
+    def num_subscribers(self):
+        context = Acquisition.aq_inner(self.context)
+        portal_properties = getToolByName(context, 'portal_properties')
+        return portal_properties.site_properties.getProperty('num_subscribers_oshmail')
 
     @memoize
     def _data(self):
