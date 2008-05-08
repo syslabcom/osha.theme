@@ -1,9 +1,10 @@
 <tal:language
     tal:define="available view/available;
                 languages view/languages;
+                dummy python:languages.sort(lambda x,y: cmp(x['code'], y['code']));
                 showFlags view/showFlags;
                 preflang  python:here.portal_languages.getPreferredLanguage()">
-    <ul id="portal-languageselector"
+    <ul id="portal-languageselector" accesskey="8"
         tal:condition="python:available and len(languages)>=2">
 
         <li tal:condition="showFlags"
@@ -35,7 +36,8 @@
 
         <li tal:condition="not: showFlags">
             <select style="font-size: 94%;"
-                    onchange=""                  
+                    onchange=""  
+                    accesskey="8"                
                     tal:attributes="onchange string:window.location= this.options[this.selectedIndex].getAttributeNode('url').value 
                     ">
                 <option tal:repeat="lang languages"

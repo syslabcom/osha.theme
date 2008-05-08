@@ -1,6 +1,38 @@
 <div id="siteactions-wrapper">
+
+         <a class="hiddenStructure" href="#documentContent"
+           accesskey="S"
+           i18n:domain="osha"
+           tal:attributes="href string:${context/absolute_url}#documentContent"
+           i18n:translate="label_skiptocontent">Skip to content</a>
+                     
+        <a class="hiddenStructure" href="#search"
+           accesskey="4"
+           i18n:domain="osha"
+           tal:attributes="href string:${context/portal_url}/search_form"
+           i18n:translate="Search">Search</a>
+
+        <a class="hiddenStructure" href="#faq"
+           accesskey="5"
+           i18n:domain="osha"
+           tal:attributes="href string:${context/portal_url}/faq"
+           i18n:translate="FAQ">FAQ</a>
+           
+        <a class="hiddenStructure" href="#help"
+           accesskey="6"
+           i18n:domain="osha"
+           tal:attributes="href string:${context/portal_url}/help"
+           i18n:translate="Help">Help</a>
+                      
+        <a class="hiddenStructure" href="#about"
+           accesskey="7"
+           i18n:domain="osha"
+           tal:attributes="href string:${context/portal_url}/about"
+           i18n:translate="About us">About us</a>
+           
+           
     <h2 i18n:domain="osha"
-        i18n:translate="heading_eashw">European Agency for Safety and Health at Work</h2>
+        i18n:translate="European Agency for Safety and Health at Work">European Agency for Safety and Health at Work</h2>
 
     <ul id="portal-siteactions"
         tal:define="accesskeys python: {'sitemap' : '3', 'accessibility' : '0', 'contact' : '9'};"

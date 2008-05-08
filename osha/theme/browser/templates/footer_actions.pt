@@ -1,7 +1,7 @@
 <div id="footeractions-wrapper">
     
     <ul id="portal-footeractions"
-        i18n:domain="plone">
+        i18n:domain="osha">
         
         <tal:document-actions 
              condition="view/document_actions"
