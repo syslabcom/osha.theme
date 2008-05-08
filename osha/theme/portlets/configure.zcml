@@ -100,5 +100,17 @@
          addview=".moreabout.AddForm"
          />        
 
+ <!-- Document Fallback portlet -->
+     <plone:portlet
+         name="osha.document_fallback"
+         interface=".document_fallback.IDocumentFallbackPortlet"
+         assignment=".document_fallback.Assignment"
+         renderer=".document_fallback.Renderer"
+         addview=".document_fallback.AddForm"
+         editview=".document_fallback.EditForm"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         />        
+
 
 </configure>

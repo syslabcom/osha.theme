@@ -1,0 +1,17 @@
+<tal:cond condition="view/document">
+<dl class="portlet portletDocumentFallback"
+    i18n:domain="osha">
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:replace="view/title" />
+        <a tal:condition="view/editable" tal:attributes="href view/editlink">[edit]</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem odd"
+        tal:define="plone_view context/@@plone;">
+        <span tal:replace="structure view/content" />
+    </dd>
+        
+</dl>
+</tal:cond>
