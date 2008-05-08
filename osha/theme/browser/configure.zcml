@@ -262,4 +262,11 @@
       layer=".interfaces.IOSHAThemeLayer"
      />
 
+  <browser:page
+    name="getVocabularyPath"
+    for="*"
+    class=".vocabulary.VocabularyPathView"
+    permission="zope2.Public"
+    />
+
 </configure>
