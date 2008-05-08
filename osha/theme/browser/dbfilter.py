@@ -79,9 +79,9 @@ class DBFilterView(BrowserView):
         if subcategory:
             query.update({'subcategory':subcategory})
 
-        getCountry = self.request.get('getCountry', '')
-        if getCountry:
-            query.update({'getCountry':getCountry})
+        country = self.request.get('country', '')
+        if country:
+            query.update({'country':country})
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':

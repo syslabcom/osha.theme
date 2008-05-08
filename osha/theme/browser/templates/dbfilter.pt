@@ -43,7 +43,7 @@
                    nace python:nace==[''] and '' or nace;
                    category request/category|string:;
                    getRemoteLanguage request/getRemoteLanguage|string:;
-                   getCountry request/getCountry|string:;
+                   country request/country|string:;
                    search_portal_types view/search_portal_types;
                    Batch python:modules['Products.CMFPlone'].Batch;
                    DateTime python:modules['DateTime'].DateTime;
@@ -137,7 +137,7 @@
             <div class="field_default">
                <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
             </div> 
-            <div class="field_default">
+            <div class="field_default" tal:define="value country">
               <metal:use use-macro="here/filter_macros/macros/Country_compact_index"></metal:use>
             </div>
             <div class="field_default"
