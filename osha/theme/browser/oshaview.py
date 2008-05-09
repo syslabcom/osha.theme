@@ -45,4 +45,6 @@ class OSHA(BrowserView):
                     continue
                     
         seplist.sort(lambda x,y: cmp(x['title'].lower(), y['title'].lower()))
-        return seplist     
+        return seplist
+        
+            
