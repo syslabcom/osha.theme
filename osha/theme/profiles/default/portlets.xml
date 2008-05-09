@@ -50,6 +50,13 @@
       title="More About Portlet"
       description="Lists the contents of a file named portlet_moreabout in the current context." />  
 
+
+  <portlet
+      addview="osha.lingualinks"
+      title="LinguaLink Portlet"
+      description="Manage LinguaLinks." />  
+
+
   <portlet
       addview="osha.document_fallback"
       title="Document Fallback Portlet"

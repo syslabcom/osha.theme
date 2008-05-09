@@ -98,8 +98,17 @@
          assignment=".moreabout.Assignment"
          renderer=".moreabout.Renderer"
          addview=".moreabout.AddForm"
-         />        
-
+         />     
+            
+ <!-- Lingualink portlet -->
+     <plone:portlet
+         name="osha.lingualinks"
+         interface=".lingualink.ILinguaLinkPortlet"
+         assignment=".lingualink.Assignment"
+         renderer=".lingualink.Renderer"
+         addview=".lingualink.AddForm"
+         />  
+         
  <!-- Document Fallback portlet -->
      <plone:portlet
          name="osha.document_fallback"
