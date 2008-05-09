@@ -1,0 +1,92 @@
+
+<div tal:condition="view/check_access">
+
+<tal:view tal:define="dummy view/performActions|nothing">
+
+<dl class="portlet" id="portlet-recent" 
+    tal:condition="python:view and (view.isTranslatable() or view.isLinguaLink())">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span i18n:translate="portlet_heading">LinguaLink Manager</span>
+        <span class="portletTopRight"></span>
+    </dt>
+    <dd class="portletItem"
+        tal:condition="view/isTranslatable">
+        <p i18n:translate="portlet_current_item">
+            Current item is in 
+            <span i18n:name="language"
+                  tal:replace="python:context.portal_languages.getNameForLanguageCode(context.Language())" />.<br />        
+        </p>
+        <tal:block tal:define="llinks view/getLinguaLinks"
+             tal:condition="llinks">
+            <strong i18n:translate="portlet_list_of_lingualinks">List of LinguaLinks</strong>
+            <ul>
+                <li tal:repeat="lang llinks">
+                    <a href="#"
+                       tal:attributes="href python:llinks[lang].absolute_url();
+                                       title python:llinks[lang].title_or_id()"
+                       tal:content="python:context.portal_languages.getNameForLanguageCode(lang)">
+                    language
+                    </a>
+                </li>
+            </ul>
+        </tal:block>
+
+        <tal:block tal:define="langs view/getUnprocessedLanguages"
+             tal:condition="langs">
+            <strong i18n:translate="portlet_list_of_untranslated">List of Untranslated</strong>
+            <ul>
+                <li tal:repeat="lang langs">
+                    <span tal:content="python:context.portal_languages.getNameForLanguageCode(lang)">
+                    language
+                    </span>
+                </li>
+            </ul>
+            <p i18n:translate="portlet_create_lingualink">
+                Create 
+                <span i18n:name="createlink">
+                <a href="#"                                 
+                   tal:attributes="href string:${context/absolute_url}/${template_id}?createLinguaLinks=allmissing">
+                    LinguaLinks
+                </a>
+                </span> for untranslated.
+            </p>
+        </tal:block>
+
+
+        <tal:block tal:define="translations context/getTranslations"
+             tal:condition="translations">
+            <strong i18n:translate="portlet_list_of_translations">List of Translations</strong>
+            <ul>
+            <tal:repeat tal:repeat="lang translations">
+                <li tal:define="obj python:translations[lang][0]">
+                <a href="#" 
+                   tal:attributes="href obj/absolute_url;
+                                   title obj/title_or_id"
+                       tal:content="python:context.portal_languages.getNameForLanguageCode(lang)" >language</a>
+                </li>
+            </tal:repeat>
+            </ul>
+        </tal:block>
+    </dd>
+
+    <dd class="portletItem"
+        i18n:translate="portlet_this_is_lingualink_for"
+        tal:condition="view/isLinguaLink">
+        This is a LinguaLink for
+        <a href="#" 
+           tal:attributes="href context/getRemoteUrl" 
+           tal:content="python:context.getLinkTarget().title_or_id()"
+           i18n:name="canonical_title">canonical content</a>.
+    </dd>
+
+    <dd class="portletFooter">        
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>
+
+</tal:view>
+
+</div>
