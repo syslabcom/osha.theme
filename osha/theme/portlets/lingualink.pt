@@ -3,7 +3,7 @@
 
 <tal:view tal:define="dummy view/performActions|nothing">
 
-<dl class="portlet" id="portlet-recent" 
+<dl class="portlet portletLinguaLinks" id="portlet-lingualink" 
     tal:condition="python:view and (view.isTranslatable() or view.isLinguaLink())">
 
     <dt class="portletHeader">
@@ -35,19 +35,19 @@
 
         <tal:block tal:define="langs view/getUnprocessedLanguages"
              tal:condition="langs">
-            <strong i18n:translate="portlet_list_of_untranslated">List of Untranslated</strong>
-            <ul>
-                <li tal:repeat="lang langs">
-                    <span tal:content="python:context.portal_languages.getNameForLanguageCode(lang)">
+            <strong i18n:translate="portlet_list_of_untranslated">List of Untranslated</strong><br>
+            <span tal:repeat="lang langs">
+                <span tal:replace="python:context.portal_languages.getNameForLanguageCode(lang)">
                     language
-                    </span>
-                </li>
-            </ul>
+                </span>
+                <span tal:condition="not:repeat/lang/end" tal:omit-tag="">|</span>
+             </span>
+             <hr>
             <p i18n:translate="portlet_create_lingualink">
                 Create 
                 <span i18n:name="createlink">
                 <a href="#"                                 
-                   tal:attributes="href string:${context/absolute_url}/${template_id}?createLinguaLinks=allmissing">
+                   tal:attributes="href string:${context/absolute_url}?createLinguaLinks=allmissing">
                     LinguaLinks
                 </a>
                 </span> for untranslated.
@@ -58,16 +58,15 @@
         <tal:block tal:define="translations context/getTranslations"
              tal:condition="translations">
             <strong i18n:translate="portlet_list_of_translations">List of Translations</strong>
-            <ul>
             <tal:repeat tal:repeat="lang translations">
-                <li tal:define="obj python:translations[lang][0]">
+                <span tal:define="obj python:translations[lang][0]">
                 <a href="#" 
                    tal:attributes="href obj/absolute_url;
                                    title obj/title_or_id"
                        tal:content="python:context.portal_languages.getNameForLanguageCode(lang)" >language</a>
-                </li>
+                <span tal:condition="not:repeat/lang/end" tal:omit-tag="">|</span>
+                </span>
             </tal:repeat>
-            </ul>
         </tal:block>
     </dd>
 

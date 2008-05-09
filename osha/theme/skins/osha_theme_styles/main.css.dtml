@@ -166,6 +166,9 @@ dl.portletFirstTime dt.portletHeader {
     padding-top:5px;
     padding-bottom: 5px;
 }
+dl.portletLinguaLinks {
+    background-color: #F09C82;
+}
 dl.portletCampaigns {
     background-color: #C8CBCC;
 }
