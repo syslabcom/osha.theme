@@ -6,7 +6,7 @@
             
     <form name="networkchooser" 
           action=""
-          tal:attributes="action formAction"> 
+          xtal:attributes="action formAction"> 
           <div class="dropdown">
                <label for="euNetwork"
                       class="hiddenStructure"
