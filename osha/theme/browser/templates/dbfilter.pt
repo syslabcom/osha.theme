@@ -3,35 +3,6 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="osha"> 
 
-
-<metal:cssslot fill-slot="css_slot">
-
-
-  <!--style type="text/css" media="all" tal:condition="exists: portal/riskassessment_styles.css"
-         tal:content="string:@import url($portal_url/riskassessment_styles.css);">
-  </style-->
-
-  <!--style type="text/css">
-    #searchfields { background-color: #F3F6FF; border: 1px solid gray; padding:5px 10px; clear: both; height: 1%; }
-
-    .column1 { float: left; width: 40%; padding-right: 10px; border-right:none; }
-    .column2 { float: right; width: 55%; padding-left: 10px; border-left:  1px dotted gray;}
-    
-    .column2 .field_default, 
-    .column2 .field_vocabularypicker { xwidth: 300px; padding: 2px 0; }
-    .column2 .field_default input, 
-    .column2 .field_default select { width: 300px; }
-    .column2 .field_vocabularypicker #quicksearch_nace { width: 200px; }
-    .column2 .field_vocabularypicker .searchButton { width: 80px; }
-    
-    #db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; } 
-    .column1 input.input_checkbox, #multilingual_thesaurus li label input,
-    #nace li label input { width: 1.2em; border: none; background: transparent; padding: 0; }
-     
-</style-->
-</metal:cssslot>
-
-
 <div metal:fill-slot="main" i18n:domain="osha"
        tal:define="local_keyword python:here.getProperty('keyword', '');
                    keywords request/keywords| local_keyword |string:;
