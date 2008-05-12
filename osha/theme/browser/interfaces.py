@@ -12,6 +12,11 @@ class IThemeSpecific(IDefaultPloneLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
+class IHW2008Specific(IDefaultPloneLayer):
+    """Marker interface that defines a Zope 3 skin layer.
+    """
+
+
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
     

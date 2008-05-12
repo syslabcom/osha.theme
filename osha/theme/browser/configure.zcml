@@ -23,6 +23,12 @@
         name="OSHA Plone Theme"
         />
 
+    <interface
+        interface=".interfaces.IHW2008Specific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="HealthyWorkplaces"
+        />
+
     <!-- Viewlet manager that will wrap top actions -->
     <browser:viewletManager
         name="osha.header.topactions"
@@ -131,7 +137,7 @@
         name="osha.campaignarea2"
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         class=".viewlets.OSHACampaignArea2Viewlet"
-        layer=".interfaces.IOSHAThemeLayer"
+        layer=".interfaces.IHW2008Specific"
         permission="zope2.View" 
         />
         
