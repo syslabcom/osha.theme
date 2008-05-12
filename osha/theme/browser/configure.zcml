@@ -127,6 +127,14 @@
         permission="zope2.View" 
         />
         
+    <browser:viewlet  
+        name="osha.campaignarea2"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".viewlets.OSHACampaignArea2Viewlet"
+        layer=".interfaces.IOSHAThemeLayer"
+        permission="zope2.View" 
+        />
+        
     <!-- The breadcrumbs -->
     <browser:viewlet
         name="osha.path_bar"

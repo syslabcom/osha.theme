@@ -132,6 +132,47 @@ class OSHACampaignAreaViewlet(common.ViewletBase):
         else:
             self.campaign_logo_tag = ''
     
+class OSHACampaignArea2Viewlet(common.ViewletBase):
+    
+    render =  ViewPageTemplateFile('templates/osha_campaignarea2.pt')
+    
+    def update(self):
+        portal_state = getMultiAdapter((self.context, self.request),
+                                            name=u'plone_portal_state')
+        langtool = getToolByName(self.context, 'portal_languages', None) 
+        bound = langtool.getLanguageBindings()
+        current_lang = bound[0]                                           
+
+        self.navigation_root_url = portal_state.navigation_root_url()
+
+
+        portal = portal_state.portal()
+        
+        logoName = ''
+        
+        if(hasattr(portal.restrictedTraverse('base_properties'), 'campaignLogo2Name')):
+            logoName = portal.restrictedTraverse('base_properties').campaignLogo2Name
+       
+        if logoName != '':
+            cLogoName = ''
+            if current_lang != 'en':
+                try:
+                    init = portal.restrictedTraverse('base_properties').campaignLogo2Name
+                    file_name = init.split(".")
+                    file_name[0] = file_name[0] + "_" + current_lang 
+                    cLogoName = ".".join(file_name)
+                except:
+                    logoName = portal.restrictedTraverse('base_properties').campaignLogo2Name
+                    pass
+    
+            try:
+                self.campaign_logo2_tag = portal.restrictedTraverse(cLogoName).tag()
+            except:
+                self.campaign_logo2_tag = portal.restrictedTraverse(logoName).tag()
+                
+        else:
+            self.campaign_logo2_tag = ''
+            
 class OSHAFooterLanguageSelector(TranslatableLanguageSelector):
 
     render = ViewPageTemplateFile('templates/footer_languageselector.pt')
