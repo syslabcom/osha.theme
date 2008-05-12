@@ -6,7 +6,7 @@
 <metal:block fill-slot="top_slot"
              tal:define="dummy python:request.set('disable_border',1)" />
 
-<div metal:fill-slot="main" i18n:domain="osha"
+<div metal:fill-slot="main" i18n:domain="osha" tal:on-error="nothing"
        tal:define="keywords request/keywords|string:;
                    SearchableText request/SearchableText|string:;
                    Batch python:modules['Products.CMFPlone'].Batch;
@@ -91,7 +91,7 @@
 
   <div xtal:condition="python:keywords or SearchableText">
     <div tal:define="query python:{'portal_type': 'File',
-                                   'object_implements': 'slc.publications.interfaces.IPublicationEnhanced',
+                                   'object_provides': 'slc.publications.interfaces.IPublicationEnhanced',
                                    'Subject':keywords,
                                    'SearchableText':SearchableText,
                                    
@@ -115,7 +115,7 @@
 
 
 
-    <div tal:condition="results"
+    <div tal:condition="results" tal:on-error="nothing"
           tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
 
         <table border="0" id="resulttable">
