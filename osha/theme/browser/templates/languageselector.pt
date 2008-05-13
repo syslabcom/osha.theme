@@ -1,7 +1,7 @@
 <tal:language
     tal:define="available view/available;
                 languages view/languages;
-                dummy python:languages.sort(lambda x,y: cmp(x['code'], y['code']));
+                dummy python:languages.sort(lambda x,y: cmp(x['native'], y['native']));
                 showFlags view/showFlags;
                 preflang  python:here.portal_languages.getPreferredLanguage()">
     <ul id="portal-languageselector" accesskey="8"
