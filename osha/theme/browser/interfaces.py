@@ -23,6 +23,8 @@ class IOSHA(Interface):
     def cropText(text, length, ellipsis):
         """ Crop text on a word boundary """
         
+    def listMetaTags(context):
+        """ retrieve the metadata for the header and make osha specific additions """
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions

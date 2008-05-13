@@ -29,7 +29,7 @@
 
     <div tal:replace="structure provider:plone.htmlhead" />
 
-    <meta tal:define="metatags python:putils.listMetaTags(here).items()"
+    <meta tal:define="metatags python:here.restrictedTraverse('@@oshaview').listMetaTags(here).items()"
           tal:condition="metatags"
           tal:repeat="keyval metatags"
           tal:attributes="name python:keyval[0];
