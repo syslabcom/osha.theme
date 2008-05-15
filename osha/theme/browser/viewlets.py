@@ -99,11 +99,9 @@ class OSHACampaignAreaViewlet(common.ViewletBase):
         portal_state = getMultiAdapter((self.context, self.request),
                                             name=u'plone_portal_state')
         langtool = getToolByName(self.context, 'portal_languages', None) 
-        bound = langtool.getLanguageBindings()
-        current_lang = bound[0]                                           
+        current_lang = langtool.getPreferredLanguage()
 
         self.navigation_root_url = portal_state.navigation_root_url()
-
 
         portal = portal_state.portal()
         
@@ -112,25 +110,16 @@ class OSHACampaignAreaViewlet(common.ViewletBase):
         if(hasattr(portal.restrictedTraverse('base_properties'), 'campaignLogoName')):
             logoName = portal.restrictedTraverse('base_properties').campaignLogoName
        
+        #self.campaign_logo_tag = ''
         if logoName != '':
-            cLogoName = ''
             if current_lang != 'en':
-                try:
-                    init = portal.restrictedTraverse('base_properties').campaignLogoName
-                    file_name = init.split(".")
-                    file_name[0] = file_name[0] + "_" + current_lang 
-                    cLogoName = ".".join(file_name)
-                except:
-                    logoName = portal.restrictedTraverse('base_properties').campaignLogoName
-                    pass
+                file_name = logoName.split(".")
+                file_name[0] = file_name[0] + "_" + current_lang 
+                logoName = ".".join(file_name)
     
-            try:
-                self.campaign_logo_tag = portal.restrictedTraverse(cLogoName).tag()
-            except:
-                self.campaign_logo_tag = portal.restrictedTraverse(logoName).tag()
-                
-        else:
-            self.campaign_logo_tag = ''
+
+        self.campaign_logo_name = logoName                
+        self.campaign_logo_url = '%s/%s' % (self.navigation_root_url, logoName)         
     
 class OSHACampaignArea2Viewlet(common.ViewletBase):
     

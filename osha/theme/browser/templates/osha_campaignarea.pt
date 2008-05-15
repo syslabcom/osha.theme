@@ -1,7 +1,7 @@
 <div id="osha-campaignarea">
 		<div class="visualClearBoth"><!-- --></div>
         
-        <tal:block define="global cmp_logo_tag view/campaign_logo_tag"
+        <tal:block define="global cmp_logo_url view/campaign_logo_url"
                    condition="exists:here/campaign_area">
             <div metal:use-macro="here/campaign_area/macros/campaign_area|nothing" />
 		</tal:block>
