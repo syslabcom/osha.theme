@@ -283,4 +283,11 @@
     permission="zope2.Public"
     />
 
+  <browser:page
+    name="faq_view"
+    for="*"
+    class=".faq_view.FAQView"
+    permission="zope2.View"
+    />
+
 </configure>

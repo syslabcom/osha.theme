@@ -1,0 +1,57 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+  <metal:block fill-slot="base">
+    <tal:block tal:define="dummy python:request.set('disable_border', 1)" tal:replace="nothing" />
+  </metal:block>
+
+
+<body>
+
+<div metal:fill-slot="main" i18n:domain="osha">
+
+    <a name="top"></a>
+    <h1 i18n:translate="headingfaq" class="documentFirstHeading"
+        i18n:domain="osha">FAQ</h1>
+
+        <metal:block tal:define="items view/items;
+                             b_start python:request.get('b_start', 0);
+                             Batch python:modules['Products.CMFPlone'].Batch;
+                             batch python:Batch(items, 20, int(b_start), orphan=1);">
+ 
+
+            <div class="fakeList" tal:condition="items">
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+            <ol>
+              <tal:block repeat="item items">
+              <li>  <a href="." tal:attributes="href
+                    string:${here/absolute_url}/${template/getId}#${repeat/item/index}"> <span tal:replace="item/title" /></a>
+               </li>
+              </tal:block>
+            </ol>
+
+            <dl>
+              <tal:block repeat="item items">
+              <dt><a name='.' tal:attributes="name repeat/item/index"></a><a href="." tal:attributes="href
+                    item/link"> <span tal:replace="item/title" /></a>
+               </dt>
+               <dd><span tal:content="structure item/text" /><br/>
+                    [<a href="." tal:attributes="href string:${here/absolute_url}/${template/getId}#top">Top</a>]
+                </dd>
+              </tal:block>
+            </dl>
+            </div>
+
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+        </metal:block>
+
+</div>
+
+</body>
+
+</html>
+
