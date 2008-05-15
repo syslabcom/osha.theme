@@ -3,24 +3,12 @@
     xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="osha.theme">
 
-   <cmf:registerDirectory name="osha_theme_custom_images"/>
-   <cmf:registerDirectory name="osha_theme_custom_templates"/>
-   <cmf:registerDirectory name="osha_theme_styles"/>
-   <cmf:registerDirectory name="osha_theme_tableless"/>   
-   <cmf:registerDirectory name="osha_theme_scripts"/>   
-   <cmf:registerDirectory name="osha_theme_ew2000"/>    
-   <cmf:registerDirectory name="osha_theme_ew2001"/>    
-   <cmf:registerDirectory name="osha_theme_ew2002"/>    
-   <cmf:registerDirectory name="osha_theme_ew2003"/>    
-   <cmf:registerDirectory name="osha_theme_ew2004"/>    
-   <cmf:registerDirectory name="osha_theme_ew2005"/>    
-   <cmf:registerDirectory name="osha_theme_ew2006"/>    
-   <cmf:registerDirectory name="osha_theme_ew2007"/>      
-   <cmf:registerDirectory name="osha_theme_sme"/>     
-   <cmf:registerDirectory name="osha_theme_hwi"/>     
-   <cmf:registerDirectory name="osha_theme_newoshera"/>     
-   <cmf:registerDirectory name="osha_theme_healthyworkplaces"/>     
-   <cmf:registerDirectory name="osha_theme_wos"/>     
-   <cmf:registerDirectory name="osha_theme_riskobservatory"/>     
+  
+  <cmf:registerDirectory
+      name="skins"
+      directory="skins"
+      recursive="True"
+      />
+
 
 </configure>
