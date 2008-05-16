@@ -154,8 +154,7 @@ if request.form.has_key('form.button.Send'):
     
     try:
         mail_text = oshaview.sendto( send_from_address=from_address
-                                   , send_to_address="pilz@syslab.com"
-                                   #, send_to_address=send_to_address
+                                   , send_to_address=send_to_address
                                    , comment=message
                                    , title = title
                                    , subject = title
