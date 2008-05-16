@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<tal:head metal:fill-slot="head_slot"
+          tal:define="dummy python:request.set('disable_border',1)">
+    <meta name="robots" content="noindex,follow" />
+</tal:head>
+
+<body>          
+          
+<div metal:fill-slot="main" i18n:domain="osha"
+    tal:define="long_feedback request/long_feedback |python:0;
+                feedback python:test(long_feedback, here.contact_data.misc.web_ack_info.getText(), here.contact_data.misc.web_ack_comment.getText())">
+
+    <span tal:replace="structure feedback" />                
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<tal:head metal:fill-slot="head_slot"
+          tal:define="dummy python:request.set('disable_border',1)">
+    <meta name="robots" content="noindex,follow" />
+</tal:head>
+
+<body>          
+          
+<div metal:fill-slot="main" i18n:domain="osha"
+    tal:define="text python:here.contact_data.misc.contact_us_main.getText()">
+                
+    <span tal:replace="structure text" />        
+    
+    
+    <hr>
+     
+<p  i18n:domain="osha" i18n:translate="contact_us_personal" 
+    tal:define="referer python:request.get('HTTP_REFERER', '')">If your question has not been answered 
+    with this standard reply, you may send us a personal message. Please proceed to the 
+    <span i18n:name="contact_form_name"><a href="contact_us_form" 
+    tal:attributes="href string:contact_us_form?referer=${referer}"><span i18n:translate="contact_form">contact form</span></a></span></p>        
+
+    
+</div>
+</body>
+</html>

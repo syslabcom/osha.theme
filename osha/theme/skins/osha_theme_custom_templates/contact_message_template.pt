@@ -1,0 +1,33 @@
+<div i18n:domain="osha" 
+     tal:omit-tag=""
+><table border="0">
+<tr><td>Full name: </td><td><span tal:replace="options/kwargs/fullname | request/fullname" /></td></tr>
+<tr><td>E-mail:    </td><td tal:define="email options/kwargs/email | request/email"><a href="" tal:attributes="href string:mailto:${email}"><span tal:replace="email" /></a></td></tr>
+<tr><td>Topic:     </td><td><span tal:replace="options/kwargs/subject | request/subject" /></td></tr>
+<tr><td>Type of sender:    </td><td><span tal:replace="options/kwargs/sender | request/sender" /></td></tr>
+<tr><td>Country:   </td><td><span tal:replace="options/kwargs/country | request/country" /></td></tr>
+<span tal:define="size_org options/kwargs/size_org | request/size_org |string:"> <span tal:condition="python:size_org!=''"><tr><td>Size of organisation: </td><td><span tal:replace="size_org" /></td></tr></span></span>
+<span tal:define="name_org options/kwargs/name_org | request/name_org | string:"><span  tal:condition="python:name_org!=''"><tr><td>Name of organisation: </td><td><span tal:replace="name_org" /></td></tr></span></span>
+<span tal:define="url_comment options/kwargs/url_comment | request/url_comment | string:" ><span tal:condition="python:url_comment!=''"><tr><td>Commented link:      
+                        </td><td><a href="" tal:attributes="href url_comment"><span tal:replace="url_comment"/></a></td></tr>
+</span></span>
+<span tal:define="url_broken options/kwargs/url_broken | request/url_broken | string:" ><span tal:condition="python:url_broken!=''"><tr><td>Broken link:      
+                        </td><td><a href="" tal:attributes="href url_broken"><span tal:replace="url_broken"/></a></td></tr>
+</span></span>
+<span tal:define="url_broken_location options/kwargs/url_broken_location | request/url_broken_location |string:"><span tal:condition="python:url_broken_location!=''"><tr><td>Location of broken link:      
+                        </td><td><a href="" tal:attributes="href url_broken_location"><span tal:replace="url_broken_location"/></a></td></tr>
+</span></span>
+<span tal:define="url_new options/kwargs/url_new | request/url_new | string:"><span  tal:condition="python:url_new!=''"><tr><td>New link:      
+                        </td><td><a href="" tal:attributes="href url_new"><span tal:replace="url_new"/></a></td></tr>
+</span></span>
+<tr><td>Selected language:    </td><td><span tal:replace="options/kwargs/language | request/language |string:" /></td></tr>
+</table>
+<p><strong>Message:</strong></p>
+<span tal:omit-tag="" tal:replace="structure request/comment | options/comment | string:" />
+
+
+
+
+</div>
+
+

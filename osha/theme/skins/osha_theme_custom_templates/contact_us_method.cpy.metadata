@@ -1,0 +1,7 @@
+[validators]
+validators=
+
+[actions]
+action.success_SenderSubject = traverse_to:string:contact_us_form
+action.success_Send = traverse_to:string:contact_us_feedback
+action.failure = traverse_to_action:string:view
