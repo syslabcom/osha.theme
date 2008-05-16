@@ -1,0 +1,15 @@
+<tal:cond condition="view/tag">
+<dl class="portlet portletImage">
+    <dt tal:condition="view/show_box"
+        class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:replace="view/title" />
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem odd">
+        <span tal:replace="structure view/tag" />
+    </dd>
+        
+</dl>
+</tal:cond>

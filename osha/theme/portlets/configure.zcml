@@ -120,6 +120,17 @@
          view_permission="zope2.View"
          edit_permission="cmf.ManagePortal"
          />        
+ <!-- Image portlet -->
+     <plone:portlet
+         name="osha.image"
+         interface=".image.IImagePortlet"
+         assignment=".image.Assignment"
+         renderer=".image.Renderer"
+         addview=".image.AddForm"
+         editview=".image.EditForm"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         />        
 
 
 </configure>

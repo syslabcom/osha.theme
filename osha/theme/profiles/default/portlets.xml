@@ -62,6 +62,11 @@
       title="Document Fallback Portlet"
       description="Lists the contents of a file and falls back to the default language if it is not available in the preferred." />
 
+  <portlet
+      addview="osha.image"
+      title="Image Portlet"
+      description="Shows an Image and falls back to the default language if it is not available in the preferred." />
+
 
           
 </portlets>

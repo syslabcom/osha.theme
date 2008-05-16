@@ -216,6 +216,19 @@ dl.portletMoreAbout .portletItem {
     background-color: &dtml-contentViewBackgroundColor;
 }
 
+dl.portletImage {
+    padding 0;
+    border: 0;
+    margin: 0;
+}
+dl.portletImage .portletItem {
+    margin: 0;
+    padding:0;
+    padding-bottom: 5px;
+    border: 0px;
+}
+
+
 #belowcontent-portlets {
     margin: 1em 0 ;
 }
