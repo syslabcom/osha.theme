@@ -8,8 +8,8 @@
     </dt>
 
     <dd class="portletItem odd">
-        <span tal:replace="structure view/tag" />
-    </dd>
+        <span tal:replace="structure view/tag" />        
+     </dd>
         
 </dl>
 </tal:cond>

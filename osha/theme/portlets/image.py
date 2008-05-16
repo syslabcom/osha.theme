@@ -13,7 +13,7 @@ from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
-from Products.ATContentTypes.interface import IImageContent
+from Products.ATContentTypes.interface import IImageContent, IFileContent
 
 
 class IImagePortlet(IPortletDataProvider):    
@@ -24,12 +24,19 @@ class IImagePortlet(IPortletDataProvider):
     image = schema.Choice(title=_(u"Image"),
                                   description=_(u"Locate the Image to show"),
                                   required=True,
-                                  source=SearchableTextSourceBinder({'object_provides' : IImageContent.__identifier__},
+                                  source=SearchableTextSourceBinder({'object_provides' : [IImageContent.__identifier__, IFileContent.__identifier__]},
                                                                     default_query='path:'))
 
     show_box = schema.Bool(title=_(u"Display Box?"),
                            description=_(u"Leave this unchecked if you only want to see your banner without a title and a box around."),
                             )
+
+    width = schema.TextLine(title=_(u"Width"),
+                             description=_(u"Enter display width"),
+                             )
+    height = schema.TextLine(title=_(u"Height"),
+                              description=_(u"Enter display height"),
+                              )
 
 
 class Assignment(base.Assignment):
@@ -37,11 +44,15 @@ class Assignment(base.Assignment):
     header = u""
     image=None
     show_box = False
+    width='200'
+    height='60'
     
-    def __init__(self, header=u"", image=None, show_box=False):
+    def __init__(self, header=u"", image=None, show_box=False, width='200', height='60'):
         self.header = header
         self.image = image
         self.show_box = show_box
+        self.width = width
+        self.height = height
 
     @property
     def title(self):
@@ -53,7 +64,8 @@ class Assignment(base.Assignment):
 class Renderer(base.Renderer):
 
     render = ViewPageTemplateFile('image.pt')
-
+    flash_snippet = ViewPageTemplateFile('flashsnippet.pt')
+    
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')        
@@ -70,10 +82,9 @@ class Renderer(base.Renderer):
     @memoize
     def show_box(self):
         return self.data.show_box
-        
+
     @memoize
-    def tag(self):
-        print "hoi"
+    def get_object(self):
         image_path = self.data.image
         if not image_path:
             return None
@@ -95,11 +106,27 @@ class Renderer(base.Renderer):
         
         if preflang != imgob.Language():
             if imgob.hasTranslation(preflang):
-                return imgob.getTranslation(preflang).tag()
+                return imgob.getTranslation(preflang)
             else:
-                return imgob.getCanonical().tag()
-        return imgob.tag()
+                return imgob.getCanonical()
         
+    @memoize
+    def tag(self):
+        ob = self.get_object()
+        typ = ob.content_type
+        try:
+            major, minor = typ.split("/")
+        except:
+            major="image"
+            minor="gif"
+        if typ=='application/x-shockwave-flash':
+            return self.flash_snippet(url=ob.absolute_url(), width=self.data.width, height=self.data.height, alt=self.title(), title=self.title())
+        elif major=='image':
+            return self.get_object().tag(height=self.data.height, width=self.data.width, alt=self.title(), title=self.title())
+        else:
+            return ''
+    
+    
     @memoize
     def _data(self):
         return True
