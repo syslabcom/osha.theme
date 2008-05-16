@@ -69,6 +69,20 @@ def ensureFriendlyTypes(query):
         friendlyTypes = ploneUtils.getUserFriendlyTypes(typesList)
         query['portal_type'] = friendlyTypes
 
+    # make nace and mt friendly
+    nace = query.get('nace', [])
+    if len(nace)==1 and nace[0]=='':
+        nace = []
+    if not nace and 'nace' in query.keys():
+        del query['nace']
+        
+    multilingual_thesaurus = query.get('multilingual_thesaurus', [])
+    if len(multilingual_thesaurus)==1 and multilingual_thesaurus[0]=='':
+        multilingual_thesaurus = []
+    if not multilingual_thesaurus and 'multilingual_thesaurus' in query.keys():
+        del query['multilingual_thesaurus']
+        
+        
 def rootAtNavigationRoot(query):
     if 'path' not in query:
         # special fish for osha subsite detection
