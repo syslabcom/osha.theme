@@ -25,6 +25,10 @@ class IOSHA(Interface):
         
     def listMetaTags(context):
         """ retrieve the metadata for the header and make osha specific additions """
+
+    def sendto(self, send_to_address, send_from_address, comment,
+               subject='Plone', **kwargs):
+        """Sends a link of a page to someone."""
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions

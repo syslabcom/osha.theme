@@ -113,5 +113,31 @@ class OSHA(BrowserView):
                 
         return meta
         
+    
+    def sendto(self, send_to_address, send_from_address, comment,
+               subject='Plone', **kwargs):
+        """Sends a link of a page to someone."""
+        context = self.context
+        host = getattr(context, 'MailHost')
+        if 'template' in kwargs:
+            template = getattr(context, kwargs['template'])
+        else:
+            template = getattr(context, 'sendto_template')
+
+        portal = getToolByName(context, 'portal_url').getPortalObject()
+        encoding = portal.getProperty('email_charset')
+        subtype = kwargs.get('subtype', 'plain')
+        if 'envelope_from' in kwargs:
+            envelope_from = kwargs['envelope_from']
+        else:
+            envelope_from = send_from_address
+        # Cook from template
+        message = template(context, send_to_address=send_to_address,
+                           send_from_address=send_from_address,
+                           comment=comment, subject=subject, **kwargs)
+        result = host.secureSend(message, send_to_address,
+                                 envelope_from, subject=subject,
+                                 subtype=subtype, charset=encoding,
+                                 debug=False, From=send_from_address)        
 
 
