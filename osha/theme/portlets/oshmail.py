@@ -45,7 +45,10 @@ class Renderer(base.Renderer):
     def num_subscribers(self):
         context = Acquisition.aq_inner(self.context)
         portal_properties = getToolByName(context, 'portal_properties')
-        return portal_properties.site_properties.getProperty('num_subscribers_oshmail')
+        num = portal_properties.site_properties.getProperty('num_subscribers_oshmail')
+        if hasattr(portal_properties.site_properties, 'osha_properties'):
+            num = portal_properties.site_properties.osha_properties.getProperty('num_subscribers')
+        return num
 
     @memoize
     def _data(self):
