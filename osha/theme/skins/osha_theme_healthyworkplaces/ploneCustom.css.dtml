@@ -58,5 +58,12 @@ dd.portletItem .navTreeItem a:hover {
 
 }
 
+#osha-campaign-text {
+    background: &dtml-primaryColor2;;    
+    margin:0 104px 0 201px;
+    padding: 0; 
+    text-align: right;
+}
+
 /* </dtml-with> */
 

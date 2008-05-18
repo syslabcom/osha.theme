@@ -1,0 +1,6 @@
+<metal:block define-macro="campaign_area2">
+    <tal:block condition="cmp_logo2_url">
+        <img src="campaign_logo2.gif" alt=""
+             tal:attributes="src cmp_logo2_url" alt="Healthy Workplaces" title="Healthy Workplaces" />
+    </tal:block>
+</metal:block>
