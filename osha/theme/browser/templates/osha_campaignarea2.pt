@@ -1,4 +1,7 @@
-<div id="osha-topactions">
-    test
+<div id="osha-campaign-text">
+    <tal:block define="global cmp_logo2_url view/campaign_logo2_url"
+               condition="exists:here/campaign_area2">
+        <div metal:use-macro="here/campaign_area2/macros/campaign_area2|nothing" />
+	</tal:block>
     <div class="visualClearRight"><!-- --></div>
 </div>
