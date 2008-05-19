@@ -6,9 +6,7 @@
 <metal:block fill-slot="top_slot"
              tal:define="dummy python:request.set('disable_border',1)" />
 
-<metal:cssslot fill-slot="css_slot"
-               tal:define="global mockup here/@@ATMockup;
-                           dummy python:mockup.preload(types=[('OSH_Link', 'OSHContentLink')]);">
+<metal:cssslot fill-slot="css_slot">
   <!--style type="text/css">
     .column1 { float: left; width: 55%; padding-right: 10px; }
     .column2 { float: right; width: 40%; padding-left: 10px; border-left: 1px dotted gray; }
@@ -45,7 +43,7 @@
   }
   </script>
 
-  <tal:js define="js python:here.getUniqueWidgetAttr(mockup.getFields(), 'helper_js')"
+  <!--tal:js define="js python:here.getUniqueWidgetAttr(mockup.getFields(), 'helper_js')"
           condition="js"
           repeat="item js">
     <script type="text/javascript"
@@ -53,7 +51,7 @@
             tal:condition="python:exists('portal/%s' % item)"
             tal:attributes="src string:$portal_url/$item">
     </script>
-  </tal:js>
+  </tal:js-->
 </metal:javascriptslot>
 
 <div metal:fill-slot="main" i18n:domain="osha"
