@@ -113,7 +113,7 @@ class Renderer(base.Renderer):
     @memoize
     def tag(self):
         ob = self.get_object()
-        if hasattr(Aqcuisition.aq_base(ob), 'content_type'):
+        if hasattr(Acquisition.aq_base(ob), 'content_type'):
             typ = ob.content_type
         else:
             return ''
