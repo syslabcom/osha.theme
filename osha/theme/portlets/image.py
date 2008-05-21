@@ -113,7 +113,9 @@ class Renderer(base.Renderer):
     @memoize
     def tag(self):
         ob = self.get_object()
-        typ = ob.content_type
+        typ = getattr(Acquisition.aq_base(ob), 'content_type', None)
+        if typ is None:
+            return ''
         try:
             major, minor = typ.split("/")
         except:
