@@ -113,14 +113,15 @@ class Renderer(base.Renderer):
     @memoize
     def tag(self):
         ob = self.get_object()
-        typ = getattr(Acquisition.aq_base(ob), 'content_type', None)
-        if typ is None:
+        if hasattr(Aqcuisition.aq_base(ob), 'content_type'):
+            typ = ob.content_type
+        else:
             return ''
         try:
             major, minor = typ.split("/")
         except:
-            major="image"
-            minor="gif"
+            major=""
+            minor=""
         if typ=='application/x-shockwave-flash':
             return self.flash_snippet(url=ob.absolute_url(), width=self.data.width, height=self.data.height, alt=self.title(), title=self.title())
         elif major=='image':
