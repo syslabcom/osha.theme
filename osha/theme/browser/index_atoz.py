@@ -46,7 +46,7 @@ class IndexAtoZView(BrowserView):
         return alphabet
 
     def _searchCatalog_cachekey(method, self):
-        return ("published_by_subject_alllanguages", self.Subject)    
+        return ("published_by_subject_alllanguages", self.Subject)
         
     @ram.cache(_searchCatalog_cachekey)
     def _searchCatalog(self):
@@ -55,14 +55,14 @@ class IndexAtoZView(BrowserView):
         """
         start = time.time()
 
-        context = Acquisition.aq_inner(self.context)        
+        context = Acquisition.aq_inner(self.context)
         portal_catalog = getToolByName(context, 'portal_catalog')
 
         query = {'Language': '', 
-                 'Subject': self.Subject, 
+                 'Subject': self.Subject or '', 
                  'review_state': 'published'
                 }
-        results = portal_catalog(query)                
+        results = portal_catalog(query)
         stop = time.time()
         print "Catalog time is %s" % (stop-start)
         # The brain objects fetch the values potentially lazy only if needed. 
@@ -90,7 +90,7 @@ class IndexAtoZView(BrowserView):
                 {'A': [brain, brain]}
         """
         start = time.time()
-                                
+
         results = self._searchCatalog()
         
         caption_termid = {}
@@ -108,7 +108,7 @@ class IndexAtoZView(BrowserView):
                 captionmap = section.get(caption, [])
                 captionmap.append(result)
                 section[caption] = captionmap
-                captions[initial] = section                
+                captions[initial] = section
                 
         self.captions = captions
         self.caption_termid = caption_termid
@@ -116,7 +116,7 @@ class IndexAtoZView(BrowserView):
         initials = self.captions.keys()
         initials.sort()
         if not self.letter:
-            self.letter = initials[0]
+            self.letter = len(initials) and initials[0] or 'A'
             
         stop = time.time()
         print "search duration %s secs" % (stop-start)
