@@ -253,7 +253,13 @@
         class=".dbfilter.DBFilterView"
         permission="zope2.View"
     />
-
+    <browser:page
+        for="*"
+        name="ro_filter"
+        class=".rofilter.ROFilterView"
+        permission="zope2.View"
+    />
+    
     <browser:page
         for="*"
         name="worklist"

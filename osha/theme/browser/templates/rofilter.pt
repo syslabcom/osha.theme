@@ -1,0 +1,161 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha"> 
+
+<div metal:fill-slot="main" i18n:domain="osha"
+       tal:define="ero_topic request/ero_topic| string:;
+                   country request/country|string:;
+                   ero_target_group request/ero_target_group | string:;
+                   SearchableText request/SearchableText|string:;
+                   Batch python:modules['Products.CMFPlone'].Batch;
+                   DateTime python:modules['DateTime'].DateTime;
+                   b_size python:10;b_start python:0;
+                   b_start request/b_start | b_start;
+                   desc_length site_properties/search_results_description_length;
+                   desc_ellipsis site_properties/ellipsis;
+                   searchterm request/SearchableText|nothing;
+                   ">
+         
+         
+    <h1>
+        <img tal:define="search_img python:getattr(portal, 'database_search.gif')"
+             tal:replace="structure search_img/tag" />
+        <span tal:omit-tag="" i18n:translate="label_search_database">Search the Risk Observatory Database</span>
+    </h1>
+
+    <br />
+
+
+    <form tal:attributes="action template/id" method="get">
+      
+      <div id="filter_searchfields">
+        <div class="filter_column1">
+           <div class="field_default">
+                <metal:use use-macro="here/filter_macros/macros/SearchableText_compact"></metal:use>
+            </div>
+            <div class="columnBottom field">
+              <div class="formHelp">
+                Filter your search by selecting one or more of the filters.
+                You can always remove any filter again by selecting the empty entry or by clicking the Reset button.
+              </div>
+
+            </div>         
+           
+        </div>
+          
+         <div class="filter_column2">
+
+            <div class="field_default"
+                    tal:define="root_node   string:;
+                                vocabulary  string:topic;
+                                value       ero_topic;
+                                fieldName   string:ero_topic;">
+                <div><label>Topic</label></div>
+                <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>
+            </div> 
+            
+            <div class="field_default" tal:define="value country">
+              <metal:use use-macro="here/filter_macros/macros/Country_compact"></metal:use>
+            </div>
+            
+            <div class="field_default"
+                    tal:define="root_node   string:;
+                                vocabulary  string:target_group;
+                                value       ero_target_group;
+                                fieldName   string:ero_target_group;">
+                <div><label>Target Group</label></div>
+                <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>
+            </div>            
+            
+          </div>
+        </div>
+       
+
+
+        <div class="visualClear"></div>
+        
+        
+        <div class="formControls">
+          <input class="context"
+                   type="submit"
+                   name="submit"
+                   value="Search"
+                   i18n:domain="plone"
+                   i18n:attributes="value label_search;"
+                   />
+          <input  class="context" type="reset" value="Reset" 
+                tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
+        
+        </div>
+    </form>
+    
+    <br clear="all"><br>
+
+     <div tal:define="query view/buildQuery;
+                      results python:here.portal_catalog(query);
+                      ">
+
+        <!--h1>Filtered by:
+            <span tal:replace="query"/>
+        </h1-->
+        
+        
+
+     <h2>
+        <span i18n:translate="heading_search_results">
+            Search results
+        </span>
+        <span class="discreet">
+        &mdash;
+        <span i18n:translate="batch_x_items_matching_your_criteria"
+        ><span i18n:name="number" 
+        tal:omit-tag="" 
+        tal:content="python:len(results)">234</span> items matching your search terms</span>
+    </h2>
+
+    <div tal:condition="not: results">
+        <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+    </div>
+
+    <div tal:condition="results"
+         tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+        
+        <dl id="db_results">
+        <tal:results repeat="result batch">
+        <tal:entry define="provider_helper here/@@provider_helper;
+                           result_url result/getURL;
+                           url result/getRemoteUrl | result_url;
+                           title result/Title|string:;
+                           item_cas result/getCas|string:;
+                           item_einecs result/getEinecs|string:;
+                           item_remoteLanguage result/getRemoteLanguage|string:;
+                           item_subject result/Subject | python:[];
+                           item_modified result/modified;
+                           item_pubdate result/effective;
+                           item_creator result/Creator;
+                           gc python:here.portal_languages.getNameForLanguageCode;
+                           ">
+            
+            <metal:macro use-macro="here/oshmacros/macros/searchresults" />
+
+        </tal:entry>
+        </tal:results>
+        </dl>
+        
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+        <!-- Snapshot code -->
+        <script type="text/javascript" src="http://shots.snap.com/ss/9546198046d69719d86ad9ba1aee068e/snap_shots.js"></script>
+    </div>
+    <!-- <span style="color:#ccc;">query: <span tal:replace="query" /></span>  -->
+    
+  </div>
+
+
+</div>
+
+<metal:sub fill-slot="sub" /> 
+
+
+</html>
