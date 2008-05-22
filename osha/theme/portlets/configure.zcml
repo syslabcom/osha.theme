@@ -25,6 +25,12 @@
      class=".navigation.Renderer" 
      />    
      
+ <!-- Custom defaultsearch portlet -->
+ <plone:portletRenderer 
+     portlet="plone.app.portlets.portlets.search.ISearchPortlet" 
+     layer="osha.theme.browser.interfaces.IThemeSpecific" 
+     class=".defaultsearch.Renderer" 
+     />     
      
  <!-- Alert Service portlet -->
  <plone:portlet
