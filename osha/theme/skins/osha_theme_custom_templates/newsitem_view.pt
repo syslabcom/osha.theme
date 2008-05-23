@@ -25,7 +25,7 @@
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
-        <p class="documentDescription" tal:content="structure here/getRawDescription">
+        <p class="documentDescription" tal:content="structure here/Description">
         </p>
 
         <div tal:replace="structure provider:plone.abovecontentbody" />
