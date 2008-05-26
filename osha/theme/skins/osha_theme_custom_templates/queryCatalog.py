@@ -124,7 +124,7 @@ for k, v in second_pass.items():
 # doesn't normal call catalog unless some field has been queried
 # against. if you want to call the catalog _regardless_ of whether
 # any items were found, then you can pass show_all=1.
-from osha.policy.utils import logit
+#from osha.policy.utils import logit
 if show_query:
     try:
         if use_types_blacklist:
@@ -133,9 +133,10 @@ if show_query:
             rootAtNavigationRoot(query)
         query['show_inactive'] = show_inactive
         # XXX: Make this more smooth....
-        ST = query['SearchableText']
-        query['SearchableText'] = {'query': ST, 'ranking_maxhits': 10000}
-        logit(str(query))
+        ST = query.get('SearchableText', None)
+        if ST is not None:
+            query['SearchableText'] = {'query': ST, 'ranking_maxhits': 10000}
+        #logit(str(query))
         results = catalog(**query)
     except ParseError:
         pass
