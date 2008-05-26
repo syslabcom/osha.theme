@@ -305,4 +305,11 @@
     permission="zope2.View"
     />
 
+  <browser:page
+    name="resource_listing"
+    for="*"
+    class=".resource_listing.ResourceListingView"
+    permission="zope2.View"
+    />
+
 </configure>
