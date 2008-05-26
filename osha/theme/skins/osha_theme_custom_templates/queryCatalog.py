@@ -77,8 +77,8 @@ def ensureFriendlyTypes(query):
         del query['nace']
         
     multilingual_thesaurus = query.get('multilingual_thesaurus', [])
-    if len(multilingual_thesaurus)==1 and multilingual_thesaurus[0]=='':
-        multilingual_thesaurus = []
+    if '' in  multilingual_thesaurus:
+        multilingual_thesaurus.remove('') 
     if not multilingual_thesaurus and 'multilingual_thesaurus' in query.keys():
         del query['multilingual_thesaurus']
         
@@ -124,6 +124,7 @@ for k, v in second_pass.items():
 # doesn't normal call catalog unless some field has been queried
 # against. if you want to call the catalog _regardless_ of whether
 # any items were found, then you can pass show_all=1.
+from osha.policy.utils import logit
 if show_query:
     try:
         if use_types_blacklist:
@@ -131,6 +132,10 @@ if show_query:
         if use_navigation_root:
             rootAtNavigationRoot(query)
         query['show_inactive'] = show_inactive
+        # XXX: Make this more smooth....
+        ST = query['SearchableText']
+        query['SearchableText'] = {'query': ST, 'ranking_maxhits': 10000}
+        logit(str(query))
         results = catalog(**query)
     except ParseError:
         pass
