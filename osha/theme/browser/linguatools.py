@@ -11,6 +11,12 @@ from plone.app.portlets.portlets import navigation, news, classic, events, searc
 from plone.app.portlets.utils import assignment_mapping_from_key
 from zope.component import getMultiAdapter, getUtility
 from plone.portlets.interfaces import IPortletManager, ILocalPortletAssignmentManager
+from zope.event import notify
+from zope.lifecycleevent import ObjectCopiedEvent
+from zope.app.container.contained import ObjectMovedEvent
+from zope.app.container.contained import notifyContainerModified
+from OFS.event import ObjectWillBeMovedEvent
+from OFS.event import ObjectClonedEvent
 
 from Products.PlacelessTranslationService import getTranslationService
 
@@ -240,3 +246,58 @@ class LinguaToolsView(BrowserView):
         return ['Folder Created']
 
 
+    def cutAndPaste(self, sourcepath, id, targetpath):
+        """ uses OFS to cur and paste an object
+            sourecpath must refer to the folder which contains the object to move
+            id must be a string containing the id of the object to move
+            targetpath must be the folder to move to
+            both paths must contain one single %s to place the language
+        """
+        context = Acquisition.aq_inner(self.context)
+        if '%s' not in sourcepath:
+            return ["Wrong sourcepath"]
+        if '%s' not in targetpath:
+            return ["Wrong targetpath"]
+
+        results = []
+
+        for lang in self.langs:
+            results.append("Trying language: %s" % lang)
+            
+            spath = sourcepath%lang
+            source = context.restrictedTraverse(spath, None)
+            if source is None:
+                results.append("  # Break, source is none")
+                continue
+            spathtest = "/".join(source.getPhysicalPath())
+            if spath != spathtest:
+                results.append("  # Break, requested path not sourcepath (%s != %s)" % (spath,spathtest))
+                continue
+
+            tpath = targetpath%lang
+            target = context.restrictedTraverse(tpath, None)
+            if target is None:
+                results.append("  # Break, target is none")
+                continue
+            tpathtest = "/".join(target.getPhysicalPath())
+            if tpath != tpathtest:
+                results.append("  # Break, requested path not targetpath (%s != %s)" % (tpath,tpathtest))
+                continue
+
+            ob = getattr(source, id)
+            ob = Acquisition.aq_base(ob)
+            if ob is None:
+                results.append("  # Break, ob is None!!" )   
+            source._delObject(id, suppress_events=True)
+            target._setObject(id, ob, set_owner=0, suppress_events=True)
+            ob = target._getOb(id)
+
+            notify(ObjectMovedEvent(ob, source, id, target, id))
+            notifyContainerModified(source)
+            if Acquisition.aq_base(source) is not Acquisition.aq_base(target):
+                notifyContainerModified(target)
+            ob._postCopy(target, op=1)
+            
+            results.append("Copy&Paste successful for language %s" %lang)
+            
+        return results

@@ -46,6 +46,13 @@ class ILinguaToolsView(Interface):
         """ sets the title based on the translation availble for title in the language """
     def createFolder(id, excludeFromNav=True):
         """ creates a folder and all translations in the language branches """
+    def cutAndPaste(self, sourcepath, id, targetpath):
+        """ uses OFS to cur and paste an object
+            sourecpath must refer to the folder which contains the object to move
+            id must be a string containing the id of the object to move
+            targetpath must be the folder to move to
+            both paths must contain one single %s to place the language
+        """
 
 
 class IOSHA(Interface):
