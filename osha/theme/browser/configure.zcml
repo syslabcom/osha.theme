@@ -15,7 +15,16 @@
         allowed_attributes="cropHtmlText getSingleEntryPoints getSingleEntryPointsBySubject"
         />
 
-
+    <!-- OSHA Tool view -->
+    <browser:page
+        for="*"
+        name="linguatools"
+        class=".linguatools.LinguaToolsView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.ILinguaToolsView"
+        />
+        
+        
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
     <interface
         interface=".interfaces.IThemeSpecific"

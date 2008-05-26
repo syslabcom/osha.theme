@@ -16,6 +16,12 @@ class IHW2008Specific(IDefaultPloneLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
+class ILinguaToolsView(Interface):
+    """ A tool to manage lingua specific tasks """
+
+    def propagatePortlets():
+        """ propagates the portlet config from context to the language versions """
+
 
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
