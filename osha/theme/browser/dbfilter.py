@@ -85,7 +85,7 @@ class DBFilterView(BrowserView):
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query.update({'SearchableText':SearchableText})
+            query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
         search_portal_types = self.search_portal_types()
         query.update(search_portal_types)
