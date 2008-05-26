@@ -17,6 +17,7 @@ from zope.app.container.contained import ObjectMovedEvent
 from zope.app.container.contained import notifyContainerModified
 from OFS.event import ObjectWillBeMovedEvent
 from OFS.event import ObjectClonedEvent
+from Products.PloneLanguageTool.LanguageTool import LanguageTool
 
 from Products.PlacelessTranslationService import getTranslationService
 
@@ -301,3 +302,18 @@ class LinguaToolsView(BrowserView):
             results.append("Copy&Paste successful for language %s" %lang)
             
         return results
+        
+        
+    def addLanguageTool(self):
+        """ adds a language Tool """
+        def _setter(ob, *args, **kw):
+            if ob.isPrincipiaFolderish:
+                tool = getattr(Acquisition.aq_parent(ob), 'portal_languages')
+                if tool.id in ob.objectIds():
+                    ob._delObject(tool.id)
+                ob._setOb(tool.id, tool)
+                ob._objects = ob._objects + ({'id': tool.id, 'meta_type': tool.meta_type},)
+                #return ["Added language tool to %s" % ob.getId()]
+
+        return self._forAllLangs(_setter)
+                            

@@ -53,6 +53,8 @@ class ILinguaToolsView(Interface):
             targetpath must be the folder to move to
             both paths must contain one single %s to place the language
         """
+    def addLanguageTool(self):
+        """ adds a language Tool """
 
 
 class IOSHA(Interface):
