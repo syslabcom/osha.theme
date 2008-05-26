@@ -12,6 +12,8 @@ from plone.app.portlets.utils import assignment_mapping_from_key
 from zope.component import getMultiAdapter, getUtility
 from plone.portlets.interfaces import IPortletManager, ILocalPortletAssignmentManager
 
+from Products.PlacelessTranslationService import getTranslationService
+
 class LinguaToolsView(BrowserView):
     implements(ILinguaToolsView)
 
@@ -214,9 +216,14 @@ class LinguaToolsView(BrowserView):
             
         return self._forAllLangs(_setter, id=id)
         
-    def setTranslatedTitle(self, label):
+    def setTranslatedTitle(self, label, domain):
         """ sets the title based on the translation availble for title in the language """
         def _setter(ob, *args, **kw):
+            translate = getTranslationService().translate
             label = kw['label']
+            domain=kw['domain']
             lang = kw['lang']
+            title_trans = translate(target_language=lang, msgid=label, default=label, context=ob, domain=domain)
+            ob.setTitle(title_trans)
+        return self._forAllLangs(_setter, label=label, domain=domain)
             

@@ -42,6 +42,9 @@ class ILinguaToolsView(Interface):
         """ sets a OFS Property on context """
     def delProperty(id):
         """ removes a OFS Property on context """
+    def setTranslatedTitle(label, domain):
+        """ sets the title based on the translation availble for title in the language """
+
 
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
