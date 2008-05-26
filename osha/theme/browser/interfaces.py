@@ -44,6 +44,8 @@ class ILinguaToolsView(Interface):
         """ removes a OFS Property on context """
     def setTranslatedTitle(label, domain):
         """ sets the title based on the translation availble for title in the language """
+    def createFolder(id, excludeFromNav=True):
+        """ creates a folder and all translations in the language branches """
 
 
 class IOSHA(Interface):

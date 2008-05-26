@@ -26,7 +26,6 @@ class LinguaToolsView(BrowserView):
         self.portal_languages = getToolByName(context, 'portal_languages')
         self.langs = self.portal_languages.getSupportedLanguages()
         self.dynamic_path = self.portal_path + '/%s/' + "/".join(context.getPhysicalPath()[len(self.portal.getPhysicalPath())+1:])
-        print self.dynamic_path
         
         
     def _forAllLangs(self, method, *args, **kw):
@@ -227,3 +226,17 @@ class LinguaToolsView(BrowserView):
             ob.setTitle(title_trans)
         return self._forAllLangs(_setter, label=label, domain=domain)
             
+            
+    def createFolder(self, id, excludeFromNav=True):
+        """ creates a folder and all translations in the language branches """
+        self.context.invokeFactory('Folder', id)
+        ob = getattr(self.context, id)
+        ob.unmarkCreationFlag()
+        ob.setExcludeFromNav(excludeFromNav)
+        for lang in self.langs:
+            if lang == self.context.Language():
+                continue
+            ob.addTranslation(lang)
+        return ['Folder Created']
+
+
