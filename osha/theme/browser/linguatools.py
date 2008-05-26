@@ -190,13 +190,29 @@ class LinguaToolsView(BrowserView):
 
         return self._forAllLangs(_setter, cleft=left, cright=right, cbelowcontext=belowcontext)
         
-    def setProperty(self, name, typ, value):
+    def setProperty(self, id, typ, value):
         """ sets a OFS Property on context """
         def _setter(ob, *args, **kw):
-            name = kw['name']
+            id = kw['id']
             typ = kw['typ']
             value = kw['value']
-        
+            
+            ob = Acquisition.aq_inner(ob)
+            if Acquisition.aq_base(ob).hasProperty(id):
+                ob._delProperty(id)
+            ob._setProperty(id=id, value=value, type=typ)
+
+        return self._forAllLangs(_setter, id=id, typ=typ, value=value)
+
+    def delProperty(self, id):
+        """ removes a OFS Property on context """
+        def _setter(ob, *args, **kw):
+            id = kw['id']
+            ob = Acquisition.aq_inner(ob)
+            if Acquisition.aq_base(ob).hasProperty(id):
+                ob._delProperty(id)
+            
+        return self._forAllLangs(_setter, id=id)
         
     def setTranslatedTitle(self, label):
         """ sets the title based on the translation availble for title in the language """

@@ -38,7 +38,10 @@ class ILinguaToolsView(Interface):
         """ Enables the Next-Previous Navigation Flag """
     def setExcludeFromNav(flag=True):
         """ Sets the Exclude From nav flag """
-
+    def setProperty(id, typ, value):
+        """ sets a OFS Property on context """
+    def delProperty(id):
+        """ removes a OFS Property on context """
 
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
