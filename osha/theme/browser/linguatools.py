@@ -32,10 +32,17 @@ class LinguaToolsView(BrowserView):
         context = Acquisition.aq_inner(self.context)
         results = []
         for lang in self.langs:
+            results.append("Trying language: %s" % lang)
             lpath = self.dynamic_path%lang
             base = context.restrictedTraverse(lpath, None)
             if base is None:
+                results.append("  # Break, base is none")
                 continue
+            basepath = "/".join(base.getPhysicalPath())
+            if lpath != basepath:
+                results.append("  # Break, requested path not basepath (%s != %s)" % (lpath,basepath))
+                continue
+            kw['lang'] = lang
             res = method(base, *args, **kw)
             results.append("Exec: %s for %s" % (method.__name__, lang))
             if res:
@@ -77,27 +84,32 @@ class LinguaToolsView(BrowserView):
 #        
     
     
-    def setExcludeFromNav(self, flag=True):
+    def setExcludeFromNav(self, flag):
         """ Sets the Exclude From nav flag """
-        def _setter(ob):
+        def _setter(ob, *args, **kw):
+            flag = kw['flag']
             ob.setExcludeFromNav(flag)
         self._forAllLangs(_setter)
 
-    def setEnableNextPrevious(self, flag=True):
+    def setEnableNextPrevious(self, flag):
         """ Enables the Next-Previous Navigation Flag """
-        def _setter(ob):
+        def _setter(ob, *args, **kw):
+            flag = kw['flag']
             ob.setNextPreviousEnabled(flag)
         self._forAllLangs(_setter)
         
     def setTitle(self, title):
         """ simply set the title to a given value. Very primitive! """
-        def _setter(ob, title):
+        def _setter(ob, *args, **kw):
+            title = kw['title']
             ob.setTitle(title)
-        self._forAllLangs(self.dynamic_path, _setter, title=title)
+        self._forAllLangs(_setter, title=title)
     
     def renamer(self, oldid, newid):
         """ rename one object within context from oldid to newid """
-        def _setter(ob, oldid=oldid, newid=newid):
+        def _setter(ob, *args, **kw):
+            oldid = kq['oldid']
+            newid = kw['newid']
             if oldid in ob.objectIds():
                 ob.manage_renameObjects([oldid], [newid])
         self._forAllLangs(_setter, oldid=oldid, newid=newid)
@@ -107,25 +119,33 @@ class LinguaToolsView(BrowserView):
             make sure the ordering of the folders is correct
         """
         plone_utils = getToolByName(self.context, 'plone_utils')
-
-        def _orderIDs(base, ids=[]):
+        def _orderIDs(base, *args, **kw):
             """sorts the objects in base in the order given by ids"""
-            ids.reverse()
+            results = []
+            ids = [x for x in kw['ids']]
             base_ids = base.objectIds()
+            results.append('  > current order: %s' % str(base_ids))            
             flag = 0
             if len(base_ids)>= len(ids) and base_ids[:len(ids)] == ids:
                 return
+
+            ids.reverse() # we let the items bubble up, last one first
+
             for id in ids:
                 if id in base_ids:
                     flag = 1
                     base.moveObjectsToTop(id)
             if flag == 1: # only reindex if there is something to do
                 plone_utils.reindexOnReorder(base)
-        self._forAllLangs(_orderIDs, ids=ORDER)          
+            results.append("  > New order: %s " % str(base.objectIds()))
+            return results
+                            
+        return self._forAllLangs(_orderIDs, ids=ORDER)          
                 
     def deleter(self, id):
         """ deletes an object with a given id from all language branches """
-        def _setter(ob, id):
+        def _setter(ob, *args, **kw):
+            id = kw['id']
             if id in ob.objectIds():
                 ob._delObject(id)
         self._forAllLangs(_setter, id=id)
@@ -138,9 +158,14 @@ class LinguaToolsView(BrowserView):
         right = assignment_mapping_from_key(context, 'plone.rightcolumn', CONTEXT_CATEGORY, path)
         belowcontext = assignment_mapping_from_key(context, 'osha.belowcontent.portlets', CONTEXT_CATEGORY, path)
         
-        def _setter(ob, cleft, cright, cbelowcontext):   
+        def _setter(ob, *args, **kw):
+            results = []
+            cleft = kw['cleft']
+            cright = kw['cright']
+            cbelowcontext = kw['cbelowcontext']
+            
             if ob.getCanonical() == ob:
-                return
+                return 
             if ob.portal_type == 'LinguaLink':
                 return
             path = "/".join(ob.getPhysicalPath()) 
@@ -163,6 +188,19 @@ class LinguaToolsView(BrowserView):
             for x in list(cbelowcontext.keys()):
                 belowcontext[x] = cbelowcontext[x]
 
-        self._forAllLangs(_setter, cleft=left, cright=right, cbelowcontext=belowcontext)
+        return self._forAllLangs(_setter, cleft=left, cright=right, cbelowcontext=belowcontext)
+        
+    def setProperty(self, name, typ, value):
+        """ sets a OFS Property on context """
+        def _setter(ob, *args, **kw):
+            name = kw['name']
+            typ = kw['typ']
+            value = kw['value']
         
         
+    def setTranslatedTitle(self, label):
+        """ sets the title based on the translation availble for title in the language """
+        def _setter(ob, *args, **kw):
+            label = kw['label']
+            lang = kw['lang']
+            
