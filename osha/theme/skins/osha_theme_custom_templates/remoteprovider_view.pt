@@ -11,9 +11,11 @@
     <tal:main-macro metal:define-macro="main"
            tal:define="kssClassesView context/@@kss_field_decorator_view;
                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                       isMember python:str(member)!='Anonymous User';
                        templateId template/getId;">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
+            
 
         <h1 class="documentFirstHeading"> 
             <metal:field use-macro="python:here.widget('title', mode='view')">
@@ -42,7 +44,7 @@
         </div>
 <br/>
 
-        <!-- Commented until categaries are defined -->
+        <!-- Commented until categories are defined -->
         <!--div>
             <label i18n:translate="RemoteProvider_label_providerCategory">ProviderCategory</label>
             <div>
@@ -61,6 +63,22 @@
             </p>
         </span>
 
+    
+            <div class="field" tal:define="cc python:here.getCountry()" tal:condition="python:cc or isMember">
+                <label i18n:translate="label_applicable_countries">Applicable to the following countries</label> 
+                <div tal:define="cdict python:here.portal_countryutils.getCountryIsoDict()">
+                        <span tal:replace="python:', '.join([cdict.get(x, x) for x in cc])" />
+                </div>
+            </div>
+
+        <span tal:define="field python:here.getField('nace');
+            getNace python:field.getAccessor(here);
+            label field/widget/label" tal:condition="python:getNace() or isMember" >
+            <label tal:content="label" />
+            <metal:field use-macro="python:here.widget('nace', mode='view')">
+            NACE
+            </metal:field>
+        </span>
 
         <h2 i18n:translate="label_schema_Contact" i18n:domain="plone">Contact Person</h2>
        
