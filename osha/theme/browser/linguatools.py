@@ -77,28 +77,37 @@ class LinguaToolsView(BrowserView):
 #        
     
     
-    def setEnableNextPrevious(self, PATHS):
+    def setExcludeFromNav(self, flag=True):
+        """ Sets the Exclude From nav flag """
         def _setter(ob):
-            ob.setNextPreviousEnabled(True)
-    
+            ob.setExcludeFromNav(flag)
+        self._forAllLangs(_setter)
+
+    def setEnableNextPrevious(self, flag=True):
+        """ Enables the Next-Previous Navigation Flag """
+        def _setter(ob):
+            ob.setNextPreviousEnabled(flag)
         self._forAllLangs(_setter)
         
     def setTitle(self, title):
+        """ simply set the title to a given value. Very primitive! """
         def _setter(ob, title):
             ob.setTitle(title)
         self._forAllLangs(self.dynamic_path, _setter, title=title)
     
     def renamer(self, oldid, newid):
+        """ rename one object within context from oldid to newid """
         def _setter(ob, oldid=oldid, newid=newid):
             if oldid in ob.objectIds():
                 ob.manage_renameObjects([oldid], [newid])
         self._forAllLangs(_setter, oldid=oldid, newid=newid)
         
-    # Move into order
-    # make sure the ordering of the folders is correct
     def fixOrder(self, ORDER):
-        plone_utils = getToolByName(self, 'plone_utils')
-    
+        """Move contents of a folter into order
+            make sure the ordering of the folders is correct
+        """
+        plone_utils = getToolByName(self.context, 'plone_utils')
+
         def _orderIDs(base, ids=[]):
             """sorts the objects in base in the order given by ids"""
             ids.reverse()
@@ -112,10 +121,10 @@ class LinguaToolsView(BrowserView):
                     base.moveObjectsToTop(id)
             if flag == 1: # only reindex if there is something to do
                 plone_utils.reindexOnReorder(base)
-                
         self._forAllLangs(_orderIDs, ids=ORDER)          
                 
     def deleter(self, id):
+        """ deletes an object with a given id from all language branches """
         def _setter(ob, id):
             if id in ob.objectIds():
                 ob._delObject(id)

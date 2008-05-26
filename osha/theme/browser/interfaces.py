@@ -22,6 +22,23 @@ class ILinguaToolsView(Interface):
     def propagatePortlets():
         """ propagates the portlet config from context to the language versions """
 
+    def deleter(id):
+        """ deletes an object with a given id from all language branches """
+
+    def fixOrder(ORDER):
+        """Move contents of a folter into order
+            make sure the ordering of the folders is correct
+        """
+
+    def renamer(oldid, newid):
+        """ rename one object within context from oldid to newid """
+    def setTitle(title):
+        """ simply set the title to a given value. Very primitive! """
+    def setEnableNextPrevious(flag=True):
+        """ Enables the Next-Previous Navigation Flag """
+    def setExcludeFromNav(flag=True):
+        """ Sets the Exclude From nav flag """
+
 
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
