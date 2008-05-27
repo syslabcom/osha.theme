@@ -18,6 +18,7 @@ from zope.app.container.contained import notifyContainerModified
 from OFS.event import ObjectWillBeMovedEvent
 from OFS.event import ObjectClonedEvent
 from Products.PloneLanguageTool.LanguageTool import LanguageTool
+from p4a.subtyper.interfaces import ISubtyper
 
 from Products.PlacelessTranslationService import getTranslationService
 
@@ -316,4 +317,15 @@ class LinguaToolsView(BrowserView):
                 #return ["Added language tool to %s" % ob.getId()]
 
         return self._forAllLangs(_setter)
-                            
+
+
+    def subtyper(self, subtype):
+        """ sets ob to given subtype """
+        def _setter(ob, *args, **kw):
+            subtype = kw['subtype']
+            subtyperUtil = getUtility(ISubtyper)
+            if subtyperUtil.existing_type(ob) is None:
+                subtyperUtil.change_type(ob, subtype)
+                ob.reindexObject()
+
+        return self._forAllLangs(_setter, subtype=subtype)

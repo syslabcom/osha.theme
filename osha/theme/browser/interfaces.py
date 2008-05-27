@@ -57,6 +57,9 @@ class ILinguaToolsView(Interface):
     def addLanguageTool(self):
         """ adds a language Tool """
 
+    def subtyper(subtype):
+        """ subtypes object to the given subtype """
+
 
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
