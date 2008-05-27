@@ -29,7 +29,7 @@
                    country request/country|string:;
                    search_portal_types view/search_portal_types;
                    review_state request/review_state|string:;
-                   Creator request/Creator|member/getName|member/getUserName|string:;
+                   Creator request/Creator|string:;
                    getRemoteUrl request/getRemoteUrl|string:;
                    Batch python:modules['Products.CMFPlone'].Batch;
                    DateTime python:modules['DateTime'].DateTime;
@@ -122,7 +122,7 @@
         <div class="formControls">
           <input class="context" type="submit" value="Search" />
           <input  class="context" type="reset" value="Reset" 
-                    tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}?Creator='" />
+                    tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
         </div>
         
     </form>
