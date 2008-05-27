@@ -3,6 +3,7 @@ from plone.theme.interfaces import IDefaultPloneLayer
 from zope.viewlet.interfaces import IViewletManager
 
 from plone.portlets.interfaces import IPortletManager
+from plone.app.portlets.interfaces import IColumn
 
 class IOSHAThemeLayer(Interface):
     """ Marker Interface used by BrowserLayer
@@ -78,10 +79,13 @@ class IOSHAHeaderDropdowns(IViewletManager):
     """A viewlet manager with top dropdowns, incl. language selector
     """
 
-class IOSHAAboveContent(IPortletManager):
+class IAdditionalPortletManager(IPortletManager, IColumn):
+    """ is a manager and a column """
+    
+class IOSHAAboveContent(IAdditionalPortletManager):
     """Portlet manager above the content area.
     """   
     
-class IOSHABelowContent(IPortletManager):
+class IOSHABelowContent(IAdditionalPortletManager):
     """Portlet manager below the content area.
     """     
