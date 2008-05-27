@@ -161,6 +161,7 @@
                                i18n:name="percentage">23</span>%
                     </tal:relevance>
                 </span>
+                <span tal:content="result/getURL"/>
             </span>
 
             </dd>
