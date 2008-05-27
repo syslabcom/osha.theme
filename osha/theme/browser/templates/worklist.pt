@@ -6,33 +6,7 @@
 <metal:block fill-slot="top_slot"
              tal:define="dummy python:request.set('disable_border',1)" />
 
-<metal:cssslot fill-slot="css_slot">
-  <!--style type="text/css">
-    .column1 { float: left; width: 55%; padding-right: 10px; }
-    .column2 { float: right; width: 40%; padding-left: 10px; border-left: 1px dotted gray; }
-    
-    .column1 select,
-      .column2 li  { width: 100%; }
-    .column2 .field_default, 
-    .column2 .field_vocab { width: 100%; padding: 2px 0; }
-    .column2 .field_vocab input { width: 50%; }
-    .column2 .field_vocab .searchButton { width: 20%; }
-    .column2 input[type="checkbox"] { vertical-align: left; width: 5%;}
-    .column2 .field_default input, 
-    .column2 .field_default select { width: 100%; }
 
-    
-    #wf_results { width: 100%; margin-top: 2em; }
-    #wf_results th { background-color: #C5CBD8; border-bottom: 1px dotted gray; padding: 3px; }
-    #wf_results td { background-color: transparent; border-bottom: 1px dotted gray; padding: 3px; }
-    .fieldRequired  {visibility: hidden}
-
-    .column1 input.input_checkbox, #multilingual_thesaurus li label input,
-        #nace li label input { width: 1.2em; border: none; background: transparent; padding: 0; }
-    
-  </style-->
-
-</metal:cssslot>
 
 <metal:javascriptslot fill-slot="javascript_head_slot">
   <script language="JavaScript">
@@ -43,15 +17,6 @@
   }
   </script>
 
-  <!--tal:js define="js python:here.getUniqueWidgetAttr(mockup.getFields(), 'helper_js')"
-          condition="js"
-          repeat="item js">
-    <script type="text/javascript"
-            charset="iso-8859-1"
-            tal:condition="python:exists('portal/%s' % item)"
-            tal:attributes="src string:$portal_url/$item">
-    </script>
-  </tal:js-->
 </metal:javascriptslot>
 
 <div metal:fill-slot="main" i18n:domain="osha"
@@ -75,8 +40,6 @@
                    searchterm request/SearchableText|nothing;
                    ">
 
-
-    
     <h1 class="documentFirstHeading">Worklist</h1>
     <div>
         <p>Please use these fields to select workitems.</p>
