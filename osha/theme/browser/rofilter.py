@@ -53,4 +53,11 @@ class ROFilterView(BrowserView):
         
         
 
-        
+    def results(self):
+        """ build the query and do the search """
+        context = Acquisition.aq_inner(self.context)
+        portal_catalog = getToolByName(context, 'portal_catalog')
+        query = self.buildQuery()
+        results = portal_catalog(query)
+        return results
+                      
