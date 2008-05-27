@@ -98,21 +98,21 @@ class LinguaToolsView(BrowserView):
         def _setter(ob, *args, **kw):
             flag = kw['flag']
             ob.setExcludeFromNav(flag)
-        self._forAllLangs(_setter)
+        return self._forAllLangs(_setter)
 
     def setEnableNextPrevious(self, flag):
         """ Enables the Next-Previous Navigation Flag """
         def _setter(ob, *args, **kw):
             flag = kw['flag']
             ob.setNextPreviousEnabled(flag)
-        self._forAllLangs(_setter)
+        return self._forAllLangs(_setter)
         
     def setTitle(self, title):
         """ simply set the title to a given value. Very primitive! """
         def _setter(ob, *args, **kw):
             title = kw['title']
             ob.setTitle(title)
-        self._forAllLangs(_setter, title=title)
+        return self._forAllLangs(_setter, title=title)
     
     def renamer(self, oldid, newid):
         """ rename one object within context from oldid to newid """
@@ -121,7 +121,7 @@ class LinguaToolsView(BrowserView):
             newid = kw['newid']
             if oldid in ob.objectIds():
                 ob.manage_renameObjects([oldid], [newid])
-        self._forAllLangs(_setter, oldid=oldid, newid=newid)
+        return self._forAllLangs(_setter, oldid=oldid, newid=newid)
         
     def fixOrder(self, ORDER):
         """Move contents of a folter into order
@@ -157,7 +157,7 @@ class LinguaToolsView(BrowserView):
             id = kw['id']
             if id in ob.objectIds():
                 ob._delObject(id)
-        self._forAllLangs(_setter, id=id)
+        return self._forAllLangs(_setter, id=id)
         
     def propagatePortlets(self):
         """ propagates the portlet config from context to the language versions """
