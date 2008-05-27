@@ -4,7 +4,9 @@
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <span class="tile">
-            <a rel="nofollow" href="/help" i18n:translate="box_firsttime">
+            <a rel="nofollow" href="/help" i18n:domain="osha"
+               tal:attributes="href view/link"
+               i18n:translate="box_firsttime">
                 First time here?
             </a>
         </span>

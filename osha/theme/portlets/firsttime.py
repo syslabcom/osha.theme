@@ -1,3 +1,4 @@
+import Acquisition
 from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
@@ -8,6 +9,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFCore.utils import getToolByName
 
 class IFirstTimePortlet(IPortletDataProvider):
     
@@ -34,6 +36,14 @@ class Renderer(base.Renderer):
     @property
     def available(self):
         return self._data()
+        
+    def link(self):
+        context = Acquisition.aq_inner(self.context)
+        portal_languages = getToolByName(context, 'portal_languages')
+        preflang = portal_languages.getPreferredLanguage()
+        if preflang not in self.portal.objectIds():
+            preflang = 'en'
+        return "%s/%s/help" %(self.portal.absolute_url(), preflang)
         
     @memoize
     def _data(self):
