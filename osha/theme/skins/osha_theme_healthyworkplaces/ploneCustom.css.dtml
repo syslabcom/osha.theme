@@ -34,7 +34,7 @@ dd.portletItem .navTreeItem a:hover {
 }
 
 #portal-header {
-    background-image: url('&dtml-portal_url;/topbanner2.gif') !important;
+    background-image: url('topbanner2.gif') !important;
 }
     
 #osha-campaignarea {
@@ -46,7 +46,7 @@ dd.portletItem .navTreeItem a:hover {
     float: right;
     width: 100px;
     height: 58px;
-    background: #D2ADCF url(&dtml-portal_url;/img_campaign_area.jpg) top left repeat-x;
+    background: #D2ADCF url(img_campaign_area.jpg) top left repeat-x;
     
 }
 #siteactions-wrapper {
