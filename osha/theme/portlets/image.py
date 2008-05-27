@@ -27,6 +27,10 @@ class IImagePortlet(IPortletDataProvider):
                                   source=SearchableTextSourceBinder({'object_provides' : [IImageContent.__identifier__, IFileContent.__identifier__]},
                                                                     default_query='path:'))
 
+    url = schema.TextLine(title=_(u"URL"),
+                             description=_(u"URL around the image/flash"),
+                             required=False)
+
     show_box = schema.Bool(title=_(u"Display Box?"),
                            description=_(u"Leave this unchecked if you only want to see your banner without a title and a box around."),
                             )
@@ -43,13 +47,15 @@ class Assignment(base.Assignment):
     implements(IImagePortlet)
     header = u""
     image=None
+    url = u""
     show_box = False
     width='200'
     height='60'
     
-    def __init__(self, header=u"", image=None, show_box=False, width='200', height='60'):
+    def __init__(self, header=u"", image=None, url=u"", show_box=False, width='200', height='60'):
         self.header = header
         self.image = image
+        self.url = url
         self.show_box = show_box
         self.width = width
         self.height = height
@@ -60,6 +66,7 @@ class Assignment(base.Assignment):
         "manage portlets" screen. Here, we use the title that the user gave.
         """
         return self.header
+              
 
 class Renderer(base.Renderer):
 
@@ -78,6 +85,10 @@ class Renderer(base.Renderer):
     @memoize
     def title(self):
         return self.data.header
+
+    @memoize
+    def url(self):
+        return self.data.url
 
     @memoize
     def show_box(self):
