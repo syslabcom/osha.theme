@@ -310,10 +310,10 @@ class LinguaToolsView(BrowserView):
         def _setter(ob, *args, **kw):
             if ob.isPrincipiaFolderish:
                 tool = getattr(Acquisition.aq_parent(ob), 'portal_languages')
-                if tool.id in ob.objectIds():
-                    ob._delObject(tool.id)
-                ob._setOb(tool.id, tool)
-                ob._objects = ob._objects + ({'id': tool.id, 'meta_type': tool.meta_type},)
+                #if tool.id in ob.objectIds():
+                    #ob._delObject(tool.id)
+                #ob._setOb(tool.id, tool)
+                #ob._objects = ob._objects + ({'id': tool.id, 'meta_type': tool.meta_type},)
                 #return ["Added language tool to %s" % ob.getId()]
 
         return self._forAllLangs(_setter)
