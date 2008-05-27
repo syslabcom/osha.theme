@@ -34,7 +34,8 @@ class LinguaToolsView(BrowserView):
         self.portal_languages = getToolByName(context, 'portal_languages')
         self.langs = self.portal_languages.getSupportedLanguages()
         self.dynamic_path = self.portal_path + '/%s/' + "/".join(context.getPhysicalPath()[len(self.portal.getPhysicalPath())+1:])
-        
+        if self.dynamic_path[-1]== "/":
+            self.dynamic_path = self.dynamic_path[:-1]
         
     def _forAllLangs(self, method, *args, **kw):
         """ helper method. Takes a method and executes it on all language versions of context """
@@ -329,3 +330,8 @@ class LinguaToolsView(BrowserView):
                 ob.reindexObject()
 
         return self._forAllLangs(_setter, subtype=subtype)
+        
+        
+    def reindexByPath(self):
+        """ reindexes the current context """
+        pass        
