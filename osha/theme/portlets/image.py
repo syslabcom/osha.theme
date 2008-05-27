@@ -109,6 +109,7 @@ class Renderer(base.Renderer):
                 return imgob.getTranslation(preflang)
             else:
                 return imgob.getCanonical()
+        return imgob
         
     @memoize
     def tag(self):
