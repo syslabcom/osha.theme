@@ -1,11 +1,11 @@
 <dl class="portlet portletSearch"
-    i18n:domain="plone">
+    i18n:domain="osha">
 
   <dt class="portletHeader">
       <span class="portletTopLeft"></span>
-      <a class="tile"
+      <a class="tile" i18n:domain="osha"
          tal:attributes="href view/search_form"
-         i18n:translate="box_search">Search</a>
+         i18n:translate="Looking for something specific?">Looking for something specific?</a>
       <span class="portletTopRight"></span>
   </dt>
 
@@ -25,8 +25,9 @@
               />
           <input class="searchButton"
               type="submit"
-              value="Search"
-              i18n:attributes="value label_search;"/>
+              value="Go"
+              i18n:domain="osha"
+              i18n:attributes="value Go;"/>
         
           <div class="LSResult" style="" tal:condition="livesearch">
             <div class="LSShadow"></div>
@@ -34,23 +35,24 @@
         </div>
       </form>
       <div class="visualClear"><!-- --></div>
-    </dd>
-    
-    <dd class="portletFooter">
-        <a href="#"
+
+      <div id="additional-search-options">
+        <span tal:omit-tag="" i18n_translate="txt_try_the">Try the:</span><br/>
+        <ul class="linkList"> 
+            <li><a href="#"
               class="tile"
               tal:attributes="href string:${here/portal_url}/@@index_alphabetical"
-              i18n:translate="alphabetical_index">
+              i18n:translate="portlet_oshsearch_atoz">
              Alphabetical Index&hellip;
-             </a>
-        <a href="#"
-         class="tile"
-         tal:attributes="href view/search_form"
-         i18n:translate="label_advanced_search">
-        Advanced Search&hellip;
-        </a>
-        
-        <span class="portletBottomLeft"></span>
-        <span class="portletBottomRight"></span>
-    </dd>
+            </a></li>
+            <li><a href="#"
+                 class="tile"
+                 tal:attributes="href view/search_form"
+                 i18n:translate="Advanced Search">
+                Advanced Search
+                </a></li>
+        </ul>
+      </div>
+
+    </dd>    
 </dl>
