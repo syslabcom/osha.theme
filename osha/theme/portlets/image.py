@@ -137,8 +137,8 @@ class Renderer(base.Renderer):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IImagePortlet)
-    label = _(u"Add Image Portlet")
-    description = _(u"Display an Image in the appropriate language with Language Fallback")
+    label = _(u"Add Image/Flash Portlet")
+    description = _(u"Display an Image/Flash in the appropriate language with Language Fallback")
     form_fields['image'].custom_widget = UberSelectionWidget
     
     def create(self, data):
@@ -158,5 +158,5 @@ class EditForm(base.EditForm):
     form_fields = form.Fields(IImagePortlet)
     form_fields['image'].custom_widget = UberSelectionWidget
 
-    label = _(u"Edit Image Portlet")
-    description = _(u"This portlet displays an image.")
+    label = _(u"Edit Image/Flash Portlet")
+    description = _(u"This portlet displays an image/flash.")

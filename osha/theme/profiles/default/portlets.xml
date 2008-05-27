@@ -64,8 +64,8 @@
 
   <portlet
       addview="osha.image"
-      title="Image Portlet"
-      description="Shows an Image and falls back to the default language if it is not available in the preferred." />
+      title="Image/Flash Portlet"
+      description="Shows an Image/Flash and falls back to the default language if it is not available in the preferred." />
 
 
           
