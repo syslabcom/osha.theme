@@ -20,6 +20,11 @@ class IndexAlphabetical(BrowserView):
         self.manager = portal_vocabularies.MultilingualThesaurus._getManager() 
         self.term_dict = self.manager.term_dict
         self.letter = str(self.request.get('letter', '')).upper()
+        if len(self.letter)==2:
+            try:
+                self.letter = unicode(self.letter, 'utf-8')
+            except:
+                print "index_alphabetical:: could not convert to unicode"
         self.term_id = self.request.get('term_id', '')
         
         return self.template() 
