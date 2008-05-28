@@ -34,13 +34,13 @@
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
         
-        <div class="documentUrl">
+        <div class="documentUrl" tal:define="ext_url here/getRemoteUrl|string:">
             <label i18n:translate="RemoteProvider_label_url">Url</label>
-            <div>
-                <metal:field use-macro="python:here.widget('remoteUrl', mode='view')">
-                URL
-                </metal:field>
-            </div>
+                <div>
+                    <a class="link-leave" rel="nofollow"
+                       href="" tal:attributes="href ext_url" 
+                       tal:content="ext_url" />
+                </div>
         </div>
 <br/>
 
