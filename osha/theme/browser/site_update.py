@@ -43,13 +43,13 @@ class SiteUpdateView(BrowserView):
         context = Acquisition.aq_inner(self.context)        
         portal_catalog = getToolByName(context, 'portal_catalog')
 
-        query = {'Language': 'all', 
+        query = {'limit':100,
                  'review_state': 'published',
-                 'portal_type': ['Document', 'RichDocument', 'News Item'],
+                 'portal_type': ['Document', 'RichDocument', 'News Item', 'Event'],
                  'sort_on': 'modified',
                  'sort_order': 'reverse'
                 }
-        results = portal_catalog(query)                
+        results = portal_catalog(query)[:100]                
         stop = time.time()
         print "Catalog time is %s" % (stop-start)
         # The brain objects fetch the values potentially lazy only if needed. 
