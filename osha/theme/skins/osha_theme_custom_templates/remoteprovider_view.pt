@@ -17,10 +17,10 @@
         <div tal:replace="structure provider:plone.abovecontenttitle" />
             
 
-        <h1 class="documentFirstHeading"> 
-            <metal:field use-macro="python:here.widget('title', mode='view')">
-            Title
-            </metal:field>
+        <h1 class="documentFirstHeading">
+            <img src=""
+            tal:attributes="src string:${portal_url}/icon_provider.gif" alt="here/portal_type" i18n:attributes="alt"/>
+            <span tal:replace="here/Title |nothing" /> 
         </h1>
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
