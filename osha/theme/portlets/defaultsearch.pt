@@ -49,7 +49,7 @@
             <li><a href="#"
                  class="tile"
                  tal:attributes="href view/search_form"
-                 i18n:translate="Advanced Search">
+                 i18n:translate="Advanced Search" i18n:domain="plone">
                 Advanced Search
                 </a></li>
         </ul>
