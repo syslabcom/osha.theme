@@ -33,7 +33,7 @@
     
     <div id="alphabetical-index">
         
-        <h1 class="documentFirstHeading">Alphabetical Index of the Multilingual Thesaurus</h1>
+        <h1 class="documentFirstHeading" i18n:translate="alphabetical_index">Alphabetical Index of the Multilingual Thesaurus</h1>
 
         <div style="text-align:center">
             <span tal:repeat="alpha alphabet">
