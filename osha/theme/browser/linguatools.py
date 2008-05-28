@@ -335,3 +335,9 @@ class LinguaToolsView(BrowserView):
     def reindexByPath(self):
         """ reindexes the current context """
         pass        
+        
+    def reindexer(self):
+        """ reindexes an object in all language branches """
+        def _setter(ob, *args, **kw):
+            ob.reindexObject()
+        return self._forAllLangs(_setter)        

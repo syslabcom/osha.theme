@@ -60,6 +60,9 @@ class ILinguaToolsView(Interface):
     def subtyper(subtype):
         """ subtypes object to the given subtype """
 
+    def reindexer(self):
+        """ reindexes an object in all language branches """
+
 
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
