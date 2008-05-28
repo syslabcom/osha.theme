@@ -7,28 +7,28 @@
  <!-- Custom news portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.news.INewsPortlet" 
-     layer="osha.theme.browser.interfaces.IThemeSpecific" 
+     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".news.Renderer" 
      />    
 
  <!-- Custom events portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.events.IEventsPortlet" 
-     layer="osha.theme.browser.interfaces.IThemeSpecific" 
+     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".events.Renderer" 
      />    
 
  <!-- Custom navigation portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
-     layer="osha.theme.browser.interfaces.IThemeSpecific" 
+     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".navigation.Renderer" 
      />    
      
  <!-- Custom defaultsearch portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.search.ISearchPortlet" 
-     layer="osha.theme.browser.interfaces.IThemeSpecific" 
+     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".defaultsearch.Renderer" 
      />     
      
@@ -125,7 +125,8 @@
          editview=".document_fallback.EditForm"
          view_permission="zope2.View"
          edit_permission="cmf.ManagePortal"
-         />        
+         />
+
  <!-- Image portlet -->
      <plone:portlet
          name="osha.image"
