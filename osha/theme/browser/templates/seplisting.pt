@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+      
+<metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+
+<body>
+
+<div metal:fill-slot="main">    
+                
+    <h1  class="documentFirstHeading" tal:content="context/Title">Title</h1>
+
+    <img class="image-left" 
+         tal:attributes="src string:${context/portal_url}/images/themas.jpg" 
+         alt="Topics Logo" title="Topics Logo"
+         />
+
+    <div class="visualClear"></div>
+
+      <div tal:define="results python:view.getAreaLinks()">
+        <ul>
+          <li tal:repeat="elem results">
+            <a href="" tal:attributes="href elem/getURL" tal:content="elem/Title" />
+          </li>
+        </ul>
+      </div>
+
+
+</div>
+</body>
+</html>

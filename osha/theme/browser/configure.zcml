@@ -227,7 +227,14 @@
         class=".publications.PublicationsSearchView"
         permission="zope2.View"
     />
-
+    
+    <browser:page
+        for="*"
+        name="seplisting"
+        class=".seplisting.SEPListingView"
+        permission="zope2.View"
+    />
+    
     <browser:page
         for="*"
         name="index_alphabetical"
