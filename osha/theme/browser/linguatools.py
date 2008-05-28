@@ -235,6 +235,16 @@ class LinguaToolsView(BrowserView):
             ob.setTitle(title_trans)
         return self._forAllLangs(_setter, label=label, domain=domain)
             
+    def setTranslatedDescription(self, label, domain):
+        """ sets the description based on the translation availble for title in the language """
+        def _setter(ob, *args, **kw):
+            translate = getTranslationService().translate
+            label = kw['label']
+            domain=kw['domain']
+            lang = kw['lang']
+            desc_trans = translate(target_language=lang, msgid=label, default=label, context=ob, domain=domain)
+            ob.setDescription(desc_trans)
+        return self._forAllLangs(_setter, label=label, domain=domain)
             
     def createFolder(self, id, excludeFromNav=True):
         """ creates a folder and all translations in the language branches """

@@ -45,6 +45,8 @@ class ILinguaToolsView(Interface):
         """ removes a OFS Property on context """
     def setTranslatedTitle(label, domain):
         """ sets the title based on the translation availble for title in the language """
+    def setTranslatedDescription(self, label, domain):
+        """ sets the description based on the translation availble for title in the language """
     def createFolder(id, excludeFromNav=True):
         """ creates a folder and all translations in the language branches """
     def cutAndPaste(self, sourcepath, id, targetpath):
