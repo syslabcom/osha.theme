@@ -99,14 +99,14 @@ class LinguaToolsView(BrowserView):
         def _setter(ob, *args, **kw):
             flag = kw['flag']
             ob.setExcludeFromNav(flag)
-        return self._forAllLangs(_setter)
+        return self._forAllLangs(_setter, flag=flag)
 
     def setEnableNextPrevious(self, flag):
         """ Enables the Next-Previous Navigation Flag """
         def _setter(ob, *args, **kw):
             flag = kw['flag']
             ob.setNextPreviousEnabled(flag)
-        return self._forAllLangs(_setter)
+        return self._forAllLangs(_setter, flag=flag)
         
     def setTitle(self, title):
         """ simply set the title to a given value. Very primitive! """
