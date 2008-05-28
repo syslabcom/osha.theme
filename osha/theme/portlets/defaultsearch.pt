@@ -41,7 +41,8 @@
         <ul class="linkList"> 
             <li><a href="#"
               class="tile"
-              tal:attributes="href string:${here/portal_url}/@@index_alphabetical"
+              tal:define="preflang here/portal_languages/getPreferredLanguage"
+              tal:attributes="href string:${here/portal_url}/${preflang}/@@index_alphabetical"
               i18n:translate="portlet_oshsearch_atoz">
              Alphabetical Index&hellip;
             </a></li>
