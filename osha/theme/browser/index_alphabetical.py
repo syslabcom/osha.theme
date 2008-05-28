@@ -19,120 +19,53 @@ class IndexAlphabetical(BrowserView):
         self.lang = portal_languages.getPreferredLanguage()
         self.manager = portal_vocabularies.MultilingualThesaurus._getManager() 
         self.term_dict = self.manager.term_dict
-        self.letter = self.request.get('letter', '').upper()
+        self.letter = str(self.request.get('letter', '')).upper()
         self.term_id = self.request.get('term_id', '')
-                
+        
         return self.template() 
+
+
+    def _getInitials_cachekey(method, self):
+        return ("thesaurusinitials", self.lang)    
         
-        
-    def getAlphabet(self):
+    @ram.cache(_getInitials_cachekey)
+    def getInitials(self):
         """ fetch the whole alphabet """
-        
         initials = {}
         for term_id in self.term_dict.keys():   
+            term = self.term_dict[term_id]
             caption = self.manager.getTermCaptionById(term_id, self.lang).strip()
             if len(caption)==0:
                 continue
             initial = caption[0].upper()
             section = initials.get(initial, [])
-            section.append(caption)
+            section.append((caption, term_id))
             initials[initial] = section
-            
-        self.initials = initials
-        alphabet = initials.keys()
+        return initials
+        
+    def getAlphabet(self):
+        """ fetch the whole alphabet """
+        
+        self.initials = self.getInitials()            
+        alphabet = self.initials.keys()
         alphabet.sort()
         self.alphabet = alphabet
         return alphabet
 
-    def _searchCatalog_cachekey(method, self):
-        return ("published_thesaurus_alllanguages")    
-        
-    @ram.cache(_searchCatalog_cachekey)
-    def _searchCatalog(self):
-        """ search the catalog for all items on a subject 
-            this is to be cached 
-        """
-        start = time.time()
-
-        context = Acquisition.aq_inner(self.context)        
-        portal_catalog = getToolByName(context, 'portal_catalog')
-
-        query = {'Language': '', 
-                 'review_state': 'published'
-                }
-        results = portal_catalog(query)                
-        stop = time.time()
-        print "Catalog time is %s" % (stop-start)
-        # The brain objects fetch the values potentially lazy only if needed. 
-        # This may be bad for caching and seems to result in the hard to debug 
-        # ConnectionStateError: Shouldn't load state for 0x3768d0 when the connection is closed error. 
-        # I therefore copy the results over into a static datastructure.
-        sres = []
-        schema = portal_catalog.schema()
-        for result in results:
-            staticbrain = {}
-            for key in schema:
-                staticbrain[key] = result[key]
-            staticbrain['getURL'] = result.getURL()
-            staticbrain['getPath'] = result.getPath()
-            
-            sres.append(staticbrain)
-            
-        return sres
-        
-    def _fetchResults(self):
-        """ search all objects 
-            and order them by alphabetical thesaurus term 
-            E.g.
-                {'A': [brain, brain]}
-        """
-        start = time.time()
-                                
-        results = self._searchCatalog()
-        
-        caption_termid = {}
-        captions = {}
-        for result in results:
-            term_ids = result['getMTSubject'] or []
-            for term_id in term_ids:
-                caption = self.manager.getTermCaptionById(term_id, self.lang)
-                caption_termid[caption] = term_id
-                if not caption or len(caption)==0:
-                    print "Caption error", caption
-                    continue
-                initial = caption[0].upper()
-                section = captions.get(initial, {})
-                captionmap = section.get(caption, [])
-                captionmap.append(result)
-                section[caption] = captionmap
-                captions[initial] = section                
-                
-        self.captions = captions
-        self.caption_termid = caption_termid
-
-        initials = self.captions.keys()
-        initials.sort()
-        if not self.letter:
-            self.letter = initials[0]
-            
-        stop = time.time()
-        print "search duration %s secs" % (stop-start)
-        return captions               
-
         
     def resultsByLetter(self, letter=None):
         """ returns the sorted resultmap by letter based on the search above """
-        self._fetchResults()
+        #self._fetchResults()
         
         if letter is None:
             letter = self.getLetter()
         if letter == '':
             return [[], {}]
-            
-        results = self.captions.get(letter, {})
-        reskeys = results.keys()
-        reskeys.sort(lambda x,y: cmp(x.lower(), y.lower()))
-        return (reskeys, results)
+        
+        section = self.initials.get(letter, [])    
+        section.sort()
+        return section
+
         
         
     def resultsByTermId(self, letter=None, term_id=None):
@@ -167,3 +100,64 @@ class IndexAlphabetical(BrowserView):
 
     def getIdByCaption(self, caption):
         return self.caption_termid.get(caption, '')        
+        
+        
+    def _searchCatalogForTerm_cachekey(method, self, term_id):
+        return ("termresults", term_id)    
+        
+    @ram.cache(_searchCatalogForTerm_cachekey)
+    def _searchCatalogForTerm(self, term_id):
+        """ search the catalog for all items on a subject 
+            this is to be cached 
+        """
+        start = time.time()
+        context = Acquisition.aq_inner(self.context)        
+        portal_catalog = getToolByName(context, 'portal_catalog')
+
+        query = {'multilingual_thesaurus': term_id,
+                 'Language': '', 
+                 'review_state': 'published'
+                }
+        results = portal_catalog(query)                
+        stop = time.time() 
+        print "SearchTerm %s time is %s" % (self.term_id, stop-start)
+        return len(results)
+        
+    def getTerm(self):
+        portal_languages = getToolByName(self.context, 'portal_languages')
+        langinfo = portal_languages.getAvailableLanguageInformation()
+
+        term_id = self.term_id
+        TERM = self.manager.getTermById(term_id)
+        
+        caption = self.manager.getTermCaptionById(term_id, self.lang)
+        term = dict(id=self.term_id, Title=caption)
+
+        results = self._searchCatalogForTerm(self.term_id)
+        term['numEntries'] = results
+
+        getC = self.manager.getTermCaptionById
+        getI = self.manager.getTermIdentifier
+        children = []
+        for child in TERM.getchildren():
+            if child.tag == '{http://www.imsglobal.org/xsd/imsvdex_v1p0}term':
+                id = getI(child)
+                caption = getC(id)
+                children.append(dict(Title=caption, 
+                         id=id, 
+                         letter=caption[0],
+                         numEntries=self._searchCatalogForTerm(id))) 
+
+        term['childlist'] = children
+        
+        captions = self.manager.getTermCaption(TERM, lang='*')
+        langs = captions.keys()
+        langs.sort()
+        translations = []
+        for lang in langs:
+            translations.append((captions[lang], lang, langinfo[lang]['native']))
+        
+        term['translations'] = translations        
+        
+        return term
+        
