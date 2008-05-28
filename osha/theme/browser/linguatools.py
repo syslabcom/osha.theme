@@ -351,3 +351,18 @@ class LinguaToolsView(BrowserView):
         def _setter(ob, *args, **kw):
             ob.reindexObject()
         return self._forAllLangs(_setter)        
+        
+        
+    def publisher(self):
+        """ tries to publish all object languages """
+        portal_workflow = getToolByName(self.context, 'portal_workflow')
+        def _setter(ob, *args, **kw):
+            res = []
+            try:
+                portal_workflow.doActionFor(ob, 'publish')
+                res.append("OK Published %s" % "/".join(ob.getPhysicalPath()))
+            except Exception, e:
+                res.append("ERR publishing %s: %s" % ("/".join(ob.getPhysicalPath()), str(e) ))
+            return res
+        return self._forAllLangs(_setter)        
+        

@@ -56,14 +56,16 @@ class ILinguaToolsView(Interface):
             targetpath must be the folder to move to
             both paths must contain one single %s to place the language
         """
-    def addLanguageTool(self):
+    def addLanguageTool():
         """ adds a language Tool """
 
     def subtyper(subtype):
         """ subtypes object to the given subtype """
 
-    def reindexer(self):
+    def reindexer():
         """ reindexes an object in all language branches """
+    def publisher():
+        """ tries to publish all object languages """
 
 
 class IOSHA(Interface):
