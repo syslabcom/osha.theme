@@ -61,12 +61,16 @@ class LinguaToolsView(BrowserView):
         return results
     
     
-    def blockPortlets(context, manager, CAT, status):
-        """ Helper. Block the Portlets on a given context, manager, and Category """
-        portletManager = getUtility(IPortletManager, name=manager)
-        assignable = getMultiAdapter((context, portletManager,), ILocalPortletAssignmentManager)    
-        assignable.setBlacklistStatus(CAT, status)
-    
+    def blockPortlets(self, manager, status):
+        """ Block the Portlets on a given context, manager, and Category """
+        def _setter(ob, *args, **kw):
+            manager = kw['manager']
+            status = kw['status']
+            CAT = CONTEXT_CATEGORY
+            portletManager = getUtility(IPortletManager, name=manager)
+            assignable = getMultiAdapter((ob, portletManager,), ILocalPortletAssignmentManager)
+            assignable.setBlacklistStatus(CAT, status)
+        return self._forAllLangs(_setter, manager=manager, status=status)
     
 #    def blockPortletsButNavi(self):
 #        """ changes for all campaign sites """
