@@ -281,6 +281,14 @@
         class=".index_ro_metadata.IndexROMetadataView"
         permission="zope2.View"
     />    
+    
+    <browser:page
+        for="*"
+        name="search_ro"
+        class=".search_ro.SearchROView"
+        permission="zope2.View"
+    /> 
+        
     <browser:page
         for="*"
         name="worklist"

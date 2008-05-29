@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+
+<div metal:fill-slot="main" i18n:domain="osha"
+       tal:define="results view/results;
+                   Batch python:modules['Products.CMFPlone'].Batch;
+                   DateTime python:modules['DateTime'].DateTime;
+                   b_size python:30;b_start python:0;b_start request/b_start | b_start;
+                   desc_length site_properties/search_results_description_length | string:200;
+                   desc_ellipsis site_properties/ellipsis;
+                   searchterm request/SearchableText|nothing;
+                   countryname view/country;
+                   topicname view/ero_topic;
+                   ">
+
+
+     <h1 class="documentFirstHeading" tal:content="view/title"></h1>
+
+
+    <div tal:condition="not: results">
+        <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+    </div>
+
+
+    <div tal:condition="results"
+         tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+
+
+        <dl>
+        <tal:results repeat="result batch">
+        <tal:entry define="result_url result/getURL;
+                           url string:$result_url/view?searchterm=${searchterm};
+                           title result/Title|string:;
+                           country_name result/getCountry|nothing;
+                           topic_name result/getEROTopic|nothing">
+            <dt>
+                <img src="#"
+                     height="16"
+                     width="16"
+                     alt="" tal:attributes="
+                     src string:${portal/absolute_url}/${result/getIcon};
+                     alt result/Type|string:;
+                     title result/Type|string:"
+                     i18n:attributes="alt;title"
+                     tal:on-error="structure python:path('here/linkOpaque.gif')" />&nbsp;
+            <a href="#" tal:attributes="href url" >
+                <span tal:replace="title" />
+                <span tal:condition="python:country_name and not countryname">(<span tal:replace="python:view.getCN(country_name)"/>)</span>
+                <span tal:condition="python:topic_name and not topicname">(<span tal:replace="python:view.pretty(topic_name)"/>)</span>
+            </a>
+
+
+           <br>
+            <span tal:define="descr result/Description" 
+                  tal:condition="python:result.getEROTarget_group == 'Summary' and descr!=''">
+              <div tal:content="structure descr" 
+                   style="border: 1px solid #ccc; padding: 5px; background-color: #eee; margin: 10px 0px 10px 23px;"></div>
+            </span>
+
+            </dt>
+
+        </tal:entry>
+        </tal:results>
+        </dl>
+        <br><br>
+        <!-- Navigation -->
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+    </div>
+
+
+</div>
+
+
+</html>
+

@@ -46,8 +46,8 @@ class IndexROMetadataView(BrowserView):
         
         query = {act_md: act_mdval,
                  'Language': 'all',
-                 'review_state': 'published',
-                 'path': navigation_root_path}
+                 'review_state': 'published'
+                    }
         results = portal_catalog(query)
         TO = set()
         CO = set()
