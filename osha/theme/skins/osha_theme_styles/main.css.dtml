@@ -194,6 +194,15 @@ dl.portletCampaigns dd.portletFooter {
 .portletCampaigns .portletItem {
     padding: 0 0 0.5em;
 }
+.portletNews .portletItem {
+    font-size: 90%;
+}
+.portletEvents .portletItem {
+    font-size: 90%;
+}
+.portletCollection .portletItem {
+    font-size: 90%;
+}
 h4.campaignHeader {
     font-size: 1em;
     background: #858C90;
