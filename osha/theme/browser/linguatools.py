@@ -366,3 +366,34 @@ class LinguaToolsView(BrowserView):
             return res
         return self._forAllLangs(_setter)        
         
+        
+    def translateThis(self, attrs=[]):
+        """ Translates the current object into all languages and transferres the given attributes """
+        context = Acquisition.aq_inner(self.context)
+        if 'title' not in attrs:
+            attrs.append('title')
+        # Only do this from the canonical
+        context = context.getCanonical()
+        res = []
+        for lang in self.langs:
+            if context.hasTranslation(lang):
+                res.append("Translation for %s exists" %lang)
+                continue
+            context.addTranslation(lang)
+            trans = context.getTranslation(lang)
+            res.append("Added Translation for %s" %lang)
+            for attr in attrs:
+                val = context.getField(attr).getAccessor(context)()
+                trans.getField(attr).getMutator(trans)(val)
+                res.append("  > Transferred Attribute %s" % attr)
+                
+        return res
+        
+        
+    def setRichDocAttachments(self, flag=False):
+        """ Sets the attachment flag on a rich document """
+        def _setter(ob, *args, **kw):
+            ob.setDisplayAttachments(flag)
+        return self._forAllLangs(_setter)        
+        
+        
