@@ -5,8 +5,7 @@
             i18n:translate="heading_network">OSHA Network</strong>            
             
     <form name="networkchooser" 
-          action=""
-          xtal:attributes="action formAction"> 
+          action=""> 
           <div class="dropdown">
                <label for="euNetwork"
                       class="hiddenStructure"

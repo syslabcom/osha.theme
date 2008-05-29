@@ -7,7 +7,7 @@ from zope.interface import implements, alsoProvides
 from plone.memoize.instance import memoize
 from plone.memoize import ram
 from Products.PlacelessTranslationService import getTranslationService
-
+from osha.theme.config import *
 
 class OSHA(BrowserView):
     implements(IOSHA)
@@ -161,5 +161,18 @@ class OSHA(BrowserView):
         subjects.sort(lambda x,y: cmp(x[1], y[1]))
         
         return subjects
+        
+        
+    def getGermanNetwork(self):
+        """ returns the sites from the European Network """
+        return GERMAN_NETWORK
+        
+    def getEuropeanNetwork(self):
+        """ returns the sites from the European Network """
+        return EUROPEAN_NETWORK
+    
+    def getInternationalNetwork(self):
+        """ returns the sites from the European Network """
+        return INTERNATIONAL_NETWORK        
 
 #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
