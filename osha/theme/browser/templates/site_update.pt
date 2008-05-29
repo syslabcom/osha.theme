@@ -18,16 +18,17 @@
         <metal:block tal:define="results view/results;
                                  b_start python:request.get('b_start', 0);
                                  Batch python:modules['Products.CMFPlone'].Batch;
-                                 batch python:Batch(results, 20, int(b_start), orphan=1);
-                                 currday python:None">
+                                 batch python:Batch(results, 20, int(b_start), orphan=1);                                 
+                                 ">
 
             <div class="fakeList" tal:condition="results">
             <div metal:use-macro="here/batch_macros/macros/navigation" />
             <dl>
               <tal:block repeat="item batch">
-                <div tal:define="day python: item[0]; ob python:item[1]; newday python:day!=currday; currday day;">
+                <div tal:define="day python: item[0]; ob python:item[1]">
 
-                    <dt tal:condition="newday" tal:content="python:toLocalizedTime(ob.get('modified'))">New date</dt>
+                    <dt tal:condition="day"> 
+                    <span tal:content="day">New date</span></dt>
                     <dd>
                         <a href=""
                            tal:attributes="href ob/getURL"

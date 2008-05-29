@@ -23,11 +23,16 @@ class SiteUpdateView(BrowserView):
         context = Acquisition.aq_inner(self.context)        
         toLocalizedTime = context.restrictedTraverse('@@plone').toLocalizedTime
         all = []
+        currday = None
         for i in self.items:
             modified = i.get('modified')
             day = toLocalizedTime(modified)
-            all.append((day, i))
-
+            if day != currday:            
+                all.append((day, i))
+                currday = day
+            else:
+                all.append((None, i))
+                
         return all
 
     def _searchCatalog_cachekey(method, self):
