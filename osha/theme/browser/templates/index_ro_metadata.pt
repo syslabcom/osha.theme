@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+<body>
+
+          
+<div metal:fill-slot="main" 
+            i18n:domain="osha"
+            tal:define="act_md request/act_md | string:;
+                        act_mdval request/act_mdval | string:;
+                        distinct_values python:view.findDistinctValues(act_md, act_mdval);">
+
+    <style type="text/css">
+    .floatbox { width:44%; float:left; border: 1px dashed lightgray; padding: 5px; margin: 0px 5px; }
+    </style>
+
+    <h1>
+        <span tal:replace="python:view.pretty(act_mdval)" />
+    </h1>
+
+
+    <span tal:condition="view/summary">
+      <span tal:replace="structure view/summary"/>
+      <a href="" tal:condition="view/summary_more" 
+                 tal:attributes="href view/summary_more">more...</a>
+    </span>
+    
+    <p tal:condition="python:act_md=='topic' and 'methodology_html' in here.objectIds()"><a href="methodology_html">Methodology</a></p>
+
+    <h2 i18n:translate="">Please refine your selection</h2>
+    
+    <tal:block repeat="mde view/remaining">
+    <div class="floatbox">
+      <h2 tal:content="python:view.pretty(mde)">Title</h2>
+      
+      <ul tal:define="all_values python:distinct_values[mde]">
+
+
+        <tal:block repeat="v all_values">
+            <li tal:define="title python:v[0]; key python:v[1]; path python:v[2]">
+                <a href="" 
+                   tal:attributes="href path"
+                   tal:content="title">title</a>
+           </li>
+        </tal:block>
+      </ul>
+    </div>
+    </tal:block>
+    <br clear="all">
+    
+    
+    
+</div>
+
+</body>
+
+</html>
+

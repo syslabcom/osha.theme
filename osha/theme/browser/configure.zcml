@@ -275,7 +275,12 @@
         class=".rofilter.ROFilterView"
         permission="zope2.View"
     />
-    
+    <browser:page
+        for="*"
+        name="index_ro_metadata"
+        class=".index_ro_metadata.IndexROMetadataView"
+        permission="zope2.View"
+    />    
     <browser:page
         for="*"
         name="worklist"
