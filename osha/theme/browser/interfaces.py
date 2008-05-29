@@ -80,6 +80,10 @@ class IOSHA(Interface):
     def sendto(self, send_to_address, send_from_address, comment,
                subject='Plone', **kwargs):
         """Sends a link of a page to someone."""
+
+    def getTranslatedCategories(domain):
+        """ returns a list of tuples, that contain key and title of Categories (Subject)
+        ordered by Title """
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions

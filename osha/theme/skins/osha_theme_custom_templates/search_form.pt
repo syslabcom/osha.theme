@@ -11,7 +11,8 @@
     <metal:block fill-slot="column_one_slot" />
     <metal:block fill-slot="column_two_slot" />
 
-<div metal:fill-slot="main">
+<div metal:fill-slot="main"
+    tal:define="oshaview here/@@oshaview">
 
     <h1 class="documentFirstHeading"
         i18n:translate="heading_advanced_search">Advanced search for content</h1>
@@ -54,7 +55,9 @@
             </div>
 
 
-            <div class="field">
+            <div class="field"
+                tal:define="contentSubjects here/Subject;
+                                    usedSubjects oshaview/getTranslatedCategories">
                 <label for="Subject" i18n:translate="label_categories">Categories</label>
 
                 <div class="formHelp" i18n:translate="help_search_categories">
@@ -63,20 +66,16 @@
                 (or <strong>Apple</strong> key on Mac) while clicking the
                 keywords.
                 </div>
-
                 <select name="Subject:list"
                         id="Subject"
                         size="7"
                         multiple="multiple"
-                        tal:define="contentSubjects here/Subject;
-                                    usedSubjects python:here.portal_catalog.uniqueValuesFor('Subject');"
                         >
+                        
                     <option value="#"
                             tal:repeat="subject usedSubjects"
-                            tal:content="subject"
-                            tal:attributes="value subject"
-                            i18n:domain="osha"
-                            i18n:translate=""
+                            tal:content="python:subject[1]"
+                            tal:attributes="value python:subject[0]"
                             >dummy</option>
                 </select>
                 <br />

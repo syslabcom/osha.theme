@@ -6,6 +6,7 @@ from Products.Five import BrowserView
 from zope.interface import implements, alsoProvides
 from plone.memoize.instance import memoize
 from plone.memoize import ram
+from Products.PlacelessTranslationService import getTranslationService
 
 
 class OSHA(BrowserView):
@@ -141,3 +142,21 @@ class OSHA(BrowserView):
                                  debug=False, From=send_from_address)        
 
 
+    def getTranslatedCategories(self, domain='osha'):
+        """ returns a list of tuples, that contain key and title of Categories (Subject)
+        ordered by Title """
+        pc = getToolByName(self.context, 'portal_catalog')
+        plt = getToolByName(self.context, 'portal_languages')
+        lang = plt.getPreferredLanguage()
+        usedSubjects = pc.uniqueValuesFor('Subject')
+        translate = getTranslationService().translate
+        subjects = list()
+        for s in usedSubjects:
+            subjects.append((s, 
+                      translate(target_language=lang, msgid=s, default=s, context=self.context, domain=domain))
+                     )
+        subjects.sort(lambda x,y: cmp(x[1], y[1]))
+        
+        return subjects
+
+#translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
