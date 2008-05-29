@@ -41,7 +41,7 @@
         <form tal:attributes="action template/id" method="get">
 
         <h2>Search publications:</h2>
-        <div id="searchfields" tal:define="values python:here.portal_catalog.uniqueValuesFor('Subject')">
+        <div id="searchfields" tal:define="values python:here.restrictedTraverse('@@oshaview').getTranslatedCategories()">
 
 
             <div class="floatcontrol">
@@ -61,10 +61,10 @@
                                 Select...
                         </option>
                         <tal:block repeat="v values">
-                            <option tal:condition="python:v != '--'"
-                                    tal:attributes="value v;
-                                                    selected python:v in Subject and 'selected' or None"
-                                    tal:content="v" i18n:translate="">
+                            <option tal:condition="python:v[0] != '--'"
+                                    tal:attributes="value python:v[0];
+                                                    selected python:v[0] in Subject and 'selected' or None"
+                                    tal:content="python:v[1]">
                             </option>
                         </tal:block>
                     </select>
