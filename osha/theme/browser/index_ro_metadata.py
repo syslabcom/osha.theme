@@ -26,6 +26,16 @@ class IndexROMetadataView(BrowserView):
         """ makes a metadatum pretty """
         return text.replace('_', ' ').capitalize()
 
+    def title(self):
+        """ returns the proper title """
+        portal_countryutils = getToolByName(self.context, 'portal_countryutils')
+        if self.act_md in ['ero_topic', 'ero_target_group']:
+            return self.pretty(self.act_mdval)
+        elif self.act_md == 'country':
+            return portal_countryutils.getCountryByIsoCode(self.act_mdval)
+        else:
+            return ''   
+
     def findDistinctValues(self, act_md, act_mdval):
         """ search the catalog for all entries which are within the riskob and match the given keyword """
         portal_catalog = getToolByName(self.context, 'portal_catalog')
@@ -65,10 +75,10 @@ class IndexROMetadataView(BrowserView):
         TGS.sort()
 
         TOS = []
-        path = navigation_root_path+"/search_ro?"+act_md+'='+act_mdval+'&ero_topic=%s'  
+        path = navigation_root_path+"/%s/search_ro?"+act_md+'='+act_mdval+'&ero_topic=%s'  
         for to in TO:
             ton = self.pretty(to)
-            TOS.append((ton, to, path%to))
+            TOS.append((ton, to, path%(to, to)))
         TOS.sort()
         
         return {'ero_topic': TOS, 
@@ -80,7 +90,10 @@ class IndexROMetadataView(BrowserView):
         """ check if summary exists and return its description if so """
         if self.act_md=='ero_topic' and 'summary_html' in self.context.objectIds():
             s = getattr(self.context, 'summary_html')
-            return s.Description()
+            desc = s.Description().strip()
+            if desc.startswith('Summary'):
+                desc = desc[7:]
+            return desc
         return False
                     
     def summary_more(self):

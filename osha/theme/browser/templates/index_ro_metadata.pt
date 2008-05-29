@@ -12,15 +12,16 @@
                         distinct_values python:view.findDistinctValues(act_md, act_mdval);">
 
     <style type="text/css">
-    .floatbox { width:44%; float:left; border: 1px dashed lightgray; padding: 5px; margin: 0px 5px; }
+    .floatbox { width:47%; float:left; padding: 1%; margin:0; }
     </style>
 
-    <h1>
-        <span tal:replace="python:view.pretty(act_mdval)" />
+    <h1 class="documentFirstHeading">
+        <span tal:replace="view/title" />
     </h1>
 
 
     <span tal:condition="view/summary">
+      <h2>Summary</h2>
       <span tal:replace="structure view/summary"/>
       <a href="" tal:condition="view/summary_more" 
                  tal:attributes="href view/summary_more">more...</a>
