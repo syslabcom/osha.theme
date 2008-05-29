@@ -53,9 +53,12 @@ class IndexROMetadataView(BrowserView):
         CO = set()
         TG = set()
         for result in results:
-            TO = TO.union(result['getEROTopic'])
-            CO = CO.union(result['getCountry'])                    
-            TG = TG.union(result['getEROTarget_group'])            
+            if result['getEROTopic']:
+                TO = TO.union(result['getEROTopic'])
+            if result['getCountry']:
+                CO = CO.union(result['getCountry'])                    
+            if result['getEROTarget_group']:
+                TG = TG.union(result['getEROTarget_group'])            
 
         TO = list(TO)
         CO = list(CO)
