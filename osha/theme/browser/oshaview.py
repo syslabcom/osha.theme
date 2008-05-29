@@ -145,6 +145,7 @@ class OSHA(BrowserView):
     def getTranslatedCategories(self, domain='osha'):
         """ returns a list of tuples, that contain key and title of Categories (Subject)
         ordered by Title """
+        IGNORE = [ 'provider' ]
         pc = getToolByName(self.context, 'portal_catalog')
         plt = getToolByName(self.context, 'portal_languages')
         lang = plt.getPreferredLanguage()
@@ -152,6 +153,8 @@ class OSHA(BrowserView):
         translate = getTranslationService().translate
         subjects = list()
         for s in usedSubjects:
+            if s in IGNORE:
+                continue
             subjects.append((s, 
                       translate(target_language=lang, msgid=s, default=s, context=self.context, domain=domain))
                      )
