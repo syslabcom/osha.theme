@@ -32,7 +32,7 @@ class IndexROMetadataView(BrowserView):
         if self.act_md in ['ero_topic', 'ero_target_group']:
             return self.pretty(self.act_mdval)
         elif self.act_md == 'country':
-            return portal_countryutils.getCountryByIsoCode(self.act_mdval)
+            return portal_countryutils.getCountryByIsoCode(self.act_mdval).name
         else:
             return ''   
 
@@ -64,22 +64,22 @@ class IndexROMetadataView(BrowserView):
         COS = []        
         path = navigation_root_path+"/search_ro?"+act_md+'='+act_mdval+'&country=%s'  
         for country in CO:
-            COS.append((portal_countryutils.getCountryByIsoCode(country), country, path%country)) 
-        COS.sort()
+            COS.append((portal_countryutils.getCountryByIsoCode(country).name, country, path%country)) 
+        COS.sort(lambda x,y: cmp(x[0], y[0]))
 
         TGS = []
         path = navigation_root_path+"/search_ro?"+act_md+'='+act_mdval+'&ero_target_group=%s'  
         for tg in TG:
             tgn = self.pretty(tg)
             TGS.append((tgn, tg, path%tg))
-        TGS.sort()
+        TGS.sort(lambda x,y: cmp(x[0], y[0]))
 
         TOS = []
         path = navigation_root_path+"/%s/search_ro?"+act_md+'='+act_mdval+'&ero_topic=%s'  
         for to in TO:
             ton = self.pretty(to)
             TOS.append((ton, to, path%(to, to)))
-        TOS.sort()
+        TOS.sort(lambda x,y: cmp(x[0], y[0]))
         
         return {'ero_topic': TOS, 
                 'country': COS, 
