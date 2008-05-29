@@ -70,6 +70,8 @@ class ILinguaToolsView(Interface):
         """ Translates the current object into all languages and transferres the given attributes """
     def setRichDocAttachments(flag=False):
         """ Sets the attachment flag on a rich document """
+    def blockPortlets(manager, CAT, status):
+        """ Helper. Block the Portlets on a given context, manager, and Category """
 
 
 class IOSHA(Interface):
