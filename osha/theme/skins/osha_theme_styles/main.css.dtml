@@ -380,6 +380,29 @@ ul.linkList li {
     width:auto;
 }
 
+
+/* Old newsletter compliance styles */
+.subItem {
+    border: none;
+    padding: 0 0 0.5em 0;
+    margin: 0;
+    position: static;
+}
+.subItemImage {
+    position: relative;
+    float:left;
+    width:auto;
+    background:transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.subItem h1,
+.subItem h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 
