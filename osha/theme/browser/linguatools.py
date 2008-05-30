@@ -392,7 +392,9 @@ class LinguaToolsView(BrowserView):
                 res.append("  > Transferred Attribute %s" % attr)
             if context.portal_type=='Topic':
                 # copy the contents as well
-                cp = context.manage_copyObjects(ids=context.objectIds())
+                ids = context.objectIds()
+                ids.remove('syndication_information')
+                cp = context.manage_copyObjects(ids=ids)
                 trans.manage_pasteObjects(cp)
                 res.append("  > Transferred Topic contents" )
                         
