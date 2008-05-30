@@ -16,15 +16,9 @@ class RSSFeedsView(BrowserView):
 
     template = ViewPageTemplateFile('templates/rssfeeds.pt')
     buttons = ViewPageTemplateFile('templates/rssfeed_helpers.pt')
-           
+    TYPES = ['News Item', 'Event', 'Publication', 'PressRelease']
+    
     def __call__(self):    
-        #self.request.set('disable_border', True)
-        
-        # XXX: We have to put this somewhere configurable. Where?
-        self.TYPES = ['News Item', 'Event', 'Publication', 'PressRelease']
-        portal_catalog = getToolByName(self.context, 'portal_catalog')
-        self.KEYWORDS = portal_catalog.uniqueValuesFor('Subject')
-        
         return self.template()
         
     def type_feeds(self):
@@ -42,19 +36,33 @@ class RSSFeedsView(BrowserView):
             
         for T in self.TYPES:                        
             ti = portal_types.getTypeInfo(T)
-            if ti is None:
+            if T == 'Publication':
+                url = url_pattern %('File',lang)
+                url += '&object_provides=slc.publications.interfaces.IPublicationEnhanced'
+                L.append( dict(
+                    id=T, 
+                    title=T.capitalize()+'s', 
+                    icon='publication_icon.gif',
+                    url=url
+                    ))
+                
+            elif ti is None:
                 continue
-            L.append( dict(
-                id=T, 
-                title=ti.Title(), 
-                icon=ti.getIcon(),
-                url=url_pattern %(T,lang)
-                ))
+            else:
+                L.append( dict(
+                    id=T, 
+                    title=ti.Title()+'s', 
+                    icon=ti.getIcon(),
+                    url=url_pattern %(T,lang)
+                    ))
         return L
         
     def subject_feeds(self):
         """ return all feeds by keyword and offer subfeeds by type
         """
+        oshaview = self.context.restrictedTraverse('@@oshaview')
+        CATS = oshaview.getTranslatedCategories()
+        
         portal_types = getToolByName(self.context, 'portal_types')
         portal_url = getToolByName(self.context, 'portal_url')
         portal_languages = getToolByName(self.context, 'portal_languages')
@@ -65,8 +73,7 @@ class RSSFeedsView(BrowserView):
         url_pattern = portal_path + \
             "/search_rss?Subject=%s&Language=%s&review_state=published"
             
-        for T in self.KEYWORDS:  
-            Title  = T.capitalize().replace("_", " ").replace("-", " ")                      
+        for T, Title in CATS:  
             L.append( dict(
                 id=T, 
                 title=Title, 
