@@ -1,0 +1,227 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha"> 
+
+<div metal:fill-slot="main" i18n:domain="osha"
+       tal:define="local_keyword python:here.getProperty('keyword', '');
+                   keywords request/keywords| local_keyword |string:;
+                   subcategory request/subcategory | string:;
+                   object_implements request/object_implements | string:;
+                   SearchableText request/SearchableText|string:;
+                   multilingual_thesaurus request/multilingual_thesaurus|string:;
+                   nace request/nace|string:;
+                   nace python:nace==[''] and '' or nace;
+                   category request/category|string:;
+                   getRemoteLanguage request/getRemoteLanguage|string:;
+                   country request/country|string:;
+                   search_portal_types view/search_portal_types;
+                   Batch python:modules['Products.CMFPlone'].Batch;
+                   DateTime python:modules['DateTime'].DateTime;
+                   b_size python:10;b_start python:0;
+                   b_start request/b_start | b_start;
+                   desc_length site_properties/search_results_description_length;
+                   desc_ellipsis site_properties/ellipsis;
+                   searchterm request/SearchableText|nothing;
+                   ">
+
+    <div class="figure-box">
+        <div class="figure">
+            <img tal:define="keyword python:here.getProperty('keyword');
+                             timg_path string:theme_image_${keyword}.gif;
+                             timg python:getattr(portal, timg_path,
+                                    getattr(portal, 'dummyimage80.gif'))"
+                 tal:condition="python:timg is not None" 
+                 tal:replace="structure timg/tag" />
+        </div>
+    </div>
+         
+         
+    <h1>
+        <img tal:define="search_img python:getattr(portal, 'database_search.gif')"
+             tal:replace="structure search_img/tag" />
+        <span tal:condition="local_keyword">
+            <span tal:omit-tag="" i18n:translate="label_search_database_on">Search the Link Database on</span> 
+            <span tal:replace="here/Title" />
+        </span>
+        <span tal:condition="not:local_keyword">
+            <span tal:omit-tag="" i18n:translate="label_search_database">Search the Link Database</span>
+        </span>
+    </h1>
+    
+    
+    <span tal:condition="local_keyword">
+        <p i18n:translate="help_database_filter_topic" i18n:domain="osha">
+            On this page you can search through all links related to this topic. The filter results will display directly under the filter form. If you select some filter criteria the list will get more precise. 
+        </p>
+    </span>
+    <span tal:condition="not:local_keyword">
+        <p i18n:translate="help_database_filter" i18n:domain="osha">
+            On this page you can search through all links available in the site. The filter results will display directly under the filter form. If you select some filter criteria the list will get more precise. 
+        </p>
+    </span>
+   
+    <br />
+    <a tal:attributes="href here/absolute_url" class="link-parent">
+        Back to <span tal:replace="here/Title" />
+    </a>
+
+
+    <form tal:attributes="action template/id" method="get">
+      
+      <div id="filter_searchfields">
+      
+        <div class="filter_column1">
+           <div class="field_default">
+                <metal:use use-macro="here/filter_macros/macros/SearchableText_compact"></metal:use>
+            </div>
+            <div class="columnBottom field">
+              <div class="formHelp">
+                Filter your search by selecting one or more of the filters.
+                You can always remove any filter again by selecting the empty entry or by clicking the Reset button.
+              </div>
+
+            </div>
+            <div class="field">
+                
+                <!--label i18n:translate="label_database"> Database </label><br>
+                
+                <div class="formHelp" i18n:translate="help_database_search">
+                    Select the database types you want to search.
+                </div-->
+                
+                <div class="field_vocab"
+                     tal:define="level python:2;
+                                 portal_type string:OSH_Link">
+                              <metal:use use-macro="here/filter_macros/macros/NACE"></metal:use>
+                </div> 
+    
+                <div class="field_vocab"
+                     tal:define="portal_type string:OSH_Link">
+                              <metal:use use-macro="here/filter_macros/macros/MultilingualThesaurus"></metal:use>
+                </div> 
+                <div tal:repeat="T view/search_types">
+                    <input class="input_checkbox" type="hidden" 
+                           name="search_portal_types:list"
+                           tal:attributes="value python:T[1];
+                                           checked python: 'checked' and T[2] or ''" />
+                    <!--span tal:content="python:T[0]" /-->
+                </div>
+
+            </div>            
+           
+        </div>
+          
+         <div class="filter_column2">
+
+            <div class="field_default">
+               <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
+            </div> 
+            <div class="field_default" tal:define="value country">
+              <metal:use use-macro="here/filter_macros/macros/Country_compact_index"></metal:use>
+            </div>
+            <div class="field_default"
+                 tal:define="root_node   local_keyword | string:;
+                                    vocabulary  string:Subcategory;
+                                    value       subcategory;
+                                    fieldName   string:subcategory;">
+                <label i18n:translate="label_subcategory" >Subcategory</label><br>
+
+                <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>
+            </div>
+            
+
+               
+          </div>
+          
+         
+
+        </div>
+       
+
+
+        <div class="visualClear"></div>
+        
+        
+        <div class="formControls">
+          <input class="context"
+                   type="submit"
+                   name="submit"
+                   value="Search"
+                   i18n:domain="plone"
+                   i18n:attributes="value label_search;"
+                   />
+          <input  class="context" type="reset" value="Reset" 
+                tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
+        
+        </div>
+    </form>
+    
+    <br clear="all"><br>
+
+     <div tal:define="query view/buildQuery;
+                      results python:here.portal_catalog(query);">
+
+        <!--h1>Filtered by:
+            <span tal:replace="query"/>
+        </h1-->
+        
+        
+
+     <h2>
+        <span i18n:translate="heading_search_results">
+            Search results
+        </span>
+        <span class="discreet">
+        &mdash;
+        <span i18n:translate="batch_x_items_matching_your_criteria"
+        ><span i18n:name="number" 
+        tal:omit-tag="" 
+        tal:content="python:len(results)">234</span> items matching your search terms</span>
+    </h2>
+
+    <div tal:condition="not: results">
+        <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+    </div>
+
+    <div tal:condition="results"
+         tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+        
+        <dl id="db_results">
+        <tal:results repeat="result batch">
+        <tal:entry define="provider_helper here/@@provider_helper;
+                           result_url result/getURL;
+                           url result/getRemoteUrl | result_url;
+                           title result/Title|string:;
+                           item_cas result/getCas|string:;
+                           item_einecs result/getEinecs|string:;
+                           item_remoteLanguage result/getRemoteLanguage|string:;
+                           item_subject result/Subject | python:[];
+                           item_modified result/modified;
+                           item_pubdate result/effective;
+                           item_creator result/Creator;
+                           gc python:here.portal_languages.getNameForLanguageCode;
+                           ">
+            
+            <metal:macro use-macro="here/oshmacros/macros/searchresults" />
+
+        </tal:entry>
+        </tal:results>
+        </dl>
+        
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+        <!-- Snapshot code -->
+        <script type="text/javascript" src="http://shots.snap.com/ss/9546198046d69719d86ad9ba1aee068e/snap_shots.js"></script>
+    </div>
+    <!-- <span style="color:#ccc;">query: <span tal:replace="query" /></span>  -->
+    
+  </div>
+
+
+</div>
+
+<metal:sub fill-slot="sub" /> 
+
+
+</html>

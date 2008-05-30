@@ -13,7 +13,7 @@ class DBFilterView(BrowserView):
     template.id = "db_filter"
 
     def __call__(self):
-        self.request.set('disable_border', True)
+        #self.request.set('disable_border', True)
 
         return self.template() 
 
@@ -105,13 +105,46 @@ class ProviderDBFilterView(DBFilterView):
 
     def search_types(self):
         """ returns a list of translated search types to select from """
-        context = Acquisition.aq_inner(self.context)
-        
-        local_portal_types = context.getProperty('search_portal_types', [])
-        search_portal_types = self.request.get('search_portal_types', local_portal_types)
-        
-        TYPES = [ ('Provider', 'Provider', True) ]
+        return [ ('Provider', 'Provider', True) ]
                 
         
-        return TYPES
-        
+class OSHLinkDBFilterView(DBFilterView):
+    """View for displaying the GP content filter page for OSHLinks
+    """
+    template = ViewPageTemplateFile('templates/index_oshlink.pt')
+    template.id = "index_oshlink"
+
+    def search_types(self):
+        """ returns a list of translated search types to select from """
+        return [('OSH Link', 'OSH_Link', True)]
+
+
+class RALinkDBFilterView(DBFilterView):
+    """View for displaying the GP content filter page for RALinks
+    """
+    template = ViewPageTemplateFile('templates/index_ralink.pt')
+    template.id = "index_ralink"
+
+    def search_types(self):
+        """ returns a list of translated search types to select from """
+        return [('Risk Assessment Link', 'RALink', True)]
+
+class CaseStudyDBFilterView(DBFilterView):
+    """View for displaying the GP content filter page for CaseStudies
+    """
+    template = ViewPageTemplateFile('templates/index_casestudy.pt')
+    template.id = "index_casestudy"
+
+    def search_types(self):
+        """ returns a list of translated search types to select from """
+        return [('Case Study', 'CaseStudy', True)]
+
+class DirectiveDBFilterView(DBFilterView):
+    """View for displaying the GP content filter page for Directives
+    """
+    template = ViewPageTemplateFile('templates/index_directive.pt')
+    template.id = "index_directive"
+
+    def search_types(self):
+        """ returns a list of translated search types to select from """
+        return [('Directives', 'Directive', True)]                

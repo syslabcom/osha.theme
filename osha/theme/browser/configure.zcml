@@ -269,12 +269,42 @@
         class=".dbfilter.DBFilterView"
         permission="zope2.View"
     />
+    
     <browser:page
         for="*"
         name="index_provider"
         class=".dbfilter.ProviderDBFilterView"
         permission="zope2.View"
     />    
+    <browser:page
+        for="*"
+        name="index_oshlink"
+        class=".dbfilter.OSHLinkDBFilterView"
+        permission="zope2.View"
+    />    
+    <browser:page
+        for="*"
+        name="index_ralink"
+        class=".dbfilter.RALinkDBFilterView"
+        permission="zope2.View"
+    />    
+    <browser:page
+        for="*"
+        name="index_casestudy"
+        class=".dbfilter.CaseStudyDBFilterView"
+        permission="zope2.View"
+    />    
+    <browser:page
+        for="*"
+        name="index_directive"
+        class=".dbfilter.DirectiveDBFilterView"
+        permission="zope2.View"
+    />    
+
+
+
+
+
     
     <browser:page
         for="*"
