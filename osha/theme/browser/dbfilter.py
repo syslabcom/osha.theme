@@ -3,6 +3,9 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
+
+
+
 class DBFilterView(BrowserView):
     """View for displaying the sep content filter page at /en/good_practice/topics/xx
     """
@@ -94,4 +97,21 @@ class DBFilterView(BrowserView):
         
         
 
+class ProviderDBFilterView(DBFilterView):
+    """View for displaying the GP content filter page for Providers
+    """
+    template = ViewPageTemplateFile('templates/index_provider.pt')
+    template.id = "index_provider"
+
+    def search_types(self):
+        """ returns a list of translated search types to select from """
+        context = Acquisition.aq_inner(self.context)
+        
+        local_portal_types = context.getProperty('search_portal_types', [])
+        search_portal_types = self.request.get('search_portal_types', local_portal_types)
+        
+        TYPES = [ ('Provider', 'Provider', True) ]
+                
+        
+        return TYPES
         

@@ -299,6 +299,7 @@ dl.portletImage .portletItem {
 .filter_column1 { float: left; width: 48%; padding-right: 10px; }
 .filter_column2 { float: right; width: 48%; padding-left: 10px; border-left: 1px dotted gray; }
 
+.field_vocab { margin-top:5px; }
 .filter_column1 select,
   .filter_column2 li  { width: 80%; }
 .filter_column1 .field_default, .filter_column2 .field_default, 
