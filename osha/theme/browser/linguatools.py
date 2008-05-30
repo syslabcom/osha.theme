@@ -325,12 +325,21 @@ class LinguaToolsView(BrowserView):
         def _setter(ob, *args, **kw):
             if ob.isPrincipiaFolderish:
                 tool = getattr(Acquisition.aq_parent(ob), 'portal_languages')
-                #if tool.id in ob.objectIds():
-                    #ob._delObject(tool.id)
-                #ob._setOb(tool.id, tool)
-                #ob._objects = ob._objects + ({'id': tool.id, 'meta_type': tool.meta_type},)
-                #return ["Added language tool to %s" % ob.getId()]
+                if tool.id in ob.objectIds():
+                    ob._delObject(tool.id)
+                
+                newob = tool._getCopy(tool)
+                newob._setId(tool.id)
+                notify(ObjectCopiedEvent(newob, tool))
 
+                ob._setObject(tool.id, newob)
+                newob = ob._getOb(tool.id)
+                newob.wl_clearLocks()
+                newob._postCopy(ob, op=0)
+                newob.manage_afterClone(newob)
+
+                notify(ObjectClonedEvent(newob))
+                return ["Added language tool to %s" % ob.getId()]
         return self._forAllLangs(_setter)
 
 
@@ -394,8 +403,22 @@ class LinguaToolsView(BrowserView):
                 # copy the contents as well
                 ids = context.objectIds()
                 ids.remove('syndication_information')
-                cp = context.manage_copyObjects(ids=ids)
-                trans.manage_pasteObjects(cp)
+                
+                for id in ids:
+                    orig_ob = getattr(context, id)
+                    ob = orig_ob._getCopy(context)
+                    ob._setId(id)
+                    notify(ObjectCopiedEvent(ob, orig_ob))
+
+                    trans._setObject(id, ob)
+                    ob = trans._getOb(id)
+                    ob.wl_clearLocks()
+                    ob._postCopy(trans, op=0)
+                    ob.manage_afterClone(ob)
+
+                    notify(ObjectClonedEvent(ob))
+    
+        
                 res.append("  > Transferred Topic contents" )
                         
         return res
