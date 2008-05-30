@@ -41,11 +41,11 @@
         <img tal:define="search_img python:getattr(portal, 'database_search.gif')"
              tal:replace="structure search_img/tag" />
         <span tal:condition="local_keyword">
-            <span tal:omit-tag="" i18n:translate="label_search_database_on">Search the Link Database on</span> 
+            <span tal:omit-tag="" i18n:translate="label_search_database_oshlink_on">OSH Links on</span> 
             <span tal:replace="here/Title" />
         </span>
         <span tal:condition="not:local_keyword">
-            <span tal:omit-tag="" i18n:translate="label_search_database">Search the Link Database</span>
+            <span tal:omit-tag="" i18n:translate="label_search_database_oshlink">Search for OSH Links</span>
         </span>
     </h1>
     
