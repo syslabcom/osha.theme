@@ -65,20 +65,20 @@ class IndexROMetadataView(BrowserView):
         TG = list(TG)
         
         COS = []        
-        path = navigation_root_path+"/search_ro?"+act_md+'='+act_mdval+'&country=%s'  
+        path = self.context.absolute_url()+"/search_ro?"+act_md+'='+act_mdval+'&country=%s'  
         for country in CO:
             COS.append((portal_countryutils.getCountryByIsoCode(country).name, country, path%country)) 
         COS.sort(lambda x,y: cmp(x[0], y[0]))
 
         TGS = []
-        path = navigation_root_path+"/search_ro?"+act_md+'='+act_mdval+'&ero_target_group=%s'  
+        path = self.context.absolute_url()+"/search_ro?"+act_md+'='+act_mdval+'&ero_target_group=%s'  
         for tg in TG:
             tgn = self.pretty(tg)
             TGS.append((tgn, tg, path%tg))
         TGS.sort(lambda x,y: cmp(x[0], y[0]))
 
         TOS = []
-        path = navigation_root_path+"/%s/search_ro?"+act_md+'='+act_mdval+'&ero_topic=%s'  
+        path = self.context.absolute_url()+"/%s/search_ro?"+act_md+'='+act_mdval+'&ero_topic=%s'  
         for to in TO:
             ton = self.pretty(to)
             TOS.append((ton, to, path%(to, to)))
