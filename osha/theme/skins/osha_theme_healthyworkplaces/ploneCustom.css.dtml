@@ -64,15 +64,15 @@ dd.portletItem .navTreeItem a:hover {
     padding: 0; 
     text-align: right;
 }
-#teaserlisting h2.headline {
-    background:&dtml-globalBackgroundColor; none repeat scroll 0% 50%;
+dl.portletNews  {
+    background-color: white;
+}
+dl.portletEvents {
+    background-color: white;
 }
 
-.portletNews .portletItem {
-    background-color: white;
-}
-.portletEvents .portletItem {
-    background-color: white;
+#teaserlisting h2.headline {
+    background:&dtml-primaryColor3; none repeat scroll 0% 50%;
 }
 /* </dtml-with> */
 
