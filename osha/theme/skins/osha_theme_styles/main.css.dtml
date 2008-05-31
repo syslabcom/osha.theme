@@ -422,6 +422,15 @@ ul.linkList li {
     padding:2em; 
 }
 
+.image-presentation-box {
+		border: none;
+		background-color: &dtml-contentViewBackgroundColor;;
+		padding: 1em;		
+}
+.image-presentation-box img {
+	float:left;
+	margin-right: 1em;
+}
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 
