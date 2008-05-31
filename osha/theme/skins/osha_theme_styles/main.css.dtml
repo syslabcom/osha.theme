@@ -403,6 +403,26 @@ ul.linkList li {
     padding-top: 0;
 }
 
+
+/* Additional Kupu Styles for Text Formatting */
+
+.centered-citation-box {
+    border: 1px solid black; 
+    margin:auto; 
+    width: 300px; 
+    padding:1em; 
+    text-align:center; 
+    font-weight:bold; 
+}    
+
+.dashed-feature-box {
+    border: 1px dashed &dtml-globalBorderColor;; 
+    background-color: &dtml-contentViewBackgroundColor;;
+    margin:auto; 
+    width: 400px; 
+    padding:2em; 
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 
