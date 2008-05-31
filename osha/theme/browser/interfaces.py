@@ -73,6 +73,12 @@ class ILinguaToolsView(Interface):
     def blockPortlets(manager, CAT, status):
         """ Helper. Block the Portlets on a given context, manager, and Category """
 
+    def fixTranslationReference(recursive=False):
+        """ fixes translation references to the canonical.
+            Assumes that self is always en and canonical
+            tries to handle language extensions for files like hwp_xx.swf
+        """
+
 
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """

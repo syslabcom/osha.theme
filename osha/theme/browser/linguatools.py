@@ -431,3 +431,110 @@ class LinguaToolsView(BrowserView):
         return self._forAllLangs(_setter)        
         
         
+    def _guessLanguage(self, filename):
+        """
+        try to find a language abbreviation in the string
+        acceptable is a two letter language abbreviation at the end of the 
+        string prefixed by an _ just before the extension
+        returns lang, stem, ext
+        """
+        if callable(filename):
+            filename = filename()
+
+        langs = getToolByName(self.context, 'portal_languages').getSupportedLanguages()
+
+        if len(filename)>3 and '.' in filename:
+            elems = filename.split('.')
+            name = ".".join(elems[:-1])
+            if len(name)>3 and name[-3] in ['_', '-']:
+                lang = name[-2:].strip()
+                lang = lang.lower()
+                if lang in langs:
+                    namestem = name[:(len(name)-2)]
+                    return lang, namestem, elems[-1]
+
+        return '', filename, ''        
+        
+        
+    def _getLangOb(self, ob, lang):
+        """ Used by FixTranslationReference
+            try to get a matching object in another language path. """
+        portal_url = getToolByName(ob, 'portal_url')
+        langidx = len(portal_url.getPortalObject().getPhysicalPath())
+        obpath = ob.getPhysicalPath()
+        langpath = list(obpath)
+        langpath[langidx] = lang
+        filename = langpath[-1]
+        
+        specialfilename = ''
+        if ob.portal_type in ['File', 'Image']:
+            # we try to also accept _xx language abbrevs
+            langabbrev, stem, ext = self._guessLanguage(filename)
+            if langabbrev !='':
+                specialfilename = "%s%s.%s" %(stem, lang, ext)
+                
+        root = ob.getPhysicalRoot()
+        langob = root
+        for i in langpath[1:-1]:
+            if i in langob.objectIds():
+                langob = getattr(langob, i)
+            else:
+                return None
+                
+        # now only the filename is left. Special handling:
+        if specialfilename !='':               
+            langob = getattr(langob, filename, getattr(langob, specialfilename, None))
+        else:       
+            langob = getattr(langob, filename, None)
+
+        return langob
+
+    def fixTranslationReference(self, recursive=False):
+        """ fixes translation references to the canonical.
+            Assumes that self is always en and canonical
+            tries to handle language extensions for files like hwp_xx.swf
+        """
+        context = Acquisition.aq_inner(self.context)
+        pl = context.portal_languages
+        langs = pl.getSupportedLanguages()
+
+        results = []
+        if recursive==True:
+            targetobs = context.ZopeFind(context, search_sub=1)
+        else:
+            targetobs = [(context.getId(), context)]
+        for id, ob in targetobs:
+
+            print "handling %s" % ob.absolute_url(1)
+            if hasattr(Acquisition.aq_base(ob), '_md') and ob._md.has_key('language') and ob._md['language']==u'':
+                ob._md['language'] = u'en'
+
+            if not hasattr(Acquisition.aq_base(ob), 'addTranslationReference'):
+                continue
+
+            if not ob.isCanonical():
+                results.append("Not Canonical: %s " %ob.absolute_url())
+                print "Not Canonical: %s " %ob.absolute_url()
+
+            for lang in langs:
+                if ob.hasTranslation(lang):           
+                    continue
+                langob = self._getLangOb(ob, lang)
+
+                if langob is None:
+                    continue
+
+                try:
+                    langob.setLanguage('')
+                    langob.setLanguage(lang)
+                    langob.addTranslationReference(ob)
+                    langpath = "/".join(langob.getPhysicalPath())
+                    results.append( "Adding TransRef for %s" % langpath )
+                    print  "Adding TransRef for %s" % langpath
+                except Exception, at:
+                    results.append( "Except %s" % str(at))
+
+        results.append("ok")
+        return results
+
+        
