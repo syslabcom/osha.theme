@@ -51,6 +51,8 @@ dd.portletItem .navTreeItem a:hover {
 #osha-topdropdowns {
     display: none;
 }
-
+#teaserlisting h2.headline {
+    background:&dtml-primaryColor3; none repeat scroll 0% 50%;
+}
 /* </dtml-with> */
 
