@@ -353,7 +353,7 @@ form.searchPage input.searchButton {
 .newsImageContainer {
     float:left;
     margin: 0 1em 0.5em 0;
-    width: 202px;
+    width: 100px;
 }
 .newsContent {
     padding: 0 1em 1em 1em;

@@ -25,10 +25,7 @@
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
-        <p class="documentDescription" tal:content="structure here/Description">
-        </p>
 
-        <div tal:replace="structure provider:plone.abovecontentbody" />
 
         <div class="newsImageContainer"
              tal:condition="here/image_mini|nothing">
@@ -43,6 +40,11 @@
               </metal:field>
             </p>
         </div>
+
+        <p class="documentDescription" tal:content="structure here/Description">
+        </p>
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
 
         <p tal:condition="python: not len_text and is_editable"
            i18n:translate="no_body_text"
