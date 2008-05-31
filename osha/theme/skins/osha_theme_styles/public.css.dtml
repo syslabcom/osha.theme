@@ -660,6 +660,16 @@ table.plain th {
     clear: right;
 }
 
+#eventDetailsTable {
+	border: 0;	
+}
+#eventDetailsTable th {
+	width: 20%;
+	text-align:left;
+}
+#eventDetailsTable td {
+	width: 30%;
+}
 /* List classes without markers */
 ul.visualNoMarker,
 ol.visualNoMarker {
