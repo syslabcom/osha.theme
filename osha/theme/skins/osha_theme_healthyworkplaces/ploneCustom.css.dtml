@@ -67,5 +67,12 @@ dd.portletItem .navTreeItem a:hover {
 #teaserlisting h2.headline {
     background:&dtml-globalBackgroundColor; none repeat scroll 0% 50%;
 }
+
+.portletNews .portletItem {
+    background-color: white;
+}
+.portletEvents .portletItem {
+    background-color: white;
+}
 /* </dtml-with> */
 
