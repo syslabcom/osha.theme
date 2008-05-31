@@ -412,7 +412,6 @@ ul.linkList li {
     width: 300px; 
     padding:1em; 
     text-align:center; 
-    font-weight:bold; 
 }    
 
 .dashed-feature-box {
