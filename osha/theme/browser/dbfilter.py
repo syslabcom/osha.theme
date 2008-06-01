@@ -38,8 +38,11 @@ class DBFilterView(BrowserView):
     def search_portal_types(self):
         """ compute the list of query params to search for portal_types"""
         context = Acquisition.aq_inner(self.context)
-        local_portal_types = context.getProperty('search_portal_types', []);
-        search_portal_types = list(self.request.get('search_portal_types', local_portal_types))
+        #local_portal_types = context.getProperty('search_portal_types', []);
+        # we need to use the output of search_types() as default, not the 
+        # local Property search_portal_types
+        search_types = [x[1] for x in self.search_types()]
+        search_portal_types = list(self.request.get('search_portal_types', search_types))
 
         query = {}
         if 'Publication' in search_portal_types:
