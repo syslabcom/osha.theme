@@ -18,7 +18,7 @@ class RSSFeedsView(BrowserView):
     buttons = ViewPageTemplateFile('templates/rssfeed_helpers.pt')
     TYPES = ['News Item', 'Event', 'Publication', 'PressRelease']
     
-    def __call__(self):    
+    def __call__(self):
         return self.template()
         
     def type_feeds(self):
@@ -32,9 +32,9 @@ class RSSFeedsView(BrowserView):
         lang = portal_languages.getPreferredLanguage()
         portal_path = portal_url.getPortalPath()
         url_pattern = portal_path + \
-            "/search_rss?portal_type=%s&Language=%s&review_state=published"
+            "/search_rss?portal_type=%s&Language=%s&review_state=published&sort_on=effective"
             
-        for T in self.TYPES:                        
+        for T in self.TYPES:
             ti = portal_types.getTypeInfo(T)
             if T == 'Publication':
                 url = url_pattern %('File',lang)
@@ -71,7 +71,7 @@ class RSSFeedsView(BrowserView):
         lang = portal_languages.getPreferredLanguage()
         portal_path = portal_url.getPortalPath()
         url_pattern = portal_path + \
-            "/search_rss?Subject=%s&Language=%s&review_state=published"
+            "/search_rss?Subject=%s&Language=%s&review_state=published&sort_on=effective"
             
         for T, Title in CATS:  
             L.append( dict(
