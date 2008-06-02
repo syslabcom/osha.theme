@@ -23,7 +23,7 @@ class ILinguaToolsView(Interface):
     def propagatePortlets():
         """ propagates the portlet config from context to the language versions """
 
-    def deleter(id):
+    def deleter(id, guessLanguage=False):
         """ deletes an object with a given id from all language branches """
 
     def fixOrder(ORDER):

@@ -156,12 +156,23 @@ class LinguaToolsView(BrowserView):
                             
         return self._forAllLangs(_orderIDs, ids=ORDER)          
                 
-    def deleter(self, id):
+    def deleter(self, id, guessLanguage=False):
         """ deletes an object with a given id from all language branches """
         def _setter(ob, *args, **kw):
+            res = []
+            currlang = kw.get('lang', '')
             id = kw['id']
             if id in ob.objectIds():
                 ob._delObject(id)
+                res.append("deleted %s" %id)
+            if guessLanguage==True:
+                # Try to also delete objects with id "id_lang.ext"
+                stem, ext = id.rsplit('.', 1)
+                langname = "%s_%s.%s" %(stem, currlang, ext)
+                if langname in ob.objectIds():
+                    ob._delObject(langname)
+                    res.append("deleted %s" %langname)
+            return res
         return self._forAllLangs(_setter, id=id)
         
     def propagatePortlets(self):
