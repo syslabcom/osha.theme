@@ -259,7 +259,7 @@
     <browser:page
         for="*"
         name="index_providers"
-        class=".index_providers.IndexProvidersView"
+        class=".dbfilter.ProviderDBFilterView"
         permission="zope2.View"
     />
 
