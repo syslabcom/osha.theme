@@ -20,7 +20,12 @@ class IndexAtoZView(BrowserView):
         self.manager = portal_vocabularies.MultilingualThesaurus._getManager() 
         self.term_dict = self.manager.term_dict
         self.Subject = self.request.get('Subject', context.getProperty('keyword', None))
-        self.letter = self.request.get('letter', '').upper()
+        self.letter = str(self.request.get('letter', '')).upper()
+        if len(self.letter)==2:
+            try:
+                self.letter = unicode(self.letter, 'utf-8')
+            except:
+                print "index_atoz:: could not convert to unicode"
         self.term_id = self.request.get('term_id', '')
                 
         return self.template() 
