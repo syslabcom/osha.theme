@@ -4,11 +4,9 @@
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <a href="#" 
-           class="tile" i18n:domain="osha"
+        <span i18n:domain="osha" tal:omit-tag=""
            tal:condition="not:view/title"
-           tal:attributes="href string:${root/absolute_url}/sitemap" 
-           i18n:translate="Menu">Navigation</a>
+           i18n:translate="Menu">Navigation</span>
        <a href="#" 
            class="tile"
            tal:condition="view/title"
