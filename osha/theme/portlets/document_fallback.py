@@ -19,7 +19,8 @@ from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
 from Products.ATContentTypes.interface import IATDocument
 from Products.CMFCore.utils import getToolByName
 
-from plone.portlet.collection import PloneMessageFactory as _
+from osha.theme import OSHAMessageFactory as _
+from plone.portlet.collection import PloneMessageFactory as _plone
 
 class IDocumentFallbackPortlet(IPortletDataProvider):
     """A portlet which renders the contents of a Document object and provides fallback to the canonical object.
@@ -89,7 +90,7 @@ class Renderer(base.Renderer):
         f = self.fallback(self.preflang)
         if f is None:
             return ''
-        return f.Title() 
+        return _(f.Title())
        
     def editable(self):
         f = self.fallback(self.preflang)
