@@ -96,7 +96,7 @@
              <div class="field_default" 
                 tal:define="portal_type string:OSH_Link;
                     value country">
-              <metal:use use-macro="here/filter_macros/macros/Country_compact"></metal:use>
+              <metal:use use-macro="here/filter_macros/macros/MultiCountry_compact"></metal:use>
             </div>
             <div class="field_default">
                 <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>

@@ -109,7 +109,7 @@
                <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
             </div> 
             <div class="field_default" tal:define="value country">
-              <metal:use use-macro="here/filter_macros/macros/Country_compact_index"></metal:use>
+              <metal:use use-macro="here/filter_macros/macros/MultiCountry_compact"></metal:use>
             </div>
             <div class="field_default"
                  tal:define="root_node   local_keyword | string:;
