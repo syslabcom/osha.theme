@@ -1,0 +1,202 @@
+/*
+ *  This is the file where you put your CSS changes.
+ *  You should preferrably use this and override the
+ *  relevant properties you want to change here instead
+ *  of customizing plone.css to survive upgrades. Writing
+ *  your own plone.css only makes sense for very heavy
+ *  customizations. Useful variables from Plone are
+ *  documented at the bottom of this file.
+ */
+
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+
+body {
+    background: &dtml-primaryColor5; url(&dtml-portal_url;/bg_body_risq.gif) 0 0 repeat-y;
+    font-size: 80%;
+}
+h1,
+h1.documentFirstHeading  {
+    background: &dtml-primaryColor1; url(<dtml-var portal_url>/h1_risq_bg.gif) 0 0 no-repeat;
+    margin: 0;
+    padding: 0.5em 1.5em ;
+    margin-bottom: 1em;
+    font-weight: bold;
+    font-size: 120%;
+    color: &dtml-primaryColor5; !important;
+    line-height: normal;
+    border: none;
+}
+h4, h5 {
+    font-size: 100%;
+    padding-left: 20px;
+    line-height: 1em;
+    background: transparent url(<dtml-var portal_url>/bullet_risq.gif) 0em 0em no-repeat;
+}
+ul {
+    line-height: 1.5em;
+    list-style-type: square;
+    margin: 0.5em 0 2em 2em;
+    padding: 0;
+    list-style-image: url(&dtml-portal_url;/bullet_risq.gif);
+}
+
+li {
+    list-style-image: url(&dtml-portal_url;/bullet_risq.gif);
+}
+
+#portal-columns {
+    background: transparent;
+}
+
+div#content-column-background,
+div#right-column-background {
+    background: transparent;
+}
+
+#portal-top {
+    background: transparent;
+}
+#portal-header {
+    border-bottom: none;
+    background: transparent;
+    height: 150px !important;
+}
+
+#osha-topactions {
+    background: #488FCC url(<dtml-var portal_url>/banner_risq.gif) 0px 0px no-repeat;
+    height: 86px;
+    padding: 0;
+    margin-right: 0;
+}
+
+#osha-topdropdowns {
+    border: none;
+    padding: 0.2em 1em;
+    height: 1.8em !important;
+    background-color: #91BCE0;
+    font-size: 100%;
+    margin: 0px 0 0 206px;
+    text-align: right;
+}
+
+#portal-languageselector select {
+    float:none !important;
+}
+
+#portal-languageselector select {
+    font-size: 100% !important;
+}
+
+#portal-breadcrumbs {
+    position: absolute;
+    top: 86px;
+    left: 206px;
+    line-height: 1.8em;
+    background: transparent;
+}
+
+#portal-column-one .visualPadding {
+    width: 206px;
+}
+
+#footeractions-wrapper {
+    background-color: #fff;
+    padding: 0.2em 1em;
+    margin: 20px 0 0 206px;
+    text-align: left;
+}
+
+.documentContent a,
+.documentContent * a {
+    font-weight: bold;
+}
+
+#belowcontent-portlets a,
+#belowcontent-portlets * a {
+    font-weight: normal;
+}
+
+/* OSHA navigation portlet */
+.navigationList {
+    font-size: 110%;
+    font-weight: bold;
+    padding: 0;
+    border: none;
+}
+.navigationList ul {
+    line-height: normal;
+    padding:0;
+    height: auto;
+    margin: 15px 0 0 9px;
+}
+.navigationList li {
+    line-height: normal;
+    list-style-image: none;
+    height: auto;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: block;
+}
+
+.navigationList li a,
+.navigationList li span.fakelink,
+.navigationList li a:active,
+.navigationList li a:visited {
+    background-image: url(<dtml-var portal_url>/navbutton_risq_01.gif);
+    background-repeat: no-repeat;
+    background-position: 0 8px;
+    background-color: transparent;
+    display: block;
+    text-decoration: none;
+    margin:0;
+    padding: 22px 5px 10px 55px;
+    color: &dtml-linkColor;;
+    height: 35px;
+    font-weight: bold;
+    line-height: normal;
+}
+.navigationList li a:hover {
+    font-weight: bold;
+    color: white;
+    background-image: url(<dtml-var portal_url>/navbutton_risq_01.gif);
+    background-repeat: no-repeat;
+    background-position: 0 8px;
+    background-color: &dtml-primaryColor1;;
+}
+
+<dtml-in "range(5)">
+.navigationList li a.button_0<dtml-var sequence-number>,
+.navigationList li a.button_0<dtml-var sequence-number>:visited {
+    background-image: url(<dtml-var portal_url>/navbutton_risq_0<dtml-var sequence-number>.gif);
+}
+.navigationList li a.button_0<dtml-var sequence-number>:active,
+.navigationList li a.button_0<dtml-var sequence-number>:hover,
+.navigationList li a.button_0<dtml-var sequence-number>_active,
+.navigationList li a.button_0<dtml-var sequence-number>_active:active,
+.navigationList li a.button_0<dtml-var sequence-number>_active:hover,
+.navigationList li a.button_0<dtml-var sequence-number>_active:visited {
+    background-image: url(<dtml-var portal_url>/navbutton_risq_0<dtml-var sequence-number>_hi.gif);
+    font-weight: bold;
+    color: white;
+    background-repeat: no-repeat;
+    background-position: 0 8px;
+    background-color: &dtml-primaryColor1;;
+}
+</dtml-in>
+
+
+#portal-personaltools-wrapper,
+#siteactions-wrapper {
+    display: none;
+}
+
+body.kupu {
+    background: #ffffff;
+}
+
+
+/* </dtml-with> */
+
