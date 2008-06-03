@@ -111,6 +111,11 @@ div#right-column-background {
     width: 206px;
 }
 
+.visualColumnHideTwo #portal-column-content {
+    width: 80%;
+}
+
+
 #footeractions-wrapper {
     background-color: #fff;
     padding: 0.2em 1em;
