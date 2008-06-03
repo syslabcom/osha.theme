@@ -64,6 +64,16 @@ div#right-column-background {
     height: 150px !important;
 }
 
+/* Logo properties */
+#portal-logo {
+    background: transparent url(logo_ew2006.gif) 0 0 no-repeat;
+    width: 206px;
+    height: 150px;
+}
+#portal-logo img {
+    display: none;
+}
+
 #osha-topactions {
     background: #488FCC url(banner_risq.gif) 0px 0px no-repeat;
     height: 86px;
