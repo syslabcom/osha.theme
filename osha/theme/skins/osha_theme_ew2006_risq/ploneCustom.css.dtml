@@ -124,6 +124,7 @@ div#right-column-background {
     font-weight: bold;
     padding: 0;
     border: none;
+    background: transparent;
 }
 .navigationList ul {
     line-height: normal;
@@ -174,10 +175,10 @@ div#right-column-background {
 }
 .navigationList li a.button_0<dtml-var sequence-number>:active,
 .navigationList li a.button_0<dtml-var sequence-number>:hover,
-.navigationList li a.button_0<dtml-var sequence-number>_active,
-.navigationList li a.button_0<dtml-var sequence-number>_active:active,
-.navigationList li a.button_0<dtml-var sequence-number>_active:hover,
-.navigationList li a.button_0<dtml-var sequence-number>_active:visited {
+.navigationList li.active a.button_0<dtml-var sequence-number>,
+.navigationList li.active a.button_0<dtml-var sequence-number>:active,
+.navigationList li.active a.button_0<dtml-var sequence-number>:hover,
+.navigationList li.active a.button_0<dtml-var sequence-number>:visited {
     background-image: url(<dtml-var portal_url>/navbutton_risq_0<dtml-var sequence-number>_hi.gif);
     font-weight: bold;
     color: white;
