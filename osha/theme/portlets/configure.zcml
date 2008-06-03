@@ -18,6 +18,15 @@
      class=".events.Renderer" 
      />    
 
+
+ <!-- Custom risq navigation portlet -->
+ <plone:portletRenderer 
+     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
+     layer="osha.theme.browser.interfaces.IRISQSpecific"
+     class=".risqnavigation.Renderer" 
+     />  
+
+
  <!-- Custom navigation portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
@@ -25,12 +34,6 @@
      class=".navigation.Renderer" 
      />  
        
- <!-- Custom risq navigation portlet -->
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
-     layer="osha.theme.browser.interfaces.IRISQSpecific"
-     class=".risqnavigation.Renderer" 
-     />  
 
 
  <!-- Custom collection portlet -->
