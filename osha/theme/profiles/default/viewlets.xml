@@ -57,7 +57,7 @@
                insert-after="osha.footer.actions" />
     </order>
 
-    <order manager="plone.htmlhead" skinname=*"
+    <order manager="plone.htmlhead" skinname="*"
         based-on="Plone Default">
         <viewlet name="osha.htmlhead.title"
             insert-before="*" />
