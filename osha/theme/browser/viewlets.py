@@ -21,6 +21,9 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
 
     def languages(self):
         results = LanguageSelector.languages(self)
+        if not ITranslatable.providedBy(self.context):
+            return results
+            
         translatable = ITranslatable(self.context, None)
         if translatable is not None:
             translations = translatable.getTranslations()

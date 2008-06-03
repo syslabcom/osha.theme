@@ -101,16 +101,6 @@
             class=".viewlets.OSHALanguageSelector"
             layer=".interfaces.IOSHAThemeLayer"
             permission="zope2.View"
-            for="Products.LinguaPlone.interfaces.ITranslatable"
-            />
-
-        <!-- For the rest of the soup -->
-        <browser:viewlet  
-            name="osha.languageselector"
-            manager=".interfaces.IOSHAHeaderDropdowns"
-            class="plone.app.i18n.locales.browser.selector.LanguageSelector"
-            layer=".interfaces.IOSHAThemeLayer"
-            permission="zope2.View"
             for="*"
             />
 
