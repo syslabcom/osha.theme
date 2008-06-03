@@ -22,6 +22,8 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
     def languages(self):
         results = LanguageSelector.languages(self)
         if not ITranslatable.providedBy(self.context):
+            for data in results:
+                data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
             return results
             
         translatable = ITranslatable(self.context, None)
