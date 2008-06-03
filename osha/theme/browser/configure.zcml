@@ -220,7 +220,13 @@
         permission="zope2.View"
     />
 
-
+    <browser:page
+        for="*"
+        name="oshtopic-view"
+        class=".oshtopic_view.OSHTopicView"
+        permission="zope2.View"
+    />
+    
     <browser:page
         for="*"
         name="publications-overview"
