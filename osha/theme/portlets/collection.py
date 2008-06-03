@@ -1,7 +1,7 @@
 import Acquisition
 from plone.portlet.collection import collection
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-    
+from Products.CMFCore.utils import getToolByName
 
 class Renderer(collection.Renderer):
     """Portlet renderer.
@@ -11,7 +11,7 @@ class Renderer(collection.Renderer):
     of this class. Other methods can be added and referenced in the template.
     """    
     _template = ViewPageTemplateFile('collection.pt')
-
+    render = _template
 
     def collection_url(self):
         collection = self.collection()
@@ -34,3 +34,11 @@ class Renderer(collection.Renderer):
             return "%s/@@oshtopic-view?tp=%s" % (context.absolute_url(), collectionpath)
             
             
+    def getPath(self, ob):
+        path = ob.getURL()
+        context = Acquisition.aq_inner(self.context)
+        portal_properties = getToolByName(context, 'portal_properties')
+        viewtypes = portal_properties.site_properties.getProperty('typesUseViewActionInListings')
+        if ob.portal_type in viewtypes:
+            path = path+'/view'
+        return path
