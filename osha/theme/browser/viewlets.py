@@ -3,6 +3,8 @@ from plone.app.layout.viewlets import common
 
 from zope.component import getMultiAdapter
 from Acquisition import aq_base
+from Products.CMFPlone.utils import safe_unicode
+from cgi import escape
 
 from Products.CMFCore.utils import getToolByName
 
@@ -214,3 +216,19 @@ class OSHALogoViewlet(common.LogoViewlet):
 
         self.portal_title = portal_state.portal_title()
 
+class TitleViewlet(common.TitleViewlet):
+    """ overwritten from plone.app.layout """
+
+    def render(self):
+        pts = getToolByName(self.context, 'translation_service')
+        portal_title = self.portal_title()
+        portal_title = safe_unicode(pts.translate(portal_title, domain='osha'))
+        page_title = safe_unicode(self.page_title())
+        osha = safe_unicode(pts.translate('OSHA', domain='osha'))
+        if page_title == portal_title:
+            return u"<title>%s</title>" % (escape(portal_title))
+        else:
+            return u"<title>%s &mdash; %s &mdash; %s</title>" % (
+                escape(safe_unicode(page_title)),
+                escape(safe_unicode(osha)),
+                escape(safe_unicode(portal_title)))

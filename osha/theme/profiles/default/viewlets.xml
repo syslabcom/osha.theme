@@ -57,6 +57,16 @@
                insert-after="osha.footer.actions" />
     </order>
 
+    <order manager="plone.htmlhead" skinname=*"
+        based-on="Plone Default">
+        <viewlet name="osha.htmlhead.title"
+            insert-before="*" />
+    </order>
+
+    <hidden manager="plone.htmlhead" skinname="*">
+        <viewlet name="plone.htmlhead.title" />
+    </hidden>
+
     <hidden manager="plone.portalheader" skinname="*">
       <viewlet name="plone.logo" />
       <viewlet name="plone.searchbox" />
@@ -90,6 +100,7 @@
     <hidden manager="plone.portaltop" skinname="RISQ">
       <viewlet name="osha.campaignarea" />
     </hidden>
+
 
 
 </object>

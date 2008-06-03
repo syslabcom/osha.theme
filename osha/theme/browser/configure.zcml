@@ -111,6 +111,14 @@
             for="*"
             />
 
+    <!-- Render the browser title - overwritten so we can insert OSHA specific title -->
+    <browser:viewlet
+        name="osha.htmlhead.title"
+        manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+        class=".viewlets.TitleViewlet"
+        permission="zope2.View" 
+        />
+
     <!-- The bottom language selector bar -->
     <!-- api: we will probably not need this anymore as we are going to use Linguaplone and have unique urls per lang -->
     <!--browser:viewlet  
