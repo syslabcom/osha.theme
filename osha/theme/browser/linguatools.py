@@ -388,9 +388,21 @@ class LinguaToolsView(BrowserView):
             except Exception, e:
                 res.append("ERR publishing %s: %s" % ("/".join(ob.getPhysicalPath()), str(e) ))
             return res
-        return self._forAllLangs(_setter)        
-        
-        
+        return self._forAllLangs(_setter)
+
+    def hider(self):
+        """ tries to hide object in all languages """
+        portal_workflow = getToolByName(self.context, 'portal_workflow')
+        def _setter(ob, *args, **kw):
+            res = []
+            try:
+                portal_workflow.doActionFor(ob, 'hide')
+                res.append("OK hidden %s" % "/".join(ob.getPhysicalPath()))
+            except Exception, e:
+                res.append("ERR hiding %s: %s" % ("/".join(ob.getPhysicalPath()), str(e) ))
+            return res
+        return self._forAllLangs(_setter)
+
     def translateThis(self, attrs=[]):
         """ Translates the current object into all languages and transferres the given attributes """
         context = Acquisition.aq_inner(self.context)

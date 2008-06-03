@@ -66,6 +66,8 @@ class ILinguaToolsView(Interface):
         """ reindexes an object in all language branches """
     def publisher():
         """ tries to publish all object languages """
+    def hider():
+        """ tries to hide object in all languages """
     def translateThis(attrs=[]):
         """ Translates the current object into all languages and transferres the given attributes """
     def setRichDocAttachments(flag=False):
