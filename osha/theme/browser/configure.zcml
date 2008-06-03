@@ -38,6 +38,13 @@
         name="HealthyWorkplaces"
         />
 
+    <interface
+        interface=".interfaces.IRISQSpecific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="RISQ"
+        />
+
+
     <!-- Viewlet manager that will wrap top actions -->
     <browser:viewletManager
         name="osha.header.topactions"

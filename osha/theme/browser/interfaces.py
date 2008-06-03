@@ -17,6 +17,11 @@ class IHW2008Specific(IDefaultPloneLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
+class IRISQSpecific(IDefaultPloneLayer):
+    """Marker interface that defines a Zope 3 skin layer.
+    """
+
+
 class ILinguaToolsView(Interface):
     """ A tool to manage lingua specific tasks """
 

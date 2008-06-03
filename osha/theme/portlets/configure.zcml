@@ -23,7 +23,15 @@
      portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
      layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".navigation.Renderer" 
-     />    
+     />  
+       
+ <!-- Custom risq navigation portlet -->
+ <plone:portletRenderer 
+     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
+     layer="osha.theme.browser.interfaces.IRISQSpecific"
+     class=".risqnavigation.Renderer" 
+     />  
+
 
  <!-- Custom collection portlet -->
  <plone:portletRenderer 
