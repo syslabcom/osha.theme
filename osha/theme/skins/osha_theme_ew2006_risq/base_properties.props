@@ -2,7 +2,7 @@ title:string=OSHA Plone Theme's color, font, logo and border defaults
 
 plone_skin:string=OSHA Plone Theme
 
-logoName:string=logo_ew2006.gif
+logoName:string=logo.gif
 campaignLogoName:string=
 
 primaryColor1:string=#488FCC
@@ -19,7 +19,7 @@ fontBaseSize:string=70%
 fontColor:string=#191919
 fontSmallSize:string=95%
 
-backgroundColor:string=transparent
+backgroundColor:string=#E4EEF7
 
 linkColor:string=#265C88
 linkActiveColor:string=#1357AA
