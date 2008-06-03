@@ -29,19 +29,19 @@
                 <div metal:define-slot="inside" tal:replace="structure text">The body</div>
             </div>
 
-                <table class="listing" 
-                       summary="Content listing" border="0"
+                <table summary="Content listing" border="0"
                        cellpadding="0" cellspacing="0" width="100%"
                        i18n:attributes="summary summary_content_listing;">
                      <tbody>
                         <tal:brain tal:repeat="obj topicContents">
                         <tr tal:define="oddrow repeat/obj/odd;"
                             tal:attributes="class python:oddrow and 'even' or 'odd'">
-                            <tal:fields repeat="field view/getCustomViewFields"
-                                        define="url obj/getURL;
+                            <tal:fields define="url obj/getURL;
                                                 obj_type obj/portal_type;
                                                 obj_creator obj/Creator;
                                                 obj_modified obj/modified;
+                                                obj_start obj/start;
+                                                obj_end obj/end;
                                                 obj_description obj/Description;
                                                 obj_typeinfo python: here.portal_types.getTypeInfo(obj_type);
                                                 icon python:portal_url+'/'+ obj_typeinfo.getIcon();
@@ -49,18 +49,16 @@
                                                 obj_wf_state_class python:'state-' + normalizeString(obj_wf_state);
                                                 title_or_id obj/pretty_title_or_id;
                                                 ">
-                            <tal:block define="value python: getattr(obj, field, None)">
-                                <td tal:condition="python: field != 'Title'"
-                                    tal:content="python:here.formatCatalogMetadata(value)"
-                                    i18n:translate=""/>
-                                <td tal:condition="python: field == 'Title'">
+                            <tal:block define="value python: getattr(obj, 'Title', None)">
 
+                                <td>
                                     <h2>
                                     
                                     <a href="#" tal:attributes="href url;
                                                                 class obj_wf_state_class"
                                                 tal:content="title_or_id" />
-                                    (<span class="teaserdate" tal:content="python:toLocalizedTime(obj['EffectiveDate'])"/>)                                                  
+                                    (<span class="teaserdate" tal:content="python:toLocalizedTime(obj['start'], long_format=1)"/> - 
+                                     <span class="teaserdate" tal:content="python:toLocalizedTime(obj['end'], long_format=1)"/>)                                                  
                                     </h2>
                                        
                                     <div class="newsImageContainer" style="width: 100px;"

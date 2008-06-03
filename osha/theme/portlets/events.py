@@ -2,7 +2,7 @@ from plone.app.portlets.portlets import events
 from DateTime import DateTime
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.memoize.instance import memoize
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 
@@ -38,3 +38,16 @@ class Renderer(events.Renderer):
         if kw !='':
             query.update(Subject=kw)
         return catalog(query)[:limit]
+
+
+    def all_events_link(self):
+        context = aq_inner(self.context)
+        if not context.isPrincipiaFolderish:
+            context = aq_parent(context)
+        return '%s/oshevent-view' % context.absolute_url()
+
+    def prev_events_link(self):
+        context = aq_inner(self.context)
+        if not context.isPrincipiaFolderish:
+            context = aq_parent(context)        
+        return '%s/oshevent-view?show=previous' % context.absolute_url()
