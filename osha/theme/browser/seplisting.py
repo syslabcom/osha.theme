@@ -14,7 +14,7 @@ class SEPListingView(BrowserView):
         """ return the SEPS under topics """
         path = "/".join(self.context.getPhysicalPath())
         pc = getToolByName(self.context, 'portal_catalog')
-        res = pc(path={'query': path, 'depth': 1}, portal_type=["Folder", "Large Plone Folder"], sort_on='sortable_title')
+        res = pc(path={'query': path, 'depth': 1}, portal_type=["Folder", "Large Plone Folder"], sort_on='getObjPositionInParent')
         
         return [x for x in res if not x.exclude_from_nav]
         
