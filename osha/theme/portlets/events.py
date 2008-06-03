@@ -16,9 +16,21 @@ class Renderer(events.Renderer):
     def _data(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        
+        portal_languages = getToolByName(self.context, 'portal_languages')
+        preflang = portal_languages.getPreferredLanguage()
+
+        # search in the navigation root of the currently selected language and in the English path
+        # with Language = preferredLanguage or neutral
+        paths = list()
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         navigation_root_path = portal_state.navigation_root_path()
+        paths.append(navigation_root_path)
+        try:
+            navigation_root = portal_state.portal().restrictedTraverse(navigation_root_path)
+            canonical_path = '/'.join(navigation_root.getCanonical().getPhysicalPath())
+            paths.append(canonical_path)
+        except:
+            pass
 
         oshaview = getMultiAdapter((self.context, self.request), name=u'oshaview')
         mySEP = oshaview.getCurrentSingleEntryPoint()
@@ -30,10 +42,11 @@ class Renderer(events.Renderer):
         state = self.data.state
         query = dict(portal_type='Event',
                        review_state=state,
-                       path=navigation_root_path,
+                       path=paths,
                        end={'query': DateTime(),
                             'range': 'min'},
                        sort_on='start',
+                       Language=['', preflang],
                        sort_limit=limit)
         if kw !='':
             query.update(Subject=kw)
