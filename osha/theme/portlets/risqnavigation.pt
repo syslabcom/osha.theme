@@ -3,29 +3,19 @@
     <ul>
         <tal:block repeat="links view/links">
         <li tal:attributes="class python:links[1] and 'active' or 'default'">
-            <a href="" 
+            <a href=""
                tal:define="ob python:links[0]; state python:links[1]; iter python:links[2]"
                tal:attributes="class string:button_0${iter};
                                href ob/absolute_url;"
-               name="navigationlink" 
-               accesskey="accesskeys-navigation" 
-               i18n:attributes="accesskey" 
+               name="navigationlink"
+               accesskey="accesskeys-navigation"
+               i18n:attributes="accesskey"
                target="_self"
                tal:content="ob/Title"
                >node/id</a></li>
         </tal:block>
 
-        
-        <!--li><a href="" class="button_01" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
-               >node/id</a></li>
-        <li><a href="" class="button_02" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
-               >node/id</a></li>
-        <li class="active"><a href="" class="button_03" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
-               >node/id</a></li>
-        <li><a href="" class="button_04" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
-               >node/id</a></li>
-        <li><a href="" class="button_05" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
-               >node/id</a></li-->
+
     </ul>
 </div>
 </tal:block>
