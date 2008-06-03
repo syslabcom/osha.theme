@@ -13,12 +13,12 @@
 
 
 body {
-    background: &dtml-primaryColor5; url(&dtml-portal_url;/bg_body_risq.gif) 0 0 repeat-y;
+    background: &dtml-primaryColor5; url(bg_body_risq.gif) 0 0 repeat-y;
     font-size: 80%;
 }
 h1,
 h1.documentFirstHeading  {
-    background: &dtml-primaryColor1; url(<dtml-var portal_url>/h1_risq_bg.gif) 0 0 no-repeat;
+    background: &dtml-primaryColor1; url(h1_risq_bg.gif) 0 0 no-repeat;
     margin: 0;
     padding: 0.5em 1.5em ;
     margin-bottom: 1em;
@@ -32,18 +32,18 @@ h4, h5 {
     font-size: 100%;
     padding-left: 20px;
     line-height: 1em;
-    background: transparent url(<dtml-var portal_url>/bullet_risq.gif) 0em 0em no-repeat;
+    background: transparent url(bullet_risq.gif) 0em 0em no-repeat;
 }
 ul {
     line-height: 1.5em;
     list-style-type: square;
     margin: 0.5em 0 2em 2em;
     padding: 0;
-    list-style-image: url(&dtml-portal_url;/bullet_risq.gif);
+    list-style-image: url(bullet_risq.gif);
 }
 
 li {
-    list-style-image: url(&dtml-portal_url;/bullet_risq.gif);
+    list-style-image: url(bullet_risq.gif);
 }
 
 #portal-columns {
@@ -65,7 +65,7 @@ div#right-column-background {
 }
 
 #osha-topactions {
-    background: #488FCC url(<dtml-var portal_url>/banner_risq.gif) 0px 0px no-repeat;
+    background: #488FCC url(banner_risq.gif) 0px 0px no-repeat;
     height: 86px;
     padding: 0;
     margin-right: 0;
@@ -146,7 +146,7 @@ div#right-column-background {
 .navigationList li span.fakelink,
 .navigationList li a:active,
 .navigationList li a:visited {
-    background-image: url(<dtml-var portal_url>/navbutton_risq_01.gif);
+    background-image: url(navbutton_risq_01.gif);
     background-repeat: no-repeat;
     background-position: 0 8px;
     background-color: transparent;
@@ -162,7 +162,7 @@ div#right-column-background {
 .navigationList li a:hover {
     font-weight: bold;
     color: white;
-    background-image: url(<dtml-var portal_url>/navbutton_risq_01.gif);
+    background-image: url(navbutton_risq_01.gif);
     background-repeat: no-repeat;
     background-position: 0 8px;
     background-color: &dtml-primaryColor1;;
@@ -171,7 +171,7 @@ div#right-column-background {
 <dtml-in "range(5)">
 .navigationList li a.button_0<dtml-var sequence-number>,
 .navigationList li a.button_0<dtml-var sequence-number>:visited {
-    background-image: url(<dtml-var portal_url>/navbutton_risq_0<dtml-var sequence-number>.gif);
+    background-image: url(navbutton_risq_0<dtml-var sequence-number>.gif);
 }
 .navigationList li a.button_0<dtml-var sequence-number>:active,
 .navigationList li a.button_0<dtml-var sequence-number>:hover,
@@ -179,7 +179,7 @@ div#right-column-background {
 .navigationList li.active a.button_0<dtml-var sequence-number>:active,
 .navigationList li.active a.button_0<dtml-var sequence-number>:hover,
 .navigationList li.active a.button_0<dtml-var sequence-number>:visited {
-    background-image: url(<dtml-var portal_url>/navbutton_risq_0<dtml-var sequence-number>_hi.gif);
+    background-image: url(navbutton_risq_0<dtml-var sequence-number>_hi.gif);
     font-weight: bold;
     color: white;
     background-repeat: no-repeat;

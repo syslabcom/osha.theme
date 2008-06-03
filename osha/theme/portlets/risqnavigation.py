@@ -9,9 +9,9 @@ class Renderer(navigation.Renderer):
     _template = ViewPageTemplateFile('risqnavigation.pt')
     recurse = ViewPageTemplateFile('risqnavigation_recurse.pt')
     
-    linklist = ['index_html', 'why_risq_it', 'what_can_you_risq', '../competition/video', 'edge_safety']
     
     def links(self):
+        linklist = ['index_html', 'why_risq_it', 'what_can_you_risq', '../competition/video', 'edge_safety']
         context = Acquisition.aq_inner(self.context)      
         mylist = []    
         P = None
