@@ -8,6 +8,8 @@ from plone.memoize.instance import memoize
 from plone.memoize import ram
 from Products.PlacelessTranslationService import getTranslationService
 from osha.theme.config import *
+from osha.policy.interfaces import ISingleEntryPoint
+
 
 class OSHA(BrowserView):
     implements(IOSHA)
@@ -47,6 +49,14 @@ class OSHA(BrowserView):
                     
         seplist.sort(lambda x,y: cmp(x['title'].lower(), y['title'].lower()))
         return seplist
+        
+    def getCurrentSingleEntryPoint(self):
+        """ returns the SEP in the current path if we are inside one. None otherwise """
+        PARENTS = self.request.PARENTS
+        for parent in PARENTS:
+            if ISingleEntryPoint.providedBy(parent):
+                return parent
+        return None
         
     def listMetaTags(self, context):
         """ retrieve the metadata for the header and make osha specific additions """

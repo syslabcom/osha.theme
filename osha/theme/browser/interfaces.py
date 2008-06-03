@@ -98,6 +98,10 @@ class IOSHA(Interface):
     def getTranslatedCategories(domain):
         """ returns a list of tuples, that contain key and title of Categories (Subject)
         ordered by Title """
+
+    def getCurrentSingleEntryPoint(self):
+        """ returns the SEP in the current path if we are inside one. None otherwise """
+
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions

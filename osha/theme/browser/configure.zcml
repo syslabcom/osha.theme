@@ -226,6 +226,21 @@
         class=".oshtopic_view.OSHTopicView"
         permission="zope2.View"
     />
+
+    <browser:page
+        for="*"
+        name="oshnews-view"
+        class=".oshnews_view.OSHNewsView"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for="*"
+        name="oshevent-view"
+        class=".oshevent_view.OSHEventView"
+        permission="zope2.View"
+    />
+
     
     <browser:page
         for="*"
