@@ -1,5 +1,6 @@
 from plone.app.portlets.portlets import navigation
 import Acquisition
+from Products.CMFCore.utils import getToolByName
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -13,10 +14,12 @@ class Renderer(navigation.Renderer):
     def links(self):
         linklist = ['index_html', 'why_risq_it', 'what_can_you_risq', '../competition/video', 'edge_safety']
         context = Acquisition.aq_inner(self.context)      
+        portal_url = getToolByName(context, 'portal_url')
+        portalpath = "/".join(portal_url.getPortalObject().getPhysicalPath())
         mylist = []    
         P = None
-        currpath = self.request.VIRTUAL_URL_PARTS[1]
-        
+        URL = self.request.URL
+
         for P in self.request.PARENTS:
             if P.getId()== "risq":
                 break
@@ -26,8 +29,8 @@ class Renderer(navigation.Renderer):
             ob = P.restrictedTraverse(l, None)
             state = False
             if ob is not None:
-                obpath = "/".join(ob.getPhysicalPath())
-                if currpath in obpath:
+                obpath = ob.absolute_url()
+                if URL.startswith(obpath):
                     state = True
                 mylist.append((ob, state, cnt))
             

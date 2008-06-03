@@ -15,8 +15,8 @@
                >node/id</a></li>
         </tal:block>
 
-        <!--
-        <li><a href="" class="button_01" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
+        
+        <!--li><a href="" class="button_01" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
                >node/id</a></li>
         <li><a href="" class="button_02" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
                >node/id</a></li>
@@ -25,8 +25,7 @@
         <li><a href="" class="button_04" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
                >node/id</a></li>
         <li><a href="" class="button_05" name="navigationlink" accesskey="accesskeys-navigation" i18n:attributes="accesskey" target="_self"
-               >node/id</a></li>
-        -->
+               >node/id</a></li-->
     </ul>
 </div>
 </tal:block>
