@@ -30,14 +30,17 @@ class RSSFeedsView(BrowserView):
 
         L = []
         lang = portal_languages.getPreferredLanguage()
-        portal_path = portal_url.getPortalPath()
-        url_pattern = portal_path + \
-            "/search_rss?portal_type=%s&Language=%s&review_state=published&sort_on=effective"
-            
+        portal_path = portal_url.getPortalObject().absolute_url()
+        url_pattern = portal_path + "/search_rss?portal_type=%s&Language=%s&review_state=published&sort_on=%s"
+                        
         for T in self.TYPES:
+            if T == 'Event':
+                sorter="start"
+            else:
+                sorter = "effective"
             ti = portal_types.getTypeInfo(T)
             if T == 'Publication':
-                url = url_pattern %('File',lang)
+                url = url_pattern %('File',lang, sorter)
                 url += '&object_provides=slc.publications.interfaces.IPublicationEnhanced'
                 L.append( dict(
                     id=T, 
@@ -45,7 +48,6 @@ class RSSFeedsView(BrowserView):
                     icon='publication_icon.gif',
                     url=url
                     ))
-                
             elif ti is None:
                 continue
             else:
@@ -53,7 +55,7 @@ class RSSFeedsView(BrowserView):
                     id=T, 
                     title=ti.Title()+'s', 
                     icon=ti.getIcon(),
-                    url=url_pattern %(T,lang)
+                    url=url_pattern %(T,lang, sorter)
                     ))
         return L
         
