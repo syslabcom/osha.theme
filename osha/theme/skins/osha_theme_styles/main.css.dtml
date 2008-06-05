@@ -161,12 +161,24 @@ dl.portletAlertService {
 dl.portletAlertService dt.portletHeader {
     background-color: #09AB11;
 }
+dl.portletAlertService dd.portletItem {
+    background-color: #90C27E;
+}
+dl.portletAlertService dt.portletFooter {
+    background-color: #90C27E;
+}
 
 dl.portletFreeNewsletter {
     background-color: #F2E39E;
 }
 dl.portletFreeNewsletter dt.portletHeader {
     background-color: #FFD201;
+}
+dl.portletFreeNewsletter dd.portletItem {
+    background-color: #F2E39E;
+}
+dl.portletFreeNewsletter dd.portletFooter {
+    background-color: #F2E39E;
 }
 dl.portletEW2007 {
     background-color: #C8CBCC;
