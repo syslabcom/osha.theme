@@ -46,6 +46,7 @@ class TeaserView(BrowserView):
                        expires={'query': now,
                             'range': 'min'},
                        sort_on='effective',
+                       sort_order='reverse',
                        Language=['', preflang])
                        
         self.items = catalog(query)
