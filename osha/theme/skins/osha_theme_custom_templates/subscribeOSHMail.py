@@ -58,4 +58,4 @@ except Exception, e:
 if not noredirect:
     from slc.alertservice.utils import encodeEmail
     #feedbackpage = "http://osha.europa.eu/news/oshmail/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender))
-    return REQUEST.RESPONSE.redirect(referer+"portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender))
+    return REQUEST.RESPONSE.redirect(referer+"portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender)))
