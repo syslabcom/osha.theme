@@ -9,11 +9,23 @@ class Renderer(navigation.Renderer):
     
     _template = ViewPageTemplateFile('risqnavigation.pt')
     recurse = ViewPageTemplateFile('risqnavigation_recurse.pt')
-    
+
+    def __init__(self, context, request, view, manager, data):
+        navigation.Renderer.__init__(self, context, request, view, manager, data)
+        
+        self.properties = getToolByName(context, 'portal_properties').navtree_properties
+        self.urltool = getToolByName(context, 'portal_url')
+        print "in init"
+            
     @property
     def available(self):
-        True
+        return True
             
+
+    def render(self):
+        return self._template()
+        
+                    
     def links(self):
         linklist = ['index_html', 'why_risq_it', 'what_can_you_risq', '../competition/video', 'edge_safety']
         context = Acquisition.aq_inner(self.context)      
