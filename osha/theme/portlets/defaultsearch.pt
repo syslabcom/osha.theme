@@ -11,7 +11,7 @@
 
     <dd class="portletItem">
       <form name="searchform" action="search"
-            tal:define="livesearch view/enable_livesearch;"
+            tal:define="livesearch python:False;"
             tal:attributes="action view/search_action">
         <div class="LSBox">
           <input class="searchField inputLabel"
