@@ -37,6 +37,7 @@ class Renderer(news.Renderer):
         query = And(Or(queryA, queryB), queryBoth)
         return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
 
+    @memoize
     def all_news_link(self):
         context = aq_inner(self.context)
         if not context.isPrincipiaFolderish:

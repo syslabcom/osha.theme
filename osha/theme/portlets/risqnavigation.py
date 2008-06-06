@@ -3,6 +3,11 @@ import Acquisition
 from Products.CMFCore.utils import getToolByName
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.memoize.instance import memoize
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
+from plone.app.portlets.cache import render_cachekey
+
 
 class Renderer(navigation.Renderer):
     """Dynamically override standard header for risq navtree portlet"""
@@ -21,11 +26,7 @@ class Renderer(navigation.Renderer):
     def available(self):
         return True
             
-
-    def render(self):
-        return self._template()
-        
-                    
+    @memoize
     def links(self):
         linklist = ['index_html', 'why_risq_it', 'what_can_you_risq', '../competition/video', 'edge_safety']
         context = Acquisition.aq_inner(self.context)      

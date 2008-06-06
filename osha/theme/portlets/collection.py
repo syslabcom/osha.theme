@@ -3,6 +3,11 @@ from plone.portlet.collection import collection
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
+from plone.app.portlets.cache import render_cachekey
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
+
 class Renderer(collection.Renderer):
     """Portlet renderer.
     
@@ -11,8 +16,12 @@ class Renderer(collection.Renderer):
     of this class. Other methods can be added and referenced in the template.
     """    
     _template = ViewPageTemplateFile('collection.pt')
-    render = _template
 
+    @ram.cache(render_cachekey)
+    def render(self):
+        return xhtml_compress(self._template())
+
+    @memoize
     def collection_url(self):
         collection = self.collection()
         if collection is None:
@@ -34,6 +43,7 @@ class Renderer(collection.Renderer):
             return "%s/@@oshtopic-view?tp=%s" % (context.absolute_url(), collectionpath)
             
             
+    @memoize
     def getPath(self, ob):
         path = ob.getURL()
         context = Acquisition.aq_inner(self.context)

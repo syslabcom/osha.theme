@@ -11,6 +11,7 @@ from zope.formlib import form
 from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
+from plone.app.portlets.cache import render_cachekey
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
@@ -76,13 +77,13 @@ class Renderer(base.Renderer):
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
 
-    # Cached version - needs a proper cache key
-    # @ram.cache(render_cachekey)
-    # def render(self):
-    #     if self.available:
-    #         return xhtml_compress(self._template())
-    #     else:
-    #         return ''
+    #Cached version - needs a proper cache key
+    @ram.cache(render_cachekey)
+    def render(self):
+        if self.available:
+            return xhtml_compress(self._template())
+        else:
+            return ''
 
     render = _template
 

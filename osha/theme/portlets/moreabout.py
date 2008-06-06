@@ -4,8 +4,12 @@ from zope.formlib import form
 from zope.interface import implements
 
 from plone.app.portlets.portlets import base
-from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
+
+from plone.memoize.instance import memoize
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
+from plone.app.portlets.cache import render_cachekey
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
@@ -24,8 +28,12 @@ class Assignment(base.Assignment):
 
 class Renderer(base.Renderer):
 
-    render = ViewPageTemplateFile('moreabout.pt')
+    _template = ViewPageTemplateFile('moreabout.pt')
 
+    @ram.cache(render_cachekey)
+    def render(self):
+        return xhtml_compress(self._template())
+        
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
 
@@ -49,6 +57,7 @@ class Renderer(base.Renderer):
         f = self._getfile()
         return f.absolute_url()+'/edit'        
                 
+    @memoize                
     def _getfile(self):
         context = Acquisition.aq_inner(self.context)
         portlet_moreabout = getattr(context, 'more-about', getattr(context.getCanonical(), 'more-about', None))
@@ -56,6 +65,7 @@ class Renderer(base.Renderer):
             return None        
         return portlet_moreabout
 
+    @memoize                
     def content(self):
         return self._getfile() and self._getfile().getText() or None
         

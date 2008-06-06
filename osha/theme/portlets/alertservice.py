@@ -3,8 +3,12 @@ from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 
-from plone.app.portlets.portlets import base
+from plone.app.portlets.cache import render_cachekey
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
 from plone.memoize.instance import memoize
+
+from plone.app.portlets.portlets import base
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -24,7 +28,12 @@ class Assignment(base.Assignment):
 
 class Renderer(base.Renderer):
 
-    render = ViewPageTemplateFile('alertservice.pt')
+    _template = ViewPageTemplateFile('alertservice.pt')
+
+    @ram.cache(render_cachekey)
+    def render(self):
+        return xhtml_compress(self._template())
+
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)

@@ -53,12 +53,14 @@ class Renderer(events.Renderer):
         return catalog(query)[:limit]
 
 
+    @memoize
     def all_events_link(self):
         context = aq_inner(self.context)
         if not context.isPrincipiaFolderish:
             context = aq_parent(context)
         return '%s/oshevent-view' % context.absolute_url()
 
+    @memoize
     def prev_events_link(self):
         context = aq_inner(self.context)
         if not context.isPrincipiaFolderish:
