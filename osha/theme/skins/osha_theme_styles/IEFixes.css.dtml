@@ -214,6 +214,7 @@ dd.portletItem .navTreeItem a {
 }
 #portal-column-two {
     position:relative;
+    width: 15.9%;
 }
 
 /* Hides from IE-Mac \*/
