@@ -78,7 +78,7 @@ class Renderer(base.Renderer):
         self.preflang = portal_languages.getPreferredLanguage()
 
     #Cached version - needs a proper cache key
-    @ram.cache(render_cachekey)
+    #@ram.cache(render_cachekey)
     def render(self):
         if self.available:
             return xhtml_compress(self._template())
