@@ -21,7 +21,17 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
     """ Override LinguaPlone's language selector to provide our own template
         This is used for content that is LinguaPlone translatable """
 
-    render = ViewPageTemplateFile('templates/languageselector.pt')
+    _template = ViewPageTemplateFile('templates/languageselector.pt')
+
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
+        return (navigation_root_path, preflang)
+
+    @ram.cache(_render_cachekey)
+    def render(self):
+        return xhtml_compress(self._template())
 
     def languages(self):
         results = LanguageSelector.languages(self)
@@ -100,9 +110,7 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
         breadcrumbs_view = getMultiAdapter((self.context, self.request),
                                            name='breadcrumbs_view')
         self.breadcrumbs = breadcrumbs_view.breadcrumbs()    
-        # we dont want the first level to show up. This is an easy approach...
-#        if len(self.breadcrumbs)>0:
-#            self.breadcrumbs = self.breadcrumbs[1:]
+
                 
 class OSHACampaignAreaViewlet(common.ViewletBase):
     

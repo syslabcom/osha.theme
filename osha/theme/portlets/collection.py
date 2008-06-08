@@ -2,7 +2,7 @@ import Acquisition
 from plone.portlet.collection import collection
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-
+from time import time
 from plone.app.portlets.cache import render_cachekey
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
@@ -17,7 +17,7 @@ class Renderer(collection.Renderer):
     """    
     _template = ViewPageTemplateFile('collection.pt')
 
-    #@ram.cache(render_cachekey)
+    @ram.cache(lambda *args: time() // (60 * 10))
     def render(self):
         return xhtml_compress(self._template())
 

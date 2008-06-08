@@ -10,7 +10,6 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
-from plone.app.portlets.cache import render_cachekey
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
@@ -78,7 +77,12 @@ class Renderer(base.Renderer):
     flash_snippet = ViewPageTemplateFile('flashsnippet.pt')
     
     
-    #@ram.cache(render_cachekey)
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        modified = self.get_object() and self.get_object().modified() or ''
+        return (modified, preflang)
+
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
             

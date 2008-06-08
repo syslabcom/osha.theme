@@ -11,7 +11,6 @@ from zope.formlib import form
 from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
-from plone.app.portlets.cache import render_cachekey
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
@@ -77,15 +76,18 @@ class Renderer(base.Renderer):
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
 
-    #Cached version - needs a proper cache key
-    #@ram.cache(render_cachekey)
-    def render(self):
-        if self.available:
-            return xhtml_compress(self._template())
-        else:
-            return ''
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        portal_membership = getToolByName(self.context, 'portal_membership')
+        member = portal_membership.getAuthenticatedMember()
+        roles = member.getRolesInContext(self.context)
+        modified = self.document() and self.document().modified or ''
+        return (modified, roles, preflang)
 
-    render = _template
+    @ram.cache(_render_cachekey)
+    def render(self):
+        return xhtml_compress(self._template())
+
 
     def title(self):
         f = self.fallback(self.preflang)
@@ -93,6 +95,7 @@ class Renderer(base.Renderer):
             return ''
         return _(f.Title())
        
+    @memoize
     def editable(self):
         f = self.fallback(self.preflang)
         if f is None:
@@ -100,13 +103,14 @@ class Renderer(base.Renderer):
         mtool = getToolByName(self.context, 'portal_membership')
         return mtool.checkPermission('Modify portal content', f)
         
+    @memoize
     def editlink(self):
         f = self.fallback(self.preflang)
         if f is None:
             return ''
         return f.absolute_url()+'/edit'   
 
-       
+    @memoize
     def content(self):
         f = self.fallback(self.preflang)
         if f is None:

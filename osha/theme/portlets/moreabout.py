@@ -9,7 +9,6 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
-from plone.app.portlets.cache import render_cachekey
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
@@ -30,7 +29,16 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('moreabout.pt')
 
-    #@ram.cache(render_cachekey)
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        portal_membership = getToolByName(self.context, 'portal_membership')
+        member = portal_membership.getAuthenticatedMember()
+        roles = member.getRolesInContext(self.context)
+        F = self._getfile()
+        modified = F and F.modified() or ''
+        return (self._getfile().modified(), roles, preflang)
+
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
         

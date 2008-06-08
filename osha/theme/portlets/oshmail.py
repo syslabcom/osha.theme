@@ -2,7 +2,7 @@ import Acquisition
 from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
-
+from time import time
 from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
@@ -31,9 +31,10 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('oshmail.pt')
 
-    #@ram.cache(render_cachekey)
+    @ram.cache(lambda *args: time() // (60 * 60))
     def render(self):
         return xhtml_compress(self._template())
+
         
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)

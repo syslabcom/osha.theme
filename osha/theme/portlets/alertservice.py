@@ -7,7 +7,7 @@ from plone.app.portlets.cache import render_cachekey
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
 from plone.memoize.instance import memoize
-
+from time import time
 from plone.app.portlets.portlets import base
 from plone.portlets.interfaces import IPortletDataProvider
 
@@ -30,7 +30,7 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('alertservice.pt')
 
-    #@ram.cache(render_cachekey)
+    @ram.cache(lambda *args: time() // (60 * 60))
     def render(self):
         return xhtml_compress(self._template())
 
