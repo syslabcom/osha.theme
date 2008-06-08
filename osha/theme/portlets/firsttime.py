@@ -30,7 +30,7 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('firsttime.pt')
 
-    @ram.cache(lambda *args: time() // (60 * 60))
+    #@ram.cache(lambda *args: time() // (60 * 60))
     def render(self):
         return xhtml_compress(self._template())
 
