@@ -19,7 +19,7 @@ class Renderer(events.Renderer):
         portal_languages = getToolByName(self.context, 'portal_languages')
         preflang = portal_languages.getPreferredLanguage()
 
-        # search in the navigation root of the currently selected language and in the English path
+        # search in the navigation root of the currently selected language and in the canonical path
         # with Language = preferredLanguage or neutral
         paths = list()
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
