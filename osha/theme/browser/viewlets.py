@@ -36,10 +36,37 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
     def languages(self):
         results = LanguageSelector.languages(self)
         if not ITranslatable.providedBy(self.context):
-            for data in results:
-                data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
-            return results
-            
+            # special handling for LinguaLinks
+            if self.context.getPortalTypeName() == 'LinguaLink':
+                can = self.context.getLinkTarget()
+                can_lang = can.Language()
+                links =  can.getBRefs('lingualink')
+                # create a dict that maps language to LinguaLink object
+                lang_to_link = dict()
+                for link in links:
+                    lang_to_link[link.Language()] = link
+                for data in results:
+                    # for the canonical object, simply link to it
+                    if data['code'] == can_lang:
+                        data['url'] = can.absolute_url()
+                    else:
+                        # link to the translation, if present
+                        trans = can.getTranslation(data['code'])
+                        link = lang_to_link.get(data['code'], None)
+                        if trans:
+                            data['url'] = trans.absolute_url()
+                        # else link to the LinguaLink, if present
+                        elif link:
+                            data['url'] = link.absolute_url()
+                        # or use Plone default language negotiation as a last measure
+                        else:
+                            data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
+                return results
+            else:
+                for data in results:
+                    data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
+                return results
+
         translatable = ITranslatable(self.context, None)
         if translatable is not None:
             translations = translatable.getTranslations()
