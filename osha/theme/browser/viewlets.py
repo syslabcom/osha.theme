@@ -29,7 +29,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
         navigation_root_path = portal_state.navigation_root_path()
         return (navigation_root_path, preflang)
 
-    @ram.cache(_render_cachekey)
+    #@ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
