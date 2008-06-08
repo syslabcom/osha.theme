@@ -242,6 +242,12 @@ class OSHAFooterActions(common.ViewletBase):
         
 class OSHALogoViewlet(common.LogoViewlet):
 
+    render = ViewPageTemplateFile('templates/logo.pt')
+
+    def preflang(self):
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        return portal_state.locale().getLocaleID()
+        
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),
                                             name=u'plone_portal_state')
