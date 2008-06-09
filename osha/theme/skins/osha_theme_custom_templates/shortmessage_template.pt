@@ -33,15 +33,18 @@
 
     <div id="language-bar">
         <tal:block define="langs ltool/listSupportedLanguages;
-                  my_languages python:here.getTranslations();
-                  "
+                  my_languages python:here.getTranslations();"
                   condition="python:len(langs)>1">
-            <div i18n:domain="elevateIT" style="text-align: center"
+            <div i18n:domain="osha" style="text-align: center"
                 tal:define="thisurl string:${here/absolute_url}/${template/id}">
 
-              <span tal:repeat="lang my_languages"><a tal:omit-tag="python:prefLang == lang"
-                        href="" tal:attributes="href python:thisurl+'?set_language='+lang"
-                        tal:content="python:ltool.getNameForLanguageCode(lang)">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
+              <span tal:repeat="lang my_languages">
+                <a tal:omit-tag="python:prefLang == lang"
+                   tal:define="ppath python:list(here.getPhysicalPath());
+                               plen python:len(here.portal_url.getPortalObject().getPhysicalPath());
+                               langurl python:'/'.join(['']+[lang]+ppath[plen+1:])"                    
+                   tal:attributes="href python:langurl+'?set_language='+lang"
+                   tal:content="python:ltool.getNameForLanguageCode(lang)">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
             </div>
         </tal:block>
 
