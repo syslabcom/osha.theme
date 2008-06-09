@@ -1,0 +1,76 @@
+/* <dtml-var "enableHTTPCompression(request=REQUEST, debug=1, css=1)"> (this is for http compression) */
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+body {
+    padding:1em;
+    background:transparent;
+    background-color: <dtml-var "context.getProperty('color','#C5CBD8')">;
+    text-align: center;
+}
+h1 {
+    font-size: 130%;
+    text-align: center;
+    margin: 1em 0em;
+    background: #C5CBD8;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    line-height: normal;
+    border: none;
+}
+img { 
+    border: 0;
+    padding-right: 0.5em;
+}
+.footer {
+    font-size: 80%;
+    padding: 0;
+    padding-top: 1em;
+    margin: 0;
+    margin-top: 1em;
+    border-top: 1px solid #AAB1C5;
+    line-height: 1.5em;
+}
+.powered_py {
+    margin-top: 0;
+    text-align: left;
+    font-weight: bold;
+    color: #999999;
+}
+#language-bar {
+    margin: 20px;    
+}
+#distance-keeper {
+    clear: both;
+}    
+#shortmessage-body {
+    text-align:left;
+    margin: 0px auto;
+    width: 720px;
+    align: middle;
+    background-color: white;
+    padding: 10px;
+}
+#portal-logo {
+    float: left;
+}
+
+#campaign-logo {
+    float: right;   
+}
+
+.floatSurrounding {
+    position: static;
+    width: auto;
+}
+.floatingLeft {
+    border: none;
+    background: &dtml-backgroundColor;;
+    text-align: left;
+    position: relative;
+    width: auto;
+    padding: 0 0 0.5em 0;
+    float: left;
+    padding-right: 1em; 
+}
+
+/* </dtml-with> */

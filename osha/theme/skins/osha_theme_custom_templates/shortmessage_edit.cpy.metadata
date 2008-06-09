@@ -1,0 +1,6 @@
+[validators]
+validators=
+
+[actions]
+action.failure=redirect_to:string:shortmessage_config_form
+action.success_Config=redirect_to:string:shortmessage_config_form

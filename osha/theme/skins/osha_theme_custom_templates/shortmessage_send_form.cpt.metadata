@@ -1,0 +1,16 @@
+[default]
+title=Send Shortmessage
+
+[security]
+View=0:Authenticated
+
+[validators]
+validators=
+validators..Send=
+validators..Cancel=
+
+[actions]
+action.success=traverse_to:string:shortmessage_send
+action.success..Send=traverse_to:string:shortmessage_send
+action.success..Cancel=redirect_to_action:string:view
+action.failure=traverse_to:string:shortmessage_send_form
