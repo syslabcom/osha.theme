@@ -11,7 +11,7 @@ class Renderer(search.Renderer):
     _template = ViewPageTemplateFile('defaultsearch.pt')
 
 
-    @ram.cache(lambda *args: time() // (60 * 60))
+    #@ram.cache(lambda *args: time() // (60 * 60))
     def render(self):
         return xhtml_compress(self._template())
 
