@@ -13,9 +13,8 @@
 
 
 body {
-    background: transparent url(&dtml-portal_url;/logobackground.gif) no-repeat !important;
+    background: transparent url(&dtml-portal_url;/images/hwi_logobackground.gif) no-repeat !important;
 }
-
 #portal-columns {
     background: &dtml-primaryColor4;;
 }
@@ -50,7 +49,7 @@ dd.portletItem .navTreeItem a:hover {
 #osha-campaignarea {
     background-color: #ffffff;
     border-bottom: 1px solid &dtml-primaryColor1;;
-    text-align: center;
+    text-align: right;
 }
 
 
