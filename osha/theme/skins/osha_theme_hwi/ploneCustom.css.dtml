@@ -54,7 +54,7 @@ dd.portletItem .navTreeItem a:hover {
 
 
 #seminars {
-    background-image: url(&dtml-portal_url;//hwi_seminar_icon.gif) !important;
+    background-image: url(&dtml-portal_url;/images/hwi_seminar_icon.gif) !important;
     background-position: 8px 5px !important;
     background-repeat: no-repeat !important;
     height: 26px;
