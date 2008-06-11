@@ -61,8 +61,8 @@ class ILinguaToolsView(Interface):
             targetpath must be the folder to move to
             both paths must contain one single %s to place the language
         """
-    def addLanguageTool():
-        """ adds a language Tool """
+    def addLanguageTool(languages=[]):
+        """ adds a language Tool. Sets the given languages, if given ;) """
 
     def subtyper(subtype):
         """ subtypes object to the given subtype """

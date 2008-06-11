@@ -331,7 +331,7 @@ class LinguaToolsView(BrowserView):
         return results
         
         
-    def addLanguageTool(self):
+    def addLanguageTool(self, languages=[]):
         """ adds a language Tool """
         def _setter(ob, *args, **kw):
             if ob.isPrincipiaFolderish:
@@ -343,13 +343,16 @@ class LinguaToolsView(BrowserView):
                 newob._setId(tool.id)
                 notify(ObjectCopiedEvent(newob, tool))
 
-                ob._setObject(tool.id, newob)
+                ob._setOb(tool.id, newob)
+                ob._objects = ob._objects+(dict(meta_type=tool.meta_type, id=tool.id),)
                 newob = ob._getOb(tool.id)
                 newob.wl_clearLocks()
                 newob._postCopy(ob, op=0)
                 newob.manage_afterClone(newob)
 
                 notify(ObjectClonedEvent(newob))
+                if languages:
+                    newob.supported_langs = list(languages)
                 return ["Added language tool to %s" % ob.getId()]
         return self._forAllLangs(_setter)
 
