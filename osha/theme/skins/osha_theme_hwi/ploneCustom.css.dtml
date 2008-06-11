@@ -62,6 +62,7 @@ dd.portletItem .navTreeItem a:hover {
     padding-top: 6px;
     padding-bottom: 12px;
     padding-left: 50px;
+    display: block;
 }
 
 /* </dtml-with> */
