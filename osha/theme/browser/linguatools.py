@@ -22,12 +22,48 @@ from p4a.subtyper.interfaces import ISubtyper
 
 from Products.PlacelessTranslationService import getTranslationService
 
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
+
 class LinguaToolsView(BrowserView):
     implements(ILinguaToolsView)
+    template = ViewPageTemplateFile('templates/LinquaToolsView.pt')
+
+    def __call__(self):
+        self.request.set('disable_border', True)
+#        context = Acquisition.aq_inner(self.context)
+        
+#        portal_catalog = getToolByName(context, 'portal_catalog')
+#        portal_languages = getToolByName(context, 'portal_languages')
+#        self.lang = portal_languages.getPreferredLanguage()
+        if self.request.has_key("form.button.UpdateTitle"):
+            title = self.request.get('title', "no Title")
+            self.result=self.setTitle(title) 
+            
+        if self.request.has_key("form.button.propagatePortlets"):
+            self.result=self.propagatePortlets() 
+
+        if self.request.has_key("form.button.setEnableNextPrevious"):
+            self.result=self.setEnableNextPrevious(True) 
+
+        if self.request.has_key("form.button.setDisableNextPrevious"):
+            self.result=self.setEnableNextPrevious(False) 
+
+        if self.request.has_key("form.button.deleter"):
+            guessLanguage = self.request.get('guessLanguage', '')
+            id = self.request.get('id', '')
+            self.result=self.deleter(id,guessLanguage) 
+
+        if self.request.has_key("form.button.ChangeId"):
+            oldId = self.request.get('oldid', "")
+            id = self.request.get('id', oldId)
+            self.result=self.renamer(oldId,id) 
+        return self.template()
 
     def __init__(self, context, request):
         self.context = context
         self.request = request
+        self.result = []
         self.portal_url = getToolByName(context, 'portal_url')
         self.portal_path = self.portal_url.getPortalPath()
         self.portal = self.portal_url.getPortalObject()
@@ -122,7 +158,8 @@ class LinguaToolsView(BrowserView):
     def renamer(self, oldid, newid):
         """ rename one object within context from oldid to newid """
         def _setter(ob, *args, **kw):
-            oldid = kq['oldid']
+            oldid = kw['oldid']
+#             import pdb;pdb.set_trace()
             newid = kw['newid']
             if oldid in ob.objectIds():
                 ob.manage_renameObjects([oldid], [newid])

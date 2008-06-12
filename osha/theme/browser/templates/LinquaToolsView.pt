@@ -1,0 +1,65 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	lang="en"
+	metal:use-macro="here/main_template/macros/master"
+	i18n:domain="plone">
+
+	<body>
+
+		<div metal:fill-slot="main">
+
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="text" size="20" name="title" value="new Title"/>         
+				<input type="submit" class="context" name="form.button.UpdateTitle" value="set Title"/>
+			</form>
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="text" size="20" name="id" value="new id"/>         
+				<input type="checkbox" name="guessLanguage" value="guessLanguage"/>Guess Language         
+				<input type="submit" class="context" name="form.button.deleter" value="delete all"/>
+			</form>
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="submit" class="context" name="form.button.setEnableNextPrevious" tal:condition="not:context/getNextPreviousEnabled" value="turn On previous/Next Navigation" />
+				<input type="submit" class="context" name="form.button.setDisableNextPrevious" tal:condition="context/getNextPreviousEnabled" value="turn Off previous/Next Navigation" />
+			</form>
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="text" size="20" name="oldid" value="old id"/>         
+				<input type="text" size="20" name="id" value="new id"/>         
+				<input type="submit" class="context" name="form.button.ChangeId" value="change Id"/>
+			</form>
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="submit" class="context" name="form.button.propagatePortlets" value="Propagate Portlets"/>
+			</form>
+			<div tal:condition="view/result">
+
+				<!--h3>Results</h3-->
+				<table id="report-table" tal:define="pl view/result" summary="Search & Replace results report">
+
+
+					<tr>
+						<!--th>&nbsp;</th-->
+						<th>ID</th>
+					</tr>
+					<tal:block repeat="line pl">
+					<tr>
+						<!--td>
+						<input type="checkbox" name="targets:list" tal:attributes="value string:${line}" />
+						</td-->
+						<td>
+							<a href="" tal:attributes="href line" tal:content="line"></a>
+						</td>
+					</tr>
+					</tal:block>
+				</table>
+			</div>
+
+
+
+		</div>
+
+	</body>
+</html>
+
