@@ -93,8 +93,12 @@ class Renderer(base.Renderer):
         f = self.fallback(self.preflang)
         if f is None:
             return ''
-        return _(f.Title())
-       
+        title = f.Title()
+        if type(title)!=type(u''):
+            try: title = unicode(title, 'utf-8')
+            except: pass
+        return _(title)
+
     @memoize
     def editable(self):
         f = self.fallback(self.preflang)
@@ -102,7 +106,7 @@ class Renderer(base.Renderer):
             return False
         mtool = getToolByName(self.context, 'portal_membership')
         return mtool.checkPermission('Modify portal content', f)
-        
+
     @memoize
     def editlink(self):
         f = self.fallback(self.preflang)
