@@ -80,14 +80,20 @@ class LinguaToolsView(BrowserView):
         for lang in self.langs:
             results.append("Trying language: %s" % lang)
             lpath = self.dynamic_path%lang
-            base = context.restrictedTraverse(lpath, None)
+
+            base = context.getTranslation(lang)
             if base is None:
-                results.append("  # Break, base is none")
-                continue
-            basepath = "/".join(base.getPhysicalPath())
-            if lpath != basepath:
-                results.append("  # Break, requested path not basepath (%s != %s)" % (lpath,basepath))
-                continue
+                base = context.restrictedTraverse(lpath, None)
+                if base is None:
+                    results.append("  # Break, base is none")
+                    continue
+                else:
+                    results.append("  # WARNING: obhect found at %s which is not linked as a translation of %s"
+                            % (lpath, '/'.join(context.getPhysicalPath()) )) 
+#            basepath = "/".join(base.getPhysicalPath())
+#            if lpath != basepath:
+#                results.append("  # Break, requested path not basepath (%s != %s)" % (lpath,basepath))
+#                continue
             kw['lang'] = lang
             res = method(base, *args, **kw)
             results.append("Exec: %s for %s" % (method.__name__, lang))
