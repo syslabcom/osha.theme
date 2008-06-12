@@ -491,7 +491,8 @@ class LinguaToolsView(BrowserView):
         """ Sets the attachment flag on a rich document """
         def _setter(ob, *args, **kw):
             ob.setDisplayAttachments(flag)
-        return self._forAllLangs(_setter)        
+            return ["Changed Flag to %s for %s" %(flag, ob.absolute_url())]
+        return self._forAllLangs(_setter, flag=flag)        
         
         
     def _guessLanguage(self, filename):
