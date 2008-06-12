@@ -2,14 +2,14 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.layout.viewlets import common
 from time import time
 from zope.component import getMultiAdapter
-from Acquisition import aq_base
+from Acquisition import aq_base, aq_inner
 from Products.CMFPlone.utils import safe_unicode
 from cgi import escape
 from plone.memoize.compress import xhtml_compress
 from Products.CMFCore.utils import getToolByName
 from plone.memoize import ram
 from plone.memoize.instance import memoize
-
+from plone.app.portlets.cache import get_language
 from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 from Products.LinguaPlone.interfaces import ITranslatable
 from plone.app.i18n.locales.browser.selector import LanguageSelector
@@ -210,10 +210,31 @@ class OSHAFooterActions(common.ViewletBase):
     
     _template = ViewPageTemplateFile('templates/footer_actions.pt')
     
-    def _footer_render_details_cachekey(method, self):
-        portal_membership = getToolByName(self.context, 'portal_membership')
-        member = portal_membership.getAuthenticatedMember()
-        return member.getRolesInContext(self.context)
+    
+    
+    def _footer_render_details_cachekey(fun, self):
+        """
+        Generates a key based on:
+    
+        * Portal URL
+        * Negotiated language
+        * Anonymous user flag
+        * Portlet manager
+        * Assignment
+        * URL of collection used (instead of using _data)
+        
+        """
+        context = aq_inner(self.context)
+    
+        anonymous = getToolByName(context, 'portal_membership').isAnonymousUser()
+    
+        key= "".join((
+            getToolByName(aq_inner(self.context), 'portal_url')(),
+            get_language(aq_inner(self.context), self.request),
+            str(anonymous),
+            ))
+        return key    
+    
     
     @ram.cache(_footer_render_details_cachekey) 
     def render(self):
