@@ -223,6 +223,7 @@ dd.portletItem .navTreeItem a {
 
 * html #belowcontent-portlets dl.portlet {
     margin-left: 0.5%;
+    width: 46%;
 }
 
 /* </dtml-with> */
