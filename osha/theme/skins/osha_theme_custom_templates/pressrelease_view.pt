@@ -84,7 +84,7 @@
                     tal:replace="here/getLocation">[SEATTLE, WA]</span>
         </span>
 
-        <span metal:define-macro="releaseDate-field-view"
+        <!--span metal:define-macro="releaseDate-field-view"
               class="releaseDate"
               id="parent-fieldname-releaseDate"
               tal:define="kss_class python:getKssClasses('releaseDate',
@@ -93,7 +93,7 @@
               <span metal:define-slot="inside" 
                     tal:attributes="title here/getReleaseDate"
                     tal:content="python:here.toLocalizedTime(here.getReleaseDate())">[05/02/2006]</span>
-        </span>
+        </span-->
 
         <div metal:define-macro="text-field-view"
              id="parent-fieldname-text" class="stx"
