@@ -43,11 +43,35 @@ class LinguaToolsView(BrowserView):
         if self.request.has_key("form.button.propagatePortlets"):
             self.result=self.propagatePortlets() 
 
+        if self.request.has_key("form.button.addLanguageTool"):
+            self.result=self.addLanguageTool() 
+
+        if self.request.has_key("form.button.reindexer"):
+            self.result=self.reindexer() 
+
+        if self.request.has_key("form.button.publisher"):
+            self.result=self.publisher() 
+
+        if self.request.has_key("form.button.hider"):
+            self.result=self.hider() 
+
         if self.request.has_key("form.button.setEnableNextPrevious"):
             self.result=self.setEnableNextPrevious(True) 
 
         if self.request.has_key("form.button.setDisableNextPrevious"):
             self.result=self.setEnableNextPrevious(False) 
+
+        if self.request.has_key("form.button.setExcludeFromNav"):
+            self.result=self.setExcludeFromNav(True) 
+
+        if self.request.has_key("form.button.setIncludeInNav"):
+            self.result=self.setExcludeFromNav(False) 
+
+        if self.request.has_key("form.button.setRichDocAttachment"):
+            self.result=self.setRichDocAttachment(True) 
+
+        if self.request.has_key("form.button.unsetRichDochAttachment"):
+            self.result=self.setRichDocAttachment(False) 
 
         if self.request.has_key("form.button.deleter"):
             guessLanguage = self.request.get('guessLanguage', '')
@@ -58,6 +82,21 @@ class LinguaToolsView(BrowserView):
             oldId = self.request.get('oldid', "")
             id = self.request.get('id', oldId)
             self.result=self.renamer(oldId,id) 
+
+        if self.request.has_key("form.button.setTranslateTitle"):
+            label = self.request.get('label', "")
+            domain = self.request.get('domain', "plone")
+            self.result=self.setTranslatedTitle(label,domain) 
+            self.result=self.setTranslatedDescription(label,domain) 
+
+        if self.request.has_key("form.button.createFolder"):
+            excludeFromNav = self.request.get('excludeFromNav', 'true')
+            id = self.request.get('id', '')
+            self.result=self.createFolder(id,excludeFromNav) 
+
+        if self.request.has_key("form.button.fixTranslationReference"):
+            recursive = self.request.get('recursive', 'false')
+            self.result=self.fixTranslationReference(recursive) 
         return self.template()
 
     def __init__(self, context, request):
@@ -496,8 +535,14 @@ class LinguaToolsView(BrowserView):
     def setRichDocAttachments(self, flag=False):
         """ Sets the attachment flag on a rich document """
         def _setter(ob, *args, **kw):
-            ob.setDisplayAttachments(flag)
-            return ["Changed Flag to %s for %s" %(flag, ob.absolute_url())]
+            flag = kw['flag']
+            res = []
+            try:
+                ob.setDisplayAttachments(flag)
+                res.append("OK hidden %s" % "/".join(ob.setDisplayAttachments(flag)))
+            except Exception, e:
+                res.append("ERR publishing %s: %s" % ("/".join(ob.getPhysicalPath(flag)), str(e) ))
+            return res
         return self._forAllLangs(_setter, flag=flag)        
         
         

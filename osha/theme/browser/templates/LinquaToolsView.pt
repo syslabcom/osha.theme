@@ -25,6 +25,16 @@
 			</form>
 			<form method="get"
 				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="submit" class="context" name="form.button.setExcludeFromNav" tal:condition="not:context/getExcludeFromNav" value="Exclude from Nav" />
+				<input type="submit" class="context" name="form.button.setIncludeInNav" tal:condition="context/getExcludeFromNav" value="Include in Nav" />
+			</form>
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="submit" class="context" name="form.button.setRichDocAttachment" tal:condition="not:context/getDisplayAttachments" value="set RichDocAttachment" />
+				<input type="submit" class="context" name="form.button.unsetRichDocAttachment" tal:condition="context/getDisplayAttachments" value="unset RichDocAttachment" />
+			</form>
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
 				<input type="text" size="20" name="oldid" value="old id"/>         
 				<input type="text" size="20" name="id" value="new id"/>         
 				<input type="submit" class="context" name="form.button.ChangeId" value="change Id"/>
@@ -32,6 +42,29 @@
 			<form method="get"
 				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
 				<input type="submit" class="context" name="form.button.propagatePortlets" value="Propagate Portlets"/>
+				<input type="submit" class="context" name="form.button.addLanguageTool" value="Add Languagetool"/>
+				<input type="submit" class="context" name="form.button.reindexer" value="reindex object"/>
+				<input type="submit" class="context" name="form.button.publisher" value="publish"/>
+				<input type="submit" class="context" name="form.button.hider" value="hide"/>
+			</form>
+
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="text" size="20" name="label" value="label"/>         
+				<input type="text" size="20" name="domain" value="domain"/>         
+				<input type="submit" class="context" name="form.button.setTranslateTitle" value="Translate Title"/>
+				<input type="submit" class="context" name="form.button.setTranslateDescription" value="Translate Description"/>
+			</form>
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="text" size="20" name="id" value="id"/>         
+				<input type="checkbox" name="excludeFromNav" value="excludeFromNav" checked="checked"/>exclude from Nav         
+				<input type="submit" class="context" name="form.button.createFolder" value="create Folder"/>
+			</form>
+			<form method="get"
+				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+				<input type="checkbox" name="recursive" value="recursive"/>recursive
+				<input type="submit" class="context" name="form.button.fixTranslationReference" value="fix Translationreference"/>
 			</form>
 			<div tal:condition="view/result">
 
