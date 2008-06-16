@@ -1,0 +1,56 @@
+We need the language tool for this. Make sure start_neutral is set to 0 (it's
+ the default, 
+but using belts and suspenders won't harm us...)
+
+    >>> ltool = self.portal.portal_languages
+    >>> ltool.start_neutral = 0
+
+Add two more language beside English to the language tool.
+
+    >>> ltool.addSupportedLanguage('da')
+    >>> ltool.addSupportedLanguage('de')
+    >>> ltool.getSupportedLanguages()
+    ['en', 'da', 'de']
+
+The default language is English.
+
+    >>> ltool.getPreferredLanguage()
+    'en'
+
+
+Alias
+-----
+
+Now we add a document (which is translatable) to the folder.
+
+    >>> _ = folder.invokeFactory(id='doc', type_name='Document')
+    >>> doc = folder[_]
+    >>> doc.Language()
+    'en'
+    
+The document receives a title.
+
+    >>> doc.setTitle('English title')
+    >>> doc.Title()
+    'English title'
+
+We add a Danish translation of that document.
+
+    >>> doc.addTranslation('da')
+    >>> doc_da = doc.getTranslation('da')
+    >>> doc_da.Language()
+    'da'
+
+And the Danish version also gets a title.
+
+    >>> doc_da.setTitle('Danish title')
+    >>> doc_da.Title()
+    'Danish title'
+
+
+    >>> lt=doc.restrictedTraverse("@@linguatools")
+    >>> _ = lt.setTitle("myTitle")
+    >>> doc_da.Title()
+    'myTitle'
+    >>> doc.Title()
+    'myTitle'
