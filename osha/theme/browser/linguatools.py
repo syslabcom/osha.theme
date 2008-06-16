@@ -97,6 +97,43 @@ class LinguaToolsView(BrowserView):
         if self.request.has_key("form.button.fixTranslationReference"):
             recursive = self.request.get('recursive', 'false')
             self.result=self.fixTranslationReference(recursive) 
+
+        if self.request.has_key("form.button.subtyper"):
+            subtype = self.request.get('subtype', "")
+            self.result=self.subtyper(subtype) 
+
+        if self.request.has_key("form.button.delProperty"):
+            id = self.request.get('id', "")
+            self.result=self.delProperty(id) 
+
+        if self.request.has_key("form.button.blockPortlet"):
+            manager = self.request.get('manager', "")
+            cat = self.request.get('cat', "")
+            status = self.request.get('status', "")
+            self.result=self.blockPortlets(manager,cat,status) 
+            
+        if self.request.has_key("form.button.setProperty"):
+            id = self.request.get('id', "")
+            typ = self.request.get('typ', "")
+            value = self.request.get('value', "")
+            self.result=self.setProperty(id,typ,value) 
+
+        if self.request.has_key("form.button.cutAndPaste"):
+            sourcepath = self.request.get('sourcepath', "")
+            id = self.request.get('id', "")
+            value = self.request.get('targetpath', "")
+            self.result=self.cutAndPaste(sourcepath,id,targetpath) 
+ 
+        if self.request.has_key("form.button.fixOrder"):
+            order = self.request.get('order', "")
+            orderlist = order.splitlines(order.count('\n'))
+            self.result=self.fixOrder(orderlist) 
+        return self.template()
+
+        if self.request.has_key("form.button.translateThis"):
+            attrs = self.request.get('attrs', "")
+            attrslist = attrs.splitlines(attrs.count('\n'))
+            self.result=self.fixOrder(attrslist) 
         return self.template()
 
     def __init__(self, context, request):
