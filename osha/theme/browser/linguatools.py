@@ -539,11 +539,11 @@ class LinguaToolsView(BrowserView):
             res = []
             try:
                 ob.setDisplayAttachments(flag)
-                res.append("OK hidden %s" % "/".join(ob.setDisplayAttachments(flag)))
+                res.append("OK: set display attachment on %s to %s" % (ob.getId(), flag))
             except Exception, e:
-                res.append("ERR publishing %s: %s" % ("/".join(ob.getPhysicalPath(flag)), str(e) ))
+                res.append("ERR setting display attachment on %s (%s)" % ("/".join(ob.getPhysicalPath()), type(Acquisition.aq_base(ob)) ))
             return res
-        return self._forAllLangs(_setter, flag=flag)        
+        return self._forAllLangs(_setter, flag=flag)
         
         
     def _guessLanguage(self, filename):
