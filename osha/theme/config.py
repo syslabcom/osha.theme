@@ -1,4 +1,6 @@
 # Several configuration parameters
+PROJECTNAME = "osha.theme"
+product_globals = globals()
 
 # European network. Used by network_chooser view
 # Will later be factored out to be editable through the web

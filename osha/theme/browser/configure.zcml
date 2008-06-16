@@ -4,6 +4,7 @@
     i18n_domain="osha.theme">
 
     <include package="plone.app.portlets" />
+    <include package="p4a.subtyper" />
 
     <!-- OSHA Tool view -->
     <browser:page
