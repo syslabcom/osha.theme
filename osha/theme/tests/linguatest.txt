@@ -23,7 +23,7 @@ Alias
 
 Now we add a document (which is translatable) to the folder.
 
-    >>> _ = folder.invokeFactory(id='doc', type_name='Document')
+    >>> _ = folder.invokeFactory(id='doc', type_name='RichDocument')
     >>> doc = folder[_]
     >>> doc.Language()
     'en'
@@ -54,3 +54,8 @@ And the Danish version also gets a title.
     'myTitle'
     >>> doc.Title()
     'myTitle'
+    
+    >>> lt=folder.restrictedTraverse("@@linguatools")
+
+    >>> doc.getDisplayAttachments()
+    True

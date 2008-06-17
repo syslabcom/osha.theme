@@ -11,6 +11,7 @@ from osha.theme.config import product_globals
 ztc.installProduct('PloneLanguageTool')
 ztc.installProduct('LinguaPlone')
 ztc.installPackage('p4a.subtyper')
+ztc.installPackage('RichDocument')
 
 # Import PloneTestCase - this registers more products with Zope as a side effect
 from Products.PloneTestCase.PloneTestCase import PloneTestCase
@@ -47,7 +48,7 @@ def setup_osha_theme():
 # PloneTestCase set up this product on installation.
 
 setup_osha_theme()
-setupPloneSite(products=[])
+setupPloneSite(products=['RichDocument'])
 
 class OshaThemeTestCase(PloneTestCase):
     """Base class for integration tests for the 'OshaTheme' product.

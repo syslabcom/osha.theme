@@ -26,7 +26,6 @@ osha/theme/overrides.zcml
 osha/theme/profiles.zcml
 osha/theme/setuphandlers.py
 osha/theme/skins.zcml
-osha/theme/tests.py
 osha/theme/version.txt
 osha/theme/browser/__init__.py
 osha/theme/browser/brokenlinks.py
@@ -55,6 +54,7 @@ osha/theme/browser/teaserview.py
 osha/theme/browser/viewlets.py
 osha/theme/browser/vocabulary.py
 osha/theme/browser/worklist.py
+osha/theme/browser/templates/LinquaToolsView.pt
 osha/theme/browser/templates/abovecontent_portlets.pt
 osha/theme/browser/templates/atoz.pt
 osha/theme/browser/templates/belowcontent_portlets.pt
@@ -325,6 +325,7 @@ osha/theme/skins/osha_theme_custom_templates/default_error_message.pt
 osha/theme/skins/osha_theme_custom_templates/event_view.pt
 osha/theme/skins/osha_theme_custom_templates/folder_listing.pt
 osha/theme/skins/osha_theme_custom_templates/global_cache_settings.pt
+osha/theme/skins/osha_theme_custom_templates/logo_small.gif
 osha/theme/skins/osha_theme_custom_templates/newsitem_view.pt
 osha/theme/skins/osha_theme_custom_templates/oshmacros.pt
 osha/theme/skins/osha_theme_custom_templates/pressrelease_view.pt
@@ -334,6 +335,19 @@ osha/theme/skins/osha_theme_custom_templates/remoteprovider_view.pt
 osha/theme/skins/osha_theme_custom_templates/rss_template.pt
 osha/theme/skins/osha_theme_custom_templates/search.pt
 osha/theme/skins/osha_theme_custom_templates/search_form.pt
+osha/theme/skins/osha_theme_custom_templates/shortmessage_config_form.cpt
+osha/theme/skins/osha_theme_custom_templates/shortmessage_config_form.cpt.metadata
+osha/theme/skins/osha_theme_custom_templates/shortmessage_edit.cpy
+osha/theme/skins/osha_theme_custom_templates/shortmessage_edit.cpy.metadata
+osha/theme/skins/osha_theme_custom_templates/shortmessage_icon.gif
+osha/theme/skins/osha_theme_custom_templates/shortmessage_preview_style.css.dtml
+osha/theme/skins/osha_theme_custom_templates/shortmessage_preview_view.pt
+osha/theme/skins/osha_theme_custom_templates/shortmessage_send.cpy
+osha/theme/skins/osha_theme_custom_templates/shortmessage_send.cpy.metadata
+osha/theme/skins/osha_theme_custom_templates/shortmessage_send_form.cpt
+osha/theme/skins/osha_theme_custom_templates/shortmessage_send_form.cpt.metadata
+osha/theme/skins/osha_theme_custom_templates/shortmessage_template.pt
+osha/theme/skins/osha_theme_custom_templates/shortmessage_view.pt
 osha/theme/skins/osha_theme_custom_templates/subscribeOSHMail.py
 osha/theme/skins/osha_theme_custom_templates/subscribeOSHMail.py.metadata
 osha/theme/skins/osha_theme_custom_templates/subscribe_alert.cpy
@@ -767,6 +781,7 @@ osha/theme/skins/osha_theme_styles/main.css.dtml
 osha/theme/skins/osha_theme_styles/navtree.css.dtml
 osha/theme/skins/osha_theme_styles/print.css.dtml
 osha/theme/skins/osha_theme_styles/public.css.dtml
+osha/theme/skins/osha_theme_styles/shortmessage_preview_styles.css.dtml
 osha/theme/skins/osha_theme_tableless/columns.css.dtml
 osha/theme/skins/osha_theme_tableless/main_template.pt
 osha/theme/skins/osha_theme_tableless/portlet_prefs.pt
@@ -776,3 +791,6 @@ osha/theme/skins/osha_theme_wos/logo.jpg
 osha/theme/skins/osha_theme_wos/ploneCustom.css.dtml
 osha/theme/skins/osha_theme_wos/ploneCustom.css.dtml.metadata
 osha/theme/skins/osha_theme_wos/topbanner2.jpg
+osha/theme/tests/__init__.py
+osha/theme/tests/base.py
+osha/theme/tests/test_doctests.py
