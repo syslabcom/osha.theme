@@ -168,4 +168,22 @@ and finaly we check if the status has changed
     >> pw.getInfoFor(folder_da,'review_state')
     'private'
 
-    >>> folder.getID()
+Next we test the renamer method
+first we check for the old Id in english and Danish
+
+    >>> doc.getId()
+    'doc'    
+    >>> doc_da.getId()
+    'doc'    
+
+ now we change it in "new_doc" and 'new_doc-da'
+
+    >>> _ = lt.renamer('doc','new_doc')
+
+and finally we check whether the change took effect.
+
+    >>> doc.getId()
+    'new_doc'    
+    >>> doc.getId()
+    'new_doc'    
+
