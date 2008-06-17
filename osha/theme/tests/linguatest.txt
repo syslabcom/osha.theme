@@ -167,3 +167,5 @@ and finaly we check if the status has changed
     'private'
     >> pw.getInfoFor(folder_da,'review_state')
     'private'
+
+    >>> folder.getID()
