@@ -1,3 +1,6 @@
+
+    >>> self.loginAsPortalOwner()
+
 We need the language tool for this. Make sure start_neutral is set to 0 (it's
  the default, 
 but using belts and suspenders won't harm us...)
@@ -18,8 +21,6 @@ The default language is English.
     'en'
 
 
-Alias
------
 
 Now we add a document (which is translatable) to the folder.
 
