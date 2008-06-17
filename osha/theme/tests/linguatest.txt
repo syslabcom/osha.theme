@@ -28,7 +28,24 @@ Now we add a document (which is translatable) to the folder.
     >>> doc = folder[_]
     >>> doc.Language()
     'en'
+
+Now we translate the folder
+
+    >>> folder.addTranslation('da')
+
+Now we get a handle to the translated Folder    
     
+    >>> folder_da = folder.getTranslation('da')
+
+Now we check that the Language of the folder realy is Danish    
+    
+    >>> folder_da.Language()
+    'da'
+
+And that the Language of the Orignal Folder is English by now    
+    >>> folder.Language()
+    'en'
+
 The document receives a title.
 
     >>> doc.setTitle('English title')
@@ -41,6 +58,8 @@ We add a Danish translation of that document.
     >>> doc_da = doc.getTranslation('da')
     >>> doc_da.Language()
     'da'
+    >>> doc_da.aq_parent==folder_da
+    True
 
 And the Danish version also gets a title.
 
@@ -91,7 +110,7 @@ then we call the method setExcludeFromNav(True) to exclude the Docs in all Langu
 
     >>> _ = lt.setExcludeFromNav(True)
 
-And finally we test again in English and Danish wether the Document has been excluded from nav.
+And finally we test again in English and Danish whether the Document has been excluded from nav.
 
     >>> doc.getExcludeFromNav()
     True
@@ -99,7 +118,25 @@ And finally we test again in English and Danish wether the Document has been exc
     >>> doc_da.getExcludeFromNav()
     True
 
-Now we set the COntext from Document to folder for further Methodtests, whish function only with Folderish Objects.
+Now we set the Context from Document to folder for further Methodtests, whish function only with folderish Objects.
 
     >>> lt=folder.restrictedTraverse("@@linguatools")
 
+Now we check the Functionality of the setEnableNextPrevious() method
+First, as allways, we test the starting status in English and Danish
+
+    >>> folder.getNextPreviousEnabled()
+    False
+    >>> folder_da.getNextPreviousEnabled()
+    False
+    
+now we call the Method setEnableNextPrevious(True) to enable the Next Previous Navigation in all Languages.
+
+    >>> _ = lt.setEnableNextPrevious(True)
+
+Finally we test again whether our alteration took Effect in English and Danish.	
+
+    >>> folder.getNextPreviousEnabled()
+    True
+    >>> folder_da.getNextPreviousEnabled()
+    True
