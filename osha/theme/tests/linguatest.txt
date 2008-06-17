@@ -140,3 +140,30 @@ Finally we test again whether our alteration took Effect in English and Danish.
     True
     >>> folder_da.getNextPreviousEnabled()
     True
+
+Now we test the Publisher and Hider Function which work antagonistic to each other
+First we check the Status after getting a handle on portal_workflow
+    >>> pw = self.portal.portal_workflow
+    >>> pw.getInfoFor(folder,'review_state')
+    'private'
+    >>> pw.getInfoFor(folder_da,'review_state')
+    'private'
+
+then we call the publisher function
+
+    >>> _ = lt.publisher()
+
+and finaly we check if the status has changed	
+
+    >>> pw.getInfoFor(folder,'review_state')
+    'published'
+    >>> pw.getInfoFor(folder_da,'review_state')
+    'published'
+
+ hider is not working and therefore not tested.
+
+    >> _ = lt.hider()
+    >> pw.getInfoFor(folder,'review_state')
+    'private'
+    >> pw.getInfoFor(folder_da,'review_state')
+    'private'
