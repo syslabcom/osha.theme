@@ -10,8 +10,8 @@ from osha.theme.config import product_globals
 # Plone install (PloneTestCase takes care of these).
 ztc.installProduct('PloneLanguageTool')
 ztc.installProduct('LinguaPlone')
-ztc.installPackage('p4a.subtyper')
-ztc.installPackage('RichDocument')
+ztc.installProduct('SimpleAttachment')
+ztc.installProduct('RichDocument')
 
 # Import PloneTestCase - this registers more products with Zope as a side effect
 from Products.PloneTestCase.PloneTestCase import PloneTestCase
@@ -42,13 +42,14 @@ def setup_osha_theme():
     # It seems that files are automatically blobs, but my test won't run without this. (Plone3.1?)
     #ztc.installPackage('plone.app.blob')
     #ztc.installPackage('slc.publications')
+    ztc.installPackage('p4a.subtyper')
     
 # The order here is important: We first call the (deferred) function which
 # installs the products we need for the Optilux package. Then, we let 
 # PloneTestCase set up this product on installation.
 
 setup_osha_theme()
-setupPloneSite(products=['RichDocument'])
+setupPloneSite(products=['SimpleAttachment', 'RichDocument', 'LinguaPlone'])
 
 class OshaThemeTestCase(PloneTestCase):
     """Base class for integration tests for the 'OshaTheme' product.
