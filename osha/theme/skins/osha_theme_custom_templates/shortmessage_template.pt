@@ -77,7 +77,7 @@
         </div>
 
         <div class="powered_py">
-            <div><span i18n:domain="elevateIT" tal:define="DateTime python:modules['DateTime'].DateTime"
+            <div><span i18n:domain="osha" tal:define="DateTime python:modules['DateTime'].DateTime"
                       i18n:translate="copyright">&copy; Copyright 1998-<span i18n:name="thisyear"><span
                       tal:replace="python:DateTime().year()" /></span> European Agency for Safety and Health at Work -</span> <br/>
                       <a href="http://osha.europa.eu/disclaimer.stm" i18n:translate="">Disclaimer</a> - <a href="http://osha.europa.eu">http://osha.europa.eu</a>
