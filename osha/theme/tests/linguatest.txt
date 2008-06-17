@@ -178,12 +178,47 @@ first we check for the old Id in english and Danish
 
  now we change it in "new_doc" and 'new_doc-da'
 
-    >>> _ = lt.renamer('doc','new_doc')
+    >> _ = lt.renamer('doc','new_doc')
 
 and finally we check whether the change took effect.
 
-    >>> doc.getId()
+    >> doc.getId()
     'new_doc'    
-    >>> doc.getId()
+    >> doc.getId()
     'new_doc'    
 
+next we delete the function with deleter()
+
+    >> lt.deleter(doc.getId(),True)
+
+now lets test whether the object is deleted	
+    >> getattr(folder,'new_doc',None)
+    'doc'
+	
+now we will check whether the createFolder Method works.
+
+    >>> _ = lt.createFolder('newFolder',True)
+    >>> obj = getattr(folder,'newFolder',None)
+    >>> obj.getId()
+    'newFolder'
+
+Lets test now setProperty()
+
+    >>> _ = lt.setProperty('newProp','int',5)
+    >>> folder.hasProperty('newProp')
+    1
+    >>> folder.getProperty('newProp')
+    5
+    >>> folder_da.hasProperty('newProp')
+    1
+    >>> folder_da.getProperty('newProp')
+    5
+
+ And now we will test delProperty()
+
+    >>> _ = lt.delProperty('newProp')
+    >>> folder.hasProperty('newProp')
+    0
+
+    >>> folder_da.hasProperty('newProp')
+    0
