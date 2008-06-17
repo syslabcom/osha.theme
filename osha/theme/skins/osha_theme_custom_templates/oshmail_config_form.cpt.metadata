@@ -1,0 +1,19 @@
+[default]
+title=Send oshmail
+
+[security]
+View=0:Authenticated
+
+[validators]
+validators=
+validators..Preview=
+validators..Send=
+validators..Cancel=
+
+[actions]
+action.success=traverse_to:string:oshmail_edit
+action.success..Config=traverse_to:string:oshmail_edit
+action.success..Send=traverse_to:string:oshmail_send
+action.success..Preview=redirect_to:string:oshmail_view
+action.success..Cancel=redirect_to_action:string:view
+action.failure=traverse_to:string:oshmail_config_form
