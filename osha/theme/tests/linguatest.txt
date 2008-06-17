@@ -56,7 +56,14 @@ And the Danish version also gets a title.
     >>> doc.Title()
     'myTitle'
     
-    >>> lt=folder.restrictedTraverse("@@linguatools")
-
     >>> doc.getDisplayAttachments()
     True
+    >>> doc_da.getDisplayAttachments()
+    True
+    >>> _ = lt.setRichDocAttachments(False)
+    >>> doc.getDisplayAttachments()
+    False
+    >>> doc_da.getDisplayAttachments()
+    False
+    >>> lt=folder.restrictedTraverse("@@linguatools")
+
