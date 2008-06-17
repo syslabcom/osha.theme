@@ -410,4 +410,36 @@
     permission="zope2.View"
     />
 
+ <include package="Products.Collage" />
+
+  <browser:page
+     name="teaser"
+     for="Products.ATContentTypes.content.newsitem.ATNewsItem"
+     permission="zope.Public"
+     template="templates/collage_newsitem_teaser.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="teaser"
+     />
+
+  <browser:page
+     name="portlet"
+     for="plone.app.blob.content.ATBlob"
+     permission="zope.Public"
+     template="templates/collage_file_standard.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="standard"
+     />
+
+  <browser:page
+     name="publication"
+     for="plone.app.blob.content.ATBlob"
+     permission="zope.Public"
+     template="templates/collage_file_publication.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="publication"
+     />
+
 </configure>

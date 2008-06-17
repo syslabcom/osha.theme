@@ -1,0 +1,29 @@
+<tal:manager replace="structure provider:collage.ContentManager" />
+
+<dl tal:define="url here/absolute_url;
+    obj_description here/Description;
+    title_or_id here/pretty_title_or_id;
+    effective here/getEffectiveDate;
+    plone context/@@plone;
+    toLocalizedTime nocall:plone/toLocalizedTime">
+
+
+    <dt>
+    <a href="#"
+        tal:attributes="href string:$url/view" tal:content="title_or_id">
+    </a>
+   </dt>
+  
+    <dd>
+    <span tal:content="structure python:toLocalizedTime(effective)"> 
+        &nbsp; 
+    </span>
+
+    <!--br/>
+    <span class="description" tal:content="structure obj_description">
+        description 
+    </span-->
+    
+    </dd>
+
+</dl>
