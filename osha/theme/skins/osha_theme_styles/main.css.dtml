@@ -443,8 +443,13 @@ ul.linkList li {
 	float:left;
 	margin-right: 1em;
 }
+#linguaToolForms fieldset:hover {
+	background-color:#eeeedd;
+}
 
-
+#linguaToolForms fieldset:hover input{
+	background-color:#ffffff;
+}
 
 
 
