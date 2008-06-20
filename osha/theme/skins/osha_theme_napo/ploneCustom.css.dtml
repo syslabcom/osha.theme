@@ -1,0 +1,181 @@
+/*
+*  This is the file where you put your CSS changes. 
+*  You should preferrably use this and override the 
+*  relevant properties you want to change here instead 
+*  of customizing plone.css to survive upgrades. Writing
+*  your own plone.css only makes sense for very heavy 
+*  customizations. Useful variables from Plone are 
+*  documented at the bottom of this file.
+*/
+
+/* <dtml-with base_properties> (do not remove this :) */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
+
+/*
+#portal-columns {
+	background: &dtml-primaryColor4;;
+}
+
+dl.portlet {
+	background: &dtml-primaryColor3;;
+} 
+
+.portletNavigationTree {
+	background: &dtml-primaryColor3;;
+}
+
+.navTreeItem a:hover,
+dd.portletItem .navTreeItem a:hover {
+	background-color: &dtml-primaryColor1;;
+}
+.navTreeCurrentItem,
+.navTreeItemInPath {
+	background: &dtml-primaryColor1;;
+}
+
+#portal-header {
+	height: 57px !important;
+}
+
+#portal-personaltools, 
+#osha-topactions,
+#siteactions-wrapper,
+#portal-network {
+	display: none;
+}
+
+#osha-topdropdowns {
+	margin-top: 30px !important;
+	margin-right: 597px !important;
+}
+*/
+/* </dtml-with> */
+
+/*rote Überschrift mit unterstrisch über den ganzen Content*/
+.NAPOheader {
+
+	border-bottom: 0px solid #D0A8A8;
+	color: #BC0000;
+	font-size: 1,2em;
+	font-weight: bold;
+}
+.NAPOsubheader {
+	font-weight:bold;
+}
+.NAPOparagraph {
+
+}
+
+/*Portlet NavigationTree anpassungen
+*/
+.portletNavigationTree dt {
+	display:none;
+}
+
+.portletNavigationTree a img {
+	display:none;
+}
+.portletNavigationTree {
+	background-image:url(osha_theme_napo_images/menu.gif);
+	height:500px;
+	width:222px;
+	margin-top:60px;
+	background-color:transparent;
+	border: 0px none transparent;
+}
+.portletNavigationTree dd {
+	padding-top:200px;
+}
+.navTree {
+	line-heigt: 1.5em;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size:1.1em;
+}
+.portletItem {
+	border: 0px none transparent;
+}
+.navTreeItem {
+}
+.navTreeItem a, dd.portletItem .navTreeItem a {
+	border: 0px none transparent;
+	padding-top:7px;
+	padding-bottom:8px;
+	background-image:url(osha_theme_napo_images/menuButton.gif);
+	padding-left: 28px;
+	color:#ffffff;
+	font-size:1.2em;
+	font-weight:bold;
+	background-repeat:no-repeat;
+	display:block
+}
+#portal-column-one .visualPadding {
+	padding:0em 0em 0em 0em;
+}
+.navTreeItem a:hover, dd.portletItem .navTreeItem a:hover {
+	background-color:transparent;
+	border: 0px none transparent;
+}
+.navTreeCurrentItem {
+	background-color:transparent;
+	border:0px none transparent !important;
+}
+body {
+	background-attachment: fixed;
+	background-color:#18B500;
+	background-image:url(osha_theme_napo_images/fondo.gif);
+	background-repeat:repeat-x;
+	font-family: Verdana,Arial,Helvetica;sans-serif;
+	font-size:0.7em;
+	margin:0pt;
+	padding-bottom:30px;
+}
+#portal-column-content {
+	width:699px !important;
+	padding:0px 0px 0px 0px;
+}
+body #portal-columns {
+	position:absolute;
+	top:0px;
+	width:810px !important;
+	padding:0px 0px 0px 0px;
+}
+#header {
+	background-image:url(osha_theme_napo_images/napoHeader13.gif);
+	background-repeat:no-repeat;
+	color:#FFFFFF;
+	font-size:0.9em;
+        padding-bottom:13px;  
+	padding-left:30px;    
+        padding-top:5px; 
+}
+#header ul{
+	list-style-type:none;
+	margin:0px 0px -3px 0px;
+}
+
+#header ul li {
+	display:inline;
+	margin-right:20px;
+}
+#header a {
+	color:#ffffff;
+	text-decoration:underline;
+}
+.documentContent {
+	background-image:url(osha_theme_napo_images/fondoContent.gif);
+	background-repeat:repeat-y;
+	width:677px;
+	padding-right:0px;
+	position:relative;
+	top:-16px;
+}
+#rahmen {
+	margin-top:5px;
+	margin-left:-30px;
+}
+#bottompic {
+	margin-left:-12px;
+	background: transparent none repeat scroll 0% 0%;
+	position:relative;
+	top:52px;
+}
