@@ -45,4 +45,5 @@
             tal:replace="structure text">text</span>
     </div--> 
 
+    <div class="visualClear"></div>
 </span>
