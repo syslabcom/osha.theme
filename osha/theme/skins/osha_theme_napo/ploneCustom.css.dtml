@@ -108,6 +108,11 @@ dd.portletItem .navTreeItem a:hover {
 	background-repeat:no-repeat;
 	display:block
 }
+
+.navTreeItem:hover a, dd.portletItem:hover .navTreeItem:hover a {
+	color:#ffffff;
+	text-decoration:underline;
+}
 #portal-column-one .visualPadding {
 	padding:0em 0em 0em 0em;
 }
@@ -162,12 +167,12 @@ body #portal-columns {
 	text-decoration:underline;
 }
 .documentContent {
-	background-image:url(osha_theme_napo_images/fondoContent.gif);
-	background-repeat:repeat-y;
+        background-image:url(osha_theme_napo_images/fondoContent2.gif);
+	background-repeat:repeat-y;  
 	width:677px;
-	padding-right:0px;
-	position:relative;
-	top:-16px;
+        position:relative;
+	top:-16px;    
+	background-color:transparent;
 }
 #rahmen {
 	margin-top:5px;
