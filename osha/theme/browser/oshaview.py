@@ -105,7 +105,10 @@ class OSHA(BrowserView):
         keywords = PREFIX_KEYWORDS + SUBJECT + THESAURUS
         if isinstance(keywords, (list, tuple)):
             # convert a list to a string
-            keywords = ', '.join(keywords)
+            if keywords is None:
+                keywords = ''
+            else:
+                keywords = ', '.join(keywords)
             
         meta['keywords'] = keywords
         meta['DC.subject'] = keywords
