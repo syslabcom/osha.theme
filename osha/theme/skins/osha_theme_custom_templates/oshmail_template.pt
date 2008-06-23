@@ -1,20 +1,98 @@
-<metal:page define-macro="master"><metal:doctype define-slot="doctype"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></metal:doctype>
+<metal:page define-macro="master">
+<metal:doctype define-slot="doctype">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+</metal:doctype>
 <metal:block use-macro="here/global_defines/macros/defines" />
-
+<metal:block tal:define="charset here/site_properties/default_charset|string:utf-8; dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
       lang="en"
-      >
-    <div tal:replace="structure provider:plone.htmlhead" />
-        
-        
-<body tal:define="bgcol python:context.getProperty('color', '#C5CBD8');
-                  ltool nocall:here/portal_languages;
-                  prefLang ltool/getPreferredLanguage"
-      tal:attributes="style string:background-color: ${bgcol}">
+      tal:attributes="lang site_properties/default_language|default;
+                      xml:lang site_properties/default_language|default;">
 
-<div id="shortmessage-body">
-<style type="text/css" tal:content="structure here/shortmessage_preview_style.css"></style>
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+          tal:define="charset site_properties/default_charset|string:utf-8"
+          tal:attributes="content string:text/html;;charset=${charset}" />
+
+    <title tal:define="portal_title here/portal_properties/title;
+                       here_title here/Title | here/title | here/id;
+                       template_title python:template.title_or_id();
+                       here_title python:test( portal_title != here_title,
+                                               here_title,
+                                               template_title )"
+           tal:content="structure string:$portal_title - $here_title">Title of page</title>
+
+    
+    <meta tal:condition="here/listMetaTags|nothing"
+          tal:repeat="keyval here/listMetaTags"
+          tal:attributes="name python:keyval[0];
+                          content python:keyval[1];" />
+                          
+    <!-- Main style sheets for CSS2 capable browsers -->
+    <tal:styles define="view context/@@plone|nothing"
+                replace="structure provider:plone.resourceregistries.styles" />
+
+    <tal:styles define="view context/@@plone|nothing"
+                replace="structure provider:plone.resourceregistries.scripts" />
+ 
+    <style type="text/css">
+    div.portlet h6 {
+    padding:0em 0em 0em 0em;
+    background:transparent;
+    border-style:none;
+    font-weight:bold;
+    }
+    div.portlet div.portletBody p {
+    text-align:left;
+    }
+    div.portlet div.portletBody p.InfoLine {
+    font-style:italic;
+    text-align:left;
+    }
+    div.portlet div.portletBody p.Footer {
+    text-align:left;
+    }
+
+#portal-top-dropdowns {
+    background: #FAF881;
+    padding: 0;
+}
+#portal-top-content {
+    width: 100%;
+    position: static;
+}
+#portal-top-dropdowns {
+    vertical-align: bottom;
+}
+
+#portal-top-content .top-actions {
+    
+    padding: 0.6em 1em 1em 1em;
+    background-color: #c5cbd8;
+}
+#portal-top-content .slogan {
+    font-weight: bold;
+    padding-bottom: 0.4em;
+}
+    </style>
+</head>
+
+<body leftmargin="5" 
+    tal:define="ltool nocall:here/portal_languages;
+                  prefLang ltool/getPreferredLanguage">
+
+<div id="visual-portal-wrapper">
+
+<!--img src="header.jpg" border="0" alt="" tal:attributes="alt portal/Title|string:" /-->
+<table cellpadding="0" cellspacing="0" border="0"
+       summary="Layout table"
+       i18n:attributes="summary"  
+       tal:define="topbanner string:/imgages/topbanner2.jpg|string:; 
+       dbo python:0;
+       portal_title here/portal_properties/title;">
+    <tr>
+        <td rowspan="2" tal:attributes="rowspan python:test(dbo, '1', '2')" id="portal-logo-wrapper">
     <div id="portal-logo">
     <a href="/"
        tal:attributes="href string:http://osha.europa.eu">
@@ -27,56 +105,90 @@
        </span>
     </a>
     </div>
-
-
-    <div id="distance-keeper"></div>
-
-    <div id="language-bar">
-        <tal:block define="langs ltool/getSupportedLanguages;
-                  my_languages python:here.getTranslations();"
-                  condition="python:len(langs)>1">
-            <div i18n:domain="osha" style="text-align: center"
-                tal:define="thisurl string:${here/absolute_url}/${template/id}">
-
-              <span tal:repeat="lang langs">
-                <a tal:omit-tag="python:prefLang == lang"
-                   tal:attributes="href string:${here/absolute_url}/${template/getId}?set_language=$lang"
-                   tal:content="python:ltool.getNameForLanguageCode(lang)">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
+        </td>
+        <tal:block condition="not:dbo">
+        <td id="portal-top-content">
+            <div class="top-actions">
+                <div class="slogan" i18n:translate="" i18n:domain="osha"
+                     tal:content="site_properties/osha_properties/site_slogan|string:European Agency for Safety and Health at Work"> 
+                    European Network
+                </div>
             </div>
-        </tal:block>
-     
-    </div>
-
-    <metal:bodytext metal:define-slot="main" tal:content="nothing">
-        <!-- Page body text -->
-    </metal:bodytext>
-
-    <div class="footer" i18n:domain="osha"
-         tal:define="portal_url here/portal_url">
-
-        <div style="float:left; position:relative">
-            <a title="European Agency for Safety and Health at Work" href="http://osha.europa.eu/"
-            i18n:attributes="title"><img tal:attributes="src string:${portal_url}/logo_small.gif" width="28px" height="38px"
-            i18n:attributes="alt"
-            alt="European Agency for Safety and Health at Work" /></a>
-        </div>
-
-        <div class="powered_py">
-            <div><span i18n:domain="osha" tal:define="DateTime python:modules['DateTime'].DateTime"
-                      i18n:translate="copyright">&copy; Copyright 1998-<span i18n:name="thisyear"><span
-                      tal:replace="python:DateTime().year()" /></span> European Agency for Safety and Health at Work -</span> <br/>
-                      <a href="http://osha.europa.eu/en/disclaimer"
-                        tal:attributes="href string:http://osha.europa.eu/en/disclaimer?set_language=$prefLang"
-                         i18n:translate="">Disclaimer</a> - <a href="http://osha.europa.eu"
-                            tal:attributes="href string:http://osha.europa.eu/$prefLang"
-                            >http://osha.europa.eu</a>
+         </td>
+         <td id="portal-top-banner" rowspan="2" tal:condition="nocall:topbanner">
+             <img alt="" src="" title="" 
+            tal:attributes="src string:/images/topbanner2.jpg" />
+         </td>
+         </tal:block>
+     </tr>
+     <tr tal:condition="not:dbo">
+         <td id="portal-top-dropdowns" align="right">
+<img tal:attributes="src string:/images/oshmail_banner.jpg" border="0">
+         </td>
+     </tr>
+     <tr tal:condition="not:dbo">
+        <td id="portal-variable1">
+            <div class="area" tal:condition="exists:here/variable_area1"
+                 tal:content="structure here/variable_area1|nothing" tal:on-error="structure python:test(member.has_role('Manager', here), chr(60)+'span style=\'color: red\'>page template variable_area1 has errors!'+chr(60)+'/span>', '')">
+                 area 1
             </div>
-        </div>
-        <br style="clear:both" />
+        </td>
+        <td id="portal-variable2" colspan="2"
+            tal:attributes="colspan python:test(topbanner, '2', '1')">
+            <div class="area" tal:condition="exists:here/variable_area2"
+                 tal:content="structure here/variable_area2|nothing" tal:on-error="structure python:test(member.has_role('Manager', here), chr(60)+'span style=\'color: red\'>page template variable_area2 has errors!'+chr(60)+'/span>', '')">
+                 area 2
+            </div>
+        </td>
+     </tr>
+</table>
+
+
+
+
+
+<div class="visualClear"></div>
+
+<p>&nbsp;</p>
+
+    <div class="title">
+        <h1 class="documentFirstHeading" tal:content="here/title_or_id">collection id or title</h1>
     </div>
+<table width="100%">
+    <tr>
+        <td valign="top">
+        <tal:block define="served_languages ltool/listSupportedLanguages|python:[]"
+            condition="python:len(served_languages)>1">
+            <div i18n:domain="osha" style="text-align: center" 
+                tal:define="thisurl string:${here/absolute_url}/${template/id}">    
+         
+              <span tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang[0]" 
+                        href="" tal:attributes="href python:thisurl+'?set_language='+lang[0]" 
+                        tal:content="python:lang[1]">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
+            </div>   
+        </tal:block>    
+           <metal:bodytext metal:define-slot="main" tal:content="nothing">
+              <!-- Page body text -->
+           </metal:bodytext>
+        </td> 
+        <td style="border-left: 1px solid">&nbsp;&nbsp;</td><!-- spacer column -->
+        <!-- start of right (by default at least) column -->
+        <td valign="top">
+            <metal:columntext metal:define-slot="column_two_slot" tal:content="nothing">
+                <!-- column body text-->
+            </metal:columntext>
+        </td>
+    <!-- end of the right (by default at least) column -->
+    </tr>
+</table>
+
+
+<hr class="netscape4" />
+
 
 </div>
 
 </body>
 </html>
-</metal:page> 
+</metal:page>
+ 

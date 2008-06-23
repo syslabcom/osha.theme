@@ -1,11 +1,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
       lang="en-US"
-      i18n:domain="elevateIT"
+      i18n:domain="osha"
       metal:use-macro="here/oshmail_template/macros/master">
       
 
 <body>
-<div metal:fill-slot="main" i18n:domain="elevateIT">
+<div metal:fill-slot="main" i18n:domain="osha">
     
     <metal:block define-macro="main">
     <tal:block define="text here/@@renderer ;
