@@ -413,6 +413,16 @@
  <include package="Products.Collage" />
 
   <browser:page
+     name="oshmail"
+     for="Products.ATContentTypes.content.document.ATDocument"
+     permission="zope.Public"
+     template="templates/collage_document_oshmail.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="oshmail"
+     />
+
+  <browser:page
      name="teaser"
      for="Products.ATContentTypes.content.newsitem.ATNewsItem"
      permission="zope.Public"

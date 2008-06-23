@@ -6,7 +6,7 @@
 
 
     <h2 metal:define-macro="title"
-        class="documentFirstHeading"
+        
         tal:condition="here/Title">
       <span metal:define-slot="inside" 
             tal:replace="here/Title">title</span>

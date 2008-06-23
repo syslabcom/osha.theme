@@ -14,4 +14,7 @@
             name="alertservice.typesgetter"
              />
 
+    <include file="browser/overrides.zcml" />
+
+
 </configure>
