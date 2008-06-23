@@ -1,5 +1,7 @@
 from plone.app.layout.sitemap.sitemap import SiteMapView as BaseView
 from Products.CMFCore.utils import getToolByName
+from zope.app.component.hooks import getSite
+from zope.publisher.interfaces import NotFound
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from DateTime import DateTime
 from types import *
@@ -18,6 +20,28 @@ class SiteMapView(BaseView):
         self.filename = 'sitemap.xml.gz'
         self.urlmap = self.parseUrlFile()
 
+    def __call__(self):
+        """Checks if the sitemap feature is enable and returns it."""
+        sp = getToolByName(self.context, 'portal_properties').site_properties
+        if not sp.enable_sitemap:
+            raise NotFound(self.context, self.filename, self.request)
+
+        self.request.response.setHeader('Content-Type',
+                                        'application/octet-stream')
+        data = self.generate()                                
+        self.persistFile(data)
+        return data
+
+    def persistFile(self, data):
+        """ write the map into a file object to avoid google download timeouts """
+        site = getSite()
+        id = 'sitemap_p.xml.gz'
+        if id not in site.objectIds():
+            site.manage_addFile(id)
+        F = getattr(site, id)
+        F.update_data(data)
+        F.content_type='application/octet-stream'
+        
     def parseUrlFile(self):
         """ parses a simple file with format url,changefreq,priority """
         urlfile = getattr(self.context, 'sitemap_urlfile', None)
