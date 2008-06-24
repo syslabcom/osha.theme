@@ -10,7 +10,7 @@
 from Products.CMFPlone import PloneMessageFactory as pmf
 REQUEST=context.REQUEST
 try:
-    response = context.portal_registration.email_mailPassword(REQUEST['userid'], REQUEST)
+    response = context.portal_registration.email_mailPassword(REQUEST['email'], REQUEST)
 except ValueError, e:
     context.plone_utils.addPortalMessage(pmf(str(e)))
     response = context.mail_password_form()
