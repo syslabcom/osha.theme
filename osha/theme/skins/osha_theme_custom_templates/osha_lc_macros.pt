@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      >
+
+  <metal:block metal:define-macro="batchTable"
+    i18n:domain="linkchecker">
+
+    <script language="JavaScript">
+      function editLink(id) {
+        document.getElementById('link-'+id).style.display = 'none';
+        document.getElementById('editlink-'+id).style.display = 'block';
+        return false;
+      }
+    </script>
+
+   <div tal:define="links python:list(links);
+                    batch python:Batch(links, b_size, int(b_start), orphan=1);
+                    lc here/portal_linkchecker">
+    <p tal:condition="path_filter">Number of links found with current path filter: <span tal:replace="python:len(links)"/></p>
+
+
+    <metal:block use-macro="here/batch_macros/macros/navigation" />
+    <table class="listing"
+          id="sortable"
+          summary="Link listing"
+          i18n:attributes="summary"
+          border="0"
+          >
+      <thead>
+        <tr>
+          <metal:block metal:define-slot="header_cols">
+            <th i18n:translate="link_header_state">
+              State
+            </th>
+          </metal:block> 
+          <th>
+            <span i18n:translate="">this link is broken</span><br />
+          </th>
+
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tal:block repeat="link batch">
+          <tr tal:on-error="link"
+            tal:attributes="class python:test(repeat['link'].odd(), 'odd', 'even')">
+              <metal:block metal:define-slot="body_cols">
+                <td tal:attributes="class link/state"
+                    tal:content="link/state" i18n:translate="">
+                  Unknown
+                </td>
+              </metal:block>
+            <td class="linkreason">
+              <p>
+                <div tal:attributes="id string:link-${link/id}">
+                  <a tal:attributes="title link/url;
+                    href link/url"
+                    tal:content="python:lc.shortURL(path('link/link'))">
+                    http://...
+                  </a>
+                </div>
+                <div tal:attributes="id string:editlink-${link/id}" style="display:none;">
+                  <form action="lc_update_link">
+                    <input type="hidden" name="object" tal:attributes="value link/object"/>
+                    <input type="hidden" name="return_to" tal:attributes="value string:${request/URL}?${request/QUERY_STRING}"/>
+                    <input type="hidden" name="old_link" tal:attributes="value link/link"/>
+                    <input type="text" name="new_link" size="32" tal:attributes="value link/link"/>
+                    <input type="submit" value="Update link"/>
+                  </form>
+                </div>
+                <br />
+                <tal:block 
+                      tal:attributes="title link/reason"
+                      tal:content="python:path('link/reason').replace(path('link/url'), '~')" 
+                      i18n:translate="">
+                  initialized
+                </tal:block>
+              </td>
+            </tr>
+          </tal:block>
+        </tbody>
+      </table>
+      <metal:block use-macro="here/batch_macros/macros/navigation" />
+      </div>
+    </metal:block>
+    
+</html>
