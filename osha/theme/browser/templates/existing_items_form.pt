@@ -23,16 +23,18 @@
         tal:content="ctype/Title">Type-name</option>
       </select>
     </div>
-    <div class="field">
+    <div class="field" tal:define="value request/SearchableText|string:;
+                        value python:value.replace('+', ' ');">
       <label i18n:domain="plone" i18n:translate="label_search_text"
          for="portal_type">Search Text</label>
-      <input type="text" name="SearchableText" tal:attributes="value request/SearchableText|nothing" />
+        <input type="text" name="SearchableText" tal:attributes="value value" />
     </div>
-    <div class="field">
+    <div class="field" tal:define="value python:request.get('path', '');
+                        value python:value.replace('%2F', '/');">
       <label i18n:domain="plone" i18n:translate="label_path"
          for="path">Path</label>
       <input type="text" name="path" 
-        tal:attributes="value python:request.get('path', '')" />
+        tal:attributes="value value" />
         <!--input type="submit" value="Search" /-->
     </div>
     <ul i18n:domain="plone" class="collage-content-menu">

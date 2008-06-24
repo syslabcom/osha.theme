@@ -20,6 +20,8 @@ class EnhancedExistingItemsView(ExistingItemsView):
             abspath = urljoin(self.portal_path(), path)
         else:
             abspath = ''
+        if SearchableText=='' and portal_type=='' and abspath=='':
+            return list()
         langtool = cmfutils.getToolByName(self.context, 'portal_languages')
         prefLang = langtool.getPreferredLanguage()
         items = self.catalog(portal_type=portal_type,
