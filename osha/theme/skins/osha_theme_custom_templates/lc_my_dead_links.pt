@@ -23,8 +23,10 @@
                 b_start python:0;
                 b_start request/b_start | b_start;
                 path_filter request/path_filter|nothing;
+                multilingual_thesaurus request/multilingual_thesaurus|string:;
+                subcategory request/subcategory|string:;
                 link_state request/link_state|string:red;
-                links python:here.portal_linkchecker.reports.LinksInState(state=link_state, b_start=b_start, b_size=b_size, path_filter=path_filter); 
+                links python:here.portal_linkchecker.reports.LinksInState(state=link_state, b_start=b_start, b_size=b_size, path_filter=path_filter, multilingual_thesaurus=multilingual_thesaurus, subcategory=subcategory); 
                 searchterm request/SearchableText|nothing;
                 ">
     
@@ -41,16 +43,25 @@
     </a-->
     
     <form action="" method="GET">
-        <strong>Path filter:</strong> <input type="text" name="path_filter" tal:attributes="value path_filter" />
-        <select name="link_state" tal:define="lstates python:['red', 'orange', 'grey']">
+        <strong>Path filter:</strong> <input type="text" name="path_filter" tal:attributes="value path_filter" size="40" />
+        <strong>State:</strong> <select name="link_state" tal:define="lstates python:['red', 'orange', 'grey']">
             <option tal:repeat="lstate lstates"
                 tal:attributes="selected python:lstate==link_state and 'selected' or '';
                 value lstate"
             tal:content="lstate"></option>
         </select>
+        <div class="field_vocab">
+           <metal:use use-macro="here/filter_macros/macros/Subcategory"></metal:use>
+        </div>
+        <div class="field_vocab">
+           <metal:use use-macro="here/filter_macros/macros/MultilingualThesaurus"></metal:use>
+        </div>
         <input type="hidden" name="b_start:int" value="0" />
         <input type="hidden" name="b_size:int" tal:attributes="value b_size" />
-        <input type="submit" />
+        <input type="submit" class="context" />
+        <input  class="standalone" type="reset" value="Reset filter" 
+                    tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
+
     </form>
     
     <metal:block use-macro="here/osha_lc_macros/macros/batchTable">
