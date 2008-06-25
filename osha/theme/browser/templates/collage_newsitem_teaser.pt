@@ -2,6 +2,8 @@
 
 <span tal:define="url here/absolute_url;
     obj_description here/Description;
+    oshaview here/@@oshaview;
+    obj_description python:oshaview.makeAbsoluteUrls(obj_description);
     title_or_id here/pretty_title_or_id;">
 
 

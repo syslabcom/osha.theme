@@ -107,6 +107,9 @@ class IOSHA(Interface):
     def getCurrentSingleEntryPoint(self):
         """ returns the SEP in the current path if we are inside one. None otherwise """
 
+    def makeAbsoluteUrls(text):
+        """ make absolute urls out of relative urls """
+
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions

@@ -9,6 +9,8 @@ from plone.memoize import ram
 from Products.PlacelessTranslationService import getTranslationService
 from osha.theme.config import *
 from osha.policy.interfaces import ISingleEntryPoint
+from Products.CMFLinkChecker.utils import retrieveHTML, retrieveSTX
+from urlparse import urljoin
 
 
 class OSHA(BrowserView):
@@ -187,5 +189,21 @@ class OSHA(BrowserView):
     def getInternationalNetwork(self):
         """ returns the sites from the European Network """
         return INTERNATIONAL_NETWORK        
+
+    def makeAbsoluteUrls(self, text):
+        """ turn relative URLs into absolute URLs based on the context's URL """
+        links = []
+    
+        for link in retrieveSTX(text):
+            links.append(link)
+    
+        for link in retrieveHTML(text):
+            links.append(link)
+            
+        au = self.context.absolute_url()
+        for link in links:
+            if not link.startswith('mailto'):
+                text = text.replace(link, urljoin(au, link))
+        return text
 
 #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
