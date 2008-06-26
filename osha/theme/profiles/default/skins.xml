@@ -64,6 +64,11 @@
  <object name="osha_theme_wos"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_wos"/>  
+ <object name="osha_theme_napo"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_napo"/>  
+
+
 
  <skin-path name="OSHA Plone Theme" based-on="Plone Default">
   <layer name="osha_theme_custom_images"
@@ -155,5 +160,9 @@
      insert-after="custom"/>
  </skin-path>
 
+ <skin-path name="NAPO" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_napo"
+     insert-after="custom"/>
+ </skin-path>
 
 </object>
