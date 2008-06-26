@@ -22,13 +22,13 @@ class PressRoomView(BrowserView):
         self.request = request
         self.result = []
     
-    def _render_cachekey(method, self, max_size):
-        return ('meltwater', maxsize)
+    def _render_cachekey(method, self):
+        return ('meltwater')
     
     @ram.cache(_render_cachekey)
-    def getFeed(self, max_size=2):
+    def getFeed(self):
         context = Acquisition.aq_inner(self.context)
         sin = getToolByName(context, 'sin_tool')
         map = "meltwater"
-        rows = sin.sin(map, max_size=max_size)
+        rows = sin.sin(map, max_size=2)
         return rows

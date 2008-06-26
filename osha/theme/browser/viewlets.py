@@ -98,8 +98,12 @@ class OSHASiteActionsViewlet(common.SiteActionsViewlet):
 class OSHANetworkchooser(common.ViewletBase):
 
     _template = ViewPageTemplateFile('templates/network_chooser.pt')
+
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        return (preflang)
     
-    @ram.cache(lambda *args: time() // (60 * 60))
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
