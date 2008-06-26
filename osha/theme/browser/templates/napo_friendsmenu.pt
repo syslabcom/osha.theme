@@ -1,0 +1,5 @@
+<ul class="menu" id="friendsmenu" >
+	<li  tal:repeat="object view/listobjects">
+		<a tal:attributes="href object/id;class python:here.getId()==object.getId() and 'ACTIVE' or 'INACTIVE'" tal:content="object/id" />
+	</li>
+</ul>

@@ -52,18 +52,44 @@ dd.portletItem .navTreeItem a:hover {
 /* </dtml-with> */
 
 /*rote Überschrift mit unterstrisch über den ganzen Content*/
-.NAPOheader {
+#parent-fieldname-text img {
+	float:left;
+	clear:left;
+}
+h3, .NAPOheader {
 
-	border-bottom: 0px solid #D0A8A8;
+	border-bottom: 1px solid #D0A8A8;
 	color: #BC0000;
 	font-size: 1,2em;
 	font-weight: bold;
+	margin-bottom:10px;
+
 }
 .NAPOsubheader {
 	font-weight:bold;
 }
-.NAPOparagraph {
-
+div.paragraph {
+	line-height: 1.4em;
+	font-size:0.7em;
+	font-family: Verdana,Arial,Helvetica;sans-serif;
+	padding-bottom:15px;
+	padding-top:10px;
+}
+.viewFilmList {
+	list-style-type: none !important;
+	list-style-image:none !important;
+	line-height:1,4em;
+	font-size:0.7em;
+	font-family: Verdana,Arial,Helvetica;sans-serif;
+	padding-left:30px;
+}
+.viewFilmList {
+	padding-top:10px;
+}
+a {
+	color:#ff6633;
+	text-decoration:none;
+	border-bottom:none !important;
 }
 
 /*Portlet NavigationTree anpassungen
@@ -94,24 +120,46 @@ dd.portletItem .navTreeItem a:hover {
 .portletItem {
 	border: 0px none transparent;
 }
-.navTreeItem {
-}
 .navTreeItem a, dd.portletItem .navTreeItem a {
+	color:#ffffff !important;
 	border: 0px none transparent;
 	padding-top:7px;
 	padding-bottom:8px;
 	background-image:url(osha_theme_napo_images/menuButton.gif);
 	padding-left: 28px;
-	color:#ffffff;
 	font-size:1.2em;
 	font-weight:bold;
 	background-repeat:no-repeat;
 	display:block
 }
-
-.navTreeItem:hover a, dd.portletItem:hover .navTreeItem:hover a {
-	color:#ffffff;
+.navTreeItem a, dd.portletItem .navTreeItem a {
+	color:#ffffff !important;
+}
+.navTreeItem a span{
+	color:#ffffff !important;
+}
+.statePublished {
+	color:white !important;
+}
+.navTreeItem a:link, dd.portletItem .navTreeItem a:link {
+	color:#ffffff !important;
+}
+.navTreeItem a:visited, dd.portletItem .navTreeItem a:visited {
+	color:#ffffff !important;
+}
+.navTreeItem a:hover, dd.portletItem .navTreeItem a:hover {
+	color:#ffffff !important;
 	text-decoration:underline;
+}
+.navTreeItem:hover a, dd.portletItem:hover .navTreeItem:hover a {
+	color:#ffffff !important;
+	text-decoration:underline;
+}
+.contentActions a {
+	color:#000000;
+}
+.contentActions a:hover: {
+	color:#000000M
 }
 #portal-column-one .visualPadding {
 	padding:0em 0em 0em 0em;
@@ -133,6 +181,10 @@ body {
 	font-size:0.7em;
 	margin:0pt;
 	padding-bottom:30px;
+}
+p {
+	font-family: Verdana,Arial,Helvetica;sans-serif;
+	line-height: 1.4em;
 }
 #portal-column-content {
 	width:699px !important;
@@ -183,4 +235,119 @@ body #portal-columns {
 	background: transparent none repeat scroll 0% 0%;
 	position:relative;
 	top:52px;
+}
+#the-napo-story, #who-is-napo, #napos-friends, #napos-films, #using-napo, #coming-soon, #rights-and-permissions, #napette, #the-boss, #miss-strudel, #other-friends {
+	color:#564ff7;	
+	font-weight:bold;
+	text-decoration:none;
+	position:relative;
+}
+#napette {
+	top:-10px;
+	left:40px;
+}
+#miss-strudel {
+	top:-180px;
+	left:280px;
+}
+#the-boss {
+	top:90px;
+	left:280px;
+}
+#other-friends {
+	top:-75px;
+	left:460px;
+}
+#the-napo-story {
+	top:0px;
+ 	left:-125px;
+}
+#napos-friends {
+	top:-75px;
+	left:-65px;
+}
+#who-is-napo {
+	top:-210px;
+	left:75px;
+}
+#napos-films {
+	top:-255px;
+	left:90px;
+}
+#using-napo {
+	top:-235px;
+	left:185px;
+}
+#coming-soon {
+	top:-130px;
+	right:120px;
+}
+#rights-and-permissions {
+	top:-115px;
+        left:440px;
+}
+#espiral-pic {
+}
+#friends-pic {
+	margin-bottom:-150px;
+}
+.other {
+	padding-top:40px;
+	margin-right:30px;
+}
+.other2 {
+	padding-top:40px;
+	margin-right:45px;
+}
+p.paragraph2 {
+	padding-top:40px; 
+}
+p.paragraph3 {
+	padding-top:40px;
+}
+p.paragraph4 {
+	padding-top:40px;
+	padding-left:130px;
+}
+p.paragraph5 {
+	padding-left:130px;
+}
+#partners {
+	margin:0px;
+	padding-bottom:-40px;
+	padding:0px;
+        position:relative;
+	top:46px;    
+}
+#partners li {
+	display:inline;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#friendsmenu {
+	margin-left: 10px;
+	margin-right: 10px;
+	list-style-type: none !important;
+	text-align:center;
+	margin-bottom:40px;
+}
+#friendsmenu li {
+	list-style-type:none !important;
+	list-style-image:none !important;
+	display:inline;
+	margin-left:15px;
+	margin-right:15px;
+}
+#friendsmenu a {
+	text-decoration: underline;
+	color: #000000;  /*blau wäre schöner*/
+	font-weight:bold;
+}
+#friendsmenu a.ACTIVE {
+	color:#ff8000;
+	font-weight: bold;
+	text-decoration:none;
+}
+#friendsmenu a:hover {
+	text-decoration:underline;
 }

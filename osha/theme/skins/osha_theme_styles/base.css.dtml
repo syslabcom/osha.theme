@@ -143,7 +143,89 @@ del {
     color: red;
     text-decoration: line-through;
 }
+#PressRoom h1.header {
+    font-size:120%;    
+    background-color:#c5cbd8;
+    padding-left:10px;
+    padding-top:5px;
+    padding-bottom:5px;
+    margin-left:10px;
+    margin-top:0px;
+    margin-bottom:40px;
+}
+#PressRoom #addresses div
+{
+	clear:right;
+	float:left;
+    background-color:#c5cbd8;
+    width:30%;
+    margin-left:3%;
+    margin-top:30px;
+}
+#about-us {
+	background-image: url(about_us.gif);
+	background-repeat:no-repeat;
+}
+#press-releases {
+	background-image: url(press_releases.gif);
+	background-repeat:no-repeat;
+}
+#useful-articles {
+	background-image: url(useful_articles.gif);
+	background-repeat:no-repeat;
+}
+#campaigns {
+	background-image: url(campaigns.gif);
+	background-repeat:no-repeat;
+}
+#photos-logos {
+	background-image: url(photos_logos.gif);
+	background-repeat:no-repeat;
+}
+#publications {
+	background-image: url(publication.gif);
+	background-repeat:no-repeat;
+	clear:right;
+}
+#PressRoom .labels {
+	text-align:center;
+ 	vertical-align:middle;
+	height:100px;
+	width:220px;
+	padding-top:35px;
+	float:left;
+	margin-left:30px;
+}
+#PressRoom .labels .label {
+	width:220px;
+	font-size:130%;
+}
+#EuMediaCoverage {
+	clear:both;
+	border: 1px solid #000000;
+	background-color:#c0c0c0;
+	margin-left: 26px;
+}
 
+#EuMediaCoverage {
+	padding-left:11px;
+}
+#boxBody {
+	border: 1px solid #000000;
+    padding-left:10px;
+    padding-bottom:5px;
+	margin-left: 26px;
+    margin-top:0px;
+}
+#boxBody h3 {
+	color:#295994;
+	font-size:10px;
+	padding-top:15px;
+}
+#bodyBox p {
+	color:#000000;
+	font-size:10px;
+}
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 

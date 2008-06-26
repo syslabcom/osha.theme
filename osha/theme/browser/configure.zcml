@@ -24,7 +24,14 @@
         permission="zope.Public"
         allowed_interface=".interfaces.ILinguaToolsView"
         />
-        
+<!-- OSHA PressRoomView-->    
+    <browser:page
+        for="*"
+	name="pressroom"
+	class=".pressroom.PressRoomView"
+        permission="zope.Public"
+	allowed_interface=".interfaces.IPressRoomView"
+        />
         
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
     <interface
@@ -45,6 +52,11 @@
         name="RISQ"
         />
 
+    <interface
+        interface=".interfaces.INAPOSpecific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="NAPO"
+        />
 
     <!-- Viewlet manager that will wrap top actions -->
     <browser:viewletManager
@@ -72,7 +84,43 @@
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
-
+    <!-- Napo Header-->
+    <browser:viewlet
+	name="osha.napo.header"
+        manager="plone.app.layout.viewlets.interfaces.IContentViews"
+	template="templates/napo_head.pt"
+	layer=".interfaces.INAPOSpecific"
+        permission="zope2.View" 
+        />
+    <browser:viewlet
+	name="osha.napo.subheader"
+        manager="plone.app.layout.viewlets.interfaces.IContentViews"
+	template="templates/napo_subhead.pt"
+	layer=".interfaces.INAPOSpecific"
+        permission="zope2.View" 
+        />
+<!-- Napo Below footer-->
+    <browser:viewlet
+	name="osha.napo.logofooter"
+	manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+	template="templates/napo_logofooter.pt"
+	layer=".interfaces.INAPOSpecific"
+        permission="zope2.View" 
+        />
+    <browser:viewlet
+	    name="osha.napo.friendsmenu"
+	manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+	class=".napo.NapoFriendsViewlet"
+	layer=".interfaces.INAPOSpecific"
+        permission="zope2.View" 
+        />
+    <browser:viewlet
+	name="osha.napo.belowfooter"
+	manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+	template="templates/napo_belowfooter.pt"
+	layer=".interfaces.INAPOSpecific"
+        permission="zope2.View" 
+        />
 
     <!-- The portal header -->
     <browser:viewlet

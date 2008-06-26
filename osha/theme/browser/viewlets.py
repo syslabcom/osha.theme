@@ -311,3 +311,15 @@ class TitleViewlet(common.TitleViewlet):
                 escape(safe_unicode(page_title)),
                 escape(safe_unicode(osha)),
                 escape(safe_unicode(portal_title)))
+
+class OSHANapoHeadViewlet(common.ViewletBase):
+
+    render = ViewPageTemplateFile('templates/napo_head.pt')
+
+class OSHANapoSubHeadViewlet(common.ViewletBase):
+
+    render = ViewPageTemplateFile('templates/napo_subhead.pt')
+
+class OSHANapoBelowFooterViewlet(common.ViewletBase):
+
+    render = ViewPageTemplateFile('templates/napo_belowfooter.pt')

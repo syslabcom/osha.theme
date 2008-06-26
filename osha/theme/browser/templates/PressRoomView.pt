@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+lang="en"
+metal:use-macro="here/main_template/macros/master"
+i18n:domain="plone">
+
+	<body>
+
+		<div metal:fill-slot="main" id="PressRoom">
+		<h1 class="header" i18n:translate="osha_nav_title_press_room">Press Room</h1>
+		<a href="../press-releases">
+		<div class="labels" id="press-releases">
+		<h1 class="label" i18n:translate="press-releases">PRESS RELEASES</h1>
+		</div>
+                </a>
+		<a href="/campaigns">
+		<div class="labels" id="campaigns">
+		<h1 class="label" i18n:translate="osha_nav_title_campaings">CAMPAIGNS</h1>
+		</div>
+                </a>
+
+		<a href="../press-releases">
+		<div class="labels" id="photos-logos">
+		<h1 class="label" i18n:translate="photos-logos">PHOTOS & LOGOS</h1>
+
+		</div>
+                </a>
+
+		<div class="visualClear"></div>
+		<a href="../press-releases">
+		<div class="labels" id="useful-articles">
+		<h1 class="label" i18n:translate="useful-articles">USFUL ARTICLES</h1>
+		</div>
+                </a>
+
+		<a href="/about/">
+		<div class="labels" id="about-us">
+		<h1 class="label" i18n:translate="osha_nav_title_about_us">ABOUT US</h1>
+		</div>
+                </a>
+
+		<a href="/publications">
+		<div class="labels" id="publications">
+		<h1 class="label" i18n:translate="osha_nav_title_publications">PUBLICATIONS</h1>
+		</div>
+                </a>
+
+		<div id="EuMediaCoverage">
+		<h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
+		</div>
+		<div id="boxBody"> <h3>hallo </h3>
+		<p>Welt</p>
+		</div>
+
+		<div id="addresses">
+						<div i18n:tranlate="osha_label_international_press"><strong >International press:<br></strong>Press Office, <br>European Agency for Safety and Health at Work, <br>Bilbao <br>Tel: +34 94 479 35 52<br><img src="news.gif" alt="international press contact"></div>
+						<div i18n:tranlate="osha_label_spanish_press"><strong>Bilbao and Spanish press:<br></strong>Press Office, <br>European Agency for Safety and Health at Work, <br>Bilbao <br>Tel: +34 94 479 57 46<strong><br><img src="noticias.gif" alt=""><br></strong></div>
+							<strong>              </strong>
+
+						<div i18n:tranlate="osha_label_brussels_liaison_office"><strong>Brussels Liaison Office:<br></strong>European Agency for Safety and Health at Work, <br>Square de Meeûs 38/40, <br>1000 Brussels, Belgium <br>Tel: +32 2 401 68 59
+	<br><img src="obrien.gif" alt="brussels liaison officer"></div>    
+		</div>
+		</div>
+
+	</body>
+</html>
+

@@ -29,7 +29,7 @@ borderStyle:string=solid
 borderStyleAnnotations:string=dashed
 
 globalBorderColor:string=#FFFFC9
-globalBackgroundColor:string=#FFFFFF
+globalBackgroundColor:string=#FFFFC9
 globalFontColor:string=#191919
 
 headingFontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
@@ -52,6 +52,6 @@ discreetColor:string=#666666
 helpBackgroundColor:string=#ffffe1
 
 portalMinWidth:string=70em
-columnContentWidth:string=677px:
-columnOneWidth:string=222px
-columnTwoWidth:string=0%
+columnContentWidth:string=68%
+columnOneWidth:string=16%
+columnTwoWidth:string=16%

@@ -160,8 +160,8 @@
      insert-after="custom"/>
  </skin-path>
 
- <skin-path name="NAPO" based-on="OSHA Plone Theme">
-  <layer name="osha_theme_napo"
+ <skin-path name="NAPO" based-on="Plone Default">
+	 <layer name="osha_theme_napo"
      insert-after="custom"/>
  </skin-path>
 

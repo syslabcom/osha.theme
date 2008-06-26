@@ -21,6 +21,14 @@ class IRISQSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
+class INAPOSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
+    """Marker interface that defines a Zope 3 skin layer.
+    """
+class IPressRoomView(Interface):
+    """ A View for Pressroom to show Snydication Information """
+
+    def get_syn_news():
+        """ A method to get the syndicated News """
 
 class ILinguaToolsView(Interface):
     """ A tool to manage lingua specific tasks """
