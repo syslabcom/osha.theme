@@ -27,7 +27,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 class LinguaToolsView(BrowserView):
     implements(ILinguaToolsView)
-    template = ViewPageTemplateFile('templates/LinquaToolsView.pt')
+    template = ViewPageTemplateFile('templates/linguatools.pt')
 
     def __call__(self):
         self.request.set('disable_border', True)

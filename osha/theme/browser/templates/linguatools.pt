@@ -143,11 +143,11 @@
 			</form>
 			</fieldset>
                         <fieldset title="Translates the current object into all languages and transferres the given attributes">
-			<legend>tranlateThis(attrs=[])</legend> 
+			<legend>translateThis(attrs=[])</legend> 
 			<form method="get"
 				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
 				<textarea name="attrs" cols="20" rows="10"></textarea>
-				<input type="submit" class="context" name="form.button.tranlateThis" value="translate this"/>
+				<input type="submit" class="context" name="form.button.translateThis" value="translate this"/>
 			</form>
 			</fieldset>
 			<div tal:condition="view/result">

@@ -27,7 +27,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 class PressRoomView(BrowserView):
     implements(IPressRoomView)
-    template = ViewPageTemplateFile('templates/PressRoomView.pt')
+    template = ViewPageTemplateFile('templates/pressroom.pt')
 
     def __call__(self):
         self.request.set('disable_border', True)

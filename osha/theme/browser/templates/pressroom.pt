@@ -52,11 +52,11 @@ i18n:domain="plone">
 		</div>
 
 		<div id="addresses">
-						<div i18n:tranlate="osha_label_international_press"><strong >International press:<br></strong>Press Office, <br>European Agency for Safety and Health at Work, <br>Bilbao <br>Tel: +34 94 479 35 52<br><img src="news.gif" alt="international press contact"></div>
-						<div i18n:tranlate="osha_label_spanish_press"><strong>Bilbao and Spanish press:<br></strong>Press Office, <br>European Agency for Safety and Health at Work, <br>Bilbao <br>Tel: +34 94 479 57 46<strong><br><img src="noticias.gif" alt=""><br></strong></div>
+						<div i18n:translate="osha_label_international_press"><strong >International press:<br></strong>Press Office, <br>European Agency for Safety and Health at Work, <br>Bilbao <br>Tel: +34 94 479 35 52<br><img src="news.gif" alt="international press contact"></div>
+						<div i18n:translate="osha_label_spanish_press"><strong>Bilbao and Spanish press:<br></strong>Press Office, <br>European Agency for Safety and Health at Work, <br>Bilbao <br>Tel: +34 94 479 57 46<strong><br><img src="noticias.gif" alt=""><br></strong></div>
 							<strong>              </strong>
 
-						<div i18n:tranlate="osha_label_brussels_liaison_office"><strong>Brussels Liaison Office:<br></strong>European Agency for Safety and Health at Work, <br>Square de Meeûs 38/40, <br>1000 Brussels, Belgium <br>Tel: +32 2 401 68 59
+						<div i18n:translate="osha_label_brussels_liaison_office"><strong>Brussels Liaison Office:<br></strong>European Agency for Safety and Health at Work, <br>Square de Meeûs 38/40, <br>1000 Brussels, Belgium <br>Tel: +32 2 401 68 59
 	<br><img src="obrien.gif" alt="brussels liaison officer"></div>    
 		</div>
 		</div>
