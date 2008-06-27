@@ -64,7 +64,7 @@
                                         <a href="#"
                                            tal:attributes="href url"
                                            id="parent-fieldname-image">
-                                           <img tal:attributes="src string:${url}/image; alt title_or_id;" />
+                                           <img tal:attributes="src string:${url}/image; alt title_or_id;" width="80"/>
                                         </a>
                                     </div>                                     
                                     </tal:block>
