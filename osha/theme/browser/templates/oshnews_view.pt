@@ -58,16 +58,16 @@
                                                 tal:content="title_or_id" />
                                     (<span class="teaserdate" tal:content="python:toLocalizedTime(obj['EffectiveDate'])"/>)                                                  
                                     </h2>
-                                       
+                                    <tal:block define="newsItem obj/getObject; hasImage python:newsItem.getField('image').getAccessor(newsItem)()" tal:condition="hasImage">
                                     <div class="newsImageContainer" style="width: 100px;"
                                          tal:condition="python: obj.portal_type in ['News Item']">
                                         <a href="#"
-                                           tal:attributes="href string:$url/image/image_view_fullscreen"
+                                           tal:attributes="href url"
                                            id="parent-fieldname-image">
                                            <img tal:attributes="src string:${url}/image; alt title_or_id;" />
                                         </a>
                                     </div>                                     
-                                    
+                                    </tal:block>
                                     
                                     <span tal:omit-tag="" tal:condition="not:obj_description"> 
                                         &nbsp; 
