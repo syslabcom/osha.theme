@@ -25,6 +25,8 @@ class OSHNewsView(BrowserView):
 
         context = Acquisition.aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
+        if hasattr(catalog, 'getZCatalog'):
+            catalog = catalog.getZCatalog()
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         navigation_root_path = portal_state.navigation_root_path()
 
