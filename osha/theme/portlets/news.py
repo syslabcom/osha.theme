@@ -17,6 +17,8 @@ class Renderer(news.Renderer):
     def _data(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
+        if hasattr(catalog, 'getZCatalog'):
+            catalog = catalog.getZCatalog()
         portal_languages = getToolByName(self.context, 'portal_languages')
         preflang = portal_languages.getPreferredLanguage()
 
@@ -49,6 +51,7 @@ class Renderer(news.Renderer):
             queryBoth = queryBoth & In('Subject', kw)
         query = And(Or(queryA, queryB), queryBoth)
         return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
+
 
     @memoize
     def all_news_link(self):
