@@ -36,9 +36,11 @@
             </th>
           </metal:block> 
           <th>
-            <span i18n:translate="">this link is broken</span><br />
+            <span i18n:translate="">this link is broken</span>
           </th>
-
+           <th>
+            <span i18n:translate="">Date of last check</span>
+        </th>
         </tr>
       </thead>
       
@@ -51,12 +53,16 @@
                     tal:content="link/state" i18n:translate="">
                   Unknown
                 </td>
+
               </metal:block>
-            <td class="linkreason">
+            <td class="linkreason"
+                tal:define="reason link/reason;
+                            url link/url">
               <p>
                 <div tal:attributes="id string:link-${link/id}">
-                  <a tal:attributes="title link/url;
-                    href link/url"
+                  <a tal:attributes="title python:reason and reason.replace(url, '~')
+                                or url;
+                    href url"
                     tal:content="python:lc.shortURL(path('link/link'))">
                     http://...
                   </a>
@@ -70,14 +76,19 @@
                     <input type="submit" value="Update link"/>
                   </form>
                 </div>
-                <br />
+                <!--br />
                 <tal:block 
-                      tal:attributes="title link/reason"
-                      tal:content="python:path('link/reason').replace(path('link/url'), '~')" 
+                      tal:attributes="title reason"
+                      tal:content="python:reason.replace(url, '~')" 
                       i18n:translate="">
                   initialized
-                </tal:block>
+                </tal:block-->
               </td>
+              <td>
+                    <span tal:replace="python:link['lastcheck'] and 
+                            toLocalizedTime(link['lastcheck'])
+                            or '--'" />
+                </td>
             </tr>
           </tal:block>
         </tbody>
