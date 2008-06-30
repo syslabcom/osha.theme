@@ -450,6 +450,9 @@ ul.linkList li {
 #linguaToolForms fieldset:hover input{
 	background-color:#ffffff;
 }
+#coloredBoxes {
+	margin:auto;
+}
 
 #PressRoom h1.header {
     font-size:120%;    
@@ -457,22 +460,25 @@ ul.linkList li {
     padding-left:10px;
     padding-top:5px;
     padding-bottom:5px;
-    margin-left:10px;
     margin-top:0px;
     margin-bottom:40px;
 }
 #PressRoom #addresses div
 {
 	clear:right;
-	float:left;
     background-color:#c5cbd8;
-    width:28%;
     margin:30px 0 0 3%;
     padding: 5px;
+}
+#lastAdress {
+	clear:both;
 }
 #about-us {
 	background-image: url(about_us.gif);
 	background-repeat:no-repeat;
+}
+#about-us .label{
+	color:#ffffff;
 }
 #press-releases {
 	background-image: url(press_releases.gif);
@@ -482,27 +488,34 @@ ul.linkList li {
 	background-image: url(useful_articles.gif);
 	background-repeat:no-repeat;
 }
+#useful-articles .label{
+	color:#ffffff;
+}
 #campaigns {
 	background-image: url(campaigns.gif);
 	background-repeat:no-repeat;
 }
 #photos-logos {
 	background-image: url(photos_logos.gif);
-	background-repeat:no-repeat;
+	background-repeat:no-repeat; 
 }
 #publications {
 	background-image: url(publication.gif);
 	background-repeat:no-repeat;
 	clear:right;
 }
+#publications .label{
+	color:#ffffff;
+}
 #PressRoom .labels {
 	text-align:center;
  	vertical-align:middle;
 	height:100px;
-	width:220px;
-	padding-top:35px;
+	width:190px;
+	padding-top:30px;
 	float:left;
-	margin-left:30px;
+}
+.Tabelle td {
 }
 #PressRoom .labels .label {
 	width:220px;
@@ -512,7 +525,6 @@ ul.linkList li {
 	clear:both;
 	border: 1px solid #000000;
 	background-color:#c0c0c0;
-	margin-left: 26px;
 }
 
 #EuMediaCoverage {
@@ -521,7 +533,6 @@ ul.linkList li {
 #boxBody {
 	border: 1px solid #000000;
     padding:5px 10px;
-	margin-left: 26px;
     margin-top:0px;
 }
 #boxBody h3 {

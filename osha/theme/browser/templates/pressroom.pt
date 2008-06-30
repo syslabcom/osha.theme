@@ -8,7 +8,7 @@ i18n:domain="plone">
       <div metal:fill-slot="main" id="PressRoom">
 
         <h1 class="header" i18n:translate="osha_nav_title_press_room">Press Room</h1>
-
+        <div id="coloredBoxes">
         <a href="press-releases/">
             <div class="labels" id="press-releases">
                 <h1 class="label" i18n:translate="press-releases">PRESS RELEASES</h1>
@@ -31,7 +31,7 @@ i18n:domain="plone">
         
         <a href="articles">
             <div class="labels" id="useful-articles">
-                <h1 class="label" i18n:translate="useful-articles">USFUL ARTICLES</h1>
+                <h1 class="label" i18n:translate="useful-articles">USEFUL ARTICLES</h1>
             </div>
         </a>
 
@@ -46,7 +46,7 @@ i18n:domain="plone">
                 <h1 class="label" i18n:translate="osha_nav_title_publications">PUBLICATIONS</h1>
             </div>
         </a>
-
+        </div>
         <div id="EuMediaCoverage">
             <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
         </div>
@@ -64,6 +64,9 @@ i18n:domain="plone">
         </div>
 
         <div id="addresses">
+	<table class="Tabelle">
+	<tr>
+	<td>
             <div i18n:translate="osha_label_international_press">
                 <strong>International press:</strong><br>
                 Press Office, <br>
@@ -72,6 +75,8 @@ i18n:domain="plone">
                 Tel: +34 94 479 35 52<br>
                 <a href="mailto:news@osha.europa.eu"><img src="news.gif" alt="international press contact"></a>
             </div>
+	</td>
+	<td>
             <div i18n:translate="osha_label_spanish_press">
                 <strong>Bilbao and Spanish press:</strong><br>
                 Press Office, <br>
@@ -80,7 +85,9 @@ i18n:domain="plone">
                 Tel: +34 94 479 57 46<br>
                 <a href="mailto:noticias@osha.europa.eu"><img src="noticias.gif" alt=""></a><br>
             </div>
-            <div i18n:translate="osha_label_brussels_liaison_office">
+	</td>
+	<td>
+            <div i18n:translate="osha_label_brussels_liaison_office" id="lastAdress">
                 <strong>Brussels Liaison Office:</strong><br>
                 European Agency for Safety and Health at Work, <br>
                 Square de Meeûs 38/40, <br>
@@ -88,8 +95,9 @@ i18n:domain="plone">
                 Tel: +32 2 401 68 59<br>
                 <a href="mailto:obrien@osha.europa.eu"><img src="obrien.gif" alt="brussels liaison officer"></a>
             </div>    
+	    </td>
+	</tr></table>
         </div>
-      
       </div>
     </body>
 </html>
