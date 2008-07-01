@@ -116,7 +116,7 @@ class SiteMapView(BaseView):
         return data
 
 
-    @ram.cache(_render_cachekey)
+    #@ram.cache(_render_cachekey)
     def generate(self):
         """Generates the Gzipped sitemap."""
         objects = self.objects()
@@ -167,5 +167,5 @@ class SiteMapView(BaseView):
                 'changefreq': changefreq, # hourly/daily/weekly/monthly/yearly/never
                 'priority': priority, # 0.0 to 1.0
             })
-            return results
+        return results
 
