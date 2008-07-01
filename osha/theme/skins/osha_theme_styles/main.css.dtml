@@ -473,9 +473,16 @@ ul.linkList li {
 	clear:right;
     background-color:#c5cbd8;
     margin:30px 3% 0px 3%;
-    padding: 2px;
+    padding: 5px;
 }
-#lastAdress {
+* html #PressRoom #addresses div {
+	margin-left:0px;
+}
+#PressRoom #addresses #firstAdress {
+	margin-left:0px;
+}
+#PressRoom #addresses #lastAdress {
+	margin-right:0px;
 	clear:both;
 }
 #about-us {

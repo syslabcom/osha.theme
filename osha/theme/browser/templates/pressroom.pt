@@ -67,7 +67,7 @@ i18n:domain="plone">
 	<table class="Tabelle">
 	<tr>
 	<td>
-            <div i18n:translate="osha_label_international_press">
+            <div i18n:translate="osha_label_international_press" id="firstAdress">
                 <strong>International press:</strong><br>
                 Press Office, <br>
                 European Agency for Safety and Health at Work, <br>
