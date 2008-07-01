@@ -46,7 +46,7 @@ i18n:domain="plone">
                 <h1 class="label" i18n:translate="osha_nav_title_publications">PUBLICATIONS</h1>
             </div>
         </a>
-        </div>
+	</div>
         <div id="EuMediaCoverage">
             <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
         </div>

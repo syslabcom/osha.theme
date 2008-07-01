@@ -450,10 +450,15 @@ ul.linkList li {
 #linguaToolForms fieldset:hover input{
 	background-color:#ffffff;
 }
-#coloredBoxes {
-	margin:auto;
+#coloredBoxes  {
+		width:570px;
+		      margin:auto;
 }
 
+#addresses table{
+	width:100%;
+	      margin:0px;
+}
 #PressRoom h1.header {
     font-size:120%;    
     background-color:#c5cbd8;
@@ -467,8 +472,8 @@ ul.linkList li {
 {
 	clear:right;
     background-color:#c5cbd8;
-    margin:30px 0 0 3%;
-    padding: 5px;
+    margin:30px 3% 0px 3%;
+    padding: 2px;
 }
 #lastAdress {
 	clear:both;
@@ -516,6 +521,8 @@ ul.linkList li {
 	float:left;
 }
 .Tabelle td {
+	margin:0px;
+	       padding:0px;
 }
 #PressRoom .labels .label {
 	width:220px;
@@ -533,7 +540,9 @@ ul.linkList li {
 #boxBody {
 	border: 1px solid #000000;
     padding:5px 10px;
-    margin-top:0px;
+}
+*html #boxBody {
+    margin-top:-5px;
 }
 #boxBody h3 {
 	color:#295994;
