@@ -51,7 +51,56 @@
                 <p i18n:translate="description_site_error_thank_you">
                 Thank you.
                 </p>
+                <!-- Check if the object perhaps exists in the default language and if so, offer alternative languages -->
+                <span tal:define="path_info python:request.get('PATH_INFO', '');
+                                  portal_path python:here.portal_url.getPortalPath();
+                                  portal python:here.portal_url.getPortalObject();
+                                  rel_ob_path python:path_info.replace(portal_path, '');
+                                  en_url python:test(rel_ob_path[0]=='/' and rel_ob_path[3]=='/', 'en/%s' % rel_ob_path[4:], '');
+                                  en_ob python:portal.restrictedTraverse(en_url);
+                                  langtool python:portal.portal_languages;
+                                  preflang python:langtool.getPreferredLanguage();
+                                  lang_name python:langtool.getNameForLanguageCode(preflang);"
+                      i18n:domain="linguaplone"
+                      tal:on-error="nothing">
+                      
+                    <h2 i18n:translate="header_translation_unavailable">
+                        Translation Unavailable
+                    </h2>
+                                
+                    <p i18n:translate="description_translation_unavailable">
+                        This content does not exist in your current language,
+                        <strong i18n:name="language"
+                                tal:content="lang_name">
+                            Language
+                        </strong>,
+                        but you can keep browsing the site in this language.
+                    </p>
                 
+                    <tal:translations condition="en_ob/getTranslatedLanguages"
+                                      define="translations en_ob/getTranslations">
+                
+                        <p i18n:translate="description_read_translated_versions">
+                            If you want to read the content of this document, you have to
+                            switch to one of the following languages:
+                        </p>
+                
+                        <ul>
+                            <li tal:repeat="code translations">
+                                <a href=""
+                                   tal:define="query string:set_language=$code;
+                                               obj python:en_ob.getTranslation(code);
+                                               name python:langtool.getNameForLanguageCode(code)"
+                                   tal:attributes="href string:${obj/absolute_url}?$query"
+                                   tal:content="name"></a>
+                            </li>
+                        </ul>
+                
+                    </tal:translations>                      
+                      
+                </span>                                    
+
+
                 <!-- Offer search results for suggestions -->
                 <!--tal:suggestions define="first_parent redirection_view/find_first_parent;
                                          similar_items redirection_view/search_for_similar;
