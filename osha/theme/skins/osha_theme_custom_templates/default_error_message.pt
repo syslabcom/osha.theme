@@ -52,16 +52,17 @@
                 Thank you.
                 </p>
                 <!-- Check if the object perhaps exists in the default language and if so, offer alternative languages -->
-                <span tal:define="path_info python:request.get('PATH_INFO', '');
+                <span tal:define="path_info python:request.get('URL', '');
                                   portal_path python:here.portal_url.getPortalPath();
                                   portal python:here.portal_url.getPortalObject();
-                                  rel_ob_path python:path_info.replace(portal_path, '');
+                                  rel_ob_path python:path_info.replace(portal.absolute_url(), '');
                                   en_url python:test(rel_ob_path[0]=='/' and rel_ob_path[3]=='/', 'en/%s' % rel_ob_path[4:], '');
                                   en_ob python:portal.restrictedTraverse(en_url);
                                   langtool python:portal.portal_languages;
                                   preflang python:langtool.getPreferredLanguage();
                                   lang_name python:langtool.getNameForLanguageCode(preflang);"
                       i18n:domain="linguaplone"
+                      
                       >
                       
                     <h2 i18n:translate="header_translation_unavailable">
@@ -76,16 +77,15 @@
                         </strong>,
                         but you can keep browsing the site in this language.
                     </p>
-                
                     <tal:translations condition="en_ob/getTranslatedLanguages |nothing"
-                                      define="translations en_ob/getTranslations | nothing">
+                                      define="translations en_ob/getTranslations | nothing" on-error="nothing">
                 
                         <p i18n:translate="description_read_translated_versions">
                             If you want to read the content of this document, you have to
                             switch to one of the following languages:
                         </p>
                 
-                        <ul>
+                        <ul tal:on-error="nothing">
                             <li tal:repeat="code translations">
                                 <a href=""
                                    tal:define="query string:set_language=$code;
