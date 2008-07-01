@@ -59,10 +59,8 @@ class SiteMapView(BaseView):
         for ob in objects:
             xml = self.link_snippet(obj=ob)
             LINKS += xml
-            L = len(xml)
-            total_len += L
 
-            if total_len>MAX_SIZE and LINKS != "":
+            if len(LINKS)>MAX_SIZE and LINKS != "":
                 counter +=1
                 part_name = FILE_PART % counter
                 self._persist_file(part_name, self.env_snippet(LINKS=LINKS))
@@ -70,10 +68,10 @@ class SiteMapView(BaseView):
                 LINKS = ''
                 total_len = 0
                 
-            counter +=1
-            part_name = FILE_PART % counter
-            self._persist_file(part_name, self.env_snippet(LINKS=LINKS))
-            filenames.append("%s/%s" %(purl, part_name))   
+        counter +=1
+        part_name = FILE_PART % counter
+        self._persist_file(part_name, self.env_snippet(LINKS=LINKS))
+        filenames.append("%s/%s" %(purl, part_name))   
 
         snip = self.index_snippet(filenames=filenames, now=now)
         data = self._persist_file(FILE_IDX, snip) 
