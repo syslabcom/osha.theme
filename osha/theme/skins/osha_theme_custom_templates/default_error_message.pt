@@ -62,7 +62,7 @@
                                   preflang python:langtool.getPreferredLanguage();
                                   lang_name python:langtool.getNameForLanguageCode(preflang);"
                       i18n:domain="linguaplone"
-                      tal:on-error="nothing">
+                      >
                       
                     <h2 i18n:translate="header_translation_unavailable">
                         Translation Unavailable
@@ -77,8 +77,8 @@
                         but you can keep browsing the site in this language.
                     </p>
                 
-                    <tal:translations condition="en_ob/getTranslatedLanguages"
-                                      define="translations en_ob/getTranslations">
+                    <tal:translations condition="en_ob/getTranslatedLanguages |nothing"
+                                      define="translations en_ob/getTranslations | nothing">
                 
                         <p i18n:translate="description_read_translated_versions">
                             If you want to read the content of this document, you have to
