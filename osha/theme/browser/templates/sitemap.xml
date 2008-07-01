@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-<tal:block repeat="obj view/objects">
+<tal:block repeat="obj options/objects | view/objects">
     <url>
         <loc tal:content="obj/loc">url</loc>
         <lastmod tal:condition="obj/lastmod | nothing"
