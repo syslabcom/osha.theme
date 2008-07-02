@@ -10,7 +10,7 @@ from cStringIO import StringIO
 
 from plone.memoize import ram
 
-MAX_SIZE = 1024*1024*1024*9
+MAX_SIZE = 1024*1024*9
 FILE_IDX = 'sitemap_index.xml.gz'
 FILE_PART = "sitemap_%s.xml.gz"
 
