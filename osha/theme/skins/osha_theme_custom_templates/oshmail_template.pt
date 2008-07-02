@@ -88,7 +88,7 @@
 <table cellpadding="0" cellspacing="0" border="0"
        summary="Layout table"
        i18n:attributes="summary"  
-       tal:define="topbanner string:/imgages/topbanner2.jpg|string:; 
+       tal:define="topbanner string:http://osha.europa.eu/images/topbanner2.jpg; 
        dbo python:0;
        portal_title here/portal_properties/title;">
     <tr>
@@ -116,14 +116,14 @@
             </div>
          </td>
          <td id="portal-top-banner" rowspan="2" tal:condition="nocall:topbanner">
-             <img alt="" src="" title="" 
-            tal:attributes="src string:/images/topbanner2.jpg" />
+             <img alt="European flag" title="European flag" 
+             tal:attributes="src topbanner" />
          </td>
          </tal:block>
      </tr>
      <tr tal:condition="not:dbo">
          <td id="portal-top-dropdowns" align="right">
-<img tal:attributes="src string:/images/oshmail_banner.jpg" border="0">
+<img src="http://osha.europa.eu/images/oshmail_banner.jpg" border="0" title="OSHMail" alt="OSHMail">
          </td>
      </tr>
      <tr tal:condition="not:dbo">

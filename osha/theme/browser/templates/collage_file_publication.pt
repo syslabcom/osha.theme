@@ -9,7 +9,8 @@
 
 
     <dt>
-        <img src="publication_icon.gif"/>
+        <img src="publication_icon.gif" 
+            tal:attributes="src string:${plone/navigationRootUrl}/publication_icon.gif"/>
         <a href="#"
             tal:attributes="href string:$url/view" tal:content="title_or_id">
         </a>
