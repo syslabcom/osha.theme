@@ -1,182 +1,182 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-	lang="en"
-	metal:use-macro="here/main_template/macros/master"
-	i18n:domain="plone">
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="plone">
 
-	<body>
+    <body>
 
-		<div metal:fill-slot="main" id="linguaToolForms">
+        <div metal:fill-slot="main" id="linguaToolForms">
                         <fieldset title="simply set the title to a given value. Very primitive!">
-			<legend>setTitle(title)</legend>
-			<form method="get" title="simply set the title to a given value. Very primitive!" id="setTitle"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="title" value="new Title"/>         
-				<input type="submit" class="context" name="form.button.UpdateTitle" value="set Title"/>
-			</form>
-			</fieldset>
+            <legend>setTitle(title)</legend>
+            <form method="get" title="simply set the title to a given value. Very primitive!" id="setTitle"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="title" value="new Title"/>         
+                <input type="submit" class="context" name="form.button.UpdateTitle" value="set Title"/>
+            </form>
+            </fieldset>
                         <fieldset  title="deletes an object with a given id from all language branches" tal:condition="context/isPrincipiaFolderish">
-			<legend>deleter(id, guessLanguage=False)</legend> 
-			<form method="get"   id="deleter"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="id" value="new id"/>         
-				<input type="checkbox" name="guessLanguage" value="guessLanguage"/>Guess Language         
-				<input type="submit" class="context" name="form.button.deleter" value="delete all"/>
-			</form>
-			</fieldset>
+            <legend>deleter(id, guessLanguage=False)</legend> 
+            <form method="get"   id="deleter"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="id" value="new id"/>         
+                <input type="checkbox" name="guessLanguage" value="guessLanguage"/>Guess Language         
+                <input type="submit" class="context" name="form.button.deleter" value="delete all"/>
+            </form>
+            </fieldset>
                         <fieldset tal:condition="context/isPrincipiaFolderish">
-			<legend>setEnableNextPrevious(flag=true)</legend> 
-			<form method="get"  
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="submit" class="context" title="Enables the Next-Previous Navigation Flag" name="form.button.setEnableNextPrevious" tal:condition="not:context/getNextPreviousEnabled" value="turn On previous/Next Navigation" />
-				<input type="submit" class="context" title="Disables the Next-Previous Navigation Flag" name="form.button.setDisableNextPrevious" tal:condition="context/getNextPreviousEnabled" value="turn Off previous/Next Navigation" />
-			</form>
-			</fieldset>
-			<form method="get" 
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="submit" class="context" title="Exclude object from Navigation" name="form.button.setExcludeFromNav" tal:condition="not:context/getExcludeFromNav" value="Exclude from Nav" />
-				<input type="submit" class="context" title="Include object in Navigation" name="form.button.setIncludeInNav" tal:condition="context/getExcludeFromNav" value="Include in Nav" />
-			</form>
-			<form method="get" tal:condition="python:context.portal_type=='Rich Document'"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="submit" class="context" name="form.button.setRichDocAttachment" tal:condition="not:context/getDisplayAttachments" value="set RichDocAttachment" title="set the Attachment flag on a rich document"/>
-				<input type="submit" class="context" name="form.button.unsetRichDocAttachment" tal:condition="context/getDisplayAttachments" value="unset RichDocAttachment" title="unset the Attachment flag on a rich document"/>
-			</form>
+            <legend>setEnableNextPrevious(flag=true)</legend> 
+            <form method="get"  
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="submit" class="context" title="Enables the Next-Previous Navigation Flag" name="form.button.setEnableNextPrevious" tal:condition="not:context/getNextPreviousEnabled" value="turn On previous/Next Navigation" />
+                <input type="submit" class="context" title="Disables the Next-Previous Navigation Flag" name="form.button.setDisableNextPrevious" tal:condition="context/getNextPreviousEnabled" value="turn Off previous/Next Navigation" />
+            </form>
+            </fieldset>
+            <form method="get" 
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="submit" class="context" title="Exclude object from Navigation" name="form.button.setExcludeFromNav" tal:condition="not:context/getExcludeFromNav" value="Exclude from Nav" />
+                <input type="submit" class="context" title="Include object in Navigation" name="form.button.setIncludeInNav" tal:condition="context/getExcludeFromNav" value="Include in Nav" />
+            </form>
+            <form method="get" tal:condition="python:context.portal_type=='Rich Document'"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="submit" class="context" name="form.button.setRichDocAttachment" tal:condition="not:context/getDisplayAttachments" value="set RichDocAttachment" title="set the Attachment flag on a rich document"/>
+                <input type="submit" class="context" name="form.button.unsetRichDocAttachment" tal:condition="context/getDisplayAttachments" value="unset RichDocAttachment" title="unset the Attachment flag on a rich document"/>
+            </form>
                         <fieldset title="rename one object within context from oldid to newid">
-			<legend>renamer(oldId, newId)</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="oldid" value="old id"/>         
-				<input type="text" size="20" name="id" value="new id"/>         
-				<input type="submit" class="context" name="form.button.ChangeId" value="change Id"/>
-			</form>
-			</fieldset>
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}" >
-				<input type="submit" class="context" name="form.button.propagatePortlets" value="Propagate Portlets" title="propagates the portlet config from context to the language versions"/>
-				<input tal:condition="context/isPrincipiaFolderish" type="submit" class="context" name="form.button.addLanguageTool" value="Add Languagetool" title="adds a lunguage Tool"/>
-				<input type="submit" class="context" name="form.button.reindexer" value="reindex object" title="reindexes an object in all language branches"/>
-				<input type="submit" class="context" name="form.button.publisher" value="publish" title="tries to publish object in all languages"/>
-				<input type="submit" class="context" name="form.button.hider" value="hide" title="tries to hide object in all languages"/>
-			</form>
+            <legend>renamer(oldId, newId)</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="oldid" value="old id"/>         
+                <input type="text" size="20" name="id" value="new id"/>         
+                <input type="submit" class="context" name="form.button.ChangeId" value="change Id"/>
+            </form>
+            </fieldset>
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}" >
+                <input type="submit" class="context" name="form.button.propagatePortlets" value="Propagate Portlets" title="propagates the portlet config from context to the language versions"/>
+                <input tal:condition="context/isPrincipiaFolderish" type="submit" class="context" name="form.button.addLanguageTool" value="Add Languagetool" title="adds a lunguage Tool"/>
+                <input type="submit" class="context" name="form.button.reindexer" value="reindex object" title="reindexes an object in all language branches"/>
+                <input type="submit" class="context" name="form.button.publisher" value="publish" title="tries to publish object in all languages"/>
+                <input type="submit" class="context" name="form.button.hider" value="hide" title="tries to hide object in all languages"/>
+            </form>
 
                         <fieldset title="use ether the Translate Description Button oder the Translatetitle Button. Check toolip on Buttons for further info">
-			<legend>setTranslatedTitle()/setTranslatedDescription()</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="label" value="label"/>         
-				<input type="text" size="20" name="domain" value="domain"/>         
-				<input type="submit" class="context" name="form.button.setTranslateTitle" value="Translate Title" title="sets the title based on the translation availble for title in the language"/>
-				<input type="submit" class="context" name="form.button.setTranslateDescription" value="Translate Description" title="sets the description based on the translation availble for title in the language"/>
-			</form>
-			</fieldset>
+            <legend>setTranslatedTitle()/setTranslatedDescription()</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="label" value="label"/>         
+                <input type="text" size="20" name="domain" value="domain"/>         
+                <input type="submit" class="context" name="form.button.setTranslateTitle" value="Translate Title" title="sets the title based on the translation availble for title in the language"/>
+                <input type="submit" class="context" name="form.button.setTranslateDescription" value="Translate Description" title="sets the description based on the translation availble for title in the language"/>
+            </form>
+            </fieldset>
                         <fieldset tal:condition="context/isPrincipiaFolderish" title="creates a folder and all translations in the language branches">
-			<legend>createFolder(id, excludeFromNav=True)</legend> 
-			<form method="get" 
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="id" value="id"/>         
-				<input type="checkbox" name="excludeFromNav" value="excludeFromNav" checked="checked"/>exclude from Nav         
-				<input type="submit" class="context" name="form.button.createFolder" value="create Folder"/>
-			</form>
-			</fieldset>
+            <legend>createFolder(id, excludeFromNav=True)</legend> 
+            <form method="get" 
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="id" value="id"/>         
+                <input type="checkbox" name="excludeFromNav" value="excludeFromNav" checked="checked"/>exclude from Nav         
+                <input type="submit" class="context" name="form.button.createFolder" value="create Folder"/>
+            </form>
+            </fieldset>
                         <fieldset title="fixes translation references to the canonical. Assumes that self is always en and canonical tries to handle language extensions for files like hwp.xx.swf">
-			<legend>fixTranslationReference(recursive=False)</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="checkbox" name="recursive" value="recursive"/>recursive
-				<input type="submit" class="context" name="form.button.fixTranslationReference" value="fix Translationreference"/>
-			</form>
-			</fieldset>
+            <legend>fixTranslationReference(recursive=False)</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="checkbox" name="recursive" value="recursive"/>recursive
+                <input type="submit" class="context" name="form.button.fixTranslationReference" value="fix Translationreference"/>
+            </form>
+            </fieldset>
                         <fieldset title="subtypes object to the given subtype">
-			<legend>subtyper(subtype)</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="subtype" value="subtype"/>         
-				<input type="submit" class="context" name="form.button.subtyper" value="subtype"/>
-			</form>
-			</fieldset>
+            <legend>subtyper(subtype)</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="subtype" value="subtype"/>         
+                <input type="submit" class="context" name="form.button.subtyper" value="subtype"/>
+            </form>
+            </fieldset>
                         <fieldset title="removes a OFS Property on this Object">
-			<legend>delProperty(id)</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="id" value="Property id"/>         
-				<input type="submit" class="context" name="form.button.delProperty" value="delete Property"/>
-			</form>
-			</fieldset>
+            <legend>delProperty(id)</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="id" value="Property id"/>         
+                <input type="submit" class="context" name="form.button.delProperty" value="delete Property"/>
+            </form>
+            </fieldset>
                         <fieldset title="sets a ofs property on this object">
-			<legend>setProperty(id,typ,value)</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="id" value="id"/>         
-				<input type="text" size="20" name="typ" value="typ"/>         
-				<input type="text" size="20" name="value" value="value"/>         
-				<input type="submit" class="context" name="form.button.setProperty" value="set Property"/>
-			</form>
-			</fieldset>
+            <legend>setProperty(id,typ,value)</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="id" value="id"/>         
+                <input type="text" size="20" name="typ" value="typ"/>         
+                <input type="text" size="20" name="value" value="value"/>         
+                <input type="submit" class="context" name="form.button.setProperty" value="set Property"/>
+            </form>
+            </fieldset>
                         <fieldset title="Helper. Block the Portlets on a given context, manager, and category">
-			<legend>blockPortlets(manager,CAT,status)</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="manager" value="manager"/>         
-				<input type="radio" name="cat" value="context"/> Context
-				<input type="radio" name="cat" value="group"/> Group
-				<input type="radio" name="cat" value="type"/> Typ
-				<input type="text" size="20" name="id" value="status"/>         
-				<input type="submit" class="context" name="form.button.blockPortlets" value="block Portlets"/>
-			</form>
-			</fieldset>
+            <legend>blockPortlets(manager,CAT,status)</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="manager" value="manager"/>         
+                <input type="radio" name="cat" value="context"/> Context
+                <input type="radio" name="cat" value="group"/> Group
+                <input type="radio" name="cat" value="type"/> Typ
+                <input type="text" size="20" name="id" value="status"/>         
+                <input type="submit" class="context" name="form.button.blockPortlets" value="block Portlets"/>
+            </form>
+            </fieldset>
                         <fieldset tal:condition="context/isPrincipiaFolderish" title="uses OFS to cut and Paste an object sourcepath must refer to the folder which contains the object to move, id must be a string containing the id of the object to move, targetpath must be the folder to move to. Both paths must contain one single %s to place the language" >
-			<legend>cutAndPaste(sourcpath,id,targetpath)</legend> 
-			<form method="get" 
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<input type="text" size="20" name="sourcepath" value="sourcepath"/>         
-				<input type="text" size="20" name="id" value="id"/>         
-				<input type="text" size="20" name="targetpath" value="targetpath"/>         
-				<input type="submit" class="context" name="form.button.cutAndPaste" value="cut and paste"/>
-			</form>                         
-			</fieldset>
+            <legend>cutAndPaste(sourcpath,id,targetpath)</legend> 
+            <form method="get" 
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <input type="text" size="20" name="sourcepath" value="sourcepath"/>         
+                <input type="text" size="20" name="id" value="id"/>         
+                <input type="text" size="20" name="targetpath" value="targetpath"/>         
+                <input type="submit" class="context" name="form.button.cutAndPaste" value="cut and paste"/>
+            </form>                         
+            </fieldset>
                         <fieldset tal:condition="context/isPrincipiaFolderish" title="Move contents of a folder into order. Make sure the ordering of the folders is correct">
-			<legend>fixOrder(ORDER)</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<textarea name="order" cols="20" rows="10"></textarea>
-				<input type="submit" class="context" name="form.button.fixOrder" value="fix Order"/>
-			</form>
-			</fieldset>
+            <legend>fixOrder(ORDER)</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <textarea name="order" cols="20" rows="10"></textarea>
+                <input type="submit" class="context" name="form.button.fixOrder" value="fix Order"/>
+            </form>
+            </fieldset>
                         <fieldset title="Translates the current object into all languages and transferres the given attributes">
-			<legend>translateThis(attrs=[])</legend> 
-			<form method="get"
-				tal:attributes="action string:${context/absolute_url}/${view/__name__}">
-				<textarea name="attrs" cols="20" rows="10"></textarea>
-				<input type="submit" class="context" name="form.button.translateThis" value="translate this"/>
-			</form>
-			</fieldset>
-			<div tal:condition="view/result">
+            <legend>translateThis(attrs=[])</legend> 
+            <form method="get"
+                tal:attributes="action string:${context/absolute_url}/${view/__name__}">
+                <textarea name="attrs" cols="20" rows="10"></textarea>
+                <input type="submit" class="context" name="form.button.translateThis" value="translate this"/>
+            </form>
+            </fieldset>
+            <div tal:condition="view/result">
 
-				<!--h3>Results</h3-->
-				<table id="report-table" tal:define="pl view/result" summary="Search & Replace results report">
-
-
-					<tr>
-						<!--th>&nbsp;</th-->
-						<th>ID</th>
-					</tr>
-					<tal:block repeat="line pl">
-					<tr>
-						<!--td>
-						<input type="checkbox" name="targets:list" tal:attributes="value string:${line}" />
-						</td-->
-						<td>
-							<a href="" tal:attributes="href line" tal:content="line"></a>
-						</td>
-					</tr>
-					</tal:block>
-				</table>
-			</div>
+                <!--h3>Results</h3-->
+                <table id="report-table" tal:define="pl view/result" summary="Search & Replace results report">
 
 
+                    <tr>
+                        <!--th>&nbsp;</th-->
+                        <th>ID</th>
+                    </tr>
+                    <tal:block repeat="line pl">
+                    <tr>
+                        <!--td>
+                        <input type="checkbox" name="targets:list" tal:attributes="value string:${line}" />
+                        </td-->
+                        <td>
+                            <a href="" tal:attributes="href line" tal:content="line"></a>
+                        </td>
+                    </tr>
+                    </tal:block>
+                </table>
+            </div>
 
-		</div>
 
-	</body>
+
+        </div>
+
+    </body>
 </html>
 
