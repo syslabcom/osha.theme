@@ -86,6 +86,10 @@ class LinguaToolsView(BrowserView):
             label = self.request.get('label', "")
             domain = self.request.get('domain', "plone")
             self.result=self.setTranslatedTitle(label,domain) 
+
+        if self.request.has_key("form.button.setTranslateDescription"):
+            label = self.request.get('label', "")
+            domain = self.request.get('domain', "plone")
             self.result=self.setTranslatedDescription(label,domain) 
 
         if self.request.has_key("form.button.createFolder"):
