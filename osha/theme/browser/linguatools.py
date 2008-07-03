@@ -32,7 +32,6 @@ class LinguaToolsView(BrowserView):
     def __call__(self):
         self.request.set('disable_border', True)
 #        context = Acquisition.aq_inner(self.context)
-        
 #        portal_catalog = getToolByName(context, 'portal_catalog')
 #        portal_languages = getToolByName(context, 'portal_languages')
 #        self.lang = portal_languages.getPreferredLanguage()
@@ -126,14 +125,15 @@ class LinguaToolsView(BrowserView):
  
         if self.request.has_key("form.button.fixOrder"):
             order = self.request.get('order', "")
-            orderlist = order.splitlines(order.count('\n'))
+            order = order.replace('\r','')
+            orderlist = order.split('\n')
             self.result=self.fixOrder(orderlist) 
-        return self.template()
 
         if self.request.has_key("form.button.translateThis"):
             attrs = self.request.get('attrs', "")
-            attrslist = attrs.splitlines(attrs.count('\n'))
-            self.result=self.fixOrder(attrslist) 
+            attrs = attrs.replace('\r','')
+            attrslist = attrs.split('\n')
+            self.result=self.translateThis(attrslist) 
         return self.template()
 
     def __init__(self, context, request):
