@@ -125,14 +125,12 @@ class LinguaToolsView(BrowserView):
  
         if self.request.has_key("form.button.fixOrder"):
             order = self.request.get('order', "")
-            order = order.replace('\r','')
-            orderlist = order.split('\n')
+            orderlist = order.splitlines()
             self.result=self.fixOrder(orderlist) 
 
         if self.request.has_key("form.button.translateThis"):
             attrs = self.request.get('attrs', "")
-            attrs = attrs.replace('\r','')
-            attrslist = attrs.split('\n')
+            attrslist = attrs.splitlines()
             self.result=self.translateThis(attrslist) 
         return self.template()
 
