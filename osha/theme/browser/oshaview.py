@@ -11,6 +11,7 @@ from osha.theme.config import *
 from osha.policy.interfaces import ISingleEntryPoint
 from Products.CMFLinkChecker.utils import retrieveHTML, retrieveSTX
 from urlparse import urljoin
+from zope.component import getMultiAdapter
 
 
 class OSHA(BrowserView):
@@ -65,12 +66,18 @@ class OSHA(BrowserView):
         EASHW = 'European Agency for Safety and Health at Work'
         
         putils = getToolByName(context, 'plone_utils')
+        portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
+        navigation_root = context.restrictedTraverse(navigation_root_path)
+        
         # fetch plone standard
         meta = putils.listMetaTags(context)
         
         meta['title'] = context.Title()
         meta['DC.title'] = context.Title()
-        
+        meta['DC.description'] = context.Description() or navigation_root.Description()
+        meta['description'] = context.Description() or navigation_root.Description()
+
         Publisher = meta.get('Publisher', None)
         if not Publisher or Publisher == 'No publisher':
             meta['Publisher'] = EASHW
