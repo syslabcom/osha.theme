@@ -134,7 +134,7 @@
                 <input type="submit" class="context" name="form.button.cutAndPaste" value="cut and paste"/>
             </form>                         
             </fieldset>
-                        <fieldset tal:condition="context/isPrincipiaFolderish" title="Move contents of a folder into order. Make sure the ordering of the folders is correct">
+                        <fieldset tal:condition="context/isPrincipiaFolderish" title="Move contents of a folder into order. Place one id per line.">
             <legend>fixOrder(ORDER)</legend> 
             <form method="get"
                 tal:attributes="action string:${context/absolute_url}/${view/__name__}">
@@ -142,7 +142,7 @@
                 <input type="submit" class="context" name="form.button.fixOrder" value="fix Order"/>
             </form>
             </fieldset>
-                        <fieldset title="Translates the current object into all languages and transferres the given attributes">
+                        <fieldset title="Translates the current object into all languages and transferres the given attributes. Place one attribute per line">
             <legend>translateThis(attrs=[])</legend> 
             <form method="get"
                 tal:attributes="action string:${context/absolute_url}/${view/__name__}">
