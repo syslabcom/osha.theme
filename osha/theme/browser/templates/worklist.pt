@@ -120,6 +120,7 @@
         <br clear="all">
         
         <div class="formControls">
+            <div style="float:right; font-weight:bold;"><a href="lc_my_dead_links">[ Broken links form ]</a></div>
           <input class="context" type="submit" value="Search" />
           <input  class="context" type="reset" value="Reset" 
                     tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
