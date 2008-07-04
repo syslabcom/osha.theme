@@ -10,7 +10,8 @@
        <a href="#" 
            class="tile"
            tal:condition="view/title"
-           tal:attributes="href string:${root/absolute_url}/sitemap"
+           i18n:translate=""
+           i18n:domain="osha"
            tal:content="view/title">Navigation</a>
         <span class="portletTopRight"></span>
     </dt>
