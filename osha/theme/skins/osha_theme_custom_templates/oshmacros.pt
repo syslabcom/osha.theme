@@ -14,7 +14,9 @@
         <dt>
             <img tal:attributes="src string:${result/getIcon};
                              alt string:Link icon" />
-            <a tal:content="title" tal:attributes="href result_url" rel="nofollow" />
+            <a tal:content="title" 
+                tal:attributes="href string:$result_url/view"
+                rel="nofollow" />
                 
             <span:notanon tal:condition="not:isAnon" style="font-weight: normal;" >
                 [<a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a> |
