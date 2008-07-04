@@ -36,7 +36,7 @@ class Renderer(base.Renderer):
         roles = member.getRolesInContext(self.context)
         F = self._getfile()
         modified = F and F.modified() or ''
-        return (self._getfile().modified(), roles, preflang)
+        return (modified, roles, preflang)
 
     @ram.cache(_render_cachekey)
     def render(self):
