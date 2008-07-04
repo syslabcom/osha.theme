@@ -65,7 +65,7 @@
 
     
             <div class="field" tal:define="cc python:here.getCountry()" tal:condition="python:cc or isMember">
-                <label i18n:translate="label_applicable_countries">Applicable to the following countries</label> 
+                <label i18n:translate="label_applicable_countries">Source country</label> 
                 <div tal:define="cdict python:here.portal_countryutils.getCountryIsoDict()">
                         <span tal:replace="python:', '.join([cdict.get(x, x) for x in cc])" />
                 </div>
