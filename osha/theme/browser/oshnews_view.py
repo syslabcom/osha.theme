@@ -12,6 +12,7 @@ class OSHNewsView(BrowserView):
     """View for displaying news outside the current context within the context
     """
     template = ViewPageTemplateFile('templates/oshnews_view.pt')
+    template.id = "oshnews-view"
     
     def __call__(self):
         
