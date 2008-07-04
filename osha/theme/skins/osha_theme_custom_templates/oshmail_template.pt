@@ -156,7 +156,8 @@
     </div>
 <table width="100%">
     <tr>
-        <td valign="top">
+        <td valign="top"
+            tal:define="lang_info ltool/getAvailableLanguageInformation;">
         <tal:block define="served_languages ltool/listSupportedLanguages|python:[]"
             condition="python:len(served_languages)>1">
             <div i18n:domain="osha" style="text-align: center" 
@@ -164,7 +165,7 @@
          
               <span tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang[0]" 
                         href="" tal:attributes="href python:thisurl+'?set_language='+lang[0]" 
-                        tal:content="python:lang[1]">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
+                        tal:content="python:lang_info.has_key(lang[0]) and lang_info[lang[0]]['native'] or lang[1]">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
             </div>   
         </tal:block>    
            <metal:bodytext metal:define-slot="main" tal:content="nothing">
