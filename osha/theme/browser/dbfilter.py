@@ -48,7 +48,7 @@ class DBFilterView(BrowserView):
         if 'Publication' in search_portal_types:
             search_portal_types.remove('Publication')
             search_portal_types.append('File')
-            query.update({'object_implements': 'slc.publications.interfaces.IPublicationEnhanced'})
+            query.update({'object_provides': 'slc.publications.interfaces.IPublicationEnhanced'})
             
         query.update({'portal_type': search_portal_types})
         return query
