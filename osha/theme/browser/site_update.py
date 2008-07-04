@@ -8,6 +8,7 @@ class SiteUpdateView(BrowserView):
     """View for displaying the latest update on the site
     """
     template = ViewPageTemplateFile('templates/site_update.pt')
+    template.id = 'site_update'
     
     def __call__(self):
         self.request.set('disable_border', True)

@@ -10,7 +10,7 @@
 
 <body>
 
-<div metal:fill-slot="main" i18n:domain="osha">
+<div metal:fill-slot="main" i18n:domain="osha" tal:define="templateId template/getId">
 
     <h1 i18n:translate="heading_siteupdate" class="documentFirstHeading"
         i18n:domain="osha">Site Update</h1>
@@ -33,7 +33,7 @@
                         <a href=""
                            tal:attributes="href ob/getURL"
                            tal:content="ob/Title">entry</a> <br/>
-                           <span tal:replace="ob/Description" />
+                           <span tal:replace="structure ob/Description" />
                     </dd>                    
                     
                 </div>
