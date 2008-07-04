@@ -125,18 +125,18 @@ class SiteMapView(BaseView):
         """Returns the data to create the sitemap."""
         catalog = getToolByName(self.context, 'portal_catalog')
         portal_url = getToolByName(self.context, 'portal_url')
-        results = []        
+                
         # the main url does not turn up as a catalog result so we do it manually
-        results.append ({
+        yield {
             'loc': portal_url(),
             'lastmod': DateTime().ISO8601(),
             'changefreq': 'always', 
             'priority': 1
-        }        )
+        }
         
         for item in catalog.searchResults({'Language': 'all'}):
             # We only want to link them in the search form results
-            if item.portal_type in ['OSH_Link', 'RALink', 'CaseStudy', 'Provider', 'Directive', 'Amendment', 'Modification', 'Note', 'Proposal']:
+            if item.portal_type in ['OSH_Link', 'RALink', 'CaseStudy', 'Provider', 'Directive', 'Amendment', 'Modification', 'Note', 'Proposal', 'LinguaLink']:
                 continue
             try:
                 lastmod = item.modified.ISO8601()
@@ -159,11 +159,10 @@ class SiteMapView(BaseView):
             if self.urlmap.has_key(loc):    
                 changefreq, priority = self.urlmap[loc]
             
-            results.append({
+            yield {
                 'loc': loc,
                 'lastmod': lastmod,
                 'changefreq': changefreq, # hourly/daily/weekly/monthly/yearly/never
                 'priority': priority, # 0.0 to 1.0
-            })
-        return results
+            }
 
