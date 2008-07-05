@@ -21,7 +21,8 @@ reg_tool = getToolByName(context, 'portal_registration')
 REQUEST = context.REQUEST
 if not emailaddress:
     emailaddress = REQUEST.get('emailaddress', '')
-referer = REQUEST.get('HTTP_REFERER').split('?')[0]+'?'
+refererstem = REQUEST.get('HTTP_REFERER').split('?')[0]
+referer = refererstem+'?'
 qs =REQUEST.get('QUERY_STRING', '')
 if qs:
     referer += '?'+qs+'&'
@@ -57,5 +58,6 @@ except Exception, e:
 
 if not noredirect:
     from slc.alertservice.utils import encodeEmail
+    # this feedbackpage has been added to contain a specific tracking code for an external company
     #feedbackpage = "http://osha.europa.eu/news/oshmail/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender))
-    return REQUEST.RESPONSE.redirect(referer+"portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender)))
+    return REQUEST.RESPONSE.redirect(refererstem+"/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender)))
