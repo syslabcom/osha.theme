@@ -37,7 +37,9 @@ dd.portletItem .navTreeItem a:hover {
     background-color: #838a8d;
     text-align: right;
 }
-
+#teaserlisting h2.headline {
+    background:&dtml-globalBackgroundColor; none repeat scroll 0% 50%;
+}
 
 /* </dtml-with> */
 
