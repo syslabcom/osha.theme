@@ -111,10 +111,13 @@ class LinguaToolsView(BrowserView):
 
         if self.request.has_key("form.button.blockPortlet"):
             manager = self.request.get('manager', "")
-            cat = self.request.get('cat', "")
-            status = self.request.get('status', "")
-            self.result=self.blockPortlets(manager,cat,status) 
-            
+            #cat = self.request.get('cat', "")
+            status = not not self.request.get('status', False)
+            if manager:
+                self.result=self.blockPortlets(manager,status) 
+            else:
+                self.result = ["No manager selected."]
+                
         if self.request.has_key("form.button.setProperty"):
             id = self.request.get('id', "")
             typ = self.request.get('typ', "")
@@ -156,7 +159,7 @@ class LinguaToolsView(BrowserView):
         context = Acquisition.aq_inner(self.context)
         results = []
         for lang in self.langs:
-            results.append("Trying language: %s" % lang)
+            #results.append("Trying language: %s" % lang)
             lpath = self.dynamic_path%lang
 
             base = context.getTranslation(lang)
@@ -166,15 +169,11 @@ class LinguaToolsView(BrowserView):
                     results.append("  # Break, base is none")
                     continue
                 else:
-                    results.append("  # WARNING: obhect found at %s which is not linked as a translation of %s"
+                    results.append("  # WARNING: object found at %s which is not linked as a translation of %s"
                             % (lpath, '/'.join(context.getPhysicalPath()) )) 
-#            basepath = "/".join(base.getPhysicalPath())
-#            if lpath != basepath:
-#                results.append("  # Break, requested path not basepath (%s != %s)" % (lpath,basepath))
-#                continue
             kw['lang'] = lang
             res = method(base, *args, **kw)
-            results.append("Exec: %s for %s" % (method.__name__, lang))
+            results.append("Executing for language %s" %  lang)
             if res:
                 results += list(res)
                 
@@ -191,31 +190,7 @@ class LinguaToolsView(BrowserView):
             assignable = getMultiAdapter((ob, portletManager,), ILocalPortletAssignmentManager)
             assignable.setBlacklistStatus(CAT, status)
         return self._forAllLangs(_setter, manager=manager, status=status)
-    
-#    def blockPortletsButNavi(self):
-#        """ changes for all campaign sites """
-#        # Block the portlets
-#        context = self
-#        path = '/'.join(context.getPhysicalPath())
-#        left = assignment_mapping_from_key(context, 'plone.leftcolumn', CONTEXT_CATEGORY, path)
-#        right = assignment_mapping_from_key(context, 'plone.rightcolumn', CONTEXT_CATEGORY, path)
-#        belowcontext = assignment_mapping_from_key(context, 'osha.belowcontent.portlets', CONTEXT_CATEGORY, path)
-#    
-#        for x in list(left.keys()):
-#            del left[x]    
-#    
-#        for x in list(right.keys()):
-#            del right[x]    
-#    
-#        for x in list(belowcontext.keys()):
-#            del belowcontext[x]    
-#    
-#        _blockPortlets(context, 'plone.leftcolumn', CONTEXT_CATEGORY, True)
-#        _blockPortlets(context, 'plone.rightcolumn', CONTEXT_CATEGORY, True)
-#        _blockPortlets(context, 'osha.belowcontent.portlets', CONTEXT_CATEGORY, True)
-#    
-#        left['navtree'] = navigation.Assignment(topLevel=0)
-#        
+ 
     
     
     def setExcludeFromNav(self, flag):
@@ -243,7 +218,6 @@ class LinguaToolsView(BrowserView):
         """ rename one object within context from oldid to newid """
         def _setter(ob, *args, **kw):
             oldid = kw['oldid']
-#             import pdb;pdb.set_trace()
             newid = kw['newid']
             if oldid in ob.objectIds():
                 ob.manage_renameObjects([oldid], [newid])
