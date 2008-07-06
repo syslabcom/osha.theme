@@ -5,7 +5,7 @@
 
     <body>        
         <div metal:fill-slot="main" id="linguaToolForms">
-            <h1>LinguaTools - do ONE thing for ALL lanugage versions</h1>
+            <h1 class="documentFirstHeading">LinguaTools - do ONE thing for ALL language versions</h1>
 
             <p>This tool helps you to propagate certain tasks from the default language to all other 
                 available languages. It does it by calling the same modification action on the default 
