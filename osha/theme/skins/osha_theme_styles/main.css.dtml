@@ -164,7 +164,7 @@ dl.portletAlertService dt.portletHeader {
 dl.portletAlertService dd.portletItem {
     background-color: #90C27E;
 }
-dl.portletAlertService dt.portletFooter {
+dl.portletAlertService dd.portletFooter {
     background-color: #90C27E;
 }
 
