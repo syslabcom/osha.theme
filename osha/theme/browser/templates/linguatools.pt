@@ -132,7 +132,7 @@
                 <legend>Rename an object</legend> 
                 <p>Rename an object with the old id within this folder to new id.
                     <input type="text" size="20" name="oldid" value="Old ID"/>         
-                    <input type="text" size="20" name="id" value="New ID"/>         
+                    <input type="text" size="20" name="newid" value="New ID"/>         
                     <input type="submit" class="context" name="form.button.ChangeId" value="change Id"/>
                 </form>
             </fieldset>

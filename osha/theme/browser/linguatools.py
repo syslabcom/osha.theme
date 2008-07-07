@@ -78,9 +78,9 @@ class LinguaToolsView(BrowserView):
             self.result=self.deleter(id,guessLanguage) 
 
         if self.request.has_key("form.button.ChangeId"):
-            oldId = self.request.get('oldid', "")
-            id = self.request.get('id', oldId)
-            self.result=self.renamer(oldId,id) 
+            oldid = self.request.get('oldid', "")
+            newid = self.request.get('newid', '')
+            self.result=self.renamer(oldid,newid) 
 
         if self.request.has_key("form.button.setTranslateTitle"):
             label = self.request.get('label', "")
