@@ -24,7 +24,7 @@
            <div class="hvlog" 
                 style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;">
                   
-             <div style="width: 340px; float: left;">
+             <div style="margin:10px; float: left;">
                
                 <a tal:attributes="href episode/durlwmv; title episode/title" 
                    rel="enclosure"           
