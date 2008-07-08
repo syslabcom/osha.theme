@@ -2,6 +2,7 @@ import Acquisition
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
+from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
 
 from osha.theme.browser.dbfilter import DBFilterView
 
@@ -25,7 +26,9 @@ class WorklistView(DBFilterView):
         default = ['OSH_Link', 'RALink', 'CaseStudy', 'Provider', 'Publication']
         local_portal_types = context.getProperty('search_portal_types', default)
         search_portal_types = self.request.get('search_portal_types', local_portal_types)
-        
+        if not search_portal_types:
+            search_portal_types = default
+
         TYPES = [ 
             ('OSH Link', 'OSH_Link', 'OSH_Link' in search_portal_types) ,
             ('Risk Assessment Link', 'RALink', 'RALink' in search_portal_types) ,
@@ -38,31 +41,68 @@ class WorklistView(DBFilterView):
     def buildQuery(self):
         """ Build the query based on the request """
         context = Acquisition.aq_inner(self.context)
-        query = super(WorklistView, self).buildQuery()
 
-        Creator = self.request.get('Creator', '')
-        if Creator:
-            query.update(dict(Creator=Creator))
+        query = self.search_portal_types()
+
+        local_keyword = context.getProperty('keyword', '')
+        keywords = self.request.get('keywords', local_keyword)
+        if keywords:
+            query = query & In('Subject', keywords)    
+            #query.update({'Subject':keywords})
+
+        nace = list(self.request.get('nace', ''))
+        if '' in nace:
+            nace.remove('')
+        if nace:
+            query = query & In('nace', nace)    
+            #query.update({'nace':nace})
+
+        multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
+        if '' in multilingual_thesaurus:
+            multilingual_thesaurus.remove('')
+        if multilingual_thesaurus:
+            query = query & In('multilingual_thesaurus', multilingual_thesaurus)    
+            #query.update({'multilingual_thesaurus':multilingual_thesaurus})
+
+        getRemoteLanguage = self.request.get('getRemoteLanguage', '')
+        if getRemoteLanguage:
+            query = query & In('getRemoteLanguage', getRemoteLanguage)    
+            #query.update({'getRemoteLanguage':getRemoteLanguage})
 
         country = self.request.get('country', '')
         if country:
-            query.update(dict(country=country))
+            query = query & In('country', country)    
+            #query.update({'country':country})
 
-        # remove wrongly formatted subcategory from query
-        if query.has_key('subcategory'):
-            del query['subcategory']
+        SearchableText = self.request.get('SearchableText', '')
+        if SearchableText != '':
+            query = query & Generic('SearchableText', {'query': SearchableText, 'ranking_maxhits': 10000 })
+            #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
+
+        
+        
+        Creator = self.request.get('Creator', '')
+        if Creator:
+            query = query & Eq('Creator', Creator)
+            #query.update(dict(Creator=Creator))
+
         subcategory = list(self.request.get('subcategory', ''))
         if '' in subcategory:
             subcategory.remove('')
         if subcategory:
-            query.update({'subcategory':subcategory})
+            query = query & In('subcategory', subcategory)    
+            #query.update({'subcategory':subcategory})
 
         getRemoteUrl = self.request.get('getRemoteUrl', '')
         if getRemoteUrl:
-            query.update(dict(getRemoteUrl=getRemoteUrl))
+            query = query & Eq('getRemoteUrl', getRemoteUrl)    
+            #query.update(dict(getRemoteUrl=getRemoteUrl))
 
         review_state = self.request.get('review_state', '')
         if review_state:
-            query.update(dict(review_state=review_state))
+            query = query & In('review_state', review_state)    
+            #query.update(dict(review_state=review_state))
 
         return query
+        
+        
