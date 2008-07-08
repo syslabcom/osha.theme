@@ -1,15 +1,13 @@
 # from Products.CMFPlone import PloneMessageFactory as pmf
 # REQUEST=context.REQUEST
-def getnapofilms():
-    Films = {}
 
-    Films = {
-        'id_napo_film_1': {
+Films = [
+        ('id_napo_film_1', {
             'title': 'title_napo_film_1',       
             'description': 'description_napo_film_1',
             'durlavi': 'http://media.osha.europa.eu/napo1/napo1.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo1/napo1.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo1/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo1/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_1_0'
                     , 'title': 'title_napo_episode_1_0'
@@ -120,13 +118,13 @@ def getnapofilms():
                     , 'durlwmv': 'http://media.osha.europa.eu/napo1/N1-17-the_end.wmv'                
                     } 
                          ]
-               } ,
-        'id_napo_film_2': {
+               }) ,
+        ('id_napo_film_2', {
             'title': 'title_napo_film_2',       
             'description': 'description_napo_film_2',
             'durlavi': 'http://media.osha.europa.eu/napo2/napo2.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo2/napo2.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo2/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo2/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_2_0'
                     , 'title': 'title_napo_episode_2_0'
@@ -189,13 +187,13 @@ def getnapofilms():
                     , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-09-unsuitable_material_incompetence_accident.avi.wmv'                
                     } ,
                          ]
-               },
-        'id_napo_film_3': {
+               }),
+        ('id_napo_film_3', {
             'title': 'title_napo_film_3',       
             'description': 'description_napo_film_3',
             'durlavi': 'http://media.osha.europa.eu/napo3/napo3.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo3/napo3.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo3/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo3/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_3_0'
                     , 'title': 'title_napo_episode_3_0'
@@ -276,13 +274,13 @@ def getnapofilms():
                     , 'durlwmv': 'http://media.osha.europa.eu/napo3/N3-12-the_end.wmv'                
                     },
                          ]
-               },
-        'id_napo_film_4': {
+               }),
+        ('id_napo_film_4', {
             'title': 'title_napo_film_4',       
             'description': 'description_napo_film_4',
             'durlavi': 'http://media.osha.europa.eu/napo4/napo4.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo4/napo4.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo4/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo4/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_4_0'
                     , 'title': 'title_napo_episode_4_0'
@@ -333,13 +331,13 @@ def getnapofilms():
                      , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-07-the_end.wmv'                
                     },
                          ]
-               },
-        'id_napo_film_5': {
+               }),
+        ('id_napo_film_5', {
             'title': 'title_napo_film_5',       
             'description': 'description_napo_film_5',
             'durlavi': 'http://media.osha.europa.eu/napo5/napo5.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo5/napo5.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo5/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo5/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_5_0'
                     , 'title': 'title_napo_episode_5_0'
@@ -396,13 +394,13 @@ def getnapofilms():
                     , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-08-save_landing.wmv'                
                     } ,
                          ]
-               },
-        'id_napo_film_6': {
+               }),
+        ('id_napo_film_6', {
             'title': 'title_napo_film_6',       
             'description': 'description_napo_film_6',
             'durlavi': 'http://media.osha.europa.eu/napo6/napo6.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo6/napo6.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo6/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo6/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_6_0'
                     , 'title': 'title_napo_episode_6_0'
@@ -453,13 +451,13 @@ def getnapofilms():
                     , 'durlwmv': 'http://media.osha.europa.eu/napo6/N6-07-the_end.wmv'                
                     } ,
                          ]
-               },
-        'id_napo_film_7': {
+               }),
+        ('id_napo_film_7', {
             'title': 'title_napo_film_7',       
             'description': 'description_napo_film_7',
             'durlavi': 'http://media.osha.europa.eu/napo7/napo7.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo7/napo7.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo7/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo7/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_7_0'
                     , 'title': 'title_napo_episode_7_0'
@@ -504,13 +502,13 @@ def getnapofilms():
                     , 'durlwmv': 'http://media.osha.europa.eu/napo7/N7-06-end.wmv'                
                     } ,
                          ]
-               },
-        'id_napo_film_8': {
+               }),
+        ('id_napo_film_8', {
             'title': 'title_napo_film_8',       
             'description': 'description_napo_film_8',
             'durlavi': 'http://media.osha.europa.eu/napo8/napo8.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo8/napo8.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo8/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo8/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_8_0'
                     , 'title': 'title_napo_episode_8_0'
@@ -585,13 +583,13 @@ def getnapofilms():
                     , 'durlwmv': 'http://media.osha.europa.eu/napo8/N8-11-the_end.wmv'                
                     } ,
                          ]
-               },
-        'id_napo_film_9': {
+               }),
+        ('id_napo_film_9', {
             'title': 'title_napo_film_9',       
             'description': 'description_napo_film_9',
             'durlavi': 'http://media.osha.europa.eu/napo9/napo9.avi', 
             'durlwmv': 'http://media.osha.europa.eu/napo9/napo9.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo9/preview.jpeg',
+            'image_url': 'http://media.osha.europa.eu/napo9/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_9_0'
                     , 'title': 'title_napo_episode_9_0'
@@ -642,10 +640,9 @@ def getnapofilms():
                     , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-07-the_end.wmv'                
                     } ,
                          ]
-               }
-        }   
+               })
+        ]   
 
-    return Films
+return Films
 
-return getnapofilms()
 

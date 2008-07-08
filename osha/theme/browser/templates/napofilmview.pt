@@ -23,11 +23,16 @@
 
    <h2>Single Episodes</h2>
 
-   <tal:block define="films python:view.getFilms()" repeat="filmid films/keys">
+   <tal:block define="films python:view.getFilms()" repeat="filmdata films">
 
-     <div tal:define="film python: films.get(filmid)" class="hvlog" style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;">
+     <div tal:define="filmid python: filmdata[0]; film python: filmdata[1]" 
+          class="hvlog" 
+          style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;">
      <div style="width: 340px; float: left;">
-       <a tal:attributes="href film/durlavi; title film/title" rel="enclosure"           class="hVlogTarget" type="video/x-ms-wmv"
+       <a tal:attributes="href film/durlavi; title film/title" 
+          rel="enclosure"           
+          class="hVlogTarget" 
+          type="video/x-ms-wmv"
           onclick="vPIPPlay(this, 'width=320, height=260, autostart=true, controller=true, name=NapoMovie, revert=true'); return false;">
 	  <img tal:attributes="src film/image_url"/>
        </a>

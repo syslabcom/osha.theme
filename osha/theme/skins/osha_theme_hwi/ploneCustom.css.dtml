@@ -15,10 +15,15 @@
 body {
     background: transparent url(&dtml-portal_url;/images/hwi_logobackground.gif) no-repeat !important;
 }
-#portal-columns {
-    background: &dtml-primaryColor4;;
+#portal-column-content{
+    background-color: transparent;
 }
-
+#portal-columns {
+    background: transparent;
+}
+div#content-column-background {
+    background: transparent;
+}
 dl.portlet {
 	  background: &dtml-primaryColor3;;
 } 
