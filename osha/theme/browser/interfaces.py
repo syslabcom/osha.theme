@@ -109,7 +109,7 @@ class INapoFilmView(Interface):
             string parameter filmID"""
 
     def getDURLAVI(self,filmID):
-        """ returns the URL of the FIlm spezified by the string parameter FilmID
+        """ returns the URL of the FIlm specified by the string parameter FilmID
             in AVI format"""
 
     def getDURLWMV(self,filmID):

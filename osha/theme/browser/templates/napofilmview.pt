@@ -29,13 +29,7 @@
           class="hvlog" 
           style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;">
      <div style="width: 340px; float: left;">
-       <a tal:attributes="href film/durlavi; title film/title" 
-          rel="enclosure"           
-          class="hVlogTarget" 
-          type="video/x-ms-wmv"
-          onclick="vPIPPlay(this, 'width=320, height=260, autostart=true, controller=true, name=NapoMovie, revert=true'); return false;">
 	  <img tal:attributes="src film/image_url"/>
-       </a>
      </div>
      <div style="float:left">
        <a tal:attributes="href string:napoepisode?filmid=${filmid}">
@@ -43,9 +37,9 @@
        </a>
      </div>
      <div class="visualClear"></div>
-       <p i18n:translate="" tal:content="film/description" />
+       <p i18n:translate="" tal:content="structure film/description" />
        <a class="descriptionLink" tal:attributes="href string:napoepisode?filmid=${filmid}">
-           <p> view Chapters</p> 
+           <p>View episodes</p> 
        </a>
    </div>
 

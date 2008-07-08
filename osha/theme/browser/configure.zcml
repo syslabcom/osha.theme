@@ -27,28 +27,28 @@
 <!-- OSHA PressRoomView-->    
     <browser:page
         for="*"
-	name="pressroom"
-	class=".pressroom.PressRoomView"
+	    name="pressroom"
+	    class=".pressroom.PressRoomView"
         permission="zope.Public"
-	allowed_interface=".interfaces.IPressRoomView"
+	    allowed_interface=".interfaces.IPressRoomView"
         />
         
 <!-- OSHA NapoFilmView-->    
     <browser:page
         for="*"
-	name="napofilm"
-	class=".napofilm.NapoFilmView"
+    	name="napofilm"
+	    class=".napofilm.NapoFilmView"
         permission="zope.Public"
-	allowed_interface=".interfaces.INapoFilmView"
+    	allowed_interface=".interfaces.INapoFilmView"
         />
        
-<!-- OSHA NapoFilmView-->    
+<!-- OSHA NapoEpisodeView-->    
     <browser:page
         for="*"
-	name="napoepisode"
-	class=".napoepisode.NapoEpisodeView"
+	    name="napoepisode"
+	    class=".napoepisode.NapoEpisodeView"
         permission="zope.Public"
-	allowed_interface=".interfaces.INapoEpisodeView"
+	    allowed_interface=".interfaces.INapoEpisodeView"
         />
        
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
