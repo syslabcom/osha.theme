@@ -33,6 +33,24 @@
 	allowed_interface=".interfaces.IPressRoomView"
         />
         
+<!-- OSHA NapoFilmView-->    
+    <browser:page
+        for="*"
+	name="napofilm"
+	class=".napofilm.NapoFilmView"
+        permission="zope.Public"
+	allowed_interface=".interfaces.INapoFilmView"
+        />
+       
+<!-- OSHA NapoFilmView-->    
+    <browser:page
+        for="*"
+	name="napoepisode"
+	class=".napoepisode.NapoEpisodeView"
+        permission="zope.Public"
+	allowed_interface=".interfaces.INapoEpisodeView"
+        />
+       
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
     <interface
         interface=".interfaces.IThemeSpecific"

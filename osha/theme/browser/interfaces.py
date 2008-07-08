@@ -94,6 +94,53 @@ class ILinguaToolsView(Interface):
             tries to handle language extensions for files like hwp_xx.swf
         """
 
+class INapoFilmView(Interface):
+    """ A ViewClass that renders a View based on a datastructure"""
+
+    def getFilms(self):
+        """ returns a list with all informations about all Films"""
+
+    def getTitle(self,filmID):
+        """ returns the title of a spezific Film identified by the
+            string parameter filmID """
+
+    def getDescription(self,filmID):
+        """ returns the description of a spezific Film identified by the
+            string parameter filmID"""
+
+    def getDURLAVI(self,filmID):
+        """ returns the URL of the FIlm spezified by the string parameter FilmID
+            in AVI format"""
+
+    def getDURLWMV(self,filmID):
+        """ returns the URL of the FIlm spezified by the string parameter FilmID
+            in WMV format"""
+
+class INapoEpisodeView(Interface):
+
+    def getEpisodes(self,filmID):
+        """ returns all Episodes of a film specified by the string 
+            parameter filmID"""
+
+    def getEpisodeTitle(self,filmID,EpisodeNumber):
+        """ returns the title of a specific Episode, selected by the 
+            Parameters FilmID which selects the Film, and the int
+            Episodnumber"""
+
+    def getEpisodeImage(self,filmID,EpisodeNumber):
+        """ returns the URL of an Preview Image of an Episode selected
+            by the string parameter filmID and the int parameter
+            EpisodeNumber"""
+
+    def getEpisodeDURLAVI(self,filmID,EpisodeNumber):
+        """ returns the URL of the Episode in AVI Format selected
+            by the string parameter filmID and the int parameter
+            EpisodeNumber"""
+
+    def getEpisodeDURLWMV(self,filmID,EpisodeNumber):
+        """ returns the URL of the Episode in WMV Format selected
+            by the string parameter filmID and the int parameter
+            EpisodeNumber"""
 
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
