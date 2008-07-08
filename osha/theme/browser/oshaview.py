@@ -1,4 +1,5 @@
 import Acquisition
+from types import *
 from time import time
 from osha.theme.browser.interfaces import IOSHA
 from Products.CMFCore.utils import getToolByName
@@ -117,6 +118,7 @@ class OSHA(BrowserView):
             if keywords is None:
                 keywords = ''
             else:
+                keywords = [x for x in keywords if x in (StringType, UnicodeType)]
                 keywords = ', '.join(keywords)
             
         meta['keywords'] = keywords
