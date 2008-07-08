@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    lang="en"
+    metal:use-macro="here/main_template/macros/master"
+    i18n:domain="osha-napo">
+
+    <body>
+        <div metal:fill-slot="main">
+        <tal:block define="indexobj nocall:here/index_html|nothing;
+			height request/height|string:480;
+			width request/width|string:640">
+			<script src="http://osha.europa.eu/++resource++vPIP/vpip.js" type="text/javascript"></script>
+			<style type="text/css" media="all">@import "http://osha.europa.eu/++resource++vPIP/vPIPBox.css";</style>
+       <script src="http://osha.europa.eu/++resource++vPIP/jquery.js" type="text/javascript"></script>
+
+       <div tal:replace="structure provider:plone.abovecontenttitle" />
+
+
+       <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+
+       <div tal:replace="structure provider:plone.abovecontentbody" />
+
+
+
+   <tal:block define="film python:view.getFilm(request.get('filmid'))">
+	<h2 tal:content="film/title" i18n:translate=""> </h2>
+      Click the image to see the Film...<br>
+      Download this Film as <a tal:attributes="href film/durlavi">AVI</a> or <a tal:attributes="href film/durlwmv">WMV</a>
+
+   <tal:block repeat="episode python:view.getEpisodes(request.get('filmid'))">
+     <div class="hvlog" style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;">
+     <div style="width: 340px; float: left;">
+       <a tal:attributes="href episode/durlavi; title episode/title" rel="enclosure"           class="hVlogTarget" type="video/x-ms-wmv"
+          onclick="vPIPPlay(this, 'width=320, height=260, autostart=true, controller=true, name=NapoMovie, revert=true'); return false;">
+           <img tal:attributes="src episode/image_url" />
+       </a>
+     </div>
+     <div style="float:left">
+      <h3 tal:content="episode/title" i18n:translate="" />
+      Click the image to see the film...<br>
+      Download this episode as <a tal:attributes="href episode/durlavi">AVI</a> or <a tal:attributes="href episode/durlwmv">WMV</a>
+     </div>
+     <div class="visualClear"></div>
+   </div>
+
+ </tal:block>
+ </tal:block> 
+ </tal:block> 
+        </div>
+    </body>
+</html>
+
