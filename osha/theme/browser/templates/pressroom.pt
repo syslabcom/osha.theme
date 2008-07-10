@@ -29,11 +29,11 @@ i18n:domain="plone">
 
         <div class="visualClear"></div>
         
-        <a href="articles">
+        <!--a href="articles"-->
             <div class="labels" id="useful-articles">
-                <h1 class="label" i18n:translate="useful-articles">USEFUL ARTICLES</h1>
+                <!--h1 class="label" i18n:translate="useful-articles">USEFUL ARTICLES</h1-->
             </div>
-        </a>
+        <!--/a-->
 
         <a href="../about">
             <div class="labels" id="about-us">
