@@ -73,5 +73,9 @@ dd.portletItem .navTreeItem a:hover {
 #abovecontent-portlets dl.portlet {
     background: transparent none repeat scroll 0% 0%;
 }
+#belowcontent-portlets dl.portlet {
+    background: transparent none repeat scroll 0% 0%;
+}
+
 /* </dtml-with> */
 
