@@ -7,28 +7,33 @@ class OSHTopicView(BrowserView):
     """View for displaying the results of a topic outside the current context within the context
     """
     template = ViewPageTemplateFile('templates/oshtopic_view.pt')
+    template.id = 'oshtopic-view'
     
     def __call__(self):
         topicpath = self.request.get('tp', '')
-        if topicpath.startswith('/'):
+        if topicpath.startswith('/') and not topicpath.startswith('/osha/portal'):
             topicpath = topicpath[1:]
-        context = Acquisition.aq_inner(self.context)
-        portal = getToolByName(context, 'portal_url').getPortalObject()
-        self.topic = portal.restrictedTraverse(topicpath)
+        self.tp = topicpath
         
         return self.template() 
         
+    def getTopic(self):
+        context = Acquisition.aq_inner(self.context)
+        portal = getToolByName(context, 'portal_url').getPortalObject()
+        topic = portal.restrictedTraverse(self.tp)
+        return topic        
+        
     def Title(self):
-        return self.topic.Title()        
+        return self.getTopic().Title()        
 
     def getText(self):
-        return self.topic.getText()
+        return self.getTopic().getText()
         
     def Format(self):
-        return self.topic.Format()        
+        return self.getTopic().Format()        
         
     def queryCatalog(self):
-        return self.topic.queryCatalog(batch=True)        
+        return self.getTopic().queryCatalog(batch=True)        
 
     def getCustomViewFields(self):
-        return self.topic.getCustomViewFields()
+        return self.getTopic().getCustomViewFields()
