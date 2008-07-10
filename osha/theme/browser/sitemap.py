@@ -16,6 +16,84 @@ FILE_IDX = 'sitemap_index.xml.gz'
 FILE_PART = "sitemap_%s.xml.gz"
 
 
+
+class NewsMapView(BaseView):
+    """Creates the newsmap as explained in the specifications.
+
+    http://www.google.com/support/webmasters/bin/answer.py?answer=42738
+    """
+
+    template = ViewPageTemplateFile('templates/newsmap.xml')
+    
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+        self.filename = 'newsmap_en.xml.gz'
+
+
+    def __call__(self):
+        """Checks if the sitemap feature is enable and returns it."""
+        sp = getToolByName(self.context, 'portal_properties').site_properties
+        if not sp.enable_sitemap:
+            raise NotFound(self.context, self.filename, self.request)
+
+        self.request.response.setHeader('Content-Type',
+                                        'application/octet-stream')
+        return self.generate()    
+
+
+    def generate(self):
+        """Generates the Gzipped sitemap."""
+        xml = self.template()
+        fp = StringIO()
+        gzip = GzipFile(self.filename, 'w', 9, fp)
+        gzip.write(xml)
+        gzip.close()
+        data = fp.getvalue()
+        fp.close()
+        return data
+
+    def objects(self):
+        """Returns the data to create the sitemap."""
+        catalog = getToolByName(self.context, 'portal_catalog')
+        portal_url = getToolByName(self.context, 'portal_url')
+            
+            
+        results = catalog.searchResults({'Language': 'en', 
+                                           'review_state': 'published', 
+                                           'portal_type': 'News Item'})[:1000]
+        for item in results:
+            try:
+                lastmod = item.modified.ISO8601()
+            except:
+                lastmod = '2008-01-01T1:00:00+00:00'
+                
+            loc = item.getURL()
+
+            changefreq = item.get('changefreq', "monthly")
+            priority = item.get('priority', 0.9)           
+            if item.effective<(DateTime()-30):
+                priority = 0.3
+            else:
+                priority = 0.9
+            keywords = [x for x in item.Subject if x is not None]
+            keywords = ",".join(keywords)
+            
+            try:
+                publication_date = item.effective.ISO8601()
+            except:
+                publication_date = '2008-01-01T1:00:00+00:00'
+                    
+            yield {
+                'loc': loc,
+                'lastmod': lastmod,
+                'changefreq': changefreq, # hourly/daily/weekly/monthly/yearly/never
+                'priority': priority, # 0.0 to 1.0
+                'keywords': keywords,
+                'publication_date': publication_date
+            }
+
+
 def _render_cachekey(fun, self):
     # Cache by filename
     url_tool = getToolByName(self.context, 'portal_url')
@@ -155,7 +233,7 @@ class SiteMapView(BaseView):
             'priority': 1
         }
         
-        for item in catalog.searchResults({'Language': 'all'}):
+        for item in catalog.searchResults({'Language': 'all', 'review_state': 'published'}):
             # We only want to link them in the search form results
             if item.portal_type in ['OSH_Link', 'RALink', 'CaseStudy', 'Provider', 'Directive', 'Amendment', 'Modification', 'Note', 'Proposal', 'LinguaLink']:
                 continue

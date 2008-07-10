@@ -442,6 +442,14 @@
      />
 
   <browser:page
+      name="newsmap.xml.gz"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".sitemap.NewsMapView"
+      permission="zope2.Public"
+      layer=".interfaces.IOSHAThemeLayer"
+     />
+
+  <browser:page
     name="getVocabularyPath"
     for="*"
     class=".vocabulary.VocabularyPathView"
