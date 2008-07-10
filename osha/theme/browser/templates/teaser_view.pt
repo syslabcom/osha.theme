@@ -12,9 +12,7 @@
 
 
         <h1 tal:condition="python:here.getId()!='front-page'" class="documentFirstHeading"> 
-            <metal:field use-macro="python:here.widget('title', mode='view')">
-            Title
-            </metal:field>
+            <span tal:replace="structure here/Title">Title</span>
         </h1>
 
         <metal:listingmacro define-macro="listing">
