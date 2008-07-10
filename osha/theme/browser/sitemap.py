@@ -7,6 +7,7 @@ from DateTime import DateTime
 from types import *
 from gzip import GzipFile
 from cStringIO import StringIO
+import urlparse
 
 from plone.memoize import ram
 
@@ -75,7 +76,27 @@ class SiteMapView(BaseView):
 
         snip = self.index_snippet(filenames=filenames, now=now)
         data = self._persist_file(FILE_IDX, snip) 
+        self._purgeFilenamesFromCache(filenames)
         return data
+        
+    def _purgeFilenamesFromCache(self, filenames):
+        """ if we have a portal_squid tool, try to purge the filenames """
+        portal_squid = getToolByName(self.context, 'portal_squid')
+        if portal_squid is None:
+            return
+        portal_cache_settings = getToolByName(self.context, 'portal_cache_settings')
+        if portal_cache_settings is None:
+            return
+    
+        relative_urls = filenames + ['sitemap_index.xml.gz']
+        domains = [urlparse.urlparse(d) for d in portal_cache_settings.getDomains()]
+        relative_urls = self.context.rewritePurgeUrls(relative_urls, domains)
+        print relative_urls
+        # purge!
+        from Products.CMFSquidTool.utils import pruneAsync
+        for url in relative_urls:
+            pruneAsync(url)
+        
         
     def parseUrlFile(self):
         """ parses a simple file with format url,changefreq,priority """
