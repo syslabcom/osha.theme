@@ -1,5 +1,4 @@
 <metal:block define-macro="campaign_area">
-    <div id="campaign_logo2">&nbsp;</div>
     <tal:block condition="cmp_logo_url">
         <img src="campaign_logo.jpg" alt=""
              tal:attributes="src cmp_logo_url" alt="SME Campaign Logo" title="SME Campaign Logo" />
