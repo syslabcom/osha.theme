@@ -23,7 +23,7 @@ class WorklistView(DBFilterView):
         are selected initially"""
         context = Acquisition.aq_inner(self.context)
         
-        default = ['OSH_Link', 'RALink', 'CaseStudy', 'Provider', 'Publication']
+        default = ['OSH_Link', 'RALink', 'CaseStudy', 'Provider', 'Publication', 'Directive', 'Modification','Amendment','Note','Proposal']
         local_portal_types = context.getProperty('search_portal_types', default)
         search_portal_types = self.request.get('search_portal_types', local_portal_types)
         if not search_portal_types:
@@ -34,9 +34,36 @@ class WorklistView(DBFilterView):
             ('Risk Assessment Link', 'RALink', 'RALink' in search_portal_types) ,
             ('Case Study', 'CaseStudy', 'CaseStudy' in search_portal_types) ,
             ('Provider', 'Provider', 'Provider' in search_portal_types) ,
-            ('Publication', 'Publication', 'Publication' in search_portal_types)
+            ('Publication', 'Publication', 'Publication' in search_portal_types) ,
+            ('Legislation Directive', 'Directive', 'Directive' in search_portal_types),
+            ('Legislation Modification', 'Modification', 'Modification' in search_portal_types),
+            ('Legislation Amendment', 'Amendment', 'Amendment' in search_portal_types),
+            ('Legislation Note', 'Note', 'Note' in search_portal_types),
+            ('Legislation Proposal', 'Proposal', 'Proposal' in search_portal_types)
                 ]
         return TYPES
+
+
+    def search_portal_types(self):
+        """ compute the list of query params to search for portal_types"""
+        context = Acquisition.aq_inner(self.context)
+        #local_portal_types = context.getProperty('search_portal_types', []);
+        # we need to use the output of search_types() as default, not the 
+        # local Property search_portal_types
+        search_types = [x[1] for x in self.search_types()]
+        search_portal_types = list(self.request.get('search_portal_types', search_types))
+
+
+        query = None
+        if 'Publication' in search_portal_types:
+            query = ( Eq('portal_type', 'File') & Eq('object_provides', 'slc.publications.interfaces.IPublicationEnhanced') )
+            search_portal_types.remove('Publication')
+            query = Or(query, In('portal_type', search_portal_types))
+        else:
+            query = In('portal_type', search_portal_types)
+
+                    
+        return query
 
     def buildQuery(self):
         """ Build the query based on the request """
