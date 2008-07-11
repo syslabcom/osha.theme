@@ -243,36 +243,6 @@ Films = [
                     , 'durlavi': 'http://media.osha.europa.eu/napo3/N3-07-corrosive_title.avi'
                     , 'durlwmv': 'http://media.osha.europa.eu/napo3/N3-07-corrosive_title.wmv'                
                     } ,
-                    { 'id': 'id_napo_episode_3_8'
-                    , 'title': 'title_napo_episode_3_8'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo3/N3-08-toxic.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo3/N3-08-toxic.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_3_9'
-                    , 'title': 'title_napo_episode_3_9'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo3/N3-09-toxic_title.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo3/N3-09-toxic_title.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_3_10'
-                    , 'title': 'title_napo_episode_3_10'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo3/N3-10-dangerous_for_the_environmnet.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo3/N3-10-dangerous_for_the_environmnet.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_3_11'
-                    , 'title': 'title_napo_episode_3_11'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo3/N3-11-dangerous_for_the_environmnet_title.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo3/N3-11-dangerous_for_the_environmnet_title.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_3_12'
-                    , 'title': 'title_napo_episode_3_12'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo3/N3-12-the_end.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo3/N3-12-the_end.wmv'                
-                    },
                          ]
                }),
         ('id_napo_film_4', {
@@ -591,12 +561,6 @@ Films = [
             'durlwmv': 'http://media.osha.europa.eu/napo9/napo9.wmv',
             'image_url': 'http://media.osha.europa.eu/napo9/preview.jpg',
             'episodes' : [
-                    { 'id': 'id_napo_episode_9_0'
-                    , 'title': 'title_napo_episode_9_0'
-                    , 'image_url': 'file_icon.gif'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-00-start.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-00-start.wmv'                
-                    } ,
                     { 'id': 'id_napo_episode_9_1'
                     , 'title': 'title_napo_episode_9_1'
                     , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-01_assess-the-risks.jpg'
