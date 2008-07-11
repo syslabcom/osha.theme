@@ -2,6 +2,57 @@
 # REQUEST=context.REQUEST
 
 Films = [
+        ('id_napo_film_9', {
+            'title': 'title_napo_film_9',       
+            'description': 'description_napo_film_9',
+            'durlavi': 'http://media.osha.europa.eu/napo9/napo9.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/napo9/napo9.wmv',
+            'image_url': 'http://media.osha.europa.eu/napo9/preview.jpg',
+            'episodes' : [
+                    { 'id': 'id_napo_episode_9_1'
+                    , 'title': 'title_napo_episode_9_1'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-01_assess-the-risks.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-01-assess_the_risk.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-01-assess_the_risk.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_9_2'
+                    , 'title': 'title_napo_episode_9_2'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-02_identify-the-unknown.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-02-identify_the_unknown_en.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-02-identify_the_unknown_en.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_9_3'
+                    , 'title': 'title_napo_episode_9_3'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-03-act_on_risks_en.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-03-act_on_risks_en.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_9_4'
+                    , 'title': 'title_napo_episode_9_4'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-04_risky-combination.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-04-risky_combination_en.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-04-risky_combination_en.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_9_5'
+                    , 'title': 'title_napo_episode_9_5'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-05_eliminate-the-risk.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-05-eliminate_the_risk_en.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-05-eliminate_the_risk_en.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_9_6'
+                    , 'title': 'title_napo_episode_9_6'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-06_safety-pays.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-06-safty_pays_en.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-06-safty_pays_en.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_9_7'
+                    , 'title': 'title_napo_episode_9_7'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-07_the-end.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-07-the_end.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-07-the_end.wmv'                
+                    } ,
+                         ]
+               }) ,
         ('id_napo_film_1', {
             'title': 'title_napo_film_1',       
             'description': 'description_napo_film_1',
@@ -245,63 +296,6 @@ Films = [
                     } ,
                          ]
                }),
-        ('id_napo_film_4', {
-            'title': 'title_napo_film_4',       
-            'description': 'description_napo_film_4',
-            'durlavi': 'http://media.osha.europa.eu/napo4/napo4.avi', 
-            'durlwmv': 'http://media.osha.europa.eu/napo4/napo4.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo4/preview.jpg',
-            'episodes' : [
-                    { 'id': 'id_napo_episode_4_0'
-                    , 'title': 'title_napo_episode_4_0'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-00-start.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-00-start.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_4_1'
-                    , 'title': 'title_napo_episode_4_1'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-01-change_the_plan.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-01-change_the_plan.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_4_2'
-                    , 'title': 'title_napo_episode_4_2'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-02-work_at_height.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-02-work_at_height.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_4_3'
-                    , 'title': 'title_napo_episode_4_3'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-03-enough_is_enough.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-03-enough_is_enough.wmv'                
-                    },
-                    { 'id': 'id_napo_episode_4_4'
-                    , 'title': 'title_napo_episode_4_4'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-04-safty_plan.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-04-safty_plan.wmv'                
-                    },
-                    { 'id': 'id_napo_episode_4_5'
-                    , 'title': 'title_napo_episode_4_5'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-05-yellow_card.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-05-yellow_card.wmv'                
-                    },
-                    { 'id': 'id_napo_episode_4_6'
-                    , 'title': 'title_napo_episode_4_6'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-06-bodybuilding.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-06-bodybuilding.wmv'                
-                    },
-                    { 'id': 'id_napo_episode_4_7'
-                    , 'title': 'title_napo_episode_4_7'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-07-the_end.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-07-the_end.wmv'                
-                    },
-                         ]
-               }),
         ('id_napo_film_5', {
             'title': 'title_napo_film_5',       
             'description': 'description_napo_film_5',
@@ -363,6 +357,63 @@ Films = [
                     , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-08-save_landing.avi'
                     , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-08-save_landing.wmv'                
                     } ,
+                         ]
+               }),
+        ('id_napo_film_4', {
+            'title': 'title_napo_film_4',       
+            'description': 'description_napo_film_4',
+            'durlavi': 'http://media.osha.europa.eu/napo4/napo4.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/napo4/napo4.wmv',
+            'image_url': 'http://media.osha.europa.eu/napo4/preview.jpg',
+            'episodes' : [
+                    { 'id': 'id_napo_episode_4_0'
+                    , 'title': 'title_napo_episode_4_0'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-00-start.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-00-start.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_4_1'
+                    , 'title': 'title_napo_episode_4_1'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-01-change_the_plan.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-01-change_the_plan.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_4_2'
+                    , 'title': 'title_napo_episode_4_2'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-02-work_at_height.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-02-work_at_height.wmv'                
+                    } ,
+                    { 'id': 'id_napo_episode_4_3'
+                    , 'title': 'title_napo_episode_4_3'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-03-enough_is_enough.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-03-enough_is_enough.wmv'                
+                    },
+                    { 'id': 'id_napo_episode_4_4'
+                    , 'title': 'title_napo_episode_4_4'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-04-safty_plan.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-04-safty_plan.wmv'                
+                    },
+                    { 'id': 'id_napo_episode_4_5'
+                    , 'title': 'title_napo_episode_4_5'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-05-yellow_card.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-05-yellow_card.wmv'                
+                    },
+                    { 'id': 'id_napo_episode_4_6'
+                    , 'title': 'title_napo_episode_4_6'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-06-bodybuilding.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-06-bodybuilding.wmv'                
+                    },
+                    { 'id': 'id_napo_episode_4_7'
+                    , 'title': 'title_napo_episode_4_7'
+                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-07-the_end.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-07-the_end.wmv'                
+                    },
                          ]
                }),
         ('id_napo_film_6', {
@@ -551,57 +602,6 @@ Films = [
                     , 'image_url': 'http://media.osha.europa.eu/napo8/thumbnails/N8-11_Napo11.jpg'
                     , 'durlavi': 'http://media.osha.europa.eu/napo8/N8-11-the_end.avi'
                     , 'durlwmv': 'http://media.osha.europa.eu/napo8/N8-11-the_end.wmv'                
-                    } ,
-                         ]
-               }),
-        ('id_napo_film_9', {
-            'title': 'title_napo_film_9',       
-            'description': 'description_napo_film_9',
-            'durlavi': 'http://media.osha.europa.eu/napo9/napo9.avi', 
-            'durlwmv': 'http://media.osha.europa.eu/napo9/napo9.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo9/preview.jpg',
-            'episodes' : [
-                    { 'id': 'id_napo_episode_9_1'
-                    , 'title': 'title_napo_episode_9_1'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-01_assess-the-risks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-01-assess_the_risk.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-01-assess_the_risk.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_9_2'
-                    , 'title': 'title_napo_episode_9_2'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-02_identify-the-unknown.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-02-identify_the_unknown_en.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-02-identify_the_unknown_en.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_9_3'
-                    , 'title': 'title_napo_episode_9_3'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-03_act-on-riks.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-03-act_on_risks_en.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-03-act_on_risks_en.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_9_4'
-                    , 'title': 'title_napo_episode_9_4'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-04_risky-combination.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-04-risky_combination_en.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-04-risky_combination_en.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_9_5'
-                    , 'title': 'title_napo_episode_9_5'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-05_eliminate-the-risk.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-05-eliminate_the_risk_en.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-05-eliminate_the_risk_en.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_9_6'
-                    , 'title': 'title_napo_episode_9_6'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-06_safety-pays.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-06-safty_pays_en.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-06-safty_pays_en.wmv'                
-                    } ,
-                    { 'id': 'id_napo_episode_9_7'
-                    , 'title': 'title_napo_episode_9_7'
-                    , 'image_url': 'http://media.osha.europa.eu/napo9/thumbnails/N9-07_the-end.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo9/N9-07-the_end.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo9/N9-07-the_end.wmv'                
                     } ,
                          ]
                })
