@@ -73,7 +73,7 @@
                 <div class="formHelp" i18n:translate="help_database_search">
                     Select the database types you want to search.
                 </div>
-<span tal:replace="view/search_types"/>
+
                 <div tal:repeat="T view/search_types">
                     <input class="input_checkbox" type="checkbox" 
                            name="search_portal_types:list"
