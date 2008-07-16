@@ -244,120 +244,120 @@ Films = [
         ('id_napo_film_5', {
             'title': 'title_napo_film_5',       
             'description': 'description_napo_film_5',
-            'durlavi': 'http://media.osha.europa.eu/napo4/napo4.avi', 
-            'durlwmv': 'http://media.osha.europa.eu/napo4/napo4.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo4/preview.jpg',
+            'durlavi': 'http://media.osha.europa.eu/napo5/napo5.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/napo5/napo5.wmv',
+            'image_url': 'http://media.osha.europa.eu/napo5/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_4_0'
                     , 'title': 'title_napo_episode_4_0'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-00-start.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-00-start.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-00-start.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-00-start.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-00-start.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-00-start.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_4_1'
                     , 'title': 'title_napo_episode_4_1'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-01-change_of_plan.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-01-change_of_plan.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-01-change_of_plan.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-01-change_of_plan.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-01-change_of_plan.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-01-change_of_plan.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_4_2'
                     , 'title': 'title_napo_episode_4_2'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-02-work_at_height.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-02-work_at_height.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-02-work_at_height.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-02-work_at_height.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-02-work_at_height.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-02-work_at_height.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_4_3'
                     , 'title': 'title_napo_episode_4_3'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-03-enough_is_enough.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-03-enough_is_enough.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-03-enough_is_enough.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-03-enough_is_enough.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-03-enough_is_enough.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-03-enough_is_enough.wmv'                
                     },
                     { 'id': 'id_napo_episode_4_4'
                     , 'title': 'title_napo_episode_4_4'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-04-safety_plan.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-04-safety_plan.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-04-safety_plan.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-04-safety_plan.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-04-safety_plan.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-04-safety_plan.wmv'                
                     },
                     { 'id': 'id_napo_episode_4_5'
                     , 'title': 'title_napo_episode_4_5'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-05-yellow_card.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-05-yellow_card.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-05-yellow_card.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-05-yellow_card.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-05-yellow_card.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-05-yellow_card.wmv'                
                     },
                     { 'id': 'id_napo_episode_4_6'
                     , 'title': 'title_napo_episode_4_6'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-06-bodybuilding.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-06-bodybuilding.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-06-bodybuilding.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-06-bodybuilding.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-06-bodybuilding.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-06-bodybuilding.wmv'                
                     },
                     { 'id': 'id_napo_episode_4_7'
                     , 'title': 'title_napo_episode_4_7'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-07-safety_angels.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-07-safety_angels.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-07-safety_angels.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-07-safety_angels.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-07-safety_angels.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-07-safety_angels.wmv'                
                     },
                     { 'id': 'id_napo_episode_4_8'
                     , 'title': 'title_napo_episode_4_8'
-                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-08-the_end.jpg'
-                     , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-08-the_end.avi'
-                     , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-08-the_end.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-08-the_end.jpg'
+                     , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-08-the_end.avi'
+                     , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-08-the_end.wmv'                
                     },
                          ]
                }),
         ('id_napo_film_4', {
             'title': 'title_napo_film_4',       
             'description': 'description_napo_film_4',
-            'durlavi': 'http://media.osha.europa.eu/napo5/napo5.avi', 
-            'durlwmv': 'http://media.osha.europa.eu/napo5/napo5.wmv',
-            'image_url': 'http://media.osha.europa.eu/napo5/preview.jpg',
+            'durlavi': 'http://media.osha.europa.eu/napo4/napo4.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/napo4/napo4.wmv',
+            'image_url': 'http://media.osha.europa.eu/napo4/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_5_1'
                     , 'title': 'title_napo_episode_5_1'
-                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-01-dont_fall_for_it.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-01-dont_fall_for_it.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-01-dont_fall_for_it.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-01-dont_fall_for_it.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-01-dont_fall_for_it.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-01-dont_fall_for_it.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_5_2'
                     , 'title': 'title_napo_episode_5_2'
-                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-02-heading_for_a_fall.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-02-heading_for_a_fall.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-02-heading_for_a_fall.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-02-heading_for_a_fall.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-02-heading_for_a_fall.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-02-heading_for_a_fall.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_5_3'
                     , 'title': 'title_napo_episode_5_3'
-                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-03-champions_of_the_worl.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-03-champions_of_the_world.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-03-champions_of_the_world.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-03-champions_of_the_worl.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-03-champions_of_the_world.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-03-champions_of_the_world.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_5_4'
                     , 'title': 'title_napo_episode_5_4'
-                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-04-lightning_strike.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-04-lightning_strike.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-04-lightning_strike.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-04-lightning_strike.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-04-lightning_strike.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-04-lightning_strike.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_5_5'
                     , 'title': 'title_napo_episode_5_5'
-                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-05-keep_them_apart.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-05-keep_them_apart.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-05-keep_them_apart.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-05-keep_them_apart.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-05-keep_them_apart.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-05-keep_them_apart.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_5_6'
                     , 'title': 'title_napo_episode_5_6'
-                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-06-five_star_treatment.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-06-five_star_treatment.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-06-five_star_treatment.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-06-five_star_treatment.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-06-five_star_treatment.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-06-five_star_treatment.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_5_7'
                     , 'title': 'title_napo_episode_5_7'
-                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-07-bad_dream.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-07-bad_dream.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-07-bad_dream.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-07-bad_dream.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-07-bad_dream.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-07-bad_dream.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_5_8'
                     , 'title': 'title_napo_episode_5_8'
-                    , 'image_url': 'http://media.osha.europa.eu/napo5/thumbnails/N5-08-safe_landing.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo5/N5-08-safe_landing.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo5/N5-08-safe_landing.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo4/thumbnails/N4-08-safe_landing.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo4/N4-08-safe_landing.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo4/N4-08-safe_landing.wmv'                
                     } ,
                          ]
                }),
