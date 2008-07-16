@@ -8,6 +8,7 @@ from types import *
 from gzip import GzipFile
 from cStringIO import StringIO
 import urlparse
+from Products.AdvancedQuery import Eq, In, And, Or
 
 from plone.memoize import ram
 
@@ -57,11 +58,20 @@ class NewsMapView(BaseView):
         """Returns the data to create the sitemap."""
         catalog = getToolByName(self.context, 'portal_catalog')
         portal_url = getToolByName(self.context, 'portal_url')
+        portal_path = portal_url.getPortalPath()
+        if hasattr(catalog, 'getZCatalog'):
+            catalog = catalog.getZCatalog()
+        portal_url = getToolByName(self.context, 'portal_url')
             
-            
-        results = catalog.searchResults({'Language': 'en', 
-                                           'review_state': 'published', 
-                                           'portal_type': 'News Item'})[:1000]
+        query = Eq('Language', 'en') & Eq('review_state', 'published') & In('portal_type', ['News Item', 'PressRelease'])
+        paths = In('path', ['%s/en/teaser'%portal_path, '%s/en/press'%portal_path])
+        query = query & paths
+        
+#        results = catalog.searchResults({'Language': 'en', 
+#                                           'review_state': 'published', 
+#                                           'portal_type': 'News Item'})[:1000]
+
+        results = catalog.evalAdvancedQuery(query)[:1000]
         for item in results:
             try:
                 lastmod = item.modified.ISO8601()
