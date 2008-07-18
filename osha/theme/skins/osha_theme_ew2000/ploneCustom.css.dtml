@@ -34,7 +34,7 @@ dd.portletItem .navTreeItem a:hover {
 }
 
 #osha-campaignarea {
-    background-color: &dtml-primaryColor2;;
+    background-color: #cc6600;
     text-align: right;
 }
 
