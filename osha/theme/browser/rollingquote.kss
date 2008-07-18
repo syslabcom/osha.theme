@@ -1,6 +1,6 @@
 .rolling:timeout {
-	evt-timeout-delay:2000;
-	evt-timeout-repeat:true;
+	evt-timeout-delay:0;
+	evt-timeout-repeat:false;
 	action-server:rollingquotestool;
 	rollingquotestool-url:kssAttr('url');
 }
