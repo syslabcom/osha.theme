@@ -6,6 +6,11 @@
     <include package="plone.app.portlets" />
     <include package="p4a.subtyper" />
 
+    <!-- OSHA RollingQUotes Tool -->
+    <browser:resource
+    	name="rollingquote.kss"
+	file="rollingquote.kss"
+	/>
     <!-- OSHA Tool view -->
     <browser:page
         for="*"
@@ -23,6 +28,15 @@
         class=".linguatools.LinguaToolsView"
         permission="zope.Public"
         allowed_interface=".interfaces.ILinguaToolsView"
+        />
+	<!-- OSHA RollingQuotes -->
+    <browser:page
+        for="*"
+        name="rollingquotestool"
+        class=".rollingquotestool.RollingQuotesToolsView"
+	attribute="set_url"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IRollingQuotesToolsView"
         />
 <!-- OSHA PressRoomView-->    
     <browser:page

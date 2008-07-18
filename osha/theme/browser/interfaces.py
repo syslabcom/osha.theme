@@ -30,6 +30,11 @@ class IPressRoomView(Interface):
     def get_syn_news():
         """ A method to get the syndicated News """
 
+class IRollingQuotesToolsView(Interface):
+
+    def update():
+        """updates rollingquotesportlet"""
+
 class ILinguaToolsView(Interface):
     """ A tool to manage lingua specific tasks """
 

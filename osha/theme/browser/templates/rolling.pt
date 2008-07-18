@@ -1,0 +1,18 @@
+<dl class="portlet portletPromotions"
+	i18n:domain="OSHA">
+	<dt class="portletHeader">
+		<span class="portletTopLeft"></span>
+			Our partners
+		<span class="portletTopRight"></span>
+	</dt>
+	<dd class="portletItem odd">
+		<div style="font-size: 1.2em;font-weight:bold" tal:content="view/name"/>
+		<span tal:content="view/quote"/>
+		<p><i tal:content="view/signature"/></p>
+		<div>
+			<center>
+				<img tal:attributes="src view/imageurl"/>
+			</center>
+		</div>
+	</dd>
+</dl>

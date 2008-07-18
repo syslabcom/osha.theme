@@ -158,5 +158,16 @@
          edit_permission="cmf.ManagePortal"
          />        
 
+     <!--Rolling Quotes portlet-->
+     <plone:portlet
+         name="osha.rollingQuotes"
+         interface=".rollingQuotes.IRollingQuotesPortlet"
+         assignment=".rollingQuotes.Assignment"
+         renderer=".rollingQuotes.Renderer"
+         addview=".rollingQuotes.AddForm"
+         editview=".rollingQuotes.EditForm"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         />        
 
 </configure>
