@@ -160,7 +160,7 @@
 
      <!--Rolling Quotes portlet-->
      <plone:portlet
-         name="osha.rollingquotes"
+         name="osha.RollingQuotes"
          interface=".rollingquotes.IRollingQuotesPortlet"
          assignment=".rollingquotes.Assignment"
          renderer=".rollingquotes.Renderer"

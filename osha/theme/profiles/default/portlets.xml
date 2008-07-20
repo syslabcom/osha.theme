@@ -15,7 +15,7 @@
       title="Alert Service"
       description="Provides the link to updates on topics of your choice." />    
 
-   <portlet
+  <portlet
       addview="osha.RollingQuotes"
       title="Rolling Quotes"
       description="A portlet which displays a Quote out of a folder at Random" />
