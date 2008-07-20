@@ -2,7 +2,7 @@
     <dt tal:define="folderurl view/getFolder"
         tal:attributes="class string:portletHeader rolling kssattr-url-${folderurl}">
         <span class="portletTopLeft"></span>
-        <span class="title" tal:content="view/title" />
+        <span class="title" i18n:translate="" i18n:domain="osha" tal:content="view/title" />
         <span class="portletTopRight"></span>
     </dt>
     <dd class="portletItem odd roll">
