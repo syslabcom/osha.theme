@@ -1,0 +1,24 @@
+<dl class="portlet portletRollingQuote">
+    <dt tal:define="folderurl view/getFolder"
+        tal:attributes="class string:portletHeader rolling kssattr-url-${folderurl}">
+        <span class="portletTopLeft"></span>
+        <span class="title" tal:content="view/title" />
+        <span class="portletTopRight"></span>
+    </dt>
+    <dd class="portletItem odd roll">
+    <tal:block define="ob view/getRandomObject">   
+        <div style="font-size: 1.2em;font-weight:bold">
+            <span tal:content="ob/title">bla</span>        
+        </div>
+        <span tal:replace="structure ob/Description"/>             
+        <div>
+        <center>
+            <img tal:replace="structure ob/image"/>    
+        </center>
+        </div>
+        <div align="right">
+            <a tal:attributes="href view/getFolder">More ...</a>
+        </div>
+    </tal:block>                                 
+    </dd>        
+</dl>

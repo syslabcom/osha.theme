@@ -31,9 +31,7 @@ class IRollingQuotesPortlet(IPortletDataProvider):
                                   source=SearchableTextSourceBinder({'object_provides' : [IATFolder.__identifier__, IATBTreeFolder.__identifier__]},
                                                                     default_query='path:'))
 
-    url = schema.TextLine(title=_(u"URL"),
-                             description=_(u"URL around the image/flash"),
-                             required=False)
+
 
 
 
@@ -105,33 +103,11 @@ class Renderer(base.Renderer):
         folderlist = folderob.listFolderContents(contentFilter={"portal_type" : "News Item", "review_state" : "publiched" })
         ob=  random.choice(folderlist)
         return ob
-#         
-#     @memoize
-#     def name(self):
-#         return self.data.name
-# 
+
     @memoize
     def body(self):
         print folderlist
 
-#              
-#     @memoize
-#     def signature(self):
-#         return self.data.signature
-#              
-#     @memoize
-#     def imageurl(self):
-#         return self.data.imageurl
-#              
-#     @memoize
-#     def url(self):
-#         return self.data.url
-# 
-#     
-#     
-#     @memoize
-#     def _data(self):
-#         return True
 
 
 class AddForm(base.AddForm):
