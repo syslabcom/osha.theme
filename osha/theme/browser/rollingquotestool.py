@@ -26,14 +26,26 @@ class RollingQuotesToolsView(PloneKSSView):
         selector = ksscore.getHtmlIdSelector('roll')
         ksscore.replaceHTML('.roll',self.portlet_template())
 
+    def fallback(self, ob, preflang):
+        if ob is None:
+            return None
+        pref = ob.getTranslation(preflang)
+        if not pref:
+            canonical = ob.getCanonical()   
+            return canonical
+        return pref
 
     def getDateTime(self):
         return str(self.folderUrl)
 
     def getRandomObject(self):
+        portal_languages=getToolByName(self.context, 'portal_languages')
+        preflang = portal_languages.getPreferredLanguage()
+
         folderob=self.context.restrictedTraverse(self.folderUrl)
         folderlist = folderob.listFolderContents(contentFilter={"portal_type" : "News Item", "review_state": "published"})
-        ob=random.choice(folderlist)
+        ob = random.choice(folderlist)
+        ob = self.fallback(ob, preflang)
         return ob
         
     def get_url(self):

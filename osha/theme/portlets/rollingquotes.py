@@ -90,18 +90,31 @@ class Renderer(base.Renderer):
         return self.data.header
 
     def getFolder(self):
-        folder= self.data.folder
-        portal_url=getToolByName(self.context,'portal_url')
-        portal_path=portal_url.getPortalPath()
+        folder = self.data.folder
+        portal_url = getToolByName(self.context, 'portal_url')
+        portal_path = portal_url.getPortalPath()
         return '%s%s'%(portal_path,folder)
-
+        
+    def fallback(self, ob, preflang):
+        if ob is None:
+            return None
+        pref = ob.getTranslation(preflang)
+        if not pref:
+            canonical = ob.getCanonical()   
+            return canonical
+        return pref
+        
     def getRandomObject(self):
         folder= self.data.folder
-        portal_url=getToolByName(self.context,'portal_url')
+        portal_url=getToolByName(self.context, 'portal_url')
+        portal_languages=getToolByName(self.context, 'portal_languages')
+        preflang = portal_languages.getPreferredLanguage()
+        
         portal_path=portal_url.getPortalPath()
         folderob=self.context.restrictedTraverse('%s%s'%(portal_path,folder))
         folderlist = folderob.listFolderContents(contentFilter={"portal_type" : "News Item", "review_state" : "publiched" })
-        ob=  random.choice(folderlist)
+        ob = random.choice(folderlist)
+        ob = self.fallback(ob, preflang)
         return ob
 
     @memoize
