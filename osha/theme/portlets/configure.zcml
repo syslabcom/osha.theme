@@ -160,12 +160,12 @@
 
      <!--Rolling Quotes portlet-->
      <plone:portlet
-         name="osha.rollingQuotes"
-         interface=".rollingQuotes.IRollingQuotesPortlet"
-         assignment=".rollingQuotes.Assignment"
-         renderer=".rollingQuotes.Renderer"
-         addview=".rollingQuotes.AddForm"
-         editview=".rollingQuotes.EditForm"
+         name="osha.rollingquotes"
+         interface=".rollingquotes.IRollingQuotesPortlet"
+         assignment=".rollingquotes.Assignment"
+         renderer=".rollingquotes.Renderer"
+         addview=".rollingquotes.AddForm"
+         editview=".rollingquotes.EditForm"
          view_permission="zope2.View"
          edit_permission="cmf.ManagePortal"
          />        

@@ -63,7 +63,7 @@ class Assignment(base.Assignment):
 
 class Renderer(base.Renderer):
 
-    _template = ViewPageTemplateFile('rolling.pt')
+    _template = ViewPageTemplateFile('rollingquotes.pt')
     
 #     def _render_cachekey(method, self):
 #         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
