@@ -503,6 +503,7 @@ ul.linkList li {
 	background-repeat:no-repeat;
 }
 #useful-articles {
+	display:none;
 	background-image: url(useful_articles.gif);
 	background-repeat:no-repeat;
 }
@@ -522,6 +523,14 @@ ul.linkList li {
 	background-repeat:no-repeat;
 	clear:right;
 }
+.leftspace {
+}
+div.lowerButtons {
+	width:380px;
+		      margin:auto;
+}
+.rightspace {
+}		
 #publications .label{
 	color:#ffffff;
 }

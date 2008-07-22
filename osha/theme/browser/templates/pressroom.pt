@@ -28,7 +28,7 @@ i18n:domain="plone">
         </a>
 
         <div class="visualClear"></div>
-        
+        <div class="lowerButtons">
         <!--a href="articles"-->
             <div class="labels" id="useful-articles">
                 <!--h1 class="label" i18n:translate="useful-articles">USEFUL ARTICLES</h1-->
@@ -46,6 +46,7 @@ i18n:domain="plone">
                 <h1 class="label" i18n:translate="osha_nav_title_publications">PUBLICATIONS</h1>
             </div>
         </a>
+        </div>
 	</div>
         <div id="EuMediaCoverage">
             <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
