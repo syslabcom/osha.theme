@@ -10,19 +10,19 @@ i18n:domain="plone">
         <h1 class="header" i18n:translate="osha_nav_title_press_room">Press Room</h1>
         <div id="coloredBoxes">
         <a href="press-releases/">
-            <div class="labels" id="press-releases">
+            <div class="labels" id="box-press-releases">
                 <h1 class="label" i18n:translate="press-releases">PRESS RELEASES</h1>
             </div>
         </a>
                 
         <a href="../campaigns">
-            <div class="labels" id="campaigns">
+            <div class="labels" id="box-campaigns">
                 <h1 class="label" i18n:translate="osha_nav_title_campaings">CAMPAIGNS</h1>
             </div>
         </a>
 
         <a href="photos">
-            <div class="labels" id="photos-logos">
+            <div class="labels" id="box-photos-logos">
                 <h1 class="label" i18n:translate="photos-logos">PHOTOS & LOGOS</h1>
             </div>
         </a>
@@ -30,19 +30,19 @@ i18n:domain="plone">
         <div class="visualClear"></div>
         <div class="lowerButtons">
         <!--a href="articles"-->
-            <div class="labels" id="useful-articles">
+            <div class="labels" id="box-useful-articles">
                 <!--h1 class="label" i18n:translate="useful-articles">USEFUL ARTICLES</h1-->
             </div>
         <!--/a-->
 
         <a href="../about">
-            <div class="labels" id="about-us">
+            <div class="labels" id="box-about-us">
                 <h1 class="label" i18n:translate="osha_nav_title_about_us">ABOUT US</h1>
             </div>
         </a>
 
         <a href="../publications">
-            <div class="labels" id="publications">
+            <div class="labels" id="box-publications">
                 <h1 class="label" i18n:translate="osha_nav_title_publications">PUBLICATIONS</h1>
             </div>
         </a>

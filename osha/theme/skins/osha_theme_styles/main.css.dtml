@@ -498,27 +498,27 @@ ul.linkList li {
 #about-us .label{
 	color:#ffffff;
 }
-#press-releases {
+#box-press-releases {
 	background-image: url(press_releases.gif);
 	background-repeat:no-repeat;
 }
-#useful-articles {
+#box-useful-articles {
 	display:none;
 	background-image: url(useful_articles.gif);
 	background-repeat:no-repeat;
 }
-#useful-articles .label{
+#box-useful-articles .label{
 	color:#ffffff;
 }
-#campaigns {
+#box-box-campaigns {
 	background-image: url(campaigns.gif);
 	background-repeat:no-repeat;
 }
-#photos-logos {
+#box-photos-logos {
 	background-image: url(photos_logos.gif);
 	background-repeat:no-repeat; 
 }
-#publications {
+#box-publications {
 	background-image: url(publication.gif);
 	background-repeat:no-repeat;
 	clear:right;
