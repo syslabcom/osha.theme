@@ -491,11 +491,11 @@ ul.linkList li {
 	margin-right:0px;
 	clear:both;
 }
-#about-us {
+#box-about-us {
 	background-image: url(about_us.gif);
 	background-repeat:no-repeat;
 }
-#about-us .label{
+#box-about-us .label{
 	color:#ffffff;
 }
 #box-press-releases {
@@ -510,7 +510,7 @@ ul.linkList li {
 #box-useful-articles .label{
 	color:#ffffff;
 }
-#box-box-campaigns {
+#box-campaigns {
 	background-image: url(campaigns.gif);
 	background-repeat:no-repeat;
 }
