@@ -17,7 +17,7 @@
             <a tal:content="title" 
                 tal:attributes="href string:$result_url/view"
                 rel="nofollow" />
-                
+
             <span:notanon tal:condition="not:isAnon" style="font-weight: normal;" >
                 [<a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a> |
                 <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/content_status_history">Modify workflow</a>]
@@ -110,6 +110,9 @@
                     </tal:define>
                 </tal:Subject>
             </span>
+            <br />
+            <img src="link_external.gif"> <a tal:attributes="href string:$url"
+            rel="nofollow" tal:content="url">Remote URL</a>
             <div class="visualClear" ></div>
         </dd>
         

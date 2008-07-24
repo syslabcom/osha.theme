@@ -211,9 +211,8 @@
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 
         <!-- Snapshot code -->
-        <script type="text/javascript" src="http://shots.snap.com/ss/9546198046d69719d86ad9ba1aee068e/snap_shots.js"></script>
+        <script type="text/javascript" src="http://shots.snap.com/ss/8c2016f0b237f14c8e18548d26c3d103/snap_shots.js"></script>
     </div>
-    <!-- <span style="color:#ccc;">query: <span tal:replace="query" /></span>  -->
     
   </div>
 
