@@ -110,9 +110,11 @@
                     </tal:define>
                 </tal:Subject>
             </span>
-            <br />
-            <img src="link_external.gif"> <a tal:attributes="href string:$url"
-            rel="nofollow" tal:content="url">Remote URL</a>
+            <tal:url condition="url">
+                <br />
+                <img src="link_external.gif"> <a tal:attributes="href string:$url"
+                rel="nofollow" tal:content="url">Remote URL</a>
+            </tal:url>
             <div class="visualClear" ></div>
         </dd>
         
