@@ -327,6 +327,22 @@
         permission="zope2.View"
     />
 
+
+  <browser:page
+      name="oshevents"
+      for="*"
+      permission="zope2.View"
+      class=".oshevents.EventListingView"
+      attribute="upcomingEvents"
+      />
+
+  <browser:page
+      name="past_oshevents"
+      for="*"
+      permission="zope2.View"
+      class=".oshevents.EventListingView"
+      attribute="pastEvents"
+      />
     
     <browser:page
         for="*"
