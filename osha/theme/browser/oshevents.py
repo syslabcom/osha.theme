@@ -45,6 +45,7 @@ class EventListingView(object):
         if reverse:
             query.update(end={'query': DateTime(),
                               'range': 'max'})
+            query['sort_order'] = 'reverse'
         else:
             query.update(end={'query': DateTime(),
                               'range': 'min'})
@@ -53,16 +54,6 @@ class EventListingView(object):
             query.update(Subject=kw)
         results = catalog(query)
 
-
-#        provider = interfaces.IEventProvider(self.context)
-#        now = datetime.datetime.now()
-#        events = list(provider.gather_events(start=start, stop=stop, 
-#                                             **self.request.form))
-#        import pdb; pdb.set_trace()
-#        events.sort()
-#        # If this is an archive, revert the event list.
-#        if reverse:
-#            events.reverse()
         months = []
         month_info = []
         old_month_year = None
