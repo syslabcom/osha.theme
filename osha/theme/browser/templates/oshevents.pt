@@ -44,7 +44,10 @@
         Past events list</a>
     </tal:span>
 
-   <h1 i18n:domain="plone" i18n:translate="Events">Events</h1>
+   <h1 tal:condition="not:options/show_past" i18n:domain="plone" 
+        i18n:translate="box_upcoming_events">Upcoming events...</h1>
+   <h1 tal:condition="options/show_past" i18n:domain="plone" 
+        i18n:translate="box_previous_events">Previous events...</h1>
    <div class="eventlist">
      <div class="eventlist_month" tal:repeat="month options/months">
        <h2>
