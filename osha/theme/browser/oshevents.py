@@ -108,4 +108,26 @@ class EventListingView(object):
             return ''
         provider.update()
         return provider.render()
- 
+
+    def calendarLink(self):
+        # compute a link to the "closest" calendar
+        context = Acquisition.aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
+        query = dict(portal_type="Folder",
+                    path=navigation_root_path,
+                    object_provides="p4a.calendar.interfaces.ICalendarEnhanced"
+                    )
+        res = catalog(query)
+        if len(res):
+            calurl = None
+            pathelems = 0
+            for r in res:
+                pe = len(r.getPath().split('/'))
+                if pathelems==0 or pe < pathelems:
+                    calurl = r.getURL()
+                    pathelems = pe
+            return "%s/month.html" % calurl
+        return ""
