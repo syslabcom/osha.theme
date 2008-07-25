@@ -101,7 +101,7 @@ class Renderer(base.Renderer):
 
     @memoize
     def url(self):
-        return self.data.url
+        return "%s?sourceid=banner" % self.data.url
 
     @memoize
     def show_box(self):
@@ -148,7 +148,7 @@ class Renderer(base.Renderer):
             major=""
             minor=""
         if typ=='application/x-shockwave-flash':
-            return self.flash_snippet(url=ob.absolute_url(), width=self.data.width, height=self.data.height, alt=self.title(), title=self.title())
+            return self.flash_snippet(url="%s?sourceid=banner" % ob.absolute_url(), width=self.data.width, height=self.data.height, alt=self.title(), title=self.title())
         elif major=='image':
             return self.get_object().tag(height=self.data.height, width=self.data.width, alt=self.title(), title=self.title())
         else:
