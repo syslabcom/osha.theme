@@ -33,7 +33,7 @@
 
     <tal:block replace="structure view/render_filter"/>
 <span i18n:translate="view">View:</span> <span tal:condition="view/calendarLink"><a class="view_link" 
-    href="month.html" tal:attributes="href view/calendarLink" i18n:translate="month">Month</a> |</span>
+    href="month.html" tal:attributes="href view/calendarLink" i18n:domain="osha" i18n:translate="Calendar">Month</a> |</span>
     <tal:span tal:condition="options/show_past">
       <a class="view_link" href="oshevents" i18n:translate="Event_list">
         Event list</a> | Past events list
