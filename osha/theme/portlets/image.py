@@ -101,7 +101,9 @@ class Renderer(base.Renderer):
 
     @memoize
     def url(self):
-        return "%s?sourceid=banner" % self.data.url
+        if self.data.url:
+            return "%s?sourceid=banner" % self.data.url
+        return u''
 
     @memoize
     def show_box(self):
