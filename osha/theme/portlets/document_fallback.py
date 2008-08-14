@@ -1,4 +1,4 @@
-import Acquisition
+import Acquisition, re
 from zope.interface import implements
 from zope.component import getMultiAdapter
 
@@ -21,6 +21,8 @@ from Products.CMFCore.utils import getToolByName
 
 from osha.theme import OSHAMessageFactory as _
 from plone.portlet.collection import PloneMessageFactory as _plone
+
+IDS_FOR_TRACKING = ['top5']
 
 class IDocumentFallbackPortlet(IPortletDataProvider):
     """A portlet which renders the contents of a Document object and provides fallback to the canonical object.
@@ -75,6 +77,7 @@ class Renderer(base.Renderer):
         context = Acquisition.aq_base(self.context)
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
+        self.myid = self.data.target_document.split('/')[-1]
 
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
@@ -119,12 +122,14 @@ class Renderer(base.Renderer):
         f = self.fallback(self.preflang)
         if f is None:
             return ''
-        return f.getText()
+        text = f.getText()
+        if self.myid in IDS_FOR_TRACKING:
+            text = self.modifyLinks(text)
+        return text
 
 
     @memoize
     def fallback(self, preflang):
-                
         doc = self.document()
         if doc is None:
             return None
@@ -133,8 +138,22 @@ class Renderer(base.Renderer):
             canonical = doc.getCanonical()   
             return canonical
         return pref
-        
-            
+
+
+    def replace_link(self, mobj):
+        link = mobj.group(1)
+        text = mobj.group(0).replace(link, '%s?sourceid=%s' %(link, self.myid))
+        return text
+
+    def modifyLinks(self, text):
+        """ Append ?sourceid=document's id to all links """
+        pattstr = "\<a.*?href=[\"'](.*?)[\"']"
+        patt = re.compile(pattstr, re.I|re.S)
+        mobj = patt.search(text)
+        if mobj:
+            text = patt.sub(self.replace_link, text)
+        return text
+
     @memoize
     def document(self):
         """ get the document the portlet is pointing to
