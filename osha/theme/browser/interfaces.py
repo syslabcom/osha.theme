@@ -170,6 +170,11 @@ class IOSHA(Interface):
     def makeAbsoluteUrls(text):
         """ make absolute urls out of relative urls """
 
+    def subsiteRootUrl():
+        """ return URL of subsite """
+    def subsiteRoolPath():
+        """ return path of subsite """
+
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions

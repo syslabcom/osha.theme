@@ -13,6 +13,7 @@ from osha.policy.interfaces import ISingleEntryPoint
 from Products.CMFLinkChecker.utils import retrieveHTML, retrieveSTX
 from urlparse import urljoin
 from zope.component import getMultiAdapter
+from slc.subsite.root import getSubsiteRoot
 
 
 class OSHA(BrowserView):
@@ -214,5 +215,13 @@ class OSHA(BrowserView):
             if not link.startswith('mailto'):
                 text = text.replace(link, urljoin(au, link))
         return text
+
+
+    def subsiteRootPath(self):
+        return getSubsiteRoot(Acquisition.aq_inner(self.context))
+
+    def subsiteRootUrl(self):
+        rootPath = self.subsiteRootPath()
+        return self.request.physicalPathToURL(rootPath)
 
 #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
