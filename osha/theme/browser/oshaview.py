@@ -10,7 +10,7 @@ from plone.memoize import ram
 from Products.PlacelessTranslationService import getTranslationService
 from osha.theme.config import *
 from osha.policy.interfaces import ISingleEntryPoint
-from Products.CMFLinkChecker.utils import retrieveHTML, retrieveSTX
+from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
 from urlparse import urljoin
 from zope.component import getMultiAdapter
 from slc.subsite.root import getSubsiteRoot
