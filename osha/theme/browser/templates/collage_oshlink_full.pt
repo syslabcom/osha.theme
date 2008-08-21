@@ -1,0 +1,139 @@
+<tal:manager replace="structure provider:collage.ContentManager" />
+
+<tal:block define="provider_helper here/@@provider_helper; 
+                   ext_url here/getRemoteUrl|string:;
+                   ploneview python:here.restrictedTraverse('@@plone');
+                   ">
+
+    <h1><img src=""
+        tal:attributes="src string:${here/portal_url}/oshlink_icon.gif" alt="here/portal_type" i18n:attributes="alt"/> 
+        <span tal:replace="here/Title |nothing" /> 
+    </h1>
+
+    <span class="documentByLine">
+        <span i18n:translate="label_published">published:</span> 
+        <span tal:on-error="python:ploneview.toLocalizedTime('2000/01/01', long_format=0)"
+              tal:replace="python:ploneview.toLocalizedTime(here.getPublication_date(), long_format=False)"/>
+    </span>
+
+    <p tal:define="descr here/Description|nothing"
+       tal:condition="descr"
+       tal:content="structure descr" />
+
+
+    <fieldset>
+        <legend i18n:translate="label_metadata">Metadata</legend>
+        
+        <div class="field" tal:define="res_url python:ext_url and ext_url!=None and ext_url or ''" 
+           tal:condition="python:res_url">
+            <label i18n:translate="label_more_information">More Information</label> 
+            <div>
+                <a class="link-leave" rel="nofollow"
+                   href="" tal:attributes="href res_url" 
+                   tal:content="res_url" />
+            </div>
+        </div>
+
+        <div class="field" tal:define="langs here/getRemoteLanguage" tal:condition="python:langs">
+            <label i18n:translate="label_available_languages">Available in the following languages</label> 
+            <div tal:define="gc python:here.portal_languages.getNameForLanguageCode">
+                    <span tal:replace="python:', '.join([gc(x) for x in langs])" />
+            </div>
+        </div>
+
+        <div class="field" tal:define="cc python:here.getCountry()" tal:condition="python:cc">
+            <label i18n:translate="label_applicable_countries">Applicable to the following countries</label> 
+            <div tal:define="cdict python:here.portal_countryutils.getCountryIsoDict()">
+                    <span tal:replace="python:', '.join([cdict.get(x, x) for x in cc])" />
+            </div>
+        </div>
+
+        <div class="field" tal:define="einecs python:here.getEinecs().strip()" tal:condition="python:einecs">
+            <label i18n:translate="label_einecs">EINECS Code</label> 
+            <div tal:content="python:', '.join(einecs.split('\n'))">
+            </div>
+        </div>
+
+        <div class="field" tal:define="cas python:here.getCas().strip()" tal:condition="python:cas">
+            <label i18n:translate="label_cas">CAS Code</label> 
+            <div tal:content="python:', '.join(cas.split('\n'))">
+            </div>
+        </div>
+        
+    </fieldset>
+
+
+
+    <tal:block  
+         tal:define="providers here/getRemoteProvider;
+         oldStyleProvider here/getProvider" 
+         tal:condition="python:providers or oldStyleProvider">
+    <fieldset>
+         <legend i18n:translate="provider_of_information">Provider of this information</legend>
+
+         <dl tal:condition="providers">
+         <tal:repeat tal:repeat="provider providers">
+             <dt>
+                 <a rel="nofollow" href="" tal:attributes="href provider/absolute_url" tal:content="provider/Title" />
+             </dt>
+             <dd>
+             <p tal:condition="provider/Description" tal:content="structure provider/Description"></p>
+             
+             <div class="field">
+                 <span tal:define="contact_url provider/getContact_url |nothing; email provider/getEmail | nothing" 
+                       tal:condition="contact_url | email">
+                       <label i18n:translate="label_contact"> Contact:</label><br>
+                       <span tal:condition="email"><a rel="nofollow" tal:attributes="href string:mailto:${email}" tal:content="email"/><br></span>
+                       <span tal:condition="contact_url"><a rel="nofollow" tal:attributes="href string:${contact_url}" tal:content="contact_url"/><br></span>
+                 </span>
+             </div>
+             
+             <div class="field">
+                 <label i18n:translate="label_url">Url:</label>
+                 <div>
+                 <a rel="nofollow" class="link" href="" tal:attributes="href provider/getRemoteUrl" tal:content="provider/getRemoteUrl" />
+                 </div>
+             </div>
+            </dd>
+        </tal:repeat>
+        </dl>
+        <dl tal:condition="not:providers">
+            <dt tal:content="oldStyleProvider">oldStyleProvider</dt>
+        </dl>
+    </fieldset>
+    </tal:block>
+
+
+    
+    <tal:block define="sections here/getRelatedSections">
+    <fieldset tal:condition="sections">               
+        <legend i18n:translate="legend_oshcontent_featurelist">Features including this element</legend>
+        
+        <dl>
+            <tal:block repeat="section sections">
+                <dt>
+                    <a href="" tal:attributes="href string:${section/url}"
+                        tal:content="section/title">Feature title</a>
+                </dt>
+            </tal:block>
+        </dl>            
+    </fieldset>
+    </tal:block>
+    
+    <tal:block define="terms here/getRelatedTerms">
+    <fieldset tal:condition="terms">
+         <legend i18n:translate="legend_oshcontent_keywordlist">Similar Information by keyword</legend>
+
+         <dl>
+            <tal:block repeat="term terms">
+            <dt>
+                <a href=""
+                   tal:attributes="href string:${term/url}"
+                   tal:content="string: ${term/title} (${term/id})">MT Subject</a>
+            </dt>
+            </tal:block>
+        </dl>
+    </fieldset>
+    </tal:block>
+
+</tal:block>

@@ -525,6 +525,26 @@
      menu="collage-views"
      title="oshmail"
      />
+     
+  <browser:page
+     name="oshlink"
+     for="Products.OSHContentLink.OSH_Link.OSH_Link"
+     permission="zope.Public"
+     template="templates/collage_oshlink.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="oshlink"
+     />     
+
+  <browser:page
+    name="oshlinkfull"
+    for="Products.OSHContentLink.OSH_Link.OSH_Link"
+    permission="zope.Public"
+    template="templates/collage_oshlink_full.pt"
+    class="Products.Collage.browser.views.BaseView"
+    menu="collage-views"
+    title="oshlink full"
+    />
 
   <browser:page
      name="teaser"
