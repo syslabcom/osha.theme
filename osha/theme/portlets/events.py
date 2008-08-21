@@ -53,16 +53,47 @@ class Renderer(events.Renderer):
         return catalog(query)[:limit]
 
 
+    def calendarLink(self):
+        # compute a link to the "closest" calendar
+        context = aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
+        query = dict(portal_type="Folder",
+                    path=navigation_root_path,
+                    object_provides="p4a.calendar.interfaces.ICalendarEnhanced"
+                    )
+        res = catalog(query)
+        if len(res):
+            calurl = None
+            pathelems = 0
+            for r in res:
+                pe = len(r.getPath().split('/'))
+                if pathelems==0 or pe < pathelems:
+                    calurl = r.getURL()
+                    pathelems = pe
+            return calurl
+        return ""
+
 #    @memoize
     def all_events_link(self):
-        context = aq_inner(self.context)
-        if not context.isPrincipiaFolderish:
-            context = aq_parent(context)
-        return '%s/oshevents' % context.absolute_url()
+        calurl = self.calendarLink()
+        if calurl:
+            return '%s/oshevents' % calurl
+        else:
+            context = aq_inner(self.context)
+            if not context.isPrincipiaFolderish:
+                context = aq_parent(context)
+            return '%s/oshevents' % context.absolute_url()
 
 #    @memoize
     def prev_events_link(self):
-        context = aq_inner(self.context)
-        if not context.isPrincipiaFolderish:
-            context = aq_parent(context)        
-        return '%s/past_oshevents' % context.absolute_url()
+        calurl = self.calendarLink()
+        if calurl:
+            return '%s/past_oshevents' % calurl
+        else:
+            context = aq_inner(self.context)
+            if not context.isPrincipiaFolderish:
+                context = aq_parent(context)        
+            return '%s/past_oshevents' % context.absolute_url()
