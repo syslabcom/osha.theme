@@ -12,7 +12,7 @@
 		        class python: view.getKssClasses('description')"
         tal:condition="here/Description">
     <span metal:define-slot="inside" 
-          tal:replace="here/Description">description</span>
+          tal:replace="structure here/Description">description</span>
   </span>
 </p>
 
