@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
     lang="en"
     metal:use-macro="here/main_template/macros/master"
-    i18n:domain="osha-napo">
+    i18n:domain="osha">
 
     <body>
         <div metal:fill-slot="main" id="linguaToolForms">
@@ -14,26 +14,26 @@
 
        <div tal:replace="structure provider:plone.abovecontenttitle" />
 
+       <h1 tal:content="here/title"></h1>
 
        <div tal:replace="structure provider:plone.belowcontenttitle" />
 
+       <p tal:content="structure here/Description"></p>  
 
        <div tal:replace="structure provider:plone.abovecontentbody" />
 
 
-   <h2 tal:content="here/title"></h2>
-   <p tal:content="structure here/Description"></p>  
-   <tal:block define="films python:view.getFilms()" repeat="filmdata films">
+       <tal:block define="films python:view.getFilms()" repeat="filmdata films">
 
-     <div tal:define="filmid python: filmdata[0]; film python: filmdata[1]" 
-          class="hvlog" 
-          style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;">
-     <div style="margin:10px; float: left;">
-	  <img tal:attributes="src film/image_url"/>
-     </div>
-     <div style="float:left">
+       <div tal:define="filmid python: filmdata[0]; film python: filmdata[1]" 
+            class="hvlog" 
+            style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;">
+       <div style="margin:10px; float: left;">
+	       <img tal:attributes="src film/image_url"/>
+       </div>
+       <div style="float:left">
        <a tal:attributes="href string:napoepisode?filmid=${filmid}">
-      <h3 tal:content="film/title" i18n:translate="" />
+       <h3 tal:content="film/title" i18n:translate="" />
        </a>
      </div>
      <div class="visualClear"></div>

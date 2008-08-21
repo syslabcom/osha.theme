@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
     lang="en"
     metal:use-macro="here/main_template/macros/master"
-    i18n:domain="osha-napo">
+    i18n:domain="osha">
 
 <body>
     <div metal:fill-slot="main">
@@ -11,7 +11,9 @@
     <script src="http://osha.europa.eu/++resource++vPIP/jquery.js" type="text/javascript"></script>
 
     <div tal:replace="structure provider:plone.abovecontenttitle" />
+    <h1 tal:content="here/title"></h1>
     <div tal:replace="structure provider:plone.belowcontenttitle" />
+    <p tal:content="structure here/Description"></p>  
     <div tal:replace="structure provider:plone.abovecontentbody" />
 
     <tal:block define="film python:view.getFilm(request.get('filmid'))">
