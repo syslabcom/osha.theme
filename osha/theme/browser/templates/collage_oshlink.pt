@@ -1,8 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<h2 metal:define-macro="title"
-    style="font-size: large;"
-    >
+<h2 metal:define-macro="title">
   <span metal:define-slot="inside" 
         tal:replace="here/Title">title</span>
 </h2>

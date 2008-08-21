@@ -5,10 +5,10 @@
                    ploneview python:here.restrictedTraverse('@@plone');
                    ">
 
-    <h1><img src=""
+    <h2><img src=""
         tal:attributes="src string:${here/portal_url}/oshlink_icon.gif" alt="here/portal_type" i18n:attributes="alt"/> 
         <span tal:replace="here/Title |nothing" /> 
-    </h1>
+    </h2>
 
     <span class="documentByLine">
         <span i18n:translate="label_published">published:</span> 
