@@ -30,7 +30,11 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('firsttime.pt')
 
-    #@ram.cache(lambda *args: time() // (60 * 60))
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        return (preflang)
+        
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 

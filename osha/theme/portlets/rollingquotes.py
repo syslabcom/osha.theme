@@ -65,12 +65,11 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('rollingquotes.pt')
     
-#     def _render_cachekey(method, self):
-#         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
-#         modified = self.get_object() and self.get_object().modified() or ''
-#         return (modiified, preflang)
-# 
-#     @ram.cache(_render_cachekey)
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        return (preflang)
+
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
             
@@ -79,13 +78,6 @@ class Renderer(base.Renderer):
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')        
         self.portal = portal_state.portal()
 
-
-# 
-#     @property
-#     def available(self):
-#         return self._data()
-#         
-    @memoize
     def title(self):
         return self.data.header
 
@@ -95,6 +87,7 @@ class Renderer(base.Renderer):
         portal_path = portal_url.getPortalPath()
         return '%s%s'%(portal_path,folder)
         
+    @memoize
     def fallback(self, ob, preflang):
         if ob is None:
             return None
@@ -117,9 +110,6 @@ class Renderer(base.Renderer):
         ob = self.fallback(ob, preflang)
         return ob
 
-    @memoize
-    def body(self):
-        print folderlist
 
 
 

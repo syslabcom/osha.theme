@@ -30,8 +30,14 @@ class Assignment(base.Assignment):
 class Renderer(base.Renderer, LinguaLinkPortlet):
 
     _template = ViewPageTemplateFile('lingualink.pt')
-
-    #@ram.cache(render_cachekey)
+    
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        modified = self.context.modified()
+        uid = self.context.UID()
+        return (uid, modified, preflang)
+        
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
@@ -48,6 +54,7 @@ class Renderer(base.Renderer, LinguaLinkPortlet):
         return _(u"LinguaLinks")
         
         
+    @memoize
     def check_access(self):
         portal_membership = getToolByName(self.context, 'portal_membership')
         member = portal_membership.getAuthenticatedMember()
