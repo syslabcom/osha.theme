@@ -2,6 +2,7 @@ from plone.app.portlets.portlets import events
 from DateTime import DateTime
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.memoize.instance import memoize
+from plone.memoize import ram
 from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
@@ -11,8 +12,15 @@ class Renderer(events.Renderer):
     
     _template = ViewPageTemplateFile('events.pt')
 
+    def _render_cachekey(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
+        return (preflang, navigation_root_path)
+
+
     # Add respect to INavigationRoot
-    @memoize
+    @ram.cache(_render_cachekey)
     def _data(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
@@ -52,7 +60,7 @@ class Renderer(events.Renderer):
             query.update(Subject=kw)
         return catalog(query)[:limit]
 
-
+    @memoize
     def calendarLink(self):
         # compute a link to the "closest" calendar
         context = aq_inner(self.context)
@@ -76,7 +84,7 @@ class Renderer(events.Renderer):
             return calurl
         return ""
 
-#    @memoize
+    @memoize
     def all_events_link(self):
         calurl = self.calendarLink()
         if calurl:
@@ -87,7 +95,7 @@ class Renderer(events.Renderer):
                 context = aq_parent(context)
             return '%s/oshevents' % context.absolute_url()
 
-#    @memoize
+    @memoize
     def prev_events_link(self):
         calurl = self.calendarLink()
         if calurl:
