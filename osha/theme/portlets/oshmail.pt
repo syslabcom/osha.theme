@@ -14,7 +14,7 @@
     <dd class="portletItem">
         <span class="image-right"
               tal:condition="portlet_icon">
-            <img tal:replace="structure portlet_icon" />
+            <img src="http://osha.europa.eu/portlet_newsletter_icon.png" alt="OSHMail Logo" title="OSHMail Logo"/>
         </span>
         <a rel="nofollow" href="http://osha.europa.eu/en/news/oshmail/?sourceid=oshmailbanner"> 
             <span tal:omit-tag="" i18n:translate="portlet_oshmail_text">Monthly review of strategic news</span>
