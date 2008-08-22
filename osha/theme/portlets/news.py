@@ -6,6 +6,7 @@ from plone.memoize import ram
 from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
+from plone.memoize.compress import xhtml_compress
 
 class Renderer(news.Renderer):
     """Dynamically override standard header for news portlet"""
@@ -20,7 +21,12 @@ class Renderer(news.Renderer):
     
     # Add respect to INavigationRoot
     # Add support for isNews flag
+    
     @ram.cache(_render_cachekey)
+    def render(self):
+        return xhtml_compress(self._template()) 
+
+    @memoize
     def _data(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')

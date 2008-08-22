@@ -6,6 +6,7 @@ from plone.memoize import ram
 from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
+from plone.memoize.compress import xhtml_compress
 
 class Renderer(events.Renderer):
     """Dynamically override standard header for news portlet"""
@@ -18,9 +19,11 @@ class Renderer(events.Renderer):
         navigation_root_path = portal_state.navigation_root_path()
         return (preflang, navigation_root_path)
 
-
-    # Add respect to INavigationRoot
     @ram.cache(_render_cachekey)
+    def render(self):
+        return xhtml_compress(self._template())
+
+    @memoize
     def _data(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
