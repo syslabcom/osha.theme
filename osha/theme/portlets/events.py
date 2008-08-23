@@ -91,20 +91,20 @@ class Renderer(events.Renderer):
     def all_events_link(self):
         calurl = self.calendarLink()
         if calurl:
-            return '%s/oshevents' % calurl
+            return '%s/events.html' % calurl
         else:
             context = aq_inner(self.context)
             if not context.isPrincipiaFolderish:
                 context = aq_parent(context)
-            return '%s/oshevents' % context.absolute_url()
+            return '%s/events.html' % context.absolute_url()
 
     @memoize
     def prev_events_link(self):
         calurl = self.calendarLink()
         if calurl:
-            return '%s/past_oshevents' % calurl
+            return '%s/past_events.html' % calurl
         else:
             context = aq_inner(self.context)
             if not context.isPrincipiaFolderish:
                 context = aq_parent(context)        
-            return '%s/past_oshevents' % context.absolute_url()
+            return '%s/past_events.html' % context.absolute_url()

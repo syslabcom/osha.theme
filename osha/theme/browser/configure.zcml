@@ -328,7 +328,7 @@
     />
 
 
-  <browser:page
+  <!--browser:page
       name="oshevents"
       for="*"
       permission="zope2.View"
@@ -342,7 +342,7 @@
       permission="zope2.View"
       class=".oshevents.EventListingView"
       attribute="pastEvents"
-      />
+      /-->
 
   <browser:page
       name="month.html" 
