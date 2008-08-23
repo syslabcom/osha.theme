@@ -29,7 +29,8 @@
             allowedKeywords python: here.collectKeywords(fieldName, field.accessor, widget.vocab_source);
             site_props here/portal_properties/site_properties;
             allowRolesToAddKeywords site_props/allowRolesToAddKeywords;
-            value request/subject_existing_keywords|value;">
+            value request/subject_existing_keywords|contentKeywords|value;">
+
 
       <tal:condition condition="python:not widget.roleBasedAdd or [role for role in user.getRolesInContext(here) if role in allowRolesToAddKeywords]">
         <div style="width: 45%; float: right;">
