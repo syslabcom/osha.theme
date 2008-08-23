@@ -26,7 +26,8 @@
                 multilingual_thesaurus request/multilingual_thesaurus|string:;
                 subcategory request/subcategory|string:;
                 link_state request/link_state|string:red;
-                links python:here.portal_linkchecker.reports.LinksInState(state=link_state, b_start=b_start, b_size=b_size, path_filter=path_filter, multilingual_thesaurus=multilingual_thesaurus, subcategory=subcategory); 
+                lc_osha_view nocall:here/@@lc_osha_view;
+                links python:lc_osha_view.LinksInState(state=link_state, b_start=b_start, b_size=b_size, path_filter=path_filter, multilingual_thesaurus=multilingual_thesaurus, subcategory=subcategory); 
                 searchterm request/SearchableText|nothing;
                 ">
     
@@ -44,7 +45,7 @@
     
     <form action="" method="GET">
         <strong>Path filter:</strong> <input type="text" name="path_filter" tal:attributes="value path_filter" size="40" />
-        <strong>State:</strong> <select name="link_state" tal:define="lstates python:['red', 'orange', 'grey']">
+        <strong>State:</strong> <select name="link_state" tal:define="lstates python:['red', 'orange', 'grey', 'green']">
             <option tal:repeat="lstate lstates"
                 tal:attributes="selected python:lstate==link_state and 'selected' or '';
                 value lstate"
