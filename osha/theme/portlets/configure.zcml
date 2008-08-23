@@ -18,6 +18,14 @@
      class=".events.Renderer" 
      />    
 
+    <plone:portlet
+        name="osha.OSHEvents"
+        interface=".oshevents.IEventsPortlet"
+        assignment=".oshevents.Assignment"
+        renderer=".oshevents.Renderer"
+        addview=".oshevents.AddForm"
+        editview=".oshevents.EditForm"
+        />
 
  <!-- Custom risq navigation portlet -->
  <plone:portletRenderer 

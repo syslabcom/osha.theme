@@ -72,6 +72,10 @@
       title="Image/Flash Portlet"
       description="Shows an Image/Flash and falls back to the default language if it is not available in the preferred." />
 
+  <portlet
+      addview="osha.OSHEvents"
+      title="OSHA Events portlet"
+      description="This portlet lists upcoming events. If you select one or more categories, only events with matching them will be shown." />
 
           
 </portlets>
