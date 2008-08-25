@@ -43,8 +43,8 @@ class IEventsPortlet(IPortletDataProvider):
                                 vocabulary="osha.policy.vocabularies.categories")
                             )
 
-    target_calendar = schema.Choice(title=_(u"Target document"),
-                                  description=_(u"Find the document which provides the content"),
+    target_calendar = schema.Choice(title=_(u"Target calendar"),
+                                  description=_(u"Select a calendar where event-listings and the calendar view will be displayed. If you make a Topic into a calendar, only events matching its criteria will be displayed."),
                                   required=True,
                                   source=SearchableTextSourceBinder({'object_provides' : 'p4a.calendar.interfaces.ICalendarEnhanced'},
                                                                     default_query='path:'))
