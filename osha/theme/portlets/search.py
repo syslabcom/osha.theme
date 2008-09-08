@@ -43,17 +43,17 @@ class Renderer(base.Renderer):
     def __init__(self, context, request, view, manager, data):
         base.Renderer.__init__(self, context, request, view, manager, data)
 
-        portal_state = getMultiAdapter((context, request), name=u'plone_portal_state')
-        self.portal_url = portal_state.portal_url()
+        osha_view = getMultiAdapter((context, request), name=u'oshaview')
+        self.subsite_url = osha_view.subsiteRootUrl()
 
     def enable_livesearch(self):
         return self.data.enableLivesearch
 
     def search_form(self):
-        return '%s/search_form' % self.portal_url
+        return '%s/search_form' % self.subsite_url
 
     def search_action(self):
-        return '%s/search' % self.portal_url
+        return '%s/search' % self.subsite_url
 
 
 class AddForm(base.AddForm):
