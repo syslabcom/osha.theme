@@ -14,6 +14,7 @@ from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
 from urlparse import urljoin
 from zope.component import getMultiAdapter
 from slc.subsite.root import getSubsiteRoot
+from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 
 class OSHA(BrowserView):
     implements(IOSHA)
@@ -37,6 +38,16 @@ class OSHA(BrowserView):
             rs.append(dict(title=section.Title, url=section.getURL(), subject=section.Subject ))
         rs.sort(lambda x,y: cmp(x['title'].lower(), y['title'].lower()))
         return rs        
+        
+    def get_subsite_property(self, name):
+        """ return the prop with name from the subsite """
+        subsite_path = self.subsiteRootPath()
+        subsite = self.context.restrictedTraverse(subsite_path)
+        P = PropertiesControlPanelAdapter(subsite)
+        return getattr(P, name)
+                
+                
+        
         
     def getSingleEntryPointsBySubject(self, subjects):
         """ Retrieve all sections implementing ISubsite that match the local Subjects """

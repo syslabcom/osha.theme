@@ -191,6 +191,8 @@ class IOSHA(Interface):
     def subsiteRootPath():
         """ return path of subsite """
 
+    def get_subsite_property(name):
+        """ return the prop with name from the subsite """
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions
