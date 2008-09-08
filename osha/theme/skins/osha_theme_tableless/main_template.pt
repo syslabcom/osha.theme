@@ -5,7 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
       lang="en"
-      tal:define="lang language; kss_inline_editable python:False;"
+      tal:define="lang language; 
+                  kss_inline_editable python:False;
+                  oshaview python:here.restrictedTraverse('@@oshaview')"
       tal:attributes="lang lang;
                       xml:lang lang">
 
@@ -29,7 +31,7 @@
 
     <div tal:replace="structure provider:plone.htmlhead" />
 
-    <meta tal:define="metatags python:here.restrictedTraverse('@@oshaview').listMetaTags(here).items()"
+    <meta tal:define="metatags python:oshaview.listMetaTags(here).items()"
           tal:condition="metatags"
           tal:repeat="keyval metatags"
           tal:attributes="name python:keyval[0];
@@ -41,6 +43,15 @@
                tal:content="string:@import url($portal_url/IEFixes.css);">
         </style>
     <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
+
+    <!-- Subsite CSS Support -->
+    <tal:subsite define="subsite_url oshaview/subsiteRootPath; 
+         subsite python:portal.restrictedTraverse(subsite_url)">
+        <style type="text/css" media="all" tal:condition="exists: subsite/subsite.css"
+               tal:content="string:@import url($subsite_url/subsite.css);">
+        </style>
+    </tal:subsite>
+
 
     <link tal:replace="structure provider:plone.htmlhead.links" />
 
