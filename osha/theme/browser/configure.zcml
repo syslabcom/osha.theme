@@ -6,11 +6,51 @@
     <include package="plone.app.portlets" />
     <include package="p4a.subtyper" />
 
-    <!-- OSHA RollingQUotes Tool -->
+    <!-- OSHA RollingQuotes Tool -->
     <browser:resource
     	name="rollingquote.kss"
-	file="rollingquote.kss"
-	/>
+    	file="rollingquote.kss"
+	    />
+
+
+    <!-- OSHA Properties panel -->
+
+    <utility
+        component=".osha_properties_controlpanel.AvailableLanguagesVocabularyFactory"
+        name="osha.vocabularies.AvailableLanguages"
+        />
+
+    <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter" 
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        />
+        
+    <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter" 
+        for="slc.subsite.interfaces.ISubsiteEnhanced"
+        />
+            
+    <!--browser:page
+        for="*"
+        name="site_settings"
+        class=".osha_properties_controlpanel.SettingsView"
+        permission="zope.Public"
+        allowed_interface=".osha_properties_controlpanel.ISettingsView"
+        /-->      
+
+    <browser:page
+        name="oshaprops-controlpanel"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".osha_properties_controlpanel.PropertiesControlPanel"
+        permission="cmf.ManagePortal"
+        />   
+        
+    <browser:page
+        name="oshaprops-controlpanel"
+        for="slc.subsite.interfaces.ISubsiteEnhanced"
+        class=".osha_properties_controlpanel.PropertiesControlPanel"
+        permission="cmf.ManagePortal"
+        />                  
+
+
     <!-- OSHA Tool view -->
     <browser:page
         for="*"
