@@ -85,12 +85,13 @@ def ensureFriendlyTypes(query):
         
 def rootAtNavigationRoot(query):
     if 'path' not in query:
+        oshaview = context.restrictedTraverse('@@oshaview')
         # special fish for osha subsite detection
-        navroot_path = getNavigationRoot(context)
-        navroot = context.restrictedTraverse(navroot_path)
+        subsite_path = oshaview.subsiteRootPath()
+        navroot = context.restrictedTraverse(subsite_path)
         # only add the path of the navroot if it also is a subsite!
         if isSubsite(navroot):
-            query['path'] = navroot_path
+            query['path'] = subsite_path
         
 # Avoid creating a session implicitly.
 for k in REQUEST.keys():
@@ -136,7 +137,6 @@ if show_query:
         ST = query.get('SearchableText', None)
         if ST is not None:
             query['SearchableText'] = {'query': ST, 'ranking_maxhits': 10000}
-        #logit(str(query))
         results = catalog(**query)
     except ParseError:
         pass
