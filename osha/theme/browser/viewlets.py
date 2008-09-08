@@ -13,6 +13,7 @@ from plone.app.portlets.cache import get_language
 from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 from Products.LinguaPlone.interfaces import ITranslatable
 from plone.app.i18n.locales.browser.selector import LanguageSelector
+from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 
 from osha.theme.config import *
 
@@ -102,6 +103,20 @@ class OSHASiteActionsViewlet(common.SiteActionsViewlet):
 
     render = ViewPageTemplateFile('templates/site_actions.pt')
 
+    def get_site_slogan(self):
+        """ return the site or subsite slogan """
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        defaultlang = getToolByName(self.context, 'portal_languages').getDefaultLanguage()
+        
+        oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
+        subsite_path = oshaview.subsiteRootPath()
+        subsite = self.context.restrictedTraverse(subsite_path)
+        P = PropertiesControlPanelAdapter(subsite)
+        slogans = [(x.language, x.text) for x in P.site_slogan]
+        slogans = dict(slogans)
+        return slogans.get(preflang, slogans.get(defaultlang, 'European Agency for Safety and Health at Work'))
+        
+        
 
 class OSHANetworkchooser(common.ViewletBase):
 
