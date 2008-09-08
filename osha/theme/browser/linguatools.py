@@ -1,4 +1,4 @@
-import Acquisition
+import Acquisition, types
 from time import time
 from osha.theme.browser.interfaces import ILinguaToolsView
 from Products.CMFCore.utils import getToolByName
@@ -43,7 +43,8 @@ class LinguaToolsView(BrowserView):
             self.result=self.propagatePortlets() 
 
         if self.request.has_key("form.button.addLanguageTool"):
-            self.result=self.addLanguageTool() 
+            languages = self.request.get('languages', [])
+            self.result=self.addLanguageTool(languages) 
 
         if self.request.has_key("form.button.reindexer"):
             self.result=self.reindexer() 
@@ -446,10 +447,15 @@ class LinguaToolsView(BrowserView):
                 newob.manage_afterClone(newob)
 
                 notify(ObjectClonedEvent(newob))
+                languages = kw.get('languages', None)
                 if languages:
-                    newob.supported_langs = list(languages)
+                    if isinstance(languages, tuple):
+                        languages = list(languages)
+                    elif isinstance(languages, types.StringType) or isinstance(languages, types.UnicodeType):
+                        languages = [languages]
+                    newob.supported_langs = languages
                 return ["Added language tool to %s" % ob.getId()]
-        return self._forAllLangs(_setter)
+        return self._forAllLangs(_setter, languages=languages)
 
 
     def subtyper(self, subtype):
