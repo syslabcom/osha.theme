@@ -150,7 +150,7 @@ class INapoEpisodeView(Interface):
 class IOSHA(Interface):
     """ A tool view with OSHA specifics """
     
-    def cropText(text, length, ellipsis):
+    def cropHtmlText(text, length, ellipsis):
         """ Crop text on a word boundary """
         
     def listMetaTags(context):
@@ -164,15 +164,31 @@ class IOSHA(Interface):
         """ returns a list of tuples, that contain key and title of Categories (Subject)
         ordered by Title """
 
-    def getCurrentSingleEntryPoint(self):
+    def getCurrentSingleEntryPoint():
         """ returns the SEP in the current path if we are inside one. None otherwise """
+
+    def getSingleEntryPoints():
+        """ Retrieve all sections implementing ISubsite that match the local Subjects """
+
+    def getSingleEntryPointsBySubject(subjects):
+        """ Retrieve all sections implementing ISubsite that match the local Subjects """
+
+    def getGermanNetwork():
+        """ returns the sites from the European Network """
+        
+    def getEuropeanNetwork():
+        """ returns the sites from the European Network """
+    
+    def getInternationalNetwork():
+        """ returns the sites from the European Network """
 
     def makeAbsoluteUrls(text):
         """ make absolute urls out of relative urls """
 
     def subsiteRootUrl():
         """ return URL of subsite """
-    def subsiteRoolPath():
+
+    def subsiteRootPath():
         """ return path of subsite """
 
     

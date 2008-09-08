@@ -18,7 +18,6 @@
         class=".oshaview.OSHA"
         permission="zope.Public"
         allowed_interface=".interfaces.IOSHA"
-        allowed_attributes="cropHtmlText getSingleEntryPoints getSingleEntryPointsBySubject"
         />
 
     <!-- OSHA Tool view -->

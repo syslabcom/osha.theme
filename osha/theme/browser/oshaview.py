@@ -15,7 +15,6 @@ from urlparse import urljoin
 from zope.component import getMultiAdapter
 from slc.subsite.root import getSubsiteRoot
 
-
 class OSHA(BrowserView):
     implements(IOSHA)
 
@@ -216,11 +215,12 @@ class OSHA(BrowserView):
                 text = text.replace(link, urljoin(au, link))
         return text
 
-
     def subsiteRootPath(self):
+        """ return URL of subsite """
         return getSubsiteRoot(Acquisition.aq_inner(self.context))
 
     def subsiteRootUrl(self):
+        """ return path of subsite """
         rootPath = self.subsiteRootPath()
         return self.request.physicalPathToURL(rootPath)
 
