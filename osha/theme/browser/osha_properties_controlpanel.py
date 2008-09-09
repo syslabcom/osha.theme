@@ -116,7 +116,7 @@ class TitleLanguagePair:
 class ILogoSchema(Interface):
     logo_url = TextLine(title=_(u"Link to the site logo (on the right)"),
                         description=_(u"Place here the path to your logo. Make sure it has the proper dimensions (104pxx92px)."),
-                        default='img/topbanner2.jpg',
+                        default=u'img/topbanner2.jpg',
                         required=False
     )
 
