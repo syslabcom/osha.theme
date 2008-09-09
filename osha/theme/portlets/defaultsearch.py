@@ -14,12 +14,16 @@ class Renderer(search.Renderer):
     def __init__(self, context, request, view, manager, data):
         search.Renderer.__init__(self, context, request, view, manager, data)
 
+        self.language = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+
         osha_view = getMultiAdapter((context, request), name=u'oshaview')
         self.subsite_url = osha_view.subsiteRootUrl()
 
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
-        return (preflang)
+        osha_view = getMultiAdapter((self.context, self.context.request), name=u'oshaview')
+        subsite_url = osha_view.subsiteRootUrl()
+        return (preflang, subsite_url)
         
     @ram.cache(_render_cachekey)
     def render(self):
@@ -29,10 +33,10 @@ class Renderer(search.Renderer):
         return False
 
     def search_form(self):
-        return '%s/search_form' % self.subsite_url
+        return '%s/%s/search_form' % (self.subsite_url, self.language)
 
     def search_action(self):
-        return '%s/search' % self.subsite_url
+        return '%s/%s/search' % (self.subsite_url, self.language)
 
     def index_alphabetical(self):
-        return '%s/%s/@@index_alphabetical' %(self.subsite_url, getToolByName(self.context, 'portal_languages').getPreferredLanguage())
+        return '%s/%s/@@index_alphabetical' %(self.subsite_url, self.language)
