@@ -13,7 +13,7 @@
       media='all'
       title='Linkchecker Stylesheet'
       tal:condition='here/lc_colors.css'
-      tal:attributes='href here/lc_colors.css/absolute_url' />
+      tal:attributes="href python:here.portal_url()+'/lc_colors.css'" />
   </metal:css>
   
   <metal:block metal:fill-slot="main"
@@ -43,7 +43,7 @@
       Up to balanced score card
     </a-->
     
-    <form action="" method="GET">
+    <form action="lc_my_dead_links" method="GET">
         <strong>Path filter:</strong> <input type="text" name="path_filter" tal:attributes="value path_filter" size="40" />
         <strong>State:</strong> <select name="link_state" tal:define="lstates python:['red', 'orange', 'grey', 'green']">
             <option tal:repeat="lstate lstates"
