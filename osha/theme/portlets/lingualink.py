@@ -34,8 +34,8 @@ class Renderer(base.Renderer, LinguaLinkPortlet):
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         modified = self.context.modified()
-        uid = self.context.UID()
-        return (uid, modified, preflang)
+        path = "/".join(self.context.getPhysicalPath())
+        return (path, modified, preflang)
         
     @ram.cache(_render_cachekey)
     def render(self):
