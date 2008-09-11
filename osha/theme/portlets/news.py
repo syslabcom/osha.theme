@@ -1,5 +1,5 @@
 from plone.app.portlets.portlets import news
-from Products.AdvancedQuery import Or, Eq, And, In
+from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.memoize.instance import memoize
 from plone.memoize import ram
@@ -7,6 +7,7 @@ from Acquisition import aq_inner, aq_parent
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from plone.memoize.compress import xhtml_compress
+from DateTime import DateTime
 
 class Renderer(news.Renderer):
     """Dynamically override standard header for news portlet"""
@@ -62,7 +63,8 @@ class Renderer(news.Renderer):
         queryBoth = In('review_state', state) & In('path', paths) & In('Language', ['', preflang])
         if kw !='':
             queryBoth = queryBoth & In('Subject', kw)
-        query = And(Or(queryA, queryB), queryBoth)
+        queryEffective = Le('effective', DateTime())
+        query = And(Or(queryA, queryB), queryBoth, queryEffective)
         return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
 
 
