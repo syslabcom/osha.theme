@@ -12,7 +12,6 @@
       rel='stylesheet'
       media='all'
       title='Linkchecker Stylesheet'
-      tal:condition='here/lc_colors.css'
       tal:attributes="href python:here.portal_url()+'/lc_colors.css'" />
   </metal:css>
   
@@ -31,26 +30,27 @@
                 searchterm request/SearchableText|nothing;
                 ">
     
-    <h1 i18n:translate="header_all_links_in_state">
-      All links in state <span i18n:name="state"
+    <h1 class="documentFirstHeading" i18n:translate="header_all_links_in_state">
+      All links in state <u i18n:name="state"
                              i18n:translate="" 
                              tal:content="link_state" />
     </h1>
     
-    <!--a tal:attributes="href string:${here/portal_url}/lc_balanced_score_card"
-       i18n:translate="label_up_to_scorecard" 
-       class="link-parent">
-      Up to balanced score card
-    </a-->
-    
     <form action="lc_my_dead_links" method="GET">
-        <strong>Path filter:</strong> <input type="text" name="path_filter" tal:attributes="value path_filter" size="40" />
-        <strong>State:</strong> <select name="link_state" tal:define="lstates python:['red', 'orange', 'grey', 'green']">
+        <div class="field">
+            <label>Path filter:</label> 
+            <div>
+                <input type="text" name="path_filter" tal:attributes="value path_filter" size="40" />
+            </div>
+        </div>
+        <div class="field">
+            <label>State:</label> <select name="link_state" tal:define="lstates python:['red', 'orange', 'grey', 'green']">
             <option tal:repeat="lstate lstates"
                 tal:attributes="selected python:lstate==link_state and 'selected' or '';
                 value lstate"
             tal:content="lstate"></option>
         </select>
+        </div>
         <div class="field_vocab">
            <metal:use use-macro="here/filter_macros/macros/Subcategory"></metal:use>
         </div>
@@ -99,7 +99,15 @@
         </td-->
       </metal:block>
     </metal:block>
+    
+    <p>
+        <a tal:attributes="href string:${here/portal_url}/lc_csv_export?link_state=${link_state}">
+            Download <span tal:replace="link_state"/> links as CSV
+        </a>
+    </p>  
   </metal:block>
+  
+
 </html>
 
 
