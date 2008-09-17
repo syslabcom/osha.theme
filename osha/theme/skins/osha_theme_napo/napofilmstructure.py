@@ -1,5 +1,3 @@
-
-
 Films = [
         ('id_napo_film_9', {
             'title': 'title_napo_film_9',       
@@ -365,8 +363,8 @@ Films = [
         ('id_napo_film_3', {
             'title': 'title_napo_film_3',       
             'description': 'description_napo_film_3',
-            'durlavi': 'http://media.osha.europa.eu/napo3/napo3.avi', 
-            'durlwmv': 'http://media.osha.europa.eu/napo3/napo3.wmv',
+            'durlavi': 'http://media.osha.europa.eu/napo3/Napo3.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/napo3/Napo3.wmv',
             'image_url': 'http://media.osha.europa.eu/napo3/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_3_0'
@@ -422,27 +420,27 @@ Films = [
         ('id_napo_film_2', {
             'title': 'title_napo_film_2',       
             'description': 'description_napo_film_2',
-            'durlavi': 'http://media.osha.europa.eu/napo2/napo2.avi', 
-            'durlwmv': 'http://media.osha.europa.eu/napo2/napo2.wmv',
+            'durlavi': 'http://media.osha.europa.eu/napo2/Napo2.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/napo2/Napo2.wmv',
             'image_url': 'http://media.osha.europa.eu/napo2/preview.jpg',
             'episodes' : [
                     { 'id': 'id_napo_episode_2_0'
                     , 'title': 'title_napo_episode_2_0'
-                    , 'image_url': 'http://media.osha.europa.eu/napo2/thumbnails/N2-00_start.jpg'
+                    , 'image_url': 'http://media.osha.europa.eu/napo2/thumbnails/N2-00-start.jpg'
                     , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-00-start.avi'
                     , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-00-start.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_2_1'
                     , 'title': 'title_napo_episode_2_1'
                     , 'image_url': 'http://media.osha.europa.eu/napo2/thumbnails/N2-01-the_importance_of_sig.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-01-the_importance_of_signpostin.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-01-the_importance_of_signpostin.wmv'                
+                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-01-the_importance_of_signposting.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-01-the_importance_of_signposting.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_2_2'
                     , 'title': 'title_napo_episode_2_2'
                     , 'image_url': 'http://media.osha.europa.eu/napo2/thumbnails/N2-02-signposting_is_not_su.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-02-signposting_is_notsufficient.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-02-signposting_is_notsufficient.wmv'                
+                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-02-signposting_is_not_sufficient.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-02-signposting_is_not_sufficient.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_2_3'
                     , 'title': 'title_napo_episode_2_3'
@@ -453,14 +451,14 @@ Films = [
                     { 'id': 'id_napo_episode_2_4'
                     , 'title': 'title_napo_episode_2_4'
                     , 'image_url': 'http://media.osha.europa.eu/napo2/thumbnails/N2-04-choose_public_transports.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-04-choose-public-transports.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-04-choose-public-transports.wmv'                
+                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-04-choose_public_transports.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-04-choose_public_transports.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_2_5'
                     , 'title': 'title_napo_episode_2_5'
-                    , 'image_url': 'http://media.osha.europa.eu/napo2/thumbnails/N2-05-the_right_protection.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-05-signposting_is_not_sufficient.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-05-signposting_is_not_sufficient.wmv'                
+                    , 'image_url': 'http://media.osha.europa.eu/napo2/thumbnails/N2-05-the_right_protection_.jpg'
+                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-05-the_right_protection.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-05-the_right_protection.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_2_6'
                     , 'title': 'title_napo_episode_2_6'
@@ -539,7 +537,7 @@ Films = [
                     } ,
                     { 'id': 'id_napo_episode_1_7'
                     , 'title': 'title_napo_episode_1_7'
-                    , 'image_url': 'http://media.osha.europa.eu/napo1/thumbnails/N1-07-mantantory_signs.jpg'
+                    , 'image_url': 'http://media.osha.europa.eu/napo1/thumbnails/N1-07-mandantory_signs.jpg'
                     , 'durlavi': 'http://media.osha.europa.eu/napo1/N1-07-mandantory_signs.avi'
                     , 'durlwmv': 'http://media.osha.europa.eu/napo1/N1-07-mandantory_signs.wmv'                
                     } ,
@@ -608,5 +606,3 @@ Films = [
         ]   
 
 return Films
-
-
