@@ -31,9 +31,6 @@
 <div metal:fill-slot="main"
      class="p4acalendar">
 
-<style type="text/css">
-  .largerArrow {font-size:150%; font-weight:bold;}
-</style>
 
   <tal:block tal:repeat="day view/alldays">
      <div id=""
@@ -78,13 +75,15 @@
        class="previous"
        title="Previous month"
        i18n:attributes="title"
-       tal:attributes="href view/prev_month_link"><span class="largerArrow">&larr;</span></a>
+       tal:attributes="href view/prev_month_link"><img src="arrowLeftDouble.gif" 
+        tal:attributes="src string:$portal_url/arrowLeftDouble.gif" /></a>
     <span tal:replace="view/month"></span> <span tal:replace="view/year"></span>
     <a href=""
        class="next"
        title="Next month"
        i18n:attributes="title"
-       tal:attributes="href view/next_month_link"><span class="largerArrow">&rarr;</span></a>
+       tal:attributes="href view/next_month_link"><img src="arrowRightDouble.gif" 
+        tal:attributes="src string:$portal_url/arrowRightDouble.gif"/></a>
   </h1>
 
   <div class="month">
