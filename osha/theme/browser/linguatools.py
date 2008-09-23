@@ -19,6 +19,7 @@ from OFS.event import ObjectWillBeMovedEvent
 from OFS.event import ObjectClonedEvent
 from Products.PloneLanguageTool.LanguageTool import LanguageTool
 from p4a.subtyper.interfaces import ISubtyper
+from slc.subsite.root import getSubsiteRoot
 
 from Products.PlacelessTranslationService import getTranslationService
 
@@ -147,8 +148,11 @@ class LinguaToolsView(BrowserView):
         self.request = request
         self.result = []
         self.portal_url = getToolByName(context, 'portal_url')
-        self.portal_path = self.portal_url.getPortalPath()
-        self.portal = self.portal_url.getPortalObject()
+	# Need to be mindful of a potential subsite!
+	self.portal_path = getSubsiteRoot(self.context)
+        ###self.portal_path = self.portal_url.getPortalPath()
+        ###self.portal = self.portal_url.getPortalObject()
+	self.portal = context.restrictedTraverse(self.portal_path)
         self.portal_languages = getToolByName(context, 'portal_languages')
         self.langs = self.portal_languages.getSupportedLanguages()
         self.dynamic_path = self.portal_path + '/%s/' + "/".join(context.getPhysicalPath()[len(self.portal.getPhysicalPath())+1:])
