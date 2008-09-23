@@ -23,14 +23,18 @@
           tal:attributes="src string:${context/++resource++p4acalendar/calendar.js}">
   </script>
   </metal:block>
-  
+
 </head>
 
 <body>
 
 <div metal:fill-slot="main"
      class="p4acalendar">
-            
+
+<style type="text/css">
+  .largerArrow {font-size:150%; font-weight:bold;}
+</style>
+
   <tal:block tal:repeat="day view/alldays">
      <div id=""
           style="visibility:hidden"
@@ -72,11 +76,11 @@
   <h1 class="documentFirstHeading">
     <a href=""
        class="previous"
-       tal:attributes="href view/prev_month_link">&larr;</a>
+       tal:attributes="href view/prev_month_link"><span class="largerArrow">&larr;</span></a>
     <span tal:replace="view/month"></span> <span tal:replace="view/year"></span>
     <a href=""
        class="next"
-       tal:attributes="href view/next_month_link">&rarr;</a>
+       tal:attributes="href view/next_month_link"><span class="largerArrow">&rarr;</span></a>
   </h1>
 
   <div class="month">
@@ -88,7 +92,9 @@
       <span i18n:translate="view">View:</span> Calendar | <a class="view_link" href="events.html" i18n:translate="event_list">Event list</a> |
       <a class="view_link" href="past_events.html" i18n:translate="past_event_list">Past events list</a>
     
-    <br /><br />
+    <br />
+    <div tal:content="structure view/getIntroductionContent" />
+    <br />
 
     <div class="standard-week-days">
       <tal:block tal:repeat="day view/standard_week_days">

@@ -387,7 +387,7 @@
       name="month.html" 
       for="p4a.calendar.interfaces.ICalendarEnhanced"
       permission="zope2.View"
-      class="p4a.calendar.browser.month.MonthView"
+      class=".month.MonthView"
       layer=".interfaces.IThemeSpecific"
       template="templates/oshevent_calendar.pt"
       />
