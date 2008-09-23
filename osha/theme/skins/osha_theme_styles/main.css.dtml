@@ -456,10 +456,6 @@ ul.linkList li {
 #linguaToolForms fieldset:hover input{
 	background-color:#ffffff;
 }
-#coloredBoxes  {
-		width:570px;
-		      margin:auto;
-}
 
 #addresses table{
 	width:100%;
@@ -491,65 +487,59 @@ ul.linkList li {
 	margin-right:0px;
 	clear:both;
 }
-#box-about-us {
-	background-image: url(about_us.gif);
-	background-repeat:no-repeat;
+
+#pressroom-boxes  {
+		width:570px;
+    margin:auto;
 }
-#box-about-us .label{
-	color:#ffffff;
+#pressroom-boxes a {
+    color: black;
 }
-#box-press-releases {
-	background-image: url(press_releases.gif);
-	background-repeat:no-repeat;
+#pressroom-boxes-table  {
+    font-size: 120%;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-bottom:2em;
 }
-#box-useful-articles {
-	display:none;
-	background-image: url(useful_articles.gif);
-	background-repeat:no-repeat;
+#pressroom-boxes-table  td {
+    width: 180px;
+    height: 80px;
+    text-align: center;
 }
-#box-useful-articles .label{
-	color:#ffffff;
-}
-#box-campaigns {
-	background-image: url(campaigns.gif);
-	background-repeat:no-repeat;
-}
-#box-photos-logos {
-	background-image: url(photos_logos.gif);
-	background-repeat:no-repeat; 
-}
-#box-publications {
-	background-image: url(publication.gif);
-	background-repeat:no-repeat;
-	clear:right;
-}
-.leftspace {
-}
-div.lowerButtons {
-	width:380px;
-		      margin:auto;
-}
-.rightspace {
-}		
-#publications .label{
-	color:#ffffff;
-}
-#PressRoom .labels {
-	text-align:center;
- 	vertical-align:middle;
-	height:100px;
-	width:190px;
-	padding-top:30px;
-	float:left;
-}
-.Tabelle td {
-	margin:0px;
-	       padding:0px;
-}
-#PressRoom .labels .label {
-	width:220px;
-	font-size:130%;
-}
+
+.pressbox-pr-off { background: url(pressbox_light_off.gif) no-repeat; }
+.pressbox-pr-off div { position:relative;right: 4px;bottom: 4px;}
+.pressbox-pr-on {background: url(pressbox_light_on.gif) no-repeat;}
+.pressbox-pr-on div {position:relative;right: 0px;bottom: 0px;}
+
+.pressbox-campaigns-off { background: url(pressbox_medium_off.gif) no-repeat; }
+.pressbox-campaigns-off div { position:relative;right: 4px;bottom: 4px;}
+.pressbox-campaigns-on {background: url(pressbox_medium_on.gif) no-repeat;}
+.pressbox-campaigns-on div {position:relative;right: 0px;bottom: 0px;}
+
+.pressbox-photos-off { background: url(pressbox_dark_off.gif) no-repeat; }
+.pressbox-photos-off div { position:relative;right: 4px;bottom: 4px;}
+.pressbox-photos-on {background: url(pressbox_dark_on.gif) no-repeat;}
+.pressbox-photos-on div {position:relative;right: 0px;bottom: 0px;}
+
+.pressbox-articles-off { background: url(pressbox_light_off.gif) no-repeat; }
+.pressbox-articles-off div { position:relative;right: 4px;bottom: 4px;}
+.pressbox-articles-on {background: url(pressbox_light_on.gif) no-repeat;}
+.pressbox-articles-on div {position:relative;right: 0px;bottom: 0px;}
+
+.pressbox-about-off { background: url(pressbox_medium_off.gif) no-repeat; }
+.pressbox-about-off div { position:relative;right: 4px;bottom: 4px;}
+.pressbox-about-on {background: url(pressbox_medium_on.gif) no-repeat;}
+.pressbox-about-on div {position:relative;right: 0px;bottom: 0px;}
+
+.pressbox-publications-off { background: url(pressbox_dark_off.gif) no-repeat; }
+.pressbox-publications-off div { position:relative;right: 4px;bottom: 4px;}
+.pressbox-publications-on {background: url(pressbox_dark_on.gif) no-repeat;}
+.pressbox-publications-on div {position:relative;right: 0px;bottom: 0px;}
+
+
+
+
 #EuMediaCoverage {
 	clear:both;
 	border: 1px solid #000000;

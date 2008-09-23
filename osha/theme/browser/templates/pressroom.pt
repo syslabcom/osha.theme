@@ -3,15 +3,81 @@ lang="en"
 metal:use-macro="here/main_template/macros/master"
 i18n:domain="plone">
 
-    <body>
 
-      <div metal:fill-slot="main" id="PressRoom">
 
-        <h1 class="header" i18n:translate="osha_nav_title_press_room">Press Room</h1>
-        <div id="coloredBoxes">
-        <a href="press-releases/">
-            <div class="labels" id="box-press-releases">
-                <h1 class="label" i18n:translate="press-releases">PRESS RELEASES</h1>
+<body>
+
+  <div metal:fill-slot="main" id="PressRoom">
+
+    <h1 class="header" i18n:translate="osha_nav_title_press_room">Press Room</h1>
+
+    <div id="pressroom-boxes">
+        <table id="pressroom-boxes-table">
+            <tr>
+                <td class="pressbox-pr-off"
+                    onmouseover='jq(this).addClass("pressbox-pr-on");jq(this).removeClass("pressbox-pr-off");' 
+                    onmouseout='jq(this).removeClass("pressbox-pr-on");jq(this).addClass("pressbox-pr-off");'>
+                    <a href="press-releases"><div>
+                         Press Releases
+                    </div></a>
+                </td>
+                <td class="pressbox-campaigns-off"
+                    onmouseover='jq(this).addClass("pressbox-campaigns-on");jq(this).removeClass("pressbox-campaigns-off");' 
+                    onmouseout='jq(this).removeClass("pressbox-campaigns-on");jq(this).addClass("pressbox-campaigns-off");'> 
+                    <a href="../campaigns"><div>
+                         Campaigns 
+                    </div></a>
+                </td>
+                <td class="pressbox-photos-off"
+                    onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");' 
+                    onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'> 
+                    <a href="photos"><div>
+                         Photos
+                    </div></a>
+                </td>
+            </tr>
+            
+            <tr>
+                <td class="pressbox-articles-off"
+                    onmouseover='jq(this).addClass("pressbox-articles-on");jq(this).removeClass("pressbox-articles-off");' 
+                    onmouseout='jq(this).removeClass("pressbox-articles-on");jq(this).addClass("pressbox-articles-off");'>
+                    <a href="articles"><div>
+                         Useful Articles
+                    </div></a>
+                </td>
+                <td class="pressbox-about-off"
+                    onmouseover='jq(this).addClass("pressbox-about-on");jq(this).removeClass("pressbox-about-off");' 
+                    onmouseout='jq(this).removeClass("pressbox-about-on");jq(this).addClass("pressbox-about-off");'> 
+                    <a href="../about"><div>
+                         About Us 
+                    </div></a>
+                </td>
+                <td class="pressbox-publications-off"
+                    onmouseover='jq(this).addClass("pressbox-publications-on");jq(this).removeClass("pressbox-publications-off");' 
+                    onmouseout='jq(this).removeClass("pressbox-publications-on");jq(this).addClass("pressbox-publications-off");'> 
+                    <a href="../publications"><div>
+                         Publications
+                    </div></a>
+                </td>
+            </tr>        
+        </table>
+
+    </div>
+    <div class="visualClear"></div>
+
+
+<!--    <div id="pressroom-boxes">
+
+    <div class="upperButtons">
+
+
+
+    <div class="visualClear"></div>
+<br><br><br><br><br><br><br><br>
+
+        <a href="pressroom">
+            <div id="box-press-releases" class="pressroombox">
+                <span i18n:translate="press-releases">PRESS RELEASES</span>
             </div>
         </a>
                 
@@ -26,14 +92,16 @@ i18n:domain="plone">
                 <h1 class="label" i18n:translate="photos-logos">PHOTOS & LOGOS</h1>
             </div>
         </a>
+    </div>
 
-        <div class="visualClear"></div>
-        <div class="lowerButtons">
-        <!--a href="articles"-->
+    <div class="visualClear"></div>
+
+    <div class="lowerButtons">
+        <a href="articles">
             <div class="labels" id="box-useful-articles">
-                <!--h1 class="label" i18n:translate="useful-articles">USEFUL ARTICLES</h1-->
+                <h1 class="label" i18n:translate="useful-articles">USEFUL ARTICLES</h1>
             </div>
-        <!--/a-->
+        </a>
 
         <a href="../about">
             <div class="labels" id="box-about-us">
@@ -46,28 +114,32 @@ i18n:domain="plone">
                 <h1 class="label" i18n:translate="osha_nav_title_publications">PUBLICATIONS</h1>
             </div>
         </a>
+    </div>  
+        
+    </div>
+	-->
+	
+    <div id="EuMediaCoverage">
+        <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
+    </div>
+        
+    <div id="boxBody">
+      <tal:block repeat="row view/getFeed"> 
+        <h3><a tal:attributes="href row/link" tal:content="row/title">Hallo</a></h3>
+        <p>
+            <span tal:condition="python:row.get('date') or nothing" tal:omit-tag=""><i tal:content="python: here.toLocalizedTime(row['date'])"/></span> 
+            <span tal:replace="row/description">Welt</span>
+        </p>
+      </tal:block>
+        <div id="more-syndicated-news">
+            <a href="sinList?synmap=meltwater" i18n:translate="box_more" i18n:domain="plone">More...</a>
         </div>
-	</div>
-        <div id="EuMediaCoverage">
-            <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
-        </div>
-        <div id="boxBody">
-          <tal:block repeat="row view/getFeed"> 
-            <h3><a tal:attributes="href row/link" tal:content="row/title">Hallo</a></h3>
-            <p>
-                <span tal:condition="python:row.get('date') or nothing" tal:omit-tag=""><i tal:content="python: here.toLocalizedTime(row['date'])"/></span> 
-                <span tal:replace="row/description">Welt</span>
-            </p>
-          </tal:block>
-            <div id="more-syndicated-news">
-                <a href="sinList?synmap=meltwater" i18n:translate="box_more" i18n:domain="plone">More...</a>
-            </div>
-        </div>
+    </div>
 
-        <div id="addresses">
-	<table class="Tabelle">
-	<tr>
-	<td>
+  <div id="addresses">
+    <table class="Tabelle">
+        <tr>
+        <td>
             <div i18n:translate="osha_label_international_press" id="firstAdress">
                 <strong>International press:</strong><br>
                 Press Office, <br>
@@ -76,8 +148,8 @@ i18n:domain="plone">
                 Tel: +34 94 479 35 52<br>
                 <a href="mailto:news@osha.europa.eu"><img src="news.gif" alt="international press contact"></a>
             </div>
-	</td>
-	<td>
+        </td>
+	      <td>
             <div i18n:translate="osha_label_spanish_press">
                 <strong>Bilbao and Spanish press:</strong><br>
                 Press Office, <br>
@@ -85,9 +157,9 @@ i18n:domain="plone">
                 Bilbao <br>
                 Tel: +34 94 479 57 46<br>
                 <a href="mailto:noticias@osha.europa.eu"><img src="noticias.gif" alt=""></a><br>
-            </div>
-	</td>
-	<td>
+            </div>  
+        </td>
+        <td>
             <div i18n:translate="osha_label_brussels_liaison_office" id="lastAdress">
                 <strong>Brussels Liaison Office:</strong><br>
                 European Agency for Safety and Health at Work, <br>
@@ -96,10 +168,12 @@ i18n:domain="plone">
                 Tel: +32 2 401 68 59<br>
                 <a href="mailto:obrien@osha.europa.eu"><img src="obrien.gif" alt="brussels liaison officer"></a>
             </div>    
-	    </td>
-	</tr></table>
-        </div>
-      </div>
-    </body>
+        </td>
+	      </tr>
+	  </table>
+  </div>
+
+</div>
+</body>
 </html>
 
