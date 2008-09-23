@@ -37,18 +37,23 @@ class OSHA(BrowserView):
         for section in sections:
             rs.append(dict(title=section.Title, url=section.getURL(), subject=section.Subject ))
         rs.sort(lambda x,y: cmp(x['title'].lower(), y['title'].lower()))
-        return rs        
-        
+        return rs
+
     def get_subsite_property(self, name):
         """ return the prop with name from the subsite """
         subsite_path = self.subsiteRootPath()
         subsite = self.context.restrictedTraverse(subsite_path)
         P = PropertiesControlPanelAdapter(subsite)
-        return getattr(P, name)
-                
-                
-        
-        
+        return getattr(P, name, None)
+
+    def set_subsite_property(self, name, value):
+        """ Set a prop with the name to value on the subsite """
+        subsite_path = self.subsiteRootPath()
+        subsite = self.context.restrictedTraverse(subsite_path)
+        P = PropertiesControlPanelAdapter(subsite)
+        if hasattr(P, name):
+            setattr(P, name, value)
+
     def getSingleEntryPointsBySubject(self, subjects):
         """ Retrieve all sections implementing ISubsite that match the local Subjects """
         seps = self.getSingleEntryPoints()

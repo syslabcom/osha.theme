@@ -67,6 +67,7 @@ class Settings(Persistent):
     listserv_email = ''
     site_slogan = []    
     oshmail_subscribers = ''
+    default_language = ''
     
 
 ### Language vocabulary
@@ -116,7 +117,7 @@ class TitleLanguagePair:
 class ILogoSchema(Interface):
     logo_url = TextLine(title=_(u"Link to the site logo (on the right)"),
                         description=_(u"Place here the path to your logo. Make sure it has the proper dimensions (104pxx92px)."),
-                        default=u'img/topbanner2.jpg',
+                        default=u'topbanner2.jpg',
                         required=False
     )
 
@@ -202,6 +203,12 @@ class PropertiesControlPanelAdapter(SchemaAdapterBase):
     def set_listserv_email(self, value):
         self.settings.listserv_email = value
     listserv_email = property(get_listserv_email, set_listserv_email)        
+
+    def get_default_language(self):
+        return self.settings.default_language
+    def set_default_language(self, value):
+        self.settings.default_language = value
+    default_language = property(get_default_language, set_default_language)
 
     @apply
     def site_slogan():

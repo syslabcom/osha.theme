@@ -193,6 +193,9 @@ class IOSHA(Interface):
 
     def get_subsite_property(name):
         """ return the prop with name from the subsite """
+
+    def set_subsite_property(name, value):
+        """ Set a prop with the name to value on the subsite """
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions
