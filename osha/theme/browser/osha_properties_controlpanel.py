@@ -65,10 +65,9 @@ class Settings(Persistent):
     crosschecker_email = ''
     pm_email = ''
     listserv_email = ''
-    site_slogan = []    
+    site_slogan = []
     oshmail_subscribers = ''
-    default_language = ''
-    
+
 
 ### Language vocabulary
 
@@ -202,13 +201,7 @@ class PropertiesControlPanelAdapter(SchemaAdapterBase):
         return self.settings.listserv_email
     def set_listserv_email(self, value):
         self.settings.listserv_email = value
-    listserv_email = property(get_listserv_email, set_listserv_email)        
-
-    def get_default_language(self):
-        return self.settings.default_language
-    def set_default_language(self, value):
-        self.settings.default_language = value
-    default_language = property(get_default_language, set_default_language)
+    listserv_email = property(get_listserv_email, set_listserv_email)
 
     @apply
     def site_slogan():
