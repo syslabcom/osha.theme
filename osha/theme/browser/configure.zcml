@@ -392,6 +392,15 @@
       template="templates/oshevent_calendar.pt"
       />
 
+  <browser:page
+      name="month.html" 
+      for="p4a.calendar.interfaces.ICalendarEnhanced"
+      permission="zope2.View"
+      class=".month.MonthView"
+      layer=".interfaces.IHW2008Specific"
+      template="templates/oshevent_calendar.pt"
+      />
+
     <browser:page
         for="*"
         name="publications-overview"
