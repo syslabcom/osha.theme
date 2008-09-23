@@ -95,7 +95,7 @@
       <span i18n:translate="view">View:</span> Calendar | <a class="view_link" href="events.html" i18n:translate="event_list">Event list</a> |
       <a class="view_link" href="past_events.html" i18n:translate="past_event_list">Past events list</a>
     
-    <br />
+    <br /><br />
     <div tal:content="structure view/getIntroductionContent" />
     <br />
 
