@@ -13,6 +13,8 @@
 
         <h1 class="documentFirstHeading" tal:content="view/Title"> 
         </h1>
+        
+        <div tal:content="structure here/Description" />
 
         <metal:listingmacro define-macro="listing">
         <tal:topiccontents define="topicContents view/queryCatalog;
