@@ -2,50 +2,28 @@
       lang="en-US"
       i18n:domain="osha"
       metal:use-macro="here/oshmail_template/macros/master">
-      
 
 <body>
-<div metal:fill-slot="main" i18n:domain="osha">
     
-    <metal:block define-macro="main">
-    <tal:block define="text here/@@renderer ;
-            itemtype python:here.getTypeInfo().Title();
-            len_text python:len(text);
-            defimage here/getImage|string:;
-            ">
+<div metal:fill-slot="main" i18n:domain="osha">
+    <metal:main-macro define-macro="main">
 
+         <div id="collage" >
 
-    <div class="floatSurrounding">
-        <div class="floatingLeft" tal:condition="nocall:defimage">
-            <tal:block define="imgtitle defimage/Title">
-            <img alt="" src="folder.gif"
-                 tal:attributes="src python:defimage.absolute_url();
-                 width defimage/width|string:auto;
-                 height defimage/height|string:auto;
-                 alt imgtitle;" />
-            </tal:block>
-        </div>
-        
-        <p class="intro" 
-           tal:condition="here/Description|nothing"
-           tal:content="structure here/Description|nothing">description
-        </p>
-        
-        <div id="bodyContent"
-             class="stx"
-             tal:condition="len_text"
-             >
-            <div tal:replace="structure text" />
-        </div>
-        <br style="clear: both;" />
-    </div>
-    <br style="clear: both;" />
-    </tal:block>
-    </metal:block>
+            <p class="collage-header"
+                tal:condition="here/Description|nothing"
+               tal:content="structure here/Description|nothing">description
+            </p>
 
+            <div id="bodyContent"
+                 class="stx">
+                <div tal:content="structure here/@@renderer" ></div>
+            </div>
+            <br style="clear: both;" />
+          </div>
+          <br style="clear: both;" />
+    </metal:main-macro>
 </div>
-
-
 
 </body>
 </html>

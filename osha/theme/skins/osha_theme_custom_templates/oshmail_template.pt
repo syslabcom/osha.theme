@@ -144,9 +144,6 @@
 </table>
 
 
-
-
-
 <div class="visualClear"></div>
 
 <p>&nbsp;</p>
@@ -167,21 +164,17 @@
                         href="" tal:attributes="href python:thisurl+'?set_language='+lang[0]" 
                         tal:content="python:lang_info.has_key(lang[0]) and lang_info[lang[0]]['native'] or lang[1]">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
             </div>   
-        </tal:block>    
-           <metal:bodytext metal:define-slot="main" tal:content="nothing">
-              <!-- Page body text -->
-           </metal:bodytext>
-        </td> 
-        <td style="border-left: 1px solid">&nbsp;&nbsp;</td><!-- spacer column -->
-        <!-- start of right (by default at least) column -->
-        <td valign="top">
-            <metal:columntext metal:define-slot="column_two_slot" tal:content="nothing">
-                <!-- column body text-->
-            </metal:columntext>
-        </td>
-    <!-- end of the right (by default at least) column -->
+        </tal:block>
+      </td>
     </tr>
-</table>
+  </table>
+
+<p>&nbsp;</p>
+
+   <metal:bodytext metal:define-slot="main" tal:content="nothing">
+      <!-- Page body text -->
+   </metal:bodytext>
+
 
 
 <hr class="netscape4" />
