@@ -1,6 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<tal:block define="obj_description here/getText;
+<tal:block define="obj_description here/Description;
             oshaview here/@@oshaview;
             obj_description python:oshaview.makeAbsoluteUrls(obj_description);
             provider_helper here/@@provider_helper; 

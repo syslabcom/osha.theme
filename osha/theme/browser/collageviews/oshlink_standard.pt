@@ -1,7 +1,7 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
 <span tal:define="url here/absolute_url;
-    obj_description here/getText;
+    obj_description here/Description;
     oshaview here/@@oshaview;
     obj_description python:oshaview.makeAbsoluteUrls(obj_description);">
 
