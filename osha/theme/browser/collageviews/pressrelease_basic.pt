@@ -1,14 +1,11 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-    <dl span tal:define="url here/absolute_url;
+<span tal:define="url here/absolute_url;
     title_or_id here/pretty_title_or_id;">
 
         <dt>
-            <span class="contenttype-pressrelease">
-                <a href="#" class="state-published visualIconPadding"
-                    tal:attributes="href url"
-                    tal:content="title_or_id">Title
-                 </a>
-            </span>
+            <a href="#" tal:attributes="href url">
+               <span tal:content="title_or_id">Title</span>
+             </a>
         </dt>
-    </dl>
+</span>
