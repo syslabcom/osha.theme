@@ -65,60 +65,6 @@ i18n:domain="plone">
     </div>
     <div class="visualClear"></div>
 
-
-<!--    <div id="pressroom-boxes">
-
-    <div class="upperButtons">
-
-
-
-    <div class="visualClear"></div>
-<br><br><br><br><br><br><br><br>
-
-        <a href="pressroom">
-            <div id="box-press-releases" class="pressroombox">
-                <span i18n:translate="press-releases">PRESS RELEASES</span>
-            </div>
-        </a>
-                
-        <a href="../campaigns">
-            <div class="labels" id="box-campaigns">
-                <h1 class="label" i18n:translate="osha_nav_title_campaings">CAMPAIGNS</h1>
-            </div>
-        </a>
-
-        <a href="photos">
-            <div class="labels" id="box-photos-logos">
-                <h1 class="label" i18n:translate="photos-logos">PHOTOS & LOGOS</h1>
-            </div>
-        </a>
-    </div>
-
-    <div class="visualClear"></div>
-
-    <div class="lowerButtons">
-        <a href="articles">
-            <div class="labels" id="box-useful-articles">
-                <h1 class="label" i18n:translate="useful-articles">USEFUL ARTICLES</h1>
-            </div>
-        </a>
-
-        <a href="../about">
-            <div class="labels" id="box-about-us">
-                <h1 class="label" i18n:translate="osha_nav_title_about_us">ABOUT US</h1>
-            </div>
-        </a>
-
-        <a href="../publications">
-            <div class="labels" id="box-publications">
-                <h1 class="label" i18n:translate="osha_nav_title_publications">PUBLICATIONS</h1>
-            </div>
-        </a>
-    </div>  
-        
-    </div>
-	-->
-	
     <div id="EuMediaCoverage">
         <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
     </div>
@@ -146,7 +92,7 @@ i18n:domain="plone">
                 European Agency for Safety and Health at Work, <br>
                 Bilbao <br>
                 Tel: +34 94 479 35 52<br>
-                <a href="mailto:news@osha.europa.eu"><img src="news.gif" alt="international press contact"></a>
+                <img src="news.gif" alt="international press contact">
             </div>
         </td>
 	      <td>
@@ -156,7 +102,7 @@ i18n:domain="plone">
                 European Agency for Safety and Health at Work, <br>
                 Bilbao <br>
                 Tel: +34 94 479 57 46<br>
-                <a href="mailto:noticias@osha.europa.eu"><img src="noticias.gif" alt=""></a><br>
+                <img src="noticias.gif" alt=""><br>
             </div>  
         </td>
         <td>
@@ -166,7 +112,7 @@ i18n:domain="plone">
                 Square de Meeûs 38/40, <br>
                 1000 Brussels, Belgium <br>
                 Tel: +32 2 401 68 59<br>
-                <a href="mailto:obrien@osha.europa.eu"><img src="obrien.gif" alt="brussels liaison officer"></a>
+                <img src="obrien.gif" alt="brussels liaison officer">
             </div>    
         </td>
 	      </tr>
