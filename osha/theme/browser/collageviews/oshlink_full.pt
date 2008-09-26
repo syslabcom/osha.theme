@@ -1,9 +1,12 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<tal:block define="provider_helper here/@@provider_helper; 
-                   ext_url here/getRemoteUrl|string:;
-                   ploneview python:here.restrictedTraverse('@@plone');
-                   ">
+<tal:block define="obj_description here/getText;
+            oshaview here/@@oshaview;
+            obj_description python:oshaview.makeAbsoluteUrls(obj_description);
+            provider_helper here/@@provider_helper; 
+            ext_url here/getRemoteUrl|string:;
+            ploneview python:here.restrictedTraverse('@@plone');
+            ">
 
     <h2><img src=""
         tal:attributes="src string:${here/portal_url}/oshlink_icon.gif" alt="here/portal_type" i18n:attributes="alt"/> 
@@ -16,9 +19,8 @@
               tal:replace="python:ploneview.toLocalizedTime(here.getPublication_date(), long_format=False)"/>
     </span>
 
-    <p tal:define="descr here/Description|nothing"
-       tal:condition="descr"
-       tal:content="structure descr" />
+    <p tal:condition="obj_description"
+       tal:content="structure obj_description" />
 
 
     <fieldset>
@@ -59,9 +61,7 @@
             <div tal:content="python:', '.join(cas.split('\n'))">
             </div>
         </div>
-        
     </fieldset>
-
 
 
     <tal:block  
@@ -103,8 +103,6 @@
     </fieldset>
     </tal:block>
 
-
-    
     <tal:block define="sections here/getRelatedSections">
     <fieldset tal:condition="sections">               
         <legend i18n:translate="legend_oshcontent_featurelist">Features including this element</legend>

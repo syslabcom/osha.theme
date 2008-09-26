@@ -1,0 +1,21 @@
+<tal:manager replace="structure provider:collage.ContentManager" />
+
+<span tal:define="url here/absolute_url;
+    obj_description here/getText;
+    oshaview here/@@oshaview;
+    obj_description python:oshaview.makeAbsoluteUrls(obj_description);">
+
+    <h2> <a href="#" tal:attributes="href url"><span tal:content="here/Title">title</span></a></h2>
+
+    <p>
+      <span 
+            tal:define="view context/@@collage_kss_helper"
+            tal:attributes="id string:${view/getUniqueIdentifier}-description;
+                class python: view.getKssClasses('description')"
+            tal:condition="here/Description">
+        <span 
+              tal:replace="structure obj_description">description</span>
+      </span>
+    </p>
+
+</span>
