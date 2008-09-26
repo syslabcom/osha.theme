@@ -1,0 +1,16 @@
+<tal:manager replace="structure provider:collage.ContentManager" />
+
+<p>&nbsp;</p>
+<h3>
+  <span tal:content="here/Title" i18n:domain="osha" i18n:translate="">title</span>
+</h3>
+
+<p tal:condition="here/Description">
+    <span tal:replace="here/Description">description</span>
+</p>
+
+<div tal:define="text python: here.CookedBody(stx_level=2)"
+         tal:condition="text">
+  <span tal:replace="structure text">text</span>
+</div> 
+

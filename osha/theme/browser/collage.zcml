@@ -35,7 +35,17 @@
      template="collageviews/document_oshmail.pt"
      class="Products.Collage.browser.views.BaseView"
      menu="collage-views"
-     title="oshmail"
+     title="Oshmail Heading"
+     />
+
+  <browser:page
+     name="right_column"
+     for="Products.ATContentTypes.content.document.ATDocument"
+     permission="zope.Public"
+     template="collageviews/document_right_column.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="Oshmail right column"
      />
 
   <!-- OSH-Link -->
@@ -70,6 +80,16 @@
      title="Teaser"
      />
 
+   <browser:page
+     name="right_column"
+     for="Products.ATContentTypes.content.newsitem.ATNewsItem"
+     permission="zope.Public"
+     template="collageviews/newsitem_right_column.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="News (right column)"
+     />
+
   <browser:page
      name="basic"
      for="Products.ATContentTypes.content.newsitem.ATNewsItem"
@@ -88,6 +108,27 @@
      class="Products.Collage.browser.views.BaseView"
      menu="collage-views"
      title="Portlet"
+     />
+
+  <!-- Event -->
+  <browser:page
+     name="standard"
+     for="Products.ATContentTypes.content.event.ATEvent"
+     permission="zope.Public"
+     template="collageviews/event_right_column.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="Right column"
+     />
+
+  <browser:page
+     name="basic"
+     for="Products.ATContentTypes.content.event.ATEvent"
+     permission="zope.Public"
+     template="collageviews/event_basic.pt"
+     class="Products.Collage.browser.views.BaseView"
+     menu="collage-views"
+     title="Basic"
      />
 
   <!-- File (ATBlob) -->
