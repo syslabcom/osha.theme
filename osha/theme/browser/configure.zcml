@@ -8,15 +8,14 @@
 
     <!-- OSHA RollingQuotes Tool -->
     <browser:resource
-    	name="rollingquote.kss"
-    	file="rollingquote.kss"
-	    />
+        name="rollingquote.kss"
+        file="rollingquote.kss"
+        />
 
     <!-- Include Collage views -->
     <include file="collage.zcml" />
 
     <!-- OSHA Properties panel -->
-
     <utility
         component=".osha_properties_controlpanel.AvailableLanguagesVocabularyFactory"
         name="osha.vocabularies.AvailableLanguages"
@@ -25,33 +24,32 @@
     <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter" 
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         />
-        
+
     <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter" 
         for="slc.subsite.interfaces.ISubsiteEnhanced"
         />
-            
+
     <!--browser:page
         for="*"
         name="site_settings"
         class=".osha_properties_controlpanel.SettingsView"
         permission="zope.Public"
         allowed_interface=".osha_properties_controlpanel.ISettingsView"
-        /-->      
+        /-->
 
     <browser:page
         name="oshaprops-controlpanel"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         class=".osha_properties_controlpanel.PropertiesControlPanel"
         permission="cmf.ManagePortal"
-        />   
-        
+        />
+
     <browser:page
         name="oshaprops-controlpanel"
         for="slc.subsite.interfaces.ISubsiteEnhanced"
         class=".osha_properties_controlpanel.PropertiesControlPanel"
         permission="cmf.ManagePortal"
-        />                  
-
+        />
 
     <!-- OSHA Tool view -->
     <browser:page
@@ -70,42 +68,44 @@
         permission="zope.Public"
         allowed_interface=".interfaces.ILinguaToolsView"
         />
-	<!-- OSHA RollingQuotes -->
+
+    <!-- OSHA RollingQuotes -->
     <browser:page
         for="*"
         name="rollingquotestool"
         class=".rollingquotestool.RollingQuotesToolsView"
-	attribute="set_url"
+    attribute="set_url"
         permission="zope.Public"
         allowed_interface=".interfaces.IRollingQuotesToolsView"
         />
-<!-- OSHA PressRoomView-->    
+
+<!-- OSHA PressRoomView-->
     <browser:page
         for="*"
-	    name="pressroom"
-	    class=".pressroom.PressRoomView"
+        name="pressroom"
+        class=".pressroom.PressRoomView"
         permission="zope.Public"
-	    allowed_interface=".interfaces.IPressRoomView"
+        allowed_interface=".interfaces.IPressRoomView"
         />
-        
-<!-- OSHA NapoFilmView-->    
+
+<!-- OSHA NapoFilmView-->
     <browser:page
         for="*"
-    	name="napofilm"
-	    class=".napofilm.NapoFilmView"
+        name="napofilm"
+        class=".napofilm.NapoFilmView"
         permission="zope.Public"
-    	allowed_interface=".interfaces.INapoFilmView"
+        allowed_interface=".interfaces.INapoFilmView"
         />
-       
-<!-- OSHA NapoEpisodeView-->    
+
+<!-- OSHA NapoEpisodeView-->
     <browser:page
         for="*"
-	    name="napoepisode"
-	    class=".napoepisode.NapoEpisodeView"
+        name="napoepisode"
+        class=".napoepisode.NapoEpisodeView"
         permission="zope.Public"
-	    allowed_interface=".interfaces.INapoEpisodeView"
+        allowed_interface=".interfaces.INapoEpisodeView"
         />
-       
+
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
     <interface
         interface=".interfaces.IThemeSpecific"
@@ -148,7 +148,7 @@
         layer=".interfaces.IOSHAThemeLayer"
         class="plone.app.viewletmanager.manager.OrderedViewletManager"
         />
-        
+
     <!-- The portal header -->
     <browser:viewlet
         name="osha.topactions"
@@ -157,41 +157,46 @@
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
+
     <!-- Napo Header-->
     <browser:viewlet
-	name="osha.napo.header"
+    name="osha.napo.header"
         manager="plone.app.layout.viewlets.interfaces.IContentViews"
-	template="templates/napo_head.pt"
-	layer=".interfaces.INAPOSpecific"
+    template="templates/napo_head.pt"
+    layer=".interfaces.INAPOSpecific"
         permission="zope2.View" 
         />
+
     <browser:viewlet
-	name="osha.napo.subheader"
+    name="osha.napo.subheader"
         manager="plone.app.layout.viewlets.interfaces.IContentViews"
-	template="templates/napo_subhead.pt"
-	layer=".interfaces.INAPOSpecific"
+    template="templates/napo_subhead.pt"
+    layer=".interfaces.INAPOSpecific"
         permission="zope2.View" 
         />
+
 <!-- Napo Below footer-->
     <browser:viewlet
-	name="osha.napo.logofooter"
-	manager="plone.app.layout.viewlets.interfaces.IBelowContent"
-	template="templates/napo_logofooter.pt"
-	layer=".interfaces.INAPOSpecific"
+    name="osha.napo.logofooter"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+    template="templates/napo_logofooter.pt"
+    layer=".interfaces.INAPOSpecific"
         permission="zope2.View" 
         />
+
     <browser:viewlet
-	    name="osha.napo.friendsmenu"
-	manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-	class=".napo.NapoFriendsViewlet"
-	layer=".interfaces.INAPOSpecific"
+        name="osha.napo.friendsmenu"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+    class=".napo.NapoFriendsViewlet"
+    layer=".interfaces.INAPOSpecific"
         permission="zope2.View" 
         />
+
     <browser:viewlet
-	name="osha.napo.belowfooter"
-	manager="plone.app.layout.viewlets.interfaces.IBelowContent"
-	template="templates/napo_belowfooter.pt"
-	layer=".interfaces.INAPOSpecific"
+    name="osha.napo.belowfooter"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+    template="templates/napo_belowfooter.pt"
+    layer=".interfaces.INAPOSpecific"
         permission="zope2.View" 
         />
 
@@ -259,8 +264,8 @@
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
         />
-        
-	<!-- Variable Area for Campaign Sites -->
+
+    <!-- Variable Area for Campaign Sites -->
     <browser:viewlet  
         name="osha.campaignarea"
         manager="plone.app.layout.viewlets.interfaces.IPortalTop"
@@ -268,7 +273,7 @@
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
-        
+
     <browser:viewlet  
         name="osha.campaignarea2"
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
@@ -276,7 +281,7 @@
         layer=".interfaces.IHW2008Specific"
         permission="zope2.View" 
         />
-        
+
     <!-- The breadcrumbs -->
     <browser:viewlet
         name="osha.path_bar"
@@ -285,7 +290,6 @@
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View" 
         />
-        
 
     <!-- The bottom language selector bar -->
     <browser:viewlet  
@@ -339,7 +343,6 @@
         permission="plone.app.portlets.ManagePortlets"
     />
 
-
     <browser:page
         for="*"
         name="rss-feeds"
@@ -367,7 +370,6 @@
         class=".oshevent_view.OSHEventView"
         permission="zope2.View"
     />
-
 
   <!--browser:page
       name="oshevents"
@@ -409,14 +411,14 @@
         class=".publications.PublicationsSearchView"
         permission="zope2.View"
     />
-    
+
     <browser:page
         for="*"
         name="seplisting"
         class=".seplisting.SEPListingView"
         permission="zope2.View"
     />
-    
+
     <browser:page
         for="*"
         name="index_alphabetical"
@@ -451,63 +453,63 @@
         class=".dbfilter.DBFilterView"
         permission="zope2.View"
     />
-    
+
     <browser:page
         for="*"
         name="index_provider"
         class=".dbfilter.ProviderDBFilterView"
         permission="zope2.View"
-    />    
+    />
+
     <browser:page
         for="*"
         name="index_oshlink"
         class=".dbfilter.OSHLinkDBFilterView"
         permission="zope2.View"
-    />    
+    />
+
     <browser:page
         for="*"
         name="index_ralink"
         class=".dbfilter.RALinkDBFilterView"
         permission="zope2.View"
-    />    
+    />
+
     <browser:page
         for="*"
         name="index_casestudy"
         class=".dbfilter.CaseStudyDBFilterView"
         permission="zope2.View"
-    />    
+    />
+
     <browser:page
         for="*"
         name="index_directive"
         class=".dbfilter.DirectiveDBFilterView"
         permission="zope2.View"
-    />    
+    />
 
-
-
-
-
-    
     <browser:page
         for="*"
         name="ro_filter"
         class=".rofilter.ROFilterView"
         permission="zope2.View"
     />
+
     <browser:page
         for="*"
         name="index_ro_metadata"
         class=".index_ro_metadata.IndexROMetadataView"
         permission="zope2.View"
-    />    
-    
+    />
+
     <browser:page
         for="*"
         name="search_ro"
         class=".search_ro.SearchROView"
         permission="zope2.View"
-    /> 
-        
+    />
+
     <browser:page
         for="*"
         name="worklist"
@@ -572,6 +574,5 @@
     class=".resource_listing.ResourceListingView"
     permission="zope2.View"
     />
-
 
 </configure>
