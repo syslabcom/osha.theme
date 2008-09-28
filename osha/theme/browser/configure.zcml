@@ -12,6 +12,8 @@
     	file="rollingquote.kss"
 	    />
 
+    <!-- Include Collage views -->
+    <include file="collage.zcml" />
 
     <!-- OSHA Properties panel -->
 

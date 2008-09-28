@@ -1,0 +1,26 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="osha">
+    
+  <!-- News Item -->
+   <browser:page
+     name="standard"
+     for="Products.ATContentTypes.content.newsitem.ATNewsItem"
+     permission="zope.Public"
+     template="collageviews/newsitem_teaser.pt"
+     class="Products.Collage.browser.views.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <!-- Event -->
+  <browser:page
+     name="standard"
+     for="Products.ATContentTypes.content.event.ATEvent"
+     permission="zope.Public"
+     template="collageviews/event_right_column.pt"
+     class="osha.theme.browser.collageviews.EventRightColumn"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+</configure> 

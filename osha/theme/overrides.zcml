@@ -15,8 +15,9 @@
              />
 
     <include file="browser/overrides.zcml" />
-    
-    <include file="browser/collage.zcml" />
+
+    <!-- Include overriding Collage views -->
+    <include file="browser/collageviews_overrides.zcml" />
 
 
 </configure>
