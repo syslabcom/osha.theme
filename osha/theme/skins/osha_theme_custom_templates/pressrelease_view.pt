@@ -105,6 +105,10 @@
                                                    'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
+
+        <p class='release-hashes'>
+            ###
+        </p>
         
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             Show related items if they exist
@@ -123,9 +127,6 @@
             </tal:referencedContent>
     </div>
 
-        <p class='release-hashes'>
-            ###
-        </p>
         
         <div tal:replace="structure provider:plone.belowcontentbody" />
         
