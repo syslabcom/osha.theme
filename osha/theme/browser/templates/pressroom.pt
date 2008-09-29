@@ -37,7 +37,7 @@ i18n:domain="plone">
                     onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'> 
                     <div>
                          <a href="/en/press/photos" i18n:translate="osha_label_pressbox_photos">Photos</a>
-                    </div></a>
+                    </div>
                 </td>
             </tr>
             
