@@ -1,7 +1,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="osha"> 
+      i18n:domain="osha"
+      > 
 
 <div metal:fill-slot="main" i18n:domain="osha"
        tal:define="local_keyword python:here.getProperty('keyword', '');
@@ -23,8 +24,8 @@
                    desc_length site_properties/search_results_description_length;
                    desc_ellipsis site_properties/ellipsis;
                    searchterm request/SearchableText|nothing;
-                   ">
-
+                   "
+                   >
     <div class="figure-box">
         <div class="figure">
             <img tal:define="keyword python:here.getProperty('keyword');
@@ -207,6 +208,8 @@
         </tal:entry>
         </tal:results>
         </dl>
+
+        <div class="visualClear" ></div>
         
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 
@@ -220,6 +223,7 @@
 </div>
 
 <metal:sub fill-slot="sub" /> 
+<metal:sub fill-slot="column_two_slot" /> 
 
 
 </html>

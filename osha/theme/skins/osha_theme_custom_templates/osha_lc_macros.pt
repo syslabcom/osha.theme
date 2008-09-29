@@ -36,7 +36,7 @@
             </th>
           </metal:block> 
           <th>
-            <span i18n:translate="">this link is broken</span>
+            <span i18n:translate="">Link</span>
           </th>
            <th>
             <span i18n:translate="">Date of last check</span>

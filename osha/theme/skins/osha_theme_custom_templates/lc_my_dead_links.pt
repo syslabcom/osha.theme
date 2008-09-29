@@ -68,7 +68,7 @@
     <metal:block use-macro="here/osha_lc_macros/macros/batchTable">
       <metal:block fill-slot="header_cols">
         <th i18n:translate="">
-          On the following document...
+          Object 
         </th>
         <!--th i18n:translate="link_header_owner">
           Owner
