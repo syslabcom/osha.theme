@@ -69,7 +69,7 @@ class Renderer(base.Renderer):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         return (preflang)
 
-    @ram.cache(_render_cachekey)
+    #@ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
             
@@ -105,7 +105,7 @@ class Renderer(base.Renderer):
         
         portal_path=portal_url.getPortalPath()
         folderob=self.context.restrictedTraverse('%s%s'%(portal_path,folder))
-        folderlist = folderob.listFolderContents(contentFilter={"portal_type" : "News Item", "review_state" : "publiched" })
+        folderlist = folderob.listFolderContents(contentFilter={"portal_type" : "News Item", "review_state" : "published" })
         ob = random.choice(folderlist)
         ob = self.fallback(ob, preflang)
         return ob
