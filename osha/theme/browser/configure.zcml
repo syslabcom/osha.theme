@@ -60,14 +60,6 @@
         allowed_interface=".interfaces.IOSHA"
         />
 
-    <!-- OSHA Tool view -->
-    <browser:page
-        for="*"
-        name="linguatools"
-        class=".linguatools.LinguaToolsView"
-        permission="zope.Public"
-        allowed_interface=".interfaces.ILinguaToolsView"
-        />
 
     <!-- OSHA RollingQuotes -->
     <browser:page
