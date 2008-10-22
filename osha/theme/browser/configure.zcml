@@ -12,6 +12,13 @@
         file="rollingquote.kss"
         />
 
+    <!-- vpip import -->
+    <browser:resource
+        name="vpip.js"
+        file="vpip.js"
+        />
+
+
     <!-- Include Collage views -->
     <include file="collage.zcml" />
 
