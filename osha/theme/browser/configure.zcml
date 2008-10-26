@@ -130,6 +130,12 @@
         name="NAPO"
         />
 
+    <interface
+        interface=".interfaces.IGermanySpecific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="OSHAGermany"
+        />
+
     <!-- Viewlet manager that will wrap top actions -->
     <browser:viewletManager
         name="osha.header.topactions"
@@ -227,15 +233,16 @@
         />
 
     <!-- The top language selector bar -->
-        <!-- For translatable items -->
-        <browser:viewlet  
-            name="osha.languageselector"
-            manager=".interfaces.IOSHAHeaderDropdowns"
-            class=".viewlets.OSHALanguageSelector"
-            layer=".interfaces.IOSHAThemeLayer"
-            permission="zope2.View"
-            for="*"
-            />
+    <!-- For translatable items -->
+    <browser:viewlet  
+        name="osha.languageselector"
+        manager=".interfaces.IOSHAHeaderDropdowns"
+        class=".viewlets.OSHALanguageSelector"
+        layer=".interfaces.IOSHAThemeLayer"
+        permission="zope2.View"
+        for="*"
+        />
+
 
     <!-- Render the browser title - overwritten so we can insert OSHA specific title -->
     <browser:viewlet
@@ -255,7 +262,7 @@
         permission="zope2.View"
         /-->
 
-    <!-- The language selector bar -->
+    <!-- The network chooser bar -->
     <browser:viewlet  
         name="osha.networkchooser"
         manager=".interfaces.IOSHAHeaderDropdowns"
@@ -263,6 +270,29 @@
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
         />
+
+    <!-- Germany specifics -->
+
+
+    <!-- The site actions -->
+    <browser:viewlet
+        name="osha.germany.site_actions"
+        manager=".interfaces.IOSHAHeaderDropdowns"
+        class=".viewlets.OSHASiteActionsViewlet"
+        layer=".interfaces.IGermanySpecific"
+        permission="zope2.View" 
+        />
+
+    <browser:viewlet  
+        name="osha.germany.languageselector"
+        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+        class=".viewlets.OSHALanguageSelector"
+        layer=".interfaces.IGermanySpecific"
+        permission="zope2.View"
+        for="*"
+        />
+
+    <!-- / Germany specifics -->
 
     <!-- Variable Area for Campaign Sites -->
     <browser:viewlet  

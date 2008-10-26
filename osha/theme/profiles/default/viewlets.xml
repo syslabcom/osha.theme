@@ -29,6 +29,7 @@
                insert-after="plone.personal_bar" />
     </order>
 
+    <!-- header dropdowns osha main  -->
     <order manager="osha.header.dropdowns" skinname="*"
            based-on="Plone Default">
       <viewlet name="osha.languageselector"
@@ -36,6 +37,7 @@
       <viewlet name="osha.networkchooser"
                insert-after="osha.languageselector" />
     </order>
+    
 
     <order manager="plone.contentviews" skinname="*"
            based-on="Plone Default">
@@ -75,6 +77,7 @@
         <viewlet name="osha.htmlhead.title"
             insert-before="*" />
     </order>
+    
     <order manager="plone.belowcontent" skinname="NAPO"
            based-on="Plone Default">
       <viewlet name="osha.napo.belowfooter"
@@ -82,6 +85,9 @@
       <viewlet name="osha.napo.logofooter"
 	      insert-before="osha.napo.belowfooter" />
     </order>
+
+
+
 
     <hidden manager="plone.htmlhead" skinname="*">
         <viewlet name="plone.htmlhead.title" />
@@ -118,6 +124,7 @@
     </hidden>
 
 
+
     <hidden manager="plone.portaltop" skinname="RISQ">
       <viewlet name="osha.campaignarea" />
     </hidden>
@@ -139,4 +146,31 @@
 	    <viewlet name="osha.logo" />
 	    <viewlet name="osha.topactions" />
     </hidden>
+    
+    
+    
+    
+    <!-- Skin config for germany -->
+    <order manager="osha.header.dropdowns" skinname="OSHAGermany"
+           based-on="OSHA Plone Theme">
+        <viewlet name="osha.languageselector" insert-before="*"/>
+        <viewlet name="osha.germany.site_actions"
+               insert-after="osha.languageselector" />
+
+    </order>
+    <order manager="plone.portaltop" skinname="OSHAGermany"
+           based-on="OSHA Plone Theme">
+      <viewlet name="osha.germany.languageselector"
+               insert-before="osha.campaignarea" />
+    </order>    
+
+
+    <hidden manager="osha.header.dropdowns" skinname="OSHAGermany">
+      <viewlet name="osha.networkchooser" />      
+    </hidden>
+    <hidden manager="plone.header" skinname="OSHAGermany">
+      <viewlet name="osha.topactions" />
+    </hidden>
+    
+    
 </object>

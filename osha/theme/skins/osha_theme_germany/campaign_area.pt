@@ -1,0 +1,69 @@
+<metal:block define-macro="campaign_area">
+    <div i18n:domain="osha"
+         tal:define="view python:here.restrictedTraverse('@@oshaview')"
+         id="portal-network">
+        <strong class="hiddenStructure" 
+                i18n:translate="heading_network">OSHA Network</strong>            
+
+        <form name="networkchooser" 
+              action=""> 
+              <div class="dropdown">
+                   <label for="euNetwork"
+                          class="hiddenStructure"
+                          i18n:translate="">European Network</label>
+                   <select id="euNetwork" name="eu_network" 
+                          onkeyup="osha_gotoURL(this.options[this.options.selectedIndex].value)" 
+                          onChange="osha_gotoURL(this.options[this.options.selectedIndex].value)"
+                          tal:define="sites view/getEuropeanNetwork">                           
+                      <option value="" i18n:translate="">European Network</option>
+                      <option rel="nofollow" tal:repeat="site sites" 
+                              tal:attributes="value python:site[1]" 
+                              tal:content="python:site[0]">Site name</option>
+                   </select>
+                   <noscript>
+                      <input name="form.button.GoEuNetwork" type="submit" value="Go" />
+                   </noscript> 
+
+              </div>
+              <div class="dropdown">
+                   <label for="intNetwork"
+                          class="hiddenStructure" 
+                          i18n:translate="">International Network</label>
+                  <select id="intNetwork" name="int_network" 
+                          onkeyup="osha_gotoURL(this.options[this.options.selectedIndex].value)"
+                          onChange="osha_gotoURL(this.options[this.options.selectedIndex].value)"
+                          tal:define="sites view/getInternationalNetwork">
+                      <option value="" i18n:translate="">International Network</option>
+                      <option rel="nofollow" tal:repeat="site sites" 
+                              tal:attributes="value python:site[1]" 
+                              tal:content="python:site[0]">Site name</option>
+                   </select>
+                   <noscript>
+                      <input name="form.button.GoIntNetwork" type="submit" value="Go" />
+                   </noscript> 
+              </div>
+
+              <div class="dropdown">
+                   <label for="germanNetwork"
+                          class="hiddenStructure" 
+                          i18n:translate="">German Network</label>
+                  <select id="germanNetwork" name="german_network" 
+                          onkeyup="osha_gotoURL(this.options[this.options.selectedIndex].value)"
+                          onChange="osha_gotoURL(this.options[this.options.selectedIndex].value)"
+                          tal:define="sites view/getGermanNetwork">
+                      <option value="" i18n:translate="">German Network</option>
+                      <option rel="nofollow" tal:repeat="site sites" 
+                              tal:attributes="value python:site[1]" 
+                              tal:content="python:site[0]">Site name</option>
+                   </select>
+                   <noscript>
+                      <input name="form.button.GermanNetwork" type="submit" value="Go" />
+                   </noscript> 
+              </div>
+
+              <div class="visualClear"><!-- --></div>
+
+        </form>
+    </div>
+
+</metal:block>

@@ -9,6 +9,16 @@
 visibility: inherit;
 }
 
+/* specials for the german fop */
+#german-slogan {
+    color:#144989;
+    font-size:150%;
+    font-weight:bold;
+    padding-bottom:0.5em;
+    padding-right:0.7em;
+    text-align:right;
+    margin-top: 60px;
+}
 
 /* Compatibility with old style templates */
 .documentActions {

@@ -24,6 +24,12 @@ class IRISQSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
 class INAPOSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
+
+class IGermanySpecific(IDefaultPloneLayer, IOSHAThemeLayer):
+    """Marker interface that defines a Zope 3 skin layer.
+    """
+
+
 class IPressRoomView(Interface):
     """ A View for Pressroom to show Snydication Information """
 

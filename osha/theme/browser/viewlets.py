@@ -116,7 +116,7 @@ class OSHASiteActionsViewlet(common.SiteActionsViewlet):
         slogans = dict(slogans)
         return slogans.get(preflang, slogans.get(defaultlang, 'European Agency for Safety and Health at Work'))
         
-        
+
 
 class OSHANetworkchooser(common.ViewletBase):
 
@@ -150,6 +150,7 @@ class OSHANetworkchooser(common.ViewletBase):
 
         self.action = self.context.absolute_url() + '/global_network'
         
+        
 class OSHAPathBarViewlet(common.PathBarViewlet):
     
     render =  ViewPageTemplateFile('templates/path_bar.pt')
@@ -164,6 +165,7 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
         breadcrumbs_view = getMultiAdapter((self.context, self.request),
                                            name='breadcrumbs_view')
         self.breadcrumbs = breadcrumbs_view.breadcrumbs()    
+
 
                 
 class OSHACampaignAreaViewlet(common.ViewletBase):
