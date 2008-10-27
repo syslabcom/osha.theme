@@ -23,6 +23,7 @@
 
             <tal:listing condition="items">
             
+            <div tal:content="structure view/getBodyText" ></div>
 
                 <table class="listing" id="teaserlisting"
                        summary="Content listing" border="0"
@@ -53,7 +54,7 @@
                                                 tal:content="title_or_id" />
                                     </h2>
                                        
-                                    <div class="newsImageContainer" style="width: 100px;"
+                                    <div class="newsImageContainer"
                                          tal:condition="python: obj.portal_type in ['News Item']"
                                          tal:on-error="nothing">
                                         <a href="#"
