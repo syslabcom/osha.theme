@@ -21,7 +21,9 @@
                                    batch topicContents;">
 
             <tal:listing condition="topicContents">
-            
+
+            <div tal:content="structure view/getBodyText" ></div>
+
             <div metal:define-macro="text-field-view"
                  id="parent-fieldname-text" class="stx"
                  tal:define="text view/getText|nothing"
