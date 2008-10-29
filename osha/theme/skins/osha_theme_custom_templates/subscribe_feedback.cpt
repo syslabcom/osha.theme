@@ -9,7 +9,7 @@
 <body>
 
 <div metal:fill-slot="main"
-     i18n:domain="osha"
+     i18n:domain="slc.alertservice"
      tal:define="errors options/state/getErrors |nothing;
                  button options/state/button">
 

@@ -1,17 +1,17 @@
-<span i18n:domain="osha">
-<span i18n:translate="alertservice_alert_request">EU-OSHA received a request to start sending alerts to</span> <span tal:replace="options/email | string:[no email]"/>.
+<span i18n:domain="osha" tal:omit-tag="">
+<span tal:omit-tag="" i18n:translate="alertservice_alert_request">EU-OSHA received a request to start sending alerts to</span> <span tal:replace="options/email | string:[no email]"/>.
 
-<span i18n:translate="alertservice_verify_request">Verify this EU-OSHA alert request:</span>
+<span tal:omit-tag="" i18n:translate="alertservice_verify_request">Verify this EU-OSHA alert request:</span>
 <span tal:replace="structure options/verify_url | string: empty url"/>
 
-<span i18n:translate="alertservice_cancel_request">Cancel this EU-OSHA alert request:</span>
+<span tal:omit-tag="" i18n:translate="alertservice_cancel_request">Cancel this EU-OSHA alert request:</span>
 <span tal:replace="structure options/remove_url | string: empty url"/>
 
-<span i18n:translate="alertservice_alternative_verification">If you cannot click on the link, you can cut and paste it into your browser's address bar.</span>
+<span tal:omit-tag="" i18n:translate="alertservice_alternative_verification">If you cannot click on the link, you can cut and paste it into your browser's address bar.</span>
 
-<span i18n:translate="alertservice_ignore request">If you did not initiate this request or believe it was sent in error you can safely ignore this message.</span>
+<span tal:omit-tag="" i18n:translate="alertservice_ignore request">If you did not initiate this request or believe it was sent in error you can safely ignore this message.</span>
 
-<span i18n:translate="alertservice_email_footer1">Thanks,</span>
-<span i18n:translate"alertservice_email_footer2">The EU-OSHA Alerts Team</span>
+<span tal:omit-tag="" i18n:translate="alertservice_email_footer1">Thanks,</span>
+<span tal:omit-tag="" i18n:translate="alertservice_email_footer2">The EU-OSHA Alerts Team</span>
 </span>
 <span tal:replace="options/origin_host"/>

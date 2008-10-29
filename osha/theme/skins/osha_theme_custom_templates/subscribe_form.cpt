@@ -81,7 +81,7 @@ tal:define="dummy python:request.set('disable_border',1)" />
 
         </div>
     
-            <div class="formControls submitbuttons">
+            <div class="formControls submitbuttons" i18n:domain="slc.alertservice">
                 <input class="context"
                        tabindex=""
                        type="submit"

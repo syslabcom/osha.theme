@@ -13,7 +13,7 @@ body { font-face: Arial sans-serif; }
 .key { padding: 5px; border-top: 1px solid white;  float: left; width: 15em;}
 .val {padding: 5px; border-left: 1px solid white; border-top: 1px solid white; width: 25em; margin: 0px 0px 0px 16em;}
 .morelink {font-size: 80%;}
-#parameter_box { width: 400px; clear: both;}
+#parameter_box { width: 600px; clear: both;}
 #parameter_head {padding: 5px; background-color: #CFD2E2; font-size: 110%; font-weight: bold;}
 #parameter_body { background-color: #DFE2F2; font-size: 80%; font-weight: normal;}
 h3 { border-bottom: 1px solid lightgrey;}
@@ -37,7 +37,7 @@ h3 { border-bottom: 1px solid lightgrey;}
                  atool nocall:here/portal_alertservice;
                  ordered_results python:atool.notification_order_results(results);">
 
-    <h2 i18n:domain="osha" i18n:translate="alertservice_notification_report">OSHA Notification Report</h2>
+    <h2 i18n:domain="osha" i18n:translate="alert_osha_notification_report">OSHA Notification Report</h2>
 
     <div id="parameter_box"
          tal:define="searchmap options/searchmap|python:{};
@@ -71,7 +71,7 @@ h3 { border-bottom: 1px solid lightgrey;}
 
     <p>
         
-        <span i18n:translate="alertservice_results_found"><span omit-tag="" i18n:name="number><span tal:replace="options/numresults"/>
+        <span i18n:translate="alertservice_results_found"><span omit-tag="" i18n:name="number"><span tal:replace="options/numresults"/>
         </span>
             Results have been found.</span>
         
