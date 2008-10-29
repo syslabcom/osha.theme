@@ -3,7 +3,7 @@ from Products.CMFCore.utils import getToolByName
 from plone.app.controlpanel.search import ISearchSchema
 from Products.Archetypes.utils import DisplayList
 
-from slc.alertservice import AlertMessageFactory as _
+from osha.theme import OSHAMessageFactory as _
 
 from slc.alertservice.interfaces import ISubjectGetter
 from slc.alertservice.interfaces import ITypesGetter
@@ -34,11 +34,11 @@ class TypesGetter(object):
 
     def __call__(self, context):
         # do some hardcoding...
-        seach_types = [ ('OSH_Link', _(u'OSH links'))
+        seach_types = [ ('OSH_Link', _(u'OSH Link'))
                   , ('News Item', _(u'News'))
-                  , ('Event', _(u'Events'))
-                  , ('Publication', _(u'Publications'))
-                  , ('CaseStudy', _(u'Case studies'))
+                  , ('Event', _(u'Event'))
+                  , ('Publication', _(u'Publication'))
+                  , ('CaseStudy', _(u'Case Study'))
                   ]
         DL = DisplayList()
         for st in seach_types:

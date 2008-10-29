@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="osha">
 
 <metal:head fill-slot="top_slot"
 tal:define="dummy python:request.set('disable_border',1)" />
@@ -32,7 +32,7 @@ tal:define="dummy python:request.set('disable_border',1)" />
 <body>
 
 <div metal:fill-slot="main"
-     i18n:domain="slc.alertservice"
+     i18n:domain="osha"
      tal:define="errors options/state/getErrors |nothing;
                  view context/@@subscribe_helper;
                  userSettings view/getUserSettings | python:{};">
@@ -48,8 +48,8 @@ tal:define="dummy python:request.set('disable_border',1)" />
 
     <h2 id="subscribe_heading">
         <img src="alertservice_icon.gif" width="17" height="16" />
-        <span i18n:translate="heading_edit_alert" tal:condition="request/s |nothing">Edit an Alert</span>
-        <span i18n:translate="heading_create_alert" tal:condition="not:request/s |nothing">Create an Alert</span>
+        <span i18n:translate="heading_edit_alert" tal:condition="request/s |nothing">Edit an alert</span>
+        <span i18n:translate="heading_create_alert" tal:condition="not:request/s |nothing">Create an alert</span>
     </h2>
 
        <div id="subscribe_body">
@@ -77,7 +77,7 @@ tal:define="dummy python:request.set('disable_border',1)" />
                    tal:attributes="checked python:test(name, 'checked', '');" />
 
         <span i18n:translate="description_subscribe_oshmail">I also want to receive OSHmail, 
-            the free monthly newsletter (<a href="http://osha.europa.eu/news/oshmail/" target="_blank">learn more...</a>)</span>
+            the free monthly newsletter</span> (<a href="http://osha.europa.eu/news/oshmail/" target="_blank" i18n:translate="oshmail_learn_more">learn more...</a>)
 
         </div>
     
