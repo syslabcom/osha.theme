@@ -46,14 +46,14 @@ tal:define="dummy python:request.set('disable_border',1)" />
 
 <div id="subscribe_box">
 
-    <h2 id="subscribe_heading">
+    <h2 id="subscribe_heading" i18n:domain="slc.alertservice">
         <img src="alertservice_icon.gif" width="17" height="16" />
         <span i18n:translate="heading_edit_alert" tal:condition="request/s |nothing">Edit an alert</span>
         <span i18n:translate="heading_create_alert" tal:condition="not:request/s |nothing">Create an alert</span>
     </h2>
 
        <div id="subscribe_body">
-            <p i18n:translate="description_edit_alert">Please specify your query according to your interests:</p>
+            <p i18n:translate="description_edit_alert" i18n:domain="slc.alertservice">Please specify your query according to your interests:</p>
             
     <div metal:use-macro="context/subscription_macros/macros/subject_field"></div>
     

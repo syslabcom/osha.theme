@@ -31,6 +31,7 @@ h3 { border-bottom: 1px solid lightgrey;}
 </div>
 
 <div class="alert_body"
+    i18n:domain="slc.alertservice"
      tal:define="results options/results;
                  ttool nocall:here/portal_types;
                  atool nocall:here/portal_alertservice;
@@ -47,18 +48,18 @@ h3 { border-bottom: 1px solid lightgrey;}
              i18n:translate="alertservice_requested_info">You have requested
         </div>
 
-        <div id="parameter_body">
+        <div id="parameter_body" i18n:domain="osha">
             <div class="data_col" id="keywords_col" tal:condition="python:topics">
                 <div class="key" i18n:translate="label_subjects_of_interest">Subjects</div>
                 <div class="val">
                     <tal:keywords repeat="kw topics">
-                        <span tal:content="kw" i18n:domain="osha" i18n:translate=""></span>
+                        <span tal:content="kw" i18n:translate=""></span>
                         <span tal:omit-tag="" tal:condition="not:repeat/kw/end"><br /></span>
                     </tal:keywords>
                 </div>
             </div>
 
-            <div class="data_col" id="lang_col" tal:condition="AvailableLanguages">
+            <div class="data_col" id="lang_col" tal:condition="AvailableLanguages" i18n:domain="osha">
                 <div class="key" i18n:translate="label_additional_languages">Languages</div>
                 <div class="val">
                     <span tal:replace="python: ', '.join(AvailableLanguages)" />
@@ -78,7 +79,8 @@ h3 { border-bottom: 1px solid lightgrey;}
             <span i18n:translate="alertservice_onlyfirst_shown">Only the first
                 <span i18n:name="number"><span tal:replace="python:len(options['results'])"/></span>
                 most topical results are shown.<br/>
-                <a href="" tal:attributes="href options/more_url">Click here to view all results.</a>
+                <a href="" tal:attributes="href options/more_url" 
+                    i18n:translate="alertservice_view_all">Click here to view all results.</a>
             </span>
         </span>
     </p>
@@ -91,7 +93,7 @@ h3 { border-bottom: 1px solid lightgrey;}
       <img tal:attributes="src string:http://osha.europa.eu/${ti/getIcon}"/>
       <span tal:replace="ti/Title"/>
   </h3-->
-  <h3><span i18n:translate="" tal:replace="K" /></h3>
+  <h3><span i18n:domain="osha" i18n:translate="" tal:replace="K" /></h3>
 
   <div class="typeresults" tal:define="results python:ordered_results.get(K, [])">
 
@@ -117,7 +119,7 @@ h3 { border-bottom: 1px solid lightgrey;}
 
         <div class="morelink">
             <span i18n:translate="box_last_modified" i18n:domain="plone">Last modified</span>: <span tal:replace="python:here.toLocalizedTime(result['modified'], long_format=0)"/><br>
-            <span i18n:translate="alert_label_more">More</span> :
+            <span i18n:translate="alert_label_more" i18n:domain="osha">More</span> :
             <a tal:attributes="href string:${result/getURL}?sourceid=alert" tal:content="string:${result/getURL}">
                 <span tal:replace="options/siteurl"/>LINK
             </a>
