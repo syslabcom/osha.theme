@@ -2,12 +2,15 @@ import Acquisition
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
+from osha.theme import OSHAMessageFactory as _
+from Products.PlacelessTranslationService import translation_service as pts
 
 class OSHTopicView(BrowserView):
     """View for displaying the results of a topic outside the current context within the context
     """
     template = ViewPageTemplateFile('templates/oshtopic_view.pt')
     template.id = 'oshtopic-view'
+    
     
     def __call__(self):
         topicpath = self.request.get('tp', '')
@@ -24,7 +27,31 @@ class OSHTopicView(BrowserView):
         return topic        
         
     def Title(self):
-        return self.getTopic().Title()        
+        topic = self.getTopic()
+        query = topic.buildQuery()
+        if 'Subject' in query.keys():
+            subject_vals = query['Subject']['query']
+            subject_vals = [self._t(x, 'osha') for x in subject_vals]
+
+        if 'portal_type' in query.keys():
+            portal_types = query['portal_type']
+            portal_types = [self._t(x) for x in portal_types]
+        else:
+            portal_types = []
+        
+        if 'object_provides' in query.keys() and \
+            'slc.publications.interfaces.IPublicationEnhanced' in query['object_provides']:
+            portal_types.append(_('Publication'))
+            
+        if subject_vals and portal_types:
+            title = _("header_oshtopic_dynamic", 
+                      default = "All ${portal_type} items on ${subject}",
+                      mapping=dict(portal_type=', '.join(portal_types), 
+                           subject=', '.join(subject_vals))
+                     )
+        else:
+            title = self.getTopic().Title()        
+        return title
 
     def getText(self):
         return self.getTopic().getText()
@@ -37,3 +64,6 @@ class OSHTopicView(BrowserView):
 
     def getCustomViewFields(self):
         return self.getTopic().getCustomViewFields()
+        
+    def _t(self, msgid, domain='plone'):
+        return pts.translate(domain=domain, msgid=msgid, context=self.context)
