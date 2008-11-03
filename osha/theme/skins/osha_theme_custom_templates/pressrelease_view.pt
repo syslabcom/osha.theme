@@ -106,9 +106,9 @@
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
 
-        <p class='release-hashes'>
+        <!--p class='release-hashes'>
             ###
-        </p>
+        </p-->
         
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             Show related items if they exist
