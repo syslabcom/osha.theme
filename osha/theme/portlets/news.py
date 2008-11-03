@@ -8,22 +8,23 @@ from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from plone.memoize.compress import xhtml_compress
 from DateTime import DateTime
+from plone.app.portlets.cache import render_cachekey
 
 class Renderer(news.Renderer):
     """Dynamically override standard header for news portlet"""
     
     _template = ViewPageTemplateFile('news.pt')
     
-    def _render_cachekey(method, self):
-        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        navigation_root_path = portal_state.navigation_root_path()
-        return (preflang, navigation_root_path)
+    #def _render_cachekey(method, self):
+    #    preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+    #    portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+    #    navigation_root_path = portal_state.navigation_root_path()
+    #    return (preflang, navigation_root_path)
     
     # Add respect to INavigationRoot
     # Add support for isNews flag
     
-    @ram.cache(_render_cachekey)
+    @ram.cache(render_cachekey)
     def render(self):
         return xhtml_compress(self._template()) 
 

@@ -25,6 +25,43 @@ from plone.app.vocabularies.catalog import SearchableTextSourceBinder, Searchabl
 from Products.Archetypes.interfaces import IBaseObject
 from zope.app.component.hooks import getSite
 
+
+from zope import component
+from Acquisition import aq_inner
+
+def get_language(context, request):
+    portal_state = component.getMultiAdapter(
+        (context, request), name=u'plone_portal_state')
+    return portal_state.locale().getLocaleID()
+
+def render_cachekey(fun, self):
+    """
+    Generates a key based on:
+
+    * Portal URL
+    * Negotiated language
+    * Anonymous user flag
+    * Portlet manager
+    * Assignment
+    * Fingerprint of the data used by the portlet
+    
+    """
+    context = aq_inner(self.context)
+    
+    fingerprint = "".join(self.data.urls)
+
+    anonymous = getToolByName(context, 'portal_membership').isAnonymousUser()
+
+    return "".join((
+        getToolByName(aq_inner(self.context), 'portal_url')(),
+        get_language(aq_inner(self.context), self.request),
+        str(anonymous),
+        self.manager.__name__,
+        self.data.__name__,
+        fingerprint))
+        
+        
+
 class LocalSearchableTextSourceBinder(SearchableTextSourceBinder):
     """ make the binder search in the local folder first """
 
@@ -78,6 +115,7 @@ class Assignment(base.Assignment):
         return self.header
 
 
+        
 class Renderer(base.Renderer):
     """Portlet renderer.
     
@@ -94,20 +132,14 @@ class Renderer(base.Renderer):
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
 
-    def _render_cachekey(method, self):
-        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
-        modified = ""
-        return (modified, preflang)
-
-    #@ram.cache(_render_cachekey)
+    @ram.cache(render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
 
     def title(self):
         return _(self.data.header)
-
-
+        
     @memoize
     def get_urls_and_titles(self):
         """ get the urls to the objects
