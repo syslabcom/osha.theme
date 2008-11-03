@@ -1,0 +1,22 @@
+<tal:cond condition="python:True">
+<dl class="portlet portletTop5"
+    i18n:domain="osha">
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span tal:replace="view/title" />
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem odd"
+        tal:define="plone_view context/@@plone;">
+        <ul tal:define="links view/get_urls_and_titles">
+            <li tal:repeat="link links"> 
+                <a href="" 
+                   tal:attributes="href python:link[0]"
+                   tal:content="python:link[1]">A top link</a> 
+            </li>
+        </ul>
+    </dd>
+        
+</dl>
+</tal:cond>

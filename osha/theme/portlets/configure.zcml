@@ -154,6 +154,19 @@
          edit_permission="cmf.ManagePortal"
          />
 
+ <!-- Document Fallback portlet -->
+     <plone:portlet
+         name="osha.top5"
+         interface=".top5.ITop5Portlet"
+         assignment=".top5.Assignment"
+         renderer=".top5.Renderer"
+         addview=".top5.AddForm"
+         editview=".top5.EditForm"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         />
+
+
  <!-- Image portlet -->
      <plone:portlet
          name="osha.image"

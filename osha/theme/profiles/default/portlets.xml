@@ -68,6 +68,11 @@
       description="Lists the contents of a file and falls back to the default language if it is not available in the preferred." />
 
   <portlet
+      addview="osha.top5"
+      title="Top5 Portlet"
+      description="Shows preconfigured links and displays the titles of the referenced objects with language fallback" />
+
+  <portlet
       addview="osha.image"
       title="Image/Flash Portlet"
       description="Shows an Image/Flash and falls back to the default language if it is not available in the preferred." />
