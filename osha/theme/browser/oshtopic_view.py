@@ -1,4 +1,5 @@
 import Acquisition
+from types import *
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
@@ -30,7 +31,14 @@ class OSHTopicView(BrowserView):
         topic = self.getTopic()
         query = topic.buildQuery()
         if 'Subject' in query.keys():
-            subject_vals = query['Subject']['query']
+            if type(query['Subject'])==type({}) and query['Subject'].has_key('query'):
+                subject_vals = query['Subject']['query']
+            elif type(query['Subject']) in [StringType, UnicodeType]:
+                subject_vals = [query['Subject']]
+            elif type(query['Subject']) in [ListType, TupleType]:
+                subject_vals = query['Subject']
+            else:
+                subject_vals = []
             subject_vals = [self._t(x, 'osha') for x in subject_vals]
 
         if 'portal_type' in query.keys():
