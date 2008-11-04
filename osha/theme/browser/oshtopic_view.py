@@ -47,10 +47,13 @@ class OSHTopicView(BrowserView):
         else:
             portal_types = []
         
-        if 'object_provides' in query.keys() and \
-            'slc.publications.interfaces.IPublicationEnhanced' in query['object_provides']:
-            portal_types.append(_('Publication'))
-            
+        if 'object_provides' in query.keys():
+            if 'slc.publications.interfaces.IPublicationEnhanced' in query['object_provides']:
+                portal_types.append(_('Publication'))
+            elif type(query['object_provides'])== type({}) and query['object_provides'].has_key('query') and\
+                'slc.publications.interfaces.IPublicationEnhanced' in query['object_provides']['query']:
+                portal_types.append(_('Publication'))
+
         print query
         print subject_vals
         print portal_types
