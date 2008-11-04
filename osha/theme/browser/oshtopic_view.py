@@ -51,6 +51,9 @@ class OSHTopicView(BrowserView):
             'slc.publications.interfaces.IPublicationEnhanced' in query['object_provides']:
             portal_types.append(_('Publication'))
             
+        print query
+        print subject_vals
+        print portal_types
         if subject_vals and portal_types:
             title = _("header_oshtopic_dynamic", 
                       default = "All ${portal_type} items on ${subject}",
