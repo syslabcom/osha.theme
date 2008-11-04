@@ -245,12 +245,9 @@ class OSHAFooterActions(common.ViewletBase):
         """
         Generates a key based on:
     
-        * Portal URL
+        * Current URL
         * Negotiated language
         * Anonymous user flag
-        * Portlet manager
-        * Assignment
-        * URL of collection used (instead of using _data)
         
         """
         context = aq_inner(self.context)
@@ -258,7 +255,7 @@ class OSHAFooterActions(common.ViewletBase):
         anonymous = getToolByName(context, 'portal_membership').isAnonymousUser()
     
         key= "".join((
-            getToolByName(aq_inner(self.context), 'portal_url')(),
+            '/'.join(aq_inner(self.context).getPhysicalPath()),
             get_language(aq_inner(self.context), self.request),
             str(anonymous),
             ))
