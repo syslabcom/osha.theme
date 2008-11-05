@@ -6,25 +6,31 @@
             
     <form name="networkchooser" 
           action=""> 
-          <div class="dropdown">
+          <div class="dropdown" tal:repeat="network view/networks">
                <label for="euNetwork"
+                      tal:attributes="for network/id"
                       class="hiddenStructure"
+                      tal:content="network/title"
                       i18n:translate="">European Network</label>
-               <select id="euNetwork" name="eu_network" 
+               <select id="euNetwork" name="eu_network" style="width: 150px;"
                       onkeyup="osha_gotoURL(this.options[this.options.selectedIndex].value)" 
                       onChange="osha_gotoURL(this.options[this.options.selectedIndex].value)"
-                      tal:define="sites view/getEuropeanNetwork">                           
-                  <option value="" i18n:translate="">European Network</option>
+                      tal:define="sites network/sites"
+                      tal:attributes="id network/id; name network/id">                           
+                  <option value="" i18n:translate="" tal:content="network/title">European Network</option>
                   <option rel="nofollow" tal:repeat="site sites" 
                           tal:attributes="value python:site[1]" 
                           tal:content="python:site[0]">Site name</option>
                </select>
                <noscript>
-                  <input name="form.button.GoEuNetwork" type="submit" value="Go" />
+                  <input name="form.button.GoNetwork" 
+                         type="submit" 
+                         value="Go" 
+                         tal:attributes="name string:form.button.Go${network/id}Network"/>
                </noscript> 
 
           </div>
-          <div class="dropdown">
+          <!--div class="dropdown">
                <label for="intNetwork"
                       class="hiddenStructure" 
                       i18n:translate="">International Network</label>
@@ -40,60 +46,8 @@
                <noscript>
                   <input name="form.button.GoIntNetwork" type="submit" value="Go" />
                </noscript> 
-          </div>
+          </div-->
           
-        <div tal:content="nothing"
-             tal:omit-tag="">
-        
-         <div id="portal-network"
-            tal:define="eu_portal python:portal.restrictedTraverse('/osha/portal', nothing);
-                        to_utf8 nocall:utiltool/to_utf8">
-            <div class="dropdown"
-                 tal:define="sites eu_portal/portal_properties/osha_properties/eu_network|portal_properties/osha_properties/eu_network|python:[]"
-                 tal:condition="sites">
-                 <label for="euNetwork"><span class="hiddenLabel" i18n:translate="">European Network</span></label>
-                <select id="euNetwork" name="eu_network" onkeyup="crosslinkNetwork(this.options[this.options.selectedIndex].value)"
-                        onChange="crosslinkNetwork(this.options[this.options.selectedIndex].value)">                           
-                    <option value="" i18n:translate="">European Network</option>
-                    <tal:block repeat="site sites">
-                    <option rel="nofollow"
-                            tal:define="elems python:site.split('|');
-                            haslink python:test(1<len(site), 1, 0)" 
-                            tal:attributes="value python: test(haslink, elems[-1], '')"><span
-                            tal:condition="haslink" i18n:translate="" tal:omit-tag=""
-                            tal:content="python:to_utf8(elems[0])" /><span tal:condition="not:haslink"
-                            tal:replace="string:--------" /></option>
-                    </tal:block>
-                 </select>
-                 <noscript>
-                    <input name="form.button.GoEuNetwork" type="submit" value="Go">
-                 </noscript> 
-
-            </div>
-            <div class="dropdown"
-                 tal:define="sites eu_portal/portal_properties/osha_properties/int_network|portal_properties/osha_properties/int_network|python:[]"
-                 tal:condition="sites">
-                 <label for="intNetwork"><span class="hiddenLabel" i18n:translate="">International Network</span></label>
-                <select id="intNetwork" name="int_network" onkeyup="gotoURL(this.options[this.options.selectedIndex].value)"
-                        onChange="gotoURL(this.options[this.options.selectedIndex].value)">                            
-                    <option value="" i18n:translate="">International Network</option>
-                    <tal:block repeat="site sites">
-                    <option rel="nofollow" tal:define="elems python:site.split('|');
-                            haslink python:test(1<len(site), 1, 0)" 
-                            tal:attributes="value python: test(haslink, elems[-1], '')"><span
-                            tal:condition="haslink" i18n:translate="" tal:omit-tag=""
-                            tal:content="python:to_utf8(elems[0])" /><span tal:condition="not:haslink"
-                            tal:replace="string:--------" /></option>
-                    </tal:block>
-                 </select>
-                 <noscript>
-                    <input name="form.button.GoIntNetwork" type="submit" value="Go">
-                 </noscript> 
- 
-            </div>
-        </div> 
-        
-        </div>
         
     </form>
 </div>

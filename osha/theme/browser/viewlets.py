@@ -124,23 +124,51 @@ class OSHANetworkchooser(common.ViewletBase):
 
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
-        return (preflang)
+        oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
+        subsite_path = oshaview.subsiteRootPath()
+        return (preflang, subsite_path)
     
     @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
-    def getGermanNetwork(self):
+    def networks(self):
+        """ returns a list of networks for display depending on the current subsite """
+        oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
+        subsite_path = oshaview.subsiteRootPath()
+
+        if subsite_path.split('/')[-1]=='netherlands':
+            return (self.eu(), self.int(), self.nl())
+
+        elif subsite_path.split('/')[-1]=='germany':
+            return (self.eu(), self.int(), self.de())
+
+        else:
+            return (self.eu(), self.int())
+
+    def de(self):
         """ returns the sites from the European Network """
-        return GERMAN_NETWORK
+        return dict(title='German Network', 
+                    id='deNetwork', 
+                    sites=GERMAN_NETWORK)
+
+    def nl(self):
+        """ returns the sites from the European Network """
+        return dict(title='Dutch Network', 
+                    id='nlNetwork', 
+                    sites=DUTCH_NETWORK)
         
-    def getEuropeanNetwork(self):
+    def eu(self):
         """ returns the sites from the European Network """
-        return EUROPEAN_NETWORK
+        return dict(title='European Network', 
+                    id='euNetwork', 
+                    sites=EUROPEAN_NETWORK)
     
-    def getInternationalNetwork(self):
+    def int(self):
         """ returns the sites from the European Network """
-        return INTERNATIONAL_NETWORK
+        return dict(title='International Network', 
+                    id='intNetwork', 
+                    sites=INTERNATIONAL_NETWORK)
     
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),

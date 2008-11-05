@@ -76,3 +76,24 @@ GERMAN_NETWORK = (
     ('Sachsen-Anh.', 'st.de.osha.europa.eu'),
     ('Thüringen', 'th.de.osha.europa.eu'),
 )
+
+DUTCH_NETWORK = (
+    ('Beroepsvereniging voor Arbeids-en Organisatiedeskundigen', 'www.baeno.nl'),
+    ('Boaborea', 'www.boaborea.nl'),
+    ('CNV', 'www.cnv.nl'),
+    ('Coronel Instituut voor Arbeid en Gezondheid', 'www.amc.nl/index.cfm?pid=374'),
+    ('FNV', 'www.fnv.nl'),
+    ('Ministerie SZW', 'www.minszw.nl'),
+    ('MKB Nederland', 'www.mkb.nl'),
+    ('Nederlands Kenniscentrum Arbeid en Longaandoeningen', 'www.nkal.nl'),
+    ('Nederlandse Vereniging voor Arbeidshygiëne', 'www.arbeidshygiene.nl'),
+    ('Nederlandse Vereniging voor Arbeid- en Bedrijfsgeneeskunde', 'www.nvab-online.nl'),
+    ('Nederlands Centrum voor Beroepsziekten', 'www.beroepsziekten.nl'),
+    ('Nederlandse Vereniging voor Ergotherapie', 'www.ergotherapie.nl'),
+    ('Nederlandse Vereniging voor Ergonomie', 'www.ergonoom.nl'),
+    ('TNO Kwaliteit van Leven', 'www.tno.nl/kvl'),
+    ('Vakcentrale MHP', 'www.vc-mhp.nl'),
+    ('VNO NCW', 'www.vno-ncw.nl'),
+)
+
+

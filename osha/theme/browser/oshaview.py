@@ -206,6 +206,10 @@ class OSHA(BrowserView):
     def getGermanNetwork(self):
         """ returns the sites from the European Network """
         return GERMAN_NETWORK
+
+    def getDutchNetwork(self):
+        """ returns the sites from the European Network """
+        return DUTCH_NETWORK        
         
     def getEuropeanNetwork(self):
         """ returns the sites from the European Network """
@@ -214,6 +218,8 @@ class OSHA(BrowserView):
     def getInternationalNetwork(self):
         """ returns the sites from the European Network """
         return INTERNATIONAL_NETWORK        
+
+
 
     def makeAbsoluteUrls(self, text):
         """ turn relative URLs into absolute URLs based on the context's URL """
