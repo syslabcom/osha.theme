@@ -11,7 +11,7 @@
                    SearchableText request/SearchableText|string:;
                    Batch python:modules['Products.CMFPlone'].Batch;
                    DateTime python:modules['DateTime'].DateTime;
-                   b_size python:1;
+                   b_size python:30;
                    b_start python:0;b_start request/b_start | b_start;
                    desc_length site_properties/search_results_description_length;
                    desc_ellipsis site_properties/ellipsis;
