@@ -79,9 +79,9 @@ h3 { border-bottom: 1px solid lightgrey;}
             <span i18n:translate="alertservice_onlyfirst_shown">Only the first
                 <span i18n:name="number"><span tal:replace="python:len(options['results'])"/></span>
                 most topical results are shown.<br/>
-                <a href="" tal:attributes="href options/more_url" 
-                    i18n:translate="alertservice_view_all">Click here to view all results.</a>
             </span>
+            <a href="" tal:attributes="href options/more_url" 
+                i18n:translate="alertservice_view_all">Click here to view all results.</a>
         </span>
     </p>
 
