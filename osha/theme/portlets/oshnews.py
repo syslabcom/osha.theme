@@ -73,11 +73,11 @@ class Renderer(base.Renderer):
     def published_news_items(self):
         return self._data()
 
-#    @ram.cache(render_cachekey)
+    @ram.cache(render_cachekey)
     def render(self):
         return xhtml_compress(self._template()) 
 
-#    @memoize
+    @memoize
     def _data(self):
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
@@ -137,7 +137,7 @@ class Renderer(base.Renderer):
         return None
 
 
-#    @memoize
+    @memoize
     def all_news_link(self):
         
         if self.data.target_newsfolder:
