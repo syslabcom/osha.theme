@@ -48,14 +48,26 @@ class IEventsPortlet(IPortletDataProvider):
                                   required=True,
                                   source=SearchableTextSourceBinder({'object_provides' : 'p4a.calendar.interfaces.ICalendarEnhanced'},
                                                                     default_query='path:'))
+    rss_path = schema.TextLine(title=_(u'RSS path'),
+                               description=_(u'Enter a relative path to the URL that displays an RSS representation of these news. This is optionaö'),
+                               required=False,
+                               )
+    rss_explanation_path = schema.TextLine(title=_(u'RSS explanation path'),
+                               description=_(u'Enter a relative path to a page that gives general RSS information. This is optional.'),
+                               required=False,
+                               )
+
+
 class Assignment(base.Assignment):
     implements(IEventsPortlet)
 
-    def __init__(self, count=5, state=('published', ), subject=tuple(), target_calendar=None):
+    def __init__(self, count=5, state=('published', ), subject=tuple(), target_calendar=None, rss_path='', rss_explanation_path=''):
         self.count = count
         self.state = state
         self.subject = subject
         self.target_calendar = target_calendar
+        self.rss_path = rss_path
+        self.rss_explanation_path = rss_explanation_path
 
     @property
     def title(self):
@@ -64,7 +76,7 @@ class Assignment(base.Assignment):
 class Renderer(events.Renderer):
     """Dynamically override standard header for news portlet"""
 
-    _template = ViewPageTemplateFile('events.pt')
+    _template = ViewPageTemplateFile('oshevents.pt')
 
     def __init__(self, *args):
         events.Renderer.__init__(self, *args)
@@ -169,6 +181,25 @@ class Renderer(events.Renderer):
         if f is None:
             return ''
         return '%s/past_events.html' % f.absolute_url()
+
+    def showRSS(self):
+        return bool(getattr(self.data, 'rss_path', None))
+
+    def getRSSLink(self):
+        if self.showRSS():
+            context = Acquisition.aq_inner(self.context)
+            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+            navigation_root_path = portal_state.navigation_root_path()
+            return navigation_root_path + self.data.rss_path
+        return None
+
+    def getRSSExplanationLink(self):
+        if getattr(self.data, 'rss_explanation_path', None):
+            context = Acquisition.aq_inner(self.context)
+            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+            navigation_root_path = portal_state.navigation_root_path()
+            return navigation_root_path + self.data.rss_explanation_path
+        return None
 
 
 class AddForm(base.AddForm):
