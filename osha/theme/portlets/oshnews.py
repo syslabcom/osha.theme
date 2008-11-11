@@ -36,8 +36,8 @@ class INewsPortlet(IPortletDataProvider):
     target_newsfolder = schema.Choice(title=_(u"Target newsfolder"),
                                   description=_(u"Select a folder where the 'more news' link will point to. This is optional"),
                                   required=False,
-                                  source=SearchableTextSourceBinder({},
-                                                                    default_query='path:'))
+                                  source=SearchableTextSourceBinder({'object_provides' : 'Products.ATContentTypes.interface.IATFolder'},
+                                        default_query='path:'))
 
     rss_path = schema.TextLine(title=_(u'RSS path'),
                                description=_(u'Enter a relative path to the URL that displays an RSS representation of these news. This is optionaö'),
@@ -121,16 +121,20 @@ class Renderer(base.Renderer):
         return bool(self.data.rss_path)
 
     def getRSSLink(self):
-        context = aq_inner(self.context)
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        navigation_root_path = portal_state.navigation_root_path()
-        return navigation_root_path + self.data.rss_path
+        if self.data.rss_path:
+            context = aq_inner(self.context)
+            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+            navigation_root_path = portal_state.navigation_root_path()
+            return navigation_root_path + self.data.rss_path
+        return None
 
     def getRSSExplanationLink(self):
-        context = aq_inner(self.context)
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        navigation_root_path = portal_state.navigation_root_path()
-        return navigation_root_path + self.data.rss_explanation_path
+        if self.data.rss_explanation_path:
+            context = aq_inner(self.context)
+            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+            navigation_root_path = portal_state.navigation_root_path()
+            return navigation_root_path + self.data.rss_explanation_path
+        return None
 
 
 #    @memoize
