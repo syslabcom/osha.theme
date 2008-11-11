@@ -9,7 +9,16 @@
      portlet="plone.app.portlets.portlets.news.INewsPortlet" 
      layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".news.Renderer" 
-     />    
+     />
+
+    <plone:portlet
+        name="osha.OSHNews"
+        interface=".oshnews.INewsPortlet"
+        assignment=".oshnews.Assignment"
+        renderer=".oshnews.Renderer"
+        addview=".oshnews.AddForm"
+        editview=".oshnews.EditForm"
+        />
 
  <!-- Custom events portlet -->
  <plone:portletRenderer 

@@ -82,5 +82,10 @@
       title="OSHA Events portlet"
       description="This portlet lists upcoming events. If you select one or more categories, only events with matching them will be shown." />
 
+  <portlet
+      addview="osha.OSHNews"
+      title="OSHA News portlet"
+      description="This portlet lists upcoming news. A target folder for the more-link can be chosen." />
+
           
 </portlets>
