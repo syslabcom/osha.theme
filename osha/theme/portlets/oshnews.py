@@ -33,14 +33,14 @@ class INewsPortlet(IPortletDataProvider):
                          value_type=schema.Choice(
                              vocabulary="plone.app.vocabularies.WorkflowStates")
                          )
-    target_newsfolder = schema.Choice(title=_(u"Target newsfolder"),
-                                  description=_(u"Select a folder where the 'more news' link will point to. This is optional"),
-                                  required=False,
-                                  source=SearchableTextSourceBinder({'object_provides' : 'Products.ATContentTypes.interface.IATFolder'},
-                                        default_query='path:'))
+
+    newsfolder_path = schema.TextLine(title=_(u'Newsfolder path'),
+                               description=_(u"Enter a folder where the 'more news' link will point to. This is optional"),
+                               required=False,
+                               )
 
     rss_path = schema.TextLine(title=_(u'RSS path'),
-                               description=_(u'Enter a relative path to the URL that displays an RSS representation of these news. This is optionaö'),
+                               description=_(u'Enter a relative path to the URL that displays an RSS representation of these news. This is optional'),
                                required=False,
                                )
     rss_explanation_path = schema.TextLine(title=_(u'RSS explanation path'),
@@ -51,10 +51,10 @@ class INewsPortlet(IPortletDataProvider):
 class Assignment(base.Assignment):
     implements(INewsPortlet)
 
-    def __init__(self, count=5, state=('published', ), target_newsfolder=None, rss_path='', rss_explanation_path=''):
+    def __init__(self, count=5, state=('published', ), newsfolder_path='', rss_path='', rss_explanation_path=''):
         self.count = count
         self.state = state
-        self.target_newsfolder = target_newsfolder
+        self.newsfolder_path = newsfolder_path
         self.rss_path = rss_path
         self.rss_explanation_path = rss_explanation_path
 
@@ -139,11 +139,12 @@ class Renderer(base.Renderer):
 
     @memoize
     def all_news_link(self):
-        
-        if self.data.target_newsfolder:
-            return self.data.target_newsfolder
-
         context = aq_inner(self.context)
+        if getattr(self.data, 'newsfolder_path', None):
+            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+            navigation_root_path = portal_state.navigation_root_path()
+            return navigation_root_path + self.data.newsfolder_path
+
         if not context.isPrincipiaFolderish:
             context = aq_parent(context)
         
@@ -151,15 +152,17 @@ class Renderer(base.Renderer):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(INewsPortlet)
-    form_fields['target_newsfolder'].custom_widget = UberSelectionWidget
     label = _(u"Add News Portlet")
     description = _(u"This portlet displays recent News Items.")
 
     def create(self, data):
-        return Assignment(count=data.get('count', 5), state=data.get('state', ('published',)))
+        return Assignment(count=data.get('count', 5),
+            state=data.get('state', ('published',)),
+            newsfolder_path=data.get('newsfolder_path', ''),
+            rss_path=data.get('rss_path', ''),
+            rss_explanation_path=data.get('rss_explanation_path',''))
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(INewsPortlet)
-    form_fields['target_newsfolder'].custom_widget = UberSelectionWidget
     label = _(u"Edit News Portlet")
     description = _(u"This portlet displays recent News Items.")
