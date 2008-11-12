@@ -213,7 +213,9 @@ class AddForm(base.AddForm):
         return Assignment(count=data.get('count', 5), 
             state=data.get('state', ('published',)),
             subject=data.get('subject', tuple()),
-            target_calendar=data.get('target_calendar', None))
+            target_calendar=data.get('target_calendar', None),
+            rss_path=data.get('rss_path',''),
+            rss_explanation_path=data.get('rss_explanation_path',''))
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IEventsPortlet)
