@@ -37,7 +37,7 @@
       <div class="visualClear"><!-- --></div>
 
       <div id="additional-search-options">
-        <span tal:omit-tag="" i18n_translate="txt_try_the">Try the:</span><br/>
+        <span tal:omit-tag="" i18n:translate="txt_try_the">Try the:</span><br/>
         <ul class="linkList"> 
             <li><a href="#"
               class="tile"
