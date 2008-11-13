@@ -30,6 +30,7 @@ class OSHTopicView(BrowserView):
     def Title(self):
         topic = self.getTopic()
         query = topic.buildQuery()
+        subject_vals = list()
         if 'Subject' in query.keys():
             if type(query['Subject'])==type({}) and query['Subject'].has_key('query'):
                 subject_vals = query['Subject']['query']
@@ -37,8 +38,6 @@ class OSHTopicView(BrowserView):
                 subject_vals = [query['Subject']]
             elif type(query['Subject']) in [ListType, TupleType]:
                 subject_vals = query['Subject']
-            else:
-                subject_vals = []
             subject_vals = [self._t(x, 'osha') for x in subject_vals]
 
         if 'portal_type' in query.keys():
