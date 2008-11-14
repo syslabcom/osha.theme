@@ -171,6 +171,7 @@ class AddForm(base.AddForm):
     def create(self, data):
         return Assignment(header=data.get('header', u""),
                           image=data.get('image', u""),
+                          url=data.get('url', u""),
                           show_box=data.get('show_box', True),
                           width=data.get('width', u""),
                           height=data.get('height', u""))
