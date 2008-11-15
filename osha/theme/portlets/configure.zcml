@@ -54,13 +54,15 @@
 
 
  <!-- Custom collection portlet -->
- <plone:portletRenderer 
+ <!-- Commented out here, we are now overwriting the complete portlet definition
+    See overrides.zcml -->
+ <!--plone:portletRenderer 
      portlet="plone.portlet.collection.collection.ICollectionPortlet" 
      layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".collection.Renderer" 
-     />    
+     /-->
 
-     
+
  <!-- Custom defaultsearch portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.search.ISearchPortlet" 

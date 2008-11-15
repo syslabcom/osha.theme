@@ -19,5 +19,6 @@
     <!-- Include overriding Collage views -->
     <include file="browser/collageviews_overrides.zcml" />
 
+    <include file="portlets/overrides.zcml" />
 
 </configure>
