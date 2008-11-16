@@ -67,6 +67,7 @@ class Settings(Persistent):
     listserv_email = ''
     site_slogan = []
     oshmail_subscribers = ''
+    show_atoz_link = True
 
 
 ### Language vocabulary
@@ -158,7 +159,14 @@ class IParametersSchema(Interface):
     oshmail_subscribers = TextLine(title=_(u"Number of OSHMail Subscribers"),
                         description=_(u"Number of subscribers of the OSHMail newsletter."),
                         required=False
-    )
+                        )
+
+    show_atoz_link = Bool(title=_(u"Show A-Z link in search portlet"),
+                          description=_(u"With this option you can turn off showing the link to 'A-Z Index "
+                                    "in the search portlet"),
+                          required=False,
+                          default=True
+                          )
 
 class IPropertiesSchema(ILogoSchema, IEmailSchema, ISloganSchema, IParametersSchema):
     """Combined schema for the adapter lookup.
@@ -216,7 +224,6 @@ class PropertiesControlPanelAdapter(SchemaAdapterBase):
 
             self.settings.site_slogan = pairs
         return property(get, set)
-        
 
 
     def get_oshmail_subscribers(self):
@@ -224,7 +231,13 @@ class PropertiesControlPanelAdapter(SchemaAdapterBase):
     def set_oshmail_subscribers(self, value):
         self.settings.oshmail_subscribers = value
     oshmail_subscribers = property(get_oshmail_subscribers, set_oshmail_subscribers)
-    
+
+    def get_show_atoz_link(self):
+        return self.settings.show_atoz_link
+    def set_show_atoz_link(self, value):
+        self.settings.show_atoz_link = value
+    show_atoz_link = property(get_show_atoz_link, set_show_atoz_link)
+
     @property
     def settings(self):
         ann = IAnnotations(self.context)
