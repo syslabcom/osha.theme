@@ -40,3 +40,11 @@ class Renderer(search.Renderer):
 
     def index_alphabetical(self):
         return '%s/%s/@@index_alphabetical' %(self.subsite_url, self.language)
+
+
+    def showAtozLink(self):
+        osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
+        show = osha_view.get_subsite_property('show_atoz_link')
+        if show is None:
+            show = True
+        return show
