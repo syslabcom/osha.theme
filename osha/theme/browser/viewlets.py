@@ -328,24 +328,25 @@ class OSHALogoViewlet(common.LogoViewlet):
                                             name=u'plone_portal_state')
         langtool = getToolByName(self.context, 'portal_languages', None) 
         bound = langtool.getLanguageBindings()
-        current_lang = bound[0]                                           
+        current_lang = bound[0]
 
         self.navigation_root_url = portal_state.navigation_root_url()
 
         portal = portal_state.portal()
-        
-        logoName = portal.restrictedTraverse('base_properties').logoName
+        osha_view = getMultiAdapter((self.context, self.context.request), name=u'oshaview')
+        subsite = portal.restrictedTraverse(osha_view.subsiteRootPath())
+        logoName = subsite.restrictedTraverse('base_properties').logoName
         
         if current_lang != 'en':
             try:
-                init = portal.restrictedTraverse('base_properties').logoName
+                init = subsite.restrictedTraverse('base_properties').logoName
                 file_name = init.split(".")
                 file_name[0] = file_name[0] + "_" + current_lang 
                 logoName = ".".join(file_name)
             except:
                 pass
         
-        self.logo_tag = portal.restrictedTraverse(logoName).tag()
+        self.logo_tag = subsite.restrictedTraverse(logoName).tag()
 
         self.portal_title = portal_state.portal_title()
 
