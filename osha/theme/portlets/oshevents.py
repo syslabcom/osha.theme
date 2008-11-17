@@ -86,7 +86,7 @@ class Renderer(events.Renderer):
         # backwards compatibility
         if not hasattr(self.data, 'rss_path'):
             self.data.rss_path=''
-        if not hasattr(self.data, 'rss_exlanation_path'):
+        if not hasattr(self.data, 'rss_explanation_path'):
             self.data.rss_explanation_path=''
 
     def _render_cachekey(method, self):

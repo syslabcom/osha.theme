@@ -73,7 +73,7 @@ class Renderer(base.Renderer):
             self.data.newsfolder_path=''
         if not hasattr(self.data, 'rss_path'):
             self.data.rss_path=''
-        if not hasattr(self.data, 'rss_exlanation_path'):
+        if not hasattr(self.data, 'rss_explanation_path'):
             self.data.rss_explanation_path=''
 
     @property
