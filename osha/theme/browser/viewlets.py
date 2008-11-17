@@ -254,7 +254,7 @@ class OSHACampaignArea2Viewlet(common.ViewletBase):
                 logoName = ".".join(file_name)
     
 
-        self.campaign_logo2_name = logoName                
+        self.campaign_logo2_name = logoName
         self.campaign_logo2_url = '%s/%s' % (self.navigation_root_url, logoName)   
             
 class OSHAFooterLanguageSelector(TranslatableLanguageSelector):
@@ -336,16 +336,18 @@ class OSHALogoViewlet(common.LogoViewlet):
         osha_view = getMultiAdapter((self.context, self.context.request), name=u'oshaview')
         subsite = portal.restrictedTraverse(osha_view.subsiteRootPath())
         logoName = subsite.restrictedTraverse('base_properties').logoName
-        
+
+        self.logo_tag = subsite.restrictedTraverse(logoName).tag()
         if current_lang != 'en':
             try:
-                init = subsite.restrictedTraverse('base_properties').logoName
+                init = logoName
                 file_name = init.split(".")
                 file_name[0] = file_name[0] + "_" + current_lang 
                 logoName = ".".join(file_name)
+                self.logo_tag = subsite.restrictedTraverse(logoName).tag()
             except:
                 pass
-        
+
         self.logo_tag = subsite.restrictedTraverse(logoName).tag()
 
         self.portal_title = portal_state.portal_title()
