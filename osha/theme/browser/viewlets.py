@@ -348,8 +348,6 @@ class OSHALogoViewlet(common.LogoViewlet):
             except:
                 pass
 
-        self.logo_tag = subsite.restrictedTraverse(logoName).tag()
-
         self.portal_title = portal_state.portal_title()
 
 class TitleViewlet(common.TitleViewlet):
