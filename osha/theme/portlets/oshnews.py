@@ -66,6 +66,16 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('oshnews.pt')
 
+    def __init__(self, *args):
+        base.Renderer.__init__(self, *args)
+        # backwards compatibility
+        if not hasattr(self.data, 'newsfolder_path'):
+            self.data.newsfolder_path=''
+        if not hasattr(self.data, 'rss_path'):
+            self.data.rss_path=''
+        if not hasattr(self.data, 'rss_exlanation_path'):
+            self.data.rss_explanation_path=''
+
     @property
     def available(self):
         return len(self._data())
