@@ -83,6 +83,11 @@ class Renderer(events.Renderer):
         context = Acquisition.aq_base(self.context)
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
+        # backwards compatibility
+        if not hasattr(self.data, 'rss_path'):
+            self.data.rss_path=''
+        if not hasattr(self.data, 'rss_exlanation_path'):
+            self.data.rss_explanation_path=''
 
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
