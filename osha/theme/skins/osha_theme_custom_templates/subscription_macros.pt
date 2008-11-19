@@ -78,7 +78,7 @@
 
                     <tal:types_loop tal:repeat="stype schedulesList">
                     <option value="SCHEDULETYPE"
-                            i18n:attributes="value"
+                            i18n:translate=""
                             tal:attributes="value python: stype[1];
                                             selected python:schedule == stype[1]"
                             tal:content="python: stype[0]">
