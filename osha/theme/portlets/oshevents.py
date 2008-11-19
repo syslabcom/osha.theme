@@ -19,6 +19,8 @@ from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
+from types import UnicodeType
+from p4a.calendar.interfaces import ICalendarEnhanced
 
 
 class IEventsPortlet(IPortletDataProvider):
@@ -43,13 +45,19 @@ class IEventsPortlet(IPortletDataProvider):
                                 vocabulary="osha.policy.vocabularies.categories")
                             )
 
-    target_calendar = schema.Choice(title=_(u"Target calendar"),
-                                  description=_(u"Select a calendar where event-listings and the calendar view will be displayed. If you make a Topic into a calendar, only events matching its criteria will be displayed."),
-                                  required=True,
-                                  source=SearchableTextSourceBinder({'object_provides' : 'p4a.calendar.interfaces.ICalendarEnhanced'},
-                                                                    default_query='path:'))
+#    target_calendar = schema.Choice(title=_(u"Target calendar"),
+#                                  description=_(u"Select a calendar where event-listings and the calendar view will be displayed. If you make a Topic into a calendar, only events matching its criteria will be displayed."),
+#                                  required=True,
+#                                  source=SearchableTextSourceBinder({'object_provides' : 'p4a.calendar.interfaces.ICalendarEnhanced'},
+#                                                                    default_query='path:'))
+
+    calendar_path = schema.TextLine(title=_(u'Target calendar path'),
+                               description=_(u"Enter a folder where the 'next / previous events' link will point to. This is optional"),
+                               required=False,
+                               )
+
     rss_path = schema.TextLine(title=_(u'RSS path'),
-                               description=_(u'Enter a relative path to the URL that displays an RSS representation of these news. This is optionaö'),
+                               description=_(u'Enter a relative path to the URL that displays an RSS representation of these news. This is optional'),
                                required=False,
                                )
     rss_explanation_path = schema.TextLine(title=_(u'RSS explanation path'),
@@ -61,11 +69,11 @@ class IEventsPortlet(IPortletDataProvider):
 class Assignment(base.Assignment):
     implements(IEventsPortlet)
 
-    def __init__(self, count=5, state=('published', ), subject=tuple(), target_calendar=None, rss_path='', rss_explanation_path=''):
+    def __init__(self, count=5, state=('published', ), subject=tuple(), calendar_path=None, rss_path='', rss_explanation_path=''):
         self.count = count
         self.state = state
         self.subject = subject
-        self.target_calendar = target_calendar
+        self.calendar_path = calendar_path
         self.rss_path = rss_path
         self.rss_explanation_path = rss_explanation_path
 
@@ -84,6 +92,8 @@ class Renderer(events.Renderer):
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
         # backwards compatibility
+        if not hasattr(self.data, 'calendar_path'):
+            self.data.calendar_path=''
         if not hasattr(self.data, 'rss_path'):
             self.data.rss_path=''
         if not hasattr(self.data, 'rss_explanation_path'):
@@ -91,9 +101,9 @@ class Renderer(events.Renderer):
 
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
-        target_calendar = self.data.target_calendar
+        calendar_path = self.data.calendar_path
         subject = self.data.subject
-        return (target_calendar, preflang, subject)
+        return (calendar_path, preflang, subject)
 
     @ram.cache(_render_cachekey)
     def render(self):
@@ -143,11 +153,11 @@ class Renderer(events.Renderer):
 
 
     @memoize
-    def getCalendar(self):
+    def getCalendar(self, preflang):
         """ get the calendar the portlet is pointing to
             fall back to the canonical if language version cannot be found
         """
-        calendar_path = self.data.target_calendar
+        calendar_path = self.data.calendar_path
         if not calendar_path:
             return None
 
@@ -157,35 +167,39 @@ class Renderer(events.Renderer):
         if not calendar_path:
             return None
 
+        if isinstance(calendar_path, UnicodeType):
+            calendar_path = calendar_path.encode('utf-8')
+
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
         portal = portal_state.portal()
-        return portal.restrictedTraverse(calendar_path, default=None)
+        root = portal.restrictedTraverse(navigation_root_path)
+        cal = root.restrictedTraverse(calendar_path, default=None)
+        if not ICalendarEnhanced.providedBy(cal):
+            cal = None
+        # if the calendar is not found, and we are in a translated language tree:
+        if cal is None and not root.isCanonical():
+            canroot = root.getCanonical()
+            # ... look on the canonical root for the calendar
+            cal = canroot.restrictedTraverse(calendar_path, default=None)
+            # double check if a translated version in the preflang exists
+            cal = cal and cal.getTranslation(preflang) or cal
+        return cal
 
-
-    @memoize
-    def fallback(self, preflang):
-        cal = self.getCalendar()
-        if cal is None:
-            return None
-        pref = cal.getTranslation(preflang)
-        if not pref:
-            canonical = cal.getCanonical()   
-            return canonical
-        return pref
 
     @memoize
     def all_events_link(self):
-        f = self.fallback(self.preflang)
-        if f is None:
+        cal = self.getCalendar(self.preflang)
+        if cal is None:
             return ''
-        return '%s/events.html' % f.absolute_url()
+        return '%s/events.html' % cal.absolute_url()
 
     @memoize
     def prev_events_link(self):
-        f = self.fallback(self.preflang)
-        if f is None:
+        cal = self.getCalendar(self.preflang)
+        if cal is None:
             return ''
-        return '%s/past_events.html' % f.absolute_url()
+        return '%s/past_events.html' % cal.absolute_url()
 
     def showRSS(self):
         return bool(getattr(self.data, 'rss_path', None))
@@ -209,7 +223,6 @@ class Renderer(events.Renderer):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IEventsPortlet)
-    form_fields['target_calendar'].custom_widget = UberSelectionWidget
     
     label = _(u"Add Events Portlet")
     description = _(u"This portlet lists upcoming Events.")
@@ -218,12 +231,11 @@ class AddForm(base.AddForm):
         return Assignment(count=data.get('count', 5), 
             state=data.get('state', ('published',)),
             subject=data.get('subject', tuple()),
-            target_calendar=data.get('target_calendar', None),
+            calendar_path=data.get('calendar_path', None),
             rss_path=data.get('rss_path',''),
             rss_explanation_path=data.get('rss_explanation_path',''))
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IEventsPortlet)
-    form_fields['target_calendar'].custom_widget = UberSelectionWidget
     label = _(u"Edit Events Portlet")
     description = _(u"This portlet lists upcoming Events.")
