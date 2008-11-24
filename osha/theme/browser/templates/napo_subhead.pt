@@ -3,5 +3,5 @@
          <li><a href="contactus.html">Contact us</a> </li>
          <li><a href="links.html">Links</a> </li>
       </ul>
-      <img id="rahmen" src="osha_theme_napo_images/fondoContent.gif"/>
+      <img id="rahmen" src="/osha_theme_napo_images/fondoContent.gif"/>
    </div>
