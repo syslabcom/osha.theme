@@ -1,57 +1,7 @@
-/*
-*  This is the file where you put your CSS changes. 
-*  You should preferrably use this and override the 
-*  relevant properties you want to change here instead 
-*  of customizing plone.css to survive upgrades. Writing
-*  your own plone.css only makes sense for very heavy 
-*  customizations. Useful variables from Plone are 
-*  documented at the bottom of this file.
-*/
-
-/* <dtml-with base_properties> (do not remove this :) */
-/* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
-
-/*
-#portal-columns {
-	background: &dtml-primaryColor4;;
-}
-
-dl.portlet {
-	background: &dtml-primaryColor3;;
-} 
-
-.portletNavigationTree {
-	background: &dtml-primaryColor3;;
-}
-
-.navTreeItem a:hover,
-dd.portletItem .navTreeItem a:hover {
-	background-color: &dtml-primaryColor1;;
-}
-.navTreeCurrentItem,
-.navTreeItemInPath {
-	background: &dtml-primaryColor1;;
-}
-
-#portal-header {
-	height: 57px !important;
-}
-
-#portal-personaltools, 
-#osha-topactions,
-#siteactions-wrapper,
-#portal-network {
-	display: none;
-}
-
-#osha-topdropdowns {
-	margin-top: 30px !important;
-	margin-right: 597px !important;
-}
-*/
-/* </dtml-with> */
-
 /*rote Überschrift mit unterstrisch über den ganzen Content*/
+#osha-topdropdowns {
+}
+
 #parent-fieldname-text img {
 	float:left;
 	clear:left;
@@ -102,7 +52,7 @@ a {
 	display:none;
 }
 .portletNavigationTree {
-	background-image:url(osha_theme_napo_images/menu.gif);
+	background-image:url(/osha_theme_napo_images/menu.gif);
 	height:500px;
 	width:222px;
 	margin-top:60px;
@@ -125,7 +75,7 @@ a {
 	border: 0px none transparent;
 	padding-top:7px;
 	padding-bottom:8px;
-	background-image:url(osha_theme_napo_images/menuButton.gif);
+	background-image:url(/osha_theme_napo_images/menuButton.gif);
 	padding-left: 28px;
 	font-size:1.2em;
 	font-weight:bold;
@@ -175,7 +125,7 @@ a {
 body {
 	background-attachment: fixed;
 	background-color:#18B500;
-	background-image:url(osha_theme_napo_images/fondo.gif);
+	background-image:url(/osha_theme_napo_images/fondo.gif);
 	background-repeat:repeat-x;
 	font-family: Verdana,Arial,Helvetica;sans-serif;
 	font-size:0.7em;
@@ -197,7 +147,7 @@ body #portal-columns {
 	padding:0px 0px 0px 0px;
 }
 #header {
-	background-image:url(osha_theme_napo_images/napoHeader13.gif);
+	background-image:url(/osha_theme_napo_images/napoHeader13.gif);
 	background-repeat:no-repeat;
 	color:#FFFFFF;
 	font-size:0.9em;
@@ -219,7 +169,7 @@ body #portal-columns {
 	text-decoration:underline;
 }
 .documentContent {
-        background-image:url(osha_theme_napo_images/fondoContent2.gif);
+        background-image:url(/osha_theme_napo_images/fondoContent2.gif);
 	background-repeat:repeat-y;  
 	width:677px;
         position:relative;
@@ -237,59 +187,65 @@ body #portal-columns {
 	top:52px;
 }
 #the-napo-story, #who-is-napo, #napos-friends, #napos-films, #using-napo, #coming-soon, #rights-and-permissions, #napette, #the-boss, #miss-strudel, #other-friends {
-	color:#564ff7;	
-	font-weight:bold;
-	text-decoration:none;
-	position:relative;
+    color:#564ff7;	
+    font-weight:bold;
+    text-decoration:none;
+    position:absolute;
+    padding:1px;
+        
+}
+#the-napo-story:hover, #who-is-napo:hover, #napos-friends:hover, #napos-films:hover, #using-napo:hover, #coming-soon:hover, #rights-and-permissions:hover, #napette:hover, #the-boss:hover, #miss-strudel:hover, #other-friends:hover {
+    background: #f1f1ff;
+    padding:1px;
 }
 #napette {
-	top:-10px;
-	left:40px;
+	top:305px;
+	left:30px;
 }
 #miss-strudel {
-	top:-180px;
-	left:280px;
+	top:220px;
+	left:300px;
 }
 #the-boss {
-	top:90px;
-	left:280px;
+	top:445px;
+	left:275px;
 }
 #other-friends {
-	top:-75px;
-	left:460px;
+	top:   370px;
+	left:  450px;
 }
 #the-napo-story {
-	top:0px;
- 	left:-125px;
+	top:  465px;
+ 	left: 340px;
 }
 #napos-friends {
-	top:-75px;
-	left:-65px;
+	top:400px;
+	left:50px;
 }
 #who-is-napo {
-	top:-210px;
-	left:75px;
+	top:265px;
+	left:100px;
 }
 #napos-films {
-	top:-255px;
-	left:90px;
+	top:225px;
+	left:285px;
 }
 #using-napo {
-	top:-235px;
-	left:185px;
+	top:245px;
+	left:485px;
 }
 #coming-soon {
-	top:-130px;
-	right:120px;
+	top:350px;
+	left:275px;
 }
 #rights-and-permissions {
-	top:-115px;
-        left:440px;
+	top:375px;
+        left:490px;
 }
 #espiral-pic {
 }
 #friends-pic {
-	margin-bottom:-150px;
+	xmargin-bottom:-150px;
 }
 .other {
 	padding-top:40px;
