@@ -8,6 +8,7 @@ from Products.AdvancedQuery import Or, Eq, And, In
 from plone.memoize import ram, instance
 from Products.CMFPlone.PloneBatch import Batch
 import time
+from Products.ATContentTypes.interface import IATTopic
 
 class OSHNewsView(BrowserView):
     """View for displaying news outside the current context within the context
@@ -20,6 +21,9 @@ class OSHNewsView(BrowserView):
         return self.template() 
         
     def Title(self):
+        context = Acquisition.aq_inner(self.context)
+        if IATTopic.providedBy(context):
+            return context.Title()
         return _(u"heading_newsboard_latest_news")
 
 
