@@ -35,7 +35,7 @@
                       onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");'
                       onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'>
                       <div>
-                           <a href="/en/press/photos" i18n:translate="osha_label_pressbox_photos">Images and audiovisual</a>
+                           <a href="/en/press/photos" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
                       </div>
                   </td>
               </tr>
@@ -45,7 +45,7 @@
                       onmouseover='jq(this).addClass("pressbox-articles-on");jq(this).removeClass("pressbox-articles-off");'
                       onmouseout='jq(this).removeClass("pressbox-articles-on");jq(this).addClass("pressbox-articles-off");'>
                       <div>
-                           <a href="/en/press/articles" i18n:translate="osha_label_pressbox_articles">Useful Articles</a>
+                           <a href="/en/press/articles" i18n:translate="osha_label_pressbox_articles">Articles and Interviews</a>
                       </div>
                   </td>
                   <td class="pressbox-about-off"
