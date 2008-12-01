@@ -1,18 +1,18 @@
 <div id="footeractions-wrapper">
-    
+
     <ul id="portal-footeractions"
         i18n:domain="osha">
-        
-        <tal:document-actions 
+
+        <tal:document-actions
              condition="view/document_actions"
-             repeat="action view/document_actions">             
+             repeat="action view/document_actions">
             <li tal:attributes="id string:footeraction-${action/id}"
                 tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
                             is_last repeat/action/end">
 
                 <img alt="" src=""
                      tal:attributes="src string:${view/site_url}/$icon;
-                                     alt action/title" />                
+                                     alt action/title" />
                 <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
@@ -23,20 +23,20 @@
                                    title title;"
                 >Footer action</a>
                 <span class="breadcrumbSeparator" tal:condition="not: is_last">|</span>
-            </li>  
+            </li>
         </tal:document-actions>
-        
-        <tal:footer-actions 
+
+        <tal:footer-actions
              condition="view/footer_actions"
-             repeat="action view/footer_actions">       
-             <li class="breadcrumbSeparator">|</li>      
+             repeat="action view/footer_actions">
+             <li class="breadcrumbSeparator">|</li>
              <li tal:attributes="id string:footeraction-${action/id}"
                  tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
                              is_last repeat/action/end">
 
                  <img alt="" src=""
                       tal:attributes="src string:${view/site_url}/$icon;
-                                      alt action/title" />                
+                                      alt action/title" />
                  <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
@@ -46,20 +46,20 @@
                    tal:attributes="href action/url;
                                    title title;"
                 >Footer action</a>
-            </li>  
-        </tal:footer-actions>    
-        
-       <tal:site-actions 
+            </li>
+        </tal:footer-actions>
+<br/>
+       <tal:site-actions
              condition="view/site_actions"
-             repeat="action view/site_actions">  
-            <li class="breadcrumbSeparator">|</li>                        
+             repeat="action view/site_actions">
+            <li class="breadcrumbSeparator">|</li>
             <li tal:attributes="id string:footeraction-${action/id}"
                  tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
                              is_last repeat/action/end">
 
                 <img alt="" src=""
                      tal:attributes="src string:${view/site_url}/$icon;
-                                     alt action/title" />                
+                                     alt action/title" />
                 <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
@@ -69,7 +69,7 @@
                    tal:attributes="href action/url;
                                    title title;"
                 >Footer action</a>
-            </li>  
+            </li>
         </tal:site-actions>
 
     </ul>
