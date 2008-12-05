@@ -28,11 +28,11 @@
         name="osha.vocabularies.AvailableLanguages"
         />
 
-    <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter" 
+    <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter"
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         />
 
-    <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter" 
+    <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter"
         for="slc.subsite.interfaces.ISubsiteEnhanced"
         />
 
@@ -160,7 +160,7 @@
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         template="templates/osha_topactions.pt"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- Napo Header-->
@@ -169,7 +169,7 @@
         manager="plone.app.layout.viewlets.interfaces.IContentViews"
     template="templates/napo_head.pt"
     layer=".interfaces.INAPOSpecific"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <browser:viewlet
@@ -177,7 +177,7 @@
         manager="plone.app.layout.viewlets.interfaces.IContentViews"
     template="templates/napo_subhead.pt"
     layer=".interfaces.INAPOSpecific"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
 <!-- Napo Below footer-->
@@ -186,7 +186,7 @@
     manager="plone.app.layout.viewlets.interfaces.IBelowContent"
     template="templates/napo_logofooter.pt"
     layer=".interfaces.INAPOSpecific"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <browser:viewlet
@@ -194,7 +194,7 @@
     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
     class=".napo.NapoFriendsViewlet"
     layer=".interfaces.INAPOSpecific"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <browser:viewlet
@@ -202,7 +202,7 @@
     manager="plone.app.layout.viewlets.interfaces.IBelowContent"
     template="templates/napo_belowfooter.pt"
     layer=".interfaces.INAPOSpecific"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- The portal header -->
@@ -211,7 +211,7 @@
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         template="templates/osha_topdropdowns.pt"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- The personal bar -->
@@ -220,7 +220,7 @@
         manager=".interfaces.IOSHAHeaderTopactions"
         class="plone.app.layout.viewlets.common.PersonalBarViewlet"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- The site actions -->
@@ -229,12 +229,12 @@
         manager=".interfaces.IOSHAHeaderTopactions"
         class=".viewlets.OSHASiteActionsViewlet"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- The top language selector bar -->
     <!-- For translatable items -->
-    <browser:viewlet  
+    <browser:viewlet
         name="osha.languageselector"
         manager=".interfaces.IOSHAHeaderDropdowns"
         class=".viewlets.OSHALanguageSelector"
@@ -249,12 +249,12 @@
         name="osha.htmlhead.title"
         manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
         class=".viewlets.TitleViewlet"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- The bottom language selector bar -->
     <!-- api: we will probably not need this anymore as we are going to use Linguaplone and have unique urls per lang -->
-    <!--browser:viewlet  
+    <!--browser:viewlet
         name="osha.footer.languageselector"
         manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
         class=".viewlets.OSHAFooterLanguageSelector"
@@ -263,7 +263,7 @@
         /-->
 
     <!-- The network chooser bar -->
-    <browser:viewlet  
+    <browser:viewlet
         name="osha.networkchooser"
         manager=".interfaces.IOSHAHeaderDropdowns"
         class=".viewlets.OSHANetworkchooser"
@@ -280,10 +280,10 @@
         manager=".interfaces.IOSHAHeaderDropdowns"
         class=".viewlets.OSHASiteActionsViewlet"
         layer=".interfaces.IGermanySpecific"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
-    <browser:viewlet  
+    <browser:viewlet
         name="osha.germany.languageselector"
         manager="plone.app.layout.viewlets.interfaces.IPortalTop"
         class=".viewlets.OSHALanguageSelector"
@@ -295,20 +295,20 @@
     <!-- / Germany specifics -->
 
     <!-- Variable Area for Campaign Sites -->
-    <browser:viewlet  
+    <browser:viewlet
         name="osha.campaignarea"
         manager="plone.app.layout.viewlets.interfaces.IPortalTop"
         class=".viewlets.OSHACampaignAreaViewlet"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
-    <browser:viewlet  
+    <browser:viewlet
         name="osha.campaignarea2"
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         class=".viewlets.OSHACampaignArea2Viewlet"
         layer=".interfaces.IHW2008Specific"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- The breadcrumbs -->
@@ -317,11 +317,11 @@
         manager="plone.app.layout.viewlets.interfaces.IPortalTop"
         class=".viewlets.OSHAPathBarViewlet"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- The bottom language selector bar -->
-    <browser:viewlet  
+    <browser:viewlet
         name="osha.footer.actions"
         manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
         class=".viewlets.OSHAFooterActions"
@@ -335,7 +335,7 @@
         manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
         class=".viewlets.OSHALogoViewlet"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
         />
 
     <!-- Above content portlets -->
@@ -344,7 +344,7 @@
         manager="plone.app.layout.viewlets.interfaces.IContentViews"
         template="templates/abovecontent_portlets.pt"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
     />
 
     <browser:page
@@ -361,7 +361,7 @@
         manager="plone.app.layout.viewlets.interfaces.IBelowContent"
         template="templates/belowcontent_portlets.pt"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View" 
+        permission="zope2.View"
     />
 
     <browser:page
@@ -417,7 +417,7 @@
       /-->
 
   <browser:page
-      name="month.html" 
+      name="month.html"
       for="p4a.calendar.interfaces.ICalendarEnhanced"
       permission="zope2.View"
       class=".month.MonthView"
@@ -426,7 +426,7 @@
       />
 
   <browser:page
-      name="month.html" 
+      name="month.html"
       for="p4a.calendar.interfaces.ICalendarEnhanced"
       permission="zope2.View"
       class=".month.MonthView"
@@ -578,7 +578,7 @@
 
   <browser:page
     name="faq_view"
-    for="*"
+    for="Products.ATContentTypes.interface.folder.IATFolder"
     class=".faq_view.FAQView"
     permission="zope2.View"
     />
