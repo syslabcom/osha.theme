@@ -41,7 +41,10 @@ class OSHTopicView(BrowserView):
             subject_vals = [self._t(x, 'osha') for x in subject_vals]
 
         if 'portal_type' in query.keys():
-            portal_types = query['portal_type']
+            if type(query['portal_type']) in [StringType, UnicodeType]:
+                portal_types = [query['portal_type']]
+            elif type(query['portal_type']) in [ListType, TupleType]:
+                portal_types = query['portal_type']
             portal_types = [self._t(x) for x in portal_types]
         else:
             portal_types = []
