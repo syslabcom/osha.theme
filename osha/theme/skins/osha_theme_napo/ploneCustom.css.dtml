@@ -202,19 +202,19 @@ body #portal-columns {
 #the-napo-story:hover, #who-is-napo:hover, #napos-friends:hover, #napos-films:hover, #using-napo:hover, #coming-soon:hover, #rights-and-permissions:hover, #napette:hover, #the-boss:hover, #miss-strudel:hover, #other-friends:hover {
 }
 #napette {
-	top:305px;
-	left:30px;
+	top:160px;
+	left:65px;
 }
 #miss-strudel {
-	top:220px;
-	left:300px;
+	top:40px;
+	left:360px;
 }
 #the-boss {
-	top:445px;
+	top:325px;
 	left:275px;
 }
 #other-friends {
-	top:   370px;
+	top:   250px;
 	left:  450px;
 }
 
