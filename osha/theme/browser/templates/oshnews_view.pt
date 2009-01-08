@@ -95,8 +95,6 @@
                    tal:attributes="href string:${here/absolute_url}/archive">Show previous news</a>
                 </p>
 
-
-
             <!-- Navigation -->
             <div metal:use-macro="here/batch_macros/macros/navigation" />
 
