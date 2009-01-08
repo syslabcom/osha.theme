@@ -39,7 +39,7 @@ dl.portlet #osha-topactions {
     font-size:1em;
     margin:0;
     padding: 0 1em;
-    border-bottom: none;  
+    border-bottom: none;
 }
 #osha-topdropdowns {
     margin:10px 104px 0 201px;
@@ -81,7 +81,7 @@ dl.portlet #osha-topactions {
 }
 #footeractions-wrapper {
     text-align: center;
-    font-size: &dtml-fontSmallSize;;    
+    font-size: &dtml-fontSmallSize;;
     margin-top:1em;
 }
 ul#portal-footeractions {
@@ -111,7 +111,7 @@ h2.headline {
 }
 
 /*
-** PORTLETS STYLES 
+** PORTLETS STYLES
 */
 
 .portlet {
@@ -191,7 +191,7 @@ dl.portletEW2007 {
 }
 dl.portletEW2007 dt.portletHeader {
     background-color: #858C90;
-}    
+}
 dl.portletFirstTime dt.portletHeader {
     line-height: 1.2em;
     padding-top:5px;
@@ -259,7 +259,7 @@ dl.portletMoreAbout .portletItem {
 dl.portletImage {
     padding 0;
     border: 0;
-    margin: 0;
+    margin:0.5em 0;
     background-color:transparent;
 }
 dl.portletImage .portletItem {
@@ -320,13 +320,13 @@ dl.portletImage .portletItem {
 .field_vocab { margin-top:5px; }
 .filter_column1 select,
   .filter_column2 li  { width: 80%; }
-.filter_column1 .field_default, .filter_column2 .field_default, 
+.filter_column1 .field_default, .filter_column2 .field_default,
 .filter_column2 .field_vocab { width: 100%; padding: 2px 0; }
 .filter_column2 .field_vocab input { width: 50%; }
 .filter_column2 .field_vocab .searchButton { width: 15%; }
 .filter_column2 input[type="checkbox"] { vertical-align: left; width: 5%;}
 .filter_column1 .field_default input,
-.filter_column2 .field_default input, 
+.filter_column2 .field_default input,
 .filter_column2 .field_default select { width: 80%; }
 
 
@@ -340,14 +340,14 @@ dl.portletImage .portletItem {
 
 #filter_searchfields { height: 1%; background-color: #F3F6FF; border: 1px solid gray !important; padding:5px 10px; clear: both; overflow: hidden; }
 
-#db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; } 
+#db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; }
 
 /* styles for the teaser frontpage */
 #teaserlisting {
     border: none;
     border-top: 0;
     margin-top:0;
-    padding-top:0;    
+    padding-top:0;
 }
 #teaserlisting td {
     border-right: none;
@@ -425,25 +425,25 @@ ul.linkList li {
 /* Additional Kupu Styles for Text Formatting */
 
 .centered-citation-box {
-    border: 1px solid black; 
-    margin:auto; 
-    width: 400px; 
-    padding:1em; 
-    text-align:center; 
-}    
+    border: 1px solid black;
+    margin:auto;
+    width: 400px;
+    padding:1em;
+    text-align:center;
+}
 
 .dashed-feature-box {
-    border: 1px dashed &dtml-globalBorderColor;; 
+    border: 1px dashed &dtml-globalBorderColor;;
     background-color: &dtml-contentViewBackgroundColor;;
-    margin:auto; 
-    width: 400px; 
-    padding:2em; 
+    margin:auto;
+    width: 400px;
+    padding:2em;
 }
 
 .image-presentation-box {
 		border: none;
 		background-color: &dtml-contentViewBackgroundColor;;
-		padding: 1em;		
+		padding: 1em;
 }
 .image-presentation-box img {
 	float:left;
@@ -462,7 +462,7 @@ ul.linkList li {
 	      margin:0px;
 }
 #PressRoom h1.header {
-    font-size:120%;    
+    font-size:120%;
     background-color:#c5cbd8;
     padding-left:10px;
     padding-top:5px;
@@ -569,6 +569,6 @@ ul.linkList li {
 
 /* </dtml-with> */
 
-/* Latest version of the documentation on pre-defined properties from Plone 
+/* Latest version of the documentation on pre-defined properties from Plone
    can be found in CMFPlone/skins/plone_styles/ploneCustom.css.dtml */
 
