@@ -20,9 +20,9 @@
         <tal:topiccontents define="topicContents view/queryCatalog;
                                    batch topicContents;">
 
-            <tal:listing condition="topicContents">
+        <div tal:content="structure view/getBodyText" ></div>
 
-            <div tal:content="structure view/getBodyText" ></div>
+        <tal:listing condition="topicContents">
 
             <div metal:define-macro="text-field-view"
                  id="parent-fieldname-text" class="stx"
@@ -88,8 +88,14 @@
                         </tal:brain>
                      </tbody>
                 </table>
-
             </tal:listing>
+
+                <p class="bold" tal:condition="python:here.getId()!='archive' and 'archive' in here.objectIds()">
+                <a href="" i18n:translate="link_newsboard_previousnews" i18n:domain="osha"
+                   tal:attributes="href string:${here/absolute_url}/archive">Show previous news</a>
+                </p>
+
+
 
             <!-- Navigation -->
             <div metal:use-macro="here/batch_macros/macros/navigation" />

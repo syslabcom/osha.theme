@@ -20,10 +20,10 @@
                 b_start python:request.get('b_start', 0);
                  Batch python:modules['Products.CMFPlone'].Batch;
                  batch python:Batch(items, 10, int(b_start), orphan=0);">
-
-            <tal:listing condition="items">
             
             <div tal:content="structure view/getBodyText" ></div>
+
+            <tal:listing condition="items">
 
                 <table class="listing" id="teaserlisting"
                        summary="Content listing" border="0"
@@ -78,14 +78,12 @@
                         </tal:brain>
                      </tbody>
                 </table>
-                
+            </tal:listing>
+               
                 <p class="bold" tal:condition="python:here.getId()!='archive' and 'archive' in here.objectIds()">
-                <a href="" i18n:translate="link_newsboard_previousnews"
+                <a href="" i18n:translate="link_newsboard_previousnews" i18n:domain="osha"
                    tal:attributes="href string:${here/absolute_url}/archive">Show previous news</a>
                 </p>
-
-            </tal:listing>
-
 
             <!-- Navigation -->
             <!--div metal:use-macro="here/batch_macros/macros/navigation" /-->
