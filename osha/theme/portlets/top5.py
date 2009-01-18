@@ -160,7 +160,7 @@ class Renderer(base.Renderer):
             if ob is None:
                 continue
             tob = ob.getTranslation(preflang)
-            if not tob:
+            if not tob or not tob.Title():
                 tob = ob.getCanonical()
             results.append((tob.absolute_url(), tob.Title()))
         
