@@ -125,6 +125,12 @@
         />
 
     <interface
+        interface=".interfaces.ISafestartSpecific"
+        type="zope.publisher.interfaces.browser.IBrowserSkinType"
+        name="BeSWIC Safestart"
+        />
+
+    <interface
         interface=".interfaces.INAPOSpecific"
         type="zope.publisher.interfaces.browser.IBrowserSkinType"
         name="NAPO"
