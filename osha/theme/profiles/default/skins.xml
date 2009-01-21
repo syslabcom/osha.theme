@@ -41,7 +41,10 @@
     directory="osha.theme:skins/osha_theme_ew2006"/>    
  <object name="osha_theme_ew2006_risq"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2006_risq"/>  
+    directory="osha.theme:skins/osha_theme_ew2006_risq"/>
+ <object name="osha_theme_beswic_safestart"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_beswic_safestart"/>  
  <object name="osha_theme_ew2007"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_ew2007"/>     
@@ -107,6 +110,13 @@
      insert-after="custom"/>
   <layer name="osha_theme_ew2006"
      insert-after="osha_theme_ew2006_risq"/>
+ </skin-path>
+
+ <skin-path name="BeSWIC Safestart" based-on="OSHA Plone Theme">
+  <layer name="osha_theme_beswic_safestart"
+     insert-after="custom"/>
+  <layer name="osha_theme_ew2006"
+     insert-after="osha_theme_beswic_safestart"/>
  </skin-path>
 
  <skin-path name="EW2006" based-on="OSHA Plone Theme">
