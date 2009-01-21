@@ -21,6 +21,10 @@ class IRISQSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
+class ISafestartSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
+    """Marker interface that defines a Zope 3 skin layer.
+    """
+
 class INAPOSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
