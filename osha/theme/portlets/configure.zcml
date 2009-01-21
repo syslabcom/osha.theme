@@ -44,6 +44,13 @@
      />  
 
 
+ <!-- Custom safestart navigation portlet -->
+ <plone:portletRenderer 
+     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
+     layer="osha.theme.browser.interfaces.ISafestartSpecific"
+     class=".safestartnavigation.Renderer"
+     />  
+
  <!-- Custom navigation portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
