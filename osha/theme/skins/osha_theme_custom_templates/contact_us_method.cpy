@@ -99,9 +99,17 @@ if request.form.has_key('form.button.Send'):
         long_feedback = 1
         
     request.set('long_feedback', long_feedback)
-        
-        
-    feedback_text = "%s\n%s\n%s" %(intro_text, issue_text, closing_text)
+
+    # students always get the "nr 11" reply about "assistance with project (student)"
+    if sender=="Student" and subject=!'assistance':
+        extraObj = getattr(context.contact_data, 'assistance', None)
+        if extraObj is None:
+            return state.set(status='failure', portal_status_message="Unknown extra subject.")
+        extraIssue_text = extraObj().getText()
+        feedback_text = "%s\n%s\n%s\n%s" %(intro_text, extraIssue_text, issue_text, closing_text)
+    
+    else:        
+        feedback_text = "%s\n%s\n%s" %(intro_text, issue_text, closing_text)
     
     from_address = portal.getProperty('email_from_address', 'comments@osha.europa.eu')
     
