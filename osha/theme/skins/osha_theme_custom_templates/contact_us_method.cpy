@@ -101,12 +101,14 @@ if request.form.has_key('form.button.Send'):
     request.set('long_feedback', long_feedback)
 
     # students always get the "nr 11" reply about "assistance with project (student)"
-    if sender=="Student" and subject!='assistance':
+    if sender=="Student" and long_feedback:
         extraObj = getattr(context.contact_data, 'assistance', None)
         if extraObj is None:
             return state.set(status='failure', portal_status_message="Unknown extra subject.")
-        extraIssue_text = extraObj.getText()
+        extraIssue_text = subject!='assistance' and  extraObj.getText() or ""
         feedback_text = "%s\n%s\n%s\n%s" %(intro_text, extraIssue_text, issue_text, closing_text)
+        request.set('student', 1)
+        request.set('subject', subject)
     
     else:        
         feedback_text = "%s\n%s\n%s" %(intro_text, issue_text, closing_text)
