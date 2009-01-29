@@ -68,6 +68,7 @@ class Settings(Persistent):
     site_slogan = []
     oshmail_subscribers = ''
     show_atoz_link = True
+    link_on_logo = 'http://osha.europa.eu'
 
 
 ### Language vocabulary
@@ -115,11 +116,18 @@ class TitleLanguagePair:
 
 # Properties for Logo
 class ILogoSchema(Interface):
-    logo_url = TextLine(title=_(u"Link to the site logo (on the right)"),
-                        description=_(u"Place here the path to your logo. Make sure it has the proper dimensions (104pxx92px)."),
-                        default=u'topbanner2.jpg',
+    # Not used at the moment! Customize logo via local base_properties
+    # logo_url = TextLine(title=_(u"Link to the site logo (on the right)"),
+    #                     description=_(u"Place here the path to your logo. Make sure it has the proper dimensions (104pxx92px)."),
+    #                     default=u'topbanner2.jpg',
+    #                     required=False
+    # )
+
+    link_on_logo = TextLine(title=_(u"Link to be placed on the logo"),
+                        description=_(u"Enter the link (URL) that is placed around the logo"),
+                        default=u"http://osha.europa.eu",
                         required=False
-    )
+                    )
 
 # Properties for Email
 #    support_email = ''
@@ -186,6 +194,12 @@ class PropertiesControlPanelAdapter(SchemaAdapterBase):
     def set_logo_url(self, value):
         self.settings.logo_url = value
     logo_url = property(get_logo_url, set_logo_url)
+    
+    def get_link_on_logo(self):
+        return self.settings.link_on_logo
+    def set_link_on_logo(self, value):
+        self.settings.link_on_logo = value
+    link_on_logo = property(get_link_on_logo, set_link_on_logo)
     
     def get_support_email(self):
         return self.settings.support_email
