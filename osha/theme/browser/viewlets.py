@@ -322,7 +322,14 @@ class OSHALogoViewlet(common.LogoViewlet):
     def preflang(self):
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         return portal_state.locale().getLocaleID()
-        
+ 
+    def getLink(self):
+        osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
+        link = osha_view.get_subsite_property('link_on_logo')
+        if link is None:
+            link = "http://osha.europa.eu"
+        return link
+       
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),
                                             name=u'plone_portal_state')
