@@ -12,6 +12,7 @@
             itemtype python:here.getTypeInfo().Title();
             len_text python:len(text);
             defimage here/getImage|string:;
+            oshaview here/@@oshaview;
             ">
 
     <h1 tal:content="here/title_or_id" />
@@ -30,14 +31,18 @@
         
         <p class="intro" 
            tal:condition="here/Description|nothing"
-           tal:content="structure here/Description|nothing">description
+            tal:define="obj_description here/Description;
+                        obj_description python:oshaview.makeAbsoluteUrls(obj_description);"
+           tal:content="structure obj_description|nothing">description
         </p>
         
         <div id="bodyContent"
              class="stx"
              tal:condition="len_text"
              tal:attributes="class python:test(here.text_format=='structured-text', 'stx', 'plain')">
-            <div tal:replace="structure python:here.CookedBody()" />
+            <div tal:define="obj_text here/CookedBody;
+                        obj_text python:oshaview.makeAbsoluteUrls(obj_text);"
+            tal:replace="structure obj_text" />
         </div>
         <br style="clear: both;" />
     </div>
