@@ -14,6 +14,7 @@ from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 from Products.LinguaPlone.interfaces import ITranslatable
 from plone.app.i18n.locales.browser.selector import LanguageSelector
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
+from slc.subsite.interfaces import ISubsiteEnhanced
 
 from osha.theme.config import *
 
@@ -36,6 +37,22 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
 
     def languages(self):
         results = LanguageSelector.languages(self)
+        
+        # On the main portal, we want to be able to filter out unwanted
+        # languages needes for subsites
+        oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
+        subsite_path = oshaview.subsiteRootPath()
+        potential_subsite = self.context.restrictedTraverse(subsite_path)
+
+        # only interesting on the main portal
+        if not ISubsiteEnhanced.providedBy(potential_subsite):
+            portal_properties = getToolByName(self.context, 'portal_properties')
+            site_properties = getattr(portal_properties, 'site_properties')
+            languages_on_main_site = getattr(site_properties, 'languages_on_main_site', None)
+            if languages_on_main_site:
+                results = [x for x in results if x['code'] in languages_on_main_site]
+            
+        # for non-translatable content, use standard Plone way of switching language
         if not ITranslatable.providedBy(self.context):
             # special handling for LinguaLinks
             if self.context.getPortalTypeName() == 'LinguaLink':
@@ -68,7 +85,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
                     data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
                 return results
 
-        # Handling of ITranslatable begins here
+        # for translatable content, directly link to the translated objects
         translatable = ITranslatable(self.context, None)
         if translatable is not None:
             translations = translatable.getTranslations()
