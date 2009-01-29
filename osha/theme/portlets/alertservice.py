@@ -63,6 +63,10 @@ class Renderer(base.Renderer):
         except:
             n=''
         return n
+
+    def preflang(self):
+        preflang = getToolByName(self, 'portal_languages').getPreferredLanguage()
+        return preflang
         
     @memoize
     def _data(self):
