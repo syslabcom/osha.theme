@@ -245,7 +245,7 @@ class SiteMapView(BaseView):
         
         for item in catalog.searchResults({'Language': 'all', 'review_state': 'published'}):
             # We only want to link them in the search form results
-            if item.portal_type in ['OSH_Link', 'RALink', 'CaseStudy', 'Provider', 'Directive', 'Amendment', 'Modification', 'Note', 'Proposal', 'LinguaLink']:
+            if item.portal_type in ['Amendment', 'Modification', 'Note', 'Proposal', 'LinguaLink']:
                 continue
             try:
                 lastmod = item.modified.ISO8601()
@@ -259,10 +259,10 @@ class SiteMapView(BaseView):
 
             if item.portal_type in ['Event', 'News Item']:
                 changefreq = "never"
-                if item.effective<(DateTime()-30):
-                    priority = 0.3
-                else:
-                    priority = 0.9
+            if item.effective<(DateTime()-30):
+                priority = 0.3
+            else:
+                priority = 0.9
 
             # manually set urlmap overrides
             if self.urlmap.has_key(loc):    
