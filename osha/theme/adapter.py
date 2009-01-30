@@ -9,11 +9,11 @@ from plone.memoize.compress import xhtml_compress
 
 from plone.app.layout.navigation.interfaces import INavtreeStrategy
 from plone.app.layout.navigation.interfaces import INavigationQueryBuilder
+from plone.app.layout.navigation.root import getNavigationRoot
 from plone.app.portlets.portlets.navigation import INavigationPortlet, getRootPath
 
 from Products.CMFCore.interfaces import ISiteRoot
 from Products.CMFCore.utils import getToolByName
-from plone.app.layout.navigation.root import getNavigationRoot
 from Products.CMFPlone import utils
 from Products.CMFPlone.browser.navtree import SitemapNavtreeStrategy
 

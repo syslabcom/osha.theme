@@ -13,6 +13,17 @@ function osha_gotoURL (x) {
     }
 }
 
+function getContentArea() {
+	// to end all doubt on where the content sits. It also felt a bit silly doing this over and over in every
+	// function, even if it is a tiny operation. Just guarding against someone changing the names again, in the name
+	// of semantics or something.... ;)
+	node =  document.getElementById('region-content')
+	if (! node){
+		node = document.getElementById('content')
+		}
+	return node
+}
+
 function getPortlets() {
     portlets = new Array();
     left = document.getElementById('portal-column-one');
@@ -28,7 +39,7 @@ function getPortlets() {
 
 // script for detecting external links.
 // sets their target-attribute to _blank , and adds a class external
-function scanforlinks(){
+function scanforlinks() {
     // securing against really old DOMs 
     if (! document.getElementsByTagName){return false};
     if (! document.getElementById){return false};
@@ -50,6 +61,14 @@ function scanforlinks(){
             modifyLinkTag(plinks[j]);
         }
     }
+}
+
+function injectNode(node, injectedtype, injectedclass) {
+    var injectednode = document.createElement(injectedtype)
+    var injectedtext = document.createTextNode(String.fromCharCode(160));
+    injectednode.appendChild(injectedtext);
+    injectednode.className = injectedclass;
+    node.parentNode.insertBefore(injectednode, node);
 }
 
 function modifyLinkTag(node) {
