@@ -65,8 +65,10 @@ function scanforlinks() {
 
 function injectNode(node, injectedtype, injectedclass) {
     var injectednode = document.createElement(injectedtype)
-    var injectedtext = document.createTextNode(String.fromCharCode(160));
-    injectednode.appendChild(injectedtext);
+    // Not injecting a space character to make the image appear closer to the link.
+    // That way it looks more like Plone's mailto and https insertion.
+    // var injectedtext = document.createTextNode(String.fromCharCode(160));
+    // injectednode.appendChild(injectedtext);
     injectednode.className = injectedclass;
     node.parentNode.insertBefore(injectednode, node);
 }
@@ -88,7 +90,7 @@ function modifyLinkTag(node) {
         } else if (linkval.indexOf('http:') != 0){
             // not a http-link. Possibly an internal relative link, but also possibly a mailto ot other snacks
             // add tests for all relevant protocols as you like.
-            protocols = ['mailto', 'ftp', 'news', 'irc', 'h323', 'sip', 'callto', 'https']
+            protocols = ['ftp', 'news', 'irc', 'callto']
             // h323, sip and callto are internet telephony VoIP protocols
             
             for (p=0; p < protocols.length; p++){  
@@ -102,22 +104,23 @@ function modifyLinkTag(node) {
                     break;
                 }
             }
-        } else {
-            // we are in here if the link points to somewhere else than our site.
-            if ( node.getElementsByTagName('img').length == 0 ){
-				// we do not want to mess with those links that already have images in them
-				injectNode(node, 'span', 'link-external-js');
-                if(node.className=='link-external') {
-                    node.className='';
-                }
-            }
-        /*
-            if (node.getAttribute('onclick') == false){
-               if (node.addEventListener) node.addEventListener("onclick",window.open(node.href), true);
-               else if (node.attachEvent) node.attachEvent("onclick",window.open(node.href));
-            }
-        */
-        }
+        } 
+                //         else {
+                //             // we are in here if the link points to somewhere else than our site.
+                //             if ( node.getElementsByTagName('img').length == 0 ){
+                // // we do not want to mess with those links that already have images in them
+                // injectNode(node, 'span', 'link-external-js');
+                //                 if(node.className=='link-external') {
+                //                     node.className='';
+                //                 }
+                //             }
+                //         /*
+                //             if (node.getAttribute('onclick') == false){
+                //                if (node.addEventListener) node.addEventListener("onclick",window.open(node.href), true);
+                //                else if (node.attachEvent) node.attachEvent("onclick",window.open(node.href));
+                //             }
+                //         */
+                //         }
         pathelems = linkval.split('/');
         filename = pathelems[pathelems.length-1];
         fileelems = filename.split('.');
