@@ -135,9 +135,10 @@ div#right-column-background {
 
 /* OSHA navigation portlet */
 .navigationList {
-    font-size: 110%;
+    font-size: 100%;
     font-weight: bold;
     padding: 0;
+    margin-top: 25px;
     border: none;
     background: transparent;
 }
@@ -145,7 +146,7 @@ div#right-column-background {
     line-height: normal;
     padding:0;
     height: auto;
-    margin: 15px 0 0 9px;
+    margin: 0 0 0 9px;
 }
 .navigationList li {
     line-height: normal;
@@ -161,23 +162,21 @@ div#right-column-background {
 .navigationList li span.fakelink,
 .navigationList li a:active,
 .navigationList li a:visited {
-    background-image: url(navbutton_risq_01.gif);
     background-repeat: no-repeat;
     background-position: 0 8px;
     background-color: transparent;
     display: block;
     text-decoration: none;
     margin:0;
-    padding: 22px 5px 10px 55px;
+    padding: 17px 5px 5px 25px;
     color: &dtml-linkColor;;
-    height: 35px;
+    height: 30px;
     font-weight: bold;
     line-height: normal;
 }
 .navigationList li a:hover {
     font-weight: bold;
     color: white;
-    background-image: url(navbutton_risq_01.gif);
     background-repeat: no-repeat;
     background-position: 0 8px;
     background-color: &dtml-primaryColor1;;
@@ -186,7 +185,6 @@ div#right-column-background {
 <dtml-in "range(5)">
 .navigationList li a.button_0<dtml-var sequence-number>,
 .navigationList li a.button_0<dtml-var sequence-number>:visited {
-    background-image: url(navbutton_risq_0<dtml-var sequence-number>.gif);
 }
 .navigationList li a.button_0<dtml-var sequence-number>:active,
 .navigationList li a.button_0<dtml-var sequence-number>:hover,
@@ -194,7 +192,6 @@ div#right-column-background {
 .navigationList li.active a.button_0<dtml-var sequence-number>:active,
 .navigationList li.active a.button_0<dtml-var sequence-number>:hover,
 .navigationList li.active a.button_0<dtml-var sequence-number>:visited {
-    background-image: url(navbutton_risq_0<dtml-var sequence-number>_hi.gif);
     font-weight: bold;
     color: white;
     background-repeat: no-repeat;
