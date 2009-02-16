@@ -14,7 +14,6 @@
 
     <metal:block fill-slot="top_slot"
                  tal:define="dummy python:request.set('disable_border',1)" />
-    <metal:block fill-slot="column_one_slot" />
     <metal:block fill-slot="column_two_slot" />
 </head>
 
@@ -23,6 +22,7 @@
      tal:define="use_types_blacklist request/use_types_blacklist | python:True;
                  use_navigation_root request/use_navigation_root | python:True;
                  results python:here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist, use_navigation_root=use_navigation_root);
+                 osha_view here/@@oshaview;
                  Batch python:modules['Products.CMFPlone'].Batch;
                  b_size python:30;b_start python:0;b_start request/b_start | b_start;
                  desc_length site_properties/search_results_description_length;
@@ -52,7 +52,7 @@
         <span i18n:name="advanced_search">
         <a href=""
            i18n:translate="search_results_advanced_link"
-           tal:attributes="href string:$portal_url/search_form?SearchableText=${request/SearchableText|python:''}">Advanced Search</a>
+           tal:attributes="href string:${osha_view/getBase_url}/search_form?SearchableText=${request/SearchableText|python:''}">Advanced Search</a>
         </span>
         to refine your search.
         </p>
