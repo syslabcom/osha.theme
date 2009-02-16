@@ -75,7 +75,13 @@
      portlet="plone.app.portlets.portlets.search.ISearchPortlet" 
      layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".defaultsearch.Renderer" 
-     />     
+     />
+
+ <plone:portletRenderer 
+     portlet="plone.app.portlets.portlets.search.ISearchPortlet" 
+     layer="osha.theme.browser.interfaces.ISafestartSpecific"
+     class=".defaultsearch.Renderer"
+     />  
      
  <!-- Alert Service portlet -->
  <plone:portlet
