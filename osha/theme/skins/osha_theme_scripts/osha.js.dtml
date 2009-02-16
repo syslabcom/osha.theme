@@ -67,8 +67,10 @@ function injectNode(node, injectedtype, injectedclass) {
     var injectednode = document.createElement(injectedtype)
     // Not injecting a space character to make the image appear closer to the link.
     // That way it looks more like Plone's mailto and https insertion.
-    // var injectedtext = document.createTextNode(String.fromCharCode(160));
-    // injectednode.appendChild(injectedtext);
+    // XXX: Injecting the space character again, since ommitting it
+    // breaks IE7 compatibility.
+    var injectedtext = document.createTextNode(String.fromCharCode(160));
+    injectednode.appendChild(injectedtext);
     injectednode.className = injectedclass;
     node.parentNode.insertBefore(injectednode, node);
 }
