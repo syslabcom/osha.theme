@@ -246,4 +246,17 @@ class OSHA(BrowserView):
         rootPath = self.subsiteRootPath()
         return self.request.physicalPathToURL(rootPath)
 
+
+    def getBase_url(self):
+        """ Returns a (sub-) sites URL including the language folder, if present """
+        language = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        subsite_url = self.subsiteRootUrl()
+        subsite_path = self.subsiteRootPath()
+        root = self.context.restrictedTraverse(subsite_path)
+        if hasattr(Acquisition.aq_base(Acquisition.aq_inner(root)), language):
+            base_url = '%s/%s' %(subsite_url, language)
+        else:
+            base_url = subsite_url
+        return base_url
+
 #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
