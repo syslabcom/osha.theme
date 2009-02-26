@@ -1,0 +1,111 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+        lang="en"
+        metal:use-macro="here/main_template/macros/master"
+        i18n:domain="plone">
+
+<body>
+
+  <div metal:fill-slot="main" id="PressRoom">
+
+
+      <h1 class="header"
+          i18n:domain="osha-navigation"
+          i18n:translate="osha_nav_title_press_room">
+          Press Room
+      </h1>
+
+      <div id="pressroom-boxes">
+          <table id="pressroom-boxes-table">
+              <tr>
+                  <td class="pressbox-pr-off"
+                      onmouseover='jq(this).addClass("pressbox-pr-on");jq(this).removeClass("pressbox-pr-off");'
+                      onmouseout='jq(this).removeClass("pressbox-pr-on");jq(this).addClass("pressbox-pr-off");'>
+                      <div><a href="press-releases" i18n:translate="osha_label_pressbox_pressreleases">
+                           Press Releases</a>
+                      </div>
+                  </td>
+                  <td class="pressbox-articles-off"
+                      onmouseover='jq(this).addClass("pressbox-articles-on");jq(this).removeClass("pressbox-articles-off");'
+                      onmouseout='jq(this).removeClass("pressbox-articles-on");jq(this).addClass("pressbox-articles-off");'>
+                      <div>
+                           <a href="articles" i18n:translate="osha_label_pressbox_articles">Articles and<br> Interviews</a>
+                      </div>
+                  </td>
+                  <td class="pressbox-photos-off"
+                      onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");'
+                      onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'>
+                      <div>
+                           <a href="photos" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
+                      </div>
+                  </td>
+              </tr>
+          </table>
+
+      </div>
+      <div class="visualClear"></div>
+
+
+    <div tal:condition="view/getFeed">
+      <div id="EuMediaCoverage">
+          <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
+      </div>
+
+      <div id="boxBody">
+        <tal:block repeat="row view/getFeed">
+          <h3><a tal:attributes="href row/link" tal:content="row/title">Hallo</a></h3>
+          <p>
+              <span tal:condition="python:row.get('date') or nothing" tal:omit-tag=""><i tal:content="python: here.toLocalizedTime(row['date'])"/></span>
+              <span tal:replace="row/description">Welt</span>
+          </p>
+        </tal:block>
+          <div id="more-syndicated-news">
+              <a href="sinList?synmap=meltwater" i18n:translate="box_more" i18n:domain="plone">More...</a>
+          </div>
+      </div>
+    </div>
+
+
+
+
+      <div id="addresses">
+        <table class="Tabelle">
+            <tr>
+            <td>
+                <div id="firstAdress">
+                    <strong i18n:translate="osha_label_international_press">International press:</strong><br>
+                    Press Office, <br>
+                    European Agency for Safety and Health at Work, <br>
+                    Bilbao <br>
+                    Tel: +34 94 479 35 52<br>
+                    <img src="news.gif" alt="international press contact">
+                </div>
+            </td>
+            <td>
+                <div>
+                    <strong i18n:translate="osha_label_spanish_press">Bilbao and Spanish press:</strong><br>
+                    Press Office, <br>
+                    European Agency for Safety and Health at Work, <br>
+                    Bilbao <br>
+                    Tel: +34 94 479 57 46<br>
+                    <img src="noticias.gif" alt=""><br>
+                </div>
+            </td>
+            <td>
+                <div id="lastAdress">
+                    <strong i18n:translate="osha_label_brussels_liaison_office">Brussels Liaison Office:</strong><br>
+                    European Agency for Safety and Health at Work, <br>
+                    Square de Meeus 38/40, <br>
+                    1000 Brussels, Belgium <br>
+                    Tel: +32 2 401 68 59<br>
+                    <img src="obrien.gif" alt="brussels liaison officer">
+                </div>
+            </td>
+           </tr>
+          </table>
+      </div>
+
+</div>
+</body>
+</html>
+
+

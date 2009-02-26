@@ -506,7 +506,9 @@ ul.linkList li {
     height: 80px;
     text-align: center;
 }
-
+#pressroom-boxes-table a{
+  padding:0.5em;
+}
 .pressbox-pr-off { background: url(pressbox_light_off.gif) no-repeat; }
 .pressbox-pr-off div { position:relative;right: 4px;bottom: 4px;}
 .pressbox-pr-on {background: url(pressbox_light_on.gif) no-repeat;}

@@ -87,6 +87,14 @@
         allowed_interface=".interfaces.IPressRoomView"
         />
 
+    <browser:page
+        for="*"
+        name="dynamic_pressroom"
+        class=".pressroom.DynamicPressRoomView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IPressRoomView"
+        />
+
 <!-- OSHA NapoFilmView-->
     <browser:page
         for="*"
