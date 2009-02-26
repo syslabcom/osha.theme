@@ -9,20 +9,14 @@
                    subcategory request/subcategory | string:;
                    object_implements request/object_implements | string:;
                    SearchableText request/SearchableText|string:;
-                   multilingual_thesaurus request/multilingual_thesaurus|string:;
-                   nace request/nace|string:;
-                   nace python:nace==[''] and '' or nace;
-                   category request/category|string:;
                    getRemoteLanguage request/getRemoteLanguage|string:;
                    country request/country|string:;
-                   search_portal_types view/search_portal_types;
                    Batch python:modules['Products.CMFPlone'].Batch;
                    DateTime python:modules['DateTime'].DateTime;
                    b_size python:10;b_start python:0;
                    b_start request/b_start | b_start;
                    desc_length site_properties/search_results_description_length;
                    desc_ellipsis site_properties/ellipsis;
-                   searchterm request/SearchableText|nothing;
                    ">
 
     <div class="figure-box">
@@ -45,7 +39,7 @@
             <span tal:replace="here/Title" />
         </span>
         <span tal:condition="not:local_keyword">
-            <span tal:omit-tag="" i18n:translate="label_search_database_casestudy">Search the Case Studies</span>
+            <span tal:omit-tag="" i18n:translate="label_search_database_casestudy">Search for Case Studies</span>
         </span>
     </h1>
     
@@ -70,11 +64,13 @@
     <form tal:attributes="action template/id" method="get">
       
       <div id="filter_searchfields">
-      
-        <div class="filter_column1">
-           <div class="field_default">
+  
+           <div class="field_default"
+				tal:define="size python:60">
                 <metal:use use-macro="here/filter_macros/macros/SearchableText_compact"></metal:use>
             </div>
+
+
             <div class="columnBottom field">
               <div class="formHelp">
                 Filter your search by selecting one or more of the filters.
@@ -82,66 +78,32 @@
               </div>
 
             </div>
-            <div class="field">
-                
-                <!--label i18n:translate="label_database"> Database </label><br>
-                
-                <div class="formHelp" i18n:translate="help_database_search">
-                    Select the database types you want to search.
-                </div-->
-                
-                <div class="field_vocab"
-                     tal:define="level python:2;
-                                 portal_type string:OSH_Link">
-                              <metal:use use-macro="here/filter_macros/macros/NACE"></metal:use>
-                </div> 
-    
-                <div class="field_vocab"
-                     tal:define="portal_type string:OSH_Link">
-                              <metal:use use-macro="here/filter_macros/macros/MultilingualThesaurus"></metal:use>
-                </div> 
-                <div tal:repeat="T view/search_types">
-                    <input class="input_checkbox" type="hidden" 
-                           name="search_portal_types:list"
-                           tal:attributes="value python:T[1];
-                                           checked python: 'checked' and T[2] or ''" />
-                    <!--span tal:content="python:T[0]" /-->
-                </div>
 
-            </div>            
-           
+    
+        <div class="filter_column1">
+ 
+           <div class="field_default">
+               <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
+            </div> 
+
+            <div class="field_default"
+				taL:define="value keywords">
+                <metal:use use-macro="here/filter_macros/macros/Subject"></metal:use>
+            </div>
+                     
         </div>
           
          <div class="filter_column2">
 
-            <div class="field_default">
-               <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
-            </div> 
             <div class="field_default" tal:define="value country">
               <metal:use use-macro="here/filter_macros/macros/Country_compact_index"></metal:use>
             </div>
-            <div class="field_default"
-                 tal:define="root_node   local_keyword | string:;
-                                    vocabulary  string:Subcategory;
-                                    value       subcategory;
-                                    fieldName   string:subcategory;">
-                <label i18n:translate="label_subcategory" >Subcategory</label><br>
-
-                <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>
-            </div>
-            
-
-               
-          </div>
-          
-         
-
+                       
+         </div>
+                 
         </div>
        
-
-
-        <div class="visualClear"></div>
-        
+        <div class="visualClear"></div>     
         
         <div class="formControls">
           <input class="context"
@@ -160,6 +122,7 @@
     <br clear="all"><br>
 
      <div tal:define="results view/search">
+
 
      <h2>
         <span i18n:translate="heading_search_results">
