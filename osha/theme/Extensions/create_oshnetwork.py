@@ -32,8 +32,7 @@ def run(self):
         - Add an empty index page. DONE
         - Implement the country dropdown (classic portlet) DONE
         - Block the portlets DONE
-        - Content rule (on publish) for news and events added to the FOP 
-        - In the navigation portlet, move it below about.
+        - Content rule (on publish) for news and events added to the FOP Done
         - Reuse the document_view to created oshnetwork_view
           folder.
     """
@@ -103,6 +102,7 @@ def createOSHNetworkFolder(self):
     oshnetwork.invokeFactory('Document', 'index.html')
     document = getattr(oshnetwork, 'index.html')
     document.setTitle('OSHNetwork')
+    document._setProperty('layout', 'oshnetwork_country_view')
     wftool.doActionFor(document, 'publish')
 
 def createCountrySubfolders(self):
@@ -149,6 +149,7 @@ def createClassicPortletWithCountryDropdown(self):
                                     macro='portlet')
     chooser = INameChooser(manager)
     manager[chooser.chooseName(None, assignment)] = assignment
+
 
 def blockPortlets(self):
     """ Block the showing of portlets in oshnetwork
