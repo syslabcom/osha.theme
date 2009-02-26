@@ -1,0 +1,15 @@
+<metal:macro define-macro="portlet">
+<dl class="portlet portletClickSearch"
+    i18n:domain="slc.clicksearch"
+    tal:define="plone_view context/@@plone;">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span>External Links</span>
+        <span class="portletTopRight"></span>
+    </dt>
+    <dd class="portletItem odd">
+        Here we can add external links.
+    </dd>
+</dl>
+</metal:macro>
