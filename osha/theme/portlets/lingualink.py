@@ -37,7 +37,9 @@ class Renderer(base.Renderer, LinguaLinkPortlet):
         path = "/".join(self.context.getPhysicalPath())
         return (path, modified, preflang)
         
-    @ram.cache(_render_cachekey)
+    # We MUST NOT use ram cache here. The LinguaLink portlet depends on freshness, because it needs to call performActions on every
+    # page load, to check if the "create" link was clicked.
+#    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
