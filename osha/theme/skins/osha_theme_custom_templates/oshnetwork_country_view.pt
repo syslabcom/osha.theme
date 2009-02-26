@@ -16,22 +16,7 @@
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
-        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+        OSHA.THEME CUSTOMISATION IN OSHA_THEME_CUSTOM_TEMPLATES.
 
         <h1 class="documentFirstHeading"> 
             <metal:field use-macro="python:here.widget('title', mode='view')">
@@ -56,7 +41,7 @@
         </p>
 
         <metal:field use-macro="python:here.widget('text', mode='view')">
-        Body text
+            Body text
         </metal:field>
 
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
