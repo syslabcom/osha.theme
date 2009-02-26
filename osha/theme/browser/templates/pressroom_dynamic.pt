@@ -8,10 +8,8 @@
   <div metal:fill-slot="main" id="PressRoom">
 
 
-      <h1 class="header"
-          i18n:domain="osha-navigation"
-          i18n:translate="osha_nav_title_press_room">
-          Press Room
+      <h1 class="documentFirstHeading"
+          tal:content="here/Title">
       </h1>
 
       <div id="pressroom-boxes">
