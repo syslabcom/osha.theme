@@ -5,7 +5,7 @@ from zope.component import getUtility, getMultiAdapter
 from plone.app.contentrules.rule import Rule
 from plone.app.portlets.interfaces import ILeftColumn, IRightColumn
 from plone.app.portlets.storage import PortletAssignmentMapping 
-from plone.app.portlets.portlets import classic
+from plone.app.portlets.portlets import classic, events, news
 
 from plone.contentrules.engine.interfaces import IRuleStorage
 from plone.contentrules.rule.interfaces import IRuleAction
@@ -32,7 +32,7 @@ def run(self):
         - Add an empty index page. DONE
         - Implement the country dropdown (classic portlet) DONE
         - Block the portlets DONE
-        - Content rule (on publish) for news and events added to the FOP Done
+        - Content rule (on publish) for news and events added to the FOP DONE
         - Reuse the document_view to created oshnetwork_view
           folder.
     """
@@ -41,6 +41,8 @@ def run(self):
     createCountrySubfolders(self)
     createClassicPortletWithCountryDropdown(self)
     blockPortlets(self)
+    addExternalPortlet(self)
+    addEventsAndNewsPortlets(self)
     return 'Finished!'
 
 def createContentRules(self):
@@ -139,6 +141,32 @@ def createCountrySubfolders(self):
         document.setTitle(name)
         wftool.doActionFor(document, 'publish')
 
+def blockPortlets(self):
+    """ Block the showing of portlets in oshnetwork
+    """
+    portal = getToolByName(self, 'portal_url').getPortalObject()
+    obj = getattr(portal, 'oshnetwork')
+    for cname in ['plone.rightcolumn', 'plone.leftcolumn']:
+        column = getUtility(IPortletManager, name=cname)
+        ptass = getMultiAdapter((obj, column,), ILocalPortletAssignmentManager)
+        ptass.setBlacklistStatus(CONTEXT_PORTLETS, True)
+
+def addEventsAndNewsPortlets(self):
+    """ """
+    portal = getToolByName(self, 'portal_url').getPortalObject()
+    obj = getattr(portal, 'oshnetwork')
+    column = getUtility(IPortletManager, name='plone.leftcolumn')
+    manager = getMultiAdapter((obj, column,), IPortletAssignmentMapping)
+    assignment = events.Assignment()
+    chooser = INameChooser(manager)
+    manager[chooser.chooseName(None, assignment)] = assignment
+
+    column = getUtility(IPortletManager, name='plone.rightcolumn')
+    manager = getMultiAdapter((obj, column,), IPortletAssignmentMapping)
+    assignment = news.Assignment()
+    chooser = INameChooser(manager)
+    manager[chooser.chooseName(None, assignment)] = assignment
+
 def createClassicPortletWithCountryDropdown(self):
     """ """
     portal = getToolByName(self, 'portal_url').getPortalObject()
@@ -150,14 +178,15 @@ def createClassicPortletWithCountryDropdown(self):
     chooser = INameChooser(manager)
     manager[chooser.chooseName(None, assignment)] = assignment
 
-
-def blockPortlets(self):
-    """ Block the showing of portlets in oshnetwork
-    """
+def addExternalPortlet(self):
+    """ """
     portal = getToolByName(self, 'portal_url').getPortalObject()
     obj = getattr(portal, 'oshnetwork')
-    for cname in ['plone.rightcolumn', 'plone.leftcolumn']:
-        column = getUtility(IPortletManager, name=cname)
-        ptass = getMultiAdapter((obj, column,), ILocalPortletAssignmentManager)
-        ptass.setBlacklistStatus(CONTEXT_PORTLETS, True)
+    column = getUtility(IPortletManager, name='plone.rightcolumn')
+    manager = getMultiAdapter((obj, column,), IPortletAssignmentMapping)
+    assignment = classic.Assignment(template='oshnetwork_external_links_portlet',
+                                    macro='portlet')
+    chooser = INameChooser(manager)
+    manager[chooser.chooseName(None, assignment)] = assignment
+
 
