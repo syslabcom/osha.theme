@@ -87,7 +87,7 @@
             </div> 
 
             <div class="field_default"
-				taL:define="value keywords">
+				taL:define="value keywords; size python:5">
                 <metal:use use-macro="here/filter_macros/macros/Subject"></metal:use>
             </div>
                      
@@ -96,7 +96,7 @@
          <div class="filter_column2">
 
             <div class="field_default" tal:define="value country">
-              <metal:use use-macro="here/filter_macros/macros/Country_compact_index"></metal:use>
+              <metal:use use-macro="here/filter_macros/macros/MultiCountry_compact"></metal:use>
             </div>
                        
          </div>
