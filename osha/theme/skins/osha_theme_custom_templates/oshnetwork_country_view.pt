@@ -16,8 +16,6 @@
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
-        OSHA.THEME CUSTOMISATION IN OSHA_THEME_CUSTOM_TEMPLATES.
-
         <h1 class="documentFirstHeading"> 
             <metal:field use-macro="python:here.widget('title', mode='view')">
             Title
@@ -47,6 +45,35 @@
         <div metal:use-macro="here/document_relateditems/macros/relatedItems">
             show related items if they exist
         </div>
+
+        <table id="sortable" 
+               class="listing" 
+               summary="Content listing"
+               style="width:100%">
+            <thead>
+            <tr>
+                <th colspan="2">Quick Links</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="width:50%">
+                    <a href="http://osha.europa.eu/en/publications">Case Studies</a>
+                </td>
+                <td>
+                    <a href="http://osha.europa.eu/en/publications">Publications</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:50%">
+                    <a href="http://osha.europa.eu/en/publications"> Policy and Program information.</a>
+                </td>
+                <td>
+                    <a href="http://osha.europa.eu/en/about"> More information.</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
