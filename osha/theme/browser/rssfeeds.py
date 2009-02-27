@@ -2,8 +2,6 @@ from zope.interface import Interface, implements
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-from DateTime import DateTime
-from Products.PythonScripts.standard import url_quote
 
 class IRSSFeedsView(Interface):
 
@@ -48,16 +46,6 @@ class RSSFeedsView(BrowserView):
                     id=T, 
                     title=T.capitalize()+'s', 
                     icon='publication_icon.gif',
-                    url=url
-                    ))
-            elif T in ('News Item', 'Event'):
-                now = DateTime().strftime('%Y/%m/%d %H:%M')
-                url = url_pattern %(T,lang, sorter)
-                url += '&effective=%(date)s&effective_usage=range:max&expires=%(date)s&expires_usage=range:min' % dict(date=url_quote(now))
-                L.append( dict(
-                    id=T, 
-                    title=ti.Title()+'s', 
-                    icon=ti.getIcon(),
                     url=url
                     ))
             elif ti is None:
