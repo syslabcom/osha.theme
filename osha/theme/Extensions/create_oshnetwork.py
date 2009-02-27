@@ -45,6 +45,17 @@ def run(self):
     addEventsAndNewsPortlets(self)
     return 'Finished!'
 
+def getParent(self):
+    portal = getToolByName(self, 'portal_url').getPortalObject()
+    if hasattr(portal, 'en'):
+        parent = getattr(portal, 'en')
+    else:
+        # XXX: Assuming for now we're on a test instance.
+        # return "Portal has no folder with id 'en', operation aborted."
+        parent = portal
+    return parent
+
+
 def createContentRules(self):
     """ """
     portal = getToolByName(self, 'portal_url').getPortalObject()
@@ -78,15 +89,7 @@ def createContentRules(self):
 
 def createOSHNetworkFolder(self):
     """ """
-    portal = getToolByName(self, 'portal_url').getPortalObject()
-
-    if hasattr(portal, 'en'):
-        parent = getattr(portal, 'en')
-    else:
-        # XXX: Assuming for now we're on a test instance.
-        # return "Portal has no folder with id 'en', operation aborted."
-        parent = portal
-
+    parent = getParent(self)
     # Create oshnetwork folder and publish it.
     if not hasattr(parent, 'oshnetwork'):
         title = 'OSHNetwork'
@@ -111,8 +114,8 @@ def createCountrySubfolders(self):
     """ Create subfolder with index.hml in each country folder
     """
     wftool = getToolByName(self, 'portal_workflow')
-    portal = getToolByName(self, 'portal_url').getPortalObject()
-    oshnetwork = getattr(portal, 'oshnetwork')
+    parent = getParent(self)
+    oshnetwork = getattr(parent, 'oshnetwork')
     for cc_and_name, link in EUROPEAN_NETWORK:
         try:
             cc, name = cc_and_name.split(' ', 1)
@@ -153,8 +156,8 @@ def blockPortlets(self):
 
 def addEventsAndNewsPortlets(self):
     """ """
-    portal = getToolByName(self, 'portal_url').getPortalObject()
-    obj = getattr(portal, 'oshnetwork')
+    parent = getParent(self)
+    obj = getattr(parent, 'oshnetwork')
     column = getUtility(IPortletManager, name='plone.leftcolumn')
     manager = getMultiAdapter((obj, column,), IPortletAssignmentMapping)
     assignment = events.Assignment()
@@ -169,8 +172,8 @@ def addEventsAndNewsPortlets(self):
 
 def createClassicPortletWithCountryDropdown(self):
     """ """
-    portal = getToolByName(self, 'portal_url').getPortalObject()
-    obj = getattr(portal, 'oshnetwork')
+    parent = getParent(self)
+    obj = getattr(parent, 'oshnetwork')
     column = getUtility(IPortletManager, name='plone.leftcolumn')
     manager = getMultiAdapter((obj, column,), IPortletAssignmentMapping)
     assignment = classic.Assignment(template='oshnetwork_country_select',
@@ -180,8 +183,8 @@ def createClassicPortletWithCountryDropdown(self):
 
 def addExternalPortlet(self):
     """ """
-    portal = getToolByName(self, 'portal_url').getPortalObject()
-    obj = getattr(portal, 'oshnetwork')
+    parent = getParent(self)
+    obj = getattr(parent, 'oshnetwork')
     column = getUtility(IPortletManager, name='plone.rightcolumn')
     manager = getMultiAdapter((obj, column,), IPortletAssignmentMapping)
     assignment = classic.Assignment(template='oshnetwork_external_links_portlet',
