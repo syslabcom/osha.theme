@@ -147,8 +147,8 @@ def createCountrySubfolders(self):
 def blockPortlets(self):
     """ Block the showing of portlets in oshnetwork
     """
-    portal = getToolByName(self, 'portal_url').getPortalObject()
-    obj = getattr(portal, 'oshnetwork')
+    parent = getParent(self)
+    obj = getattr(parent, 'oshnetwork')
     for cname in ['plone.rightcolumn', 'plone.leftcolumn']:
         column = getUtility(IPortletManager, name=cname)
         ptass = getMultiAdapter((obj, column,), ILocalPortletAssignmentManager)
