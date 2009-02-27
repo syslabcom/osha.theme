@@ -17,14 +17,14 @@
             </li>
             <li>
             <select>
-            <option tal:attributes="onclick python:'window.location = \'%s/oshnetwork\'' % (here.portal_url());"> </option>
+            <option tal:attributes="onclick python:'window.location = \'%s\'' % (here.get_oshnetwork_url());"> </option>
             <option 
                 tal:define="cs here/get_fop_countries;
                             dummy python:cs.sort()"
                 tal:repeat="item cs"
                 tal:attributes="
                     value python:item[0];
-                    onclick python:'window.location = \'%s/oshnetwork/%s\'' % (here.portal_url(), item[1]);
+                    onclick python:'window.location = \'%s/%s\'' % (here.get_oshnetwork_url(), item[1]);
                     selected python:item[1] in request.get('URL0').split('/') and 'selected' or None;"
                 tal:content="python:item[0]" />
             </select>
