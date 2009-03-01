@@ -196,26 +196,26 @@
 
 <!-- Napo Below footer-->
     <browser:viewlet
-    name="osha.napo.logofooter"
-    manager="plone.app.layout.viewlets.interfaces.IBelowContent"
-    template="templates/napo_logofooter.pt"
-    layer=".interfaces.INAPOSpecific"
+        name="osha.napo.logofooter"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        template="templates/napo_logofooter.pt"
+        layer=".interfaces.INAPOSpecific"
         permission="zope2.View"
         />
 
     <browser:viewlet
         name="osha.napo.friendsmenu"
-    manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-    class=".napo.NapoFriendsViewlet"
-    layer=".interfaces.INAPOSpecific"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+        class=".napo.NapoFriendsViewlet"
+        layer=".interfaces.INAPOSpecific"
         permission="zope2.View"
         />
 
     <browser:viewlet
-    name="osha.napo.belowfooter"
-    manager="plone.app.layout.viewlets.interfaces.IBelowContent"
-    template="templates/napo_belowfooter.pt"
-    layer=".interfaces.INAPOSpecific"
+        name="osha.napo.belowfooter"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        template="templates/napo_belowfooter.pt"
+        layer=".interfaces.INAPOSpecific"
         permission="zope2.View"
         />
 
@@ -566,6 +566,16 @@
         class=".brokenlinks.BrokenLinkLog"
         permission="zope2.View"
     />
+
+
+  <browser:page
+      for="*"
+      name="sitemap_builder_view"
+      class=".navigation.CatalogSiteMap"
+      permission="zope.Public"
+      allowed_attributes="siteMap"
+      layer=".interfaces.IOSHAThemeLayer"
+      />
 
   <browser:page
       name="sitemap.xml.gz"
