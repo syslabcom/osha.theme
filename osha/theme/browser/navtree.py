@@ -12,7 +12,7 @@ class SitemapQueryBuilder(NavtreeQueryBuilder):
         NavtreeQueryBuilder.__init__(self, context)
         portal_url = getToolByName(context, 'portal_url')
         
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter((context, context.REQUEST), name=u'plone_portal_state')
         navigation_root_path = portal_state.navigation_root_path()
         
         portal_properties = getToolByName(context, 'portal_properties')
