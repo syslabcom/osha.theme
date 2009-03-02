@@ -199,16 +199,16 @@ class Renderer(events.Renderer):
         return '%s/past_events.html' % cal.absolute_url()
 
     def showRSS(self):
-        return bool(getattr(self.data, 'rss_path', None))
+        return bool(self.getRSSLink())
 
     def getRSSLink(self):
-        if self.showRSS():
-            rss_path = self.data.rss_path
-            if rss_path.startswith('/'):
-                rss_path = rss_path[1:]
-            if isinstance(rss_path, UnicodeType):
-                rss_path = rss_path.encode('utf-8')
-            target = self.root.restrictedTraverse(rss_path)
+        rss_path = self.data.rss_path
+        if rss_path.startswith('/'):
+            rss_path = rss_path[1:]
+        if isinstance(rss_path, UnicodeType):
+            rss_path = rss_path.encode('utf-8')
+        target = self.root.restrictedTraverse(rss_path, default=None)
+        if target:
             return "%s/RSS" % target.absolute_url()
         return None
 
@@ -219,8 +219,9 @@ class Renderer(events.Renderer):
                 rss_path = rss_path[1:]
             if isinstance(rss_path, UnicodeType):
                 rss_path = rss_path.encode('utf-8')
-            target = self.root.restrictedTraverse(rss_path)
-            return target.absolute_url()
+            target = self.root.restrictedTraverse(rss_path, default=None)
+            if target:
+                return target.absolute_url()
         return None
 
 
