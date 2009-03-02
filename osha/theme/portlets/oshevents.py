@@ -57,7 +57,7 @@ class IEventsPortlet(IPortletDataProvider):
                                )
 
     rss_path = schema.TextLine(title=_(u'RSS path'),
-                               description=_(u'Enter a relative path to the calendar or topic that displays an RSS representation of these news. "/RSS" will automatically be appended to the URL. This setting is optional'),
+                               description=_(u'Enter a relative path to the calendar or topic that displays an RSS representation of these events. "/RSS" will automatically be appended to the URL. This setting is optional'),
                                required=False,
                                )
     rss_explanation_path = schema.TextLine(title=_(u'RSS explanation path'),
