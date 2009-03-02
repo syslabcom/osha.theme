@@ -175,7 +175,7 @@ class Renderer(events.Renderer):
         if not ICalendarEnhanced.providedBy(cal):
             cal = None
         # if the calendar is not found, and we are in a translated language tree:
-        if cal is None and not root.isCanonical():
+        if cal is None and not self.root.isCanonical():
             canroot = self.root.getCanonical()
             # ... look on the canonical root for the calendar
             cal = canroot.restrictedTraverse(calendar_path, default=None)
