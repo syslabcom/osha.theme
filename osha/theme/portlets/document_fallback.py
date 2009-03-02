@@ -84,7 +84,7 @@ class Renderer(base.Renderer):
         portal_membership = getToolByName(self.context, 'portal_membership')
         member = portal_membership.getAuthenticatedMember()
         roles = member.getRolesInContext(self.context)
-        modified = self.document() and self.document().modified or ''
+        modified = self.document() and self.document().modified() or ''
         return (modified, roles, preflang)
 
     @ram.cache(_render_cachekey)
