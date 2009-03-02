@@ -127,10 +127,11 @@ def createCountrySubfolders(self):
         if cc not in ['UK', 'DE', 'DK']:
             continue
         
+        cid = name.lower().replace(' ','-')
         if not hasattr(oshnetwork, name.lower()):
-            oshnetwork.invokeFactory('Folder', name.lower().replace(' ','-'), title=name)
+            oshnetwork.invokeFactory('Folder', cid, title=name)
 
-        folder = getattr(oshnetwork, cc)
+        folder = getattr(oshnetwork, cid)
         wftool.doActionFor(folder, 'publish')
 
         for rule_id in ['move-news-after-publish', 
