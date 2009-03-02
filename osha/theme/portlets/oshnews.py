@@ -138,14 +138,15 @@ class Renderer(base.Renderer):
         return bool(self.getRSSLink())
 
     def getRSSLink(self):
-        rss_path = self.data.rss_path
-        if rss_path.startswith('/'):
-            rss_path = rss_path[1:]
-        if isinstance(rss_path, UnicodeType):
-            rss_path = rss_path.encode('utf-8')
-        target = self.root.restrictedTraverse(rss_path, default=None)
-        if target:
-            return "%s/RSS" % target.absolute_url()
+        if getattr(self.data, 'rss_path', None):
+            rss_path = self.data.rss_path
+            if rss_path.startswith('/'):
+                rss_path = rss_path[1:]
+            if isinstance(rss_path, UnicodeType):
+                rss_path = rss_path.encode('utf-8')
+            target = self.root.restrictedTraverse(rss_path, default=None)
+            if target:
+                return "%s/RSS" % target.absolute_url()
         return None
 
     def getRSSExplanationLink(self):
