@@ -4,6 +4,7 @@ from plone.portlet.collection import collection
 from zope.component import getMultiAdapter
 from Products.CMFCore.utils import getToolByName
 from plone.app.portlets.cache import get_language
+from types import UnicodeType
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -60,6 +61,17 @@ class ICollectionPortlet(IPortletDataProvider):
                        required=True,
                        default=False)
 
+    show_rss = schema.Bool(title=_(u'Show RSS link'),
+                               description=_(u'If enabled, a link to the RSS representaion of the collection will we added at the bottom of the portlet.'),
+                               required=True,
+                               default=False,
+                               )
+
+    rss_explanation_path = schema.TextLine(title=_(u'RSS explanation path'),
+                               description=_(u'Enter a relative path to a page that gives general RSS information. This is optional.'),
+                               required=False,
+                               )
+
 def render_cachekey(fun, self):
     """
     Generates a key based on:
@@ -100,14 +112,17 @@ class Assignment(collection.Assignment):
     limit = None
     show_more = 'direct'
     show_dates = False
+    show_rss = False
+    rss_explanation_path = ''
 
-    def __init__(self, header=u"", target_collection=None, limit=None, show_more=True, show_dates=False):
+    def __init__(self, header=u"", target_collection=None, limit=None, show_more=True, show_dates=False, show_rss=False, rss_explanation_path=''):
         self.header = header
         self.target_collection = target_collection
         self.limit = limit
         self.show_more = show_more
         self.show_dates = show_dates
-
+        self.show_rss = show_rss
+        self.rss_explanation_path = rss_explanation_path
 
 
 class Renderer(collection.Renderer):
@@ -119,6 +134,18 @@ class Renderer(collection.Renderer):
     """    
     _template = ViewPageTemplateFile('collection.pt')
 
+
+    def __init__(self, *args):
+        collection.Renderer.__init__(self, *args)
+
+        context = Acquisition.aq_base(self.context)
+        portal_languages = getToolByName(self.context, 'portal_languages')
+        self.preflang = portal_languages.getPreferredLanguage()
+
+        self.portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self.navigation_root_path = self.portal_state.navigation_root_path()
+        self.portal = self.portal_state.portal()
+        self.root = self.portal.restrictedTraverse(self.navigation_root_path)
 
     @ram.cache(render_cachekey)
     def render(self):
@@ -152,6 +179,24 @@ class Renderer(collection.Renderer):
             path = path+'/view'
         return path
 
+
+    def showRSS(self):
+        return bool(self.data.show_rss)
+
+    def getRSSLink(self):
+        return '%s/RSS' % self.collection_url()
+
+    def getRSSExplanationLink(self):
+        if getattr(self.data, 'rss_explanation_path', None):
+            rss_path = self.data.rss_explanation_path
+            if rss_path.startswith('/'):
+                rss_path = rss_path[1:]
+            if isinstance(rss_path, UnicodeType):
+                rss_path = rss_path.encode('utf-8')
+            target = self.root.restrictedTraverse(rss_path, default=None)
+            if target:
+                return target.absolute_url()
+        return None
 
 class AddForm(base.AddForm):
     """Portlet add form.
