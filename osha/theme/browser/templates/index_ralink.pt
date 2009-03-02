@@ -35,11 +35,11 @@
         <img tal:define="search_img python:getattr(portal, 'database_search.gif')"
              tal:replace="structure search_img/tag" />
         <span tal:condition="local_keyword">
-            <span tal:omit-tag="" i18n:translate="label_search_database_ralink_on">Risk Assessment Links on</span> 
+            <span tal:omit-tag="" i18n:translate="label_search_database_ralink_on">Risk Assessment Tools on</span> 
             <span tal:replace="here/Title" />
         </span>
         <span tal:condition="not:local_keyword">
-            <span tal:omit-tag="" i18n:translate="label_search_database_ralink">Search for Risk Assessment Links</span>
+            <span tal:omit-tag="" i18n:translate="label_search_database_ralink">Search for Risk Assessment Tools</span>
         </span>
     </h1>
     
