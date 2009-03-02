@@ -142,10 +142,10 @@ class Renderer(collection.Renderer):
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
 
-        self.portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
-        self.navigation_root_path = self.portal_state.navigation_root_path()
-        self.portal = self.portal_state.portal()
-        self.root = self.portal.restrictedTraverse(self.navigation_root_path)
+        portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self.navigation_root_path = portal_state.navigation_root_path()
+        portal = portal_state.portal()
+        self.root = portal.restrictedTraverse(self.navigation_root_path)
 
     @ram.cache(render_cachekey)
     def render(self):
