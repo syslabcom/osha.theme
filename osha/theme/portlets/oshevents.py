@@ -57,11 +57,11 @@ class IEventsPortlet(IPortletDataProvider):
                                )
 
     rss_path = schema.TextLine(title=_(u'RSS path'),
-                               description=_(u'Enter a relative path to the URL that displays an RSS representation of these news. This is optional'),
+                               description=_(u'Enter a relative path to the calendar or topic that displays an RSS representation of these news. "/RSS" will automatically be appended to the URL. This setting is optional'),
                                required=False,
                                )
     rss_explanation_path = schema.TextLine(title=_(u'RSS explanation path'),
-                               description=_(u'Enter a relative path to a page that gives general RSS information. This is optional.'),
+                               description=_(u'Enter a relative path to a page that gives general RSS information. This setting is optional.'),
                                required=False,
                                )
 
@@ -91,6 +91,12 @@ class Renderer(events.Renderer):
         context = Acquisition.aq_base(self.context)
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
+
+        self.portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        self.navigation_root_path = self.portal_state.navigation_root_path()
+        self.portal = self.portal_state.portal()
+        self.root = self.portal.restrictedTraverse(self.navigation_root_path)
+
         # backwards compatibility
         if not hasattr(self.data, 'calendar_path'):
             self.data.calendar_path=''
@@ -115,18 +121,13 @@ class Renderer(events.Renderer):
     def _data(self):
         context = Acquisition.aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
-        portal_languages = getToolByName(self.context, 'portal_languages')
-        preflang = portal_languages.getPreferredLanguage()
 
         # search in the navigation root of the currently selected language and in the canonical path
         # with Language = preferredLanguage or neutral
         paths = list()
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        navigation_root_path = portal_state.navigation_root_path()
-        paths.append(navigation_root_path)
+        paths.append(self.navigation_root_path)
         try:
-            navigation_root = portal_state.portal().restrictedTraverse(navigation_root_path)
-            canonical_path = '/'.join(navigation_root.getCanonical().getPhysicalPath())
+            canonical_path = '/'.join(self.root.getCanonical().getPhysicalPath())
             paths.append(canonical_path)
         except:
             pass
@@ -143,7 +144,7 @@ class Renderer(events.Renderer):
                        end={'query': DateTime(),
                             'range': 'min'},
                        sort_on='start',
-                       Language=['', preflang],
+                       Language=['', self.preflang],
                        sort_limit=limit)
         # If a subject is selected, use that for the query and disregard the NavigationRoot
         if len(subject):
@@ -170,16 +171,12 @@ class Renderer(events.Renderer):
         if isinstance(calendar_path, UnicodeType):
             calendar_path = calendar_path.encode('utf-8')
 
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        navigation_root_path = portal_state.navigation_root_path()
-        portal = portal_state.portal()
-        root = portal.restrictedTraverse(navigation_root_path)
-        cal = root.restrictedTraverse(calendar_path, default=None)
+        cal = self.root.restrictedTraverse(calendar_path, default=None)
         if not ICalendarEnhanced.providedBy(cal):
             cal = None
         # if the calendar is not found, and we are in a translated language tree:
         if cal is None and not root.isCanonical():
-            canroot = root.getCanonical()
+            canroot = self.root.getCanonical()
             # ... look on the canonical root for the calendar
             cal = canroot.restrictedTraverse(calendar_path, default=None)
             # double check if a translated version in the preflang exists
@@ -206,18 +203,24 @@ class Renderer(events.Renderer):
 
     def getRSSLink(self):
         if self.showRSS():
-            context = Acquisition.aq_inner(self.context)
-            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-            navigation_root_path = portal_state.navigation_root_path()
-            return navigation_root_path + self.data.rss_path
+            rss_path = self.data.rss_path
+            if rss_path.startswith('/'):
+                rss_path = rss_path[1:]
+            if isinstance(rss_path, UnicodeType):
+                rss_path = rss_path.encode('utf-8')
+            target = self.root.restrictedTraverse(rss_path)
+            return "%s/RSS" % target.absolute_url()
         return None
 
     def getRSSExplanationLink(self):
         if getattr(self.data, 'rss_explanation_path', None):
-            context = Acquisition.aq_inner(self.context)
-            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-            navigation_root_path = portal_state.navigation_root_path()
-            return navigation_root_path + self.data.rss_explanation_path
+            rss_path = self.data.rss_explanation_path
+            if rss_path.startswith('/'):
+                rss_path = rss_path[1:]
+            if isinstance(rss_path, UnicodeType):
+                rss_path = rss_path.encode('utf-8')
+            target = self.root.restrictedTraverse(rss_path)
+            return target.absolute_url()
         return None
 
 
