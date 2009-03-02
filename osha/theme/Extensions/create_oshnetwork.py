@@ -128,7 +128,7 @@ def createCountrySubfolders(self):
             continue
         
         if not hasattr(oshnetwork, name.lower()):
-            oshnetwork.invokeFactory('Folder', cc, title=name)
+            oshnetwork.invokeFactory('Folder', name.lower().replace(' ','-'), title=name)
 
         folder = getattr(oshnetwork, cc)
         wftool.doActionFor(folder, 'publish')

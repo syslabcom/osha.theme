@@ -24,7 +24,7 @@
                 tal:repeat="item cs"
                 tal:attributes="
                     value python:item[0];
-                    onclick python:'window.location = \'%s/%s\'' % (here.get_oshnetwork_url(), item[1]);
+                    onclick python:'window.location = \'%s/%s\'' % (here.get_oshnetwork_url(), item[0].lower().replace(' ','-'));
                     selected python:item[1] in request.get('URL0').split('/') and 'selected' or None;"
                 tal:content="python:item[0]" />
             </select>
