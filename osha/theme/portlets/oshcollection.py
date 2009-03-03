@@ -138,11 +138,10 @@ class Renderer(collection.Renderer):
     def __init__(self, *args):
         collection.Renderer.__init__(self, *args)
 
-        context = Acquisition.aq_base(self.context)
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
 
-        portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         self.navigation_root_path = portal_state.navigation_root_path()
         portal = portal_state.portal()
         self.root = portal.restrictedTraverse(self.navigation_root_path)
