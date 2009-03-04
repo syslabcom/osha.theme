@@ -1,6 +1,7 @@
 import Acquisition
 from types import *
 from time import time
+import datetime
 from osha.theme.browser.interfaces import IOSHA
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
@@ -15,6 +16,7 @@ from urlparse import urljoin
 from zope.component import getMultiAdapter
 from slc.subsite.root import getSubsiteRoot
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
+from p4a.calendar import interfaces as p4aCalendarInterfaces
 
 class OSHA(BrowserView):
     implements(IOSHA)
@@ -258,5 +260,26 @@ class OSHA(BrowserView):
         else:
             base_url = subsite_url
         return base_url
+
+
+    def getCalendarEvents(self, past=False):
+        """ If called on a calendar, the list of events is returned"""
+        context = self.context    
+        if p4aCalendarInterfaces.ICalendarEnhanced.providedBy(context):
+            now = datetime.datetime.now()
+            if past:
+                stop = now
+                start = None
+            else:
+                start = now
+                stop = None
+            provider = p4aCalendarInterfaces.IEventProvider(self.context)
+            events = list(provider.gather_events(start=start, stop=stop))
+            events.sort()
+            if past:
+                events.reverse()
+            events = [brain._getEvent() for brain in events]
+            return events
+        return list()
 
 #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')

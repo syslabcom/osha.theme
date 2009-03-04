@@ -144,6 +144,9 @@ class IOSHA(Interface):
 
     def set_subsite_property(name, value):
         """ Set a prop with the name to value on the subsite """
+
+    def getCalendarEvents(start, stop, reverse):
+        """ If called on a calendar, the list of events is returned"""
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions
