@@ -49,27 +49,27 @@
         <table id="sortable" 
                class="listing" 
                summary="Content listing"
-               style="width:100%">
+               style="width:98%">
             <thead>
             <tr>
-                <th colspan="2">Quick Links</th>
+                <th colspan="2">Information relevant to: <span tal:replace="context/Title" /></th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td style="width:50%">
-                    <a href="http://osha.europa.eu/en/good_practice/topics/msd/case-studies">Case Studies</a>
+                    <a href="aggroviewer">Case Studies</a>
                 </td>
                 <td>
-                    <a href="http://osha.europa.eu/en/publications">Publications</a>
+                    <a href="aggroviewer">Risk Assessment Links</a>
                 </td>
             </tr>
             <tr>
                 <td style="width:50%">
-                    <a href="http://osha.europa.eu/en/good_practice/topics/msd/information-on-programmes-and-policies"> Policy and Program information.</a>
+                    <a href="aggroviewer">Links to OSH Resources</a>
                 </td>
                 <td>
-                    <a href="http://osha.europa.eu/en/riskobservatory/risks/physical">Risk Observatory's resources</a>
+                    <a href="aggroviewer">Providers</a>
                 </td>
             </tr>
             </tbody>
