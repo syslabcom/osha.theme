@@ -18,6 +18,7 @@
             <li>
             <select>
             <option tal:attributes="onclick python:'window.location = \'%s\'' % (here.get_oshnetwork_url());">OSH Network</option>
+            <option>-----------</option>
             <option 
                 tal:define="cs here/get_fop_countries;"
                 tal:repeat="item cs"
