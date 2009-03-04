@@ -7,22 +7,21 @@
 ##title=Return a list of Focal Point Countries
 ##parameters=
 
-from osha.theme.config import EUROPEAN_NETWORK
+
+networkfolder = context
+for i in context.REQUEST.PARENTS:
+    if i.getId()=='oshnetwork':
+        networkfolder = i
+
 
 countries = []
-for cc_and_name, link in EUROPEAN_NETWORK:
-    try:
-        cc, name = cc_and_name.split(' ', 1)
-    except ValueError:
-        # Account for country group delimiters
-        continue
-    countries.append
-    
-    # XXX: For now only create UK, DE and DK
-    if cc not in ['UK', 'DE', 'DK']:
-        continue
-
-    countries.append((name, cc))
+query = {
+    'portal_type': 'Folder', 
+    'sort_on': 'sortable_title', 
+    'review_state': 'published',
+    }
+for item in networkfolder.getFolderContents(contentFilter=query):
+    countries.append( (item.Title, item.getId) )
 
 return countries
 

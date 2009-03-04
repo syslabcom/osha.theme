@@ -1,6 +1,6 @@
 <metal:macro define-macro="portlet">
-<dl class="portlet portletClickSearch"
-    i18n:domain="slc.clicksearch"
+<dl class="portlet portletOSHNetwork"
+    i18n:domain="osha"
     tal:define="plone_view context/@@plone;">
 
     <dt class="portletHeader">
@@ -17,10 +17,9 @@
             </li>
             <li>
             <select>
-            <option tal:attributes="onclick python:'window.location = \'%s\'' % (here.get_oshnetwork_url());"> </option>
+            <option tal:attributes="onclick python:'window.location = \'%s\'' % (here.get_oshnetwork_url());">OSH Network</option>
             <option 
-                tal:define="cs here/get_fop_countries;
-                            dummy python:cs.sort()"
+                tal:define="cs here/get_fop_countries;"
                 tal:repeat="item cs"
                 tal:attributes="
                     value python:item[0];
