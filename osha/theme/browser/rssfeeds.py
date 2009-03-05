@@ -2,6 +2,7 @@ from zope.interface import Interface, implements
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
+from types import UnicodeType
 
 class IRSSFeedsView(Interface):
 
@@ -87,6 +88,8 @@ class RSSFeedsView(BrowserView):
     def quick_buttons(self, title, url):
         """ return a button row to quickly add the feed to popular syndication services
         """
+        if isinstance(title, UnicodeType):
+            title = title.encode('utf-8')
         return self.buttons(title=title, url=url)
 
 
