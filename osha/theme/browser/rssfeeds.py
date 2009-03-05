@@ -36,9 +36,12 @@ class RSSFeedsView(BrowserView):
                         
         for T in self.TYPES:
             if T == 'Event':
-                sorter="start"
+                url = portal_path + "/%s/events/RSS" % lang
+            elif T == 'News Item':
+                url = portal_path + "/%s/news/RSS" % lang
             else:
                 sorter = "effective"
+                url = url_pattern %(T,lang, sorter)
             ti = portal_types.getTypeInfo(T)
             if T == 'Publication':
                 url = url_pattern %('File',lang, sorter)
@@ -56,7 +59,7 @@ class RSSFeedsView(BrowserView):
                     id=T, 
                     title=ti.Title()+'s', 
                     icon=ti.getIcon(),
-                    url=url_pattern %(T,lang, sorter)
+                    url=url
                     ))
         return L
         
