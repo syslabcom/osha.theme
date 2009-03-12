@@ -45,7 +45,10 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
         potential_subsite = self.context.restrictedTraverse(subsite_path)
 
         # only interesting on the main portal
-        if not ISubsiteEnhanced.providedBy(potential_subsite):
+        # or on subsites without their own language tool
+        if not ISubsiteEnhanced.providedBy(potential_subsite) \
+            or (ISubsiteEnhanced.providedBy(potential_subsite) \
+                and not getattr(aq_base(potential_subsite), 'portal_languages', None)):
             portal_properties = getToolByName(self.context, 'portal_properties')
             site_properties = getattr(portal_properties, 'site_properties')
             languages_on_main_site = getattr(site_properties, 'languages_on_main_site', None)
