@@ -14,6 +14,7 @@
                       kssClassesView context/@@kss_field_decorator_view;
                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                       templateId template/getId;
+                      storydate here/EffectiveDate|nothing;
                       text here/getText;">
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -26,7 +27,7 @@
                                                     macro='releaseTiming-field-view');"
            tal:attributes="class string:releaseTiming summary$kss_class;">
             <span metal:define-slot="inside"
-                  tal:replace="here/getReleaseTiming">[FOR IMMEDIATE RELEASE]</span>
+                  tal:replace="python:here.toLocalizedTime(storydate)">[FOR IMMEDIATE RELEASE]</span>
         </p>
 
 
