@@ -60,7 +60,9 @@ class TeaserView(BrowserView):
         context = aq_base(aq_inner(self.context))
         text = getattr(context, 'getText', None) and context.getText() or ''
         return text
-
+    
+    def showLinkToNewsItem(self):
+        return self.context.getProperty('show_link_to_news_item', True)
 
 class TeaserArchiveView(BrowserView):
     """ used for displaying archived  teasers"""
@@ -107,3 +109,7 @@ class TeaserArchiveView(BrowserView):
                        
         self.items = catalog(query)
         return self.template()
+
+        
+    def showLinkToNewsItem(self):
+        return self.context.getProperty('show_link_to_news_item', True)

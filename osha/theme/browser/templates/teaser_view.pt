@@ -17,6 +17,7 @@
 
         <metal:listingmacro define-macro="listing">
         <tal:topiccontents define="items view/items;
+                showLinkToNewsItem view/showLinkToNewsItem;
                 b_start python:request.get('b_start', 0);
                  Batch python:modules['Products.CMFPlone'].Batch;
                  batch python:Batch(items, 10, int(b_start), orphan=0);">
@@ -51,17 +52,26 @@
                                     <span class="teaserdate" tal:content="python:toLocalizedTime(obj['EffectiveDate'])"/>
                                     <a href="#" tal:attributes="href url;
                                                                 class obj_wf_state_class"
+                                                tal:condition="showLinkToNewsItem"
                                                 tal:content="title_or_id" />
+                                        <span tal:attributes="class obj_wf_state_class"
+                                            tal:condition="not:showLinkToNewsItem"
+                                            tal:content="title_or_id" />
                                     </h2>
                                        
                                     <div class="newsImageContainer"
                                          tal:condition="python: obj.portal_type in ['News Item']"
                                          tal:on-error="nothing">
                                         <a href="#"
+                                           tal:condition="showLinkToNewsItem"
                                            tal:attributes="href string:$url"
                                            id="parent-fieldname-image">
                                            <img tal:attributes="src string:${url}/image; alt title_or_id;" />
                                         </a>
+                                        <div id="parent-fieldname-image"
+                                            tal:condition="not:showLinkToNewsItem">
+                                             <img tal:attributes="src string:${url}/image; alt title_or_id;" />
+                                        </div>
                                     </div>                                     
                                     
                                     
