@@ -102,7 +102,8 @@ class Renderer(navigation.Renderer):
     """
     _template = ViewPageTemplateFile('inline_navigation.pt')
 
-
+    def render(self):
+        return self._template()
 
     
 class AddForm(base.AddForm):
