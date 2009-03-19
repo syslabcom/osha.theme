@@ -57,9 +57,7 @@
      layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".navigation.Renderer" 
      />  
-
  
-
   <!-- custom inline box navigation portlet -->       
     <plone:portlet
         name="osha.InlineNavigation"
@@ -69,18 +67,6 @@
         addview=".inline_navigation.AddForm"
         editview=".inline_navigation.EditForm"
         />
-
-
-
-
- <!-- Custom collection portlet -->
- <!-- Commented out here, we are now overwriting the complete portlet definition
-    See overrides.zcml -->
- <!--plone:portletRenderer 
-     portlet="plone.portlet.collection.collection.ICollectionPortlet" 
-     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
-     class=".collection.Renderer" 
-     /-->
 
 
  <!-- Custom defaultsearch portlet -->

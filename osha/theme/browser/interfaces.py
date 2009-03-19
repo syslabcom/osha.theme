@@ -17,6 +17,10 @@ class IHW2008Specific(IDefaultPloneLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
+class IGermanySpecific(IDefaultPloneLayer):
+    """Marker interface that defines a Zope 3 skin layer.
+    """
+
 class IRISQSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
@@ -29,9 +33,6 @@ class INAPOSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
-class IGermanySpecific(IDefaultPloneLayer, IOSHAThemeLayer):
-    """Marker interface that defines a Zope 3 skin layer.
-    """
 
 
 class IPressRoomView(Interface):
