@@ -300,7 +300,7 @@
     <browser:viewlet
         name="osha.germany.languageselector"
         manager="osha.theme.browser.interfaces.IOSHAHeaderDropdowns"
-        class=".viewlets.OSHALanguageSelector"
+        class=".viewlets.OSHAGermanyLanguageSelector"
         layer=".interfaces.IGermanySpecific"
         permission="zope2.View"
         for="*"
