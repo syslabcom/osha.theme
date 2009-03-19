@@ -8,6 +8,7 @@ from Products.CMFPlone import PloneMessageFactory as _
 from zope import schema
 from zope.formlib import form
 from plone.portlets.interfaces import IPortletDataProvider
+from plone.app.portlets.portlets import base
 
 class IInlineNavigationPortlet(IPortletDataProvider):
     """A portlet which can render the navigation tree
@@ -75,7 +76,7 @@ class IInlineNavigationPortlet(IPortletDataProvider):
 #            default=0,
 #            required=False)
             
-class Assignment(navigation.Assignment):
+class Assignment(base.Assignment):
     implements(IInlineNavigationPortlet)
 
     title = _(u'Inline Navigation')
@@ -104,7 +105,7 @@ class Renderer(navigation.Renderer):
 
 
     
-class AddForm(navigation.AddForm):
+class AddForm(base.AddForm):
     form_fields = form.Fields(IInlineNavigationPortlet)
     #form_fields['root'].custom_widget = UberSelectionWidget
     label = _(u"Add Inline Navigation Portlet")
@@ -118,7 +119,7 @@ class AddForm(navigation.AddForm):
                           topLevel=data.get('topLevel', 0),
                           bottomLevel=data.get('bottomLevel', 0))
 
-class EditForm(navigation.EditForm):
+class EditForm(base.EditForm):
     form_fields = form.Fields(IInlineNavigationPortlet)
     #form_fields['root'].custom_widget = UberSelectionWidget
     label = _(u"Edit Inline Navigation Portlet")
