@@ -4,7 +4,7 @@
     <order manager="plone.portaltop" skinname="*"
            based-on="Plone Default">
       <viewlet name="osha.campaignarea"
-               insert-after="plone.personal_bar" />
+               insert-after="plone.header" />
       <viewlet name="osha.path_bar"
                insert-after="osha.campaignarea" />
     </order>
@@ -159,15 +159,14 @@
     <!-- Skin config for germany -->
     <order manager="osha.header.dropdowns" skinname="OSHAGermany"
            based-on="OSHA Plone Theme">
-        <viewlet name="osha.languageselector" insert-before="*"/>
         <viewlet name="osha.germany.site_actions"
-               insert-after="osha.languageselector" />
+               insert-before="*" />
 
     </order>
-    <order manager="plone.portaltop" skinname="OSHAGermany"
+    <order manager="osha.header.topactions" skinname="OSHAGermany"
            based-on="OSHA Plone Theme">
       <viewlet name="osha.germany.languageselector"
-               insert-before="osha.campaignarea" />
+               insert-before="*" />
     </order>    
 
 

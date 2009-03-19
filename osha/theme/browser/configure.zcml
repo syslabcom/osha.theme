@@ -299,7 +299,7 @@
 
     <browser:viewlet
         name="osha.germany.languageselector"
-        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+        manager="osha.theme.browser.interfaces.IOSHAHeaderTopactions"
         class=".viewlets.OSHALanguageSelector"
         layer=".interfaces.IGermanySpecific"
         permission="zope2.View"
