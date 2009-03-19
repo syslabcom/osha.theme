@@ -299,7 +299,7 @@
 
     <browser:viewlet
         name="osha.germany.languageselector"
-        manager="osha.theme.browser.interfaces.IOSHAHeaderTopactions"
+        manager="osha.theme.browser.interfaces.IOSHAHeaderDropdowns"
         class=".viewlets.OSHALanguageSelector"
         layer=".interfaces.IGermanySpecific"
         permission="zope2.View"

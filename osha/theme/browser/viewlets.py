@@ -19,6 +19,7 @@ from slc.subsite.interfaces import ISubsiteEnhanced
 from osha.theme.config import *
 
 
+
 class OSHALanguageSelector(TranslatableLanguageSelector):
     """ Override LinguaPlone's language selector to provide our own template
         This is used for content that is LinguaPlone translatable """
@@ -118,6 +119,12 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
                     data['url'] = self.context.absolute_url() + '/not_available_lang?set_language=' + data['code']
 
         return results
+
+class OSHAGermanyLanguageSelector(OSHALanguageSelector):
+    """ Override OSHA language selector to provide a german template
+        This is used for content that is LinguaPlone translatable """
+    _template = ViewPageTemplateFile('templates/languageselector_de.pt')
+
 
 class OSHASiteActionsViewlet(common.SiteActionsViewlet):
 
