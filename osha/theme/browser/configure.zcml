@@ -377,6 +377,8 @@
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
     />
+    
+    
 
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"

@@ -271,6 +271,30 @@ dl.portletImage .portletItem {
     background-color:transparent;
 }
 
+dl.portletInlineNavigationTree li {
+    width: 49.999%;
+    float:left;
+}
+dl.portletInlineNavigationTree dd.portletItem {
+    border: 0px;
+    padding: 0;
+}
+#belowcontent-portlets dl.portlet.portletInlineNavigationTree {
+    border-top:1px solid #AAB1C5;
+    background-color: #e6e8ed;
+}
+#belowcontent-portlets dl.portlet.portletInlineNavigationTree {
+    width: 99%;
+}
+dl.portletInlineNavigationTree img {
+    display: none;
+}
+dl.portletInlineNavigationTree ul {
+    margin-top: 0;
+    margin-left: 0;
+}
+
+
 
 #belowcontent-portlets {
     margin: 1em 0 ;

@@ -1,0 +1,15 @@
+<tal:block i18n:domain="plone">
+<div class="visualClear"><!-- --></div>
+<dl class="portlet portletInlineNavigationTree"  
+    tal:define="root view/navigation_root">
+    <dt><!-- Headerless Navigation --></dt>
+    <dd class="portletItem lastItem">
+        <ul class="navTree navTreeLevel0">
+            <li tal:replace="structure view/createNavTree">
+                SUBTREE
+            </li>
+        </ul>
+    </dd>
+</dl>
+<div class="visualClear"><!-- --></div>
+</tal:block>

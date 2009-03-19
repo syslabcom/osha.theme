@@ -57,7 +57,20 @@
      layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
      class=".navigation.Renderer" 
      />  
-       
+
+ 
+
+  <!-- custom inline box navigation portlet -->       
+    <plone:portlet
+        name="osha.InlineNavigation"
+        interface=".inline_navigation.IInlineNavigationPortlet"
+        assignment=".inline_navigation.Assignment"
+        renderer=".inline_navigation.Renderer"
+        addview=".inline_navigation.AddForm"
+        editview=".inline_navigation.EditForm"
+        />
+
+
 
 
  <!-- Custom collection portlet -->

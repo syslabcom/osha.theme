@@ -51,6 +51,11 @@
       description="Search the realm of OSHA using Google CSE" /> 
 
   <portlet
+      addview="osha.InlineNavigation"
+      title="Inline Navigation Portlet"
+      description="Displays a navigation portlet within the body area" />  
+
+  <portlet
       addview="osha.MoreAbout"
       title="More About Portlet"
       description="Lists the contents of a file named portlet_moreabout in the current context." />  

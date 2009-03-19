@@ -15,6 +15,7 @@ from Products.LinguaPlone.interfaces import ITranslatable
 from plone.app.i18n.locales.browser.selector import LanguageSelector
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 from slc.subsite.interfaces import ISubsiteEnhanced
+from plone.app.layout.navigation.navtree import buildFolderTree
 
 from osha.theme.config import *
 
@@ -412,3 +413,8 @@ class OSHANapoSubHeadViewlet(common.ViewletBase):
 class OSHANapoBelowFooterViewlet(common.ViewletBase):
 
     render = ViewPageTemplateFile('templates/napo_belowfooter.pt')
+    
+    
+
+
+        
