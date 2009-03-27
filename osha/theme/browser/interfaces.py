@@ -1,9 +1,13 @@
+from zope import schema
 from zope.interface import Interface
-from plone.theme.interfaces import IDefaultPloneLayer
+from zope.i18nmessageid import MessageFactory
 from zope.viewlet.interfaces import IViewletManager
 
-from plone.portlets.interfaces import IPortletManager
 from plone.app.portlets.interfaces import IColumn
+from plone.theme.interfaces import IDefaultPloneLayer
+from plone.portlets.interfaces import IPortletManager
+
+_ = MessageFactory('osha.theme')
 
 class IOSHAThemeLayer(Interface):
     """ Marker Interface used by BrowserLayer
@@ -34,19 +38,35 @@ class INAPOSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
     """
 
 
-
 class IPressRoomView(Interface):
     """ A View for Pressroom to show Snydication Information """
 
     def get_syn_news():
         """ A method to get the syndicated News """
 
+
+class IPressRoomConfiguration(Interface):
+    """ This interface defines the configuration form """
+    feed_key = schema.List(
+                        title=_(u"RSS Feed"),
+                        description=_(u"Choose the RSS profile for this PressRoom. Profiles are created in the site control panel."),
+                        value_type=schema.Choice(vocabulary="osha.theme.SinToolKeyVocabulary"),
+                        required=False) 
+
+    press_contacts = schema.List(
+                        title=_(u"Reference to the Press Contacts"),
+                        value_type=schema.Choice(vocabulary="osha.theme.PressContactVocabulary"),
+                        required=False) 
+
+    keyword_list = schema.TextLine(title=_(u"Filtering Keywords"),
+                    description=_(u'Add your keywords here, separate them with spaces.'),
+                    required=False)
+
+
 class IRollingQuotesToolsView(Interface):
 
     def update():
         """updates rollingquotesportlet"""
-
-
 
 class INapoFilmView(Interface):
     """ A ViewClass that renders a View based on a datastructure"""
