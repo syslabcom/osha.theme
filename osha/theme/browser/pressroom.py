@@ -85,10 +85,12 @@ class DynamicPressRoomView(BrowserView):
         return rows        
 
     #@ram.cache(_render_cachekey)
-    def getPressContactFolder(self):
+    def getPressContacts(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
-        return annotations[PRESS_CONTACTS_KEY]
+        contact_paths = annotations[PRESS_CONTACTS_KEY]
+        portal = context.portal_url.getPortalObject()
+        return = [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
 
     #@ram.cache(_render_cachekey)
     def getKeywords(self):
@@ -118,8 +120,14 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
         canonical = context.getCanonical()
         annotations = IAnnotations(canonical)
         annotations[FEED_KEY] = data['feed_key']
-        annotations[PRESS_CONTACTS_KEY] = data['press_contacts']
-        annotations[KEYWORDS_KEY] = data['keyword_list']
+        if data['press_contacts']:
+            annotations[PRESS_CONTACTS_KEY] = self.context.request.get('form.press_contacts.to', [])
+        annotations[KEYWORDS_KEY] = (data['keyword_list'] or '').strip().split(' ')
+        return getattr(context, context.default_view)()
+
+    @form.action("cancel")
+    def action_save(self, action, data):
+        context = Acquisition.aq_inner(self.context)
         return getattr(context, context.default_view)()
 
 
