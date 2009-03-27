@@ -72,14 +72,16 @@ class DynamicPressRoomView(BrowserView):
     
     #@ram.cache(_render_cachekey)
     def getFeed(self):
-        context = Acquisition.aq_inner(self.context).getCanonical()
-        annotations = IAnnotations(context)
+        context = Acquisition.aq_inner(self.context)
+        canonical = context.getCanonical()
+        annotations = IAnnotations(canonical)
         if not annotations.get(FEED_KEY):
             return []
-        map = annotations[FEED_KEY]
-        context = Acquisition.aq_inner(self.context)
+        keys = annotations[FEED_KEY]
         sin = getToolByName(context, 'sin_tool')
-        rows = sin.sin(map, max_size=2)        
+        rows = []
+        for k in keys:
+            rows += sin.sin(k, max_size=2)        
         return rows        
 
     #@ram.cache(_render_cachekey)

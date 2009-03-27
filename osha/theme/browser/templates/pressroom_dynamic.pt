@@ -55,7 +55,7 @@
                 <span tal:condition="python:row.get('date') or nothing" tal:omit-tag="">
                     <i tal:content="python: here.toLocalizedTime(row['date'])"></i>
                 </span>
-                <span tal:replace="row/description">Welt</span>
+                <span tal:replace="structure row/description">Welt</span>
                 </p>
             </tal:block>
             <div id="more-syndicated-news">

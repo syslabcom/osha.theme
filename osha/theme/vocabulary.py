@@ -22,8 +22,8 @@ class SinToolKeyVocabulary(object):
         site = getSite()
         sin = getToolByName(site, 'sin_tool')
         items = []
-        for map in sin.maps:
-            items.append(SimpleTerm(map, map, map))
+        for c in sin.Channels():
+            items.append(SimpleTerm(c.id, c.id, c.id))
 
         return SimpleVocabulary(items)
 
