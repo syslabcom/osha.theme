@@ -411,6 +411,13 @@
 
     <browser:page
         for="*"
+        name="oshnews-local-view"
+        class=".oshnews_view.OSHNewsLocalView"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for="*"
         name="oshevent-view"
         class=".oshevent_view.OSHEventView"
         permission="zope2.View"

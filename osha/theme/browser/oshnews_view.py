@@ -71,3 +71,26 @@ class OSHNewsView(BrowserView):
         context = Acquisition.aq_base(Acquisition.aq_inner(self.context))
         text = getattr(context, 'getText', None) and context.getText() or ''
         return text
+
+
+
+class OSHNewsLocalView(OSHNewsView):
+    """Dislplay OSH news only from the local folder"""
+    
+    @instance.memoize
+    def getResults(self):
+        context = Acquisition.aq_inner(self.context)
+        catalog = getToolByName(context, 'portal_catalog')
+        if hasattr(catalog, 'getZCatalog'):
+            catalog = catalog.getZCatalog()
+            
+        queryA = Eq('portal_type', 'News Item')
+        queryB = Eq('isNews', True)
+        queryBoth = In('review_state', 'published') & Eq('path', '/'.join(context.getPhysicalPath())) 
+
+        query = And(Or(queryA, queryB), queryBoth)
+        results = catalog.evalAdvancedQuery(query, (('Date', 'desc'),) ) 
+
+        return results
+
+
