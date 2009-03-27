@@ -93,4 +93,6 @@ class OSHNewsLocalView(OSHNewsView):
 
         return results
 
+    def Title(self):
+        return self.context.Title()
 
