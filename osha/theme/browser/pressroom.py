@@ -90,7 +90,7 @@ class DynamicPressRoomView(BrowserView):
         annotations = IAnnotations(context)
         contact_paths = annotations[PRESS_CONTACTS_KEY]
         portal = context.portal_url.getPortalObject()
-        return = [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
+        return [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
 
     #@ram.cache(_render_cachekey)
     def getKeywords(self):
