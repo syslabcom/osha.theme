@@ -18,6 +18,11 @@
         file="vpip.js"
         />
 
+    <browser:resource
+        file="resources/jquery.bigtarget.1.0.1.js"
+        name="jquery.bigtarget.1.0.1.js"
+        />
+
 
     <!-- Include Collage views -->
     <include file="collage.zcml" />
@@ -73,12 +78,12 @@
         for="*"
         name="rollingquotestool"
         class=".rollingquotestool.RollingQuotesToolsView"
-    attribute="set_url"
+        attribute="set_url"
         permission="zope.Public"
         allowed_interface=".interfaces.IRollingQuotesToolsView"
-        />
+            />
 
-<!-- OSHA PressRoomView-->
+    <!-- OSHA PressRoom-->
     <browser:page
         for="*"
         name="pressroom"
@@ -88,14 +93,21 @@
         />
 
     <browser:page
-        for="*"
-        name="dynamic_pressroom"
+        for="Products.PressRoom.interfaces.content.IPressRoom"
+        name="dynamic-pressroom"
         class=".pressroom.DynamicPressRoomView"
         permission="zope.Public"
         allowed_interface=".interfaces.IPressRoomView"
         />
 
-<!-- OSHA NapoFilmView-->
+    <browser:page
+        for="Products.PressRoom.interfaces.content.IPressRoom"
+        name="pressroom-config-form"
+        class=".pressroom.DynamicPressRoomConfigurationForm"
+        permission="cmf.ModifyPortalContent"
+        />
+
+    <!-- OSHA NapoFilmView-->
     <browser:page
         for="*"
         name="napofilm"
