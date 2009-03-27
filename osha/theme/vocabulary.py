@@ -40,7 +40,7 @@ class PressContactVocabulary(object):
         cat = getToolByName(site, 'portal_catalog')
         items = []
         for c in cat(portal_type='PressContact'):
-            items.append(SimpleTerm(c.id, c.id, c.pretty_title_or_id))
+            items.append(SimpleTerm(c.id, c.getPath(), c.pretty_title_or_id))
 
         return SimpleVocabulary(items)
 
