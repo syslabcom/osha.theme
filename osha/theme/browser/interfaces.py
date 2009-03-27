@@ -60,6 +60,7 @@ class IPressRoomConfiguration(Interface):
 
     keyword_list = schema.TextLine(title=_(u"Filtering Keywords"),
                     description=_(u'Add your keywords here, separate them with spaces.'),
+                    default=u'',
                     required=False)
 
 

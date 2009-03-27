@@ -67,34 +67,19 @@
     <div id="addresses">
     <table class="Tabelle">
         <tr>
-        <td>
-            <div id="firstAdress">
-                <strong i18n:translate="osha_label_international_press">International press:</strong><br>
-                Press Office, <br>
-                European Agency for Safety and Health at Work, <br>
-                Bilbao <br>
-                Tel: +34 94 479 35 52<br>
-                <img src="news.gif" alt="international press contact">
-            </div>
-        </td>
-        <td>
+        <td tal:repeat="contact view/getPressContacts">
             <div>
-                <strong i18n:translate="osha_label_spanish_press">Bilbao and Spanish press:</strong><br>
-                Press Office, <br>
-                European Agency for Safety and Health at Work, <br>
-                Bilbao <br>
-                Tel: +34 94 479 57 46<br>
-                <img src="noticias.gif" alt=""><br>
-            </div>
-        </td>
-        <td>
-            <div id="lastAdress">
-                <strong i18n:translate="osha_label_brussels_liaison_office">Brussels Liaison Office:</strong><br>
-                European Agency for Safety and Health at Work, <br>
-                Square de Meeus 38/40, <br>
-                1000 Brussels, Belgium <br>
-                Tel: +32 2 401 68 59<br>
-                <img src="obrien.gif" alt="brussels liaison officer">
+                <strong tal:content="contact/Title">International press:</strong><br>
+                <span class="formHelp" tal:content="python:'%s...' % contact.Description()[0:150]"/><br/><br/>
+                <tal:info content="contact/getJobtitle"/><br/>
+                <tal:info content="contact/getOrganization"/><br/>
+                <tal:info content="contact/getCity"/><br/>
+                <tal:info content="contact/getPhone"/><br/>
+                <tal:info content="contact/getCellphone"/><br/>
+                <tal:if condition="contact/getEmail">
+                    <img src="mail_icon.gif" alt="international press contact"/>
+                    <a tal:attributes="href string:mailto:${contact/getEmail}" tal:content="contact/getEmail"/>
+                </tal:if>
             </div>
         </td>
         </tr>
