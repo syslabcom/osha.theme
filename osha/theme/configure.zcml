@@ -12,7 +12,14 @@
    <include file="skins.zcml" />
    <include file="profiles.zcml" />
 
+    <utility
+        component=".vocabulary.SinToolKeyVocabulary"
+        name="osha.theme.SinToolKeyVocabulary"
+        /> 
 
-
+    <utility
+        component=".vocabulary.PressContactVocabulary"
+        name="osha.theme.PressContactVocabulary"
+        /> 
 
 </configure>
