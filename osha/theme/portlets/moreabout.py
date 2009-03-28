@@ -11,7 +11,7 @@ from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone import PloneMessageFactory as _
+from osha.theme import OSHAMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 
 
