@@ -5,7 +5,7 @@
     tal:define="title view/title">
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <span tal:replace="title" />
+        <span tal:content="title" i18n:translate=""></span>
         <a tal:condition="view/editable" tal:attributes="href view/editlink">[edit]</a>
         <span class="portletTopRight"></span>
     </dt>
