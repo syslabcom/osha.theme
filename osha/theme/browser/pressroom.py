@@ -56,11 +56,6 @@ class PressRoomView(BrowserView):
         
 class DynamicPressRoomView(BrowserView):
     implements(IPressRoomView)
-    template = pagetemplatefile.ViewPageTemplateFile('templates/pressroom_dynamic.pt')
-
-    def __call__(self):
-        #self.request.set('disable_border', True)
-        return self.template()
 
     def __init__(self, context, request):
         self.context = context
@@ -71,7 +66,7 @@ class DynamicPressRoomView(BrowserView):
         return ('meltwater')
     
     #@ram.cache(_render_cachekey)
-    def getFeed(self):
+    def get_feed(self):
         context = Acquisition.aq_inner(self.context)
         canonical = context.getCanonical()
         annotations = IAnnotations(canonical)
@@ -85,19 +80,42 @@ class DynamicPressRoomView(BrowserView):
         return rows        
 
     #@ram.cache(_render_cachekey)
-    def getPressContacts(self):
+    def get_press_contacts(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         contact_paths = annotations[PRESS_CONTACTS_KEY]
         portal = context.portal_url.getPortalObject()
         return [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
 
-    #@ram.cache(_render_cachekey)
-    def getKeywords(self):
+    def get_press_releases(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
-        return annotations[KEYWORDS_KEY]
+        keywords = annotations[KEYWORDS_KEY]
+        cat = getToolByName(context, 'portal_catalog')
+        if keywords:
+            return cat(portal_type="PressRelease", Subject=keywords)
+        else:
+            return cat(portal_type="PressRelease")
 
+    def get_articles(self):
+        context = Acquisition.aq_inner(self.context).getCanonical()
+        annotations = IAnnotations(context)
+        keywords = annotations[KEYWORDS_KEY]
+        cat = getToolByName(context, 'portal_catalog')
+        if keywords:
+            return cat(portal_type="PressClip", Subject=keywords)
+        else:
+            return cat(portal_type="PressClip")
+
+    def get_audiovisual(self):
+        context = Acquisition.aq_inner(self.context).getCanonical()
+        annotations = IAnnotations(context)
+        keywords = annotations[KEYWORDS_KEY]
+        cat = getToolByName(context, 'portal_catalog')
+        if keywords:
+            return cat(portal_type="Image", Subject=keywords)
+        else:
+            return cat(portal_type="Image")
 
 
 class KeywordWidget(TextWidget):
@@ -143,8 +161,13 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
         if data[PRESS_CONTACTS_KEY]:
             annotations[PRESS_CONTACTS_KEY] = \
                         request.form.get('form.press_contacts', [])
-        annotations[KEYWORDS_KEY] = \
-                        (data[KEYWORDS_KEY] or '').strip().split(' ')
+
+        if data[KEYWORDS_KEY]:
+            annotations[KEYWORDS_KEY] = \
+                            (data[KEYWORDS_KEY]).strip().split(' ')
+        else:
+            annotations[KEYWORDS_KEY] = []
+
         return request.RESPONSE.redirect(
                         '%s/@@dynamic-pressroom' % context.absolute_url())
 
