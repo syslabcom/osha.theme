@@ -114,20 +114,45 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
     form_fields['keyword_list'].custom_widget = kw_widget
     label = _(u"Configure this Press Room")
 
+    def setUpWidgets(self, ignore_request=False):
+        request = self.request
+        if not request.has_key('form.actions.save'):
+            # Add annotated values to the request so that we see the saved 
+            # values on a freshly opened form.
+            context = Acquisition.aq_inner(self.context).getCanonical()
+            annotations = IAnnotations(context)
+            for key in [PRESS_CONTACTS_KEY, FEED_KEY, KEYWORDS_KEY]:
+                if annotations.get(key):
+                    if key == KEYWORDS_KEY:
+                        request.form['form.%s' % key] =  ' '.join(annotations[key])
+                    else:
+                        request.form['form.%s' % key] =  annotations[key]
+
+        self.adapters = {}
+        self.widgets = form.setUpWidgets(
+            self.form_fields, self.prefix, self.context, self.request,
+            form=self, adapters=self.adapters, ignore_request=ignore_request)
+
     @form.action("save")
     def action_save(self, action, data):
+        request = self.context.request
         context = Acquisition.aq_inner(self.context)
         canonical = context.getCanonical()
         annotations = IAnnotations(canonical)
-        annotations[FEED_KEY] = data['feed_key']
-        if data['press_contacts']:
-            annotations[PRESS_CONTACTS_KEY] = self.context.request.get('form.press_contacts.to', [])
-        annotations[KEYWORDS_KEY] = (data['keyword_list'] or '').strip().split(' ')
-        return getattr(context, context.default_view)()
+        annotations[FEED_KEY] = data[FEED_KEY]
+        if data[PRESS_CONTACTS_KEY]:
+            annotations[PRESS_CONTACTS_KEY] = \
+                        request.form.get('form.press_contacts', [])
+        annotations[KEYWORDS_KEY] = \
+                        (data[KEYWORDS_KEY] or '').strip().split(' ')
+        return request.RESPONSE.redirect(
+                        '%s/@@dynamic-pressroom' % context.absolute_url())
 
     @form.action("cancel")
     def action_save(self, action, data):
         context = Acquisition.aq_inner(self.context)
-        return getattr(context, context.default_view)()
+        return request.RESPONSE.redirect(
+                        '%s/@@dynamic-pressroom' % context.absolute_url())
+
 
 
