@@ -32,29 +32,29 @@
                     <td class="big-target pressbox-pr-off"
                         onmouseover='jq(this).addClass("pressbox-pr-on");jq(this).removeClass("pressbox-pr-off");'
                         onmouseout='jq(this).removeClass("pressbox-pr-on");jq(this).addClass("pressbox-pr-off");'>
-                        <a href="press-releases" i18n:translate="osha_label_pressbox_pressreleases">Press Releases</a>
+                        <a href="dynamic-pressroom-releases" i18n:translate="osha_label_pressbox_pressreleases">Press Releases</a>
                     </td>
                     <td class="big-target pressbox-articles-off"
                         onmouseover='jq(this).addClass("pressbox-articles-on");jq(this).removeClass("pressbox-articles-off");'
                         onmouseout='jq(this).removeClass("pressbox-articles-on");jq(this).addClass("pressbox-articles-off");'>
-                        <a href="articles" i18n:translate="osha_label_pressbox_articles">Articles and<br> Interviews</a>
+                        <a href="dynamic-pressroom-articles" i18n:translate="osha_label_pressbox_articles">Articles and<br> Interviews</a>
                     </td>
                     <td class="big-target pressbox-photos-off"
                         onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");'
                         onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'>
-                        <a href="photos" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
+                        <a href="dynamic-pressroom-audiovisual" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
                     </td>
                 </tr>
             </table>
         </div>
-        <div tal:condition="view/getFeed">
+        <div tal:condition="view/get_feed">
         <div id="EuMediaCoverage">
             <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
         </div>
 
         <div id="boxBody">
-            <tal:block repeat="row view/getFeed">
-            <h3><a tal:attributes="href row/link" tal:content="row/title">Hallo</a></h3>
+            <tal:block repeat="row view/get_feed">
+            <h3><a tal:attributes="href row/link" tal:content="row/title">title</a></h3>
             <p>
                 <span tal:condition="python:row.get('date') or nothing" tal:omit-tag="">
                     <i tal:content="python: here.toLocalizedTime(row['date'])"></i>
@@ -71,7 +71,7 @@
     <div id="addresses">
     <table class="Tabelle">
         <tr>
-        <td tal:repeat="contact view/getPressContacts">
+        <td tal:repeat="contact view/get_press_contacts">
             <div>
                 <strong tal:content="contact/Title">International press:</strong><br>
                 <span class="formHelp" tal:content="python:'%s...' % contact.Description()[0:150]"/><br/><br/>
