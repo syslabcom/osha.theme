@@ -59,9 +59,8 @@ class IPressRoomConfiguration(Interface):
                         required=False) 
 
     keyword_list = schema.TextLine(title=_(u"Filtering Keywords"),
-                    description=_(u'Add your keywords here, separate them with spaces.'),
-                    default=u'',
-                    required=False)
+                   description=_(u'Add your keywords here, separate them with spaces.'),
+                   required=False)
 
 
 class IRollingQuotesToolsView(Interface):
