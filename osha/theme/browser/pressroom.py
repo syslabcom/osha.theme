@@ -92,9 +92,9 @@ class DynamicPressRoomView(BrowserView):
     def get_press_releases(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
+        cat = getToolByName(context, 'portal_catalog')
         if annotations.has_key(KEYWORDS_KEY):
             keywords = annotations[KEYWORDS_KEY]
-            cat = getToolByName(context, 'portal_catalog')
             if keywords:
                 return cat(portal_type="PressRelease", Subject=keywords)
         return cat(portal_type="PressRelease")
