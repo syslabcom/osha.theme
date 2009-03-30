@@ -2,9 +2,9 @@
 PROJECTNAME = "osha.theme"
 product_globals = globals()
 
-FEED_KEY = 'feed'
-KEYWORDS_KEY = 'keywords'
-PRESS_CONTACTS_KEY = 'press contacts' 
+FEED_KEY = 'feed_key'
+KEYWORDS_KEY = 'keyword_list'
+PRESS_CONTACTS_KEY = 'press_contacts'
 
 # European network. Used by network_chooser view
 # Will later be factored out to be editable through the web
