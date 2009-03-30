@@ -5,7 +5,7 @@
 
 <body>
 
-<metal:main fill-slot="main">   
+<metal:main fill-slot="main" tal:define="crop python:here.restrictedTraverse('@@plone').cropText">   
 
 <style type="text/css">
 .feedlist dl dt {font-weight: bold; margin-top:5px;}
@@ -65,7 +65,7 @@
     </dt>
     <dd>
         <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
-        <a tal:attributes="href feed/url" tal:content="feed/url">     
+        <a tal:attributes="href feed/url" tal:content="python:crop(feed['url'], 60)">     
             http://osha.europa.eu/rssfeeds/news/RSS
         </a> <br/>
         <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
@@ -95,7 +95,7 @@
     </dt>
     <dd>
         <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
-        <a tal:attributes="href feed/url" tal:content="feed/url">     
+        <a tal:attributes="href feed/url" tal:content="python:crop(feed['url'], 60)">     
             http://osha.europa.eu/rssfeeds/news/RSS
         </a> <br/>
         <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
