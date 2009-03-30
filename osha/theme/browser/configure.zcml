@@ -98,6 +98,34 @@
         class=".pressroom.DynamicPressRoomView"
         permission="zope.Public"
         allowed_interface=".interfaces.IPressRoomView"
+        template="templates/pressroom_dynamic.pt"
+        />
+
+    <browser:page
+        for="Products.PressRoom.interfaces.content.IPressRoom"
+        name="dynamic-pressroom-releases"
+        class=".pressroom.DynamicPressRoomView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IPressRoomView"
+        template="templates/press_releases.pt"
+        />
+
+    <browser:page
+        for="Products.PressRoom.interfaces.content.IPressRoom"
+        name="dynamic-pressroom-articles"
+        class=".pressroom.DynamicPressRoomView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IPressRoomView"
+        template="templates/press_articles.pt"
+        />
+
+    <browser:page
+        for="Products.PressRoom.interfaces.content.IPressRoom"
+        name="dynamic-pressroom-audiovisual"
+        class=".pressroom.DynamicPressRoomView"
+        permission="zope.Public"
+        allowed_interface=".interfaces.IPressRoomView"
+        template="templates/press_audiovisual.pt"
         />
 
     <browser:page
@@ -191,18 +219,18 @@
 
     <!-- Napo Header-->
     <browser:viewlet
-    name="osha.napo.header"
+        name="osha.napo.header"
         manager="plone.app.layout.viewlets.interfaces.IContentViews"
-    template="templates/napo_head.pt"
-    layer=".interfaces.INAPOSpecific"
+        template="templates/napo_head.pt"
+        layer=".interfaces.INAPOSpecific"
         permission="zope2.View"
         />
 
     <browser:viewlet
-    name="osha.napo.subheader"
+        name="osha.napo.subheader"
         manager="plone.app.layout.viewlets.interfaces.IContentViews"
-    template="templates/napo_subhead.pt"
-    layer=".interfaces.INAPOSpecific"
+        template="templates/napo_subhead.pt"
+        layer=".interfaces.INAPOSpecific"
         permission="zope2.View"
         />
 
