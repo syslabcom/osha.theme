@@ -16,11 +16,16 @@
     </metal:block>
 
 <body>
-
     <div metal:fill-slot="main" id="PressRoom">
         <h1 class="documentFirstHeading"
             tal:content="here/Title">
         </h1>
+        <div tal:condition="python:here.portal_membership.checkPermission('Modify portal content', here)">
+            <a tal:attributes="href string:${here/absolute_url}/@@pressroom-config-form">
+                Click here to configure this Press Room
+                <br clear="all"/>
+            </a>
+        </div>
         <div id="pressroom-boxes">
             <table id="pressroom-boxes-table">
                 <tr>
@@ -41,7 +46,6 @@
                     </td>
                 </tr>
             </table>
-
         </div>
         <div tal:condition="view/getFeed">
         <div id="EuMediaCoverage">
