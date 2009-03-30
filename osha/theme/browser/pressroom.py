@@ -102,9 +102,9 @@ class DynamicPressRoomView(BrowserView):
     def get_articles(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
-        keywords = annotations[KEYWORDS_KEY]
         cat = getToolByName(context, 'portal_catalog')
         if annotations.has_key(KEYWORDS_KEY):
+            keywords = annotations[KEYWORDS_KEY]
             if keywords:
                 return cat(portal_type="PressClip", Subject=keywords)
         return cat(portal_type="PressClip")
@@ -112,9 +112,9 @@ class DynamicPressRoomView(BrowserView):
     def get_audiovisual(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
-        keywords = annotations[KEYWORDS_KEY]
         cat = getToolByName(context, 'portal_catalog')
         if annotations.has_key(KEYWORDS_KEY):
+            keywords = annotations[KEYWORDS_KEY]
             if keywords:
                 return cat(portal_type="Image", Subject=keywords)
         return cat(portal_type="Image")
