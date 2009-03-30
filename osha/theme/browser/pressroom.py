@@ -83,39 +83,41 @@ class DynamicPressRoomView(BrowserView):
     def get_press_contacts(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
-        contact_paths = annotations[PRESS_CONTACTS_KEY]
-        portal = context.portal_url.getPortalObject()
-        return [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
+        if annotations.has_key(PRESS_CONTACTS_KEY):
+            contact_paths = annotations[PRESS_CONTACTS_KEY]
+            portal = context.portal_url.getPortalObject()
+            return [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
+        return []
 
     def get_press_releases(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
-        keywords = annotations[KEYWORDS_KEY]
-        cat = getToolByName(context, 'portal_catalog')
-        if keywords:
-            return cat(portal_type="PressRelease", Subject=keywords)
-        else:
-            return cat(portal_type="PressRelease")
+        if annotations.has_key(KEYWORDS_KEY):
+            keywords = annotations[KEYWORDS_KEY]
+            cat = getToolByName(context, 'portal_catalog')
+            if keywords:
+                return cat(portal_type="PressRelease", Subject=keywords)
+        return cat(portal_type="PressRelease")
 
     def get_articles(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         keywords = annotations[KEYWORDS_KEY]
         cat = getToolByName(context, 'portal_catalog')
-        if keywords:
-            return cat(portal_type="PressClip", Subject=keywords)
-        else:
-            return cat(portal_type="PressClip")
+        if annotations.has_key(KEYWORDS_KEY):
+            if keywords:
+                return cat(portal_type="PressClip", Subject=keywords)
+        return cat(portal_type="PressClip")
 
     def get_audiovisual(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         keywords = annotations[KEYWORDS_KEY]
         cat = getToolByName(context, 'portal_catalog')
-        if keywords:
-            return cat(portal_type="Image", Subject=keywords)
-        else:
-            return cat(portal_type="Image")
+        if annotations.has_key(KEYWORDS_KEY):
+            if keywords:
+                return cat(portal_type="Image", Subject=keywords)
+        return cat(portal_type="Image")
 
 
 class KeywordWidget(TextWidget):
