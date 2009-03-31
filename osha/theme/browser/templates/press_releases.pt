@@ -9,36 +9,49 @@
             Press Releases
         </h1>
         <dl>
-            <tal:entry tal:repeat="item view/get_press_releases">
-            <tal:block tal:define="item_url item/getURL|item/absolute_url;
-                                    item_id item/getId|item/id;
-                                    item_title_or_id item/pretty_title_or_id;
-                                    item_description item/Description;
-                                    item_type item/portal_type;
-                                    item_type_title item/Type;
-                                    item_modified item/ModificationDate;
-                                    item_created item/CreationDate;
-                                    item_icon python:plone_view.getIcon(item);
-                                    item_type_class python:'contenttype-' + normalizeString(item_type);
-                                    item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
-                                    item_wf_state_class python:'state-' + normalizeString(item_wf_state);
-                                    
-                                    item_storydate item/getStorydate|nothing;
-                                    item_location item/getLocation|nothing;
-                                    item_publication item/getPublication|nothing;
-                                    item_subhead item/getSubhead|nothing;
-                                    
-                                    item_jobtitle item/getJobtitle|nothing;
-                                    item_organization item/getOrganization|nothing;
-                                    item_city item/getCity|nothing;
-                                    item_stateOrProvince item/getStateOrProvince|nothing;
-                                    item_email item/getEmail|nothing;
-                                    item_phone item/getPhone|nothing;
-                                    item_cellphone item/getCellphone|nothing;
-                                ">
+            <tal:batch define="Batch python:modules['Products.CMFPlone'].Batch;
+                               b_start b_start | python:int(request.get('b_start', 0));
+                               limit_display limit_display|request/limit_display|python:10;
+                               releases view/get_press_releases;
+                               batch python:Batch(releases, limit_display, b_start, orphan=1);">
+
+            <!-- Navigation -->
+            <tal:get define="batch_base_url string:${here/absolute_url}/dynamic-pressroom-releases">
+                <div metal:use-macro="here/batch_macros/macros/navigation" />
+            </tal:get>
+
+            <tal:if condition="not:batch">
+                Currently there are no items to display.
+            </tal:if>
+
+            <tal:entry repeat="item batch">
+            <tal:block define="item_url item/getURL|item/absolute_url;
+                                   item_id item/getId|item/id;
+                                   item_title_or_id item/pretty_title_or_id;
+                                   item_description item/Description;
+                                   item_type item/portal_type;
+                                   item_type_title item/Type;
+                                   item_modified item/ModificationDate;
+                                   item_created item/CreationDate;
+                                   item_icon python:plone_view.getIcon(item);
+                                   item_type_class python:'contenttype-' + normalizeString(item_type);
+                                   item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
+                                   item_wf_state_class python:'state-' + normalizeString(item_wf_state);
+                                   
+                                   item_storydate item/getStorydate|nothing;
+                                   item_location item/getLocation|nothing;
+                                   item_publication item/getPublication|nothing;
+                                   item_subhead item/getSubhead|nothing;
+                                   
+                                   item_jobtitle item/getJobtitle|nothing;
+                                   item_organization item/getOrganization|nothing;
+                                   item_city item/getCity|nothing;
+                                   item_stateOrProvince item/getStateOrProvince|nothing;
+                                   item_email item/getEmail|nothing;
+                                   item_phone item/getPhone|nothing;
+                                   item_cellphone item/getCellphone|nothing;">
 
                 <dt metal:define-macro="listitem">
-
                     <span tal:attributes="class item_type_class">
                         <a href="#" 
                             tal:attributes="href string:${item_url}/view;
@@ -48,34 +61,29 @@
                         </a>
                     </span>
 
-
-                        <div class="itemDate"
-                                tal:condition="item_storydate"
-                                tal:content="python: context.toLocalizedTime(item_storydate)">
-                                [Story date]
-                        </div>
-                        
-                        <div class="itemLocation"
-                                tal:condition="item_location"
-                                tal:content="item_location">
-                            [Location]
-                        </div>
-                        
-                        <div class="itemPublication"
-                                tal:condition="item_publication"
-                                tal:content="item_publication">
-                                [Publication]
-                        </div>
-
-
-                </dt>
-
-                <dd>
-
+                    <div class="itemDate"
+                            tal:condition="item_storydate"
+                            tal:content="python: context.toLocalizedTime(item_storydate)">
+                            [Story date]
+                    </div>
                     
+                    <div class="itemLocation"
+                            tal:condition="item_location"
+                            tal:content="item_location">
+                        [Location]
+                    </div>
+                    
+                    <div class="itemPublication"
+                            tal:condition="item_publication"
+                            tal:content="item_publication">
+                            [Publication]
+                    </div>
+                </dt>
+                <dd>
                     <div class='documentByLine'
                             tal:condition="python:item_jobtitle or item_organization">
-                                <span tal:condition="item_jobtitle" tal:content='python:item_jobtitle'></span><span tal:condition="python:item_jobtitle and item_organization" tal:content='string:, '></span><span tal:condition="item_organization" tal:content='item_organization'></span>
+                        <span tal:condition="item_jobtitle" tal:content='python:item_jobtitle'></span>
+                        <span tal:condition="python:item_jobtitle and item_organization" tal:content='string:, '></span><span tal:condition="item_organization" tal:content='item_organization'></span>
                     </div>
                     <div class='documentByLine'
                             tal:condition="python:item_city or item_stateOrProvince">
@@ -111,6 +119,7 @@
                 </dd>
             </tal:block>
             </tal:entry>
+            </tal:batch>
         </dl>
     </div>
 </body>

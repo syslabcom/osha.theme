@@ -9,7 +9,23 @@
             Press Articles
         </h1>
         <dl>
-            <tal:entry tal:repeat="item view/get_articles">
+            <tal:batch define="Batch python:modules['Products.CMFPlone'].Batch;
+                               b_start b_start | python:int(request.get('b_start', 0));
+                               limit_display limit_display|request/limit_display|python:10;
+                               releases view/get_articles;
+                               batch python:Batch(releases, limit_display, b_start, orphan=1);">
+
+            <!-- Navigation -->
+            <tal:get define="batch_base_url string:${here/absolute_url}/dynamic-pressroom-articles">
+                <div metal:use-macro="here/batch_macros/macros/navigation" />
+            </tal:get>
+
+            <tal:if condition="not:batch">
+                Currently there are no items to display.
+            </tal:if>
+            
+
+            <tal:entry tal:repeat="item batch">
             <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                     item_id item/getId|item/id;
                                     item_title_or_id item/pretty_title_or_id;
@@ -111,6 +127,7 @@
                 </dd>
             </tal:block>
             </tal:entry>
+            </tal:batch>
         </dl>
     </div>
 </body>
