@@ -74,5 +74,6 @@ class Renderer(news.Renderer):
         context = aq_inner(self.context)
         if not context.isPrincipiaFolderish:
             context = aq_parent(context)
-        
-        return '%s/oshnews-view' % context.absolute_url()
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        navigation_root_url = portal_state.navigation_root_url()
+        return '%s/oshnews-view' % navigation_root_url
