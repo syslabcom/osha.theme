@@ -72,6 +72,8 @@ class OSHNewsView(BrowserView):
         text = getattr(context, 'getText', None) and context.getText() or ''
         return text
 
+    def showLinkToNewsItem(self):
+        return self.context.getProperty('show_link_to_news_item', True)
 
 
 class OSHNewsLocalView(OSHNewsView):
