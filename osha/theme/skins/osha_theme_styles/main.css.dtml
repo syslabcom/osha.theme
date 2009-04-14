@@ -61,6 +61,27 @@ dl.portlet #osha-topactions {
 .dropdown select {
     font-size: 94%;
 }
+
+* html #nlNetwork {
+ font-size:94%;
+ width:330px!important;
+}
+
+*+html #nlNetwork {
+ font-size:94%;
+ width:330px!important;
+}
+
+* html #intNetwork {
+ font-size:94%;
+ width:180px!important;
+}
+
+*+html #intNetwork {
+ font-size:94%;
+ width:180px!important;
+}
+
 #portal-footer-languageselector {
     border-top: 1px solid &dtml-globalBackgroundColor;;
     text-align: center;
