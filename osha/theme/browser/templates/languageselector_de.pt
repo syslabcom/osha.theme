@@ -9,6 +9,24 @@
                         selected lang/selected"
             tal:condition="not: selected"
             tal:attributes="class python: selected and 'currentLanguage' or '';">
+
+               <span tal:condition="showFlags">
+                 <a href=""
+                   tal:define="flag lang/flag;
+                               name lang/native"
+                   tal:attributes="href lang/url;
+                                   title name">
+                    <tal:flag condition="flag">
+                        <img width="14"
+                             height="11"
+                             alt=""
+                             tal:attributes="src string:${view/portal_url}${flag};
+                                             title python: name;
+                                             class python: selected and 'currentItem' or '';" />
+                    </tal:flag>
+                   </a>
+				</span>
+
                 <a href=""
                    tal:define="flag lang/flag|nothing;
                                name lang/name"
@@ -17,6 +35,8 @@
                     <tal:langname replace="name">language name</tal:langname>
                     
                 </a>
+
+
         </li>
         </tal:language>
     </ul>

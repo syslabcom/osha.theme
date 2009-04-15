@@ -126,6 +126,9 @@ class OSHAGermanyLanguageSelector(OSHALanguageSelector):
         This is used for content that is LinguaPlone translatable """
     _template = ViewPageTemplateFile('templates/languageselector_de.pt')
 
+    def showFlags(self):
+        return True
+
 
 class OSHASiteActionsViewlet(common.SiteActionsViewlet):
 
