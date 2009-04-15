@@ -469,8 +469,8 @@ Films = [
                     { 'id': 'id_napo_episode_2_5'
                     , 'title': 'title_napo_episode_2_5'
                     , 'image_url': 'http://media.osha.europa.eu/napo2/thumbnails/N2-05-the_right_protection_.jpg'
-                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-05-the_right_protection.avi'
-                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-05-the_right_protection.wmv'                
+                    , 'durlavi': 'http://media.osha.europa.eu/napo2/N2-05-the_right_protection_at_the_right_time.avi'
+                    , 'durlwmv': 'http://media.osha.europa.eu/napo2/N2-05-the_right_protection_at_the_right_time.wmv'                
                     } ,
                     { 'id': 'id_napo_episode_2_6'
                     , 'title': 'title_napo_episode_2_6'
