@@ -4,6 +4,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 from types import *
+from zLOG import LOG, INFO
 
 
 class SearchROView(BrowserView):
@@ -67,7 +68,9 @@ class SearchROView(BrowserView):
                  'ero_topic':self.ero_topic, 
                  'review_state':'published'
                    }
+        LOG('osha.theme.search_ro', INFO, 'query: %s' %query)
         results = portal_catalog(query)
+        LOG('osha.theme.search_ro', INFO, 'Number of results: %d' %len(results))
         results = self.sortByTargetGroup(results)        
         return results
 
