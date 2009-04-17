@@ -51,7 +51,7 @@ class Renderer(events.Renderer):
 
         limit = self.data.count
         state = self.data.state
-        query = dict(portal_type='Event',
+        query = dict(portal_type=['Event','SPSeminar'],
                        review_state=state,
                        path=paths,
                        end={'query': DateTime(),
@@ -108,3 +108,4 @@ class Renderer(events.Renderer):
             if not context.isPrincipiaFolderish:
                 context = aq_parent(context)        
             return '%s/past_events.html' % context.absolute_url()
+

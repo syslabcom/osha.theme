@@ -137,7 +137,7 @@ class Renderer(events.Renderer):
 
         limit = self.data.count
         state = self.data.state
-        query = dict(portal_type='Event',
+        query = dict(portal_type=['Event','SPSeminar'],
                        review_state=state,
                        path=paths,
                        end={'query': DateTime(),
