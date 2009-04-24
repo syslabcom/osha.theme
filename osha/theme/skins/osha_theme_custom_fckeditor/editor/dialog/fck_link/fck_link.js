@@ -393,16 +393,19 @@ function LoadSelection()
 	}
     // XXX: Changes by SLC:
     // Look for a WAI-conform new window and prepare the dialog.
-    var oWaiOnclick = oLink.getAttribute('onclick');
-    if( oWaiOnclick )
+    var wai_selected = oLink.getAttribute( 'wai_blank' ) ;
+    if( wai_selected )
     {
         GetE('cmbTarget').value = 'wai_blank';
         SetTarget( 'wai_blank' );
         // fill the WAI specials
-        var oWaiOnfocus = oLink.getAttribute('onfocus');
-        if( oWaiOnfocus )
+        var onfocus = oLink.getAttribute('onfocus_fckprotectedatt');
+        if( onfocus )
         {
-            ofv = oWaiOnfocus.toString()
+            onfocus = decodeURIComponent(onfocus) ;
+            var ofv = onfocus.split('="')[1]
+            ofv = ofv.replace(/^"|"$/g,"");
+
             // sometimes the IE tries to evalute the attribute value as
             // function and the attribute values is like 'function undefined{......}'
             if( ofv.indexOf('{') != -1 )
@@ -771,11 +774,13 @@ function Ok()
 
 		oLink.innerHTML = sInnerHtml ;		// Set (or restore) the innerHTML
 
+        SetAttribute( oLink, 'wai_blank', null ) ;
 		// Target
         if( GetE('cmbTarget').value == 'wai_blank' ) {
             // XXX Changes by SLC:
             // 1. Open new window with 'onclick'-handler
             // 2. Define a script which adjusts the title-attribute of the link
+            SetAttribute( oLink, 'wai_blank', 'true' ) ;
             SetAttribute( oLink, 'onclick', 'window.open(this.href); return false;' );
             var eventHandler = GetE('txtAdjustWAITitle').value;
             if (eventHandler != '') {
