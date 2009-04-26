@@ -6,6 +6,7 @@
         <a href=""
            tal:attributes="href view/all_events_link"
            class="tile"
+           i18n:domain="osha"
            i18n:translate="box_events">
             Upcoming Events
         </a>
