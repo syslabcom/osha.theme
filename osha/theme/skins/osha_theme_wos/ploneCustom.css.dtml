@@ -44,10 +44,73 @@ dd.portletItem .navTreeItem a:hover {
     display: none;
 }
 
+#portal-breadcrumbs {
+  border:2px solid #FBBE2B;
+  clear:both;
+  line-height:2.5em;
+  margin-bottom:0.3em;
+  padding:0 2em;
+  position:relative;
+  top:0.26em;
+}
+
 #osha-topdropdowns {
     margin-top: 30px !important;
     margin-right: 597px !important;
 }
 
+#portal-languageselector {
+  left:390px;
+  position:relative;
+  top:5px;
+}
+
+div#content-column-background {
+  border:2px solid #666666;
+}
+
+#portal-columns {
+  background:#FFFFC9 none repeat scroll 0 0;
+  margin-top:0.5em;
+  padding-left:0.8em;
+  width:85%;
+}
+
+#portal-column-one {
+  width:200px;
+}
+
+.navTreeCurrentItem, .navTreeItemInPath {
+  background:#FCB963 none repeat scroll 0 0;
+}
+
+.portletItem a, .portletFooter a {
+  border-bottom:1px dotted #666666;
+}
+
+.navTreeItem a:hover, dd.portletItem .navTreeItem a:hover {
+  background-color:transparent;
+}
+
+.navTreeLevel1 ul li div {
+  background:#FFFFC9 none repeat scroll 0 0;
+}
+
+.navTreeLevel0 * ul {
+  background:#FFFFC9 none repeat scroll 0 0;
+}
+
+.portlet-static-testordner {
+  border:1px solid #666666;
+  padding-left:1em;
+}
+
+.state-visible {
+  color:#666666 !important;
+}
+
+.navTreeCurrentItem, .navTreeItemInPath {
+  background:#FCB963 none repeat scroll 0 0 !important;
+}
 /* </dtml-with> */
 
