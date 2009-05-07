@@ -12,6 +12,15 @@
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
 
 /*---------------------------Css Header----------------------------*/
+
+#portal-logo img {
+  border:0 none;
+  margin:0;
+  padding:0;
+  position:relative;
+  top:15px;
+}
+
 .dropdown {
   background:transparent url(http://localhost:5040/wos/select.gif) no-repeat scroll 0 50%;
   position:relative;
