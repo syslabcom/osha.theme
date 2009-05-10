@@ -7,7 +7,7 @@
  <!-- Custom news portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.news.INewsPortlet" 
-     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
+     layer="osha.theme.browser.interfaces.IThemeSpecific"
      class=".news.Renderer" 
      />
 
@@ -23,7 +23,7 @@
  <!-- Custom events portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.events.IEventsPortlet" 
-     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
+     layer="osha.theme.browser.interfaces.IThemeSpecific"
      class=".events.Renderer" 
      />    
 
@@ -54,14 +54,14 @@
  <!-- Custom navigation portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
-     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
+     layer="osha.theme.browser.interfaces.IThemeSpecific"
      class=".navigation.Renderer" 
      />  
 
  <!-- Custom navigation portlet -->
  <plone:portletRenderer 
      portlet=".inline_navigation.IInlineNavigationPortlet" 
-     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
+     layer="osha.theme.browser.interfaces.IThemeSpecific"
      class=".inline_navigation.Renderer" 
      />  
       
@@ -79,7 +79,7 @@
  <!-- Custom defaultsearch portlet -->
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.search.ISearchPortlet" 
-     layer="osha.theme.browser.interfaces.IOSHAThemeLayer"
+     layer="osha.theme.browser.interfaces.IThemeSpecific"
      class=".defaultsearch.Renderer" 
      />
 

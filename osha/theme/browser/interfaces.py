@@ -13,27 +13,27 @@ class IOSHAThemeLayer(Interface):
     """ Marker Interface used by BrowserLayer
     """
     
-class IThemeSpecific(IDefaultPloneLayer):
+class IThemeSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
-class IHW2008Specific(IDefaultPloneLayer):
+class IHW2008Specific(IThemeSpecific):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
-class IGermanySpecific(IDefaultPloneLayer):
+class IGermanySpecific(IThemeSpecific):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
-class IRISQSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
+class IRISQSpecific(IThemeSpecific):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
-class ISafestartSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
+class ISafestartSpecific(IThemeSpecific):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
-class INAPOSpecific(IDefaultPloneLayer, IOSHAThemeLayer):
+class INAPOSpecific(IThemeSpecific):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
