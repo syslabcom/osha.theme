@@ -89,35 +89,49 @@ class DynamicPressRoomView(BrowserView):
             return [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
         return []
 
+    def get_press_subfolder_path(self, folder):
+        context = self.context
+        pu = getToolByName(context, 'portal_url')
+        portal = pu.getPortalObject()
+        pl = getToolByName(context, 'portal_languages')
+        lan = pl.getLanguageBindings()[0]
+        return '/'.join(portal.getPhysicalPath() + (lan, 'press', folder))
+
+    def get_press_subfolder(self, folder):
+        path = self.get_press_subfolder_path(folder)
+        return self.context.restrictedTraverse(path)
+    
     def get_press_releases(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
-        if annotations.has_key(KEYWORDS_KEY):
-            keywords = annotations[KEYWORDS_KEY]
-            if keywords:
-                return cat(portal_type="PressRelease", Subject=keywords)
-        return cat(portal_type="PressRelease")
+        q = {'portal_type': 'PressRelease', 
+             'path': self.get_press_subfolder_path('press-releases'),
+            }
+        keywords = annotations.get(KEYWORDS_KEY)
+        if keywords:
+            q['Subject'] = keywords
+        return cat(q)
 
     def get_articles(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
-        if annotations.has_key(KEYWORDS_KEY):
-            keywords = annotations[KEYWORDS_KEY]
-            if keywords:
-                return cat(portal_type="PressClip", Subject=keywords)
-        return cat(portal_type="PressClip")
+        q = { 'path': self.get_press_subfolder_path( 'articles'), }
+        keywords = annotations.get(KEYWORDS_KEY)
+        if keywords:
+            q['Subject'] = keywords
+        return cat(q)
 
     def get_audiovisual(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
-        if annotations.has_key(KEYWORDS_KEY):
-            keywords = annotations[KEYWORDS_KEY]
-            if keywords:
-                return cat(portal_type="Image", Subject=keywords)
-        return cat(portal_type="Image")
+        q = { 'path': self.get_press_subfolder_path('photos')}
+        keywords = annotations.get(KEYWORDS_KEY)
+        if keywords:
+            q['Subject'] = keywords
+        return cat(q)
 
 
 class KeywordWidget(TextWidget):
@@ -171,13 +185,13 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
             annotations[KEYWORDS_KEY] = []
 
         return request.RESPONSE.redirect(
-                        '%s/@@dynamic-pressroom' % context.absolute_url())
+                        '%s/@@dynamic-pressroom/' % '/'.join(context.getPhysicalPath()))
 
     @form.action("cancel")
     def action_save(self, action, data):
         context = Acquisition.aq_inner(self.context)
         return request.RESPONSE.redirect(
-                        '%s/@@dynamic-pressroom' % context.absolute_url())
+                        '%s/@@dynamic-pressroom/' % '/'.join(context.getPhysicalPath()))
 
 
 

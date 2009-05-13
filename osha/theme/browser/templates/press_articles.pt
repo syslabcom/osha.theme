@@ -3,11 +3,41 @@
         metal:use-macro="here/main_template/macros/master"
         i18n:domain="plone">
 
+<head>
+    <metal:border fill-slot="top_slot">
+        <tal:border define="dummy python:request.set('enable_border',1)" />
+    </metal:border>
+</head>
+
 <body>
+    <metal:fill fill-slot="header">
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+        <tal:set define="press_subfolder python:view.get_press_subfolder('articles');">
+            <h1 class="documentFirstHeading">
+                <tal:block replace="structure python:getattr(press_subfolder, here.getIcon(1))"/>
+                <span tal:replace="press_subfolder/Title">
+                    Title or id
+                </span>
+            </h1>
+            <p tal:content="press_subfolder/Description">
+                Description
+            </p>
+        </tal:set>
+        <a  href=""
+            class="link-parent"
+            tal:attributes="href template/getId">
+            <span i18n:translate="label_pressroom_link">Back to the pressroom</span>
+        </a>
+        <br clear="all"/>
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+    </metal:fill>
+
     <div metal:fill-slot="main" id="PressRoom">
-        <h1 class="documentFirstHeading">
-            Press Articles
-        </h1>
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
         <dl>
             <tal:batch define="Batch python:modules['Products.CMFPlone'].Batch;
                                b_start b_start | python:int(request.get('b_start', 0));
@@ -129,6 +159,8 @@
             </tal:entry>
             </tal:batch>
         </dl>
+
+        <div tal:replace="structure provider:plone.belowcontentbody" />
     </div>
 </body>
 </html>

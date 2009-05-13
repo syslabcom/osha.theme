@@ -5,9 +5,13 @@
 
 <body>
     <div metal:fill-slot="main" id="PressRoom">
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
         <h1 class="documentFirstHeading">
             Press Audio Visual
         </h1>
+        <div tal:replace="structure provider:plone.belowcontenttitle" />
+
+        <div tal:replace="structure provider:plone.abovecontentbody" />
         <dl>
             <tal:batch define="Batch python:modules['Products.CMFPlone'].Batch;
                                b_start b_start | python:int(request.get('b_start', 0));
@@ -128,6 +132,7 @@
             </tal:entry>
             </tal:batch>
         </dl>
+        <div tal:replace="structure provider:plone.belowcontentbody" />
     </div>
 </body>
 </html>
