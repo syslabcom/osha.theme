@@ -89,17 +89,21 @@ class DynamicPressRoomView(BrowserView):
             return [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
         return []
 
-    def get_press_subfolder_path(self, folder):
+    def get_press_subfolder_path(self, folder, lan=None):
         context = self.context
         pu = getToolByName(context, 'portal_url')
         portal = pu.getPortalObject()
-        pl = getToolByName(context, 'portal_languages')
-        lan = pl.getLanguageBindings()[0]
+        if lan == None:
+            pl = getToolByName(context, 'portal_languages')
+            lan = pl.getLanguageBindings()[0]
         return '/'.join(portal.getPhysicalPath() + (lan, 'press', folder))
 
     def get_press_subfolder(self, folder):
         path = self.get_press_subfolder_path(folder)
-        return self.context.restrictedTraverse(path)
+        try:
+            return self.context.restrictedTraverse(path)
+        except AttributeError:
+            return self.context.restrictedTraverse(path, lan='en')
     
     def get_press_releases(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
