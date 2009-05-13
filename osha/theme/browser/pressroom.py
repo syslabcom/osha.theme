@@ -103,7 +103,8 @@ class DynamicPressRoomView(BrowserView):
         try:
             return self.context.restrictedTraverse(path)
         except AttributeError:
-            return self.context.restrictedTraverse(path, lan='en')
+            path = self.get_press_subfolder_path(folder, lan)
+            return self.context.restrictedTraverse(path)
     
     def get_press_releases(self):
         context = Acquisition.aq_inner(self.context).getCanonical()
