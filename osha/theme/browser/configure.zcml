@@ -127,7 +127,7 @@
         />
 
     <browser:page
-        for="Products.PressRoom.interfaces.content.IPressRoom"
+        for="*"
         name="pressroom-config-form"
         class=".pressroom.DynamicPressRoomConfigurationForm"
         permission="cmf.ModifyPortalContent"
