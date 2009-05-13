@@ -110,8 +110,10 @@ class DynamicPressRoomView(BrowserView):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
+        sf = self.get_press_subfolder('press-releases')
+        path = '/'.join(sf.getPhysicalPath())
         q = {'portal_type': 'PressRelease', 
-             'path': self.get_press_subfolder_path('press-releases'),
+             'path': path,
             }
         keywords = annotations.get(KEYWORDS_KEY)
         if keywords:
@@ -122,7 +124,9 @@ class DynamicPressRoomView(BrowserView):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
-        q = { 'path': self.get_press_subfolder_path( 'articles'), }
+        sf = self.get_press_subfolder('articles')
+        path = '/'.join(sf.getPhysicalPath())
+        q = { 'path': path, }
         keywords = annotations.get(KEYWORDS_KEY)
         if keywords:
             q['Subject'] = keywords
@@ -132,7 +136,9 @@ class DynamicPressRoomView(BrowserView):
         context = Acquisition.aq_inner(self.context).getCanonical()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
-        q = { 'path': self.get_press_subfolder_path('photos')}
+        sf = self.get_press_subfolder('photos')
+        path = '/'.join(sf.getPhysicalPath())
+        q = { 'path': path, }
         keywords = annotations.get(KEYWORDS_KEY)
         if keywords:
             q['Subject'] = keywords
