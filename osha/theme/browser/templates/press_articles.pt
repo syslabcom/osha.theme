@@ -16,23 +16,22 @@
         </div>
         <div tal:replace="structure provider:plone.abovecontenttitle" />
         <tal:set define="press_subfolder python:view.get_press_subfolder('articles');">
+            <a  href=""
+                class="link-parent"
+                tal:attributes="href template/getId">
+                <span i18n:translate="label_pressroom_link">Back to the pressroom</span>
+            </a>
             <h1 class="documentFirstHeading">
                 <tal:block replace="structure python:getattr(press_subfolder, here.getIcon(1))"/>
                 <span tal:replace="press_subfolder/Title">
                     Title or id
                 </span>
             </h1>
+            <div tal:replace="structure provider:plone.belowcontenttitle" />
             <p tal:content="press_subfolder/Description">
                 Description
             </p>
         </tal:set>
-        <a  href=""
-            class="link-parent"
-            tal:attributes="href template/getId">
-            <span i18n:translate="label_pressroom_link">Back to the pressroom</span>
-        </a>
-        <br clear="all"/>
-        <div tal:replace="structure provider:plone.belowcontenttitle" />
     </metal:fill>
 
     <div metal:fill-slot="main" id="PressRoom">
@@ -157,6 +156,10 @@
                 </dd>
             </tal:block>
             </tal:entry>
+            <!-- Navigation -->
+            <tal:get define="batch_base_url string:${here/absolute_url}/dynamic-pressroom-audiovisual">
+                <div metal:use-macro="here/batch_macros/macros/navigation" />
+            </tal:get>
             </tal:batch>
         </dl>
 

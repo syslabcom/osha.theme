@@ -4,21 +4,40 @@
         i18n:domain="plone">
 
 <body>
+    <metal:fill fill-slot="header">
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+            Document actions (print, sendto etc)
+        </div>
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+        <tal:set define="press_subfolder python:view.get_press_subfolder('press-releases');">
+            <a  href=""
+                class="link-parent"
+                tal:attributes="href template/getId">
+                <span i18n:translate="label_pressroom_link">Back to the pressroom</span>
+            </a>
+            <h1 class="documentFirstHeading">
+                <tal:block replace="structure python:getattr(press_subfolder, here.getIcon(1))"/>
+                <span tal:replace="press_subfolder/Title">
+                    Title or id
+                </span>
+            </h1>
+            <div tal:replace="structure provider:plone.belowcontenttitle" />
+            <p tal:content="press_subfolder/Description">
+                Description
+            </p>
+        </tal:set>
+    </metal:fill>
     <div metal:fill-slot="main" id="PressRoom">
-        <h1 class="documentFirstHeading">
-            Press Releases
-        </h1>
         <dl>
             <tal:batch define="Batch python:modules['Products.CMFPlone'].Batch;
                                b_start b_start | python:int(request.get('b_start', 0));
                                limit_display limit_display|request/limit_display|python:10;
                                releases view/get_press_releases;
-                               batch python:Batch(releases, limit_display, b_start, orphan=1);">
+                               batch python:Batch(releases, limit_display, b_start, orphan=1);
+                               batch_base_url string:${here/absolute_url}/dynamic-pressroom-releases">
 
             <!-- Navigation -->
-            <tal:get define="batch_base_url string:${here/absolute_url}/dynamic-pressroom-releases">
-                <div metal:use-macro="here/batch_macros/macros/navigation" />
-            </tal:get>
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
 
             <tal:if condition="not:batch">
                 Currently there are no items to display.
@@ -51,74 +70,78 @@
                                    item_phone item/getPhone|nothing;
                                    item_cellphone item/getCellphone|nothing;">
 
-                <dt metal:define-macro="listitem">
-                    <span tal:attributes="class item_type_class">
-                        <a href="#" 
-                            tal:attributes="href string:${item_url}/view;
-                                            class string:$item_wf_state_class visualIconPadding"
-                            tal:content="item_title_or_id">
-                            Item Title
-                        </a>
-                    </span>
+            <dt metal:define-macro="listitem">
+                <span tal:attributes="class item_type_class">
+                    <a href="#" 
+                        tal:attributes="href string:${item_url}/view;
+                                        class string:$item_wf_state_class visualIconPadding"
+                        tal:content="item_title_or_id">
+                        Item Title
+                    </a>
+                </span>
 
-                    <div class="itemDate"
-                            tal:condition="item_storydate"
-                            tal:content="python: context.toLocalizedTime(item_storydate)">
-                            [Story date]
-                    </div>
-                    
-                    <div class="itemLocation"
-                            tal:condition="item_location"
-                            tal:content="item_location">
-                        [Location]
-                    </div>
-                    
-                    <div class="itemPublication"
-                            tal:condition="item_publication"
-                            tal:content="item_publication">
-                            [Publication]
-                    </div>
-                </dt>
-                <dd>
-                    <div class='documentByLine'
-                            tal:condition="python:item_jobtitle or item_organization">
-                        <span tal:condition="item_jobtitle" tal:content='python:item_jobtitle'></span>
-                        <span tal:condition="python:item_jobtitle and item_organization" tal:content='string:, '></span><span tal:condition="item_organization" tal:content='item_organization'></span>
-                    </div>
-                    <div class='documentByLine'
-                            tal:condition="python:item_city or item_stateOrProvince">
-                                <span tal:condition="item_city" tal:content='item_city'></span><span tal:condition="python:item_city and item_stateOrProvince" tal:content='string:, '></span><span tal:condition="item_stateOrProvince" tal:content='item_stateOrProvince'></span>
-                    </div>
-                    <div class='documentByLine'
-                            tal:condition="item_email"
-                            ><a tal:replace="structure python: here.spamProtect(item_email)">[Spam-protected email]</a></div>
-                    <div class='documentByLine'
-                            tal:condition="item_phone">
-                            <span i18n:translate="label_phone">Phone:</span>
-                            <span tal:content="item_phone">[Phone]</span>
-                        </div>
-                    <div class='documentByLine'
-                            tal:condition="item_cellphone">
-                            <span i18n:translate="label_cellphone">Cellphone:</span>
-                            <span tal:content="item_cellphone">[Cellphone]</span>
-                    </div>
+                <div class="itemDate"
+                        tal:condition="item_storydate"
+                        tal:content="python: context.toLocalizedTime(item_storydate)">
+                        [Story date]
+                </div>
                 
-                    <span tal:omit-tag="" tal:condition="python: not (item_description or item_subhead)"> 
-                        &nbsp; 
-                    </span>                        
-                    <span tal:omit-tag="" 
-                            tal:content="item_description"
-                            tal:condition="not:item_subhead"> 
-                        description 
-                    </span>
-                    <span tal:omit-tag="" 
-                            tal:content="item_subhead"
-                            tal:condition="item_subhead"> 
-                        item_subhead
-                    </span>
-                </dd>
+                <div class="itemLocation"
+                        tal:condition="item_location"
+                        tal:content="item_location">
+                    [Location]
+                </div>
+                
+                <div class="itemPublication"
+                        tal:condition="item_publication"
+                        tal:content="item_publication">
+                        [Publication]
+                </div>
+            </dt>
+            <dd>
+                <div class='documentByLine'
+                     tal:condition="python:item_jobtitle or item_organization">
+                    <span tal:condition="item_jobtitle" tal:content='python:item_jobtitle'></span>
+                    <span tal:condition="python:item_jobtitle and item_organization" tal:content='string:, '></span>
+                    <span tal:condition="item_organization" tal:content='item_organization'></span>
+                </div>
+                <div class='documentByLine'
+                     tal:condition="python:item_city or item_stateOrProvince">
+                    <span tal:condition="item_city" tal:content='item_city'></span>
+                    <span tal:condition="python:item_city and item_stateOrProvince" tal:content='string:, '></span>
+                    <span tal:condition="item_stateOrProvince" tal:content='item_stateOrProvince'></span>
+                </div>
+                <div class='documentByLine'
+                     tal:condition="item_email">
+                    <a tal:replace="structure python: here.spamProtect(item_email)">[Spam-protected email]</a>
+                </div>
+                <div class='documentByLine'
+                     tal:condition="item_phone">
+                    <span i18n:translate="label_phone">Phone:</span>
+                    <span tal:content="item_phone">[Phone]</span>
+                </div>
+                <div class='documentByLine'
+                    tal:condition="item_cellphone">
+                    <span i18n:translate="label_cellphone">Cellphone:</span>
+                    <span tal:content="item_cellphone">[Cellphone]</span>
+                </div>
+                <span tal:omit-tag="" tal:condition="python: not (item_description or item_subhead)"> 
+                    &nbsp; 
+                </span>                        
+                <span tal:omit-tag="" 
+                        tal:content="item_description"
+                        tal:condition="not:item_subhead"> 
+                    description 
+                </span>
+                <span tal:omit-tag="" 
+                        tal:content="item_subhead"
+                        tal:condition="item_subhead"> 
+                    item_subhead
+                </span>
+            </dd>
             </tal:block>
             </tal:entry>
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
             </tal:batch>
         </dl>
     </div>
