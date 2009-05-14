@@ -182,6 +182,8 @@
  <skin-path name="NAPO" based-on="Plone Default">
 	 <layer name="osha_theme_napo"
      insert-after="custom"/>
+	 <layer name="osha_theme_scripts"
+     insert-after="custom"/>
  </skin-path>
 
  <skin-path name="OSHAGermany" based-on="OSHA Plone Theme">
