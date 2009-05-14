@@ -51,8 +51,11 @@ a {
 .portletNavigationTree a img {
 	display:none;
 }
-.portletNavigationTree {
+
+dl.portletNavigationTree {
 	background-image:url(/osha_theme_napo_images/menu.gif);
+}
+.portletNavigationTree {
 	height:500px;
 	width:222px;
 	margin-top:60px;
