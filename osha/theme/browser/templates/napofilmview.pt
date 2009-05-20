@@ -39,7 +39,7 @@
      <div class="visualClear"></div>
        <p i18n:translate="" tal:content="structure film/description" />
        <a class="descriptionLink" tal:attributes="href string:napoepisode?filmid=${filmid}">
-           <p>View episodes</p> 
+           <p i18n:translate="label_napo_view_episodes">View episodes</p> 
        </a>
    </div>
 

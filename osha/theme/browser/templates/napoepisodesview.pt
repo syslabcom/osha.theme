@@ -19,8 +19,10 @@
     <tal:block define="film python:view.getFilm(request.get('filmid'))">
 
         <h2 tal:content="film/title" i18n:translate=""> </h2>
-        Click the image to see the Film...<br>
-        Download this Film as <a tal:attributes="href film/durlavi">AVI</a> or <a tal:attributes="href film/durlwmv">WMV</a>
+        <!--span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br-->
+        <span i18n:translate="label_napo_download_film_as">Download this film as</span> 
+		<a tal:attributes="href film/durlavi"><span i18n:translate="label_avi">AVI</span></a> <span i18n:translate="label_or">or</span>
+		 <a tal:attributes="href film/durlwmv"><span i18n:translate="label_wmv">WMV</span></a>
 
         <tal:block repeat="episode film/episodes">
            <div class="hvlog" 
@@ -39,9 +41,11 @@
              
              <div style="float:left">
                 <h3 tal:content="episode/title" i18n:translate="" />
-                Click the image to see the film...<br>
-                Download this episode as <a tal:attributes="href episode/durlavi">AVI</a> 
-                or <a tal:attributes="href episode/durlwmv">WMV</a>
+                <span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br>
+                <span i18n:translate="label_napo_download_episode_as">Download this episode as</span> 
+				<a tal:attributes="href episode/durlavi"><span i18n:translate="label_avi">AVI</span></a> 
+                 <span i18n:translate="label_or">or</span> 
+				<a tal:attributes="href episode/durlwmv"><span i18n:translate="label_wmv">WMV</span></a>
              </div>
              
              <div class="visualClear"></div>
