@@ -159,7 +159,7 @@
             tal:define="lang_info ltool/getAvailableLanguageInformation;">
         <tal:block define="supported_languages ltool/listSupportedLanguages|python:[];
                            languages_on_main_site site_props/languages_on_main_site|python:[];
-                           served_languages python:[x for x in supported_languages if x in languages_on_main_site]"
+                           served_languages python:[x for x in supported_languages if x[0] in languages_on_main_site]"
             condition="python:len(served_languages)>1">
             <div i18n:domain="osha" style="text-align: center" 
                 tal:define="thisurl string:${here/absolute_url}/${template/id}">    
