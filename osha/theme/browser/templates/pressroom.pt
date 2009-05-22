@@ -35,7 +35,7 @@
                       onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");'
                       onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'>
                       <div>
-                           <a href="/en/press/photos" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
+                           <a href="../photos" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
                       </div>
                   </td>
               </tr>
