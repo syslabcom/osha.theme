@@ -89,39 +89,25 @@
 
 
 
-      <div id="addresses">
+      <div id="addresses" 
+         tal:define="contactInfo view/getPresscontacts;">
         <table class="Tabelle">
             <tr>
-            <td>
-                <div id="firstAdress">
-                    <strong i18n:translate="osha_label_international_press">International press:</strong><br>
-                    Press Office, <br>
-                    European Agency for Safety and Health at Work, <br>
-                    Bilbao <br>
-                    Tel: +34 94 479 35 52<br>
-                    <img src="news.gif" alt="international press contact">
+            <td tal:repeat="info contactInfo">
+                <div id="firstAdress" tal:define="title python:info[0];
+                            object python:info[1];
+                            imgName python:info[2]">
+                    <strong i18n:translate=""
+                        tal:content="title">International press</strong><br>
+                    <span tal:replace="object/Title" />,<br>
+                    <span tal:replace="object/getJobtitle" />,<br>
+                    <span tal:replace="object/getOrganization" />,<br>
+                    <span tal:replace="object/getCity" />, <span tal:replace="object/getStateOrProvince" /><br>
+                    Tel: <span tal:replace="object/getPhone" /><br>
+                    <img src="news.gif" alt="Contact" tal:attributes="alt title; src imgName" />
                 </div>
             </td>
-            <td>
-                <div>
-                    <strong i18n:translate="osha_label_spanish_press">Bilbao and Spanish press:</strong><br>
-                    Press Office, <br>
-                    European Agency for Safety and Health at Work, <br>
-                    Bilbao <br>
-                    Tel: +34 94 479 57 46<br>
-                    <img src="noticias.gif" alt=""><br>
-                </div>
-            </td>
-            <td>
-                <div id="lastAdress">
-                    <strong i18n:translate="osha_label_brussels_liaison_office">Brussels Liaison Office:</strong><br>
-                    European Agency for Safety and Health at Work, <br>
-                    Square de Meeus 38/40, <br>
-                    1000 Brussels, Belgium <br>
-                    Tel: +32 2 401 68 59<br>
-                    <img src="obrien.gif" alt="brussels liaison officer">
-                </div>
-            </td>
+
            </tr>
           </table>
       </div>

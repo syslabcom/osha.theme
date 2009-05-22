@@ -52,6 +52,23 @@ class PressRoomView(BrowserView):
         map = "meltwater"
         rows = sin.sin(map, max_size=2)
         return rows
+
+    @ram.cache(_render_cachekey)
+    def getPresscontacts(self):
+        context = Acquisition.aq_inner(self.context)
+        canonical = context.getCanonical()
+        folder = getattr(canonical, 'press-contacts')
+        contactInfo = list()
+        international = getattr(folder, 'international-press')
+        contactInfo.append(('International press', international, 'news.gif'))
+        spanish = international = getattr(folder, 'spanish-press')
+        contactInfo.append(('Bilbao and Spanish press', spanish, 'noticias.gif'))
+        brussels = international = getattr(folder, 'brussels-liaison')
+        contactInfo.append(('Brussels Liaison Office', brussels, 'obrien.gif'))
+
+        return contactInfo
+
+                
         
         
 class DynamicPressRoomView(BrowserView):

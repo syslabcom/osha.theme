@@ -41,9 +41,11 @@ class INAPOSpecific(IThemeSpecific):
 class IPressRoomView(Interface):
     """ A View for Pressroom to show Snydication Information """
 
-    def get_syn_news():
+    def getFeed():
         """ A method to get the syndicated News """
 
+    def getPresscontacts():
+        """ Return relevant data for the 3 press contacts (international, Spanish, Brussels) """
 
 class IPressRoomConfiguration(Interface):
     """ This interface defines the configuration form """
