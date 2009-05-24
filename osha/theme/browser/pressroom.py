@@ -184,6 +184,20 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
                 if annotations.get(key):
                     if key == KEYWORDS_KEY:
                         request.form['form.%s' % key] =  ' '.join(annotations[key])
+                    elif key == PRESS_CONTACTS_KEY:
+                        good_paths = list()
+                        # safeguard against missing press contacts
+                        for path in annotations[key]:
+                            if path.startswith('/'):
+                                path = path[1:]
+                                try:
+                                    context.restrictedTraverse(str(path))
+                                    good_paths.append(path)
+                                    request.form['form.%s' % key] =  annotations[key]
+                                except AttributeError:
+                                    pass
+                        if len(good_paths) < len(annotations[key]):
+                            annotations[key] = good_paths
                     else:
                         request.form['form.%s' % key] =  annotations[key]
 
