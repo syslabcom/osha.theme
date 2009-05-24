@@ -6,7 +6,7 @@ from zope.formlib import form
 from zope.interface import implements
 from zope.i18nmessageid import MessageFactory
 from zope.schema.fieldproperty import FieldProperty
-
+from Products.ATContentTypes.interface.document import IATDocument
 
 import Acquisition
 from OFS.SimpleItem import SimpleItem
@@ -78,12 +78,19 @@ class DynamicPressRoomView(BrowserView):
     
     def _render_cachekey(method, self):
         return ('meltwater')
+
+    def getContext(self):
+        context = Acquisition.aq_inner(self.context)
+        # if dynamic-pressroom was used on a Document, get the parent-folder
+        if IATDocument.providedBy(context):
+            context = Acquisition.aq_parent(context)
+        context = context.getCanonical()
+        return context
     
     #@ram.cache(_render_cachekey)
     def get_feed(self):
-        context = Acquisition.aq_inner(self.context)
-        canonical = context.getCanonical()
-        annotations = IAnnotations(canonical)
+        context = self.getContext()
+        annotations = IAnnotations(context)
         if not annotations.get(FEED_KEY):
             return []
         keys = annotations[FEED_KEY]
@@ -95,7 +102,7 @@ class DynamicPressRoomView(BrowserView):
 
     #@ram.cache(_render_cachekey)
     def get_press_contacts(self):
-        context = Acquisition.aq_inner(self.context).getCanonical()
+        context = self.getContext()
         annotations = IAnnotations(context)
         if annotations.has_key(PRESS_CONTACTS_KEY):
             contact_paths = annotations[PRESS_CONTACTS_KEY]
@@ -121,7 +128,7 @@ class DynamicPressRoomView(BrowserView):
             return self.context.restrictedTraverse(path)
     
     def get_press_releases(self):
-        context = Acquisition.aq_inner(self.context).getCanonical()
+        context = self.getContext()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
         sf = self.get_press_subfolder('press-releases')
@@ -135,7 +142,7 @@ class DynamicPressRoomView(BrowserView):
         return cat(q)
 
     def get_articles(self):
-        context = Acquisition.aq_inner(self.context).getCanonical()
+        context = self.getContext()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
         sf = self.get_press_subfolder('articles')
@@ -147,7 +154,7 @@ class DynamicPressRoomView(BrowserView):
         return cat(q)
 
     def get_audiovisual(self):
-        context = Acquisition.aq_inner(self.context).getCanonical()
+        context = self.getContext()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
         sf = self.get_press_subfolder('photos')
