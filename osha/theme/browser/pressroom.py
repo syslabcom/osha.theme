@@ -58,13 +58,10 @@ class PressRoomView(BrowserView):
         context = Acquisition.aq_inner(self.context)
         canonical = context.getCanonical()
         folder = getattr(canonical, 'press-contacts')
-        contactInfo = list()
         international = getattr(folder, 'international-press')
-        contactInfo.append(('International press', international, 'news.gif'))
-        spanish = international = getattr(folder, 'spanish-press')
-        contactInfo.append(('Bilbao and Spanish press', spanish, 'noticias.gif'))
-        brussels = international = getattr(folder, 'brussels-liaison')
-        contactInfo.append(('Brussels Liaison Office', brussels, 'obrien.gif'))
+        spanish = getattr(folder, 'spanish-press')
+        brussels = getattr(folder, 'brussels-liaison')
+        contactInfo = [international, spanish, brussels]
 
         return contactInfo
 

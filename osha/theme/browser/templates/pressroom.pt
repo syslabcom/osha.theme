@@ -89,22 +89,26 @@
 
 
 
-      <div id="addresses" 
-         tal:define="contactInfo view/getPresscontacts;">
+      <div id="addresses">
         <table class="Tabelle">
             <tr>
-            <td tal:repeat="info contactInfo">
-                <div id="firstAdress" tal:define="title python:info[0];
-                            object python:info[1];
-                            imgName python:info[2]">
+            <td tal:repeat="contact view/getPresscontacts">
+                <div id="firstAdress">
                     <strong i18n:translate=""
-                        tal:content="title">International press</strong><br>
-                    <span tal:replace="object/Title" />,<br>
-                    <span tal:replace="object/getJobtitle" />,<br>
-                    <span tal:replace="object/getOrganization" />,<br>
-                    <span tal:replace="object/getCity" />, <span tal:replace="object/getStateOrProvince" /><br>
-                    Tel: <span tal:replace="object/getPhone" /><br>
-                    <img src="news.gif" alt="Contact" tal:attributes="alt title; src imgName" />
+                        tal:content="contact/Description">International press</strong><br/>
+                    <span tal:replace="contact/Title" />,<br/>
+                    <span tal:replace="contact/getJobtitle" /><br/><br/>
+                    <span tal:replace="contact/getOrganization" />,<br/>
+                    <span tal:replace="contact/getCity" />, <span tal:replace="contact/getStateOrProvince" /><br/>
+	                <tal:if condition="contact/getPhone">
+	                   Tel: <span tal:replace="contact/getPhone" /><br/>
+	                </tal:if>
+	                <tal:if condition="contact/getCellphone">
+	                    Mobile: <span tal:replace="contact/getCellphone" /><br/>
+	                </tal:if>
+	                <tal:if condition="contact/getEmail">
+	                    <a tal:attributes="href string:mailto:${contact/getEmail}" tal:content="contact/getEmail"/>
+                </tal:if>
                 </div>
             </td>
 
