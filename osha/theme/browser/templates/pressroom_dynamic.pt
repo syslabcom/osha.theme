@@ -73,15 +73,18 @@
         <tr>
         <td tal:repeat="contact view/get_press_contacts">
             <div>
-                <strong tal:content="contact/Title">International press:</strong><br>
-                <span class="formHelp" tal:content="python:'%s...' % contact.Description()[0:150]"/><br/><br/>
-                <tal:info content="contact/getJobtitle"/><br/>
+                <strong tal:content="contact/Description">International press:</strong><br>
+                <span tal:content="contact/Title"/>,<br/>
+                <tal:info content="contact/getJobtitle"/><br/><br/>
                 <tal:info content="contact/getOrganization"/><br/>
-                <tal:info content="contact/getCity"/><br/>
-                <tal:info content="contact/getPhone"/><br/>
-                <tal:info content="contact/getCellphone"/><br/>
+                <tal:info content="contact/getCity"/>, <span tal:replace="contact/getStateOrProvince" /><br/>
+                <tal:if condition="contact/getPhone">
+                   Tel: <span tal:replace="contact/getPhone" /><br/>
+                </tal:if>
+                <tal:if condition="contact/getCellphone">
+                    Mobile: <span tal:replace="contact/getCellphone" /><br/>
+                </tal:if>
                 <tal:if condition="contact/getEmail">
-                    <img src="mail_icon.gif" alt="international press contact"/>
                     <a tal:attributes="href string:mailto:${contact/getEmail}" tal:content="contact/getEmail"/>
                 </tal:if>
             </div>
