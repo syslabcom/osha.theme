@@ -16,12 +16,13 @@
     </metal:block>
 
 <body>
-    <div metal:fill-slot="main" id="PressRoom">
+    <div metal:fill-slot="main" id="PressRoom"
+        tal:define="context view/getContext">
         <h1 class="documentFirstHeading"
             tal:content="here/Title">
         </h1>
-        <div tal:condition="python:here.portal_membership.checkPermission('Modify portal content', here)">
-            <a tal:attributes="href string:${here/absolute_url}/@@pressroom-config-form">
+        <div tal:condition="python:here.portal_membership.checkPermission('Modify portal content', context)">
+            <a tal:attributes="href string:${context/absolute_url}/@@pressroom-config-form">
                 Click here to configure this Press Room
                 <br clear="all"/>
             </a>
