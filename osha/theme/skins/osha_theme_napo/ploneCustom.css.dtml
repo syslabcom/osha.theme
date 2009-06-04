@@ -52,13 +52,18 @@ a {
 	display:none;
 }
 
+/*Tinas change from Background image to Background*/
+
 dl.portletNavigationTree {
-	background-image:url(/osha_theme_napo_images/menu.gif);
+  background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
+  position:relative;
+  top:100px;
 }
+
 .portletNavigationTree {
 	height:500px;
 	width:222px;
-	margin-top:60px;
+	margin-top:0px;
 	background-color:transparent;
 	border: 0px none transparent;
 }
@@ -73,18 +78,35 @@ dl.portletNavigationTree {
 .portletItem {
 	border: 0px none transparent;
 }
-.navTreeItem a, dd.portletItem .navTreeItem a {
+
+/*Tinas Changes fontsize 1.2 and paddingbottom 8px BEFORE*/
+
+/*.navTreeItem a, dd.portletItem .navTreeItem a {
 	color:#ffffff !important;
 	border: 0px none transparent;
 	padding-top:7px;
-	padding-bottom:8px;
+	padding-bottom:9px;
 	background-image:url(/osha_theme_napo_images/menuButton.gif);
 	padding-left: 28px;
-	font-size:1.2em;
+	font-size:7.8pt;
 	font-weight:bold;
 	background-repeat:no-repeat;
 	display:block
+}*/
+
+.navTreeItem a, dd.portletItem .navTreeItem a {
+  background-image:url(/osha_theme_napo_images/menuButton.gif);
+  background-repeat:no-repeat;
+  border:0 none transparent;
+  color:#FFFFFF !important;
+  display:block;
+  font-size:7.8pt;
+  font-weight:bold;
+  padding-bottom:17px!important;
+  padding-left:28px;
+  padding-top:7px;
 }
+
 .navTreeItem a, dd.portletItem .navTreeItem a {
 	color:#ffffff !important;
 }
@@ -221,36 +243,45 @@ body #portal-columns {
 	left:  450px;
 }
 
-#the-napo-story {
-	top:  370px;
- 	left: 340px;
- 	width: 250px;
-}
-#napos-friends {
-	top:320px;
-	left:30px;
+/*Tinas Fixes*/
 
+#the-napo-story {
+  color:#364E9F;
+  left:320px;
+  top:465px;
+  width:250px;
+}
+
+#napos-friends {
+  color:#364E9F;
+  left:50px;
+  top:400px;
 }
 #who-is-napo {
-	top:50px;
-	left:70px;
+  color:#364e9f;
+  left:85px;
+  top:140px;
 }
 #napos-films {
-	top:75px;
-	left:320px;
+  color:#364E9F;
+  left:285px;
+  top:70px;
 }
 #using-napo {
-	top:30px;
-	left:465px;
-	width: 200px;
+  color:#364e9f;
+  left:480px;
+  top:110px;
+  width:200px;
 }
 #coming-soon {
-	top:255px;
-	left:200px;
+  color:#364E9F;
+  left:261px;
+  top:275px;
 }
 #rights-and-permissions {
-	top:280px;
+  color:#364E9F;
   left:470px;
+  top:368px;
 }
 #espiral-pic {
 }
@@ -401,5 +432,184 @@ p.paragraph5 {
 	/*	text-align: center */
 	background:#E1E1E1;
 }
+
+
+h1, h2 {
+  border-bottom:0 solid #FFFFC9;
+}
+
+
+#slc-linkcollection-linkbox {
+  border:0 solid #CBD1D8;
+}
+
+/*Tinas IE Fixes 04.06*/
+
+* html dl.portletNavigationTree {
+  background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
+  position:relative;
+  left:23px;
+  top:-2px;
+}
+
+*+html dl.portletNavigationTree {
+  background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
+  position:relative;
+  left:23px;
+  top:60px;
+}
+
+* html .navTreeItem a, dd.portletItem .navTreeItem a {
+  background-image:url(/osha_theme_napo_images/menuButton.gif);
+  background-repeat:no-repeat;
+  border:0 none transparent;
+  display:block;
+  font-size:7.8pt;
+  font-weight:bold;
+  padding-bottom:16px;
+  padding-left:28px;
+  padding-top:7px;
+}
+
+*+html .navTreeItem a, dd.portletItem .navTreeItem a {
+  background-image:url(/osha_theme_napo_images/menuButton.gif);
+  background-repeat:no-repeat;
+  border:0 none transparent;
+  color:#FFFFFF !important;
+  display:block;
+  font-size:7.8pt;
+  font-weight:bold;
+  padding-bottom:22px;
+  padding-left:28px;
+  padding-top:7px;
+}
+
+* html #napos-friends {
+  color:#364e9f;
+  left:50px;
+  top:355px;
+}
+
+*+html #napos-friends {
+  color:#364e9f;
+  left:50px;
+  top:350px;
+}
+
+* html #who-is-napo {
+  color:#364e9f;
+  left:85px;
+  top:105px;
+}
+
+*+html #who-is-napo {
+  color:#364e9f;
+  left:85px;
+  top:100px;
+}
+
+* html #coming-soon {
+color:#364E9F;
+left:261px;
+top:235px;
+}
+
+*+html #coming-soon {
+color:#364E9F;
+left:261px;
+top:230px;
+}
+
+* html #napos-films {
+color:#364e9f;
+left:280px;
+top:25px;
+}
+
+*+html #napos-films {
+color:#364e9f;
+left:280px;
+top:25px;
+}
+
+* html #using-napo {
+  color:#364e9f;
+  left:480px;
+  top:75px;
+  width:200px;
+}
+
+*+html #using-napo {
+  color:#364e9f;
+  left:480px;
+  top:70px;
+  width:200px;
+}
+
+*html #rights-and-permissions {
+color:#364E9F;
+left:470px;
+top:325px;
+}
+
+*+html #rights-and-permissions {
+color:#364E9F;
+left:470px;
+top:320px;
+}
+
+* html #the-napo-story {
+color:#364e9f;
+left:320px;
+top:425px;
+width:250px;
+}
+
+*+html #the-napo-story {
+color:#364e9f;
+left:320px;
+top:420px;
+width:250px;
+}
+
+* html #portal-column-content {
+padding:0;
+width:699px !important;
+position:relative;
+bottom:60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
