@@ -1,4 +1,6 @@
 .svnignore
+CHANGES.txt
+CONTRIBUTORS.txt
 README.txt
 osha.theme-configure.zcml
 setup.cfg
@@ -17,6 +19,7 @@ osha.theme.egg-info/not-zip-safe
 osha.theme.egg-info/paster_plugins.txt
 osha.theme.egg-info/requires.txt
 osha.theme.egg-info/top_level.txt
+osha/theme/README.txt
 osha/theme/__init__.py
 osha/theme/adapter.py
 osha/theme/alertservice.py
