@@ -1,4 +1,5 @@
-from Products.Collage.browser.column import ExistingItemsView, COLLAGE_TYPES
+from Products.Collage.browser.existingitems import ExistingItemsView
+from Products.Collage.config import COLLAGE_TYPES
 from Products.CMFPlone import utils as cmfutils
 from urlparse import urljoin
 
