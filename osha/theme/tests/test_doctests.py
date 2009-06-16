@@ -26,10 +26,4 @@ def test_suite():
                    package='osha.theme',
                    test_class=OshaThemeFunctionalTestCase) ,
 
-            Suite('tests/dbfilter.txt',
-                   optionflags=OPTIONFLAGS,
-                   package='osha.theme',
-                   test_class=OshaThemeFunctionalTestCase) ,
-
-
         ))
