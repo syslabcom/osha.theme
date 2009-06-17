@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.1 (2009-06-17)
+-----------------------------
+
+- cleaned & fixed tests (gerken)
+
 osha.theme 1.2 (2009-06-10)
 ---------------------------
 
