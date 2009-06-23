@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.2 (2009-06-23)
+-----------------------------
+
+- make Collage imports work for both version 1.2.1 and 1.2.0 (svn unreleased)
+
 osha.theme 1.2.1 (2009-06-17)
 -----------------------------
 
