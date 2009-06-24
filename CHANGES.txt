@@ -1,6 +1,12 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.3 (unreleased)
+-----------------------------
+
+- overwriting searchbox portlet of slc.googlesearch to be able to 
+  use a translation in the osha domain (thomasw)
+
 osha.theme 1.2.2 (2009-06-23)
 -----------------------------
 

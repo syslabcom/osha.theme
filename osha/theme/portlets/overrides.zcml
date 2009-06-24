@@ -13,4 +13,13 @@
         editview=".portlets.oshcollection.EditForm"
         />
 
+ <plone:portlet
+     name="slc.GoogleSearchBox"
+     interface="slc.googlesearch.portlets.searchbox.ICSEPortlet"
+     assignment="slc.googlesearch.portlets.searchbox.Assignment"
+     renderer=".portlets.googlesearchbox.Renderer"
+     addview="slc.googlesearch.portlets.searchbox.AddForm"
+	 editview="slc.googlesearch.portlets.searchbox.EditForm"
+     />
+
 </configure>
