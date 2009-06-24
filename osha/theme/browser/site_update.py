@@ -3,6 +3,7 @@ from plone.memoize import ram
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
+from zope.component import getMultiAdapter
 
 class SiteUpdateView(BrowserView):
     """View for displaying the latest update on the site
@@ -48,12 +49,15 @@ class SiteUpdateView(BrowserView):
 
         context = Acquisition.aq_inner(self.context)        
         portal_catalog = getToolByName(context, 'portal_catalog')
-
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
+        
         query = {'limit':100,
                  'review_state': 'published',
                  'portal_type': ['Document', 'RichDocument', 'News Item', 'Event'],
                  'sort_on': 'modified',
-                 'sort_order': 'reverse'
+                 'sort_order': 'reverse',
+                 'path': navigation_root_path
                 }
         results = portal_catalog(query)[:100]                
         stop = time.time()
