@@ -38,8 +38,7 @@
             <select style="font-size: 94%;"
                     onchange=""  
                     accesskey="8"                
-                    tal:attributes="onchange string:window.location= this.options[this.selectedIndex].getAttributeNode('url').value 
-                    ">
+                    tal:attributes="onchange string:window.location= this.options[this.selectedIndex].getAttributeNode('url').value">
                 <option tal:repeat="lang languages"
                         tal:content="lang/native"
                         url="test"

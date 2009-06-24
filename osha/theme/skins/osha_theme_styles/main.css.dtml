@@ -105,7 +105,8 @@ dl.portlet #osha-topactions {
     font-size: &dtml-fontSmallSize;;
     margin-top:1em;
 }
-ul#portal-footeractions {
+ul#portal-footeractions,
+ul#portal-footeractions2 {
     margin: 0;
     padding: 0;
 }

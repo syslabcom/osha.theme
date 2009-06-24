@@ -48,7 +48,11 @@
                 >Footer action</a>
             </li>
         </tal:footer-actions>
-<br/>
+	</ul>
+	<br/>
+	<ul id="portal-footeractions2"
+        i18n:domain="osha">
+    
        <tal:site-actions
              condition="view/site_actions"
              repeat="action view/site_actions">

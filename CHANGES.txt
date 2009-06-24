@@ -4,6 +4,9 @@ osha.theme Changelog
 osha.theme 1.2.3 (unreleased)
 -----------------------------
 
+- removed the alt tag from the flashsnippet to make it xhtml compliant (pilz)
+- changed newsitem_view, removed id=parent-fieldname-image as it occurred multiple times (pilz) 
+- separated the footer actions in two separate uls (pilz)
 - overwriting searchbox portlet of slc.googlesearch to be able to 
   use a translation in the osha domain (thomasw)
 

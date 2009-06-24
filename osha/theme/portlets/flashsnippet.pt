@@ -4,17 +4,15 @@
         width="200" height="60" 
         tal:attributes="width options/width;
                         height options/height;
-                        alt options/alt;
                         title options/title">
       <param name="movie"
              value="http://url"
-             tal:attributes="value options/url">
-      <param name="quality" value="high">
-      <param name="bgcolor" value="white">
-      <param name="wmode" value="transparent">
+             tal:attributes="value options/url" />
+      <param name="quality" value="high" />
+      <param name="bgcolor" value="white" />
+      <param name="wmode" value="transparent" />
 
-      <embed style="border: none;"
-             src="http://url"
+      <embed src="http://url"
              quality="high" 
              bgcolor="white"
              wmode="transparent" 
