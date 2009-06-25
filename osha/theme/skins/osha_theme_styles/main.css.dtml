@@ -110,13 +110,16 @@ ul#portal-footeractions2 {
     margin: 0;
     padding: 0;
 }
-ul#portal-footeractions li {
+ul#portal-footeractions li,
+ul#portal-footeractions2 li {
     display: inline;
 }
-ul#portal-footeractions li a {
+ul#portal-footeractions li a,
+ul#portal-footeractions2 li a {
     text-decoration: none;
 }
-ul#portal-footeractions .breadcrumbSeparator {
+ul#portal-footeractions .breadcrumbSeparator 
+ul#portal-footeractions2 .breadcrumbSeparator{
     color: #808080;
 }
 h2.headline {
