@@ -28,7 +28,7 @@
                    getRemoteLanguage request/getRemoteLanguage|string:;
                    country request/country|string:;
                    search_portal_types view/search_portal_types;
-                   review_state request/review_state|string:;
+                   review_state request/review_state|python:['private', 'published', 'to_amend', 'pending', 'checked'];
                    Creator request/Creator|string:;
                    getRemoteUrl request/getRemoteUrl|string:;
                    Batch python:modules['Products.CMFPlone'].Batch;
@@ -63,7 +63,7 @@
             
             <div class="field_default" 
                  tal:define="size python:6;
-                    wfname string:osh_workflow">
+                    		 wfname string:osh_workflow">
               <metal:use use-macro="here/filter_macros/macros/ReviewState_compact"></metal:use>
             </div>
             
