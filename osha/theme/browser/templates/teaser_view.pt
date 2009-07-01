@@ -91,8 +91,8 @@
             </tal:listing>
                
                 <p class="bold" tal:condition="python:here.getId()!='archive' and 'archive' in here.objectIds()">
-                <a href="" i18n:translate="link_newsboard_previousnews" i18n:domain="osha"
-                   tal:attributes="href string:${here/absolute_url}/archive">Show previous news</a>
+                <a href="" i18n:translate="label_archive" i18n:domain="osha"
+                   tal:attributes="href string:${here/absolute_url}/archive">Archive</a>
                 </p>
 
             <!-- Navigation -->
