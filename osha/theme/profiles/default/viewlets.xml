@@ -5,7 +5,7 @@
            based-on="Plone Default">
       <viewlet name="osha.campaignarea"
                insert-after="plone.header" />
-      <viewlet name="osha.path_bar"
+      <viewlet name="plone.path_bar"
                insert-after="osha.campaignarea" />
     </order>
 
@@ -102,7 +102,7 @@
 
     <hidden manager="plone.portaltop" skinname="*">
       <viewlet name="plone.personal_bar" />
-      <viewlet name="plone.path_bar" />
+      <viewlet name="osha.path_bar" />
       <viewlet name="plone.app.i18n.locales.languageselector" />
     </hidden>
 
