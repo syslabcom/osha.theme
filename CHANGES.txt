@@ -6,6 +6,7 @@ osha.theme 1.2.5 (2009-07-03)
 
 - fixed workflow deleted status selection (pilz)
 - replaced "Show previous news" with "Archive" (thomasw)
+- changed rss template to make news item return the effective
 
 osha.theme 1.2.4 (2009-06-25)
 -----------------------------
