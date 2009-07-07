@@ -125,11 +125,10 @@ class WorklistView(DBFilterView):
             query = query & Eq('getRemoteUrl', getRemoteUrl)    
             #query.update(dict(getRemoteUrl=getRemoteUrl))
 
-        review_state = self.request.get('review_state', '')
+        review_state = self.request.get('review_state', ['private', 'published', 'to_amend', 'pending', 'checked'])
         if review_state:
             query = query & In('review_state', review_state)    
-            #query.update(dict(review_state=review_state))
-
+            
         return query
         
         

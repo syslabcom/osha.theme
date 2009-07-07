@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.6 (unreleased)
+-----------------------------
+
+- also fixed workflow deleted status selection in the initial search request when opening the worklist (pilz)
+
 osha.theme 1.2.5 (2009-07-03)
 -----------------------------
 
