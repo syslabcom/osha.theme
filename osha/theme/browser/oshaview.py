@@ -15,6 +15,7 @@ from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
 from urlparse import urljoin
 from zope.component import getMultiAdapter
 from slc.subsite.root import getSubsiteRoot
+from slc.subsite.interfaces import ISubsiteEnhanced
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 from p4a.calendar import interfaces as p4aCalendarInterfaces
 
@@ -248,6 +249,8 @@ class OSHA(BrowserView):
         rootPath = self.subsiteRootPath()
         return self.request.physicalPathToURL(rootPath)
 
+    def isSubsite(self, site):
+        return ISubsiteEnhanced.providedBy(site)
 
     def getBase_url(self):
         """ Returns a (sub-) sites URL including the language folder, if present """
@@ -282,4 +285,7 @@ class OSHA(BrowserView):
             return events
         return list()
 
+    def getLocalObject(self, name):
+        """ see interface """
+        return hasattr(Acquisition.aq_base(Acquisition.aq_inner(self.context)), name) and getattr(self.context, name) or None
 #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')

@@ -162,6 +162,9 @@ class IOSHA(Interface):
     def subsiteRootPath():
         """ return path of subsite """
 
+    def isSubsite(site):
+        """is the site a subsite?"""
+
     def get_subsite_property(name):
         """ return the prop with name from the subsite """
 
@@ -170,6 +173,9 @@ class IOSHA(Interface):
 
     def getCalendarEvents(start, stop, reverse):
         """ If called on a calendar, the list of events is returned"""
+
+    def getLocalObject(name):
+        """returns object with given name from local context or None. No Acquisition"""
     
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions
