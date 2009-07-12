@@ -1,15 +1,17 @@
 osha.theme Changelog
 ====================
 
-osha.theme 1.2.6 (unreleased)
+osha.theme 1.2.6 (2009-07-12)
 -----------------------------
 
 - changed i18n:domain to osha for the press room views (thomasw)
 
-- made contact-info (for subsites) more sophisticated: 1) show for all subsites, regardless of URL / domain.
+- made contact-info (for subsites) more sophisticated: (thomasw)
+
+  1) show for all subsites, regardless of URL / domain.
   2) possibility to add contact_intro into language root - text will be shown as intro above the form
-  3) If "Support email address" from the oshaprops of the subsite is set, it will be used instead of the global email_from_address
-  (thomasw)
+  3) If "Support email address" from the oshaprops of the subsite is set, it will be 
+     used instead of the global email_from_address
 
 - also fixed workflow deleted status selection in the initial search request when opening the worklist (pilz)
 
