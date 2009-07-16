@@ -57,7 +57,7 @@
                                    item_wf_state item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
                                    item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                    
-                                   item_storydate item/getStorydate|nothing;
+                                   item_storydate item/Date|nothing;
                                    item_location item/getLocation|nothing;
                                    item_publication item/getPublication|nothing;
                                    item_subhead item/getSubhead|nothing;
@@ -80,23 +80,25 @@
                     </a>
                 </span>
 
-                <div class="itemDate"
+              <span class="documentByLine">
+                <span class="itemDate"
                         tal:condition="item_storydate"
-                        tal:content="python: context.toLocalizedTime(item_storydate)">
-                        [Story date]
-                </div>
+                        tal:content="python:' - ' +  context.toLocalizedTime(item_storydate)">
+                       - [Story date]
+                </span>
                 
-                <div class="itemLocation"
+                <span class="itemLocation"
                         tal:condition="item_location"
-                        tal:content="item_location">
-                    [Location]
-                </div>
+                        tal:content="string: - ${item_location}">
+                   - [Location]
+                </span>
                 
-                <div class="itemPublication"
+                <span class="itemPublication"
                         tal:condition="item_publication"
-                        tal:content="item_publication">
-                        [Publication]
-                </div>
+                        tal:content="string: - ${item_publication}">
+                       - [Publication]
+                </span>
+			</span>
             </dt>
             <dd>
                 <div class='documentByLine'
