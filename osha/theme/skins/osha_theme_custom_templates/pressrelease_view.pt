@@ -14,7 +14,7 @@
                       kssClassesView context/@@kss_field_decorator_view;
                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                       templateId template/getId;
-                      storydate here/EffectiveDate|nothing;
+                      storydate here/getStorydate|nothing;
                       text here/getText;">
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 

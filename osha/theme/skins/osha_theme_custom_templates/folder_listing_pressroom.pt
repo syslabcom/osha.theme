@@ -55,7 +55,7 @@
                                        item_wf_state        item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
                                        item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                        
-                                       item_storydate item/EffectiveDate|nothing;
+                                       item_storydate item/Date|nothing;
                                        item_location item/getLocation|nothing;
                                        item_publication item/getPublication|nothing;
                                        item_subhead item/getSubhead|nothing;
