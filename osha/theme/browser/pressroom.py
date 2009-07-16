@@ -147,6 +147,8 @@ class DynamicPressRoomView(BrowserView):
         path = '/'.join(sf.getPhysicalPath())
         q = {'portal_type': 'PressRelease', 
              'path': path,
+             'sort_on': 'Date',
+             'sort_order': 'reverse',
             }
         keywords = annotations.get(KEYWORDS_KEY)
         if keywords:
@@ -159,7 +161,9 @@ class DynamicPressRoomView(BrowserView):
         cat = getToolByName(context, 'portal_catalog')
         sf = self.get_press_subfolder('articles')
         path = '/'.join(sf.getPhysicalPath())
-        q = { 'path': path, }
+        q = { 'path': path, 
+              'sort_on': 'effective',
+              'sort_order': 'reverse',}
         keywords = annotations.get(KEYWORDS_KEY)
         if keywords:
             q['Subject'] = keywords
