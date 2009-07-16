@@ -1,6 +1,14 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.7 (unreleased)
+-----------------------------
+
+- be error-tolerant if a press-contact is missing in the pressroom-view (static and dynamic) (thomasw)
+- dynamic press-room: added sort_on criterium to get_press_releases & get_articles (thomasw)
+- dynamic press-room: better formatting for storydate, which is now taken from the cat-metadatum Date (thomasw)
+- Press Release (view + listing): don't show Effective date, but the PR's story date (==release date) (thomasw)
+
 osha.theme 1.2.6 (2009-07-12)
 -----------------------------
 
