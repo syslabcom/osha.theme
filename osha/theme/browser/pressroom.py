@@ -110,11 +110,17 @@ class DynamicPressRoomView(BrowserView):
     def get_press_contacts(self):
         context = self.getContext()
         annotations = IAnnotations(context)
+        contactInfo = list()
         if annotations.has_key(PRESS_CONTACTS_KEY):
             contact_paths = annotations[PRESS_CONTACTS_KEY]
             portal = context.portal_url.getPortalObject()
-            return [portal.unrestrictedTraverse(str(path)) for path in contact_paths]
-        return []
+            for path in contact_paths:
+                try:
+                    contact = portal.unrestrictedTraverse(str(path))
+                    contactInfo.append(contact)
+                except AttributeError:
+                    pass
+        return contactInfo
 
     def get_press_subfolder_path(self, folder, lan=None):
         context = self.context
