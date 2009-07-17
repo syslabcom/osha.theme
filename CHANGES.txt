@@ -4,6 +4,7 @@ osha.theme Changelog
 osha.theme 1.2.7 (unreleased)
 -----------------------------
 
+- fixed utf-8 quote problem in meltwater feeds (pilz)
 - be error-tolerant if a press-contact is missing in the pressroom-view (static and dynamic) (thomasw)
 - dynamic press-room: added sort_on criterium to get_press_releases & get_articles (thomasw)
 - dynamic press-room: better formatting for storydate, which is now taken from the cat-metadatum Date (thomasw)

@@ -55,10 +55,10 @@
 
         <div id="boxBody">
             <tal:block repeat="row view/get_feed">
-            <h3><a tal:attributes="href row/link" tal:content="row/title">title</a></h3>
+            <h3><a tal:attributes="href row/link" tal:content="structure row/title">title</a></h3>
             <p>
                 <span tal:condition="python:row.get('date') or nothing" tal:omit-tag="">
-                    <i tal:content="python: here.toLocalizedTime(row['date'])"></i>
+                    <i tal:content="structure python: here.toLocalizedTime(row['date'])"></i>
                 </span>
                 <span tal:replace="structure row/description">Welt</span>
                 </p>

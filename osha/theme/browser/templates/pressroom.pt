@@ -74,10 +74,10 @@
 
       <div id="boxBody">
         <tal:block repeat="row view/getFeed">
-          <h3><a tal:attributes="href row/link" tal:content="row/title">Hallo</a></h3>
+          <h3><a tal:attributes="href row/link" tal:content="structure row/title">Hallo</a></h3>
           <p>
-              <span tal:condition="python:row.get('date') or nothing" tal:omit-tag=""><i tal:content="python: here.toLocalizedTime(row['date'])"/></span>
-              <span tal:replace="row/description">Welt</span>
+              <span tal:condition="python:row.get('date') or nothing" tal:omit-tag=""><i tal:content="structure python: here.toLocalizedTime(row['date'])"/></span>
+              <span tal:replace="structure row/description">Welt</span>
           </p>
         </tal:block>
           <div id="more-syndicated-news">
@@ -93,7 +93,7 @@
         <table class="Tabelle">
             <tr>
             <td tal:repeat="contact view/getPresscontacts">
-                <div id="firstAdress">
+                <div id="firstAdress" tal:condition="contact">
                     <strong i18n:translate=""
                         tal:content="contact/Description">International press</strong><br/>
                     <span tal:replace="contact/Title" />,<br/>
