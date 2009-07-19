@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-osha.theme 1.2.7 (unreleased)
+osha.theme 1.2.7 (2009-07-19)
 -----------------------------
 
 - fixed utf-8 quote problem in meltwater feeds (pilz)
