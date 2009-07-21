@@ -459,6 +459,10 @@ dl.error dd {
 dl.searchResults span.documentByLine {
     display: block;
 }
+
+/* categories hidden by request of #334 (filed under) */
+div#category { display:none; }
+
 #category ul {
     list-style-image: none;
     list-style-type: none;
