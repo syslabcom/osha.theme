@@ -31,5 +31,25 @@
 
       <div class="visualClear"><!-- --></div>
 
+      <div id="additional-search-options">
+        <span tal:omit-tag="" i18n:translate="txt_try_the">Try the:</span><br/>
+        <ul class="linkList"> 
+            <li tal:condition="view/showAtozLink"><a href="#"
+              class="tile"
+              tal:define="preflang here/portal_languages/getPreferredLanguage"
+              tal:attributes="href view/index_alphabetical"
+              i18n:translate="portlet_oshsearch_atoz">
+             Alphabetical Index&hellip;
+            </a></li>
+            <!--li><a href="#"
+                 class="tile"
+                 tal:attributes="href view/search_form"
+                 i18n:translate="label_advanced_search" i18n:domain="plone">
+                Advanced Search
+                </a></li-->
+        </ul>
+      </div>
+
+
     </dd>
 </dl>
