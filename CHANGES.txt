@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-osha.theme 1.2.7 (unreleased)
+osha.theme 1.2.8 (2009-07-26)
 -----------------------------
 
 - hide categories (filed under) globally, requested by #334 (pilz)
