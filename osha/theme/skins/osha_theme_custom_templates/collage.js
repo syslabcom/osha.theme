@@ -82,13 +82,13 @@ setupExistingItemsForm = function() {
         submitExistingItemsForm(this);
     });
     // $("form.collage-existing-items SearchableText");
-    $("form.collage-existing-items [@name=SearchableText]").keydown(function(e) {
+    $("form.collage-existing-items [name=SearchableText]").keydown(function(e) {
 	    if (e.keyCode == 13) { // ESC
 		    e.preventDefault;
 			submitExistingItemsForm(this);
 		}
 	});
-    $("form.collage-existing-items [@name=path]").keydown(function(e) {
+    $("form.collage-existing-items [name=path]").keydown(function(e) {
         if (e.keyCode == 13) { // ESC
             e.preventDefault;
             submitExistingItemsForm(this);
