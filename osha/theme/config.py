@@ -51,7 +51,7 @@ EUROPEAN_NETWORK = (
 INTERNATIONAL_NETWORK = (
     ('ILO ILO', 'www.ilo.org/public/english/protection/euportal/en'),
     ('IOHA International Occupational', 'eu.ioha.net/'),
-    ('Hygiene Association', 'eu.ioha.net/'),
+    ('Hygiene Association', 'ioha.net/'),
     ('WHO World Health Organisation', 'www.who.int/occupational_health/en/'),
     ('--------', ''),
     ('AU Australia', 'www.nohsc-eu.gov.au'),
