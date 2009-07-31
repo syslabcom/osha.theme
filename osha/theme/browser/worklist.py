@@ -128,7 +128,9 @@ class WorklistView(DBFilterView):
         review_state = self.request.get('review_state', ['private', 'published', 'to_amend', 'pending', 'checked'])
         if review_state:
             query = query & In('review_state', review_state)    
-            
+
+        lang = getToolByName(self.context, 'portal_languages').getPreferredLanguage() 
+        query = query & In('Language', [lang, ''])
         return query
         
         
