@@ -30,13 +30,13 @@ class ROFilterView(BrowserView):
 
                   
 
-        ero_topic = self.request.get('ero_topic', None)
+        ero_topic = self.request.get('getEroTopic', None)
         if ero_topic:
-            query.update({'ero_topic':ero_topic})
+            query.update({'getEroTopic':ero_topic})
 
-        ero_target_group = self.request.get('ero_target_group', None)
+        ero_target_group = self.request.get('getEroTargetGroup', None)
         if ero_target_group:
-            query.update({'ero_target_group':ero_target_group})
+            query.update({'getEroTargetGroup':ero_target_group})
 
         country = self.request.get('country', '')
         if country:

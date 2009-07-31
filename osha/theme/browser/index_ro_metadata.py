@@ -10,7 +10,7 @@ class IndexROMetadataView(BrowserView):
     template = ViewPageTemplateFile('templates/index_ro_metadata.pt')
     template.id = "index_ro_metadata"
     
-    mdelems = ['ero_topic', 'country', 'ero_target_group']
+    mdelems = ['getEroTopic', 'country', 'getEroTargetGroup']
     
     def __call__(self):
         #self.request.set('disable_border', True)
@@ -29,7 +29,7 @@ class IndexROMetadataView(BrowserView):
     def title(self):
         """ returns the proper title """
         portal_countryutils = getToolByName(self.context, 'portal_countryutils')
-        if self.act_md in ['ero_topic', 'ero_target_group']:
+        if self.act_md in ['getEroTopic', 'getEroTargetGroup']:
             return self.pretty(self.act_mdval)
         elif self.act_md == 'country':
             return portal_countryutils.getCountryByIsoCode(self.act_mdval).name
@@ -71,27 +71,27 @@ class IndexROMetadataView(BrowserView):
         COS.sort(lambda x,y: cmp(x[0], y[0]))
 
         TGS = []
-        path = self.context.absolute_url()+"/search_ro?"+act_md+'='+act_mdval+'&ero_target_group=%s'  
+        path = self.context.absolute_url()+"/search_ro?"+act_md+'='+act_mdval+'&getEroTargetGroup=%s'  
         for tg in TG:
             tgn = self.pretty(tg)
             TGS.append((tgn, tg, path%tg))
         TGS.sort(lambda x,y: cmp(x[0], y[0]))
 
         TOS = []
-        path = self.context.absolute_url()+"/%s/search_ro?"+act_md+'='+act_mdval+'&ero_topic=%s'  
+        path = self.context.absolute_url()+"/%s/search_ro?"+act_md+'='+act_mdval+'&getEroTopic=%s'  
         for to in TO:
             ton = self.pretty(to)
             TOS.append((ton, to, path%(to, to)))
         TOS.sort(lambda x,y: cmp(x[0], y[0]))
         
-        return {'ero_topic': TOS, 
+        return {'getEroTopic': TOS, 
                 'country': COS, 
-                'ero_target_group': TGS}
+                'getEroTargetGroup': TGS}
                         
                         
     def summary(self):
         """ check if summary exists and return its description if so """
-        if self.act_md=='ero_topic' and 'summary_html' in self.context.objectIds():
+        if self.act_md=='getEroTopic' and 'summary_html' in self.context.objectIds():
             s = getattr(self.context, 'summary_html')
             desc = s.Description().strip()
             if desc.startswith('Summary'):
