@@ -64,20 +64,29 @@ function scanforlinks() {
     // Scan all links in the document and set classes on them dependant on 
     // whether they point to the current site or are external links
     contentarea = getContentArea();
+    // guard against doing it twice
+    var already_done = contentarea.getAttribute('scanforlinks');
+    if (already_done=='done') {return false;}
+
+    if (typeof external_links_open_new_window == 'string')
+        var elonw = external_links_open_new_window.toLowerCase() == 'true';
+    else elonw = false;
+    
     portlets = getPortlets();
     if (! contentarea && portlets.length<=0){
         return false
     }
     var links = contentarea.getElementsByTagName('a');
     for (i=0; i < links.length; i++){      
-        modifyLinkTag(links[i]);
+        modifyLinkTag(links[i], elonw);
     }
     for(i=0;i<portlets.length;i++) {
         var plinks = portlets[i].getElementsByTagName('a');
         for (j=0; j < plinks.length; j++){      
-            modifyLinkTag(plinks[j]);
+            modifyLinkTag(plinks[j], elonw);
         }
     }
+    contentarea.setAttribute('scanforlinks', 'done');
 }
 
 function injectNode(node, injectedtype, injectedclass) {
@@ -92,7 +101,7 @@ function injectNode(node, injectedtype, injectedclass) {
     node.parentNode.insertBefore(injectednode, node);
 }
 
-function modifyLinkTag(node) {
+function modifyLinkTag(node, elonw) {
     linkname = node.getAttribute('name');
     if(linkname) {
         if(linkname.indexOf('navigationlink')==0 ) {
@@ -124,22 +133,20 @@ function modifyLinkTag(node) {
                 }
             }
         } 
-                //         else {
-                //             // we are in here if the link points to somewhere else than our site.
-                //             if ( node.getElementsByTagName('img').length == 0 ){
-                // // we do not want to mess with those links that already have images in them
-                // injectNode(node, 'span', 'link-external-js');
-                //                 if(node.className=='link-external') {
-                //                     node.className='';
-                //                 }
-                //             }
-                //         /*
-                //             if (node.getAttribute('onclick') == false){
-                //                if (node.addEventListener) node.addEventListener("onclick",window.open(node.href), true);
-                //                else if (node.attachEvent) node.attachEvent("onclick",window.open(node.href));
-                //             }
-                //         */
-                //         }
+        else {
+            // we are in here if the link points to somewhere else than our site.
+            if ( node.getElementsByTagName('img').length == 0 ){
+            // we do not want to mess with those links that already have images in them
+            // injectNode(node, 'span', 'link-external-js');
+            //    if(node.className=='link-external') {
+            //         node.className='';
+            // }
+            if(elonw)
+                {
+                    node.setAttribute('target', '_blank');
+                }
+            }
+        }
         pathelems = linkval.split('/');
         filename = pathelems[pathelems.length-1];
         fileelems = filename.split('.');
