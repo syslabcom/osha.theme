@@ -32,6 +32,7 @@ Now we add a document (which is translatable) to the folder.
 Now we translate the folder
 
     >>> folder.addTranslation('da')
+    <ATFolder at /plone/Members/test_user_1_-da>
 
 Now we get a handle to the translated Folder    
     
