@@ -13,14 +13,14 @@ class SearchROView(BrowserView):
     template = ViewPageTemplateFile('templates/search_ro.pt')
     template.id = "search_ro"
     
-    mdelems = ['getEroTopic', 'country', 'getEroTargetGroup']
+    mdelems = ['ero_topic', 'country', 'ero_target_group']
     
     def __call__(self):
         #self.request.set('disable_border', True)
         portal_catalog = getToolByName(self.context, 'portal_catalog')
         self.country = self.request.get('country', '')
-        self.ero_topic = self.request.get('getEroTopic', '')
-        self.ero_target_group = self.request.get('getEroTargetGroup', '')
+        self.ero_topic = self.request.get('ero_topic', '')
+        self.ero_target_group = self.request.get('ero_target_group', '')
         
         #self.allvals = portal_catalog.uniqueValuesFor(self.act_md)
         #self.remaining = [x for x in self.mdelems if x!=self.act_md]  # former subsel
@@ -35,7 +35,7 @@ class SearchROView(BrowserView):
     
         sortedlist = []
         sortmap = {}
-        tgs = portal_catalog.uniqueValuesFor('getEroTargetGroup')        
+        tgs = portal_catalog.uniqueValuesFor('ero_target_group')        
         
         for r in results:
             md = r.getEROTarget_group
@@ -64,8 +64,8 @@ class SearchROView(BrowserView):
         context = Acquisition.aq_inner(self.context)
         portal_catalog = getToolByName(context, 'portal_catalog')
         query = {'country':self.country, 
-                 'getEroTargetGroup':self.ero_target_group, 
-                 'getEroTopic':self.ero_topic, 
+                 'ero_target_group':self.ero_target_group, 
+                 'ero_topic':self.ero_topic, 
                  'review_state':'published'
                    }
         LOG('osha.theme.search_ro', INFO, 'query: %s' %query)

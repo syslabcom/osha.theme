@@ -4,9 +4,9 @@
       i18n:domain="osha"> 
 
 <div metal:fill-slot="main" i18n:domain="osha"
-       tal:define="getEroTopic request/getEroTopic| string:;
+       tal:define="ero_topic request/ero_topic| string:;
                    country request/country|string:;
-                   getEroTargetGroup request/getEroTargetGroup | string:;
+                   ero_target_group request/ero_target_group | string:;
                    SearchableText request/SearchableText|string:;
                    Batch python:modules['Products.CMFPlone'].Batch;
                    DateTime python:modules['DateTime'].DateTime;
@@ -49,7 +49,7 @@
             <div class="field_default"
                     tal:define="root_node   string:;
                                 vocabulary  string:topic;
-                                value       getEroTopic;
+                                value       ero_topic;
                                 fieldName   string:ero_topic;">
                 <div><label>Topic</label></div>
                 <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>
@@ -62,7 +62,7 @@
             <div class="field_default"
                     tal:define="root_node   string:;
                                 vocabulary  string:target_group;
-                                value       getEroTargetGroup;
+                                value       ero_target_group;
                                 fieldName   string:ero_target_group;">
                 <div><label>Target Group</label></div>
                 <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>

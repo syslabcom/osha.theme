@@ -13,7 +13,7 @@
                    desc_ellipsis site_properties/ellipsis;
                    searchterm request/SearchableText|nothing;
                    countryname view/country;
-                   topicname view/getEroTopic;
+                   topicname view/ero_topic;
                    ">
 
 
