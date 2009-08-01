@@ -1,6 +1,12 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.10 (2009-08-01)
+------------------------------
+
+- REVERTED: renaming indexes ero_target_group and ero_topic to getEroTargetGroup and getEroTopic due to unsolved
+  problems in data consistency and schema-extending (thomasw)
+
 osha.theme 1.2.9 (2009-08-01)
 -----------------------------
 
