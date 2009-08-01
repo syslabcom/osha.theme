@@ -1,6 +1,19 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.9 (2009-08-01)
+-----------------------------
+
+- fixed indentation error in rolling_quote (pilz)
+- bugfix: the @ attribute selectors in jquery for collage.js are now removed (thomasw)
+- fixing broken external link (ticket 366) in international dropdown (thomasw)
+- indexed ero_target_group and ero_topic renamed to getEro_target_grop and getEro_topic (gerken)
+- osha.js: 2 changes: 1) prevent scanforlinks from running twice 2) if the "open external links in new window" option
+  is enabled, add target _blank to link tags (thomasw)
+- image/flash portlet: make links on a banner open in a new window (thomasw)
+- limit query of the worklist to current langugage and neutral (thomasw)
+- Adapt test to new slc.publications' LinguaPlone patch (gerken)
+
 osha.theme 1.2.8 (2009-07-26)
 -----------------------------
 
