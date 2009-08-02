@@ -35,7 +35,7 @@
                            url string:$result_url/view?searchterm=${searchterm};
                            title result/Title|string:;
                            country_name result/getCountry|nothing;
-                           topic_name result/getEROTopic|nothing">
+                           topic_name python:view.getTopicName(result)">
             <dt>
                 <img src="#"
                      height="16"

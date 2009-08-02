@@ -29,26 +29,37 @@ class SearchROView(BrowserView):
 
     def sortByTargetGroup(self, results):
         context = Acquisition.aq_inner(self.context)
-        portal_catalog = getToolByName(context, 'portal_catalog')
         if not results:
             return []
-    
+
+        pv = getToolByName(context, 'portal_vocabularies')
+        VOCAB = getattr(pv, 'OSHAMetadata', None) 
+        vocabDict = VOCAB.getVocabularyDict(VOCAB)
+        ETG = vocabDict.get('ero_target_group', [])
+        tgs = ETG[1].keys()
+
         sortedlist = []
         sortmap = {}
-        tgs = portal_catalog.uniqueValuesFor('ero_target_group')        
+    
         
         for r in results:
-            md = r.getEROTarget_group
-            if not md:
+            OMD = r.getOsha_metadata
+            if not OMD:
                 continue
-            if not hasattr(md, 'append'):
-                md = list(md)
+            md = list()
+            for elem in OMD:
+                if elem.find('::'):
+                    key, val = elem.split('::')
+                    if key=='ero_target_group':
+                        md.append(elem)
+            if not len(md):
+                continue
         
             for m in md:
                 if not sortmap.has_key(m):
                     sortmap[m]=[]
                 sortmap[m].append(r)
-        
+
         for tg in tgs:
             if sortmap.has_key(tg):
                 sp = sortmap[tg]
@@ -63,9 +74,16 @@ class SearchROView(BrowserView):
         """ query the catalog """
         context = Acquisition.aq_inner(self.context)
         portal_catalog = getToolByName(context, 'portal_catalog')
+        if not self.country:
+            mdq =  {'query' : ('ero_topic::%s'%self.ero_topic, 'ero_target_group::%s'%self.ero_target_group),
+                    'operator': 'and'}
+        else:
+            if self.ero_target_group:
+                mdq = ('ero_target_group::%s'%self.ero_target_group, )
+            elif self.ero_topic:
+                mdq = ('ero_topic::%s'%self.ero_topic,)
         query = {'country':self.country, 
-                 'ero_target_group':self.ero_target_group, 
-                 'ero_topic':self.ero_topic, 
+                 'osha_metadata': mdq,
                  'review_state':'published'
                    }
         LOG('osha.theme.search_ro', INFO, 'query: %s' %query)
@@ -104,5 +122,15 @@ class SearchROView(BrowserView):
             return "%s - %s" % (self.getCN(self.country), self.pretty(self.ero_target_group))
             
 
-
+    def getTopicName(self, brain):
+        """ returns the topic name extracted from osha_metadata"""
+        omd = brain.getOsha_metadata
+        topic_name = ''
+        for elem in omd:
+            if elem.find('::'):
+                key, val = elem.split('::')
+                if key=='ero_topic':
+                    topic_name=val
+                    break
+        return topic_name
                       

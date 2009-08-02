@@ -17,8 +17,7 @@ class IndexROMetadataView(BrowserView):
         self.act_md = self.request.get('act_md', '')
         self.act_mdval = self.request.get('act_mdval', '')
         portal_catalog = getToolByName(self.context, 'portal_catalog')
-        
-        self.allvals = portal_catalog.uniqueValuesFor(self.act_md)
+            
         self.remaining = [x for x in self.mdelems if x!=self.act_md]  # former subsel
         return self.template()
 
@@ -43,22 +42,31 @@ class IndexROMetadataView(BrowserView):
         
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         navigation_root_path = portal_state.navigation_root_path()
-        
-        query = {act_md: act_mdval,
+            
+        query = {
                  'Language': 'all',
                  'review_state': 'published'
                     }
+        if act_md=='country':
+            query[act_md] = act_mdval
+        else:
+            query['osha_metadata'] = "%s::%s" %(act_md, act_mdval)
         results = portal_catalog(query)
+
         TO = set()
         CO = set()
         TG = set()
         for result in results:
-            if result['getEROTopic']:
-                TO = TO.union(result['getEROTopic'])
             if result['getCountry']:
                 CO = CO.union(result['getCountry'])                    
-            if result['getEROTarget_group']:
-                TG = TG.union(result['getEROTarget_group'])            
+            if result['getOsha_metadata']:
+                for elem in result['getOsha_metadata']:
+                    if elem.find('::'):
+                        key, val = elem.split('::')
+                        if key=='ero_topic':
+                            TO.add(val)
+                        if key=='ero_target_group':
+                            TG.add(val)
 
         TO = list(TO)
         CO = list(CO)
@@ -78,10 +86,10 @@ class IndexROMetadataView(BrowserView):
         TGS.sort(lambda x,y: cmp(x[0], y[0]))
 
         TOS = []
-        path = self.context.absolute_url()+"/%s/search_ro?"+act_md+'='+act_mdval+'&ero_topic=%s'  
+        path = self.context.absolute_url()+"/search_ro?"+act_md+'='+act_mdval+'&ero_topic=%s'  
         for to in TO:
             ton = self.pretty(to)
-            TOS.append((ton, to, path%(to, to)))
+            TOS.append((ton, to, path%to))
         TOS.sort(lambda x,y: cmp(x[0], y[0]))
         
         return {'ero_topic': TOS, 
