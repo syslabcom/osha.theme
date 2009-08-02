@@ -50,7 +50,7 @@ EUROPEAN_NETWORK = (
 # Will later be factored out to be editable through the web
 INTERNATIONAL_NETWORK = (
     ('ILO ILO', 'www.ilo.org/public/english/protection/euportal/en'),
-    ('IOHA International Occupational', 'eu.ioha.net/'),
+    ('IOHA International Occupational', 'ioha.net/'),
     ('Hygiene Association', 'ioha.net/'),
     ('WHO World Health Organisation', 'www.who.int/occupational_health/en/'),
     ('--------', ''),
