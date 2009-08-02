@@ -1,6 +1,14 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.11 (2009-08-02)
+------------------------------
+
+- major change for the ERO search: don't use separate fields (schema-extended) for topic and
+  target_group any more. Rather, use the osha_metadata vocablary with the 2 sub-vocabs ero_topic
+  and ero_target_group (thomasw)
+
+
 osha.theme 1.2.10 (2009-08-01)
 ------------------------------
 
