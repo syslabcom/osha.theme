@@ -85,7 +85,7 @@ class RSSFeedsView(BrowserView):
                 id=id, 
                 title=title, 
                 icon='topic_icon.gif',
-                url=(url_pattern %(dict(title=title, id=id, lang=lang))).encode('utf-8')
+                url=(url_pattern %(dict(title=title, id=id, lang=lang))).encode('utf-8'),
                 ))
         return retval
                     

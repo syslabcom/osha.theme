@@ -22,7 +22,7 @@
 
 <channel rdf:about="" tal:attributes="rdf:about request/URL" >
   <title tal:content="request/form/RSSTitle | context/pretty_title_or_id">The title</title>
-  <link tal:content="request/form/RSSUrl | context/portal_url">http://url.to.portal</link>
+  <link tal:content="context/portal_url">http://url.to.portal</link>
   
   <description>
     <metal:block define-slot="description">
