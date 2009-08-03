@@ -12,10 +12,10 @@ from osha.theme.browser.rssfeeds import RSSFeedsView
 class TestRSS(unittest.TestCase):
     def test_feedContainsTitle(self):
         view = RSSFeedsView(None, None)
-        view._getTranslatedCategories = lambda: [('1', 'one'), ('2', 'two')]
+        view._getTranslatedCategories = lambda: [('1', 'one'), ('2', 'two'), ('3', u'dreiö')]
         view._getPortalPath = lambda: "portal_path"
         view._getPrefferedLanguage = lambda: "en"
-        should_be = [{'url': 'portal_path/search_rss?Subject=1&RSSTitle=one&Language=en&review_state=published&sort_on=effective', 'icon': 'topic_icon.gif', 'id': '1', 'title': 'one'}, {'url': 'portal_path/search_rss?Subject=2&RSSTitle=two&Language=en&review_state=published&sort_on=effective', 'icon': 'topic_icon.gif', 'id': '2', 'title': 'two'}]
+        should_be = [{'url': 'portal_path/search_rss?Subject=1&RSSTitle=one&Language=en&review_state=published&sort_on=effective', 'icon': 'topic_icon.gif', 'id': '1', 'title': 'one'}, {'url': 'portal_path/search_rss?Subject=2&RSSTitle=two&Language=en&review_state=published&sort_on=effective', 'icon': 'topic_icon.gif', 'id': '2', 'title': 'two'},  {'url': 'portal_path/search_rss?Subject=3&RSSTitle=drei\xc3\x83\xc2\xb6&Language=en&review_state=published&sort_on=effective', 'icon': 'topic_icon.gif', 'id': '3', 'title': u'drei\xc3\xb6'}]
         and_is = view.subject_feeds()
         self.assertEquals(should_be, and_is)
         

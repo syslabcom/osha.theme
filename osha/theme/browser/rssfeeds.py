@@ -68,7 +68,7 @@ class RSSFeedsView(BrowserView):
         Return list of tuples, tuple 1 is the category id, tuple 2 the title
         of the category"""
         oshaview = self.context.restrictedTraverse('@@oshaview')
-        CATS = oshaview.getTranslatedCategories()        
+        return oshaview.getTranslatedCategories()        
     
     def _getPortalPath(self):
         return getToolByName(self.context, 'portal_url').getPortalPath()
@@ -77,7 +77,7 @@ class RSSFeedsView(BrowserView):
         return getToolByName(self.context, 'portal_languages').getPreferredLanguage()
     
     def subject_feeds(self):
-        url_pattern = self._getPortalPath() + "/search_rss?Subject=%(id)s&RSSTitle=%(title)s&Language=%(lang)s&review_state=published&sort_on=effective"
+        url_pattern = self._getPortalPath() + u"/search_rss?Subject=%(id)s&RSSTitle=%(title)s&Language=%(lang)s&review_state=published&sort_on=effective"
         retval = []
         lang = self._getPrefferedLanguage()
         for id, title in self._getTranslatedCategories():
@@ -85,7 +85,7 @@ class RSSFeedsView(BrowserView):
                 id=id, 
                 title=title, 
                 icon='topic_icon.gif',
-                url=url_pattern %(dict(title=title, id=id, lang=lang))
+                url=(url_pattern %(dict(title=title, id=id, lang=lang))).encode('utf-8')
                 ))
         return retval
                     
