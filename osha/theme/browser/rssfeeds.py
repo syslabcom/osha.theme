@@ -77,7 +77,7 @@ class RSSFeedsView(BrowserView):
         return getToolByName(self.context, 'portal_languages').getPreferredLanguage()
     
     def subject_feeds(self):
-        url_pattern = self._getPortalPath() + "/search_rss?Subject=%s&Language=%s&review_state=published&sort_on=effective"
+        url_pattern = self._getPortalPath() + "/search_rss?Subject=%(id)s&RSSTitle=%(title)s&Language=%(lang)s&review_state=published&sort_on=effective"
         retval = []
         lang = self._getPrefferedLanguage()
         for id, title in self._getTranslatedCategories():
@@ -85,7 +85,7 @@ class RSSFeedsView(BrowserView):
                 id=id, 
                 title=title, 
                 icon='topic_icon.gif',
-                url=url_pattern %(id,lang)
+                url=url_pattern %(dict(title=title, id=id, lang=lang))
                 ))
         return retval
                     
