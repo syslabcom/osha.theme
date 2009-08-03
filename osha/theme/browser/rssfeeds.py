@@ -63,30 +63,31 @@ class RSSFeedsView(BrowserView):
                     ))
         return L
         
-    def subject_feeds(self):
-        """ return all feeds by keyword and offer subfeeds by type
+    def _getTranslatedCategories(self):
         """
+        Return list of tuples, tuple 1 is the category id, tuple 2 the title
+        of the category"""
         oshaview = self.context.restrictedTraverse('@@oshaview')
-        CATS = oshaview.getTranslatedCategories()
-        
-        portal_types = getToolByName(self.context, 'portal_types')
-        portal_url = getToolByName(self.context, 'portal_url')
-        portal_languages = getToolByName(self.context, 'portal_languages')
-
-        L = []
-        lang = portal_languages.getPreferredLanguage()
-        portal_path = portal_url.getPortalPath()
-        url_pattern = portal_path + \
-            "/search_rss?Subject=%s&Language=%s&review_state=published&sort_on=effective"
-            
-        for T, Title in CATS:  
-            L.append( dict(
-                id=T, 
-                title=Title, 
+        CATS = oshaview.getTranslatedCategories()        
+    
+    def _getPortalPath(self):
+        return getToolByName(self.context, 'portal_url').getPortalPath()
+    
+    def _getPrefferedLanguage(self):
+        return getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+    
+    def subject_feeds(self):
+        url_pattern = self._getPortalPath() + "/search_rss?Subject=%s&Language=%s&review_state=published&sort_on=effective"
+        retval = []
+        lang = self._getPrefferedLanguage()
+        for id, title in self._getTranslatedCategories():
+            retval.append(dict(
+                id=id, 
+                title=title, 
                 icon='topic_icon.gif',
-                url=url_pattern %(T,lang)
+                url=url_pattern %(id,lang)
                 ))
-        return L
+        return retval
                     
     def quick_buttons(self, title, url):
         """ return a button row to quickly add the feed to popular syndication services
