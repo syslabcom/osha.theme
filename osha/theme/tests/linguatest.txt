@@ -56,7 +56,7 @@ The document receives a title.
 We add a Danish translation of that document.
 
     >>> doc.addTranslation('da')
-    <RichtDocument at /plone/Members/test_user_1_-da/doc>
+    <RichDocument at /plone/Members/test_user_1_-da/doc>
     >>> doc_da = doc.getTranslation('da')
     >>> doc_da.Language()
     'da'
