@@ -71,7 +71,7 @@ class RSSFeedsView(BrowserView):
         return oshaview.getTranslatedCategories()        
     
     def _getPortalPath(self):
-        return getToolByName(self.context, 'portal_url').getPortalPath()
+        return getToolByName(self.context, 'portal_url').getPortalObject.absolute_url()
     
     def _getPrefferedLanguage(self):
         return getToolByName(self.context, 'portal_languages').getPreferredLanguage()
