@@ -1,5 +1,4 @@
 from five.localsitemanager import make_objectmanager_site
-from osha.policy.adapter.schemaextender import TaggingSchemaExtenderERO
 import unittest
 from zope.app.component.hooks import setSite as setActiveSite
 from zope.component import getMultiAdapter
@@ -15,6 +14,11 @@ class TestRSS(unittest.TestCase):
         view._getTranslatedCategories = lambda: [('1', 'one'), ('2', 'two'), ('3', u'dreiö')]
         view._getPortalPath = lambda: "portal_path"
         view._getPrefferedLanguage = lambda: "en"
+        view._getTypesForFeeds = lambda: [{'doc_type' :'doc_type', 
+                                           'title' : 'nice title',
+                                           'icon' : 'nice icon.png',
+                                           'base_url' : 'search_rss?RSSTitle=nice%%20title&%(lang)s/%(sorter)s'}]
+
         should_be = [{'url': 'portal_path/search_rss?Subject=1&RSSTitle=one&Language=en&review_state=published&sort_on=effective', 
                       'icon': 'topic_icon.gif', 'id': '1', 'title': 'one'}, 
                      {'url': 'portal_path/search_rss?Subject=2&RSSTitle=two&Language=en&review_state=published&sort_on=effective', 
@@ -23,6 +27,13 @@ class TestRSS(unittest.TestCase):
                       'icon': 'topic_icon.gif', 'id': '3', 'title': u'drei\xc3\xb6'}]
         and_is = view.subject_feeds()
         self.assertEquals(should_be, and_is)
+        
+        should_be = [{'url': 'portal_pathportal_path/en/effective', 
+                      'icon': 'nice icon.png', 'id': 'doc_type', 'title': 'nice title'}]
+        and_is = view.type_feeds()
+        self.assertEquals(should_be, and_is)
+
+        
         
 def test_suite():
     suite = unittest.TestSuite()

@@ -17,51 +17,58 @@ class RSSFeedsView(BrowserView):
 
     template = ViewPageTemplateFile('templates/rssfeeds.pt')
     buttons = ViewPageTemplateFile('templates/rssfeed_helpers.pt')
-    TYPES = ['News Item', 'Event', 'Publication', 'PressRelease']
+    TYPES = {'News Item'    : "/%%(lang)s/events/RSS?RSSTitle=%(title)s", 
+             'Event'        : "/%%(lang)s/news/RSS?RSSTitle=%(title)s", 
+             'Publication'  : "/search_rss?RSSTitle=%(title)s&portal_type=Publication&Language=%%(lang)s&review_state=published&sort_on=%%(sorter)s",
+             'PressRelease' : "/search_rss?RSSTitle=%(title)s&portal_type=PressRelease&Language=%%(lang)s&review_state=published&sort_on=%%(sorter)s&object_provides=slc.publications.interfaces.IPublicationEnhanced"}
     
     def __call__(self):
         return self.template()
-        
+    
+    def _getTypesForFeeds(self):
+        """
+        Return a list with dictionaries with information about types, just 
+        enough for rss feed generation:
+        doc_type
+        title: Thats something beautiful for RSS
+        icon
+        base_url = That is the template for generating correct rss for the type
+                   The template needs the following variables:
+                   lang
+                   sorter: sort order
+        """
+        portal_types = getToolByName(self.context, 'portal_types')
+
+        for doc_type, type_url in self.TYPES.items():
+            if doc_type == 'Publication':
+                title = doc_type.capitalize() + 's'
+                yield dict(doc_type=doc_type, title=title, 
+                           icon="publication_icon.gif", base_url = type_url % {'title' : title})        
+            else:
+                ti = portal_types.getTypeInfo(doc_type)
+                if ti:
+                    title = ti.Title()+'s'
+                    yield dict(doc_type=doc_type, title=title,
+                               icon=ti.getIcon(),base_url=type_url % {'title' : title})
+                    
     def type_feeds(self):
         """ return all feeds by typical types and offer subfeeds by keyword
         """
-        portal_types = getToolByName(self.context, 'portal_types')
-        portal_url = getToolByName(self.context, 'portal_url')
-        portal_languages = getToolByName(self.context, 'portal_languages')
 
-        L = []
-        lang = portal_languages.getPreferredLanguage()
-        portal_path = portal_url.getPortalObject().absolute_url()
-        url_pattern = portal_path + "/search_rss?portal_type=%s&Language=%s&review_state=published&sort_on=%s"
+        retval = []
+        lang = self._getPrefferedLanguage()
+        portal_path = self._getPortalPath()
                         
-        for T in self.TYPES:
-            if T == 'Event':
-                url = portal_path + "/%s/events/RSS" % lang
-            elif T == 'News Item':
-                url = portal_path + "/%s/news/RSS" % lang
-            else:
-                sorter = "effective"
-                url = url_pattern %(T,lang, sorter)
-            ti = portal_types.getTypeInfo(T)
-            if T == 'Publication':
-                url = url_pattern %('File',lang, sorter)
-                url += '&object_provides=slc.publications.interfaces.IPublicationEnhanced'
-                L.append( dict(
-                    id=T, 
-                    title=T.capitalize()+'s', 
-                    icon='publication_icon.gif',
+        for type in self._getTypesForFeeds():
+            url = portal_path + type['base_url'] % dict(lang=lang, sorter="effective")
+            
+            retval.append( dict(
+                    id=type['doc_type'], 
+                    title=type['title'], 
+                    icon=type['icon'],
                     url=url
                     ))
-            elif ti is None:
-                continue
-            else:
-                L.append( dict(
-                    id=T, 
-                    title=ti.Title()+'s', 
-                    icon=ti.getIcon(),
-                    url=url
-                    ))
-        return L
+        return retval
         
     def _getTranslatedCategories(self):
         """
@@ -71,7 +78,7 @@ class RSSFeedsView(BrowserView):
         return oshaview.getTranslatedCategories()        
     
     def _getPortalPath(self):
-        return getToolByName(self.context, 'portal_url').getPortalObject.absolute_url()
+        return getToolByName(self.context, 'portal_url').getPortalObject().absolute_url()
     
     def _getPrefferedLanguage(self):
         return getToolByName(self.context, 'portal_languages').getPreferredLanguage()
