@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.12 (2009-08-03)
+------------------------------
+
+- improved RSS-feed generation (gerken)
+
 osha.theme 1.2.11 (2009-08-02)
 ------------------------------
 
