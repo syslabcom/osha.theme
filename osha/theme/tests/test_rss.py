@@ -17,7 +17,7 @@ class TestRSS(unittest.TestCase):
         view._getTypesForFeeds = lambda: [{'doc_type' :'doc_type', 
                                            'title' : 'nice title',
                                            'icon' : 'nice icon.png',
-                                           'base_url' : 'search_rss?RSSTitle=nice%%20title&%(lang)s/%(sorter)s'}]
+                                           'base_url' : '/search_rss?RSSTitle=nice%%20title&%(lang)s/%(sorter)s'}]
 
         should_be = [{'url': 'portal_path/search_rss?Subject=1&RSSTitle=one&Language=en&review_state=published&sort_on=effective', 
                       'icon': 'topic_icon.gif', 'id': '1', 'title': 'one'}, 
@@ -28,7 +28,7 @@ class TestRSS(unittest.TestCase):
         and_is = view.subject_feeds()
         self.assertEquals(should_be, and_is)
         
-        should_be = [{'url': 'portal_pathportal_path/en/effective', 
+        should_be = [{'url': 'portal_path/search_rss?RSSTitle=nice%20title&en/effective', 
                       'icon': 'nice icon.png', 'id': 'doc_type', 'title': 'nice title'}]
         and_is = view.type_feeds()
         self.assertEquals(should_be, and_is)
