@@ -94,8 +94,6 @@ class QueryBuilder(object):
        
        
        
-       
-       
 class NavtreeStrategy(SitemapNavtreeStrategy):
     """The navtree strategy used for the default navigation portlet
     """
@@ -123,7 +121,6 @@ class NavtreeStrategy(SitemapNavtreeStrategy):
             self.rootPath = self.rootPath.replace("//","/")
         self.showAllParents = False
 
-
     def subtreeFilter(self, node):
         sitemapDecision = SitemapNavtreeStrategy.subtreeFilter(self, node)
         if sitemapDecision == False:
@@ -134,3 +131,4 @@ class NavtreeStrategy(SitemapNavtreeStrategy):
         else:
             return True        
  
+
