@@ -6,6 +6,9 @@ osha.theme unreleased
 
 - Deleting users will no longer delete all their roles in the portal. That
   makes user deletion much faster (gerken)
+- overwriting atct_album_view.pt from ATContentTypes to hide the folder-listing view if "other"
+  content is present; overwriting atctListAlbum.py to also include Large Plone Folder (thomasw)
+
 
 osha.theme 1.2.12 (2009-08-03)
 ------------------------------
