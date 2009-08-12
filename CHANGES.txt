@@ -1,8 +1,8 @@
 osha.theme Changelog
 ====================
 
-osha.theme unreleased
----------------------
+osha.theme 1.2.13 (2009-08-12)
+------------------------------
 
 - Deleting users will no longer delete all their roles in the portal. That
   makes user deletion much faster (gerken)
