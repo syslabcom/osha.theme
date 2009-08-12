@@ -19,7 +19,7 @@ class RSSFeedsView(BrowserView):
     buttons = ViewPageTemplateFile('templates/rssfeed_helpers.pt')
     TYPES = {'News Item'    : "/%%(lang)s/events/RSS?RSSTitle=%(title)s", 
              'Event'        : "/%%(lang)s/news/RSS?RSSTitle=%(title)s", 
-             'Publication'  : "/search_rss?RSSTitle=%(title)s&portal_type=Publication&Language=%%(lang)s&review_state=published&sort_on=%%(sorter)s",
+             'Publication'  : "/search_rss?RSSTitle=%(title)s&portal_type=File&object_provides=slc.publications.interfaces.IPublicationEnhanced&Language=en&Language=%%(lang)s&review_state=published&sort_on=%%(sorter)s",
              'PressRelease' : "/search_rss?RSSTitle=%(title)s&portal_type=PressRelease&Language=%%(lang)s&review_state=published&sort_on=%%(sorter)s&object_provides=slc.publications.interfaces.IPublicationEnhanced"}
     
     def __call__(self):
