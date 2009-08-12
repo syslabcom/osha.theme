@@ -102,7 +102,11 @@ class Renderer(base.Renderer):
     @memoize
     def url(self):
         if self.data.url:
-            return "%s?sourceid=banner" % self.data.url
+            if self.data.url.find('?')>0:
+                symbol = '&'
+            else:
+                symbol = '?'
+            return "%s%ssourceid=banner" % (self.data.url, symbol)
         return u''
 
     @memoize
