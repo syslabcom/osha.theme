@@ -9,7 +9,7 @@ osha.theme unreleased
 - overwriting atct_album_view.pt from ATContentTypes to hide the folder-listing view if "other"
   content is present; overwriting atctListAlbum.py to also include Large Plone Folder (thomasw)
 - make links from image-portlet not fail for URLs that need a '?' (thomasw)
-
+- fixed problem with fullscreen-mode of FCK editor (gerken)
 
 osha.theme 1.2.12 (2009-08-03)
 ------------------------------
