@@ -25,7 +25,12 @@ SiteLayer = layer.PloneSite
 class OshaThemeLayer(SiteLayer):
     @classmethod
     def setUp(cls):
+        ztc.installProduct('PlacelessTranslationService')
         setupPloneSite(products=['SimpleAttachment', 'RichDocument', 'LinguaPlone'])
+        import Products.PlacelessTranslationService
+        zcml.load_config('configure.zcml', Products.PlacelessTranslationService)
+        fiveconfigure.debug_mode = False
+        ztc.installPackage('Products.PlacelessTranslationService', quiet=True)
         SiteLayer.setUp()
 
 class OshaThemeTestCase(PloneTestCase):

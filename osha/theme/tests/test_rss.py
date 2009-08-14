@@ -1,12 +1,28 @@
 from five.localsitemanager import make_objectmanager_site
+from Products.Five.testbrowser import Browser
 import unittest
 from zope.app.component.hooks import setSite as setActiveSite
 from zope.component import getMultiAdapter
 from zope.interface import Interface
 from zope.publisher.browser import TestRequest
 from osha.policy.tests.base import OSHAPolicyFunctionalTestCase
-from osha.theme.tests.base import OshaThemeTestCase
+from osha.theme.tests.base import OshaThemeTestCase, OshaThemeFunctionalTestCase
 from osha.theme.browser.rssfeeds import RSSFeedsView
+from Testing.ZopeTestCase import utils
+from Products.PloneTestCase.setup import portal_owner, default_password
+
+def startZServer(browser=None):
+    host, port = utils.startZServer()
+    if browser:
+        print browser.url.replace('nohost', '%s:%s' % (host, port))
+
+def getBrowser(url):
+    browser = Browser()
+    browser.open(url)
+    browser.getControl(name='__ac_name').value = portal_owner
+    browser.getControl(name='__ac_password').value = default_password
+    browser.getControl(name='submit').click()
+    return browser
 
 class TestRSS(unittest.TestCase):
     def test_feedContainsTitle(self):
@@ -33,9 +49,22 @@ class TestRSS(unittest.TestCase):
         and_is = view.type_feeds()
         self.assertEquals(should_be, and_is)
 
-        
+class TestOshaRSS(OshaThemeFunctionalTestCase):
+    def setUp(self):
+        super(TestOshaRSS, self).setUp()
+        self.browser = getBrowser(self.portal.absolute_url())
+    
+    def test_configuration(self):
+        url = self.portal.absolute_url() + '/@@rss-feeds'
+        self.browser.open(url)
+        self.assertTrue('News Items' in self.browser.contents)        
+        self.assertTrue('Events' in self.browser.contents)        
+        self.assertTrue('Publications' in self.browser.contents)
+        self.assertEquals(3, self.browser.contents.count('Latest'))        
+
         
 def test_suite():
     suite = unittest.TestSuite()
+    suite.addTest(unittest.makeSuite(TestOshaRSS))
     suite.addTest(unittest.makeSuite(TestRSS))
     return suite
