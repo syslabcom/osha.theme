@@ -1,6 +1,12 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.15 (2009-08-17)
+------------------------------
+
+- improved testing (gerken)
+- replaced logos by new versions made by Cornelis (thomasw)
+
 osha.theme 1.2.14 (2009-08-14)
 ------------------------------
 
