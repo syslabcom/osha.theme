@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.16 (2009-08-18)
+------------------------------
+
+- Fixed wrong configuration and broken links for anyurl on the rss feeds page (gerken)
+
 osha.theme 1.2.15 (2009-08-17)
 ------------------------------
 
