@@ -33,7 +33,7 @@
 
 
 <a target="_blank" 
-   tal:attributes="href string:http://www.addtoany.com/?sitename=European%20Agency%20for%20Safety%20and%20Health%20at%20Work&siteurl=http%3A//osha.europa.eu/&linkname=${rsstitle}&linkurl=${rssurl}&type=feed&ic=1"><img 
+   tal:attributes="href string:http://www.addtoany.com/?sitename=European%20Agency%20for%20Safety%20and%20Health%20at%20Work&siteurl=http%3A//osha.europa.eu/&linkname=${rsstitle}&linkurl=${rsstitle}&type=feed&ic=1"><img 
    src="http://www.addtoany.com/subscribe.gif" width="103" height="16" border="0" title="Add to any service" alt="Add to any service"/></a>
 
 </span>
