@@ -590,8 +590,16 @@ top:8.8em;
 z-index:100;
 }
 
+.section-sub #friends-pic {
+border:2px solid blue;
+margin-bottom:1.5em;
+}
 
-
+#informationfield {
+float:left;
+padding:0 0 0 2em;
+width:120px;
+}
 
 
 
