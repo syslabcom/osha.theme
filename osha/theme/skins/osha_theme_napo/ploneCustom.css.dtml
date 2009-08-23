@@ -579,7 +579,16 @@ position:relative;
 bottom:60px;
 }
 
+/*Tinas Changes*/
 
+#portal-languageselector {
+float:right;
+margin:0 1em;
+position:relative;
+right:38em;
+top:8.8em;
+z-index:100;
+}
 
 
 
