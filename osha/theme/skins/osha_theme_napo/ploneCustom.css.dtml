@@ -227,20 +227,20 @@ body #portal-columns {
 #the-napo-story:hover, #who-is-napo:hover, #napos-friends:hover, #napos-films:hover, #using-napo:hover, #coming-soon:hover, #rights-and-permissions:hover, #napette:hover, #the-boss:hover, #miss-strudel:hover, #other-friends:hover {
 }
 #napette {
-left:450px;
-top:1500px;
+left:420px;
+top:1050px;
 }
 #miss-strudel {
-left:450px;
-top:2500px;
+left:420px;
+top:1850px;
 }
 #the-boss {
-left:450px;
-top:450px;
+left:420px;
+top:300px;
 }
 #other-friends {
-left:450px;
-top:3500px;
+left:420px;
+top:2650px;
 }
 
 /*Tinas Fixes*/
