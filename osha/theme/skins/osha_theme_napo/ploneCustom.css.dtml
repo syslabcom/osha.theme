@@ -4,7 +4,7 @@
 
 #parent-fieldname-text img {
 	float:left;
-	clear:left;
+	/*clear:left;*/
 }
 h3, .NAPOheader {
 
@@ -235,8 +235,8 @@ left:420px;
 top:1850px;
 }
 #the-boss {
-left:420px;
-top:260px;
+left:50px;
+top:420px;
 }
 #other-friends {
 left:420px;
@@ -643,6 +643,13 @@ float:left;
 padding:0 0 0 2em;
 }
 
+#imageboss {
+float:left;
+}
+
+#imagenapette {
+float:left;
+}
 
 
 
