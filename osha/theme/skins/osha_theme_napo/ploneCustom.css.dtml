@@ -228,18 +228,22 @@ body #portal-columns {
 }
 #napette {
 left:210px;
+padding:0 0 0 2em;
 top:420px;
 }
 #miss-strudel {
 left:360px;
+padding:0 0 0 2em;
 top:420px;
 }
 #the-boss {
 left:50px;
+padding:0 0 0 2em;
 top:420px;
 }
 #other-friends {
 left:520px;
+padding:0 0 0 2em;
 top:420px;
 }
 
@@ -644,6 +648,7 @@ padding:0 0 0 2em;
 }
 
 #imageboss {
+padding:0 0 0 2em;
 float:left;
 }
 
