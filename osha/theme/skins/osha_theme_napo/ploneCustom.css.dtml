@@ -609,7 +609,30 @@ padding:0 0 0 2em;
 width:250px;
 }
 
+#napomain {
+width:80px;
+float:left;
+}
 
+#the-bossmain {
+width:80px;
+float:left;
+}
+
+#napettemain {
+width:80px;
+float:left;
+}
+
+#miss-strudelmain {
+width:80px;
+float:left;
+}
+
+#other-friendsmain {
+width:150px;
+float:left;
+}
 
 
 
