@@ -597,8 +597,16 @@ margin-bottom:1.5em;
 
 #informationfield {
 float:left;
-padding:0 0 0 2em;
+padding:0 0 0 40px;
 width:120px;
+}
+
+#informationfieldtitle {
+float:left;
+font-size:14pt;
+font-weight:bold;
+padding:0 0 0 2em;
+width:250px;
 }
 
 
