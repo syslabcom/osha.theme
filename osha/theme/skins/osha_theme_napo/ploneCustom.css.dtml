@@ -228,19 +228,19 @@ body #portal-columns {
 }
 #napette {
 left:210px;
-top:450px;
+top:430px;
 }
 #miss-strudel {
 left:360px;
-top:450px;
+top:430px;
 }
 #the-boss {
 left:50px;
-top:450px;
+top:430px;
 }
 #other-friends {
 left:520px;
-top:450px;
+top:430px;
 }
 
 /*Tinas Fixes*/
