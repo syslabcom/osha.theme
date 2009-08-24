@@ -656,8 +656,13 @@ float:left;
 float:left;
 }
 
+.documentFirstHeading {
+display:none;
+}
 
-
+h3 {
+display:none;
+}
 
 
 
