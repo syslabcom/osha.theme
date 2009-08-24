@@ -227,7 +227,7 @@ body #portal-columns {
 #the-napo-story:hover, #who-is-napo:hover, #napos-friends:hover, #napos-films:hover, #using-napo:hover, #coming-soon:hover, #rights-and-permissions:hover, #napette:hover, #the-boss:hover, #miss-strudel:hover, #other-friends:hover {
 }
 #napette {
-left:420px;
+left:210px;
 top:420px;
 }
 #miss-strudel {
