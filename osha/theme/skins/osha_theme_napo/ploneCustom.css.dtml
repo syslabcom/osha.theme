@@ -644,7 +644,7 @@ float:left;
 }
 
 #dancing2008Video {
-padding:0 0 0 2em;
+padding:0 10em;
 }
 
 #imageboss {
