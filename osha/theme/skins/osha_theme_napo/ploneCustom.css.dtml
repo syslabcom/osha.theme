@@ -634,7 +634,9 @@ width:150px;
 float:left;
 }
 
-
+#dancing2008Video {
+padding:0 0 0 2em;
+}
 
 
 
