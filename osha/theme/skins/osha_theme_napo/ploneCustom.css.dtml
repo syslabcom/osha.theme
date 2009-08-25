@@ -613,11 +613,11 @@ padding:0 0 0 2em;
 width:250px;
 }
 
-#napomain {
+#linkmovie {
 float:left;
 font-size:14pt;
 font-weight:bold;
-padding:0 0 2em 15em;
+padding:1em 0 0 11.5em;
 width:120px;
 }
 
@@ -625,7 +625,7 @@ width:120px;
 float:left;
 font-size:14pt;
 font-weight:bold;
-padding:1em 0 0 11.5em;
+padding:0 0 2em 15em;
 width:250px;
 }
 
