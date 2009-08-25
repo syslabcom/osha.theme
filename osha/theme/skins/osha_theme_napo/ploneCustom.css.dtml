@@ -642,7 +642,7 @@ display:none;
 }
 
 #imageboss {
-margin:0 1em 0 2em;
+margin:0 1em 0 1em;
 }
 #imagenapette {
 margin:0 0 0 1em;
