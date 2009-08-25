@@ -625,7 +625,7 @@ width:120px;
 float:left;
 font-size:14pt;
 font-weight:bold;
-padding:0 0 2em 11.5em;
+padding:1em 0 0 11.5em;
 width:250px;
 }
 
