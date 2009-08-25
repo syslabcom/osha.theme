@@ -625,9 +625,9 @@ width:120px;
 padding:0 10em;
 }
 
-.documentFirstHeading {
+/*.documentFirstHeading {
 display:none;
-}
+}*/
 
 h3 {
 display:none;
