@@ -642,13 +642,13 @@ display:none;
 }
 
 #imageboss {
-margin:0 1em 0 1em;
+margin:0 1em 0 2em;
 }
 #imagenapette {
-margin:0 1em 0 1em;
+margin:0 0 0 1em;
 }
 #imagestrudel {
-margin:0 1em 0 0;
+margin:0 0 0 0;
 }
 #imagecollegue {
 margin:0 0 0 0;
