@@ -641,7 +641,18 @@ h3 {
 display:none;
 }
 
-
+#imageboss {
+margin:0 1em 0 0;
+}
+#imagenapette {
+margin:0 1em 0 0;
+}
+#imagestrudel {
+margin:0 1em 0 0;
+}
+#imagecollegue {
+margin:0 1em 0 0;
+}
 
 
 
