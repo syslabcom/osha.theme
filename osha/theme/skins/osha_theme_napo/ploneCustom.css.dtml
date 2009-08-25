@@ -615,45 +615,12 @@ width:250px;
 
 #napomain {
 width:80px;
-padding:0 2.3em 0 2em;
-float:left;
-}
-
-#the-bossmain {
-width:80px;
-padding:0 2.3em 0 2em;
-float:left;
-}
-
-#napettemain {
-width:80px;
-padding:0 2.3em 0 2em;
-float:left;
-}
-
-#miss-strudelmain {
-width:80px;
-padding:0 2.3em 0 2em;
-float:left;
-}
-
-#other-friendsmain {
-width:90px;
-padding:0 0 0 2em;
+padding:0 0 3em 23em;
 float:left;
 }
 
 #dancing2008Video {
 padding:0 10em;
-}
-
-#imageboss {
-padding:0 0 0 2em;
-float:left;
-}
-
-#imagenapette {
-float:left;
 }
 
 .documentFirstHeading {
