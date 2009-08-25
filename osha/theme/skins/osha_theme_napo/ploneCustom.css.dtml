@@ -621,6 +621,14 @@ padding:0 0 2em 15em;
 width:120px;
 }
 
+#linkmain {
+float:left;
+font-size:14pt;
+font-weight:bold;
+padding:0 0 2em 11em;
+width:250px;
+}
+
 #dancing2008Video {
 padding:0 10em;
 }
