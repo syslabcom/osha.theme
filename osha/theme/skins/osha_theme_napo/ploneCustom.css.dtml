@@ -618,7 +618,7 @@ float:left;
 font-size:14pt;
 font-weight:bold;
 padding:1em 0 0 11.5em;
-width:120px;
+width:250px;
 }
 
 #linkmain {
