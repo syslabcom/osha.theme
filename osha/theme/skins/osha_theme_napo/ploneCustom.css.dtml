@@ -681,14 +681,14 @@ float:left;
 font-size:14pt;
 font-weight:bold;
 padding:1em 0 0;
-width:170px;
+width:180px;
 }
 #linkUsing {
 float:left;
 font-size:14pt;
 font-weight:bold;
 padding:1em 0 0;
-width:170px;
+width:180px;
 }
 #linkRights {
 float:left;
