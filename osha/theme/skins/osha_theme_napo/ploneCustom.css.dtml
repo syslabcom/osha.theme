@@ -4,7 +4,7 @@
 
 #parent-fieldname-text img {
 	float:left;
-	/*clear:left;*/
+	clear:left;
 }
 h3, .NAPOheader {
 
@@ -227,24 +227,20 @@ body #portal-columns {
 #the-napo-story:hover, #who-is-napo:hover, #napos-friends:hover, #napos-films:hover, #using-napo:hover, #coming-soon:hover, #rights-and-permissions:hover, #napette:hover, #the-boss:hover, #miss-strudel:hover, #other-friends:hover {
 }
 #napette {
-left:210px;
-padding:0 0 0 2em;
-top:420px;
+	top:160px;
+	left:65px;
 }
 #miss-strudel {
-left:360px;
-padding:0 0 0 2em;
-top:420px;
+	top:40px;
+	left:360px;
 }
 #the-boss {
-left:50px;
-padding:0 0 0 2em;
-top:420px;
+	top:325px;
+	left:275px;
 }
 #other-friends {
-left:520px;
-padding:0 0 0 2em;
-top:420px;
+	top:   250px;
+	left:  450px;
 }
 
 /*Tinas Fixes*/
@@ -583,111 +579,21 @@ position:relative;
 bottom:60px;
 }
 
-/*Tinas Changes*/
 
-#portal-languageselector {
-float:right;
-margin:0 1em;
-position:relative;
-right:44em;
-top:8.8em;
-z-index:100;
-}
 
-.section-sub #friends-pic {
-border:2px solid blue;
-margin-bottom:1.5em;
-}
 
-#informationfield {
-float:left;
-padding:0 0 0 40px;
-width:120px;
-}
 
-#informationfieldtitle {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:0 0 0 2em;
-width:250px;
-}
 
-#linkmovie {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:1em 0 0 12.5em;
-width:250px;
-}
 
-#linkmain {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:0 0 2em 11.5em;
-width:250px;
-}
 
-#dancing2008Video {
-padding:0 10em;
-}
 
-.documentFirstHeading {
-display:none;
-}
 
-h3 {
-display:none;
-}
 
-#imageboss {
-margin:0 1em 0 1em;
-}
-.textboss {
-margin:3em 0 0;
-}
-#imagenapette {
-margin:0 0 0 1em;
-}
-.textNapette {
-margin:4em 0 5em 10.3em;
-}
-#imagestrudel {
-margin:0 0 0 0;
-}
-.textStrudel {
-margin:4em 0 5em 10.3em;
-}
-#imagecollegue {
-margin:0 0 0 0;
-}
-.textCollegue {
-margin:4em 0 5em 10.3em;
-}
-#imagesales {
-margin:0 0 0 0;
-}
-.textSales {
-margin:2em 0 2em 10.3em;
-}
-#imageanimals {
-margin:0 0 0 0;
-}
-.textAnimals {
-margin:2em 0 2em 10.3em;
-}
-#imageobjects {
-margin:0 0 0 0;
-}
-.textObjects {
-margin:2em 0 2em 10.3em;
-}
 
-.listingBar {
-bottom:5em;
-position:relative;
-}
+
+
+
+
 
 
 
