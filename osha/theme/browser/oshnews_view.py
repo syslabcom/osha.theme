@@ -4,10 +4,11 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from osha.theme import OSHAMessageFactory as _
 from zope.component import getMultiAdapter
-from Products.AdvancedQuery import Or, Eq, And, In
+from Products.AdvancedQuery import Or, Eq, And, In, Le
 from plone.memoize import ram, instance
 from Products.CMFPlone.PloneBatch import Batch
 import time
+from DateTime import DateTime
 from Products.ATContentTypes.interface import IATTopic
 
 class OSHNewsView(BrowserView):
@@ -86,9 +87,11 @@ class OSHNewsLocalView(OSHNewsView):
         if hasattr(catalog, 'getZCatalog'):
             catalog = catalog.getZCatalog()
             
+        now = DateTime()
         queryA = Eq('portal_type', 'News Item')
         queryB = Eq('isNews', True)
-        queryBoth = In('review_state', 'published') & Eq('path', '/'.join(context.getPhysicalPath())) 
+        queryBoth = In('review_state', 'published') & Eq('path', '/'.join(context.getPhysicalPath())) \
+            & Le('effective', now)
 
         query = And(Or(queryA, queryB), queryBoth)
         results = catalog.evalAdvancedQuery(query, (('Date', 'desc'),) ) 
