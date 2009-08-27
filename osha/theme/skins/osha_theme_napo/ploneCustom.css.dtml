@@ -644,17 +644,45 @@ display:none;
 #imageboss {
 margin:0 1em 0 1em;
 }
+.textboss {
+margin:4em 0 6em;
+}
 #imagenapette {
 margin:0 0 0 1em;
+}
+.textNapette {
+margin:4em 0 15em;
 }
 #imagestrudel {
 margin:0 0 0 0;
 }
+.textStrudel {
+margin:4em 0 12em;
+}
 #imagecollegue {
 margin:0 0 0 0;
 }
-
-
+.textCollegue {
+margin:4em 0 15em;
+}
+#imagesales {
+margin:0 0 0 0;
+}
+.textSales {
+margin:4em 0 15em 26em;
+}
+#imageanimals {
+margin:0 0 0 0;
+}
+.textAnimals {
+margin:4em 0 15em 26em;
+}
+#imageobjects {
+margin:0 0 0 0;
+}
+.textObjects {
+margin:4em 0 15em 26em;
+}
 
 
 
