@@ -645,43 +645,43 @@ display:none;
 margin:0 1em 0 1em;
 }
 .textboss {
-margin:4em 0 6em;
+margin:4em 0 0;
 }
 #imagenapette {
 margin:0 0 0 1em;
 }
 .textNapette {
-margin:4em 0 15em;
+margin:4em 0 5em 10.3em;
 }
 #imagestrudel {
 margin:0 0 0 0;
 }
 .textStrudel {
-margin:4em 0 12em;
+margin:4em 0 5em 10.3em;
 }
 #imagecollegue {
 margin:0 0 0 0;
 }
 .textCollegue {
-margin:4em 0 15em;
+margin:4em 0 5em 10.3em;
 }
 #imagesales {
 margin:0 0 0 0;
 }
 .textSales {
-margin:4em 0 15em 26em;
+margin:2em 0 2em 10.3em;
 }
 #imageanimals {
 margin:0 0 0 0;
 }
 .textAnimals {
-margin:4em 0 15em 26em;
+margin:2em 0 2em 10.3em;
 }
 #imageobjects {
 margin:0 0 0 0;
 }
 .textObjects {
-margin:4em 0 15em 26em;
+margin:2em 0 2em 10.3em;
 }
 
 
