@@ -684,6 +684,11 @@ margin:0 0 0 0;
 margin:2em 0 2em 10.3em;
 }
 
+.listingBar {
+bottom:5em;
+position:relative;
+}
+
 
 
 
