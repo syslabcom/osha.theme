@@ -654,49 +654,6 @@ margin:0 0 0 0;
 margin:0 0 0 0;
 }
 
-#linkfilm {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:1em 0 0;
-width:230px;
-}
-#linkfriends {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:1em 0 0;
-width:230px;
-}
-#linkwho {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:1em 0 0;
-width:230px;
-}
-
-#linkSoon {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:1em 0 0;
-width:205px;
-}
-#linkUsing {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:1em 0 0;
-width:205px;
-}
-#linkRights {
-float:left;
-font-size:14pt;
-font-weight:bold;
-padding:1em 0 0;
-width:260px;
-}
 
 
 
