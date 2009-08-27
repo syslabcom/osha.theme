@@ -6,6 +6,8 @@ osha.theme unreleased
 
 - changed behaviour in osh-macros in case of missing publication date (gerken)
 - in oshnews-local-view: make sure only news that are already effective are shown (thomasw)
+- rss_template: made the <item> section more human readable; Subject is now translated;
+  use item's effective date if present, fall back to modification date (thomasw)
 
 osha.theme 1.2.16 (2009-08-18)
 ------------------------------
