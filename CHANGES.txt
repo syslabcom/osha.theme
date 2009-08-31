@@ -1,8 +1,8 @@
 osha.theme Changelog
 ====================
 
-osha.theme unreleased
----------------------
+osha.theme 1.2.17 (2009-08-31)
+------------------------------
 
 - changed behaviour in osh-macros in case of missing publication date (gerken)
 - in oshnews-local-view: make sure only news that are already effective are shown (thomasw)
