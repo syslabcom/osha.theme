@@ -65,10 +65,10 @@
                                         <a href="#"
                                            tal:condition="showLinkToNewsItem"
                                            tal:attributes="href string:$url"
-                                           id="parent-fieldname-image">
+                                           class="parent-fieldname-image">
                                            <img tal:attributes="src string:${url}/image; alt title_or_id;" />
                                         </a>
-                                        <div id="parent-fieldname-image"
+                                        <div class="parent-fieldname-image"
                                             tal:condition="not:showLinkToNewsItem">
                                              <img tal:attributes="src string:${url}/image; alt title_or_id;" />
                                         </div>

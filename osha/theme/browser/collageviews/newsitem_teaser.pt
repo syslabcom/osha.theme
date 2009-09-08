@@ -19,7 +19,7 @@
                  xtal:on-error="nothing">
                 <a href="#"
                    tal:attributes="href string:$url"
-                   id="parent-fieldname-image">
+                   class="parent-fieldname-image">
                    <img tal:attributes="src string:${url}/image; alt title_or_id;" />
                 </a>
             </div>
