@@ -93,13 +93,13 @@
                 <td>
                     <a href="/en/good_practice/index_provider"
                        tal:attributes="href
-                           python:view.getLocalizedPath('/en/good_practice/index_provider')"
+                           python:view.getLocalizedPath('good_practice/index_provider')"
                        i18n:translate="label_providers">Providers</a>
                 </td>
             </tr>
             </tbody>
         </table>
-
+        <div tal:content="view/getNews"></div>
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>

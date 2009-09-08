@@ -107,7 +107,7 @@ def createOSHNetworkFolder(self):
     oshnetwork.invokeFactory('Document', 'index.html')
     document = getattr(oshnetwork, 'index.html')
     document.setTitle('OSHNetwork')
-    document._setProperty('layout', 'oshnetwork_country_view')
+    document._setProperty('layout', 'oshnetwork-member-view')
     wftool.doActionFor(document, 'publish')
 
 def createCountrySubfolders(self):

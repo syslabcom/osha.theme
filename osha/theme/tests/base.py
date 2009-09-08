@@ -33,6 +33,19 @@ class OshaThemeLayer(SiteLayer):
         ztc.installPackage('Products.PlacelessTranslationService', quiet=True)
         SiteLayer.setUp()
 
+@onsetup
+def setup_product():
+    """Set up additional products and ZCML required to test this product.
+    """
+    fiveconfigure.debug_mode = True
+    import osha.theme
+    zcml.load_config('configure.zcml', osha.theme)
+    fiveconfigure.debug_mode = False
+    ztc.installPackage('osha.theme')
+
+setup_product()
+setupPloneSite(products=['osha.theme'])
+
 class OshaThemeTestCase(PloneTestCase):
     """Base class for integration tests for the 'OshaTheme' product.
     """
@@ -49,4 +62,6 @@ class OshaThemeFunctionalTestCase(FunctionalTestCase):
         data = StringIO(open(filename, 'r').read())
         data.filename = os.path.basename(rel_filename)
         return data
+
+
 

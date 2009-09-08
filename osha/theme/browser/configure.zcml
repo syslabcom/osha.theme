@@ -84,7 +84,7 @@
     <!-- OSHA Network Member -->
     <browser:page
         for="*"
-        name="member-view"
+        name="oshnetwork-member-view"
         class=".oshnetwork_member_view.OSHNetworkMemberView"
         permission="zope.Public"
         allowed_interface=".interfaces.IOSHNetworkMemberView"
