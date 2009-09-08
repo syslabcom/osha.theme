@@ -22,4 +22,11 @@
         name="osha.theme.PressContactVocabulary"
         /> 
 
+    <utility
+        component=".vocabulary.AnnotatableLinkListVocabulary"
+        name="osha.theme.AnnotatableLinkListVocabulary"
+        provides="Products.Archetypes.interfaces._vocabulary.IVocabulary"
+        /> 
+
+
 </configure>

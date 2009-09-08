@@ -142,7 +142,7 @@
         class=".pressroom.DynamicPressRoomConfigurationForm"
         permission="cmf.ModifyPortalContent"
         />
-
+    
     <!-- OSHA NapoFilmView-->
     <browser:page
         for="*"

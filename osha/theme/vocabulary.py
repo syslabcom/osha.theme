@@ -46,4 +46,33 @@ class PressContactVocabulary(object):
 
 PressContactVocabulary = PressContactVocabulary()
 
+from Products.Archetypes.interfaces._vocabulary import IVocabulary
+from Products.Archetypes.atapi import DisplayList
 
+class AnnotatableLinkListVocabulary(object):
+    """Vocabulary factory returning Section names for the AnnotatableLinkList Mechanism in the Document
+    """
+    implements(IVocabulary)
+
+    def getDisplayList(self, context=None):
+        """ """
+        site = getSite()
+        # perhaps check context for some settings, otherwise return a default
+        return DisplayList([("simple1", "SimpleDesc1"), ("simple2", "SimpleDesc2")])
+
+    def getVocabularyDict(self, instance=None):
+        """ """
+        pass
+
+    def isFlat(self):
+        """ returns true if the underlying vocabulary is flat, otherwise
+            if its hierachical (tree-like) it returns false.
+        """
+        pass
+
+    def showLeafsOnly(self):
+        """ returns true for flat vocabularies. In hierachical (tree-like)
+            vocabularies it defines if only leafs should be displayed, or
+            knots and leafs.
+        """
+        pass
