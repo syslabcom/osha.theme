@@ -1,0 +1,17 @@
+<dl class="portlet portletDocumentFallback"
+    i18n:domain="osha"
+    tal:repeat="section view/link_sections">
+     <dt class="portletHeader">
+          <span class="portletTopLeft"></span>
+          <span class="tile" tal:content="section">
+               Link Section 1
+          </span>
+          <span class="portletTopRight"></span>
+     </dt>
+     <dd class="portletItem" 
+      	 tal:repeat="link python:view.get_links_by_section(section)">
+         <a href="http://url" tal:attributes="href link/url; 
+                                              title link/title"
+		              tal:content="link/linktext">Link Title</a>
+     </dd>
+</dl>

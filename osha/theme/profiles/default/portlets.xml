@@ -41,6 +41,13 @@
       description="Monthly review of strategic news." />  
 
   <portlet
+      addview="osha.NetworkMemberLinks"
+      title="Network Member Links"
+      description="Additional categorised links with a special layout for a
+      particular country page." />  
+
+
+  <portlet
       addview="osha.SEPAbout"
       title="Single Entry Point - About"
       description="Lists all static documents within the about folder of a single entry point." />  
