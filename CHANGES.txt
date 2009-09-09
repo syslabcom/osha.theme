@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-osha.theme 1.2.19 (unreleased)
+osha.theme 1.2.19 (2009-09-09)
 ------------------------------
 
 - replaced several occurrences of parent-fieldname-image ids through classes (pilz)
