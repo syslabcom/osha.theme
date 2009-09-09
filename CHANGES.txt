@@ -7,6 +7,7 @@ osha.theme 1.2.19 (unreleased)
 - replaced several occurrences of parent-fieldname-image ids through classes (pilz)
 - added a vocabulary for testing the annotatablelinklist feature (pilz)
 - bugfix in the ess_template (thomasw)
+- added compatibility with portlet, minor style changes (pilz)
 
 osha.theme 1.2.18 (2009-09-01)
 ------------------------------

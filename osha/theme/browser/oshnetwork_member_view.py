@@ -16,6 +16,7 @@ class OSHNetworkMemberView(BrowserView):
         self.context = context
         self.request = request
         self.result = []
+        self.request.set('disable_border', True)
 
     def getLocalizedPath(self, path):
         """ A method to prefix a path with the currently selected language

@@ -1,18 +1,19 @@
-<dl class="portlet portletDocumentFallback"
+<dl class="portlet portletAnnotatedLinkLists"
     i18n:domain="osha"
-    tal:repeat="section view/link_sections/keys">
+    tal:repeat="section view/link_sections/items">
     <dt class="portletHeader" 
-        tal:condition="python:view.get_links_by_section(section)">
+        tal:condition="python:view.get_links_by_section(section[0])">
           <span class="portletTopLeft"></span>
-          <span class="tile" tal:content="python:view.link_sections.getValue(section)">
+          <span class="tile" tal:content="python:section[1]">
                Link Section 1
           </span>
           <span class="portletTopRight"></span>
      </dt>
      <dd class="portletItem" 
-      	 tal:repeat="link python:view.get_links_by_section(section)">
-         <a href="http://url" tal:attributes="href link/url; 
-                                              title link/title"
-		              tal:content="link/linktext">Link Title</a>
+         tal:repeat="link python:view.get_links_by_section(section[0])">
+         <a href="http://url" 
+            tal:attributes="href link/url; 
+                            title link/title"
+            tal:content="link/linktext">Link Title</a>
      </dd>
 </dl>
