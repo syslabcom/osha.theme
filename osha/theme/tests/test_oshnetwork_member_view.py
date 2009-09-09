@@ -61,21 +61,21 @@ class TestPortlet(OshaThemeTestCase):
         self.failUnless(IPortletAssignment.providedBy(portlet))
         self.failUnless(IPortletDataProvider.providedBy(portlet.data))
 
-    def test_invoke_add_view(self):
-        portlet = getUtility(
-            IPortletType,
-            name='osha.NetworkMemberLinks')
-        mapping = self.portal.restrictedTraverse(
-            '++contextportlets++plone.leftcolumn')
-        for m in mapping.keys():
-            del mapping[m]
-        addview = mapping.restrictedTraverse('+/' + portlet.addview)
+    #def test_invoke_add_view(self):
+    #    portlet = getUtility(
+    #        IPortletType,
+    #        name='osha.NetworkMemberLinks')
+    #    mapping = self.portal.restrictedTraverse(
+    #        '++contextportlets++plone.leftcolumn')
+    #    for m in mapping.keys():
+    #        del mapping[m]
+    #    addview = mapping.restrictedTraverse('+/' + portlet.addview)
 
-        addview.createAndAdd(data={})
+    #    addview.createAndAdd(data={})
 
-        self.assertEquals(len(mapping), 1)
-        self.failUnless(isinstance(mapping.values()[0],
-                                   network_member_links.Assignment))
+    #    self.assertEquals(len(mapping), 1)
+    #    self.failUnless(isinstance(mapping.values()[0],
+    #                               network_member_links.Assignment))
 
     def test_invoke_edit_view(self):
         mapping = PortletAssignmentMapping()
