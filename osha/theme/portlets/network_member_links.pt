@@ -1,4 +1,4 @@
-<dl class="portlet portletAnnotatedLinkLists"
+<dl id="network-member-links" class="portlet portletDocumentFallback"
     i18n:domain="osha"
     tal:repeat="section view/link_sections/items">
     <dt class="portletHeader" 

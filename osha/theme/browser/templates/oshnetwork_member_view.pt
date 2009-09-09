@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="osha-subsites">
+      i18n:domain="osha">
 <body>
 
 <metal:main fill-slot="main">
@@ -55,9 +55,8 @@
             show related items if they exist
         </div>
 
-        <table class="listing"
-               i18n:attributes="summary heading_agencys_resources"
-               style="width:100%">
+        <table id="agency-resources-box"
+               i18n:attributes="summary heading_agencys_resources">
             <thead>
             <tr>
                 <th colspan="2"
@@ -66,7 +65,7 @@
             </thead>
             <tbody>
             <tr>
-                <td style="width:50%">
+                <td>
                     <a href="/en/publications"
                        tal:attributes="href
                            python:view.getLocalizedPath('publications')"
@@ -78,7 +77,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="width:50%">
+                <td>
                     <a href="/en/good_practice/index_ralink"
                        tal:attributes="href
                            python:view.getLocalizedPath('good_practice/index_ralink')"
@@ -92,7 +91,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="width:50%">
+                <td>
                     <a href="/en/good_practice/index_oshlink aggroviewer"
                        tal:attributes="href
                            python:view.getLocalizedPath('good_practice/index_oshlink')"
@@ -107,7 +106,6 @@
             </tr>
             </tbody>
         </table>
-        <!-- <div tal:content="view/getNews"></div> -->
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>

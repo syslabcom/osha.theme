@@ -59,4 +59,66 @@
 }
 
 
+/*
+** oshnetwork member view specific styles
+*/
 
+#oshnetwork_editors_box {
+    font-size: 1.5em;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #C5CBD8;
+}
+
+#oshnetwork_editors_box ul {
+    margin: 0px;
+    line-height: normal;
+}
+
+#oshnetwork_editors_box li {
+    border-width: 1px;
+    border-style: solid;
+    border-color: #C5CBD8;
+    display: inline;
+    padding:0 1em;
+}
+
+#content #oshnetwork_editors_box li a {
+    padding: 0 1em;
+}
+
+#agency-resources-box {
+    width: 100%;
+    border-bottom:1px solid #AAB1C5;
+    border-collapse:collapse;
+    border-left:1px solid #AAB1C5;
+    font-size:95%;
+    margin:1em 0;
+}
+
+#agency-resources-box th {
+    background:#C5CBD8 none repeat scroll 0 0;
+    border-bottom:1px solid #AAB1C5;
+    border-right:1px solid #AAB1C5;
+    border-top:1px solid #AAB1C5;
+    padding:0.25em 0.5em;
+    text-transform:none;
+}
+
+#agency-resources-box td {
+    width: 50%;
+    border-right:1px solid #AAB1C5;
+    padding:0.25em 0.5em;
+}
+
+#agency-resources-box a {
+    text-decoration:none;
+}
+
+#agency-resources-box a:hover {
+    text-decoration:underline;
+}
+
+#network-member-links .portletHeader {
+    text-align: center;
+}
