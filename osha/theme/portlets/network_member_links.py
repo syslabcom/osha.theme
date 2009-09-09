@@ -13,6 +13,8 @@ from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.app.portlets.portlets import base
 
+from osha.theme.vocabulary import AnnotatableLinkListVocabulary
+
 class IOSHNetworkMemberLinksPortlet(IPortletDataProvider):
     pass
 
@@ -31,15 +33,7 @@ class Assignment(base.Assignment):
 class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('network_member_links.pt')
-    links = [
-             {'url': 'http://test', 'section': 'simple1', 
-              'linktext': 'link text1', 'title': 'title1'},
-             {'url': 'http://test', 'section': 'simple2', 
-              'linktext': 'link text2', 'title': 'title2'},
-             {'url': 'http://test', 'section': 'simple2', 
-              'linktext': 'link text3', 'title': 'title3'},
-             ]
-    link_sections = set([i["section"] for i in links])
+    link_sections = AnnotatableLinkListVocabulary().getDisplayList()
 
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
@@ -51,7 +45,8 @@ class Renderer(base.Renderer):
 
     @memoize
     def get_links_by_section(self, section):
-        return [i for i in self.links if i["section"] == section]
+        links = self.context.annotatedlinklist
+        return [i for i in links if i["section"] == section]
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)

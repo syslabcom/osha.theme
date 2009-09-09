@@ -1,9 +1,10 @@
 <dl class="portlet portletDocumentFallback"
     i18n:domain="osha"
-    tal:repeat="section view/link_sections">
-     <dt class="portletHeader">
+    tal:repeat="section view/link_sections/keys">
+    <dt class="portletHeader" 
+        tal:condition="python:view.get_links_by_section(section)">
           <span class="portletTopLeft"></span>
-          <span class="tile" tal:content="section">
+          <span class="tile" tal:content="python:view.link_sections.getValue(section)">
                Link Section 1
           </span>
           <span class="portletTopRight"></span>
