@@ -63,30 +63,6 @@
 ** oshnetwork member view specific styles
 */
 
-#oshnetwork_editors_box {
-    font-size: 1.5em;
-    border-width: 0px 0px 1px 0px;
-    border-style: solid;
-    border-color: #C5CBD8;
-}
-
-#oshnetwork_editors_box ul {
-    margin: 0px;
-    line-height: normal;
-}
-
-#oshnetwork_editors_box li {
-    border-width: 1px;
-    border-style: solid;
-    border-color: #C5CBD8;
-    display: inline;
-    padding:0 1em;
-}
-
-#content #oshnetwork_editors_box li a {
-    padding: 0 1em;
-}
-
 #agency-resources-box {
     width: 100%;
     border-bottom:1px solid #AAB1C5;
