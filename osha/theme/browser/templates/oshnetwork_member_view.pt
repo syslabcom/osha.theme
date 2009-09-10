@@ -12,15 +12,16 @@
            tal:define="kssClassesView context/@@kss_field_decorator_view;
                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                        templateId template/getId;
-                       text here/getText;">
+                       text here/getText;
+                       isEditor python:member.has_permission('Modify portal content', here);">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
-        <div id="oshnetwork_editors_box">
+        <div id="oshnetwork_editors_box" tal:condition="isEditor">
             <ul>
-                <li><a tal:attributes="href string:${here/absolute_url}/edit">Edit this page</a></li>
-                <li><a tal:attributes="href string:${here/absolute_url}/news/folder_contents">Manage News</a></li>
-                <li><a tal:attributes="href string:${here/absolute_url}/events/folder_contents">Manage Events</a></li>
+                <li><a tal:attributes="href string:${container/absolute_url}/edit">Edit this page</a></li>
+                <li><a tal:attributes="href string:${container/absolute_url}/../news/folder_contents">Manage News</a></li>
+                <li><a tal:attributes="href string:${container/absolute_url}/../events/folder_contents">Manage Events</a></li>
             </ul>
         </div>
 
