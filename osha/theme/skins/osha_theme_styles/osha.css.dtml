@@ -59,42 +59,4 @@
 }
 
 
-/*
-** oshnetwork member view specific styles
-*/
 
-#agency-resources-box {
-    width: 100%;
-    border-bottom:1px solid #AAB1C5;
-    border-collapse:collapse;
-    border-left:1px solid #AAB1C5;
-    font-size:95%;
-    margin:1em 0;
-}
-
-#agency-resources-box th {
-    background:#C5CBD8 none repeat scroll 0 0;
-    border-bottom:1px solid #AAB1C5;
-    border-right:1px solid #AAB1C5;
-    border-top:1px solid #AAB1C5;
-    padding:0.25em 0.5em;
-    text-transform:none;
-}
-
-#agency-resources-box td {
-    width: 50%;
-    border-right:1px solid #AAB1C5;
-    padding:0.25em 0.5em;
-}
-
-#agency-resources-box a {
-    text-decoration:none;
-}
-
-#agency-resources-box a:hover {
-    text-decoration:underline;
-}
-
-#network-member-links .portletHeader {
-    text-align: center;
-}
