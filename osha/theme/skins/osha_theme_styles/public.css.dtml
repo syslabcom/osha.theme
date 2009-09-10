@@ -995,6 +995,9 @@ div.managedPortlet.portlet {
     float:left;
     padding: 0 1em;
 }
+#network-member-links .portletItem {
+    border-top: none;
+}
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 
