@@ -64,7 +64,7 @@
     <dc:rights>European Agency for Safety and Health at Work</dc:rights>
     <tal:block tal:repeat="item obj_item/Subject" tal:omit-tag=""><dc:subject tal:content="item" i18n:domain="osha" i18n:translate="">Item</dc:subject></tal:block>
     <tal:block define="effective obj_item/effective;
-                 itemdate python:(effective not in (None,'') and effective.year() > 1900) and effective or object_item.modified()"
+                 itemdate python:(effective not in (None,'') and effective.year() > 1900) and effective or obj_item.modified()"
        ><dc:date tal:content="python:itemdate.HTML4()">Effective date</dc:date></tal:block>
     <dc:type tal:content="obj_item/Type">Type</dc:type>
   </item>
