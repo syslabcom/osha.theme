@@ -5,6 +5,7 @@ osha.theme unreleased
 ---------------------
 
 - now really fixed bug in rss_template (thomasw)
+- code refactoring to allow for testing it alone (gerken)
 
 osha.theme 1.2.19 (2009-09-09)
 ------------------------------
