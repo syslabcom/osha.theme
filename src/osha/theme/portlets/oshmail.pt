@@ -1,0 +1,28 @@
+<dl class="portlet portletFreeNewsletter"
+    i18n:domain="osha">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              i18n:translate="Free Newsletter">
+            Free Newsletter
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+        <span class="image-right">
+            <img src="http://osha.europa.eu/portlet_newsletter_icon.png" alt="OSHMail Logo" title="OSHMail Logo"/>
+        </span>
+        <a rel="nofollow" href="http://osha.europa.eu/en/news/oshmail/?sourceid=oshmailbanner"> 
+            <span tal:omit-tag="" i18n:translate="portlet_oshmail_text">Monthly review of strategic news</span>
+        </a>
+    </dd>
+
+    <dd class="portletFooter">
+        <strong id="numoshmailsubscribers" tal:content="view/num_subscribers">1711</strong> 
+        <span i18n:translate="box_oshmail_subscribers"
+              tal:omit-tag="">subscribers</span>
+    </dd>
+
+</dl>

@@ -21,7 +21,7 @@ long_description = (
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
-    read('osha', 'theme', 'README.txt')
+    read('src', 'osha', 'theme', 'README.txt')
     + '\n' +
     'Contributors\n'
     '************\n'
@@ -49,7 +49,8 @@ setup(name='osha.theme',
       author_email='denis@webcouturier.com',
       url='http://www.webcouturier.com',
       license='GPL',
-      packages=find_packages(exclude=['ez_setup']),
+      packages = ['osha', 'osha/theme'],
+      package_dir = {'' : 'src'},
       namespace_packages=['osha'],
       include_package_data=True,
       zip_safe=False,
