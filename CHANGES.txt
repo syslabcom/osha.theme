@@ -6,6 +6,7 @@ osha.theme unreleased
 
 - now really fixed bug in rss_template (thomasw)
 - code refactoring to allow for testing it alone (gerken)
+- added url based caching for navigation portlet - experimental (pilz)
 
 osha.theme 1.2.19 (2009-09-09)
 ------------------------------

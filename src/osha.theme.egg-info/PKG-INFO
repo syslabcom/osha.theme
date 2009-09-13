@@ -27,12 +27,18 @@ Description: .. contents::
         osha.theme Changelog
         ====================
         
+        osha.theme unreleased
+        ---------------------
+        
+        - now really fixed bug in rss_template (thomasw)
+        - code refactoring to allow for testing it alone (gerken)
+        
         osha.theme 1.2.19 (2009-09-09)
         ------------------------------
         
         - replaced several occurrences of parent-fieldname-image ids through classes (pilz)
         - added a vocabulary for testing the annotatablelinklist feature (pilz)
-        - bugfix in the ess_template (thomasw)
+        - bugfix in the rss_template (thomasw)
         - added compatibility with portlet, minor style changes (pilz)
         
         osha.theme 1.2.18 (2009-09-01)
