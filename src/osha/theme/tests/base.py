@@ -24,9 +24,13 @@ class OshaThemeLayer(SiteLayer):
         ztc.installProduct('LinguaPlone')
         ztc.installProduct('SimpleAttachment')
         ztc.installProduct('RichDocument')
-
         ztc.installProduct('PlacelessTranslationService')
-        setupPloneSite(products=['osha.theme', 'SimpleAttachment', 'RichDocument', 'LinguaPlone'])
+
+        setupPloneSite(products=[
+                                'osha.theme',
+                                'SimpleAttachment',
+                                'RichDocument',
+                                'LinguaPlone'])
         import Products.PlacelessTranslationService
         import osha.theme
         zcml.load_config('configure.zcml', Products.PlacelessTranslationService)
@@ -52,6 +56,3 @@ class OshaThemeFunctionalTestCase(FunctionalTestCase):
         data = StringIO(open(filename, 'r').read())
         data.filename = os.path.basename(rel_filename)
         return data
-
-
-

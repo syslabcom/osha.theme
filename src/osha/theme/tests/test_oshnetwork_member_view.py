@@ -98,48 +98,9 @@ class TestPortlet(OshaThemeTestCase):
             (context, request, view, manager, assignment), IPortletRenderer)
         self.failUnless(isinstance(renderer, network_member_links.Renderer))
 
-
-class TestRenderer(OshaThemeTestCase):
-
-    def afterSetUp(self):
-        self.setRoles(('Manager', ))
-
-    def renderer(self, context=None, request=None, view=None, manager=None,
-                 assignment=None):
-        context = context or self.folder
-        request = request or self.folder.REQUEST
-        view = view or self.folder.restrictedTraverse('@@plone')
-        manager = manager or getUtility(
-            IPortletManager, name='plone.rightcolumn', context=self.portal)
-
-        assignment = assignment or network_member_links.Assignment()
-        return getMultiAdapter((context, request, view, manager, assignment),
-                               IPortletRenderer)
-
-    def populateSite(self):
-        """ Populate the test site with some content. """
-
-        self.portal.invokeFactory("Folder", "en")
-        self.portal.en.invokeFactory("Folder", "belgium")
-        self.portal.en.belgium.invokeFactory("Document", "index_html")
-        ltool = self.portal.portal_languages
-        ltool.addSupportedLanguage('nl')
-
-    def test_render(self):
-        self.populateSite()
-
-        # Test the rendered portlet
-        render_portlet = self.renderer(context=self.portal.en.belgium.index_html,
-                          assignment=network_member_links.Assignment())
-        render_portlet = render_portlet.__of__(self.folder)
-        render_portlet.update()
-
-        # TODO: actually test it :)
-
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
     suite.addTest(makeSuite(TestView))
     suite.addTest(makeSuite(TestPortlet))
-    suite.addTest(makeSuite(TestRenderer))
     return suite

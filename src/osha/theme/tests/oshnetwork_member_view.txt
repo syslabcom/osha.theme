@@ -20,16 +20,52 @@ Add a 'layout' property to render the oshnetwork-member-view
     >>> bel = self.portal.en.belgium.index_html
     >>> bel._setProperty('layout', 'oshnetwork-member-view')
 
+
+Login using the browser
     >>> from Products.PloneTestCase.setup import portal_owner, default_password
     >>> browser.open(portal_url)
-
-We have the login portlet, so let's use that.
-
     >>> browser.getControl(name='__ac_name').value = portal_owner
     >>> browser.getControl(name='__ac_password').value = default_password
     >>> browser.getControl(name='submit').click()
 
-    >>> browser.open(portal_url+"/en/belgium/index_html/@@oshnetwork-member-view")
+Open the page and verify that the correct view is being rendered
+    >>> browser.open(portal_url+"/en/belgium")
     >>> rendered_page = browser.contents
     >>> "Agency's resources" in rendered_page
     True
+
+Change the subtype of the Document to activate the annotatedlinks
+Unfortunately, without changing the subtype we can't test that the annotatedlinks are working correctly. 
+    >>> #browser.open(portal_url+"/en/belgium/index_html/@@subtyper/change_type?subtype=annotatedlinks")
+
+When the above is attempted it produces the following error:
+
+#File "/home/cillian/Syslab/OSHA/src/osha.theme/src/osha/theme/tests/oshnetwork_member_view.txt", line 39, in oshnetwork_member_view.txt
+#Failed example:
+#    browser.open(portal_url+"/en/belgium/index_html/@@subtyper/change_type?subtype=annotatedlinks")
+#Exception raised:
+#    Traceback (most recent call last):
+#      File "/home/cillian/Syslab/OSHA/eggs/zope.testing-3.0-py2.4.egg/zope/testing/doctest.py", line 1348, in __run
+#        compileflags, 1) in test.globs
+#      File "<doctest oshnetwork_member_view.txt[18]>", line 1, in ?
+#        browser.open(portal_url+"/en/belgium/index_html/@@subtyper/change_type?subtype=annotatedlinks")
+#      File "/home/cillian/Syslab/OSHA/parts/zope2/lib/python/zope/testbrowser/browser.py", line 224, in open
+#        self.mech_browser.open(url, data)
+#      File "/home/cillian/Syslab/OSHA/parts/zope2/lib/python/mechanize/_mechanize.py", line 177, in open
+#        return self._mech_open(url, data)
+#      File "/home/cillian/Syslab/OSHA/parts/zope2/lib/python/mechanize/_mechanize.py", line 219, in _mech_open
+#        raise error
+#    HTTPError: HTTP Error 500: Internal Server Error
+
+Further inspection leads to the following traceback:
+
+Module ZPublisher.Publish, line 119, in publish
+Module ZPublisher.mapply, line 88, in mapply
+Module ZPublisher.Publish, line 42, in call_object
+Module p4a.subtyper.browser, line 49, in change_type
+Module p4a.subtyper.engine, line 130, in get_named_type
+Module zope.component._api, line 207, in getUtility
+
+ComponentLookupError: (<InterfaceClass p4a.subtyper.interfaces.IContentTypeDescriptor>, 'annotatedlinks') 
+
+I have tried to install and configure osha.policy and also install the products that the osha.policy tests base.py module installs. This didn't seem to help. I also tried running the p4a.subtyper tests which also fail with a HTTP 500 error.
