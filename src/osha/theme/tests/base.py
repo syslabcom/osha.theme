@@ -12,6 +12,9 @@ from Products.PloneTestCase.PloneTestCase import FunctionalTestCase
 from Products.PloneTestCase.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.PloneTestCase import setupPloneSite
 
+from plone.browserlayer import utils as browserlayerutils
+from osha.policy.interfaces import IOSHACommentsLayer
+
 from osha.theme.config import product_globals
 
 SiteLayer = layer.PloneSite
@@ -28,6 +31,7 @@ class OshaThemeLayer(SiteLayer):
         ztc.installProduct('SimpleAttachment')
         ztc.installProduct('RichDocument')
         ztc.installProduct('PlacelessTranslationService')
+        ztc.installPackage('osha.policy')
         setupPloneSite(products=[
                                 'CMFLinkChecker',
                                 'LinguaPlone',
@@ -62,6 +66,9 @@ class OshaThemeLayer(SiteLayer):
         ztc.installPackage('osha.theme')
         ztc.installPackage('osha.policy')
         ztc.installPackage('p4a.subtyper')
+        # register the Browserlayer from osha.policy, so that our schema-extensions
+        # using IBrowserLayerAwareExtender work
+        browserlayerutils.register_layer(IOSHACommentsLayer, 'osha.policy')
         SiteLayer.setUp()
 
 class OshaThemeTestCase(PloneTestCase):
