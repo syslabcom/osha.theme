@@ -986,7 +986,8 @@ div.managedPortlet.portlet {
 ** oshnetwork member view specific styles
 */
 
-body.template-oshnetwork-member-view .managePortletsLink {
+body.template-oshnetwork-member-view .managePortletsLink,
+body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
     display: None;
 }
 
