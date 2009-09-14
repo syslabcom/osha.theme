@@ -1,43 +1,67 @@
-import os
-from Products.Five import zcml
-from Products.Five import fiveconfigure
-from Testing import ZopeTestCase as ztc
 from StringIO import StringIO
-from Globals import package_home
-from osha.theme.config import product_globals
+import os
 
-# Let Zope know about the two products we require above-and-beyond a basic
-# Plone install (PloneTestCase takes care of these).
-# Import PloneTestCase - this registers more products with Zope as a side effect
-from Products.PloneTestCase.PloneTestCase import PloneTestCase
-from Products.PloneTestCase.PloneTestCase import FunctionalTestCase
-from Products.PloneTestCase.PloneTestCase import setupPloneSite
-from Products.PloneTestCase.layer import onsetup, PloneSite
+from Globals import package_home
+from Products.Five import fiveconfigure
+from Products.Five import zcml
+from Testing import ZopeTestCase as ztc
+
 from Products.PloneTestCase import layer
+from Products.PloneTestCase.layer import onsetup, PloneSite
+from Products.PloneTestCase.PloneTestCase import FunctionalTestCase
+from Products.PloneTestCase.PloneTestCase import PloneTestCase
+from Products.PloneTestCase.PloneTestCase import setupPloneSite
+
+from osha.theme.config import product_globals
 
 SiteLayer = layer.PloneSite
 
 class OshaThemeLayer(SiteLayer):
     @classmethod
     def setUp(cls):
+        """
+        The osha.theme package depends on osha.policy so the packages imported
+        by the osha.policy tests base.py are also imported and configured here.
+        """
         ztc.installProduct('PloneLanguageTool')
         ztc.installProduct('LinguaPlone')
         ztc.installProduct('SimpleAttachment')
         ztc.installProduct('RichDocument')
         ztc.installProduct('PlacelessTranslationService')
-
         setupPloneSite(products=[
+                                'CMFLinkChecker',
+                                'LinguaPlone',
+                                'osha.policy',
                                 'osha.theme',
-                                'SimpleAttachment',
+                                'p4a.subtyper',
                                 'RichDocument',
-                                'LinguaPlone'])
+                                'SimpleAttachment',
+                                ])
         import Products.PlacelessTranslationService
         import osha.theme
+        import osha.policy
+        import p4a.subtyper
+
+        # osha.policy related products:
+        ztc.installPackage('osha.legislation')
+        ztc.installPackage('slc.alertservice')
+        ztc.installPackage('slc.seminarportal')
+        ztc.installProduct('ATCountryWidget')
+        ztc.installProduct('ATVocabularyManager')
+        ztc.installProduct('LinguaPlone')
+        ztc.installProduct('ProxyIndex')
+        ztc.installProduct('Relations')
+        ztc.installProduct('TextIndexNG3')
+
         zcml.load_config('configure.zcml', Products.PlacelessTranslationService)
         zcml.load_config('configure.zcml', osha.theme)
+        zcml.load_config('configure.zcml', osha.policy)
+        zcml.load_config('configure.zcml', p4a.subtyper)
         fiveconfigure.debug_mode = False
         ztc.installPackage('Products.PlacelessTranslationService', quiet=True)
         ztc.installPackage('osha.theme')
+        ztc.installPackage('osha.policy')
+        ztc.installPackage('p4a.subtyper')
         SiteLayer.setUp()
 
 class OshaThemeTestCase(PloneTestCase):
