@@ -3,6 +3,7 @@ from DateTime import DateTime
 from zope.interface import implements
 from zope.i18nmessageid import MessageFactory
 from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 from osha.theme.browser.interfaces import IOSHNetworkMemberView
@@ -12,11 +13,17 @@ _ = MessageFactory('osha.theme')
 class OSHNetworkMemberView(BrowserView):
     implements(IOSHNetworkMemberView)
 
+    template = ViewPageTemplateFile("templates/oshnetwork_member_view.pt")
+    template.id = "oshnetwork-member-view"
+
     def __init__(self, context, request):
         self.context = context
         self.request = request
         self.result = []
         self.request.set('disable_border', True)
+
+    def __call__(self):
+        return self.template()
 
     def getLocalizedPath(self, path):
         """ A method to prefix a path with the currently selected language

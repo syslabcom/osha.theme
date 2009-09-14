@@ -986,6 +986,10 @@ div.managedPortlet.portlet {
 ** oshnetwork member view specific styles
 */
 
+body.template-oshnetwork-member-view .managePortletsLink {
+    display: None;
+}
+
 #oshnetwork_editors_box {
     background: lightgray;
     border: 1px solid gray;
