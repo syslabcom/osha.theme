@@ -1,2 +1,0 @@
-osha
-osha/theme
