@@ -91,7 +91,7 @@ setup(name='osha.theme',
           'Products.LinguaPlone',
           'collective.captcha',
           'collective.lead',
-          'slc.xliff'
+          'slc.xliff',
           # -*- Extra requirements: -*-
       ],
       tests_require=tests_require,
