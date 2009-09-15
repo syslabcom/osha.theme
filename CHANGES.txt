@@ -1,8 +1,15 @@
 osha.theme Changelog
 ====================
 
-osha.theme unreleased
----------------------
+osha.theme 1.2.21 (2009-09-15)
+------------------------------
+- don't display PDF icons in the publications language box (slc.publications) (thomasw)
+- network members: Making sure the portlet handles the case when there is no 
+  annotatedlinklist or it is empty. (deroiste)
+- Network members: Adding the National Flag to the view template (deroiste)
+
+osha.theme 1.2.20 (2009-09-13)
+------------------------------
 
 - now really fixed bug in rss_template (thomasw)
 - code refactoring to allow for testing it alone (gerken)
