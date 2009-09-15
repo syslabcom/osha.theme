@@ -33,6 +33,7 @@ class OshaThemeLayer(SiteLayer):
         ztc.installProduct('PlacelessTranslationService')
         ztc.installPackage('osha.policy')
         setupPloneSite(products=[
+                                'slc.shoppinglist',
                                 'CMFLinkChecker',
                                 'LinguaPlone',
                                 'osha.policy',
@@ -45,6 +46,7 @@ class OshaThemeLayer(SiteLayer):
         import osha.theme
         import osha.policy
         import p4a.subtyper
+        import slc.shoppinglist
 
         # osha.policy related products:
         ztc.installPackage('osha.legislation')
@@ -61,10 +63,12 @@ class OshaThemeLayer(SiteLayer):
         zcml.load_config('configure.zcml', osha.theme)
         zcml.load_config('configure.zcml', osha.policy)
         zcml.load_config('configure.zcml', p4a.subtyper)
+        zcml.load_config('configure.zcml', slc.shoppinglist)
         fiveconfigure.debug_mode = False
         ztc.installPackage('Products.PlacelessTranslationService', quiet=True)
         ztc.installPackage('osha.theme')
         ztc.installPackage('osha.policy')
+        ztc.installPackage('slc.shoppinglist')
         ztc.installPackage('p4a.subtyper')
         # register the Browserlayer from osha.policy, so that our schema-extensions
         # using IBrowserLayerAwareExtender work
