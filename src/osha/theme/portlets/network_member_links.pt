@@ -1,21 +1,24 @@
-<dl id="network-member-links" class="portlet portletDocumentFallback"
-    i18n:domain="osha">
-    <span tal:repeat="section view/link_sections/items"
-          tal:omit-tag="">
-        <dt class="portletHeader" 
-            tal:condition="python:view.get_links_by_section(section[0])">
-             <span class="portletTopLeft"></span>
-             <span class="tile" tal:content="python:section[1]">
-                  Link Section 1
-             </span>
-             <span class="portletTopRight"></span>
-         </dt>
-         <dd class="portletItem" 
-             tal:repeat="link python:view.get_links_by_section(section[0])">
-             <a href="http://url" 
-                tal:attributes="href link/url; 
-                                title link/title"
-                tal:content="link/linktext">Link Title</a>
-         </dd>
-    </span>
-</dl>
+<span tal:condition="python:here.getAttribute('annotatedlinklist')"
+    tal:omit-tag="">
+    <dl id="network-member-links" class="portlet portletDocumentFallback"
+        i18n:domain="osha">
+        <span tal:repeat="section view/link_sections/items"
+            tal:omit-tag="">
+            <dt class="portletHeader" 
+                tal:condition="python:view.get_links_by_section(section[0])">
+                <span class="portletTopLeft"></span>
+                <span class="tile" tal:content="python:section[1]">
+                    Link Section 1
+                </span>
+                <span class="portletTopRight"></span>
+            </dt>
+            <dd class="portletItem" 
+                tal:repeat="link python:view.get_links_by_section(section[0])">
+                <a href="http://url" 
+                    tal:attributes="href link/url; 
+                    title link/title"
+                    tal:content="link/linktext">Link Title</a>
+            </dd>
+        </span>
+    </dl>
+</span>

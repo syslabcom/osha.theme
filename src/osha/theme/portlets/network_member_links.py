@@ -45,8 +45,9 @@ class Renderer(base.Renderer):
 
     @memoize
     def get_links_by_section(self, section):
-        links = self.context.annotatedlinklist
-        return [i for i in links if i["section"] == section]
+        links = self.context.getAttribute('annotatedlinklist')
+        if links:
+            return [i for i in links if i["section"] == section]
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
