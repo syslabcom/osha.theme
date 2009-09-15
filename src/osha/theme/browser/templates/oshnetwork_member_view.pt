@@ -41,6 +41,20 @@
 
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
+        <span tal:condition="exists:python:here.getCanonical()['national_flag.png']"
+            tal:omit-tag="">
+            <span tal:define="flag python:here.getCanonical()['national_flag.png']"
+                tal:omit-tag="">
+                <div id="network-member-flag">
+                    <img class="image-right" src="national_flag.png" 
+                        alt="National Flag" width="150" height="75"
+                        tal:condition="flag"
+                        tal:attributes="src flag/absolute_url;
+                            alt flag/Title;"/>
+                </div>
+            </span>
+        </span>
+
         <p tal:condition="python: not text and is_editable"
            i18n:domain="plone"
            i18n:translate="no_body_text"
