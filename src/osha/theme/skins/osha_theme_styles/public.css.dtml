@@ -1043,6 +1043,12 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
 #network-member-links .portletItem {
     border-top: none;
 }
+
+/* osha special for publications display */
+.publicationLanguageBox span.link-pdf-js{
+    display: none
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 
