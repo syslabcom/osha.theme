@@ -1098,6 +1098,9 @@ body.template-practical-solutions #latest-additions h1 {
    margin: 0px 0px 5px 0px; 
 }
 
+.database-emphasis {
+   text-transform: uppercase;
+}
 
 /* osha special for publications display */
 .publicationLanguageBox span.link-pdf-js{
