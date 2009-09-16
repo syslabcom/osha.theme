@@ -991,13 +991,27 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
     display: None;
 }
 
+#network-member-flag {
+  width: 178px;
+  height: 101px;
+  background-image: url(image_frame.png);
+  float:right;
+}
+
+#network-member-flag img {
+  padding-left:15px;
+  padding-top:0px;
+  border: 0;
+}
+
+
 #oshnetwork_editors_box {
     background: lightgray;
     border: 1px solid gray;
     margin-bottom:0.5em;
 }
 #oshnetwork_editors_box ul {
-    display:inline;
+	display:inline;
 }
 #oshnetwork_editors_box ul li {
     display: block;
@@ -1043,6 +1057,23 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
 #network-member-links .portletItem {
     border-top: none;
 }
+
+/*
+** Practical Solutions / Good Practise view specific styles
+*/
+
+body.template-practical-solutions .photoAlbumEntry {
+    margin: 15px 10px;
+}
+
+body.template-practical-solutions .photoAlbumEntry img {
+    border: none;
+}
+
+body.template-practical-solutions .photoAlbumEntryWrapper {
+    display: block;
+}
+
 
 /* osha special for publications display */
 .publicationLanguageBox span.link-pdf-js{
