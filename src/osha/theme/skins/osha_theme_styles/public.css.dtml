@@ -1062,16 +1062,40 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
 ** Practical Solutions / Good Practise view specific styles
 */
 
+body.template-practical-solution .photoAlbumEntry {
+  margin: 0px 10px 15px 0px;
+}
+
 body.template-practical-solutions .photoAlbumEntry {
     margin: 15px 10px;
 }
 
+body.template-practical-solution .photoAlbumEntry img ,
 body.template-practical-solutions .photoAlbumEntry img {
     border: none;
 }
 
+body.template-practical-solution .photoAlbumEntryWrapper ,
 body.template-practical-solutions .photoAlbumEntryWrapper {
     display: block;
+}
+
+body.template-practical-solution .photoAlbumEntryWrapperWrapper {
+    display:block;
+    font-size:95%;
+    height:169px;
+    margin:16px auto 0;
+    text-decoration:none;
+    width:130px;
+}
+
+body.template-practical-solutions #latest-additions {
+   background-color: #F7F7F7; 
+   padding: 15px;   
+}
+
+body.template-practical-solutions #latest-additions h1 {
+   margin: 0px 0px 5px 0px; 
 }
 
 
