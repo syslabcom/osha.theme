@@ -1092,6 +1092,7 @@ body.template-practical-solution .photoAlbumEntryWrapperWrapper {
 body.template-practical-solutions #latest-additions {
    background-color: #F7F7F7; 
    padding: 15px;   
+   display: block;
 }
 
 body.template-practical-solutions #latest-additions h1 {
