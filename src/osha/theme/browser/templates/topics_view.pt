@@ -16,25 +16,33 @@
 
     <div class="visualClear"></div>
 
-    <div id="folder-listing" 
+    <table id="folder-listing" cellspacing="20"
         tal:define="
           folders python:here.contentValues(filter={'portal_type':['Folder']});
-          left_folders  python:folders[:(len(folders)/2)];
-          right_folders python:folders[(len(folders)/2):]">
+          left_folders  python:folders[:(len(folders)/2)+1];
+          right_folders python:folders[(len(folders)/2)+1:]">
+      <tr>
 
-      <ul id="left-folders">
-        <li tal:repeat="folder left_folders">
-          <a href="" tal:attributes="href folder/absolute_url" 
-            tal:content="folder/Title" />
-        </li>
-      </ul>
-      <ul id="right-folders">
-        <li tal:repeat="folder right_folders">
-          <a href="" tal:attributes="href folder/absolute_url" 
-            tal:content="folder/Title" />
-        </li>
-      </ul>
-    </div>
+        <td>
+          <ul>
+            <li tal:repeat="folder left_folders">
+              <a href="" tal:attributes="href folder/absolute_url" 
+                tal:content="folder/Title" />
+            </li>
+          </ul>
+        </td>
+
+        <td>
+          <ul>
+            <li tal:repeat="folder right_folders">
+              <a href="" tal:attributes="href folder/absolute_url" 
+                tal:content="folder/Title" />
+            </li>
+          </ul>
+        </td>
+
+      </tr>
+    </table>
 
     <div class="visualClear"></div>
 
