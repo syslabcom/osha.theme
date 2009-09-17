@@ -513,6 +513,13 @@
 
     <browser:page
         for="*"
+        name="topics-view"
+        class=".topics_view.TopicsView"
+        permission="zope2.View"
+    />
+
+    <browser:page
+        for="*"
         name="seplisting"
         class=".seplisting.SEPListingView"
         permission="zope2.View"

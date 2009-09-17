@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+      
+<metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+
+<body>
+<div metal:fill-slot="main">    
+                
+    <h1 class="documentFirstHeading"
+     i18n:translate="heading_topics">Topics</h1>
+    <h1 tal:content="context/Title">Title</h1>
+    
+    <p tal:content="context/Description">Description</p>
+
+    <div class="visualClear"></div>
+
+    <div id="folder-listing" 
+        tal:define="
+          folders python:here.contentValues(filter={'portal_type':['Folder']});
+          left_folders  python:folders[:(len(folders)/2)];
+          right_folders python:folders[(len(folders)/2):]">
+
+      <ul id="left-folders">
+        <li tal:repeat="folder left_folders">
+          <a href="" tal:attributes="href folder/absolute_url" 
+            tal:content="folder/Title" />
+        </li>
+      </ul>
+      <ul id="right-folders">
+        <li tal:repeat="folder right_folders">
+          <a href="" tal:attributes="href folder/absolute_url" 
+            tal:content="folder/Title" />
+        </li>
+      </ul>
+    </div>
+
+    <div class="visualClear"></div>
+
+</div>
+</body>
+</html>

@@ -1103,6 +1103,28 @@ body.template-practical-solutions #latest-additions h1 {
    text-transform: uppercase;
 }
 
+/*
+** Topics section specific styles
+*/
+
+body.template-topics-view #folder-listing {
+    width: 100%;
+    display: table;
+    height: 100%;
+}
+
+body.template-topics-view #folder-listing ul {
+    width: 40%;
+    float: left;
+    list-style-position: inside;
+    list-style-type: disc;
+    margin: 1em;
+    display: table;
+    height: 100%;
+    padding: 1em;
+    border: 1px solid #C5CBD8;
+}
+
 /* osha special for publications display */
 .publicationLanguageBox span.link-pdf-js{
     display: none
