@@ -147,9 +147,9 @@ Now we test the Publisher and Hider Function which work antagonistic to each oth
 First we check the Status after getting a handle on portal_workflow
     >>> pw = self.portal.portal_workflow
     >>> pw.getInfoFor(folder,'review_state')
-    'private'
+    'visible'
     >>> pw.getInfoFor(folder_da,'review_state')
-    'private'
+    'visible'
 
 then we call the publisher function
 
