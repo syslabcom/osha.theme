@@ -34,6 +34,7 @@ class TestView(OshaThemeTestCase):
         self.populateSite()
 
         view = self.portal.en.belgium.index_html.restrictedTraverse("@@oshnetwork-member-view")
+        view.context.setLanguage('en')
         localized_path = view.getLocalizedPath("asdf")
         self.assertEquals(localized_path,
                           "/en/asdf")
