@@ -36,6 +36,7 @@ class OshaThemeLayer(SiteLayer):
                                 'slc.shoppinglist',
                                 'CMFLinkChecker',
                                 'LinguaPlone',
+                                'slc.linguatools',
                                 'osha.policy',
                                 'osha.theme',
                                 'p4a.subtyper',
@@ -47,11 +48,13 @@ class OshaThemeLayer(SiteLayer):
         import osha.policy
         import p4a.subtyper
         import slc.shoppinglist
+        import slc.linguatools
 
         # osha.policy related products:
         ztc.installPackage('osha.legislation')
-        ztc.installPackage('slc.alertservice')
         ztc.installPackage('slc.seminarportal')
+        ztc.installPackage('slc.alertservice')
+        ztc.installPackage('slc.linguatools')
         ztc.installProduct('ATCountryWidget')
         ztc.installProduct('ATVocabularyManager')
         ztc.installProduct('LinguaPlone')
@@ -64,6 +67,7 @@ class OshaThemeLayer(SiteLayer):
         zcml.load_config('configure.zcml', osha.policy)
         zcml.load_config('configure.zcml', p4a.subtyper)
         zcml.load_config('configure.zcml', slc.shoppinglist)
+        zcml.load_config('configure.zcml', slc.linguatools)
         fiveconfigure.debug_mode = False
         ztc.installPackage('Products.PlacelessTranslationService', quiet=True)
         ztc.installPackage('osha.theme')
