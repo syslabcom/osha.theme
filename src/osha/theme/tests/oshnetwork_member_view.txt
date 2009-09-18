@@ -23,8 +23,7 @@ Login using the browser
     >>> browser.getControl(name='submit').click()
 
 Add a 'layout' property to render the oshnetwork-member-view
-
-    >>> belgium = self.portal.en.oshnetwork.belgium.index_html
+    >>> belgium = self.portal.en.belgium.index_html
     >>> belgium._setProperty('layout', 'oshnetwork-member-view')
 
 Open the page and verify that the correct view is being rendered
