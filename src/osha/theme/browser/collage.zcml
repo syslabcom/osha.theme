@@ -77,7 +77,6 @@
 
   <!-- File (ATBlob) -->
   <browser:page
-     zcml:condition="installed plone.app.blob"
      name="file"
      for="plone.app.blob.content.ATBlob"
      permission="zope.Public"
