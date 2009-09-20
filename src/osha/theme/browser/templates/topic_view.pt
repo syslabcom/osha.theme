@@ -8,9 +8,6 @@
   <body>
     <div metal:fill-slot="main">    
       
-      <h1 class="documentFirstHeading"
-	  i18n:translate="heading_topics">Topics</h1>
-      
       <div class="visualClear"></div>
 
       <script type="text/javascript">

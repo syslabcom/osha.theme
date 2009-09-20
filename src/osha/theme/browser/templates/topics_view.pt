@@ -38,7 +38,8 @@
             <td>
               <ul>
 		<li tal:repeat="folder right_folders">
-                  <a href="" tal:attributes="href folder/absolute_url" 
+                  <a href="" 
+                     tal:attributes="href string:${folder/absolute_url}/topic-view"
                      tal:content="folder/Title" />
 		</li>
               </ul>

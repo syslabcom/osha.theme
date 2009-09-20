@@ -1125,6 +1125,16 @@ body.template-topics-view #folder-listing ul {
     padding: 1em;
 }
 
+body.template-topics-view .navTreeLevel1, 
+body.template-topic-view .navTreeLevel3,
+body.template-topic-view .navTreeLevel2 .navTreeItem {
+    display: none;
+}
+
+body.template-topic-view .navTreeLevel2 .navTreeCurrentNode {
+    display: block;
+}
+
 /* Topic page view */
 body.template-topic-view #topic-view-heading-box {
     background-color: #F7F8F9;
