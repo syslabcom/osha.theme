@@ -11,4 +11,12 @@ class TopicsView(BrowserView):
     def __call__(self):
         return self.template() 
         
+class TopicView(BrowserView):
+    """ View class for /topics/topic 
+    """
+    template = ViewPageTemplateFile('templates/topic_view.pt')
+    template.id = "topic-view"    
+
+    def __call__(self):
+        return self.template() 
 

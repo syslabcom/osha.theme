@@ -2,50 +2,54 @@
       lang="en-US"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
+  
+  <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+
+  <body>
+    <div metal:fill-slot="main">    
       
-<metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+      <h1 class="documentFirstHeading"
+	  i18n:translate="heading_topics">Topics</h1>
+      <h1 tal:content="context/Title">Title</h1>
+      
+      <p tal:content="context/Description">Description</p>
 
-<body>
-<div metal:fill-slot="main">    
-                
-    <h1 class="documentFirstHeading"
-     i18n:translate="heading_topics">Topics</h1>
-    <h1 tal:content="context/Title">Title</h1>
-    
-    <p tal:content="context/Description">Description</p>
+      <div class="visualClear"></div>
 
-    <div class="visualClear"></div>
+      <tal:folders define="
+			   folders python:here.contentValues(filter={'portal_type':['Folder']});
+			   left_folders  python:folders[:(len(folders)/2)+1];
+			   right_folders python:folders[(len(folders)/2)+1:]">
 
-    <table id="folder-listing" cellspacing="20"
-        tal:define="
-          folders python:here.contentValues(filter={'portal_type':['Folder']});
-          left_folders  python:folders[:(len(folders)/2)+1];
-          right_folders python:folders[(len(folders)/2)+1:]">
-      <tr>
+	<table id="folder-listing" cellspacing="20"
+               tal:condition="folders">
+          <tr>
 
-        <td>
-          <ul>
-            <li tal:repeat="folder left_folders">
-              <a href="" tal:attributes="href folder/absolute_url" 
-                tal:content="folder/Title" />
-            </li>
-          </ul>
-        </td>
+            <td>
+              <ul>
+		<li tal:repeat="folder left_folders">
+                  <a href="" 
+                     tal:attributes="href string:${folder/absolute_url}/topic-view"
+                     tal:content="folder/Title" />
+		</li>
+              </ul>
+            </td>
 
-        <td>
-          <ul>
-            <li tal:repeat="folder right_folders">
-              <a href="" tal:attributes="href folder/absolute_url" 
-                tal:content="folder/Title" />
-            </li>
-          </ul>
-        </td>
+            <td>
+              <ul>
+		<li tal:repeat="folder right_folders">
+                  <a href="" tal:attributes="href folder/absolute_url" 
+                     tal:content="folder/Title" />
+		</li>
+              </ul>
+            </td>
 
-      </tr>
-    </table>
+          </tr>
+	</table>
 
-    <div class="visualClear"></div>
+	<div class="visualClear"></div>
+      </tal:folders> 
 
-</div>
-</body>
+    </div>
+  </body>
 </html>

@@ -1125,6 +1125,49 @@ body.template-topics-view #folder-listing ul {
     padding: 1em;
 }
 
+/* Topic page view */
+body.template-topic-view #topic-view-heading-box {
+    background-color: #F7F8F9;
+    border: 1px solid #C5CBD8;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#topic-heading-text {
+    margin:1em;
+}
+
+#topic-view-slideshow {
+    position:relative;
+    height:132px;
+    width:210px;
+    margin:10px;
+    float:left;
+    overflow:hidden;
+}
+
+#topic-view-slideshow img {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+    opacity:0.0;
+    display: block;
+}
+
+#topic-view-slideshow img.active {
+    z-index:10;
+    opacity:1.0;
+}
+
+#topic-view-slideshow IMG.last-active {
+    z-index:9;
+}
+
+#topic-view-slideshow img.inactive {
+  display: none;
+}
+
 /* osha special for publications display */
 .publicationLanguageBox span.link-pdf-js{
     display: none
