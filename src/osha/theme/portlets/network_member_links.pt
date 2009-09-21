@@ -1,5 +1,6 @@
-<span tal:condition="python:here.getAttribute('annotatedlinklist')"
+<span tal:condition="view/has_links"
     tal:omit-tag="">
+
     <dl id="network-member-links" class="portlet portletDocumentFallback"
         i18n:domain="osha">
         <span tal:repeat="section view/link_sections/items"

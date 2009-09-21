@@ -13,6 +13,7 @@ from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.app.portlets.portlets import base
 
+from osha.policy.adapter.subtyper import IAnnotatedLinkList
 from osha.theme.vocabulary import AnnotatableLinkListVocabulary
 
 class IOSHNetworkMemberLinksPortlet(IPortletDataProvider):
@@ -43,11 +44,19 @@ class Renderer(base.Renderer):
     def render(self):
         return self._template()
 
+    def has_links(self):
+        """ Check if this page has been subtyped to provide annotated
+        links """
+        return IAnnotatedLinkList.providedBy(self.context)
+        
     @memoize
     def get_links_by_section(self, section):
-        links = self.context.getAttribute('annotatedlinklist')
-        if links:
+        context = self.context
+        if self.has_links():
+            links = context.annotatedlinklist
             return [i for i in links if i["section"] == section]
+        else:
+            return None
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
