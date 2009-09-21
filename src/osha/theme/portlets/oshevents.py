@@ -1,69 +1,72 @@
-from plone.app.portlets.portlets import events
-
 from zope import schema
 from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 
-from plone.app.portlets.portlets import base
+import Acquisition
+from DateTime.DateTime import DateTime
+
 from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
-from plone.app.portlets.cache import render_cachekey
 
-import Acquisition
-from DateTime.DateTime import DateTime
+from plone.app.portlets.cache import render_cachekey
+from plone.app.portlets.portlets import base
+from plone.app.portlets.portlets import events
+from plone.app.vocabularies.catalog import SearchableTextSourceBinder
+
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
-from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
+
 from types import UnicodeType
 from p4a.calendar.interfaces import ICalendarEnhanced
 
 
 class IEventsPortlet(IPortletDataProvider):
-    count = schema.Int(title=_(u'Number of items to display'),
-                       description=_(u'How many items to list.'),
-                       required=True,
-                       default=5)
+    count = schema.Int(
+            title=_(u'Number of items to display'),
+            description=_(u'How many items to list.'),
+            required=True,
+            default=5
+            )
 
-    state = schema.Tuple(title=_(u"Workflow state"),
-                         description=_(u"Items in which workflow state to show."),
-                         default=('published', ),
-                         required=True,
-                         value_type=schema.Choice(
-                             vocabulary="plone.app.vocabularies.WorkflowStates")
-                         )
+    state = schema.Tuple(
+            title=_(u"Workflow state"),
+            description=_(u"Items in which workflow state to show."),
+            default=('published', ),
+            required=True,
+            value_type=schema.Choice(
+                vocabulary="plone.app.vocabularies.WorkflowStates")
+            )
 
-    subject = schema.Tuple(title=_(u"Categories"),
-                            description=_(u"Pick one or more categories for which you want to show events."),
-                            default=tuple(),
-                            required=False,
-                            value_type=schema.Choice(
-                                vocabulary="osha.policy.vocabularies.categories")
-                            )
+    subject = schema.Tuple(
+            title=_(u"Categories"),
+            description=_(u"Pick one or more categories for which you want to show events."),
+            default=tuple(),
+            required=False,
+            value_type=schema.Choice(
+                vocabulary="osha.policy.vocabularies.categories")
+            )
 
-#    target_calendar = schema.Choice(title=_(u"Target calendar"),
-#                                  description=_(u"Select a calendar where event-listings and the calendar view will be displayed. If you make a Topic into a calendar, only events matching its criteria will be displayed."),
-#                                  required=True,
-#                                  source=SearchableTextSourceBinder({'object_provides' : 'p4a.calendar.interfaces.ICalendarEnhanced'},
-#                                                                    default_query='path:'))
+    calendar_path = schema.TextLine(
+            title=_(u'Target calendar path'),
+            description=_(u"Enter a folder where the 'next / previous events' link will point to. This is optional"),
+            required=False,
+            )
 
-    calendar_path = schema.TextLine(title=_(u'Target calendar path'),
-                               description=_(u"Enter a folder where the 'next / previous events' link will point to. This is optional"),
-                               required=False,
-                               )
+    rss_path = schema.TextLine(
+            title=_(u'RSS path'),
+            description=_(u'Enter a relative path to the calendar or topic that displays an RSS representation of these events. "/RSS" will automatically be appended to the URL. This setting is optional'),
+            required=False,
+            )
 
-    rss_path = schema.TextLine(title=_(u'RSS path'),
-                               description=_(u'Enter a relative path to the calendar or topic that displays an RSS representation of these events. "/RSS" will automatically be appended to the URL. This setting is optional'),
-                               required=False,
-                               )
-    rss_explanation_path = schema.TextLine(title=_(u'RSS explanation path'),
-                               description=_(u'Enter a relative path to a page that gives general RSS information. This setting is optional.'),
-                               required=False,
-                               )
+    rss_explanation_path = schema.TextLine(
+            title=_(u'RSS explanation path'),
+            description=_(u'Enter a relative path to a page that gives general RSS information. This setting is optional.'),
+            required=False,
+            )
 
 
 class Assignment(base.Assignment):
@@ -174,7 +177,8 @@ class Renderer(events.Renderer):
         if not ICalendarEnhanced.providedBy(cal):
             cal = None
         # if the calendar is not found, and we are in a translated language tree:
-        if cal is None and not self.root.isCanonical():
+        if cal is None and hasattr(self.root, 'isCanonical') \
+                and not self.root.isCanonical():
             canroot = self.root.getCanonical()
             # ... look on the canonical root for the calendar
             cal = canroot.restrictedTraverse(calendar_path, default=None)
