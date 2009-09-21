@@ -11,6 +11,17 @@ class TopicsView(BrowserView):
     def __call__(self):
         return self.template() 
         
+    def getTopicImages(self):
+        """ Get the 10 most recent images from the topic sub sections. """
+        context = self.context
+        path = context.absolute_url_path()
+        pc = getToolByName(context, 'portal_catalog')
+        images = pc.searchResults({'portal_type': 'Image',
+                                'sort_on': 'effective',
+                                'sort_limit': 10,
+                                'path': path})
+        return images
+
 class TopicView(BrowserView):
     """ View class for /topics/topic 
     """

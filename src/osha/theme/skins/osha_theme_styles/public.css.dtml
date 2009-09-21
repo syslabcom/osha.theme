@@ -1147,13 +1147,21 @@ body.template-topic-view #topic-view-heading-box {
     margin:1em;
 }
 
-#topic-view-slideshow {
-    position:relative;
-    height:132px;
-    width:210px;
-    margin:10px;
-    float:left;
-    overflow:hidden;
+body.template-topics-view #topic-view-slideshow,
+body.template-topic-view #topic-view-slideshow {
+    position: relative;
+    height: 132px;
+    width: 210px;
+    margin: 10px;
+    float: left;
+    overflow: hidden;
+}
+
+body.template-topics-view #topic-view-slideshow {
+    width: 400px;
+    height: 265px;
+    float: right;
+    margin-right: 0px;
 }
 
 #topic-view-slideshow img {
