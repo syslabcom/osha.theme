@@ -1,6 +1,10 @@
 osha.theme Changelog
 ====================
 
+osha.theme 1.2.22 (unreleased)
+------------------------------
+- Fixed the isCanonical AttributeError caused by the oshevents portlet. (jcbrand)
+
 osha.theme 1.2.21 (2009-09-15)
 ------------------------------
 - don't display PDF icons in the publications language box (slc.publications) (thomasw)
