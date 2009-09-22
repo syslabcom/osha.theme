@@ -46,7 +46,6 @@ class OSHNetworkMemberView(BrowserView):
             flag = context.unrestrictedTraverse(path+"/"+flag_src)
         return flag
 
-
     def getNews(self):
         """ return the brains for relevant news items """
         context = self.context
