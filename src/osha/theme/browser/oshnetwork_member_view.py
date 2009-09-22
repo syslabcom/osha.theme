@@ -34,6 +34,19 @@ class OSHNetworkMemberView(BrowserView):
         path = path.lstrip("/")
         return "/%s/%s" % (language, path)
 
+    def getNationalFlag(self):
+        """ Look for an image called 'national_flag.png' in the folder
+        of the canonical translation of the network member. """
+        context = self.context
+        canonical_parent = context.getCanonical().aq_inner.aq_parent
+        flag = None
+        flag_src = "national_flag.png"
+        if flag_src in canonical_parent.objectIds():
+            path = canonical_parent.absolute_url_path()
+            flag = context.unrestrictedTraverse(path+"/"+flag_src)
+        return flag
+
+
     def getNews(self):
         """ return the brains for relevant news items """
         context = self.context
