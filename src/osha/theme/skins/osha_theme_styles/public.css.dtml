@@ -1104,6 +1104,31 @@ body.template-practical-solutions #latest-additions h1 {
 }
 
 /*
+** Practical Solutions portlet used on the Topic page
+*/
+
+#practical-solutions-portlet .portlet {
+   border: 1px solid #C5CBD8 !important;
+   padding-bottom: 1em;
+}
+
+#practical-solutions-portlet .portletHeader {
+   display: block;
+   background-color: #C5CBD8;
+   background-position: 6px 50%;
+   line-height:2em;
+   float:none;
+   padding:0 0 0 22px;
+   margin:0px 0 1em;
+   top: 0;
+}
+
+#practical-solutions-portlet dl.collapsedInlineCollapsible {
+   border: 1px solid #C5CBD8 !important;
+   display:block;
+}
+
+/*
 ** Topics section specific styles
 */
 
