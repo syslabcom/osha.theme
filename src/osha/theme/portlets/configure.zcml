@@ -117,6 +117,16 @@
      editview=".network_member_links.EditForm"
      />
 
+<!-- Practical Solutions portlet used on the Topics page -->
+ <plone:portlet
+     name="osha.PracticalSolutions"
+     interface=".practical_solutions.IPracticalSolutionsPortlet"
+     assignment=".practical_solutions.Assignment"
+     renderer=".practical_solutions.Renderer"
+     addview=".practical_solutions.AddForm"
+     editview=".practical_solutions.EditForm"
+     />
+
  <!-- Campaigns portlet -->
  <plone:portlet
      name="osha.Campaigns"

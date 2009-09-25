@@ -1,0 +1,24 @@
+<div id="practical-solutions-portlet"
+     tal:define="solutions view/getRecentPracticalSolutions;
+		 titles python:view.getLocalisedSectionTitles()">
+  <dl id="image-controls" class="collapsible inline collapsedOnLoad portlet"
+      tal:repeat="section view/sections">
+
+    <dt class="portletHeader collapsibleHeader">
+      <a href="#" class="tile"
+         tal:content="python:titles[section]">Section</a>
+    </dt>
+
+    <dd class="collapsibleContent"
+	tal:repeat="solution python:solutions[section]">
+      <a href=""
+         class="tile"
+         tal:attributes="href solution/getPath;
+                         title solution/Title;">
+	<img tal:attributes="src solution/getIcon" />
+	<tal:title replace="solution/Title"></tal:title>
+      </a>
+    </dd>
+
+  </dl>
+</div>
