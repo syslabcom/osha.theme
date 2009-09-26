@@ -101,6 +101,5 @@ setup(name='osha.theme',
       entry_points="""
       # -*- entry_points -*- 
       """,
-      paster_plugins = ["ZopeSkel"],
       )      
       
