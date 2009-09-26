@@ -56,7 +56,7 @@ setup(name='osha.theme',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'Products.ATCountryWidget',
+#          'Products.ATCountryWidget',
           'Products.CallForContractors',
           'Products.CaseStudy',
           'Products.DataGridField',
