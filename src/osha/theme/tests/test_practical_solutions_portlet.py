@@ -9,6 +9,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletRenderer
 from plone.portlets.interfaces import IPortletType
+from Products.CMFCore.utils import getToolByName
 
 from osha.theme.portlets import practical_solutions
 from osha.theme.tests.base import OshaThemeTestCase
@@ -18,6 +19,16 @@ class TestPortlet(OshaThemeTestCase):
     def afterSetUp(self):
         self.setRoles(('Manager', ))
 
+    def populateSite(self):
+        """ Populate the test site with some content. """
+        self.setRoles(('Manager', ))
+        portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
+        self.portal.invokeFactory("Folder", "en")
+        # for portal_type in portal_types:
+        #     for i in range(5):
+        #         id = "%s_%s" %(portal_type, i)
+        #         self.portal.en.invokeFactory(portal_type, id)
+
     def test_portlet_type_registered(self):
         portlet = getUtility(
             IPortletType,
@@ -26,7 +37,7 @@ class TestPortlet(OshaThemeTestCase):
             'osha.PracticalSolutions')
 
     def test_interfaces(self):
-        portlet = practical_solutions.Assignment()
+        portlet = practical_solutions.Assignment("agriculture")
         self.failUnless(IPortletAssignment.providedBy(portlet))
         self.failUnless(IPortletDataProvider.providedBy(portlet.data))
 
@@ -40,7 +51,7 @@ class TestPortlet(OshaThemeTestCase):
             del mapping[m]
         addview = mapping.restrictedTraverse('+/' + portlet.addview)
 
-        addview.createAndAdd(data={})
+        addview.createAndAdd(data={"subject":"agriculture"})
 
         self.assertEquals(len(mapping), 1)
         self.failUnless(isinstance(mapping.values()[0],
@@ -50,7 +61,7 @@ class TestPortlet(OshaThemeTestCase):
         mapping = PortletAssignmentMapping()
         request = self.folder.REQUEST
 
-        mapping['foo'] = practical_solutions.Assignment()
+        mapping['foo'] = practical_solutions.Assignment("agriculture")
         editview = getMultiAdapter((mapping['foo'], request), name='edit')
         self.failUnless(isinstance(editview, practical_solutions.EditForm))
 
@@ -61,11 +72,20 @@ class TestPortlet(OshaThemeTestCase):
         manager = getUtility(IPortletManager, name='plone.rightcolumn',
                              context=self.portal)
 
-        assignment = practical_solutions.Assignment()
+        assignment = practical_solutions.Assignment("agriculture")
 
         renderer = getMultiAdapter(
             (context, request, view, manager, assignment), IPortletRenderer)
         self.failUnless(isinstance(renderer, practical_solutions.Renderer))
+
+    # def test_getBrainsBySection(self):
+    #     """ Return a dict of section:[brains]
+    #     """
+        
+    #     context = self.portal
+    #     self.populateSite()
+    #     pc = getToolByName(context, "portal_catalog")
+    #     import pdb; pdb.set_trace()
 
 def test_suite():
     from unittest import TestSuite, makeSuite
