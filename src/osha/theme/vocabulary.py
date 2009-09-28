@@ -9,6 +9,24 @@ from Products.Archetypes.atapi import DisplayList
 from Products.Archetypes.interfaces._vocabulary import IVocabulary
 from Products.CMFCore.utils import getToolByName
 
+
+class SubjectValuesVocabulary(object):
+    """ Vocabulary factory returning all available index values for the
+        'Subject' index.
+    """
+    implements(IVocabularyFactory)
+
+    def __call__(self, context):
+        site = getSite()
+        catalog  = getToolByName(site, 'portal_catalog')
+        items = []
+        for value in catalog.uniqueValuesFor('Subject'):
+            items.append(SimpleTerm(value, value, value))
+
+        return SimpleVocabulary(items)
+
+SubjectValuesVocabulary = SubjectValuesVocabulary()
+
 class SinToolKeyVocabulary(object):
     """Vocabulary factory returning all available keys in CMFSin's 
        sin_tool.

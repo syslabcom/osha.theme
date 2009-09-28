@@ -1,8 +1,9 @@
 <div id="practical-solutions-portlet"
      tal:define="solutions view/getRecentPracticalSolutions;
 		 titles python:view.getLocalisedSectionTitles()">
+  <tal:section repeat="section view/sections">
   <dl id="image-controls" class="collapsible inline collapsedOnLoad portlet"
-      tal:repeat="section view/sections">
+      tal:condition="python:solutions[section]">
 
     <dt class="portletHeader collapsibleHeader">
       <a href="#" class="tile"
@@ -21,4 +22,5 @@
     </dd>
 
   </dl>
+</tal:section>
 </div>

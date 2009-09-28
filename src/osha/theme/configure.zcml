@@ -13,6 +13,11 @@
    <include file="profiles.zcml" />
 
     <utility
+        component=".vocabulary.SubjectValuesVocabulary"
+        name="osha.theme.SubjectValuesVocabulary"
+        /> 
+
+    <utility
         component=".vocabulary.SinToolKeyVocabulary"
         name="osha.theme.SinToolKeyVocabulary"
         /> 

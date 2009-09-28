@@ -1,9 +1,11 @@
 from copy import copy
 
-from zope import schema
+from zope.app.form.browser import MultiCheckBoxWidget
 from zope.component import getMultiAdapter
 from zope.formlib import form
+from zope import schema
 from zope.interface import implements
+
 import Acquisition
 
 from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
@@ -20,14 +22,22 @@ from osha.policy.adapter.subtyper import IAnnotatedLinkList
 from osha.theme.vocabulary import AnnotatableLinkListVocabulary
 
 class IPracticalSolutionsPortlet(IPortletDataProvider):
-    pass
+    subject = schema.List(
+                    title=_(u"Categories"),
+                    description=_(u"Please select a relevant category for the "
+                    "items in this portlet. This should match the section "
+                    "category."),
+                    required=True,
+                    value_type=schema.Choice(
+                        vocabulary="osha.theme.SubjectValuesVocabulary"),
+                    )
 
 class Assignment(base.Assignment):
 
     implements(IPracticalSolutionsPortlet)
 
-    def __init__(self):
-        pass
+    def __init__(self, subject):
+        self.subject = subject
 
     @property
     def title(self):
@@ -104,12 +114,15 @@ class Renderer(base.Renderer):
 
     def getRecentPracticalSolutions(self):
         context = Acquisition.aq_inner(self.context)
+        subject = context.Subject()
+
         search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
         # Publications are Files which implement the
         # IPublicationEnhanced interface
         query = ( Eq('portal_type', 'File') & \
                       Eq('object_provides',
-                         'slc.publications.interfaces.IPublicationEnhanced')
+                         'slc.publications.interfaces.IPublicationEnhanced') & \
+                      In('Subject', subject)
                   )
         query = Or(query,
                    In('portal_type', search_portal_types)
@@ -150,6 +163,12 @@ class Renderer(base.Renderer):
                                       default=section)
         return section_title_map
 
+
+def MultiCheckBoxWidgetFactory(field, request):
+    """ Factory method to create MultiCheckBoxWidgets """ 
+    return MultiCheckBoxWidget(
+        field, field.value_type.vocabulary, request)
+
 class AddForm(base.AddForm):
     """Portlet add form.
 
@@ -157,7 +176,9 @@ class AddForm(base.AddForm):
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
+
     form_fields = form.Fields(IPracticalSolutionsPortlet)
+    form_fields['subject'].custom_widget  = MultiCheckBoxWidgetFactory
 
     def create(self, data):
         return Assignment(**data)
@@ -169,3 +190,4 @@ class EditForm(base.EditForm):
     zope.formlib which fields to display.
     """
     form_fields = form.Fields(IPracticalSolutionsPortlet)
+    form_fields['subject'].custom_widget  = MultiCheckBoxWidgetFactory
