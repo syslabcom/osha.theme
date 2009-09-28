@@ -114,8 +114,7 @@ class Renderer(base.Renderer):
 
     def getRecentPracticalSolutions(self):
         context = Acquisition.aq_inner(self.context)
-        subject = context.Subject()
-
+        subject = self.data.subject
         search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
         # Publications are Files which implement the
         # IPublicationEnhanced interface
