@@ -1,9 +1,0 @@
-Changelog for osha.theme
-
-    (name of developer listed in brackets)
-
-osha.theme - 0.1 Unreleased
-
-    - Initial package structure.
-      [zopeskel]
-
