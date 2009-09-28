@@ -1,8 +1,8 @@
 osha.theme Changelog
 ====================
 
-osha.theme 1.2.23 (unreleased)
-------------------------------
+1.2.23 (2009-09-28)
+-------------------
 
 - A weird issue with tar files and python 2.4 breaks 1.2.22 release.
   See here for more information: http://bugs.python.org/issue7011
