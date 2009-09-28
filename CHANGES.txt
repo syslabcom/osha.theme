@@ -4,7 +4,12 @@ osha.theme Changelog
 osha.theme 1.2.23 (unreleased)
 ------------------------------
 
-- Nothing changed yet.
+- A weird issue with tar files and python 2.4 breaks 1.2.22 release.
+  See here for more information: http://bugs.python.org/issue7011
+  A workaround has been applied and a skin name has been changed.
+  Take care to rename that skin in your skin layers from 
+  osha_theme_custom_fckeditor to
+  osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe (gerken)
 
 
 osha.theme 1.2.22 (2009-09-26)

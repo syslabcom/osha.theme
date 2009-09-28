@@ -5,9 +5,9 @@
  <object name="osha_theme_custom_images"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_custom_images"/>
- <object name="osha_theme_custom_fckeditor"
+ <object name="osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_custom_fckeditor"/>
+    directory="osha.theme:skins/osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe"/>
  <object name="osha_theme_custom_templates"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_custom_templates"/>
@@ -81,10 +81,10 @@
 
 
  <skin-path name="OSHA Plone Theme" based-on="Plone Default">
-  <layer name="osha_theme_custom_fckeditor"
+  <layer name="osha_theme_custom_osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe"
      insert-after="custom"/>
   <layer name="osha_theme_custom_images"
-     insert-after="osha_theme_custom_fckeditor"/>
+     insert-after="osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe"/>
   <layer name="osha_theme_custom_templates"
      insert-after="osha_theme_custom_images"/>
   <layer name="osha_theme_styles"
