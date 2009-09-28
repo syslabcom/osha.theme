@@ -1,31 +1,26 @@
 from zope.annotation.interfaces import IAnnotations
+from zope.formlib import form
+from zope.i18nmessageid import MessageFactory
+from zope.interface import implements
+
 from zope.app.form import CustomWidgetFactory
 from zope.app.form.browser.textwidgets import TextWidget
-from zope.component import getMultiAdapter, getUtility
-from zope.formlib import form
-from zope.interface import implements
-from zope.i18nmessageid import MessageFactory
-from zope.schema.fieldproperty import FieldProperty
-from Products.ATContentTypes.interface.document import IATDocument
 
 import Acquisition
-from OFS.SimpleItem import SimpleItem
 
-from plone.memoize.instance import memoize
 from plone.memoize import ram
 
+from Products.ATContentTypes.interface.document import IATDocument
 from Products.CMFCore.utils import getToolByName
+from Products.Five import BrowserView
 from Products.Five.browser import pagetemplatefile 
 from Products.Five.formlib import formbase
-from Products.Five import BrowserView
 
-from osha.theme.browser.interfaces import IPressRoomView
 from osha.theme.browser.interfaces import IPressRoomConfiguration
+from osha.theme.browser.interfaces import IPressRoomView
 from osha.theme.config import FEED_KEY
-from osha.theme.config import PRESS_CONTACTS_KEY
 from osha.theme.config import KEYWORDS_KEY
-
-from interfaces import IPressRoomConfiguration
+from osha.theme.config import PRESS_CONTACTS_KEY
 
 _ = MessageFactory('osha.theme')
 
@@ -72,7 +67,6 @@ class PressRoomView(BrowserView):
         return contactInfo
 
                 
-        
         
 class DynamicPressRoomView(BrowserView):
     implements(IPressRoomView)

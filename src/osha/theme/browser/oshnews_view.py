@@ -1,15 +1,18 @@
 import Acquisition
+from DateTime import DateTime
+
+from zope.component import getMultiAdapter
+
+from plone.memoize import instance
+
+from Products.ATContentTypes.interface import IATTopic
+from Products.AdvancedQuery import Or, Eq, And, In, Le
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
+
 from osha.theme import OSHAMessageFactory as _
-from zope.component import getMultiAdapter
-from Products.AdvancedQuery import Or, Eq, And, In, Le
-from plone.memoize import ram, instance
-from Products.CMFPlone.PloneBatch import Batch
-import time
-from DateTime import DateTime
-from Products.ATContentTypes.interface import IATTopic
 
 class OSHNewsView(BrowserView):
     """View for displaying news outside the current context within the context
@@ -18,7 +21,6 @@ class OSHNewsView(BrowserView):
     template.id = "oshnews-view"
     
     def __call__(self):
-        
         return self.template() 
         
     def Title(self):
@@ -26,7 +28,6 @@ class OSHNewsView(BrowserView):
         if IATTopic.providedBy(context):
             return context.Title()
         return _(u"heading_newsboard_latest_news")
-
 
     @instance.memoize
     def getResults(self):
@@ -63,9 +64,7 @@ class OSHNewsView(BrowserView):
         results = self.getResults()
         b_start = self.request.get('b_start', 0)
         batch = Batch(results, b_size, int(b_start), orphan=0)
-
         return batch
-
 
     def getBodyText(self):
         """ returns body text of collection  if present """
@@ -75,6 +74,7 @@ class OSHNewsView(BrowserView):
 
     def showLinkToNewsItem(self):
         return self.context.getProperty('show_link_to_news_item', True)
+
 
 
 class OSHNewsLocalView(OSHNewsView):
