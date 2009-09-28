@@ -1,13 +1,7 @@
-from zope.component import getUtility
-from zope.component import getMultiAdapter
 from persistent.dict import PersistentDict
+from zope.component import getUtility
 from plone.app.viewletmanager.interfaces import IViewletSettingsStorage
-from plone.portlets.interfaces import IPortletAssignmentMapping
-from plone.portlets.interfaces import IPortletManager
 from Products.CMFCore.utils import getToolByName
-
-from osha.theme import portlets
-
 
 def helpViewletManager(portal):
     """ Viewlet storage works only for skins that have been hidden once before
