@@ -14,7 +14,7 @@ class TopicsView(BrowserView):
     def getTopicImages(self):
         """ Get the 10 most recent images from the topic sub sections. """
         context = self.context
-        path = context.absolute_url_path()
+        path ="/".join(context.getPhysicalPath())
         pc = getToolByName(context, 'portal_catalog')
         images = pc.searchResults({'portal_type': 'Image',
                                 'sort_on': 'effective',
