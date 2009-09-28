@@ -1,16 +1,13 @@
-import re 
-
-from zope.app.component.hooks import getSite
-from zope.component import getUtility
-from zope.component import getMultiAdapter
 from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
+from zope.app.component.hooks import getSite
+
+from Products.Archetypes.atapi import DisplayList
+from Products.Archetypes.interfaces._vocabulary import IVocabulary
 from Products.CMFCore.utils import getToolByName
-
-from slc.clicksearch.interfaces import IClickSearchConfiguration
 
 class SinToolKeyVocabulary(object):
     """Vocabulary factory returning all available keys in CMFSin's 
@@ -46,8 +43,6 @@ class PressContactVocabulary(object):
 
 PressContactVocabulary = PressContactVocabulary()
 
-from Products.Archetypes.interfaces._vocabulary import IVocabulary
-from Products.Archetypes.atapi import DisplayList
 
 class AnnotatableLinkListVocabulary(object):
     """Vocabulary factory returning Section names for the AnnotatableLinkList Mechanism in the Document
@@ -88,3 +83,4 @@ class AnnotatableLinkListVocabulary(object):
             knots and leafs.
         """
         return True
+
