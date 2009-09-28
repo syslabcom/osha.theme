@@ -27,8 +27,7 @@ class SinToolKeyVocabulary(object):
 SinToolKeyVocabulary = SinToolKeyVocabulary()
 
 class PressContactVocabulary(object):
-    """Vocabulary factory returning all available keys in CMFSin's 
-       sin_tool.
+    """Vocabulary returning all the PressContacts in the catalog
     """
     implements(IVocabularyFactory)
 
