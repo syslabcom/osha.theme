@@ -81,7 +81,7 @@
 
 
  <skin-path name="OSHA Plone Theme" based-on="Plone Default">
-  <layer name="osha_theme_custom_osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe"
+  <layer name="osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe"
      insert-after="custom"/>
   <layer name="osha_theme_custom_images"
      insert-after="osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe"/>
