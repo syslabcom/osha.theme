@@ -87,8 +87,6 @@
     </order>
 
 
-
-
     <hidden manager="plone.htmlhead" skinname="*">
         <viewlet name="plone.htmlhead.title" />
     </hidden>
@@ -108,6 +106,7 @@
 
     <hidden manager="plone.belowcontentbody" skinname="*">
       <viewlet name="plone.abovecontenttitle.documentactions" />
+      <viewlet name="osha.theme.addthisbutton" />
     </hidden>
 
     <hidden manager="plone.portalfooter" skinname="*">

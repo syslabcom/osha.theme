@@ -1,25 +1,29 @@
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.app.layout.viewlets import common
-from time import time
-from zope.component import getMultiAdapter
-from Acquisition import aq_base, aq_inner
-from Products.CMFPlone.utils import safe_unicode
 from cgi import escape
-from plone.memoize.compress import xhtml_compress
+from time import time
+
+from zope.component import getMultiAdapter
+
+from Acquisition import aq_base, aq_inner
+
 from Products.CMFCore.utils import getToolByName
-from plone.memoize import ram
-from plone.memoize.instance import memoize
-from plone.app.portlets.cache import get_language
+from Products.CMFPlone.utils import safe_unicode
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 from Products.LinguaPlone.interfaces import ITranslatable
+
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
+
 from plone.app.i18n.locales.browser.selector import LanguageSelector
-from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
-from slc.subsite.interfaces import ISubsiteEnhanced
 from plone.app.layout.navigation.navtree import buildFolderTree
+from plone.app.layout.viewlets import common
+from plone.app.portlets.cache import get_language
 
+from slc.subsite.interfaces import ISubsiteEnhanced
+
+from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 from osha.theme.config import *
-
-
 
 class OSHALanguageSelector(TranslatableLanguageSelector):
     """ Override LinguaPlone's language selector to provide our own template
@@ -121,6 +125,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
 
         return results
 
+
 class OSHAGermanyLanguageSelector(OSHALanguageSelector):
     """ Override OSHA language selector to provide a german template
         This is used for content that is LinguaPlone translatable """
@@ -146,7 +151,6 @@ class OSHASiteActionsViewlet(common.SiteActionsViewlet):
         slogans = [(x.language, x.text) for x in P.site_slogan]
         slogans = dict(slogans)
         return slogans.get(preflang, slogans.get(defaultlang, 'European Agency for Safety and Health at Work'))
-        
 
 
 class OSHANetworkchooser(common.ViewletBase):
@@ -293,12 +297,9 @@ class OSHAFooterLanguageSelector(TranslatableLanguageSelector):
     render = ViewPageTemplateFile('templates/footer_languageselector.pt')
 
 
-    
 class OSHAFooterActions(common.ViewletBase):
     
     _template = ViewPageTemplateFile('templates/footer_actions.pt')
-    
-    
     
     def _footer_render_details_cachekey(fun, self):
         """
@@ -319,7 +320,6 @@ class OSHAFooterActions(common.ViewletBase):
             str(anonymous),
             ))
         return key    
-    
     
     @ram.cache(_footer_render_details_cachekey) 
     def render(self):
@@ -405,19 +405,17 @@ class TitleViewlet(common.TitleViewlet):
                 escape(safe_unicode(osha)),
                 escape(safe_unicode(portal_title)))
 
-class OSHANapoHeadViewlet(common.ViewletBase):
 
+class OSHANapoHeadViewlet(common.ViewletBase):
     render = ViewPageTemplateFile('templates/napo_head.pt')
 
 class OSHANapoSubHeadViewlet(common.ViewletBase):
-
     render = ViewPageTemplateFile('templates/napo_subhead.pt')
 
 class OSHANapoBelowFooterViewlet(common.ViewletBase):
-
     render = ViewPageTemplateFile('templates/napo_belowfooter.pt')
     
+class AddThisButtonViewlet(common.ViewletBase):
+    render = ViewPageTemplateFile('templates/addthis.pt')
     
-
-
         
