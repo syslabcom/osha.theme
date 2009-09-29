@@ -8,7 +8,7 @@ osha.theme Changelog
   fckeditor directory (jcbrand)
 - Add a new viewlet for the "Add This" social bookmarker. It will be visible on
   all IATNewsItem providers (jcbrand)
-
+- Resized Practical Solutions images (de Roiste)
 
 1.2.25 (2009-09-29)
 -------------------
