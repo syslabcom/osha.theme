@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.2.25 (unreleased)
+1.2.25 (2009-09-29)
 -------------------
 
 - Minor changes to fix breaking tests. (de Roiste)
