@@ -20,11 +20,17 @@ class PracticalSolutionsView(DBFilterView):
     gpawards = ''
     intro = ''
     has_section_details = False
+    # sections = ['useful-links',
+    #             'risk-assessment-tools',
+    #             'case-studies',
+    #             'providers',
+    #             'faqs']
+    # Commenting out faqs temporarily
+
     sections = ['useful-links',
                 'risk-assessment-tools',
                 'case-studies',
-                'providers',
-                'faqs']
+                'providers']
 
     def __call__(self):
         self.request.set('disable_border', True)
