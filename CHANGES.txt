@@ -1,6 +1,15 @@
 osha.theme Changelog
 ====================
 
+1.2.26 (Unreleased)
+-------------------
+
+- Fixed a naming bug in skins.xml concerning the new long name for the
+  fckeditor directory (jcbrand)
+- Add a new viewlet for the "Add This" social bookmarker. It will be visible on
+  all IATNewsItem providers (jcbrand)
+
+
 1.2.25 (2009-09-29)
 -------------------
 
