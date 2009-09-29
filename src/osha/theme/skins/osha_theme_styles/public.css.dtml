@@ -1062,12 +1062,31 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
 ** Practical Solutions / Good Practise view specific styles
 */
 
+body.template-practical-solution .photoAlbumEntry,
+body.template-practical-solutions .photoAlbumEntry {
+   background-image: url(&dtml-portal_url;/practical_solutions_polaroid.png);
+   padding:0 4px 0 11px;
+}
+
 body.template-practical-solution .photoAlbumEntry {
-  margin: 0px 10px 15px 0px;
+   margin: 0px 10px 15px 0px;
 }
 
 body.template-practical-solutions .photoAlbumEntry {
     margin: 15px 10px;
+}
+
+body.template-practical-solution .photoAlbumEntry,
+body.template-practical-solution .photoAlbumEntry a,
+body.template-practical-solutions .photoAlbumEntry,
+body.template-practical-solutions .photoAlbumEntry a {
+   height: 122px;
+   width: 90px;
+}
+
+body.template-practical-solution .photoAlbumEntry a,
+body.template-practical-solutions .photoAlbumEntry a {
+   font-size: 85%;
 }
 
 body.template-practical-solution .photoAlbumEntry img ,
@@ -1075,18 +1094,26 @@ body.template-practical-solutions .photoAlbumEntry img {
     border: none;
 }
 
+body.template-practical-solutions .photoAlbumEntryTitle,
+body.template-practical-solution .photoAlbumEntryTitle {
+   width: 84px;
+}
+
 body.template-practical-solution .photoAlbumEntryWrapper ,
 body.template-practical-solutions .photoAlbumEntryWrapper {
-    display: block;
+   display: block;
+   width: 84px;
+   height: 84px;
+   margin-bottom: 2px;
 }
 
 body.template-practical-solution .photoAlbumEntryWrapperWrapper {
     display:block;
-    font-size:95%;
-    height:169px;
+    font-size:85%;
+    height:124px;
     margin:16px auto 0;
     text-decoration:none;
-    width:130px;
+    width:106px;
 }
 
 body.template-practical-solutions #latest-additions {
