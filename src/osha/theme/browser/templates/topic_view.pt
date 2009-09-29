@@ -66,6 +66,8 @@ jq(function() {
 	<div class="visualClear"></div>
       </div>
 
+      <tal:intro replace="structure view/intro "></tal:intro>
+
       <!-- this adds the slc.linkcollection -->
       <span tal:replace="structure provider:plone.belowcontentbody"></span>
       <div class="visualClear"></div>
