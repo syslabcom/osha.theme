@@ -1,13 +1,16 @@
 osha.theme Changelog
 ====================
 
-1.2.27 (Unreleased)
+1.2.27 (2009-09-30)
 -------------------
 
 - Use css to hide the OSHA Metadata widget on the BlogEntry edit form (jcbrand)
 - Adding optional introductory text as an alternative to the linkcollection for
   Topic pages. #376 (de Roiste)
 - Fixing some expectations in javascript #397 (Gerken)
+- added osha's customised version of UberSelectionWidget. Only reason: to add an explanation
+  on how to search using the "path:" operator #396 (thomasw)
+
 
 1.2.26 (2009-09-29)
 -------------------
