@@ -19,7 +19,7 @@ from plone.memoize.compress import xhtml_compress
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
-from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
+from osha.theme.browser.uberselectionwidget import UberSelectionWidget
 
 from Products.ATContentTypes.interface import IATTopic
 
