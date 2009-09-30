@@ -7,6 +7,7 @@ osha.theme Changelog
 - Use css to hide the OSHA Metadata widget on the BlogEntry edit form (jcbrand)
 - Adding optional introductory text as an alternative to the linkcollection for
   Topic pages. #376 (de Roiste)
+- Fixing some expectations in javascript #397 (Gerken)
 
 1.2.26 (2009-09-29)
 -------------------

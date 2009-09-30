@@ -65,8 +65,8 @@ function scanforlinks() {
     // whether they point to the current site or are external links
     contentarea = getContentArea();
     // guard against doing it twice
-    var already_done = contentarea.getAttribute('scanforlinks');
-    if (already_done=='done') {return false;}
+    
+    if (contentarea && contentarea.getAttribute('scanforlinks')=='done') {return false;}
 
     if (typeof external_links_open_new_window == 'string')
         var elonw = external_links_open_new_window.toLowerCase() == 'true';
