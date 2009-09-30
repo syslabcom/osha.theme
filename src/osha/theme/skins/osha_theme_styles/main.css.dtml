@@ -589,9 +589,6 @@ ul.linkList li {
 .pressbox-publications-on {background: url(pressbox_dark_on.gif) no-repeat;}
 .pressbox-publications-on div {position:relative;right: 0px;bottom: 0px;}
 
-
-
-
 #EuMediaCoverage {
 	clear:both;
 	border: 1px solid #000000;
@@ -618,6 +615,10 @@ ul.linkList li {
 	padding-bottom: 0.5em;
 }
 #more-syndicated-news{ text-align:right; margin-right:10px;}
+
+form#blog_entry-base-edit div#archetypes-fieldname-osha_metadata {
+    display: None;
+}
 
 /* </dtml-with> */
 
