@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+1.2.27 (Unreleased)
+-------------------
+
+- Use css to hide the OSHA Metadata widget on the BlogEntry edit form (jcbrand)
+
 1.2.26 (2009-09-29)
 -------------------
 
@@ -14,7 +19,6 @@ osha.theme Changelog
 -------------------
 
 - Minor changes to fix breaking tests. (de Roiste)
-
 
 osha.theme 1.2.24 (2009-09-28)
 ------------------------------
@@ -32,13 +36,14 @@ osha.theme 1.2.23 (2009-09-28)
   osha_theme_custom_fckeditor to
   osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe (gerken)
 
-
 osha.theme 1.2.22 (2009-09-26)
 ------------------------------
+
 - Fixed the isCanonical AttributeError caused by the oshevents portlet. (jcbrand)
 
 osha.theme 1.2.21 (2009-09-15)
 ------------------------------
+
 - don't display PDF icons in the publications language box (slc.publications) (thomasw)
 - network members: Making sure the portlet handles the case when there is no 
   annotatedlinklist or it is empty. (deroiste)
