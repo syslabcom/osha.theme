@@ -3,8 +3,8 @@
 
   <dt class="portletHeader">
       <span class="portletTopLeft"></span>
-      <span
-         i18n:translate="Looking for something specific?">Looking for something specific?</span>
+      <span i18n:domain="plone"
+         i18n:translate="label_search">Search</span>
       <span class="portletTopRight"></span>
   </dt>
 
@@ -27,7 +27,7 @@
     <input type="hidden" name="ie" value="UTF-8" />
     <input class="searchField inputLabel"
         type="text" name="q" size="20" />
-    <input class="searchButton" type="submit" name="sa" value="Search" />
+    <input class="searchButton" type="submit" name="sa" value="" />
   </div>
 </form>
 
@@ -36,7 +36,7 @@
       <div class="visualClear"><!-- --></div>
 
       <div id="additional-search-options">
-        <span tal:omit-tag="" i18n:translate="txt_try_the">Try the:</span><br/>
+        <!--span tal:omit-tag="" i18n:translate="txt_try_the">Try the:</span><br/-->
         <ul class="linkList"> 
             <li tal:condition="view/showAtozLink"><a href="#"
               class="tile"
