@@ -1099,8 +1099,7 @@ body.template-practical-solution .photoAlbumEntryTitle {
    width: 84px;
 }
 
-body.template-practical-solution .photoAlbumEntryWrapper ,
-body.template-practical-solutions .photoAlbumEntryWrapper {
+body.template-practical-solution .photoAlbumEntryWrapper {
    display: block;
    width: 84px;
    height: 84px;
@@ -1110,10 +1109,7 @@ body.template-practical-solutions .photoAlbumEntryWrapper {
 body.template-practical-solution .photoAlbumEntryWrapperWrapper {
     display:block;
     font-size:85%;
-    height:124px;
     margin:16px auto 0;
-    text-decoration:none;
-    width:106px;
 }
 
 body.template-practical-solutions #latest-additions {
