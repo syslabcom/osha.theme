@@ -70,8 +70,9 @@ jq(function() {
 
       <tal:folders define="
 			   folders python:here.contentValues(filter={'portal_type':['Folder']});
-			   left_folders  python:folders[:(len(folders)/2)+1];
-			   right_folders python:folders[(len(folders)/2)+1:]">
+			   middle_index python:len(folders) - len(folders) / 2;
+			   left_folders  python:folders[:middle_index];
+			   right_folders python:folders[middle_index:]">
 
 	<table id="folder-listing" cellspacing="20"
                tal:condition="folders">
