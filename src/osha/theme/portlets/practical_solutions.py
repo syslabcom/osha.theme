@@ -46,12 +46,13 @@ class Assignment(base.Assignment):
 class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('practical_solutions.pt')
-    sections = ['useful-links',
-                'risk-assessment-tools',
+    sections = ['publications',
                 'case-studies',
-                'providers',
-                'faqs']
-
+                'useful-links',
+                'faqs',
+                'risk-assessment-tools',
+                'providers']
+                
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context,
                                  'portal_languages').getPreferredLanguage()
@@ -88,7 +89,8 @@ class Renderer(base.Renderer):
                                     'RALink' : 'risk-assessment-tools',
                                     'CaseStudy' : 'case-studies',
                                     'Provider' : 'providers',
-                                    'File' : 'faqs'}
+                                    'File' : 'publications',
+                                    'Faq' : 'faqs'}
         # Loop through the brains filling up the section_brain_map
         # until there are the number specified in brains_per_section
         # of brains for each section. Sections are removed from
@@ -115,7 +117,7 @@ class Renderer(base.Renderer):
     def getRecentPracticalSolutions(self):
         context = Acquisition.aq_inner(self.context)
         subject = self.data.subject
-        search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
+        search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider", "Publication"]
         # Publications are Files which implement the
         # IPublicationEnhanced interface
         query = ( Eq('portal_type', 'File') & \
