@@ -4,8 +4,7 @@ osha.theme Changelog
 1.2.29 (2009-10-05)
 -------------------
 
-- Nothing changed yet.
-
+- Googlesearch portlet: make the search field even smaller to allow room for the submit button (thomasw)
 
 1.2.28 (2009-10-05)
 ----------------------
