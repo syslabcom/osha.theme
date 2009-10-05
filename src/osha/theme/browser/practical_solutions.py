@@ -113,19 +113,26 @@ class PracticalSolutionView(DBFilterView):
         parent = aq_parent(aq_inner(context)) 
         return "section-image.png" in parent.objectIds()
 
-    def getSectionTitle(self):
+    def get_section_title(self):
         """ Return the title of the parent folder """
         context = self.context
         parent = aq_parent(aq_inner(context)) 
         return parent.Title()
 
-    def search_portal_types(self):
+    def get_search_portal_type(self):
+        """ Work out the relevant search_portal_types value from the
+        parent id.
+        """
         context = self.context
         parent = aq_parent(aq_inner(context)) 
-        search_portal_types = []
+        search_portal_type = []
         if self.portal_types_map.has_key(parent.id):
-            search_portal_types = [self.portal_types_map[parent.id]]
-
+            search_portal_type = self.portal_types_map[parent.id]
+        return search_portal_type
+    
+    def search_portal_types(self):
+        context = self.context
+        search_portal_types = list(self.get_search_portal_type())
         query = None
         if 'Publication' in search_portal_types:
             query = ( Eq('portal_type', 'File') & Eq('object_provides', 'slc.publications.interfaces.IPublicationEnhanced') )
@@ -136,5 +143,3 @@ class PracticalSolutionView(DBFilterView):
         query = query & Eq('review_state','published')
 
         return query
-
-

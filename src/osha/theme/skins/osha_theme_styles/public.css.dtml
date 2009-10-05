@@ -1122,6 +1122,20 @@ body.template-practical-solutions #latest-additions h1 {
    margin: 0px 0px 5px 0px; 
 }
 
+
+body.template-practical-solution form#database_search dt.collapsibleHeader {
+   display: block;
+   margin-bottom: 1em;
+}
+
+
+body.template-practical-solution form#database_search #image-controls {
+   /* Workaround for a layout issue in IE6 which causes the portlets
+   to the right to be pushed down when the Advanced search box is
+   displayed. */
+   width: 98%;
+}
+
 .database-emphasis {
    text-transform: uppercase;
 }
