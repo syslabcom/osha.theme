@@ -2,10 +2,10 @@ osha.theme Changelog
 ====================
 
 1.2.28 (2009-10-05)
--------------------
+----------------------
 
-- Added advanced search to Practical Solution
-- Added Publications to Practical Solutions portlet and adjusted ordering
+- Added advanced search to Practical Solution (deroiste)
+- Added Publications to Practical Solutions portlet and adjusted ordering (deroiste)
 - Fixed some css issues on IE6 and IE7 Practical Solution(s) and Topic(s) (deroiste)
 - made Google search portlet smaller, ticket 387 (thomasw) 
 
