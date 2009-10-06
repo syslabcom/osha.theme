@@ -132,7 +132,7 @@ class PracticalSolutionView(DBFilterView):
     
     def search_portal_types(self):
         context = self.context
-        search_portal_types = list(self.get_search_portal_type())
+        search_portal_types = [self.get_search_portal_type()]
         query = None
         if 'Publication' in search_portal_types:
             query = ( Eq('portal_type', 'File') & Eq('object_provides', 'slc.publications.interfaces.IPublicationEnhanced') )
@@ -141,5 +141,4 @@ class PracticalSolutionView(DBFilterView):
         else:
             query = In('portal_type', search_portal_types)
         query = query & Eq('review_state','published')
-
         return query
