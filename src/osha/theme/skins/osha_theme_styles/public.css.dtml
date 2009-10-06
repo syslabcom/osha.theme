@@ -1150,6 +1150,7 @@ body.template-practical-solution form#database_search dl#image-controls {
 
 #practical-solutions-portlet .portlet {
    border: 1px solid #C5CBD8 !important;
+   margin-bottom: 1em;
    padding-bottom: 1em;
 }
 
