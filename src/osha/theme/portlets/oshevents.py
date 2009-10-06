@@ -197,10 +197,12 @@ class Renderer(events.Renderer):
     @memoize
     def prev_events_link(self):
         osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
-        show = osha_view.get_subsite_property('show_previous_events')
-        if show is None:
-            show = True
-        if show:
+        show_previous_events = osha_view.get_subsite_property('show_previous_events')
+        if show_previous_events is None: #Property does not yet exist. Old 
+                                         #behaviour was to show previous_events
+            show_previous_events = True
+
+        if show_previous_events:
             cal = self.getCalendar(self.preflang)
             if cal is None:
                 return ''
