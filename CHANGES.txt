@@ -4,7 +4,9 @@ osha.theme Changelog
 1.2.31 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Added a new poperty to oshaprops-controlpanel: show_previous_events (thomasw)
+- Using new property show_previous_events in oshevents portlet to determine whether to 
+  display a link to previous events (thomasw)
 
 
 1.2.30 (2009-10-06)

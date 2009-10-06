@@ -68,6 +68,7 @@ class Settings(Persistent):
     site_slogan = []
     oshmail_subscribers = ''
     show_atoz_link = True
+    show_previous_events = True
     link_on_logo = 'http://osha.europa.eu'
 
 
@@ -176,6 +177,13 @@ class IParametersSchema(Interface):
                           default=True
                           )
 
+    show_previous_events = Bool(title=_(u"Show previous events"),
+                                description=_(u"With this option you can turn off the links to previous events "
+                                "in the calendar and events portlets"),
+                                required=False,
+                                default=True
+                                )
+
 class IPropertiesSchema(ILogoSchema, IEmailSchema, ISloganSchema, IParametersSchema):
     """Combined schema for the adapter lookup.
     """
@@ -251,6 +259,12 @@ class PropertiesControlPanelAdapter(SchemaAdapterBase):
     def set_show_atoz_link(self, value):
         self.settings.show_atoz_link = value
     show_atoz_link = property(get_show_atoz_link, set_show_atoz_link)
+    
+    def get_show_previous_events(self):
+        return self.settings.show_previous_events
+    def set_show_previous_events(self, value):
+        self.settings.show_previous_events = value
+    show_previous_events = property(get_show_previous_events, set_show_previous_events)
 
     @property
     def settings(self):

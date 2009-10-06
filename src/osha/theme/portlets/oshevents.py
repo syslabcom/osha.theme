@@ -196,10 +196,16 @@ class Renderer(events.Renderer):
 
     @memoize
     def prev_events_link(self):
-        cal = self.getCalendar(self.preflang)
-        if cal is None:
-            return ''
-        return '%s/past_events.html' % cal.absolute_url()
+        osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
+        show = osha_view.get_subsite_property('show_previous_events')
+        if show is None:
+            show = True
+        if show:
+            cal = self.getCalendar(self.preflang)
+            if cal is None:
+                return ''
+            return '%s/past_events.html' % cal.absolute_url()
+        return ''
 
     def showRSS(self):
         return bool(self.getRSSLink())
