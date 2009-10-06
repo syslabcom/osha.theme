@@ -7,7 +7,8 @@ osha.theme Changelog
 - Added a new poperty to oshaprops-controlpanel: show_previous_events (thomasw)
 - Using new property show_previous_events in oshevents portlet to determine whether to 
   display a link to previous events (thomasw)
-
+- Adjusted layout and added "more" link to the Practical solutions portlet: now
+  feature complete (#376) (deroiste)
 
 1.2.30 (2009-10-06)
 -------------------
@@ -20,7 +21,7 @@ osha.theme Changelog
 - Googlesearch portlet: make the search field even smaller to allow room for the submit button (thomasw)
 
 1.2.28 (2009-10-05)
-----------------------
+-------------------
 
 - Added advanced search to Practical Solution (deroiste)
 - Added Publications to Practical Solutions portlet and adjusted ordering (deroiste)
