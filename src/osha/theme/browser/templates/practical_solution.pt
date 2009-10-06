@@ -124,11 +124,12 @@
 		</div>
 		
 		<div class="visualClear"></div>
+
 		<p tal:define="query_string context/REQUEST/QUERY_STRING;
-			       search_type view/get_search_portal_type"><a href="db_filter" 
+			       search_portal_type view/get_search_portal_type"><a href="db_filter" 
 		      i18n:translate="label_additional_search_options"
 		      tal:attributes="href 
-				      string:db_filter?${query_string}&search_portal_types:list=${search_type}"
+				      string:db_filter?${query_string}&search_portal_types:list=${search_portal_type}"
 		      >Additional search options</a></p>         
 
 	      </dd>

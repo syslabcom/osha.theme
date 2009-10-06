@@ -52,13 +52,17 @@ class PracticalSolutionsView(DBFilterView):
     def search_portal_types(self):
         context = self.context
         search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
-        query = ( Eq('portal_type', 'File') & Eq('object_provides', 'slc.publications.interfaces.IPublicationEnhanced') )
-        query = Or(query, In('portal_type', search_portal_types)) & Eq('review_state','published')
+        query = ( Eq('portal_type', 'File')\
+                  & Eq('object_provides',
+                     'slc.publications.interfaces.IPublicationEnhanced')
+                  )
+        query = Or(query, In('portal_type', search_portal_types))\
+                & Eq('review_state','published')
         return query
 
     def getSectionDetails(self):
-        """ Return a path to an image and a title for each of the five Practical 
-            Solutions sections.
+        """ Return a path to an image and a title for each of the five
+            Practical Solutions sections.
             """
         context = self.context
         section_details = {}
@@ -101,8 +105,7 @@ class PracticalSolutionView(DBFilterView):
             "providers":"Provider",
             "faqs":"Publication",
             }
-    
-     
+
     def __call__(self):
         self.request.set('disable_border', True)
         return self.template()
@@ -110,13 +113,13 @@ class PracticalSolutionView(DBFilterView):
     def has_section_image(self):
         """ Check if an image called section-image.png exists in the folder """
         context = self.context
-        parent = aq_parent(aq_inner(context)) 
+        parent = aq_parent(aq_inner(context))
         return "section-image.png" in parent.objectIds()
 
     def get_section_title(self):
         """ Return the title of the parent folder """
         context = self.context
-        parent = aq_parent(aq_inner(context)) 
+        parent = aq_parent(aq_inner(context))
         return parent.Title()
 
     def get_search_portal_type(self):
@@ -124,18 +127,21 @@ class PracticalSolutionView(DBFilterView):
         parent id.
         """
         context = self.context
-        parent = aq_parent(aq_inner(context)) 
+        parent = aq_parent(aq_inner(context))
         search_portal_type = []
         if self.portal_types_map.has_key(parent.id):
             search_portal_type = self.portal_types_map[parent.id]
         return search_portal_type
-    
+
     def search_portal_types(self):
         context = self.context
         search_portal_types = [self.get_search_portal_type()]
         query = None
         if 'Publication' in search_portal_types:
-            query = ( Eq('portal_type', 'File') & Eq('object_provides', 'slc.publications.interfaces.IPublicationEnhanced') )
+            query = ( Eq('portal_type', 'File')\
+                      & Eq('object_provides',
+                         'slc.publications.interfaces.IPublicationEnhanced')
+                      )
             search_portal_types.remove('Publication')
             query = Or(query, In('portal_type', search_portal_types))
         else:
