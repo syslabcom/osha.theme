@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.2.31 (unreleased)
+1.2.31 (2009-10-06)
 -------------------
 
 - Added a new poperty to oshaprops-controlpanel: show_previous_events (thomasw)
