@@ -1166,6 +1166,10 @@ dl.portletPracticalSolutions dl.expandedInlineCollapsible {
    padding-bottom: 0.5em;
 }
 
+dl.portletPracticalSolutions dl.expandedInlineCollapsible dd.collapsibleContent {
+   padding: 1em 1em 0;
+}
+
 dl.portletPracticalSolutions a.more-related {
    font-weight: bold;
    float: right;
