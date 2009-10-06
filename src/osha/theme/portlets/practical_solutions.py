@@ -52,7 +52,16 @@ class Renderer(base.Renderer):
                 'faqs',
                 'risk-assessment-tools',
                 'providers']
-                
+
+    portal_types_map = {
+            "useful-links":"OSH_Link",
+            "risk-assessment-tools":"RALink",
+            "case-studies":"CaseStudy",
+            "providers":"Provider",
+            "faqs":"FAQs",
+            "publications": "Publication"
+            }
+
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context,
                                  'portal_languages').getPreferredLanguage()
@@ -65,6 +74,18 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
         context = self.context
+
+    def get_more_url(self, section):
+        """
+        Return a url to more search results for a section
+        """
+        language = getToolByName(self.context,
+                                 'portal_languages').getPreferredLanguage()
+        subsection = self.portal_types_map[section]
+        url = "db_filter?search_portal_types:list=%s&getRemoteLanguage=%s" \
+              %(subsection, language)
+        return url
+
 
     def getBrainsBySection(self, brains, brains_per_section):
         """
@@ -117,7 +138,8 @@ class Renderer(base.Renderer):
     def getRecentPracticalSolutions(self):
         context = Acquisition.aq_inner(self.context)
         subject = self.data.subject
-        search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider", "Publication"]
+        search_portal_types = [ "OSH_Link", "RALink",
+                                "CaseStudy", "Provider", "Publication"]
         # Publications are Files which implement the
         # IPublicationEnhanced interface
         query = ( Eq('portal_type', 'File') & \

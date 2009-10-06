@@ -1148,26 +1148,27 @@ body.template-practical-solution form#database_search dl#image-controls {
 ** Practical Solutions portlet used on the Topic page
 */
 
-#practical-solutions-portlet .portlet {
-   border: 1px solid #C5CBD8 !important;
+dl.portletPracticalSolutions {
    margin-bottom: 1em;
-   padding-bottom: 1em;
 }
 
-#practical-solutions-portlet .portletHeader {
-   display: block;
-   background-color: #C5CBD8;
-   background-position: 6px 50%;
-   line-height:2em;
-   float:none;
-   padding:0 0 0 22px;
-   margin:0px 0 1em;
-   top: 0;
+dl.portletPracticalSolutions dl.collapsedInlineCollapsible dt.collapsibleHeader {
+   float: left;
+   background-position: 0 50%;
+   padding: 0 0 0 16px;
 }
 
-#practical-solutions-portlet dl.collapsedInlineCollapsible {
-   border: 1px solid #C5CBD8 !important;
+dl.portletPracticalSolutions dl.collapsedInlineCollapsible {
    display:block;
+}
+
+dl.portletPracticalSolutions dl.expandedInlineCollapsible {
+   padding-bottom: 0.5em;
+}
+
+dl.portletPracticalSolutions a.more-related {
+   font-weight: bold;
+   float: right;
 }
 
 /*

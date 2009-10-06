@@ -103,7 +103,8 @@ class PracticalSolutionView(DBFilterView):
             "risk-assessment-tools":"RALink",
             "case-studies":"CaseStudy",
             "providers":"Provider",
-            "faqs":"Publication",
+            "faqs":"FAQs",
+            "publications": "Publication"
             }
 
     def __call__(self):

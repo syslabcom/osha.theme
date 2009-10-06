@@ -1,26 +1,39 @@
-<div id="practical-solutions-portlet"
-     tal:define="solutions view/getRecentPracticalSolutions;
-		 titles python:view.getLocalisedSectionTitles()">
-  <tal:section repeat="section view/sections">
-  <dl id="image-controls" class="collapsible inline collapsedOnLoad portlet"
-      tal:condition="python:solutions[section]">
+<dl class="portlet portletPracticalSolutions"
+    tal:define="solutions view/getRecentPracticalSolutions;
+		titles python:view.getLocalisedSectionTitles()">
 
-    <dt class="portletHeader collapsibleHeader">
-      <a href="#" class="tile"
-         tal:content="python:titles[section]">Section</a>
-    </dt>
+  <dt class="portletHeader"
+      i18n:translate="heading_related_resources">
+    Related resources
+  </dt>
 
-    <dd class="collapsibleContent"
-	tal:repeat="solution python:solutions[section]">
-      <a href=""
-         class="tile"
-         tal:attributes="href solution/getPath;
-                         title solution/Title;">
-	<img tal:attributes="src solution/getIcon" />
-	<tal:title replace="solution/Title"></tal:title>
-      </a>
-    </dd>
+  <dd class="portletItem">
+    <tal:section repeat="section view/sections">
+      <dl id="image-controls" class="collapsible inline collapsedOnLoad"
+	  tal:condition="python:solutions[section]">
+	<dt class="collapsibleHeader">
+	  <a href="#" class="tile"
+             tal:content="python:titles[section]">Section</a>
+	</dt>
 
-  </dl>
-</tal:section>
-</div>
+	<dd class="collapsibleContent"
+	    tal:repeat="solution python:solutions[section]">
+	  <a href=""
+             class="tile"
+             tal:attributes="href solution/getPath;
+                             title solution/Title;">
+	    <img tal:attributes="src solution/getIcon" />
+	    <tal:title replace="solution/Title"></tal:title>
+	  </a>
+	  <a class="more-related"
+	     tal:condition="repeat/solution/end"
+	     tal:attributes="href python:view.get_more_url(section)"
+	     href="db_filter">More</a>
+	  <div class="visualClear"></div>
+
+	</dd>
+      </dl>
+    </tal:section>
+  </dd>
+
+</dl>
