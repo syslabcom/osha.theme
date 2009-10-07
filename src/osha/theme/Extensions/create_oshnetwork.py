@@ -45,6 +45,10 @@ def run(self):
     addEventsAndNewsPortlets(self)
     return 'Finished!'
 
+def login(self):
+    user = app.myPloneSite.acl_users.getUserById('admin')
+    newSecurityManager(None, user)
+
 def getParent(self):
     portal = getToolByName(self, 'portal_url').getPortalObject()
     if hasattr(portal, 'en'):
@@ -90,6 +94,7 @@ def createContentRules(self):
 def createOSHNetworkFolder(self):
     """ """
     parent = getParent(self)
+    #import pdb; pdb.set_trace()
     # Create oshnetwork folder and publish it.
     if not hasattr(parent, 'oshnetwork'):
         title = 'OSHNetwork'
@@ -115,7 +120,8 @@ def createCountrySubfolders(self):
     """
     wftool = getToolByName(self, 'portal_workflow')
     parent = getParent(self)
-    oshnetwork = getattr(parent, 'oshnetwork')
+    # oshnetwork = getattr(parent, 'oshnetwork')
+    oshnetwork = getattr(parent, 'OSHA')
     for cc_and_name, link in EUROPEAN_NETWORK:
         try:
             cc, name = cc_and_name.split(' ', 1)

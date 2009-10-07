@@ -3,31 +3,35 @@ import unittest
 
 from zope.component import getUtility, getMultiAdapter
 
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import _createObjectByType
 from plone.app.portlets.storage import PortletAssignmentMapping
 from plone.portlets.interfaces import IPortletAssignment
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletRenderer
 from plone.portlets.interfaces import IPortletType
-from Products.CMFCore.utils import getToolByName
 
 from osha.theme.portlets import practical_solutions
 from osha.theme.tests.base import OshaThemeTestCase
+
 
 class TestPortlet(OshaThemeTestCase):
 
     def afterSetUp(self):
         self.setRoles(('Manager', ))
 
-    def populateSite(self):
-        """ Populate the test site with some content. """
-        self.setRoles(('Manager', ))
-        portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
-        self.portal.invokeFactory("Folder", "en")
-        # for portal_type in portal_types:
-        #     for i in range(5):
-        #         id = "%s_%s" %(portal_type, i)
-        #         self.portal.en.invokeFactory(portal_type, id)
+    # def populateSite(self):
+    #     """ Populate the test site with some content. """
+    #     self.setRoles(('Manager', ))
+    #     portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
+    #     self.portal.invokeFactory("Folder", "en")
+    #     #import pdb; pdb.set_trace()
+    #     for portal_type in portal_types:
+    #         for i in range(5):
+    #             id = "%s_%s" %(portal_type, i)
+    #             # self.portal.en.invokeFactory(portal_type, id)
+    #             _createObjectByType(portal_type, self, id)
 
     def test_portlet_type_registered(self):
         portlet = getUtility(
@@ -83,6 +87,7 @@ class TestPortlet(OshaThemeTestCase):
     #     """
         
     #     context = self.portal
+    #     self.setRoles(('Manager', ))
     #     self.populateSite()
     #     pc = getToolByName(context, "portal_catalog")
     #     import pdb; pdb.set_trace()
