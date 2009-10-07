@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+1.2.32 (2009-10-07)
+-------------------
+
+- Minor visual tweaks to Practical Solutions (deroiste)
+
 1.2.31 (2009-10-06)
 -------------------
 
