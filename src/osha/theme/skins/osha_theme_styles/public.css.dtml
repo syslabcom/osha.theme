@@ -1152,6 +1152,16 @@ dl.portletPracticalSolutions {
    margin-bottom: 1em;
 }
 
+dl.portletPracticalSolutions dt.portletHeader {
+   background-color: orange;
+}
+
+dl.portletPracticalSolutions dt.portletHeader,
+dl.portletPracticalSolutions dd.portletItem,
+dl.portletPracticalSolutions {
+   border-color: orange;
+}
+
 dl.portletPracticalSolutions dl.collapsedInlineCollapsible dt.collapsibleHeader {
    float: left;
    background-position: 0 50%;
