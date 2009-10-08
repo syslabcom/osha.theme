@@ -1,39 +1,56 @@
 <dl class="portlet portletPracticalSolutions"
-    tal:define="solutions view/getRecentPracticalSolutions;
-		titles python:view.getLocalisedSectionTitles()">
+    tal:define="publications view/getRecentPublications">
 
   <dt class="portletHeader"
-      i18n:translate="heading_related_resources">
-    Related resources
+      i18n:translate="heading_publication">
+    Publication
   </dt>
 
   <dd class="portletItem">
-    <tal:section repeat="section view/sections">
-      <dl id="image-controls" class="collapsible inline collapsedOnLoad"
-	  tal:condition="python:solutions[section]">
-	<dt class="collapsibleHeader">
-	  <a href="#" class="tile"
-             tal:content="python:titles[section]">Section</a>
-	</dt>
-
-	<dd class="collapsibleContent"
-	    tal:repeat="solution python:solutions[section]">
-	  <a href=""
-             class="tile"
-             tal:attributes="href solution/getPath;
-                             title solution/Title;">
-	    <img tal:attributes="src solution/getIcon" />
-	    <tal:title replace="solution/Title"></tal:title>
-	  </a>
-	  <a class="more-related"
-	     tal:condition="repeat/solution/end"
-	     tal:attributes="href python:view.get_more_url(section)"
-	     href="db_filter">More</a>
-	  <div class="visualClear"></div>
-
-	</dd>
-      </dl>
-    </tal:section>
+    <ul class="linkList">
+      <li  tal:repeat="publication python:publications">
+        <a href=""
+           class="tile"
+           tal:attributes="href publication/getPath;
+                           title publication/Title;">
+          <img tal:attributes="src publication/getIcon" />
+          <tal:title replace="publication/Title"></tal:title>
+        </a>
+        <a class="more-related"
+	   i18n:translate="label_more"
+           tal:condition="repeat/publication/end"
+           tal:attributes="href python:view.getDBFilterURL('Publication')"
+           href="db_filter?">More</a>
+        <div class="visualClear"></div>
+      </li>
+    </ul>
   </dd>
 
+</dl>
+
+<dl class="portlet portletPracticalSolutions"
+    tal:define="solutions view/getRecentPracticalSolutions;
+                titles python:view.getLocalisedSectionTitles()">
+
+  <dt class="portletHeader"
+      i18n:translate="heading_practical_solutions">
+    Practical solutions
+  </dt>
+
+  <dd class="portletItem">
+    <ul class="linkList">
+      <li><a href="db_filter?"
+             tal:attributes="href python:view.getPracticalSolutionsURL('useful-links')"
+             >Useful links - search</a></li>
+      <li><a href="db_filter?"
+             tal:attributes="href python:view.getPracticalSolutionsURL('risk-assessment-tools')"
+             >Risk assessment tools - search</a></li>
+      <li><a href="db_filter?"
+             tal:attributes="href python:view.getPracticalSolutionsURL('case-studies')"
+             >Case Studies - search</a></li>
+      <li><a href="db_filter?"
+             tal:attributes="href python:view.getPracticalSolutionsURL('providers')"
+             >Providers - search</a></li>
+    </ul>
+  </dd>
 </dl>

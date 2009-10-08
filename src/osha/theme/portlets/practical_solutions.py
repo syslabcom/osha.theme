@@ -135,8 +135,72 @@ class Renderer(base.Renderer):
                 break
         return section_brain_map
 
-    def getRecentPracticalSolutions(self):
+    def getRecentPublications(self):
+        """ Return 3 recent publications. This was the result of a
+        last minute change to just show publications rather than
+        Practical Solutions.
+        """
+
         context = Acquisition.aq_inner(self.context)
+        subject = self.data.subject
+        search_portal_types = ["Publication"]
+        # Publications are Files which implement the
+        # IPublicationEnhanced interface
+        query = ( Eq('portal_type', 'File') & \
+                      Eq('object_provides',
+                         'slc.publications.interfaces.IPublicationEnhanced') & \
+                      In('Subject', subject)
+                  )
+        query = Or(query,
+                   In('portal_type', search_portal_types)
+                   ) & Eq('review_state','published')
+        pc = getToolByName(context, 'portal_catalog')
+        if hasattr(pc, 'getZCatalog'):
+            pc = pc.getZCatalog()
+        brains = pc.evalAdvancedQuery(query, (('effective','desc'),))
+        results = brains[:3]
+        return results
+
+    def getDBFilterQueryString(self, practical_solution):
+        """ Construct the query string for db_filter with the relevant
+        language, database and keywords"""
+        context = self.context
+        subjects = self.data.subject
+        keyword_query = ["&keywords:list="+i for i in subjects][0]
+        preflang = getToolByName(context,
+                                 'portal_languages').getPreferredLanguage()
+        database = ""
+        if self.portal_types_map.has_key(practical_solution):
+            database = self.portal_types_map[practical_solution]
+        query_string = "language=%s&search_portal_types:list=%s%s" \
+              %(preflang, database, keyword_query)
+        return query_string
+
+    def getDBFilterURL(self, practical_solution):
+        context = self.context
+        portal_url = getToolByName(context, 'portal_url')()
+        preflang = getToolByName(context,
+                                 'portal_languages').getPreferredLanguage()
+        query_string = self.getDBFilterQueryString(practical_solution)
+        url = "%s/%s/db_filter?%s"\
+              %(portal_url, preflang, query_string)
+        return url
+
+    def getPracticalSolutionsURL(self, practical_solution):
+        """ Construct the url for links to the practical solution page
+        of filtered results according to language.
+        """
+        context = self.context
+        portal_url = getToolByName(context, 'portal_url')()
+        preflang = getToolByName(context,
+                                 'portal_languages').getPreferredLanguage()
+        query_string = self.getDBFilterQueryString(practical_solution)
+        url = "%s/%s/practical-solutions/%s?%s"\
+              %(portal_url, preflang, practical_solution, query_string)
+        return url
+
+    def getRecentPracticalSolutions(self):
+        context = self.context
         subject = self.data.subject
         search_portal_types = [ "OSH_Link", "RALink",
                                 "CaseStudy", "Provider", "Publication"]
