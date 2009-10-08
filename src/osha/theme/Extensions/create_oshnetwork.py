@@ -1,3 +1,4 @@
+from Acquisition import aq_parent
 from zope.app.container.interfaces import INameChooser
 
 from zope.component import getUtility, getMultiAdapter
@@ -45,8 +46,9 @@ def run(self):
     addEventsAndNewsPortlets(self)
     return 'Finished!'
 
-def login(self):
-    user = app.myPloneSite.acl_users.getUserById('admin')
+def login(self, portal):
+    site = aq_parent(portal)
+    user = site.acl_users.getUserById('admin').__of__(portal.acl_users)
     newSecurityManager(None, user)
 
 def getParent(self):
@@ -106,14 +108,14 @@ def createOSHNetworkFolder(self):
                             description=desc)
 
     oshnetwork = getattr(parent, 'oshnetwork')
-    wftool = getToolByName(self, 'portal_workflow')
-    wftool.doActionFor(oshnetwork, 'publish')
+    # wftool = getToolByNamme(self, 'portal_workflow')
+    # wftool.doActionFor(oshnetwork, 'publish')
 
     oshnetwork.invokeFactory('Document', 'index.html')
     document = getattr(oshnetwork, 'index.html')
     document.setTitle('OSHNetwork')
     document._setProperty('layout', 'oshnetwork-member-view')
-    wftool.doActionFor(document, 'publish')
+    # wftool.doActionFor(document, 'publish')
 
 def createCountrySubfolders(self):
     """ Create subfolder with index.hml in each country folder
