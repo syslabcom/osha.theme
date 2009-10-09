@@ -154,12 +154,14 @@
                              i18n:translate="label_blog_entry_categories"
                              tal:condition="item/Subject">
                             Filed under: 
-                            <tal:loop i18n:name="categories"
-                                      repeat="subject item/Subject">
+                            <tal:loop repeat="subject item/Subject">
                                 <a class="item-keyword"
                                    tal:content="subject"
+                                   i18n:domain="osha"
+                                   i18n:translate=""
                                    tal:attributes="href python:'%s/%s?%s' % (context.absolute_url(), templateId, context.create_query_string(Subject=subject));
                                                    title string:Limit to listings labelled '$subject'">[Feature Story]</a>
+                            <span tal:condition="not:repeat/subject/end">|</span>
                             </tal:loop>
                         </div>
                         <div class="comment-info" 
