@@ -1,12 +1,16 @@
 osha.theme Changelog
 ====================
 
-1.2.34 (unreleased)
+1.2.35 (2009-10-09)
+-------------------
+
+- Practical solution pages: adding more options to the search filter, fixing
+  the category and subcategory filter. (deroiste)
+
+1.2.34 (2009-10-09)
 -------------------
 
 - bugfix for the display of Subject on the blog_view (thomasw)
-- Practical solution pages: adding more options to the search filter, fixing
-  the category and subcategory filter. (deroiste)
 
 1.2.33 (2009-10-08)
 -------------------
