@@ -8,67 +8,66 @@
   <body>
     <div metal:fill-slot="main">
 
-      <span tal:define="local_keyword python:here.getProperty('keyword', '');
-			keywords request/keywords| local_keyword |string:;
-			subcategory request/subcategory | string:;
-			object_implements request/object_implements | string:;
-			SearchableText request/SearchableText|string:;
-			multilingual_thesaurus request/multilingual_thesaurus|string:;
-			nace request/nace|string:;
-			nace python:nace==[''] and '' or nace;
-			category request/category|string:;
-			getRemoteLanguage request/getRemoteLanguage|string:;
-			country request/country|string:;
-			search_portal_types view/search_portal_types;
-			Batch python:modules['Products.CMFPlone'].Batch;
-			DateTime python:modules['DateTime'].DateTime;
-			b_size python:10;b_start python:0;
-			b_start request/b_start | b_start;
-			desc_length site_properties/search_results_description_length;
-			desc_ellipsis site_properties/ellipsis;
-			searchterm request/SearchableText|nothing;
-			">
+      <span tal:define="local_keyword python:context.getProperty('keyword', '');
+                        keywords request/keywords| local_keyword |string:;
+                        subcategory request/subcategory | string:;
+                        object_implements request/object_implements | string:;
+                        SearchableText request/SearchableText|string:;
+                        multilingual_thesaurus request/multilingual_thesaurus|string:;
+                        nace request/nace|string:;
+                        nace python:nace==[''] and '' or nace;
+                        category request/category|string:;
+                        getRemoteLanguage request/getRemoteLanguage|string:;
+                        country request/country|string:;
+                        search_portal_types view/search_portal_types;
+                        Batch python:modules['Products.CMFPlone'].Batch;
+                        DateTime python:modules['DateTime'].DateTime;
+                        b_size python:10;b_start python:0;
+                        b_start request/b_start | b_start;
+                        desc_length site_properties/search_results_description_length;
+                        desc_ellipsis site_properties/ellipsis;
+                        searchterm request/SearchableText|nothing;
+                        ">
 
-	<h1  class="documentFirstHeading" tal:content="context/Title">Title</h1>
+        <h1  class="documentFirstHeading" tal:content="context/Title">Title</h1>
 
-	<div class="photoAlbum">
-	  <div class="photoAlbumEntry photoAlbumFolder">
+        <div class="photoAlbum">
+          <div class="photoAlbumEntry photoAlbumFolder">
 
-            <span class="photoAlbumEntryWrapperWrapper" 
-		  tal:condition="view/has_section_image">
+            <span class="photoAlbumEntryWrapperWrapper"
+                  tal:condition="view/has_section_image">
               <span class="photoAlbumEntryWrapper">
-		<img width="84" title="Section Title" 
+                <img width="84" title="Section Title"
                      alt="Section Alt" src="../section-image.png"
                      tal:attributes="alt view/get_section_title;
                                      title view/get_section_title" />
               </span>
               <span class="photoAlbumEntryTitle database-emphasis"
-		    tal:content="view/get_section_title">
-		Section Title 
+                    tal:content="view/get_section_title">
+                Section Title
               </span>
             </span>
-	    
-	  </div>
-	</div>
 
-	<metal:field use-macro="python:here.widget('text', mode='view')">
-	  Body text
-	</metal:field>
+          </div>
+        </div>
 
-	<br clear="all">
+        <metal:field use-macro="python:context.widget('text', mode='view')">
+          Body text
+        </metal:field>
 
-	<form id="database_search" tal:attributes="action template/id" method="get">
+        <br clear="all">
 
-	  <div id="filter_searchfields">
+        <form id="database_search"
+              tal:attributes="action template/id" method="get">
 
-            <h1>Search in the 
+          <div id="filter_searchfields">
+
+            <h1>Search in the
               <span class="database-emphasis">
-		<span tal:content="here/Title">Risk Assessment</span>
-		Database
+                <span tal:content="context/Title">Risk Assessment</span>
+                Database
               </span>
             </h1>
-
-
 
             <div class="field_default">
               <input type="text"
@@ -79,100 +78,133 @@
                      />
             </div>
 
+            <dl id="image-controls" class="collapsible inline collapsedOnLoad"
+                tal:attributes="class view/get_collapsed_css">
+              <dt class="collapsibleHeader"
+                  i18n:translate="action_advanced_search">Advanced search</dt>
 
-	    <dl id="image-controls" class="collapsible inline collapsedOnLoad">
+              <dd class="collapsibleContent">
+                <div class="formHelp">
+                  Filter your search by selecting one or more of
+                  the filters.  You can always remove any filter
+                  again by selecting the empty entry or by
+                  clicking the Reset button.
+                </div>
 
-	      <dt class="collapsibleHeader" i18n:translate="action_advanced_search">Advanced search</dt>
+                <div class="filter_column1">
 
-	      <dd class="collapsibleContent">
+                  <div class="field">
+                    <label
+                       i18n:translate="label_database"> Database </label><br />
 
+                    <div class="formHelp"
+                         i18n:translate="help_database_search">
+                      Select the database types you want to search.
+                    </div>
 
+                    <div tal:repeat="T view/search_types">
+                      <input class="input_checkbox" type="checkbox"
+                             name="search_portal_types:list"
+                             tal:attributes="value python:T[1];
+                                             checked python: 'checked' and T[2] or ''" />
+                      <span tal:content="python:T[0]" ></span>
+                    </div>
 
-		<div class="columnBottom field">
-		  <div class="formHelp">
-                    Filter your search by selecting one or more of the filters.
-                    You can always remove any filter again by selecting the empty entry or by clicking the Reset button.
-		  </div>
+                    <div class="field_default">
+                      <metal:use use-macro="context/filter_macros/macros/RemoteLanguage_compact"></metal:use>
+                    </div>
 
-		</div>
+                    <div class="field_default" tal:define="value country">
+                      <metal:use use-macro="context/filter_macros/macros/MultiCountry_compact"></metal:use>
+                    </div>
+                  </div>
 
-		
-		<div class="filter_column1">
-		  
-		  <div class="field_default">
-		    <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
-		  </div> 
+                </div>
 
-		  <div class="field_default"
-                       tal:define="root_node   local_keyword | string:;
-                                   vocabulary  string:Subcategory;
-                                   value       subcategory;
-                                   fieldName   string:subcategory;">
-                    <label i18n:translate="label_subcategory" >Subcategory</label><br>
+                <div class="filter_column2">
 
-                    <metal:use use-macro="here/filter_macros/macros/ATVocabularyDropdown"></metal:use>
-		  </div>
+                  <div class="field_default"
+                       tal:define="value keywords; size python:5">
 
-		</div>
-		
-		<div class="filter_column2">
+                    <span tal:attributes="class python:keywords and 'hiddenStructure' or ''">
+                      <metal:use use-macro="here/filter_macros/macros/Subject"></metal:use>
+                    </span>
 
-		  <div class="field_default" tal:define="value country">
-		    <metal:use use-macro="here/filter_macros/macros/MultiCountry_compact"></metal:use>
-		  </div>
-		  
-		</div>
-		
-		<div class="visualClear"></div>
+                    <tal:has_categories condition="keywords">
+                      <label>
+                        Categories: <tal:categories
+                                       content="python:', '.join(keywords)">
+                        </tal:categories>
+                      </label>
+                      <div class="field_default"
+                           tal:define="root_node   local_keyword | string:;
+                                       vocabulary  string:Subcategory;
+                                       value       subcategory;
+                                       fieldName   string:subcategory;">
+                        <label
+                           i18n:translate="label_subcategory"
+                           >Subcategory
+                        </label><br />
+                        <metal:use use-macro="context/filter_macros/macros/ATVocabularyDropdown"></metal:use>
+                      </div>
+                    </tal:has_categories>
 
-		<p tal:define="query_string context/REQUEST/QUERY_STRING;
-			       search_portal_type view/get_search_portal_type"><a href="db_filter" 
-		      i18n:translate="label_additional_search_options"
-		      tal:attributes="href 
-				      string:db_filter?${query_string}&search_portal_types:list=${search_portal_type}"
-		      >Additional search options</a></p>         
+                  </div>
 
-	      </dd>
+                  <div class="field_vocab"
+                       tal:define="level python:2;
+                                   portal_type string:OSH_Link">
+                    <metal:use use-macro="context/filter_macros/macros/NACE"></metal:use>
+                  </div>
 
-	    </dl>
+                  <div class="field_vocab"
+                       tal:define="portal_type string:OSH_Link">
+                    <metal:use use-macro="context/filter_macros/macros/MultilingualThesaurus"></metal:use>
+                  </div>
 
+                </div>
+                <div class="visualClear"></div>
 
+              </dd>
 
-	    <div class="formControls">
+            </dl>
+
+            <div class="formControls">
               <input class="context"
-		     type="submit"
-		     name="submit"
-		     value="Search"
-		     i18n:domain="plone"
-		     i18n:attributes="value label_search;"
-		     />
+                     type="submit"
+                     name="submit"
+                     value="Search"
+                     i18n:domain="plone"
+                     i18n:attributes="value label_search;"
+                     />
               <input  class="context" type="reset" value="Reset"
-                      tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
+                      tal:attributes="onclick string:window.location='${context/absolute_url}/${template/getId}'" />
 
-	    </div>	
-</form>
+            </div>
+          </div>
+        </form>
 
+        <div tal:define="results view/search">
 
-	<div tal:define="results view/search">
+          <!--i>Filtered by:
+          <span tal:replace="view/buildQuery"></span>
+          </i-->
 
-	  <!--i>Filtered by:
-	  <span tal:replace="view/buildQuery"/>
-	  </i-->
-
-	  <h2>
+          <h2>
             <span i18n:translate="heading_search_results">
               Search results
             </span>
             <span class="discreet">
               &mdash;
               <span i18n:translate="batch_x_items_matching_your_criteria"
-		    ><span i18n:name="number"
-			   tal:omit-tag=""
-			   tal:content="python:len(results)">234</span> items matching your
-		search terms</span>
-	  </h2>
+                    ><tal:number i18n:name="number"
+                                 content="python:len(results)"
+                                 >234 </tal:number>
+              </span> items matching your search terms
+            </span>
+          </h2>
 
-	  <div tal:condition="not: results">
+          <div tal:condition="not: results">
             <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
           </div>
 
@@ -181,39 +213,38 @@
 
             <dl id="db_results">
               <tal:results repeat="result batch">
-		<tal:entry define="provider_helper here/@@provider_helper;
-				   result_url result/getURL;
-				   url result/getRemoteUrl | result_url;
-				   title result/Title|string:;
-				   item_cas result/getCas|string:;
-				   item_einecs result/getEinecs|string:;
-				   item_remoteLanguage result/getRemoteLanguage|string:;
-				   item_subject result/Subject | python:[];
-				   item_modified result/modified;
-				   item_pubdate result/effective;
-				   item_creator result/Creator;
-				   gc python:here.portal_languages.getNameForLanguageCode;
-				   ">
+                <tal:entry define="provider_helper context/@@provider_helper;
+                                   result_url result/getURL;
+                                   url result/getRemoteUrl | result_url;
+                                   title result/Title|string:;
+                                   item_cas result/getCas|string:;
+                                   item_einecs result/getEinecs|string:;
+                                   item_remoteLanguage result/getRemoteLanguage|string:;
+                                   item_subject result/Subject | python:[];
+                                   item_modified result/modified;
+                                   item_pubdate result/effective;
+                                   item_creator result/Creator;
+                                   gc python:context.portal_languages.getNameForLanguageCode;
+                                   ">
 
-                  <metal:macro use-macro="here/oshmacros/macros/searchresults" />
+                  <metal:macro use-macro="context/oshmacros/macros/searchresults" />
 
-		</tal:entry>
+                </tal:entry>
               </tal:results>
             </dl>
 
             <div class="visualClear" ></div>
 
-            <div metal:use-macro="here/batch_macros/macros/navigation" />
+            <div metal:use-macro="context/batch_macros/macros/navigation" />
 
             <!-- Snapshot code -->
             <script type="text/javascript" src="http://shots.snap.com/ss/8c2016f0b237f14c8e18548d26c3d103/snap_shots.js"></script>
           </div>
 
-	</div>
+        </div>
 
-	</span>
+      </span>
 
-
-	</div> 
+    </div>
   </body>
 </html>

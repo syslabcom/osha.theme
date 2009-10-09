@@ -8,7 +8,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from osha.theme.browser.dbfilter import DBFilterView
 
 class PracticalSolutionsView(DBFilterView):
-    """ View Class for the Practical Solutions page. 
+    """ View Class for the Practical Solutions page.
 
         Provides a link to each section based on the folder title.
         If there is an image called "section-image.png" in the folder
@@ -90,7 +90,7 @@ class PracticalSolutionView(DBFilterView):
     The Title of the parent folder is used as a caption under the image for the
     current section (to be consistent with the PracticalSolutionsView).
     If there is an image in that folder called 'section-image.png' it will be
-    used too. 
+    used too.
     The portal-type to search for is derived from the id of the parent
     folder.
     """
@@ -123,6 +123,17 @@ class PracticalSolutionView(DBFilterView):
         parent = aq_parent(aq_inner(context))
         return parent.Title()
 
+    def get_collapsed_css(self):
+        """ Return a string with the css classes to expand the search
+        fields if some have been selected already or otherwise
+        collapse them. """
+        context = self.context
+        collapsible = "collapsible inline"
+        is_expanded = context.REQUEST.QUERY_STRING
+        collapsed_state = is_expanded and 'expandedOnLoad'\
+                          or 'collapsedOnLoad'
+        return "%s %s" %(collapsible, collapsed_state)
+
     def get_search_portal_type(self):
         """ Work out the relevant search_portal_types value from the
         parent id.
@@ -134,7 +145,35 @@ class PracticalSolutionView(DBFilterView):
             search_portal_type = self.portal_types_map[parent.id]
         return search_portal_type
 
+    def search_types(self):
+        """ Return a list of translated search types to select
+        from. This overrides the DBFilterView method to remove
+        Publication and select the database using get_search_portal_type. """
+        context = aq_inner(self.context)
+        local_portal_types = self.get_search_portal_type()
+        search_portal_types = self.request.get('search_portal_types',
+                                               local_portal_types)
+        # if all are turned off, turn them all on. Searching for
+        # nothing makes no sense.
+        if not search_portal_types:
+            search_portal_types = ['OSH_Link', 'RALink',
+                                   'CaseStudy', 'Provider']
+        TYPES = [
+            ('Useful links', 'OSH_Link',
+             'OSH_Link' in search_portal_types) ,
+            ('Risk assessment tools', 'RALink',
+             'RALink' in search_portal_types) ,
+            ('Case studies', 'CaseStudy',
+             'CaseStudy' in search_portal_types) ,
+            ('Providers', 'Provider',
+             'Provider' in search_portal_types) ,
+                ]
+
+        return TYPES
+
     def search_portal_types(self):
+        """ Publications are files with the IPublicationEnhanced
+        interface """
         context = self.context
         search_portal_types = [self.get_search_portal_type()]
         query = None
