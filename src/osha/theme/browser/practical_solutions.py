@@ -136,23 +136,24 @@ class PracticalSolutionView(DBFilterView):
 
     def get_search_portal_type(self):
         """ Work out the relevant search_portal_types value from the
-        parent id.
+        query string or the parent id.
         """
         context = self.context
         parent = aq_parent(aq_inner(context))
-        search_portal_type = []
+        local_search_portal_type = []
         if self.portal_types_map.has_key(parent.id):
-            search_portal_type = self.portal_types_map[parent.id]
-        return search_portal_type
+            local_search_portal_type = self.portal_types_map[parent.id]
+        search_portal_types = self.request.get('search_portal_types',
+                                               local_search_portal_type)
+        return search_portal_types
 
     def search_types(self):
         """ Return a list of translated search types to select
         from. This overrides the DBFilterView method to remove
-        Publication and select the database using get_search_portal_type. """
-        context = aq_inner(self.context)
-        local_portal_types = self.get_search_portal_type()
-        search_portal_types = self.request.get('search_portal_types',
-                                               local_portal_types)
+        Publication and select the database using
+        get_search_portal_type. """
+
+        search_portal_types = self.get_search_portal_type()
         # if all are turned off, turn them all on. Searching for
         # nothing makes no sense.
         if not search_portal_types:
@@ -175,7 +176,7 @@ class PracticalSolutionView(DBFilterView):
         """ Publications are files with the IPublicationEnhanced
         interface """
         context = self.context
-        search_portal_types = [self.get_search_portal_type()]
+        search_portal_types = self.get_search_portal_type()
         query = None
         if 'Publication' in search_portal_types:
             query = ( Eq('portal_type', 'File')\
