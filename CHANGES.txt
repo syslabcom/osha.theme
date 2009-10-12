@@ -1,6 +1,12 @@
 osha.theme Changelog
 ====================
 
+1.2.36 (2009-10-12)
+-------------------
+
+- Limiting the Category filter to one category and fixing the subcategory
+  filter. #375 (deroiste)
+
 1.2.35 (2009-10-09)
 -------------------
 
