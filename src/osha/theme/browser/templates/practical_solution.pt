@@ -8,8 +8,7 @@
   <body>
     <div metal:fill-slot="main">
 
-      <span tal:define="local_keyword python:context.getProperty('keyword', '');
-                        keywords request/keywords| local_keyword |string:;
+      <span tal:define="keyword view/get_keyword;
                         subcategory request/subcategory | string:;
                         object_implements request/object_implements | string:;
                         SearchableText request/SearchableText|string:;
@@ -124,20 +123,21 @@
                 <div class="filter_column2">
 
                   <div class="field_default"
-                       tal:define="value keywords; size python:5">
+                       tal:define="value keyword; size python: 1">
 
-                    <span tal:attributes="class python:keywords and 'hiddenStructure' or ''">
+                    <span tal:attributes="class python:value and 'hiddenStructure' or ''">
                       <metal:use use-macro="here/filter_macros/macros/Subject"></metal:use>
                     </span>
 
-                    <tal:has_categories condition="keywords">
+
+                    <tal:has_categories condition="keyword">
                       <label>
-                        Categories: <tal:categories
-                                       content="python:', '.join(keywords)">
+                        Category: <tal:categories
+                                       content="keyword">
                         </tal:categories>
                       </label>
                       <div class="field_default"
-                           tal:define="root_node   local_keyword | string:;
+                           tal:define="root_node   keyword;
                                        vocabulary  string:Subcategory;
                                        value       subcategory;
                                        fieldName   string:subcategory;">

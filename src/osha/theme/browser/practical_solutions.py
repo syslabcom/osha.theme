@@ -134,6 +134,15 @@ class PracticalSolutionView(DBFilterView):
                           or 'collapsedOnLoad'
         return "%s %s" %(collapsible, collapsed_state)
 
+    def get_keyword(self):
+        """ Return the first value from keywords/request or an empty string
+        """
+        keywords = self.request.get("keywords", "")
+        keyword = ""
+        if keywords:
+            keyword = keywords[0]
+        return keyword
+
     def get_search_portal_type(self):
         """ Work out the relevant search_portal_types value from the
         query string or the parent id.
@@ -188,4 +197,55 @@ class PracticalSolutionView(DBFilterView):
         else:
             query = In('portal_type', search_portal_types)
         query = query & Eq('review_state','published')
+        return query
+
+    def buildQuery(self):
+        """ Build the query based on the request.
+        Overriding this method from DBFilter because it treats an
+        empty keywords:list as a value causing nothing to be returned
+        """
+        context = aq_inner(self.context)
+
+        query = self.search_portal_types()
+
+        local_keyword = context.getProperty('keyword', '')
+        keywords = self.request.get('keywords', local_keyword)
+        if keywords:
+            if keywords !=  ['']:
+                query = query & In('Subject', keywords)
+
+        nace = list(self.request.get('nace', ''))
+        if '' in nace:
+            nace.remove('')
+        if nace:
+            query = query & In('nace', nace)
+            #query.update({'nace':nace})
+
+        multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
+        if '' in multilingual_thesaurus:
+            multilingual_thesaurus.remove('')
+        if multilingual_thesaurus:
+            query = query & In('multilingual_thesaurus', multilingual_thesaurus)
+            #query.update({'multilingual_thesaurus':multilingual_thesaurus})
+
+        getRemoteLanguage = self.request.get('getRemoteLanguage', '')
+        if getRemoteLanguage:
+            query = query & In('getRemoteLanguage', getRemoteLanguage)
+            #query.update({'getRemoteLanguage':getRemoteLanguage})
+
+        subcategory = self.request.get('subcategory', '')
+        if subcategory:
+            query = query & In('subcategory', subcategory)
+            #query.update({'subcategory':subcategory})
+
+        country = self.request.get('country', '')
+        if country:
+            query = query & In('country', country)
+            #query.update({'country':country})
+
+        SearchableText = self.request.get('SearchableText', '')
+        if SearchableText != '':
+            query = query & Generic('SearchableText', {'query': SearchableText, 'ranking_maxhits': 10000 })
+            #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
+
         return query
