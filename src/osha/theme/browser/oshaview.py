@@ -95,8 +95,16 @@ class OSHA(BrowserView):
         
         meta['title'] = context.Title()
         meta['DC.title'] = context.Title()
-        meta['DC.description'] = context.Description() or navigation_root.Description()
         meta['description'] = context.Description() or navigation_root.Description()
+        meta['DC.description'] = context.Description() or navigation_root.Description()
+
+        medium = {
+                "Image": "image", 
+                "News Item": "news", 
+                "Blog Entry": "blog"
+                }
+        if medium.has_key(context.portal_type):
+            meta['medium'] = medium.get(context.portal_type)
 
         Publisher = meta.get('Publisher', None)
         if not Publisher or Publisher == 'No publisher':
@@ -104,7 +112,7 @@ class OSHA(BrowserView):
 
 
         # Gorka requests on 6.3.2008
-        # Just in case, I'd like to remind you the decission we took regarding the
+        # Just in case, I'd like to remind you the decision we took regarding the
         # keywords for the keywords html tag.        
         # The keywords should be added as follows        
         # 1.- OSH, OSHA, EU-OSHA, Occupational safety, Occupational health,
@@ -153,9 +161,16 @@ class OSHA(BrowserView):
         if language:
             meta['DC.language'] = language
             meta['language'] = language
-             
-                
+
         return meta
+
+    def getPageShareImageSource(self):
+        """ Return the path for the image that will be shared with the addthis
+            button.
+        """
+        context = Acquisition.aq_inner(self.context)
+        portal_url = getToolByName(context, 'portal_url')
+        return '%s%s/image' % (portal_url(), '/'.join(context.getPhysicalPath()))
         
     
     def sendto(self, send_to_address, send_from_address, comment,
