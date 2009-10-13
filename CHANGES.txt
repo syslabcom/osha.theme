@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+1.2.36 (unreleased)
+-------------------
+
+- Added the blog RSS feed to rss-feeds browser view according to request in #239 (pilz)
+
 1.2.36 (2009-10-12)
 -------------------
 

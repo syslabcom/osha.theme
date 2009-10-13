@@ -72,9 +72,27 @@
         <span tal:replace="structure python:view.quick_buttons(url=feed['url'], title=feed['title'])" />
     </dd>
 
-    <div class="sepline" tal:condition="not:repeat/feed/end"></div>
+    <div class="sepline"></div>
     
     </tal:feeds>   
+
+    <!-- Blog -->
+
+    <dt>
+        <img src="newsitem_icon.gif" alt="Blog Item Icon" /> 
+        <a href="http://osha.europa.eu/en/blog/front-page/RSS">
+            The OSH Blog
+        </a>
+    </dt>
+    <dd>
+        <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
+        <a href="http://osha.europa.eu/en/blog/front-page/RSS">     
+            http://osha.europa.eu/en/blog/front-page/RSS
+        </a> <br/>
+        <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
+        <span tal:replace="structure python:view.quick_buttons(url='http://osha.europa.eu/en/blog/front-page/RSS', title='The OSH Blog')" />
+    </dd>
+
 
 </dl>
 
