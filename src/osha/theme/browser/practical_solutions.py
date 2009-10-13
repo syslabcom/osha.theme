@@ -117,11 +117,27 @@ class PracticalSolutionView(DBFilterView):
         parent = aq_parent(aq_inner(context))
         return "section-image.png" in parent.objectIds()
 
-    def get_section_title(self):
-        """ Return the title of the parent folder """
+    def get_i18n_database_search_heading(self):
+        """ Method to get the localised heading for the database
+        search box.
+        """
         context = self.context
         parent = aq_parent(aq_inner(context))
-        return parent.Title()
+        section_id = parent.getId()
+        trans_tool = getToolByName(context, "translation_service")
+        lang_tool = getToolByName(context, "portal_languages")
+        language = lang_tool.getPreferredLanguage()
+
+        # convert "useful-links" to "heading_useful_links"
+        msgid = "heading_search_%s" % section_id.replace("-", "_")
+        heading  = trans_tool.utranslate("osha",
+                                         msgid,
+                                         {},
+                                         context=context,
+                                         target_language=language,
+                                         default=parent.Title())
+        return heading
+
 
     def get_collapsed_css(self):
         """ Return a string with the css classes to expand the search
