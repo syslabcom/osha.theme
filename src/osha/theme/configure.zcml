@@ -2,7 +2,10 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:five="http://namespaces.zope.org/five"
     xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="osha.theme">
+
+    <i18n:registerTranslations directory="locales" />
 
    <five:registerPackage package="." initialize=".initialize" />
 
