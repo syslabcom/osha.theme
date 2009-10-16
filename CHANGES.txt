@@ -1,10 +1,11 @@
 osha.theme Changelog
 ====================
 
-1.2.36 (unreleased)
+1.2.37 (unreleased)
 -------------------
 
 - Added the blog RSS feed to rss-feeds browser view according to request in #239 (pilz)
+- Added a locales-directory for OSHA specific translation customisations (thomasw)
 
 1.2.36 (2009-10-12)
 -------------------
