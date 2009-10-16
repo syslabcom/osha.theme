@@ -2,64 +2,21 @@
       lang="en-US"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
-  
+
   <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
 
   <body>
-    <div metal:fill-slot="main">    
+    <div metal:fill-slot="main">
 
       <h1 class="documentFirstHeading"
-	  i18n:translate="heading_topics">Topics</h1>
+          i18n:translate="heading_topics">Topics</h1>
 
-      <script type="text/javascript">
-	/*
-	jQuery slideshow courtesy of:
-	http://jonraasch.com/blog/a-simple-jquery-slideshow
-	*/
-
-function slideSwitch() {
-    var active = jq('#topic-view-slideshow IMG.active');
-
-    if ( active.length == 0 ) active = jq('#topic-view-slideshow IMG:last');
-
-    var next =  active.next().length ? active.next()
-        : jq('#topic-view-slideshow IMG:first');
-
-    active.addClass('last-active');
-
-    next.css({opacity: 0.0})
-    .removeClass('inactive')
-    .addClass('active')
-    .animate({opacity: 1.0}, 1000, function() {
-        active.removeClass('active last-active');
-    });
-    active.animate({opacity: 0.0}, 1000, function() {
-        active.addClass('inactive');
-    });
-}
-
-jq(function() {
-    setInterval( "slideSwitch()", 5000 );
-});
-
-      </script>
-        
       <div id="topic-view-heading-box">
-	<tal:images define="images view/getTopicImages">
-	  <tal:has_images condition="images">
 
-	    <div id="topic-view-slideshow" >
-	      <tal:slideshow repeat="image images">
-		<tal:image define="image image/getObject">
-		<img tal:attributes="src string:${image/absolute_url}/image_preview;
-				     title image/Title;
-				     class python:repeat['image'].start and 'active' or ''" />
-		</tal:image>
-	      </tal:slideshow>
-	    </div>
+        <div id="relatedMedia" >
+          <tal:related_media replace="structure python:view.getRelatedMedia('400', 'preview')" />
+        </div>
 
-	  </tal:has_images>
-	</tal:images> 
       </div>
 
       <h1 tal:content="context/Title">Title</h1>
@@ -69,40 +26,40 @@ jq(function() {
       <div class="visualClear"></div>
 
       <tal:folders define="
-			   folders python:here.contentValues(filter={'portal_type':['Folder']});
-			   middle_index python:len(folders) - len(folders) / 2;
-			   left_folders  python:folders[:middle_index];
-			   right_folders python:folders[middle_index:]">
+                           folders python:here.contentValues(filter={'portal_type':['Folder']});
+                           middle_index python:len(folders) - len(folders) / 2;
+                           left_folders  python:folders[:middle_index];
+                           right_folders python:folders[middle_index:]">
 
-	<table id="folder-listing" cellspacing="20"
+        <table id="folder-listing" cellspacing="20"
                tal:condition="folders">
           <tr>
 
             <td>
               <ul>
-		<li tal:repeat="folder left_folders">
-                  <a href="" 
+                <li tal:repeat="folder left_folders">
+                  <a href=""
                      tal:attributes="href string:${folder/absolute_url}/topic-view"
                      tal:content="folder/Title" />
-		</li>
+                </li>
               </ul>
             </td>
 
             <td>
               <ul>
-		<li tal:repeat="folder right_folders">
-                  <a href="" 
+                <li tal:repeat="folder right_folders">
+                  <a href=""
                      tal:attributes="href string:${folder/absolute_url}/topic-view"
                      tal:content="folder/Title" />
-		</li>
+                </li>
               </ul>
             </td>
 
           </tr>
-	</table>
+        </table>
 
-	<div class="visualClear"></div>
-      </tal:folders> 
+        <div class="visualClear"></div>
+      </tal:folders>
 
     </div>
   </body>

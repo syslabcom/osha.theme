@@ -2,71 +2,26 @@
       lang="en-US"
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="plone">
-  
+
   <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
 
   <body>
-    <div metal:fill-slot="main">    
-      
+    <div metal:fill-slot="main">
+
       <div class="visualClear"></div>
 
-      <script type="text/javascript">
-	/*
-	jQuery slideshow courtesy of:
-	http://jonraasch.com/blog/a-simple-jquery-slideshow
-	*/
-
-function slideSwitch() {
-    var active = jq('#topic-view-slideshow IMG.active');
-
-    if ( active.length == 0 ) active = jq('#topic-view-slideshow IMG:last');
-
-    var next =  active.next().length ? active.next()
-        : jq('#topic-view-slideshow IMG:first');
-
-    active.addClass('last-active');
-
-    next.css({opacity: 0.0})
-    .removeClass('inactive')
-    .addClass('active')
-    .animate({opacity: 1.0}, 1000, function() {
-        active.removeClass('active last-active');
-    });
-    active.animate({opacity: 0.0}, 1000, function() {
-        active.addClass('inactive');
-    });
-}
-
-jq(function() {
-    setInterval( "slideSwitch()", 5000 );
-});
-
-      </script>
-      
       <div id="topic-view-heading-box">
-	<tal:documents define="
-			       documents python:here.contentValues(filter={'portal_type':['Image']})">
-	  <tal:has_documents condition="documents">
 
-	    <div id="topic-view-slideshow" >
-	      <tal:slideshow repeat="document documents">
-		<img tal:attributes="src string:${document/absolute_url}/image_mini;
-				     title document/Title;
-				     class python:repeat['document'].start and 'active' or ''" />
-	      </tal:slideshow>
-	    </div>
-
-	  </tal:has_documents>
-	</tal:documents> 
-
-	<div id="topic-heading-text">
-	  <h1 tal:content="context/Title">Title</h1>
-	  <p tal:content="context/Description">Description</p>
-	</div>
-	<div class="visualClear"></div>
+        <div id="relatedMedia" >
+          <tal:related_media replace="structure python:view.getRelatedMedia('200', 'mini')" />
+        </div>
+        <div id="topic-heading-text">
+          <h1 tal:content="context/Title">Title</h1>
+          <p tal:content="context/Description">Description</p>
+        </div>
+        <div class="visualClear"></div>
       </div>
-
-      <tal:intro replace="structure view/intro "></tal:intro>
+      <div tal:content="structure context/CookedBody"></div>
 
       <!-- this adds the slc.linkcollection -->
       <span tal:replace="structure provider:plone.belowcontentbody"></span>
