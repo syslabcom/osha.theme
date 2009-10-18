@@ -181,3 +181,27 @@ function unRegisterPloneFunction(func){
     else if (window.detachEvent) window.detachEvent("onload",func);   
 }
 
+function slideSwitch() {
+    var active = jq('#slideswitch IMG.active');
+
+    if ( active.length == 0 ) active = jq('#slideswitch IMG:last');
+
+    var next =  active.next().length ? active.next()
+        : jq('#slideswitch IMG:first');
+
+    active.addClass('last-active');
+
+    next.css({opacity: 0.0})
+    .removeClass('inactive')
+    .addClass('active')
+    .animate({opacity: 1.0}, 1000, function() {
+        active.removeClass('active last-active');
+    });
+    active.animate({opacity: 0.0}, 1000, function() {
+        active.addClass('inactive');
+    });
+}
+
+jq(function() {
+    setInterval( "slideSwitch()", 5000 );
+});

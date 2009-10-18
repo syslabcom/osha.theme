@@ -1,36 +1,3 @@
-<script type="text/javascript">
-  /*
-  jQuery slideshow courtesy of:
-  http://jonraasch.com/blog/a-simple-jquery-slideshow
-  */
-
-  function slideSwitch() {
-  var active = jq('#slideswitch IMG.active');
-
-  if ( active.length == 0 ) active = jq('#slideswitch IMG:last');
-
-  var next =  active.next().length ? active.next()
-  : jq('#slideswitch IMG:first');
-
-  active.addClass('last-active');
-
-  next.css({opacity: 0.0})
-  .removeClass('inactive')
-  .addClass('active')
-  .animate({opacity: 1.0}, 1000, function() {
-  active.removeClass('active last-active');
-  });
-  active.animate({opacity: 0.0}, 1000, function() {
-  active.addClass('inactive');
-  });
-  }
-
-  jq(function() {
-  setInterval( "slideSwitch()", 5000 );
-  });
-
-</script>
-
 <tal:documents define="images view/images">
 
     <div id="slideswitch" >
@@ -41,4 +8,4 @@
       </tal:slideshow>
     </div>
 
-</tal:documents> 
+</tal:documents>
