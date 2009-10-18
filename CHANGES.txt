@@ -6,6 +6,10 @@ osha.theme Changelog
 
 - Added the blog RSS feed to rss-feeds browser view according to request in #239 (pilz)
 - Added a locales-directory for OSHA specific translation customisations (thomasw)
+- Topics views changed to use a rich document and related images or video for
+  content. (deroiste)
+- Finalised i18n for Practical Solutions (deroiste)
+- Add the necessary meta and link tags for sharing with facebook (jcbrand)
 
 1.2.36 (2009-10-12)
 -------------------
