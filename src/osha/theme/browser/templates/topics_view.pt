@@ -22,7 +22,6 @@
       <h1 tal:content="context/Title">Title</h1>
       <p tal:content="context/Description">Description</p>
 
-
       <div class="visualClear"></div>
       <tal:folders define="folders view/getPracticalSolutions;
                            middle_index python:len(folders) - len(folders) / 2;

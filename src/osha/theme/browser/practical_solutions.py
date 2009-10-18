@@ -7,6 +7,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from osha.theme.browser.dbfilter import DBFilterView
 
+
 class PracticalSolutionsView(DBFilterView):
     """ View Class for the Practical Solutions page.
 
@@ -138,7 +139,6 @@ class PracticalSolutionView(DBFilterView):
                                          default=parent.Title())
         return heading
 
-
     def get_collapsed_css(self):
         """ Return a string with the css classes to expand the search
         fields if some have been selected already or otherwise
@@ -194,7 +194,6 @@ class PracticalSolutionView(DBFilterView):
             ('Providers', 'Provider',
              'Provider' in search_portal_types) ,
                 ]
-
         return TYPES
 
     def search_portal_types(self):
@@ -221,9 +220,7 @@ class PracticalSolutionView(DBFilterView):
         empty keywords:list as a value causing nothing to be returned
         """
         context = aq_inner(self.context)
-
         query = self.search_portal_types()
-
         local_keyword = context.getProperty('keyword', '')
         keywords = self.request.get('keywords', local_keyword)
         if keywords:
@@ -237,7 +234,9 @@ class PracticalSolutionView(DBFilterView):
             query = query & In('nace', nace)
             #query.update({'nace':nace})
 
-        multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
+        multilingual_thesaurus = list(
+            self.request.get('multilingual_thesaurus', '')
+            )
         if '' in multilingual_thesaurus:
             multilingual_thesaurus.remove('')
         if multilingual_thesaurus:
@@ -261,7 +260,10 @@ class PracticalSolutionView(DBFilterView):
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query = query & Generic('SearchableText', {'query': SearchableText, 'ranking_maxhits': 10000 })
+            query = query & Generic(
+                'SearchableText',
+                {'query': SearchableText, 'ranking_maxhits': 10000 }
+                )
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
         return query

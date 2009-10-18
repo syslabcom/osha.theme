@@ -1,11 +1,11 @@
 <tal:documents define="images view/images">
 
-    <div id="slideswitch" >
-      <tal:slideshow repeat="image images">
-        <img tal:attributes="src string:${image/absolute_url}/image_${view/image_scale};
-                             title image/Title;
-                             class python:repeat['image'].start and 'active' or ''" />
-      </tal:slideshow>
-    </div>
+  <div id="slideswitch" >
+    <tal:slideshow repeat="image images">
+      <img tal:attributes="src string:${image/absolute_url}/image_${view/image_scale};
+                           title image/Title;
+                           class python:repeat['image'].start and 'active' or ''" />
+    </tal:slideshow>
+  </div>
 
 </tal:documents>

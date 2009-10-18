@@ -63,11 +63,9 @@ class TopicView(TopicsBrowserView):
     template.id = "topic-view"
 
     def __call__(self):
-
         intro = getattr(self.context, 'introduction_html', None)
         if intro is None:
             self.intro = ''
         else:
             self.intro = intro.CookedBody()
-
         return self.template()
