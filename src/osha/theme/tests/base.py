@@ -32,7 +32,6 @@ class OshaThemeLayer(SiteLayer):
         ztc.installProduct('RichDocument')
         ztc.installProduct('PlacelessTranslationService')
         ztc.installPackage('osha.policy')
-        ztc.installPackage('p4a.plonevideoembed')
         setupPloneSite(products=[
                                 'slc.shoppinglist',
                                 'CMFLinkChecker',
@@ -41,7 +40,6 @@ class OshaThemeLayer(SiteLayer):
                                 'osha.policy',
                                 'osha.theme',
                                 'p4a.subtyper',
-                                'p4a.plonevideoembed',
                                 'RichDocument',
                                 'SimpleAttachment',
                                 ])
@@ -70,14 +68,12 @@ class OshaThemeLayer(SiteLayer):
         zcml.load_config('configure.zcml', p4a.subtyper)
         zcml.load_config('configure.zcml', slc.shoppinglist)
         zcml.load_config('configure.zcml', slc.linguatools)
-        zcml.load_config('configure.zcml', p4a.plonevideoembed)
         fiveconfigure.debug_mode = False
         ztc.installPackage('Products.PlacelessTranslationService', quiet=True)
         ztc.installPackage('osha.theme')
         ztc.installPackage('osha.policy')
         ztc.installPackage('slc.shoppinglist')
         ztc.installPackage('p4a.subtyper')
-        ztc.installPackage('p4a.plonevideoembed')
         # register the Browserlayer from osha.policy, so that our schema-extensions
         # using IBrowserLayerAwareExtender work
         browserlayerutils.register_layer(IOSHACommentsLayer, 'osha.policy')
