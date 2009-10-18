@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.2.37 (unreleased)
+1.2.37 (2009-10-18)
 -------------------
 
 - Added the blog RSS feed to rss-feeds browser view according to request in #239 (pilz)
@@ -10,6 +10,7 @@ osha.theme Changelog
   content. (deroiste)
 - Finalised i18n for Practical Solutions (deroiste)
 - Add the necessary meta and link tags for sharing with facebook (jcbrand)
+- added "questions-in-parliament" search, a special search interface for publications on BeSWIC (thomasw)
 
 1.2.36 (2009-10-12)
 -------------------
