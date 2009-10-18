@@ -1,0 +1,44 @@
+<script type="text/javascript">
+  /*
+  jQuery slideshow courtesy of:
+  http://jonraasch.com/blog/a-simple-jquery-slideshow
+  */
+
+  function slideSwitch() {
+  var active = jq('#slideswitch IMG.active');
+
+  if ( active.length == 0 ) active = jq('#slideswitch IMG:last');
+
+  var next =  active.next().length ? active.next()
+  : jq('#slideswitch IMG:first');
+
+  active.addClass('last-active');
+
+  next.css({opacity: 0.0})
+  .removeClass('inactive')
+  .addClass('active')
+  .animate({opacity: 1.0}, 1000, function() {
+  active.removeClass('active last-active');
+  });
+  active.animate({opacity: 0.0}, 1000, function() {
+  active.addClass('inactive');
+  });
+  }
+
+  jq(function() {
+  setInterval( "slideSwitch()", 5000 );
+  });
+
+</script>
+
+<tal:documents define="images view/images">
+
+    <div id="slideswitch" >
+      <tal:slideshow repeat="image images">
+        <img tal:attributes="src string:${image/absolute_url}/image_${view/image_scale};
+                             title image/Title;
+                             class python:repeat['image'].start and 'active' or ''" />
+      </tal:slideshow>
+    </div>
+
+</tal:documents> 

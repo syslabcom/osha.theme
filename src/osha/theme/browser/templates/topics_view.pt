@@ -24,9 +24,7 @@
 
 
       <div class="visualClear"></div>
-
-      <tal:folders define="
-                           folders python:here.contentValues(filter={'portal_type':['Folder']});
+      <tal:folders define="folders view/getPracticalSolutions;
                            middle_index python:len(folders) - len(folders) / 2;
                            left_folders  python:folders[:middle_index];
                            right_folders python:folders[middle_index:]">
@@ -39,7 +37,7 @@
               <ul>
                 <li tal:repeat="folder left_folders">
                   <a href=""
-                     tal:attributes="href string:${folder/absolute_url}/topic-view"
+                     tal:attributes="href string:${folder/absolute_url}"
                      tal:content="folder/Title" />
                 </li>
               </ul>
@@ -49,7 +47,7 @@
               <ul>
                 <li tal:repeat="folder right_folders">
                   <a href=""
-                     tal:attributes="href string:${folder/absolute_url}/topic-view"
+                     tal:attributes="href string:${folder/absolute_url}"
                      tal:content="folder/Title" />
                 </li>
               </ul>

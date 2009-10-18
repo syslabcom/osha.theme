@@ -1,11 +1,13 @@
+from Acquisition import aq_parent, aq_inner
+from Products.ATContentTypes.interface.image import IATImage
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
 from p4a.plonevideoembed.interfaces import IVideoLinkEnhanced
-from Products.ATContentTypes.interface.image import IATImage
+
 
 class TopicsBrowserView(BrowserView):
-
+    """ A base class for the topic browser views to inherit from """
     images = []
     slideswitch_template = ViewPageTemplateFile('templates/slideswitch.pt')
     image_scale = "mini"
@@ -30,7 +32,8 @@ class TopicsBrowserView(BrowserView):
                 image = self.images[0]
                 return image.tag(scale=image_scale)
             else:
-                return self.slideswitch_template()    
+                return self.slideswitch_template()
+
 
 class TopicsView(TopicsBrowserView):
     """ View class for /topics
@@ -41,17 +44,17 @@ class TopicsView(TopicsBrowserView):
     def __call__(self):
         return self.template()
 
-    def getTopicImages(self):
-        """ Get the 10 most recent images from the topic sub sections. """
+    def getPracticalSolutions(self):
+        """ Practical Solutions are in subfolders at the same level as
+        this Rich Document.
+        """
         context = self.context
-        path ="/".join(context.getPhysicalPath())
-        pc = getToolByName(context,
-                           'portal_catalog')
-        images = pc.searchResults({'portal_type': 'Image',
-                                'sort_on': 'effective',
-                                'sort_limit': 10,
-                                'path': path})
-        return images
+        parent = aq_parent(aq_inner(context))
+        practicalSolutions = parent.contentValues(
+            filter={'portal_type':['Folder']}
+            )
+        return practicalSolutions
+
 
 class TopicView(TopicsBrowserView):
     """ View class for /topics/topic

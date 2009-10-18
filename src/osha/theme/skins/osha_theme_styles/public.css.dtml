@@ -1231,7 +1231,7 @@ body.template-topic-view #topic-view-heading-box {
 
 body.template-topic-view #relatedMedia {
     position: relative;
-    height: 152px;
+    height: 165px;
     width: 210px;
     margin: 10px;
     float: left;
@@ -1241,9 +1241,9 @@ body.template-topic-view #relatedMedia {
 body.template-topics-view #relatedMedia {
     position: relative;
     width: 400px;
-    height: 265px;
+    height: 330px;
     float: right;
-    margin-right: 0px;
+    margin: 0px 0px 10px 10px;
     overflow: hidden;
 }
 
