@@ -2,8 +2,8 @@
     tal:define="publications view/getRecentPublications">
 
   <dt class="portletHeader"
-      i18n:translate="heading_publication">
-    Publication
+      i18n:translate="heading_publications">
+    Publications
   </dt>
 
   <dd class="portletItem">
@@ -41,16 +41,24 @@
     <ul class="linkList">
       <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('useful-links')"
-             >Useful links - search</a></li>
+             >
+          <span i18n:translate="label_useful_links">Useful links</span> - 
+          <span i18n:translate="search">search</span></a></li>
       <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('risk-assessment-tools')"
-             >Risk assessment tools - search</a></li>
+             >
+          <span i18n:translate="label_risk_assessment_tools">Risk assessment tools</span> - 
+          <span i18n:translate="search">search</span></a></li>
       <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('case-studies')"
-             >Case Studies - search</a></li>
+             >
+          <span i18n:translate="label_case_studies">Case Studies</span> - 
+          <span i18n:translate="search">search</span></a></li>
       <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('providers')"
-             >Providers - search</a></li>
+             >
+          <span i18n:translate="label_providers">Providers</span> - 
+          <span i18n:translate="search">search</span></a></li>
     </ul>
   </dd>
 </dl>

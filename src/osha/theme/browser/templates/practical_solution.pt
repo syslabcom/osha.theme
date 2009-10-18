@@ -63,8 +63,8 @@
 
            <h1 tal:content="view/get_i18n_database_search_heading"
                 >Search in the Risk Assessment Database
-            </h1>
 
+            </h1>
             <div class="field_default">
               <input type="text"
                      id="SearchableText"
@@ -80,11 +80,10 @@
                   i18n:translate="action_advanced_search">Advanced search</dt>
 
               <dd class="collapsibleContent">
-                <div class="formHelp">
+                <div class="formHelp"
+                     i18n:translate="help_advanced_search">
                   Filter your search by selecting one or more of
-                  the filters.  You can always remove any filter
-                  again by selecting the empty entry or by
-                  clicking the Reset button.
+                  the filters.
                 </div>
 
                 <div class="filter_column1">
@@ -94,7 +93,7 @@
                        i18n:translate="label_database"> Database </label><br />
 
                     <div class="formHelp"
-                         i18n:translate="help_database_search">
+                         i18n:translate="help_search_database">
                       Select the database types you want to search.
                     </div>
 
@@ -126,10 +125,10 @@
                       <metal:use use-macro="here/filter_macros/macros/Subject"></metal:use>
                     </span>
 
-
                     <tal:has_categories condition="keyword">
                       <label>
-                        Category: <tal:categories
+                        <span i18n:translate="label_category">
+                          Category</span>: <tal:categories
                                        content="keyword">
                         </tal:categories>
                       </label>
