@@ -174,7 +174,7 @@ class Renderer(base.Renderer):
         database = ""
         if self.portal_types_map.has_key(practical_solution):
             database = self.portal_types_map[practical_solution]
-        query_string = "language=%s&search_portal_types:list=%s%s" \
+        query_string = "getRemoteLanguage=%s&search_portal_types:list=%s%s" \
               %(preflang, database, keyword_query)
         return query_string
 

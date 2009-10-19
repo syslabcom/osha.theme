@@ -243,7 +243,9 @@ class PracticalSolutionView(DBFilterView):
             query = query & In('multilingual_thesaurus', multilingual_thesaurus)
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
-        getRemoteLanguage = self.request.get('getRemoteLanguage', '')
+        preflang = getToolByName(self.context,
+                                 'portal_languages').getPreferredLanguage()
+        getRemoteLanguage = self.request.get('getRemoteLanguage', preflang)
         if getRemoteLanguage:
             query = query & In('getRemoteLanguage', getRemoteLanguage)
             #query.update({'getRemoteLanguage':getRemoteLanguage})
