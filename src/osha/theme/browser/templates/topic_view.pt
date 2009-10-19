@@ -12,7 +12,8 @@
 
       <div id="topic-view-heading-box">
 
-        <div id="relatedMedia" >
+        <div id="relatedMedia"
+             tal:condition="view/hasRelatedMedia">
           <tal:related_media replace="structure python:view.getRelatedMedia('200', 'mini')" />
         </div>
         <div id="topic-heading-text">

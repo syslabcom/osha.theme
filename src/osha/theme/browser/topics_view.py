@@ -1,5 +1,6 @@
 from Acquisition import aq_parent, aq_inner
 from Products.ATContentTypes.interface.image import IATImage
+from Products.CMFCore.interfaces._content import IFolderish
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -11,6 +12,16 @@ class TopicsBrowserView(BrowserView):
     images = []
     slideswitch_template = ViewPageTemplateFile('templates/slideswitch.pt')
     image_scale = "mini"
+
+    def hasRelatedMedia(self):
+        """ Has some related images or videos.
+        """
+        context = self.context
+        related_items = context.getRelatedItems()
+        media = [i for i in related_items if
+                 IVideoLinkEnhanced.providedBy(i)
+                 or IATImage.providedBy(i)]
+        return media and True or False
 
     def getRelatedMedia(self, video_width, image_scale):
         """ Return a video, slideshow or image.
@@ -49,8 +60,9 @@ class TopicsView(TopicsBrowserView):
         this Rich Document.
         """
         context = self.context
-        parent = aq_parent(aq_inner(context))
-        practicalSolutions = parent.contentValues(
+        if IFolderish.providedBy(context):
+            context = aq_parent(aq_inner(context))
+        practicalSolutions = context.contentValues(
             filter={'portal_type':['Folder']}
             )
         return practicalSolutions
