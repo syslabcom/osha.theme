@@ -202,6 +202,8 @@ function slideSwitch() {
     });
 }
 
-jq(function() {
+function startSlide() {
     setInterval( "slideSwitch()", 5000 );
-});
+}
+
+registerPloneFunction(startSlide)

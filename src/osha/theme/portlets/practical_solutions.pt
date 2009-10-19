@@ -17,7 +17,7 @@
           <tal:title replace="publication/Title"></tal:title>
         </a>
         <a class="more-related"
-	   i18n:translate="label_more"
+           i18n:translate="label_more"
            tal:condition="repeat/publication/end"
            tal:attributes="href python:view.getDBFilterURL('publications')"
            href="db_filter?">More</a>
@@ -42,23 +42,24 @@
       <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('useful-links')"
              >
-          <span i18n:translate="label_useful_links">Useful links</span> - 
+          <span i18n:translate="label_useful_links">Useful links</span> -
           <span i18n:translate="search">search</span></a></li>
       <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('risk-assessment-tools')"
              >
-          <span i18n:translate="label_risk_assessment_tools">Risk assessment tools</span> - 
+          <span i18n:translate="label_risk_assessment_tools">Risk assessment tools</span> -
           <span i18n:translate="search">search</span></a></li>
       <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('case-studies')"
              >
-          <span i18n:translate="label_case_studies">Case Studies</span> - 
+          <span i18n:translate="label_case_studies">Case Studies</span> -
           <span i18n:translate="search">search</span></a></li>
       <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('providers')"
              >
-          <span i18n:translate="label_providers">Providers</span> - 
+          <span i18n:translate="label_providers">Providers</span> -
           <span i18n:translate="search">search</span></a></li>
     </ul>
   </dd>
+
 </dl>

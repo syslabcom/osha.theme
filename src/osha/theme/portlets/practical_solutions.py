@@ -21,6 +21,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from osha.policy.adapter.subtyper import IAnnotatedLinkList
 from osha.theme.vocabulary import AnnotatableLinkListVocabulary
 
+
 class IPracticalSolutionsPortlet(IPortletDataProvider):
     subject = schema.List(
                     title=_(u"Categories"),
@@ -32,6 +33,7 @@ class IPracticalSolutionsPortlet(IPortletDataProvider):
                         vocabulary="osha.theme.SubjectValuesVocabulary"),
                     )
 
+
 class Assignment(base.Assignment):
 
     implements(IPracticalSolutionsPortlet)
@@ -42,6 +44,7 @@ class Assignment(base.Assignment):
     @property
     def title(self):
         return "Practical Solutions"
+
 
 class Renderer(base.Renderer):
 
@@ -85,7 +88,6 @@ class Renderer(base.Renderer):
         url = "db_filter?search_portal_types:list=%s&getRemoteLanguage=%s" \
               %(subsection, language)
         return url
-
 
     def getBrainsBySection(self, brains, brains_per_section):
         """
@@ -250,11 +252,11 @@ class Renderer(base.Renderer):
                                       default=section)
         return section_title_map
 
-
 def MultiCheckBoxWidgetFactory(field, request):
-    """ Factory method to create MultiCheckBoxWidgets """ 
+    """ Factory method to create MultiCheckBoxWidgets """
     return MultiCheckBoxWidget(
         field, field.value_type.vocabulary, request)
+
 
 class AddForm(base.AddForm):
     """Portlet add form.
@@ -269,6 +271,7 @@ class AddForm(base.AddForm):
 
     def create(self, data):
         return Assignment(**data)
+
 
 class EditForm(base.EditForm):
     """Portlet edit form.
