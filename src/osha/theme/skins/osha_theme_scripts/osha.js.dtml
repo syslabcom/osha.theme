@@ -169,20 +169,6 @@ function modifyLinkTag(node, elonw) {
 }
 registerPloneFunction(scanforlinks)   
 
-function registerPloneFunction(func){
-    // registers a function to fire onload. 
-    // Turned out we kept doing this all the time
-    // Use this for initilaizing any javascript that should fire once the page has been loaded. 
-    // 
-    if (window.addEventListener) window.addEventListener("load",func,false);
-    else if (window.attachEvent) window.attachEvent("onload",func);   
-}
-
-function unRegisterPloneFunction(func){
-    // uregisters a previous function to fire onload. 
-    if (window.removeEventListener) window.removeEventListener("load",func,false);
-    else if (window.detachEvent) window.detachEvent("onload",func);   
-}
 
 OSHA.slideSwitch = function() {
     var active = jq('#slideswitch IMG.active');
@@ -214,4 +200,21 @@ OSHA.toggleHiddenField = function(id) {
     var hidden_field = jq("#"+id);
     if (hidden_field.val() == 'True') hidden_field.val('');
     else hidden_field.val('True');
+}
+
+/* NOTE: these need to be at the end otherwise there is a problem when
+the js files are merged in portal_javascripts */
+function registerPloneFunction(func){
+    // registers a function to fire onload. 
+    // Turned out we kept doing this all the time
+    // Use this for initilaizing any javascript that should fire once the page has been loaded. 
+    // 
+    if (window.addEventListener) window.addEventListener("load",func,false);
+    else if (window.attachEvent) window.attachEvent("onload",func);   
+}
+
+function unRegisterPloneFunction(func){
+    // uregisters a previous function to fire onload. 
+    if (window.removeEventListener) window.removeEventListener("load",func,false);
+    else if (window.detachEvent) window.detachEvent("onload",func);   
 }
