@@ -1,6 +1,6 @@
 /*
   This file is based on the ploneCustom.css.dtml file shipped with Plone.
- 
+
   <dtml-with base_properties> (do not remove this)
   <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
 */
@@ -123,7 +123,7 @@ body.kssActive h1.inlineEditable:hover {
     padding: 0pt 0.4em 0 0.5em;
     text-decoration: none;
     border-left: 1px solid &dtml-fontColor;;
-    margin-left: -1px;    
+    margin-left: -1px;
 }
 #portal-siteactions li.selected a {
     color: &dtml-globalFontColor;;
@@ -409,7 +409,7 @@ dl.portalMessage a {
     text-decoration: underline;
 }
 dl.portalMessage dt {
-    background-color: #996; 
+    background-color: #996;
     border: 1px solid #996;
     font-weight: bold;
     float: left;
@@ -421,24 +421,24 @@ dl.portalMessage dt {
 dl.portalMessage dd {
     background-color: #ffffe3;
     border: 1px solid #996;
-    padding: 0.5em 0.5em; 
+    padding: 0.5em 0.5em;
     margin: 0;
     line-height: 1.25em;
 }
 dl.warning dt {
-    background-color: #d80; 
+    background-color: #d80;
     border: 1px solid #d80;
 }
 dl.error dt {
-    background-color: #d00; 
+    background-color: #d00;
     border-color: #d00;
 }
 dl.warning dd {
-    background-color: #fd7; 
+    background-color: #fd7;
     border-color: #d80;
 }
 dl.error dd {
-    background-color: #fd7; 
+    background-color: #fd7;
     border-color: #d80;
 }
 
@@ -589,7 +589,7 @@ table.listing td a label,
 
 /* Vertical addition class */
 table.vertical {
-    background-color: &dtml-backgroundColor;;	
+    background-color: &dtml-backgroundColor;;
 }
 table.vertical th {
     padding: 0.5em;
@@ -675,7 +675,7 @@ table.plain th {
 }
 
 #eventDetailsTable {
-	border: 0;	
+	border: 0;
 }
 #eventDetailsTable th {
 	width: 20%;
@@ -694,7 +694,7 @@ ol.visualNoMarker {
 }
 
 ul.discreet {
-    list-style-image: none;    
+    list-style-image: none;
     list-style-type: disc;
 }
 
@@ -809,7 +809,7 @@ a.link-parent {
     color: red;
 }
 
-/* Handling external/internal links, we first set the icon on all links, then 
+/* Handling external/internal links, we first set the icon on all links, then
    remove it from the ones that are local - for both http and https */
 #content a[href ^="http:"],
 #content a.link-external {
@@ -960,7 +960,7 @@ div.managedPortlet.portlet {
 #dashboard-actions ul {
     list-style-image:none;
     list-style-position:outside;
-    list-style-type:none;    
+    list-style-type:none;
     margin-top:0;
 }
 
@@ -1099,13 +1099,6 @@ body.template-practical-solution .photoAlbumEntryTitle {
    width: 84px;
 }
 
-body.template-practical-solution .photoAlbumEntryWrapper {
-   display: block;
-   width: 84px;
-   height: 84px;
-   margin-bottom: 2px;
-}
-
 body.template-practical-solution .photoAlbumEntryWrapperWrapper {
     display:block;
     font-size:85%;
@@ -1113,13 +1106,13 @@ body.template-practical-solution .photoAlbumEntryWrapperWrapper {
 }
 
 body.template-practical-solutions #latest-additions {
-   background-color: #F7F7F7; 
-   padding: 15px;   
+   background-color: #F7F7F7;
+   padding: 15px;
    display: block;
 }
 
 body.template-practical-solutions #latest-additions h1 {
-   margin: 0px 0px 5px 0px; 
+   margin: 0px 0px 5px 0px;
 }
 
 body.template-practical-solution form#database_search #image-controls {
@@ -1207,7 +1200,7 @@ body.template-topics-view #folder-listing ul {
     padding: 1em;
 }
 
-body.template-topics-view .navTreeLevel1, 
+body.template-topics-view .navTreeLevel1,
 body.template-topic-view .navTreeLevel3,
 body.template-topic-view .navTreeLevel2 .navTreeItem {
     display: none;
@@ -1276,6 +1269,5 @@ body.template-topics-view #relatedMedia {
 
 /* </dtml-with> */
 
-/* Latest version of the documentation on pre-defined properties from Plone 
+/* Latest version of the documentation on pre-defined properties from Plone
    can be found in CMFPlone/skins/plone_styles/ploneCustom.css.dtml */
-
