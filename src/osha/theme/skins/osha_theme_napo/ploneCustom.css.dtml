@@ -666,7 +666,9 @@ padding-left:70px;
 width:83%;
 }
 
-
+.Friendsh1 {
+display:none;
+}
 
 
 
