@@ -1,4 +1,4 @@
-/*rote Überschrift mit unterstrisch über den ganzen Content*/
+#portal-languageselector/*rote Überschrift mit unterstrisch über den ganzen Content*/
 #osha-topdropdowns {
 }
 
@@ -579,10 +579,65 @@ position:relative;
 bottom:60px;
 }
 
+/* Tinas Change for Languageselector*/
 
+#portal-languageselector {
+float:right;
+left:780px;
+margin:0 1em;
+position:absolute;
+top:97px;
+z-index:100;
+}
 
+#dancing2008Video {
+margin:0 auto;
+width:63%;
+}
 
+#linkmovie {
+bottom:15px;
+font-size:14pt;
+font-weight:bold;
+left:235px;
+position:relative;
+}
 
+#linkmain {
+bottom:15px;
+font-size:14pt;
+font-weight:bold;
+left:215px;
+position:relative;
+}
+
+#textboss {
+
+}
+
+#textStrudel {
+
+}
+
+#textNapette {
+
+}
+
+#textCollegue {
+
+}
+
+#textSales {
+
+}
+
+#textAnimals {
+
+}
+
+#textObjects {
+
+}
 
 
 
