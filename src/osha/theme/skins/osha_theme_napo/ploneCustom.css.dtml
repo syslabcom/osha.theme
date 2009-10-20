@@ -660,7 +660,10 @@ width:83%;
 }
 
 .textObjects {
-
+margin-left:50px;
+margin-top:20px;
+padding-left:70px;
+width:83%;
 }
 
 
