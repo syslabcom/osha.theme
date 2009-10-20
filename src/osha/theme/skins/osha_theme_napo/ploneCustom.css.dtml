@@ -611,31 +611,51 @@ left:215px;
 position:relative;
 }
 
-#textboss {
-
+.textboss {
+margin-left:50px;
+margin-top:20px;
+padding-left:70px;
+width:83%;
 }
 
-#textStrudel {
-
+.textStrudel {
+margin-bottom:30px;
+margin-left:50px;
+margin-top:20px;
+padding-left:70px;
+padding-top:50px;
+width:83%;
 }
 
-#textNapette {
-
+.textNapette {
+margin-left:50px;
+margin-top:20px;
+padding-left:70px;
+width:83%;
 }
 
-#textCollegue {
-
+.textCollegue {
+margin-left:50px;
+margin-top:20px;
+padding-left:70px;
+width:83%;
 }
 
-#textSales {
-
+.textSales {
+margin-left:50px;
+margin-top:20px;
+padding-left:70px;
+width:83%;
 }
 
-#textAnimals {
-
+.textAnimals {
+margin-left:50px;
+margin-top:20px;
+padding-left:70px;
+width:83%;
 }
 
-#textObjects {
+.textObjects {
 
 }
 
