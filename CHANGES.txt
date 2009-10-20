@@ -1,6 +1,12 @@
 osha.theme Changelog
 ====================
 
+1.2.38 (2009-10-20)
+-------------------
+
+- Fixed dependencies, minor code style improvements and handling of edge cases
+  in the Topics view (deroiste)
+
 1.2.37 (2009-10-18)
 -------------------
 
