@@ -50,14 +50,14 @@ class PracticalSolutionsView(DBFilterView):
 
         return self.template()
 
+
     def search_portal_types(self):
         context = self.context
+        preflang = getToolByName(self.context,
+                                 'portal_languages').getPreferredLanguage()
         search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
-        query = ( Eq('portal_type', 'File')\
-                  & Eq('object_provides',
-                     'slc.publications.interfaces.IPublicationEnhanced')
-                  )
-        query = Or(query, In('portal_type', search_portal_types))\
+        query = In('portal_type', search_portal_types)\
+                & In('getRemoteLanguage', preflang)\
                 & Eq('review_state','published')
         return query
 
@@ -126,16 +126,15 @@ class PracticalSolutionView(DBFilterView):
         parent = aq_parent(aq_inner(context))
         section_id = parent.getId()
         trans_tool = getToolByName(context, "translation_service")
-        lang_tool = getToolByName(context, "portal_languages")
-        language = lang_tool.getPreferredLanguage()
-
+        preflang = getToolByName(self.context,
+                                 'portal_languages').getPreferredLanguage()
         # convert "useful-links" to "heading_useful_links"
         msgid = "heading_search_%s" % section_id.replace("-", "_")
         heading  = trans_tool.utranslate("osha",
                                          msgid,
                                          {},
                                          context=context,
-                                         target_language=language,
+                                         target_language=preflang,
                                          default=parent.Title())
         return heading
 

@@ -13,6 +13,9 @@ class TopicsBrowserView(BrowserView):
     slideswitch_template = ViewPageTemplateFile('templates/slideswitch.pt')
     image_scale = "mini"
 
+    def __call__(self):
+        return self.template()
+
     def hasRelatedMedia(self):
         """ Has some related images or videos.
         """
@@ -52,9 +55,6 @@ class TopicsView(TopicsBrowserView):
     template = ViewPageTemplateFile('templates/topics_view.pt')
     template.id = "topics-view"
 
-    def __call__(self):
-        return self.template()
-
     def getPracticalSolutions(self):
         """ Practical Solutions are in subfolders at the same level as
         this Rich Document.
@@ -73,11 +73,3 @@ class TopicView(TopicsBrowserView):
     """
     template = ViewPageTemplateFile('templates/topic_view.pt')
     template.id = "topic-view"
-
-    def __call__(self):
-        intro = getattr(self.context, 'introduction_html', None)
-        if intro is None:
-            self.intro = ''
-        else:
-            self.intro = intro.CookedBody()
-        return self.template()
