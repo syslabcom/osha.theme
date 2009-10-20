@@ -19,6 +19,7 @@
                         getRemoteLanguage request/getRemoteLanguage|string:;
                         country request/country|string:;
                         search_portal_types view/search_portal_types;
+                        is_search_expanded request/is_search_expanded |string:;
                         Batch python:modules['Products.CMFPlone'].Batch;
                         DateTime python:modules['DateTime'].DateTime;
                         b_size python:10;b_start python:0;
@@ -75,10 +76,14 @@
             </div>
 
             <dl id="image-controls" class="collapsible inline collapsedOnLoad"
-                tal:attributes="class view/get_collapsed_css">
+                tal:define="expanded_css python:is_search_expanded and 'expandedOnLoad' or 'collapsedOnLoad'"
+                tal:attributes="class string:collapsible inline ${expanded_css}">
               <dt class="collapsibleHeader"
+                  onclick="javascript: OSHA.toggleHiddenField('is_search_expanded')"
                   i18n:translate="action_advanced_search">Advanced search</dt>
-
+              <input id="is_search_expanded" type="hidden"
+                     name="is_search_expanded" value=""
+                     tal:attributes="value is_search_expanded" />
               <dd class="collapsibleContent">
                 <div class="formHelp"
                      i18n:translate="help_advanced_search">

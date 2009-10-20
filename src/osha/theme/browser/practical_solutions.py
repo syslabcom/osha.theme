@@ -138,17 +138,6 @@ class PracticalSolutionView(DBFilterView):
                                          default=parent.Title())
         return heading
 
-    def get_collapsed_css(self):
-        """ Return a string with the css classes to expand the search
-        fields if some have been selected already or otherwise
-        collapse them. """
-        context = self.context
-        collapsible = "collapsible inline"
-        is_expanded = context.REQUEST.QUERY_STRING
-        collapsed_state = is_expanded and 'expandedOnLoad'\
-                          or 'collapsedOnLoad'
-        return "%s %s" %(collapsible, collapsed_state)
-
     def get_keyword(self):
         """ Return the first value from keywords/request or an empty string
         """
