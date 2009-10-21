@@ -1,18 +1,16 @@
 from copy import copy
 
+import Acquisition
 from zope.app.form.browser import MultiCheckBoxWidget
 from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope import schema
 from zope.interface import implements
 
-import Acquisition
-
 from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
 from plone.app.portlets.portlets import base
 from plone.memoize import ram
 from plone.memoize.instance import memoize
@@ -78,15 +76,18 @@ class Renderer(base.Renderer):
         base.Renderer.__init__(self, *args)
         context = self.context
 
-    def get_more_url(self, section):
+    def getMorePublicationsUrl(self):
         """
-        Return a url to more search results for a section
+        Construct the link to more publications for this section.
         """
-        language = getToolByName(self.context,
+        context = self.context
+        preflang = getToolByName(context,
                                  'portal_languages').getPreferredLanguage()
-        subsection = self.portal_types_map[section]
-        url = "db_filter?search_portal_types:list=%s&getRemoteLanguage=%s" \
-              %(subsection, language)
+        portal_url = getToolByName(context, 'portal_url')()
+        subjects = self.data.subject
+        keyword_query = "&Subject:list=".join(subjects)
+        url = "%s/%s/publications/publications-overview?Subject:list=%s"\
+              %(portal_url, preflang, keyword_query)
         return url
 
     def getBrainsBySection(self, brains, brains_per_section):
@@ -142,7 +143,6 @@ class Renderer(base.Renderer):
         last minute change to just show publications rather than
         Practical Solutions.
         """
-
         context = Acquisition.aq_inner(self.context)
         subject = self.data.subject
         search_portal_types = ["Publication"]
