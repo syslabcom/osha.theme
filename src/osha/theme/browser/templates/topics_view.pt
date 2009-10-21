@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+  <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+
+  <body>
+    <div metal:fill-slot="main">
+
+      <h1 class="documentFirstHeading"
+          i18n:translate="heading_topics">Topics</h1>
+
+      <div id="topic-view-heading-box">
+
+        <div id="relatedMedia" 
+             tal:condition="view/hasRelatedMedia">
+          <tal:related_media replace="structure python:view.getRelatedMedia('400', 'preview')" />
+        </div>
+
+      </div>
+
+      <h1 tal:content="context/Title">Title</h1>
+      <p tal:content="context/Description">Description</p>
+
+      <div class="visualClear"></div>
+      <tal:folders define="folders view/getPracticalSolutions;
+                           middle_index python:len(folders) - len(folders) / 2;
+                           left_folders  python:folders[:middle_index];
+                           right_folders python:folders[middle_index:]">
+
+        <table id="folder-listing" cellspacing="20"
+               tal:condition="folders">
+          <tr>
+
+            <td>
+              <ul>
+                <li tal:repeat="folder left_folders">
+                  <a href=""
+                     tal:attributes="href string:${folder/absolute_url}"
+                     tal:content="folder/Title" />
+                </li>
+              </ul>
+            </td>
+
+            <td>
+              <ul>
+                <li tal:repeat="folder right_folders">
+                  <a href=""
+                     tal:attributes="href string:${folder/absolute_url}"
+                     tal:content="folder/Title" />
+                </li>
+              </ul>
+            </td>
+
+          </tr>
+        </table>
+
+        <div class="visualClear"></div>
+      </tal:folders>
+
+    </div>
+  </body>
+</html>

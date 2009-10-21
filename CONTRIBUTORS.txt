@@ -1,3 +1,6 @@
 - Wolfgang Thomas (Syslab.com GmbH)
 - Alexander Pilz (Syslab.com GmbH)
 - Patrick Gerken (Syslab.com GmbH)
+- Tina Pecek (Syslab.com GmbH)
+- Cillian de Roiste (Syslab.com GmbH)
+- Jan-Carel Brand (Sylsab.com GmbH)

@@ -1,0 +1,40 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="osha.theme">
+
+    <i18n:registerTranslations directory="locales" />
+
+   <five:registerPackage package="." initialize=".initialize" />
+
+   <include package=".browser" />
+   <include package=".portlets" />   
+
+   <include file="skins.zcml" />
+   <include file="profiles.zcml" />
+
+    <utility
+        component=".vocabulary.SubjectValuesVocabulary"
+        name="osha.theme.SubjectValuesVocabulary"
+        /> 
+
+    <utility
+        component=".vocabulary.SinToolKeyVocabulary"
+        name="osha.theme.SinToolKeyVocabulary"
+        /> 
+
+    <utility
+        component=".vocabulary.PressContactVocabulary"
+        name="osha.theme.PressContactVocabulary"
+        /> 
+
+    <utility
+        component=".vocabulary.AnnotatableLinkListVocabulary"
+        name="osha.theme.AnnotatableLinkListVocabulary"
+        provides="Products.Archetypes.interfaces._vocabulary.IVocabulary"
+        /> 
+
+
+</configure>

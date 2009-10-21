@@ -1,0 +1,117 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="osha">
+
+
+  <!-- Document -->
+  <browser:page
+     name="oshmail"
+     for="Products.ATContentTypes.content.document.ATDocument"
+     permission="zope.Public"
+     template="collageviews/document_oshmail.pt"
+     class=".collageviews.DocumentHeadlineView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <browser:page
+     name="right_column"
+     for="Products.ATContentTypes.content.document.ATDocument"
+     permission="zope.Public"
+     template="collageviews/document_right_column.pt"
+     class=".collageviews.DocumentRightcolHealineView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+
+  <!-- OSH-Link -->
+  <browser:page
+     name="standard"
+     for="Products.OSHContentLink.OSH_Link.OSH_Link"
+     permission="zope.Public"
+     template="collageviews/oshlink_standard.pt"
+     class="Products.Collage.browser.views.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <browser:page
+    name="oshlinkfull"
+    for="Products.OSHContentLink.OSH_Link.OSH_Link"
+    permission="zope.Public"
+    template="collageviews/oshlink_full.pt"
+    class=".collageviews.OSHLinkFullView"
+    layer="Products.Collage.interfaces.ICollageBrowserLayer"
+    />
+
+
+  <!-- News Item -->
+   <browser:page
+     name="right_column"
+     for="Products.ATContentTypes.content.newsitem.ATNewsItem"
+     permission="zope.Public"
+     template="collageviews/newsitem_right_column.pt"
+     class=".collageviews.NewsRightColumnView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <browser:page
+     name="basic"
+     for="Products.ATContentTypes.content.newsitem.ATNewsItem"
+     permission="zope.Public"
+     template="collageviews/newsitem_standard.pt"
+     class="Products.Collage.browser.views.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+
+  <!-- Event -->
+  <browser:page
+     name="basic"
+     for="Products.ATContentTypes.content.event.ATEvent"
+     permission="zope.Public"
+     template="collageviews/event_basic.pt"
+     class="Products.Collage.browser.views.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <!-- File (ATBlob) -->
+  <browser:page
+     name="file"
+     for="plone.app.blob.content.ATBlob"
+     permission="zope.Public"
+     template="collageviews/file_standard.pt"
+     class="Products.Collage.browser.views.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <!-- Publication -->
+  <browser:page
+     name="standard"
+     for="slc.publications.interfaces.IPublicationEnhanced"
+     permission="zope.Public"
+     template="collageviews/file_publication.pt"
+     class=".collageviews.PublicationView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <!-- Press Release -->
+  <browser:page
+     name="standard"
+     for="Products.PressRoom.content.PressRelease.PressRelease"
+     permission="zope.Public"
+     template="collageviews/pressrelease_standard.pt"
+     class="Products.Collage.browser.views.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <browser:page
+     name="pr_basic"
+     for="Products.PressRoom.content.PressRelease.PressRelease"
+     permission="zope.Public"
+     template="collageviews/pressrelease_basic.pt"
+     class=".collageviews.PressReleaseBaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+</configure>

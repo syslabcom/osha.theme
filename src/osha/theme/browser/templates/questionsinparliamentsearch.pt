@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+<metal:block fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<div metal:fill-slot="main" i18n:domain="osha" 
+       tal:define="SearchableText request/SearchableText|string:;
+                   Batch python:modules['Products.CMFPlone'].Batch;
+                   DateTime python:modules['DateTime'].DateTime;
+                   b_size python:30;
+                   b_start python:0;b_start request/b_start | b_start;
+                   desc_length site_properties/search_results_description_length;
+                   desc_ellipsis site_properties/ellipsis;
+                   searchterm request/SearchableText|nothing;
+                   ">
+<style type="text/css">
+.floatcontrol { width:45%; float:left;  margin: 5px; }
+#searchfields { background-color: #F3F6FF; border: 1px solid gray !important; padding:5px; clear: both; overflow: hidden; }
+#resulttable {background-color: #C4DAFF; border: 1px solid gray;  margin:5px 0px; padding:0px; border-collapse: collapse; }
+#resulttable td {margin:0px; padding:5px; }
+#tableheader, #tableheader td {background-color: #F3F6FF; font-weight: bold; padding:5px}
+</style>
+
+    <div>
+        <h1 class="documentFirstHeading" i18n:translate="label_question_in_parliament">Questions in parliament</h1>
+      <span tal:define="intro view/getIntro" tal:condition="intro">
+        <div style="float:left; width: 120px;">
+          <img src="publications.gif" tal:attributes="src view/getImageSrc" />
+        </div>
+
+        <div style="float:left; width:70%;" >
+          <p tal:content="structure intro"></p>
+        </div>
+    </span>
+        <br clear="all">
+    
+        <form tal:attributes="action template/id" method="get">
+
+        <h2 i18n:translate="label_search" i18n:domain="plone">Search publications:</h2>
+        <div id="searchfields" tal:define="values python:here.restrictedTraverse('@@oshaview').getTranslatedCategories()">
+
+
+
+
+
+
+            <div class="floatcontrol">
+                <metal:block use-macro="here/filter_macros/macros/SearchableText" i18n:domain="plone" />
+            </div>
+
+
+            <div class="floatcontrol">
+                <metal:block use-macro="here/filter_macros/macros/EffectiveDate" i18n:domain="plone" />
+            </div>
+
+
+          <br clear="all" style="clear:both">
+          <input type="submit" value="Search" i18n:attributes="value">
+          <input type="reset" value="Reset" i18n:attributes="value"
+              tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'">
+
+        </div>
+        </form>
+
+
+        <br clear="all"><br>
+    </div>
+
+
+
+  <div>
+    <div tal:define="query view/make_query;
+                     res python:here.portal_catalog(query);
+                     results res;
+                    ">
+<!--span tal:replace="query" /-->
+        <strong>
+        <span i18n:translate="batch_x_items_matching_your_criteria"><span i18n:name="number" tal:content="python:len(results)">234</span> items match your criteria.</span>
+        </strong>
+
+        <div tal:condition="not: results">
+            <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+        </div>
+
+
+
+    <div tal:condition="results" tal:on-error="nothing"
+          tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+
+        <table border="0" id="resulttable">
+        <tr id="tableheader" i18n:domain="plone">
+          <td></td>
+          <td i18n:translate="label_title">Title</td>
+          <td i18n:translate="label_effective_date">Date of publication</td>
+
+        </tr>
+        <tal:results repeat="result batch">
+        <tal:entry define="result_url result/getURL;
+                           url string:$result_url/view?searchterm=${searchterm};
+                           title result/Title|string:;
+                           oid result/title_or_id|string:;
+                           ">
+            <tr>
+              <td>
+                <img tal:attributes="src string:${result/getIcon};
+                                     alt string:Publication icon"
+                          tal:on-error="nothing" />
+              </td>
+              <td>
+                <a href="#" tal:attributes="href url; title result/Description" >
+                    <span tal:replace="python:title and title or oid" />
+                </a>
+              </td>
+              <td>
+                  <span tal:on-error="nothing" tal:replace="python:toLocalizedTime(result['EffectiveDate'])"/>
+              </td>
+
+             </tr>
+        </tal:entry>
+        </tal:results>
+        </table>
+        <br><br>
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+
+
+
+    </div>
+  </div>
+  </div>
+
+
+
+</div>
+</html>

@@ -1,6 +1,168 @@
 osha.theme Changelog
 ====================
 
+1.2.39 (unreleased)
+-------------------
+
+- Various tweaks to the Cleaning Workers / Topics SEP, Practical Solutions
+  Advanced search field #375 #376 #409 (deroiste)
+
+1.2.38 (2009-10-20)
+-------------------
+
+- Fixed dependencies, minor code style improvements and handling of edge cases
+  in the Topics view (deroiste)
+
+1.2.37 (2009-10-18)
+-------------------
+
+- Added the blog RSS feed to rss-feeds browser view according to request in #239 (pilz)
+- Added a locales-directory for OSHA specific translation customisations (thomasw)
+- Topics views changed to use a rich document and related images or video for
+  content. (deroiste)
+- Finalised i18n for Practical Solutions (deroiste)
+- Add the necessary meta and link tags for sharing with facebook (jcbrand)
+- added "questions-in-parliament" search, a special search interface for publications on BeSWIC (thomasw)
+
+1.2.36 (2009-10-12)
+-------------------
+
+- Limiting the Category filter to one category and fixing the subcategory
+  filter. #375 (deroiste)
+
+1.2.35 (2009-10-09)
+-------------------
+
+- Practical solution pages: adding more options to the search filter, fixing
+  the category and subcategory filter. (deroiste)
+
+1.2.34 (2009-10-09)
+-------------------
+
+- bugfix for the display of Subject on the blog_view (thomasw)
+
+1.2.33 (2009-10-08)
+-------------------
+
+- Practical solutions: separating Publications, removing collabsible search
+  results and instead linking to practical solutions pages with appropriately
+  filtered results. (deroiste)
+
+1.2.32 (2009-10-07)
+-------------------
+
+- Minor visual tweaks to Practical Solutions (deroiste)
+
+1.2.31 (2009-10-06)
+-------------------
+
+- Added a new poperty to oshaprops-controlpanel: show_previous_events (thomasw)
+- Using new property show_previous_events in oshevents portlet to determine whether to 
+  display a link to previous events (thomasw)
+- Adjusted layout and added "more" link to the Practical solutions portlet: now
+  feature complete (#376) (deroiste)
+
+1.2.30 (2009-10-06)
+-------------------
+
+- Fixed query in browser.practical_solutions (deroiste)
+
+1.2.29 (2009-10-05)
+-------------------
+
+- Googlesearch portlet: make the search field even smaller to allow room for the submit button (thomasw)
+
+1.2.28 (2009-10-05)
+-------------------
+
+- Added advanced search to Practical Solution (deroiste)
+- Added Publications to Practical Solutions portlet and adjusted ordering (deroiste)
+- Fixed some css issues on IE6 and IE7 Practical Solution(s) and Topic(s) (deroiste)
+- made Google search portlet smaller, ticket 387 (thomasw) 
+
+
+1.2.27 (2009-09-30)
+-------------------
+
+- Use css to hide the OSHA Metadata widget on the BlogEntry edit form (jcbrand)
+- Adding optional introductory text as an alternative to the linkcollection for
+  Topic pages. #376 (de Roiste)
+- Fixing some expectations in javascript #397 (Gerken)
+- added osha's customised version of UberSelectionWidget. Only reason: to add an explanation
+  on how to search using the "path:" operator #396 (thomasw)
+
+
+1.2.26 (2009-09-29)
+-------------------
+
+- Fixed a naming bug in skins.xml concerning the new long name for the
+  fckeditor directory (jcbrand)
+- Add a new viewlet for the "Add This" social bookmarker. It will be visible on
+  all IATNewsItem providers (jcbrand)
+- Resized Practical Solutions images (de Roiste)
+
+1.2.25 (2009-09-29)
+-------------------
+
+- Minor changes to fix breaking tests. (de Roiste)
+
+osha.theme 1.2.24 (2009-09-28)
+------------------------------
+
+- Added the Practical Solution portlet, Issue 376. (de Roiste)
+- Fixed wrong layer name (gerken)
+
+osha.theme 1.2.23 (2009-09-28)
+------------------------------
+
+- A weird issue with tar files and python 2.4 breaks 1.2.22 release.
+  See here for more information: http://bugs.python.org/issue7011
+  A workaround has been applied and a skin name has been changed.
+  Take care to rename that skin in your skin layers from 
+  osha_theme_custom_fckeditor to
+  osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe (gerken)
+
+osha.theme 1.2.22 (2009-09-26)
+------------------------------
+
+- Fixed the isCanonical AttributeError caused by the oshevents portlet. (jcbrand)
+
+osha.theme 1.2.21 (2009-09-15)
+------------------------------
+
+- don't display PDF icons in the publications language box (slc.publications) (thomasw)
+- network members: Making sure the portlet handles the case when there is no 
+  annotatedlinklist or it is empty. (deroiste)
+- Network members: Adding the National Flag to the view template (deroiste)
+
+osha.theme 1.2.20 (2009-09-13)
+------------------------------
+
+- now really fixed bug in rss_template (thomasw)
+- code refactoring to allow for testing it alone (gerken)
+- added url based caching for navigation portlet - experimental (pilz)
+
+osha.theme 1.2.19 (2009-09-09)
+------------------------------
+
+- replaced several occurrences of parent-fieldname-image ids through classes (pilz)
+- added a vocabulary for testing the annotatablelinklist feature (pilz)
+- bugfix in the rss_template (thomasw)
+- added compatibility with portlet, minor style changes (pilz)
+
+osha.theme 1.2.18 (2009-09-01)
+------------------------------
+
+- making use of slc.googlesearch's new additional_parameters feature (thomasw)
+
+osha.theme 1.2.17 (2009-08-31)
+------------------------------
+
+- changed behaviour in osh-macros in case of missing publication date (gerken)
+- in oshnews-local-view: make sure only news that are already effective are shown (thomasw)
+- rss_template: made the <item> section more human readable; Subject is now translated;
+  use item's effective date if present, fall back to modification date (thomasw)
+
 osha.theme 1.2.16 (2009-08-18)
 ------------------------------
 

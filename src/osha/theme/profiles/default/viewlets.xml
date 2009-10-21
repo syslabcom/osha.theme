@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<object>
+
+    <order manager="plone.portaltop" skinname="*"
+           based-on="Plone Default">
+      <viewlet name="osha.campaignarea"
+               insert-after="plone.header" />
+      <viewlet name="plone.path_bar"
+               insert-after="osha.campaignarea" />
+    </order>
+
+    <order manager="plone.portalheader" skinname="*"
+           based-on="Plone Default">
+      <viewlet name="osha.logo"
+               insert-after="plone.skip_links" />
+      <viewlet name="osha.topactions"
+               insert-after="plone.logo" />
+      <viewlet name="osha.campaignarea2"
+               insert-after="plone.logo" />
+      <viewlet name="osha.topdropdowns"
+               insert-after="osha.topactions" />
+    </order>
+
+    <order manager="osha.header.topactions" skinname="*"
+           based-on="Plone Default">
+      <viewlet name="plone.personal_bar"
+               insert-before="*" />
+      <viewlet name="osha.languageselector"
+               insert-after="plone.personal_bar" />
+    </order>
+
+    <!-- header dropdowns osha main  -->
+    <order manager="osha.header.dropdowns" skinname="*"
+           based-on="Plone Default">
+      <viewlet name="osha.languageselector"
+               insert-before="*" />
+      <viewlet name="osha.networkchooser"
+               insert-after="osha.languageselector" />
+    </order>
+    
+
+    <order manager="plone.contentviews" skinname="*"
+           based-on="Plone Default">
+      <viewlet name="osha.abovecontentportlets"
+               insert-before="*" />
+    </order>
+    <order manager="plone.abovecontenttitle" skinname="NAPO"
+           based-on="Plone Default">
+	   <viewlet name="osha.napo.friendsmenu"
+               insert-before="*" />
+    </order>
+
+    <order manager="plone.contentviews" skinname="NAPO"
+           based-on="Plone Default">
+      <viewlet name="osha.napo.subheader"
+	      insert-after="osha.abovecontentportlets" />
+    </order>
+
+
+    <order manager="plone.contentviews" skinname="NAPO"
+           based-on="Plone Default">
+      <viewlet name="osha.napo.header"
+	      insert-after="osha.abovecontentportlets" />
+    </order>
+
+
+    <order manager="plone.portalfooter" skinname="*"
+           based-on="Plone Default">
+      <viewlet name="osha.footer.actions"
+               insert-before="*" />
+      <viewlet name="osha.footer.languageselector"
+               insert-after="osha.footer.actions" />
+    </order>
+
+    <order manager="plone.htmlhead" skinname="*"
+        based-on="Plone Default">
+        <viewlet name="osha.htmlhead.title"
+            insert-before="*" />
+    </order>
+    
+    <order manager="plone.belowcontent" skinname="NAPO"
+           based-on="Plone Default">
+      <viewlet name="osha.napo.belowfooter"
+	      insert-after="*" />
+      <viewlet name="osha.napo.logofooter"
+	      insert-before="osha.napo.belowfooter" />
+    </order>
+
+
+    <hidden manager="plone.htmlhead" skinname="*">
+        <viewlet name="plone.htmlhead.title" />
+    </hidden>
+
+    <hidden manager="plone.portalheader" skinname="*">
+      <viewlet name="plone.logo" />
+      <viewlet name="plone.searchbox" />
+      <viewlet name="plone.global_sections" />
+      <viewlet name="plone.site_actions" />
+    </hidden>
+
+    <hidden manager="plone.portaltop" skinname="*">
+      <viewlet name="plone.personal_bar" />
+      <viewlet name="osha.path_bar" />
+      <viewlet name="plone.app.i18n.locales.languageselector" />
+    </hidden>
+
+    <hidden manager="plone.belowcontentbody" skinname="*">
+      <viewlet name="plone.abovecontenttitle.documentactions" />
+      <viewlet name="osha.theme.addthisbutton" />
+    </hidden>
+
+    <hidden manager="plone.portalfooter" skinname="*">
+      <viewlet name="plone.footer" />
+      <viewlet name="plone.colophon" />
+    </hidden>
+
+    <hidden manager="plone.portalheader" skinname="HealthyWorkplaces">
+        <viewlet name="osha.topactions" />
+    </hidden>
+
+    <hidden manager="osha.header.dropdowns" skinname="RISQ">
+      <viewlet name="osha.networkchooser" />
+    </hidden>
+
+    <hidden manager="osha.header.dropdowns" skinname="BeSWIC Safestart">
+      <viewlet name="osha.networkchooser" />
+    </hidden>
+
+    <hidden manager="plone.portaltop" skinname="BeSWIC Safestart">
+      <viewlet name="osha.campaignarea" />
+    </hidden>
+
+    <hidden manager="plone.portaltop" skinname="RISQ">
+      <viewlet name="osha.campaignarea" />
+    </hidden>
+
+    <hidden manager="plone.portaltop" skinname="NAPO">
+	    <viewlet name="osha.path_bar" />
+    </hidden>
+
+    <hidden manager="osha.header.dropdowns" skinname="NAPO">
+      <viewlet name="osha.networkchooser" />
+      <viewlet name="osha.languageselector" />
+    </hidden>
+
+    <hidden manager="plone.portalfooter" skinname="NAPO">
+	    <viewlet name="osha.footer.actions" />
+    </hidden>
+
+    <hidden manager="plone.portalheader" skinname="NAPO">
+	    <viewlet name="osha.logo" />
+	    <viewlet name="osha.topactions" />
+    </hidden>
+    
+    
+    
+    
+    <!-- Skin config for germany -->
+    <order manager="osha.header.dropdowns" skinname="OSHAGermany"
+           based-on="OSHA Plone Theme">
+        <viewlet name="osha.germany.site_actions"
+               insert-before="*" />
+
+    </order>
+    <order manager="osha.header.topactions" skinname="OSHAGermany"
+           based-on="OSHA Plone Theme">
+      <viewlet name="osha.germany.languageselector"
+               insert-before="*" />
+    </order>    
+
+
+    <hidden manager="osha.header.dropdowns" skinname="OSHAGermany">
+      <viewlet name="osha.networkchooser" />      
+    </hidden>
+    <hidden manager="plone.header" skinname="OSHAGermany">
+      <viewlet name="osha.topactions" />
+    </hidden>
+    
+    
+</object>

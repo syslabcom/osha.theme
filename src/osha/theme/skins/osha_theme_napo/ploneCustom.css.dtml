@@ -1,0 +1,615 @@
+/*rote Überschrift mit unterstrisch über den ganzen Content*/
+#osha-topdropdowns {
+}
+
+#parent-fieldname-text img {
+	float:left;
+	clear:left;
+}
+h3, .NAPOheader {
+
+	border-bottom: 1px solid #D0A8A8;
+	color: #BC0000;
+	font-size: 1,2em;
+	font-weight: bold;
+	margin-bottom:10px;
+
+}
+.NAPOsubheader {
+	font-weight:bold;
+}
+div.paragraph {
+	line-height: 1.4em;
+	font-size:0.7em;
+	font-family: Verdana,Arial,Helvetica;sans-serif;
+	padding-bottom:15px;
+	padding-top:10px;
+}
+.viewFilmList {
+	list-style-type: none !important;
+	list-style-image:none !important;
+	line-height:1,4em;
+	font-size:0.7em;
+	font-family: Verdana,Arial,Helvetica;sans-serif;
+	padding-left:30px;
+}
+.viewFilmList {
+	padding-top:10px;
+}
+a {
+	color:#ff6633;
+	text-decoration:none;
+	border-bottom:none !important;
+}
+
+/*Portlet NavigationTree anpassungen
+*/
+.portletNavigationTree dt {
+	display:none;
+}
+
+.portletNavigationTree a img {
+	display:none;
+}
+
+/*Tinas change from Background image to Background*/
+
+dl.portletNavigationTree {
+  background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
+  position:relative;
+  top:100px;
+}
+
+.portletNavigationTree {
+	height:500px;
+	width:222px;
+	margin-top:0px;
+	background-color:transparent;
+	border: 0px none transparent;
+}
+.portletNavigationTree dd {
+	padding-top:200px;
+}
+.navTree {
+	line-heigt: 1.5em;
+	font-family: Arial,Helvetica,sans-serif;
+	font-size:1.1em;
+}
+.portletItem {
+	border: 0px none transparent;
+}
+
+/*Tinas Changes fontsize 1.2 and paddingbottom 8px BEFORE*/
+
+/*.navTreeItem a, dd.portletItem .navTreeItem a {
+	color:#ffffff !important;
+	border: 0px none transparent;
+	padding-top:7px;
+	padding-bottom:9px;
+	background-image:url(/osha_theme_napo_images/menuButton.gif);
+	padding-left: 28px;
+	font-size:7.8pt;
+	font-weight:bold;
+	background-repeat:no-repeat;
+	display:block
+}*/
+
+.navTreeItem a, dd.portletItem .navTreeItem a {
+  background-image:url(/osha_theme_napo_images/menuButton.gif);
+  background-repeat:no-repeat;
+  border:0 none transparent;
+  color:#FFFFFF !important;
+  display:block;
+  font-size:7.8pt;
+  font-weight:bold;
+  padding-bottom:17px!important;
+  padding-left:28px;
+  padding-top:7px;
+}
+
+.navTreeItem a, dd.portletItem .navTreeItem a {
+	color:#ffffff !important;
+}
+.navTreeItem a span{
+	color:#ffffff !important;
+}
+.statePublished {
+	color:white !important;
+}
+.navTreeItem a:link, dd.portletItem .navTreeItem a:link {
+	color:#ffffff !important;
+}
+.navTreeItem a:visited, dd.portletItem .navTreeItem a:visited {
+	color:#ffffff !important;
+}
+.navTreeItem a:hover, dd.portletItem .navTreeItem a:hover {
+	color:#ffffff !important;
+	text-decoration:underline;
+}
+.navTreeItem:hover a, dd.portletItem:hover .navTreeItem:hover a {
+	color:#ffffff !important;
+	text-decoration:underline;
+}
+.contentActions a {
+	color:#000000;
+}
+.contentActions a:hover: {
+	color:#000000M
+}
+#portal-column-one .visualPadding {
+	padding:0em 0em 0em 0em;
+}
+.navTreeItem a:hover, dd.portletItem .navTreeItem a:hover {
+	background-color:transparent;
+	border: 0px none transparent;
+}
+.navTreeCurrentItem {
+	background-color:transparent;
+	border:0px none transparent !important;
+}
+body {
+	background-attachment: fixed;
+	background-color:#18B500;
+	background-image:url(/osha_theme_napo_images/fondo.gif);
+	background-repeat:repeat-x;
+	font-family: Verdana,Arial,Helvetica;sans-serif;
+	font-size:0.7em;
+	margin:0pt;
+	padding-bottom:30px;
+}
+p {
+	font-family: Verdana,Arial,Helvetica;sans-serif;
+	line-height: 1.4em;
+}
+#portal-column-content {
+	width:699px !important;
+	padding:0px 0px 0px 0px;
+}
+body #portal-columns {
+	position:absolute;
+	top:0px;
+	width:810px !important;
+	padding:0px 0px 0px 0px;
+}
+#header {
+	background-image:url(/osha_theme_napo_images/napoHeader13.gif);
+	background-repeat:no-repeat;
+	color:#FFFFFF;
+	font-size:0.9em;
+        padding-bottom:13px;
+	padding-left:30px;
+        padding-top:5px;
+}
+#header ul{
+	list-style-type:none;
+	margin:0px 0px -3px 0px;
+}
+
+#header ul li {
+	display:inline;
+	margin-right:20px;
+}
+#header a {
+	color:#ffffff;
+	text-decoration:underline;
+}
+.documentContent {
+        background-image:url(/osha_theme_napo_images/fondoContent2.gif);
+	background-repeat:repeat-y;
+	width:677px;
+        position:relative;
+	top:-16px;
+	background-color:transparent;
+}
+#rahmen {
+	margin-top:5px;
+	margin-left:-30px;
+}
+#bottompic {
+	margin-left:-12px;
+	background: transparent none repeat scroll 0% 0%;
+	position:relative;
+	top:52px;
+}
+#napo-imagemap {
+    position: relative;
+}
+#the-napo-story, #who-is-napo, #napos-friends, #napos-films, #using-napo, #coming-soon, #rights-and-permissions, #napette, #the-boss, #miss-strudel, #other-friends {
+    color:#564ff7;
+    font-weight:bold;
+    text-decoration:none;
+    position:absolute;
+    padding:1px;
+    display:block;
+    width: 130px;
+	  height: auto;
+}
+#the-napo-story:hover, #who-is-napo:hover, #napos-friends:hover, #napos-films:hover, #using-napo:hover, #coming-soon:hover, #rights-and-permissions:hover, #napette:hover, #the-boss:hover, #miss-strudel:hover, #other-friends:hover {
+}
+#napette {
+	top:160px;
+	left:65px;
+}
+#miss-strudel {
+	top:40px;
+	left:360px;
+}
+#the-boss {
+	top:325px;
+	left:275px;
+}
+#other-friends {
+	top:   250px;
+	left:  450px;
+}
+
+/*Tinas Fixes*/
+
+#the-napo-story {
+  color:#364E9F;
+  left:320px;
+  top:465px;
+  width:250px;
+}
+
+#napos-friends {
+  color:#364E9F;
+  left:50px;
+  top:400px;
+}
+#who-is-napo {
+  color:#364e9f;
+  left:85px;
+  top:140px;
+}
+#napos-films {
+  color:#364E9F;
+  left:285px;
+  top:70px;
+}
+#using-napo {
+  color:#364e9f;
+  left:480px;
+  top:110px;
+  width:200px;
+}
+#coming-soon {
+  color:#364E9F;
+  left:261px;
+  top:275px;
+}
+#rights-and-permissions {
+  color:#364E9F;
+  left:470px;
+  top:368px;
+}
+#espiral-pic {
+}
+#friends-pic {
+	xmargin-bottom:-150px;
+}
+.other {
+	padding-top:40px;
+	margin-right:30px;
+}
+.other2 {
+	padding-top:40px;
+	margin-right:45px;
+}
+p.paragraph2 {
+	padding-top:40px;
+}
+p.paragraph3 {
+	padding-top:40px;
+}
+p.paragraph4 {
+	padding-top:40px;
+	padding-left:130px;
+}
+p.paragraph5 {
+	padding-left:130px;
+}
+#partners {
+	margin:0px;
+	padding-bottom:-40px;
+	padding:0px;
+        position:relative;
+	top:46px;
+}
+#partners li {
+	display:inline;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#friendsmenu {
+	margin-left: 10px;
+	margin-right: 10px;
+	list-style-type: none !important;
+	text-align:center;
+	margin-bottom:40px;
+}
+#friendsmenu li {
+	list-style-type:none !important;
+	list-style-image:none !important;
+	display:inline;
+	margin-left:15px;
+	margin-right:15px;
+}
+#friendsmenu a {
+	text-decoration: underline;
+	color: #000000;  /*blau wäre schöner*/
+	font-weight:bold;
+}
+#friendsmenu a.ACTIVE {
+	color:#ff8000;
+	font-weight: bold;
+	text-decoration:none;
+}
+#friendsmenu a:hover {
+	text-decoration:underline;
+}
+/* - - - - - - CSS Document - - - - - - - - -
+
+/* ----------------------------------------------------------------------------------------------------------------*/
+/* ---------->>> global settings needed for thickbox <<<-----------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------------*/
+/*Does not appear to be needed: *{padding: 0; margin: 0;} */
+
+
+/* ----------------------------------------------------------------------------------------------------------------*/
+/* ---------->>> thickbox specific link and font settings <<<------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------------*/
+
+#vPIP_TB_window {
+	color:#000000;
+}
+
+/* ----------------------------------------------------------------------------------------------------------------*/
+/* ---------->>> thickbox settings <<<-----------------------------------------------------------------------------*/
+/* ----------------------------------------------------------------------------------------------------------------*/
+
+#vPIP_TB_overlay {
+	position: fixed;
+	z-index:100;
+	top: 0px;
+	left: 0px;
+	background-color:#000;
+	filter:alpha(opacity=75);
+	-moz-opacity: 0.75;
+	opacity: 0.75;
+	height:100%;
+	width:100%;
+
+}
+
+* html #vPIP_TB_overlay { /* ie6 hack */
+     position: absolute;
+     height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + 'px');
+}
+
+#vPIP_TB_window {
+	position: fixed;
+	background: #E1E1E1;
+	z-index: 102;
+	color:#000000;
+	display:none;
+	border: 4px solid #525252;
+	text-align:left;
+	top:50%;
+	left:50%;
+}
+
+* html #vPIP_TB_window { /* ie6 hack */
+	position: absolute;
+	margin-top: expression(0 - parseInt(this.offsetHeight / 2) + (vPIP_TBWindowMargin = document.documentElement && document.documentElement.scrollTop || document.body.scrollTop) + 'px');
+}
+
+#vPIP_TB_window img {
+	display:block;
+	margin: 15px 0 0 15px;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #666;
+	border-left: 1px solid #666;
+}
+
+#vPIP_TB_caption{
+	height:25px;
+	padding:10px 30px 10px 15px;
+	float:left;
+}
+
+#vPIP_TB_closeWindow{
+	height:25px;
+	padding:10px 25px 10px 0;
+	float:right;
+}
+
+#vPIP_Object {
+	display:block;
+	text-align: left;
+	padding: 15px 0 0 15px;
+	/*	text-align: center */
+	background:#E1E1E1;
+}
+
+
+h1, h2 {
+  border-bottom:0 solid #FFFFC9;
+}
+
+
+#slc-linkcollection-linkbox {
+  border:0 solid #CBD1D8;
+}
+
+/*Tinas IE Fixes 04.06*/
+
+* html dl.portletNavigationTree {
+  background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
+  position:relative;
+  left:23px;
+  top:-2px;
+}
+
+*+html dl.portletNavigationTree {
+  background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
+  position:relative;
+  left:23px;
+  top:60px;
+}
+
+* html .navTreeItem a, dd.portletItem .navTreeItem a {
+  background-image:url(/osha_theme_napo_images/menuButton.gif);
+  background-repeat:no-repeat;
+  border:0 none transparent;
+  display:block;
+  font-size:7.8pt;
+  font-weight:bold;
+  padding-bottom:16px;
+  padding-left:28px;
+  padding-top:7px;
+}
+
+*+html .navTreeItem a, dd.portletItem .navTreeItem a {
+  background-image:url(/osha_theme_napo_images/menuButton.gif);
+  background-repeat:no-repeat;
+  border:0 none transparent;
+  color:#FFFFFF !important;
+  display:block;
+  font-size:7.8pt;
+  font-weight:bold;
+  padding-bottom:22px;
+  padding-left:28px;
+  padding-top:7px;
+}
+
+* html #napos-friends {
+  color:#364e9f;
+  left:50px;
+  top:355px;
+}
+
+*+html #napos-friends {
+  color:#364e9f;
+  left:50px;
+  top:350px;
+}
+
+* html #who-is-napo {
+  color:#364e9f;
+  left:85px;
+  top:105px;
+}
+
+*+html #who-is-napo {
+  color:#364e9f;
+  left:85px;
+  top:100px;
+}
+
+* html #coming-soon {
+color:#364E9F;
+left:261px;
+top:235px;
+}
+
+*+html #coming-soon {
+color:#364E9F;
+left:261px;
+top:230px;
+}
+
+* html #napos-films {
+color:#364e9f;
+left:280px;
+top:25px;
+}
+
+*+html #napos-films {
+color:#364e9f;
+left:280px;
+top:25px;
+}
+
+* html #using-napo {
+  color:#364e9f;
+  left:480px;
+  top:75px;
+  width:200px;
+}
+
+*+html #using-napo {
+  color:#364e9f;
+  left:480px;
+  top:70px;
+  width:200px;
+}
+
+*html #rights-and-permissions {
+color:#364E9F;
+left:470px;
+top:325px;
+}
+
+*+html #rights-and-permissions {
+color:#364E9F;
+left:470px;
+top:320px;
+}
+
+* html #the-napo-story {
+color:#364e9f;
+left:320px;
+top:425px;
+width:250px;
+}
+
+*+html #the-napo-story {
+color:#364e9f;
+left:320px;
+top:420px;
+width:250px;
+}
+
+* html #portal-column-content {
+padding:0;
+width:699px !important;
+position:relative;
+bottom:60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

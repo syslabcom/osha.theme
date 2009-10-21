@@ -1,0 +1,1273 @@
+/*
+  This file is based on the ploneCustom.css.dtml file shipped with Plone.
+
+  <dtml-with base_properties> (do not remove this)
+  <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
+*/
+/* fix for using snap */
+#snap_com_shot_main button {
+visibility: inherit;
+}
+
+/* specials for the german fop */
+#german-slogan {
+    color:#144989;
+    font-size:150%;
+    font-weight:bold;
+    padding-bottom:0.5em;
+    padding-right:0.7em;
+    text-align:right;
+    margin-top: 60px;
+}
+
+/* Compatibility with old style templates */
+.documentActions {
+    display:none;
+}
+.documentActions ul {
+    display:none;
+}
+.documentActions li {
+    display:none;
+}
+.documentActions a {
+    display: none;
+}
+
+
+/* Accessibility elements, applied by JS */
+body.largeText { font-size: 95%; }
+body.smallText { font-size: 60%; }
+
+/* Padding for the columns */
+
+#portal-column-one .visualPadding {
+    padding: 0em 0em 1em 0em;
+}
+#portal-column-two .visualPadding {
+    padding: 0em 0em 1em 0em;
+}
+
+/* Content area */
+
+/* Compensate for the inline editing hover, since we have a 1px border */
+body.kssActive h2.inlineEditable:hover,
+body.kssActive h1.inlineEditable:hover {
+    padding-bottom: 1px;
+}
+
+.documentFirstHeading {
+    margin-top: 0;
+    background:&dtml-globalBackgroundColor;;
+    padding:0.5em 1em !important;
+    margin-bottom: 1em;
+}
+
+.documentContent {
+    font-size: 100%;
+    padding: 0em 1em 2em 1em !important;
+}
+
+.documentContent p a {
+    text-decoration: underline;
+}
+
+.documentContent ul {
+    list-style-image: url(&dtml-portal_url;/bullet.gif);
+    list-style-type: square;
+    margin: 0.5em 0 0 1.5em;
+}
+.documentContent ol {
+    margin: 0.5em 0 0 2.5em;
+}
+
+#visual-portal-wrapper {
+    margin: 0 0 1em;
+    padding: 0;
+}
+
+/* Logo properties */
+#portal-logo img {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#portal-top {
+    /* Top section */
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+/* Site-wide action menu - font size, contact, index, sitemap etc */
+#portal-siteactions {
+    background-color: transparent;
+    white-space: nowrap;
+    list-style-image: none;
+    list-style-type: none;
+    margin: 1px 0 0 0.5em;
+    height: auto;
+    line-height: normal;
+    padding: 3px 2em 3px 0;
+    font-size: &dtml-fontSmallSize;;
+    overflow: hidden;
+    position:relative;
+    float:left;
+}
+#portal-siteactions li {
+    display: inline;
+}
+#portal-siteactions li a {
+    height: auto;
+    padding: 0pt 0.4em 0 0.5em;
+    text-decoration: none;
+    border-left: 1px solid &dtml-fontColor;;
+    margin-left: -1px;
+}
+#portal-siteactions li.selected a {
+    color: &dtml-globalFontColor;;
+}
+#portal-siteactions li a:hover {
+    color: &dtml-globalFontColor;;
+}
+
+/* Searchbox style and positioning */
+
+#portal-searchbox {
+    float: right;
+    clear: right;
+    background-color: transparent;
+    margin: 1.5em 0 0 0;
+    padding: 0 2em 0 0;
+    text-align: right;
+    text-transform: &dtml-textTransform;;
+    white-space: nowrap;
+    z-index: 2;
+}
+#portal-advanced-search {
+    margin-top: 0.2em;
+    clear: both;
+}
+#portal-advanced-search a {
+    color: &dtml-discreetColor;;
+    text-decoration: none;
+    text-transform: &dtml-textTransform;;
+}
+
+/* Search results elements */
+
+dl.searchResults dt {
+    font-size: 140%;
+    font-weight: normal;
+}
+
+form.searchPage {
+    text-align: center;
+}
+
+input.searchPage {
+    font-size: 200% !important;
+}
+
+form.searchPage input.searchButton {
+    background-position:5px 7px;
+    padding:1px 10px 1px 25px;
+}
+
+/* LiveSearch styles */
+.LSRes {
+    font-family:  <dtml-var fontFamily>;
+    visibility: visible;
+    color: &dtml-globalFontColor;;
+    background-color: &dtml-backgroundColor;;
+    vertical-align: middle;
+    display:block;
+    list-style-image: none;
+    list-style-type: none;
+    text-align: left;
+    min-width: 16.5em;
+    text-transform: none;
+    margin-left: 0;
+    line-height: 1.1em;
+}
+#LSHighlight,
+.LSHighlight {
+    background-color: &dtml-globalBackgroundColor;;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    color: &dtml-globalFontColor;;
+}
+.LSRow {
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor;;
+    white-space: normal;
+    padding:0;
+    margin: 0;
+    list-style-image: none;
+    list-style-type: none;
+}
+.LSRow a {
+    text-decoration: none;
+    font-weight:bold;
+    white-space:nowrap
+}
+.LSDescr {
+    color: &dtml-discreetColor;;
+    text-transform: &dtml-textTransform;;
+    padding-left:2.1em;
+    margin-top:-0.1em;
+}
+.LSResult {
+    position: relative;
+    display: block;
+    text-align: right;
+    padding-top: 5px;
+    margin: 0;
+    left: 3px;
+    z-index: 3;
+}
+.LSShadow {
+    position: relative;
+    text-align: right;
+}
+.livesearchContainer {
+    background-color: &dtml-backgroundColor;;
+    margin-top: 0;
+    padding: 0 !important;
+    position: absolute;
+    right: 0px;
+    /* Currently exposes a rendering bug in Mozilla */
+    top: 0;
+    white-space: normal;
+    font-family:  <dtml-var fontFamily>;
+    visibility: visible;
+    text-align: left;
+    color: &dtml-globalFontColor;;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    width: 30em;
+    text-transform: none;
+}
+* html .livesearchContainer {
+    padding: &dtml-borderWidth; !important;
+    padding-top: 0 !important;
+    background-color: &dtml-globalBorderColor;;
+    border: 0;
+}
+#livesearchLegend {
+    line-height: 1em;
+    margin-top: -2em;
+    margin-left: -0.1em;
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-bottom: 0;
+}
+* html #livesearchLegend {
+    margin-top: -1.9em;
+    margin-left: -8px;
+    position: relative;
+}
+
+/* Workaround for Internet Explorer's broken z-index implementation */
+.LSIEFix {
+    background-color: &dtml-backgroundColor;;
+    padding: 0.5em !important;
+    z-index: 20;
+}
+.LSBox {
+    clear: left;
+    float: left;
+    text-align: right;
+    padding-right: 1px;
+    display:block;
+}
+#LSNothingFound {
+    text-align: center;
+    padding: 2px;
+}
+.LSBox label {
+    font-weight: normal;
+}
+
+#portal-personaltools {
+    /* Bar with personalized menu (user preferences, favorites etc) */
+    float:right;
+    line-height: 1.6em;
+    color: &dtml-fontColor;;
+    padding: 0;
+    margin: 1.3em 1em 0 0;
+    text-align: right;
+    text-transform: &dtml-textTransform;;
+    list-style: none;
+    font-size: &dtml-fontSmallSize;;
+}
+#portal-personaltools .portalUser {
+    background: transparent url(&dtml-portal_url;/user.gif) center left no-repeat;
+    padding-left: 18px;
+}
+#portal-personaltools .portalNotLoggedIn {
+    /* Used on all descriptions relevant to those not logged in */
+    color: &dtml-fontColor;;
+    padding: 0;
+    background: transparent;
+    background-image: none;
+}
+#portal-personaltools li {
+    color: &dtml-globalFontColor;;
+    margin-left: 1em;
+    display: inline;
+}
+#portal-personaltools li a {
+    text-decoration: none;
+}
+#portal-personaltools .visualIconPadding {
+    padding-left: 10px;
+}
+.visualCaseSensitive {
+    text-transform: none;
+}
+
+#portal-languageselector {
+    margin: 0 1em;
+    float:right;
+}
+#portal-languageselector li {
+    display: inline;
+}
+
+#portal-breadcrumbs {
+    /* The path bar, including breadcrumbs and add to favorites */
+    padding: 0em 2em;
+    line-height: 2.5em;
+    clear:both;
+}
+#portal-breadcrumbs a {
+    text-decoration: none;
+}
+.breadcrumbSeparator {
+    font-size: 120%;
+}
+
+.documentEditable {
+/*    padding: 0em 1em 1em 1em !important;*/
+    margin: 0 1em;
+}
+#content-news h1 {
+    margin-bottom: 1em;
+}
+
+.newsItem {
+    margin-bottom: 1em;
+    border-bottom: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+.newsImage {
+    border: 1px solid #ccc;
+}
+.newsImageContainer {
+    float:left;
+    margin: 0 1em 0.5em 0;
+    min-width: 100px;
+}
+.newsContent {
+    padding: 0 1em 1em 1em;
+}
+.newsContent ul,
+.newsContent li {
+    display: block;
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: 0;
+}
+.newsAbout {
+    display: block;
+    color: &dtml-discreetColor;;
+    font-size: &dtml-fontSmallSize;;
+    padding: 0;
+    margin-top: 0;
+    list-style: none;
+    list-style-image: none;
+    float: right;
+    text-align: right;
+}
+.newsAbout li {
+    display: inline;
+}
+.newsFooter {
+
+}
+.newsFooter li {
+    display: inline;
+    margin: 0 1em 0 0;
+}
+
+/* Status messages */
+
+dl.portalMessage {
+    font-size: &dtml-fontSmallSize;;
+}
+dl.portalMessage a {
+    color: black;
+    border: none;
+    text-decoration: underline;
+}
+dl.portalMessage dt {
+    background-color: #996;
+    border: 1px solid #996;
+    font-weight: bold;
+    float: left;
+    margin: 0 0.5em 0 0;
+    padding: 0.5em 0.75em;
+    color: White;
+    line-height: 1.25em;
+}
+dl.portalMessage dd {
+    background-color: #ffffe3;
+    border: 1px solid #996;
+    padding: 0.5em 0.5em;
+    margin: 0;
+    line-height: 1.25em;
+}
+dl.warning dt {
+    background-color: #d80;
+    border: 1px solid #d80;
+}
+dl.error dt {
+    background-color: #d00;
+    border-color: #d00;
+}
+dl.warning dd {
+    background-color: #fd7;
+    border-color: #d80;
+}
+dl.error dd {
+    background-color: #fd7;
+    border-color: #d80;
+}
+
+.documentDescription {
+    /* The summary text describing the document */
+    font-weight: bold;
+    display: block;
+    margin: 0em 0em 0.5em 0em;
+    line-height: 1.5em;
+}
+.documentByLine {
+    font-size: &dtml-fontSmallSize;;
+    font-weight: normal;
+    color: &dtml-discreetColor;;
+    margin-bottom: 0.5em;
+}
+
+dl.searchResults span.documentByLine {
+    display: block;
+}
+
+/* categories hidden by request of #334 (filed under) */
+div#category { display:none; }
+
+#category ul {
+    list-style-image: none;
+    list-style-type: none;
+    display: inline;
+    margin: 0;
+}
+#category ul li {
+    display: inline;
+}
+.discussion {
+    margin-top: 1em;
+}
+.even {
+    background-color: &dtml-evenRowBackgroundColor;;
+}
+.odd {
+    background-color: &dtml-oddRowBackgroundColor;;
+}
+.visualHighlight {
+    background-color: #ffc;
+}
+
+.discreet {
+    color: &dtml-discreetColor;;
+    font-size: &dtml-fontSmallSize;;
+    font-weight: normal;
+}
+.pullquote {
+    padding: 0 1em 0 1em;
+    margin: 0 0 1em 1em;
+    font-weight: bold;
+    float: right;
+    width: 35%;
+    clear: right;
+    background-color: &dtml-backgroundColor;;
+    border-left: 4px solid &dtml-globalBorderColor;;
+}
+.callout {
+    font-weight: bold;
+    padding: 0px 1em;
+}
+
+.notify,
+.documentEditable * .notify {
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-notifyBorderColor;;
+}
+.card {
+    background-color: &dtml-globalBackgroundColor;;
+    border-color: &dtml-globalBorderColor;;
+    border-width: &dtml-borderWidth;;
+    border-style: &dtml-borderStyle;;
+    float: left;
+    margin: 1em;
+    text-align: center;
+    width: 110px;
+    padding: 1em 0;
+}
+.card a {
+    text-decoration: none;
+}
+.portrait {
+    background-color: &dtml-globalBackgroundColor;;
+    border-color: &dtml-globalBorderColor;;
+    border-width: &dtml-borderWidth;;
+    border-style: &dtml-borderStyle;;
+    font-size: &dtml-fontSmallSize;;
+    margin: 0.5em;
+    padding: 1em 0 0.5em 0;
+    text-align: center;
+    width: 100px;
+}
+.portraitPhoto {
+    border: 1px solid &dtml-globalBorderColor;;
+}
+
+/* The table used for listings - horizontal and vertical variants */
+table.listing,
+.stx table {
+    /* The default table for document listings. Contains name, document types, modification times etc in a file-browser-like fashion */
+    border-collapse: collapse;
+    border-left: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-bottom: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    font-size: &dtml-fontSmallSize;;
+    margin: 1em 0em 1em 0em;
+}
+table.listing th,
+.stx table th {
+    background: &dtml-globalBackgroundColor;;
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-bottom: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    border-right: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    font-weight: normal;
+    padding: 0.25em 0.5em;
+    text-transform: &dtml-textTransform;;
+}
+table.listing .top {
+    border-left: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor;;
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor; ! important;
+    border-right: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor; ! important;
+    text-align: right ! important;
+    padding: 0em 0em 1em 0em;
+}
+table.listing .listingCheckbox {
+    text-align: center;
+}
+table.listing td,
+.stx table td {
+    border-right: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    padding: 0.25em 0.5em;
+}
+table.listing a {
+    text-decoration: none;
+}
+table.listing a:hover {
+    text-decoration: underline;
+}
+table.listing img {
+    vertical-align: middle;
+}
+table.listing td a label,
+.stx table td a label {
+    cursor: pointer;
+}
+
+/* Vertical addition class */
+table.vertical {
+    background-color: &dtml-backgroundColor;;
+}
+table.vertical th {
+    padding: 0.5em;
+}
+table.vertical td {
+    border-top: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    padding: 0.5em;
+}
+
+/* grid addition class */
+
+table.grid td {
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+    padding: 0.5em;
+}
+
+/* plain table class with light gray borders */
+
+table.plain,
+table.plain td,
+table.plain th {
+    border: 1px solid #ccc;
+    padding: 0.5em;
+    border-collapse: collapse;
+}
+/* Batch selector */
+.listingBar {
+    background-color: &dtml-globalBackgroundColor;;
+    border-color: &dtml-globalBorderColor;;
+    border-style: &dtml-borderStyle;;
+    border-width: &dtml-borderWidth;;
+    padding: 0em 1em;
+    text-align: center;
+    text-transform: &dtml-textTransform;;
+    vertical-align: top;
+    margin: 1em 0em;
+    font-size: 94%;
+    clear: both;
+}
+.listingBar span.previous,
+.listingPrevious {
+    text-align: left;
+    float: left;
+    margin-right: 1em;
+}
+.listingBar span.next,
+.listingNext {
+    text-align: right;
+    float: right;
+    margin-left: 1em;
+}
+.listingBar img {
+    vertical-align: middle;
+}
+.listingBar a {
+    text-decoration: none;
+}
+.tileItem {
+    margin-top: 0.5em;
+    margin-bottom:2.5em;
+}
+.tileHeadline {
+    border: none;
+    font-size: 110%;
+    font-weight: bold;
+    margin-top: 0;
+}
+.tileHeadline a {
+    text-decoration: none;
+}
+.tileBody {
+    margin-bottom: 0.5em;
+}
+.tileImage {
+    float: left;
+    margin: 0 0.5em 0.5em 0;
+    border: 1px solid &dtml-globalBorderColor;;
+}
+.eventDetails {
+    float: right;
+    width: 20em;
+    clear: right;
+}
+
+#eventDetailsTable {
+	border: 0;
+}
+#eventDetailsTable th {
+	width: 20%;
+	text-align:left;
+}
+#eventDetailsTable td {
+	width: 30%;
+}
+/* List classes without markers */
+ul.visualNoMarker,
+ol.visualNoMarker {
+    list-style-type: none;
+    list-style-image: none;
+    margin: 0.5em 0 0 0;
+    line-height: 1em;
+}
+
+ul.discreet {
+    list-style-image: none;
+    list-style-type: disc;
+}
+
+textarea.proportional {
+    font: 100% <dtml-var fontFamily>;
+}
+.productCredits {
+    text-align: right;
+    font-size: &dtml-fontSmallSize;;
+    clear: both;
+    font-weight: normal;
+    color: &dtml-discreetColor;;
+}
+
+/* Sitemap styles */
+#portal-sitemap {
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    font-size: 90%;
+    border: none;
+}
+#portal-sitemap a {
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor;;
+}
+#portal-sitemap a:hover {
+    border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
+}
+#portal-sitemap .navTreeLevel1 {
+    padding-left: 1em;
+    border-left: 0.5em solid &dtml-globalBorderColor;;
+    margin: 0 0 0 0.5em;
+}
+#portal-sitemap .navTreeLevel2 {
+    padding-left: 1em;
+    border-left: 0.5em solid &dtml-globalBackgroundColor;;
+    margin: 0 0 0 0.6em;
+}
+
+/* Album view classes */
+.photoAlbumEntry {
+    float: left;
+    height: 185px;
+    width: 143px;
+    margin: 0em;
+    padding: 0px 6px 0px 9px;
+    text-align: center;
+    background-image: url('&dtml-portal_url;/polaroid-single.png');
+    background-repeat: no-repeat;
+}
+.photoAlbumEntry img {
+    border: 1px solid #ccc;
+    display: block;
+    margin: 0 auto;
+}
+.photoAlbumEntryWrapper {
+    /*display: block;*/
+    height: 130px;
+    width: 128px;
+    margin-bottom: 7px;
+}
+.photoAlbumEntry a {
+    display: block;
+    text-decoration: none;
+    font-size: &dtml-fontSmallSize;;
+    height: 169px;
+    width: 130px;
+    margin: 16px auto 0px;
+}
+.photoAlbumFolder {
+    background-image: url('&dtml-portal_url;/polaroid-multi.png');
+    background-repeat: no-repeat;
+}
+.photoAlbumEntryTitle {
+    color: &dtml-discreetColor;;
+    display: block;
+    overflow: hidden;
+    width: 128px;
+    height: 3.6em;
+}
+
+/* Link types */
+a.link-parent {
+    display: block;
+    background: transparent url(&dtml-portal_url;/arrowUp.gif) 4px 5px no-repeat;
+    padding: 1px 0px 10px 16px;
+    font-size: &dtml-fontSmallSize;;
+    text-decoration: none;
+}
+#content .link-category {
+    color: #74ae0b !important;
+}
+#content .link-user {
+    background: transparent url(&dtml-portal_url;/user.gif) 0 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+#content .link-comment {
+    background: transparent url(&dtml-portal_url;/discussionitem_icon.gif) center left no-repeat;
+    padding: 1px 0px 1px 16px !important; /* value:  */
+}
+#content .link-anchor {
+    color: &dtml-discreetColor;;
+    text-decoration: none;
+    font-weight: normal;
+}
+#content .link-presentation {
+    font-size: 90%;
+    text-align: center;
+}
+
+#content .link-wiki-add {
+    color: red;
+}
+
+/* Handling external/internal links, we first set the icon on all links, then
+   remove it from the ones that are local - for both http and https */
+#content a[href ^="http:"],
+#content a.link-external {
+    background: transparent url(&dtml-portal_url;/link_external.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+#content a[href ^="https:"],
+#content a.link-https {
+    background: transparent url(&dtml-portal_url;/lock_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+#content a[href ^="&dtml-portal_url;"] {
+    background: none;
+    padding: 0;
+}
+
+
+/* Protocol-specific links */
+#content a[href ^="mailto:"],
+#content a.link-mailto  {
+    background: transparent url(&dtml-portal_url;/mail_icon.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 16px;
+}
+#content a[href ^="feed:"],
+#content a.link-feed {
+    background: transparent url(&dtml-portal_url;/rss.gif) 0px 1px no-repeat;
+    padding: 1px 0px 1px 18px;
+}
+
+#content .link-plain {
+    background-image: none !important;
+    padding: 0 !important;
+}
+
+/* For ghosted elements */
+.visualGhosted {
+    opacity: 0.2;
+}
+
+/* Fullscreen */
+body.fullscreen #portal-logo,
+body.fullscreen #portal-siteactions {
+    display: none;
+}
+body.fullscreen #portal-globalnav {
+    margin-top: 4em;
+}
+body.fullscreen #portal-searchbox {
+    margin: 0.5em 2em 0 0.5em;
+    padding: 0;
+    position: relative;
+    z-index: 3;
+}
+
+/* Kupu image alignment classes */
+.image-left {
+   float: left;
+   clear: both;
+   margin: 0.5em 1em 0.5em 0;
+   border: 1px solid Black;
+}
+.image-inline {
+   float: none;
+}
+.image-right {
+   float: right;
+   clear: both;
+   margin: 0.5em;
+   border: 1px solid Black;
+}
+dd.image-caption {
+   text-align:left;
+   padding: 0; margin:0;
+}
+dl.captioned {
+   padding: 10px;
+}
+
+/* Dashboard */
+#dashboard-info-message {
+    padding-top: 0.5em;
+}
+
+#dashboard {
+    width: 68em;
+}
+
+#dashboard-portlets1,
+#dashboard-portlets2,
+#dashboard-portlets3
+{
+    float:left;
+    width:16em;
+    padding:0.7em 1.3em 0 0;
+}
+
+#dashboard-portlets4 {
+    float:left;
+    width:16em;
+    padding-top:0.7em;
+}
+
+#dashboard-portlets1 a,
+#dashboard-portlets2 a,
+#dashboard-portlets3 a,
+#dashboard-portlets4 a {
+    border-bottom:medium none;
+}
+
+#dashboard-portlets1 dl.portlet,
+#dashboard-portlets2 dl.portlet,
+#dashboard-portlets3 dl.portlet,
+#dashboard-portlets4 dl.portlet {
+    margin-bottom:1.5em;
+}
+
+div.managedPortlet.portlet {
+    border-bottom:none;
+}
+#dashboard select {
+    width:100%;
+}
+
+.portletAssignments {
+    margin-top:1.5em;
+}
+
+#dashboard-portlets1 div.managedPortlet a,
+#dashboard-portlets2 div.managedPortlet a,
+#dashboard-portlets3 div.managedPortlet a,
+#dashboard-portlets4 div.managedPortlet a {
+    text-decoration: none;
+    color: &dtml-globalFontColor;;
+    border-bottom:1px solid &dtml-globalFontColor;;
+}
+
+#dashboard-portlets1 div.managedPortlet span a,
+#dashboard-portlets2 div.managedPortlet span a,
+#dashboard-portlets3 div.managedPortlet span a,
+#dashboard-portlets4 div.managedPortlet span a{
+    border-bottom:none;
+}
+
+#dashboard-actions {
+    float:right;
+}
+
+#dashboard-actions ul {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin-top:0;
+}
+
+#dashboard-actions ul li {
+    display:inline;
+    padding-left:0.7em;
+}
+
+#dashboard-actions ul li.portalUser {
+    background:transparent url(&dtml-portal_url;/user.gif) no-repeat scroll left center;
+    padding-left:18px;
+}
+
+/* manage portlets */
+
+.section div {
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+}
+
+
+/*
+** oshnetwork member view specific styles
+*/
+
+body.template-oshnetwork-member-view .managePortletsLink,
+body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
+    display: None;
+}
+
+#network-member-flag {
+  width: 178px;
+  height: 101px;
+  background-image: url(image_frame.png);
+  float:right;
+}
+
+#network-member-flag img {
+  padding-left:15px;
+  padding-top:0px;
+  border: 0;
+}
+
+
+#oshnetwork_editors_box {
+    background: lightgray;
+    border: 1px solid gray;
+    margin-bottom:0.5em;
+}
+#oshnetwork_editors_box ul {
+	display:inline;
+}
+#oshnetwork_editors_box ul li {
+    display: block;
+    float:left;
+    padding: 0 1em;
+}
+
+#agency-resources-box {
+    width: 100%;
+    border-bottom:1px solid #AAB1C5;
+    border-collapse:collapse;
+    border-left:1px solid #AAB1C5;
+    font-size:95%;
+    margin:1em 0;
+}
+
+#agency-resources-box th {
+    background:#C5CBD8 none repeat scroll 0 0;
+    border-bottom:1px solid #AAB1C5;
+    border-right:1px solid #AAB1C5;
+    border-top:1px solid #AAB1C5;
+    padding:0.25em 0.5em;
+    text-transform:none;
+}
+
+#agency-resources-box td {
+    width: 50%;
+    border-right:1px solid #AAB1C5;
+    padding:0.25em 0.5em;
+}
+
+#agency-resources-box a {
+    text-decoration:none;
+}
+
+#agency-resources-box a:hover {
+    text-decoration:underline;
+}
+
+#network-member-links .portletHeader {
+    text-align: center;
+}
+#network-member-links .portletItem {
+    border-top: none;
+}
+
+/*
+** Practical Solutions / Good Practise view specific styles
+*/
+
+body.template-practical-solution .photoAlbumEntry,
+body.template-practical-solutions .photoAlbumEntry {
+   background-image: url(&dtml-portal_url;/practical_solutions_polaroid.png);
+   padding:0 4px 0 11px;
+}
+
+body.template-practical-solution .photoAlbumEntry {
+   margin: 0px 10px 15px 0px;
+}
+
+body.template-practical-solutions .photoAlbumEntry {
+    margin: 15px 10px;
+}
+
+body.template-practical-solution .photoAlbumEntry,
+body.template-practical-solution .photoAlbumEntry a,
+body.template-practical-solutions .photoAlbumEntry,
+body.template-practical-solutions .photoAlbumEntry a {
+   height: 122px;
+   width: 90px;
+}
+
+body.template-practical-solution .photoAlbumEntry a,
+body.template-practical-solutions .photoAlbumEntry a {
+   font-size: 85%;
+}
+
+body.template-practical-solution .photoAlbumEntry img ,
+body.template-practical-solutions .photoAlbumEntry img {
+    border: none;
+}
+
+body.template-practical-solutions .photoAlbumEntryTitle,
+body.template-practical-solution .photoAlbumEntryTitle {
+   width: 84px;
+}
+
+body.template-practical-solution .photoAlbumEntryWrapperWrapper {
+    display:block;
+    font-size:85%;
+    margin:16px auto 0;
+}
+
+body.template-practical-solutions #latest-additions {
+   background-color: #F7F7F7;
+   padding: 15px;
+   display: block;
+}
+
+body.template-practical-solutions #latest-additions h1 {
+   margin: 0px 0px 5px 0px;
+}
+
+body.template-practical-solution form#database_search #image-controls {
+   /* Workaround for a layout issue in IE6 which causes the portlets
+   to the right to be pushed down when the Advanced search box is
+   displayed. */
+   width: 98%;
+}
+
+/* Tripswitch hasLayout hack for IE6 to avoid the "additional search
+options" link from disappearing.*/
+body.template-practical-solution form#database_search dl#image-controls {
+   display: inline-block;
+}
+
+body.template-practical-solution form#database_search dl#image-controls {
+   display: block;
+   margin-bottom: 1em;
+}
+
+.database-emphasis {
+   text-transform: uppercase;
+}
+
+/*
+** Practical Solutions portlet used on the Topic page
+*/
+
+dl.portletPracticalSolutions {
+   margin-bottom: 1em;
+}
+
+dl.portletPracticalSolutions dt.portletHeader {
+   background-color: orange;
+}
+
+dl.portletPracticalSolutions dt.portletHeader,
+dl.portletPracticalSolutions dd.portletItem,
+dl.portletPracticalSolutions {
+   border-color: orange;
+}
+
+dl.portletPracticalSolutions dl.collapsedInlineCollapsible dt.collapsibleHeader {
+   float: left;
+   background-position: 0 50%;
+   padding: 0 0 0 16px;
+}
+
+dl.portletPracticalSolutions dl.collapsedInlineCollapsible {
+   display:block;
+}
+
+dl.portletPracticalSolutions dl.expandedInlineCollapsible {
+   padding-bottom: 0.5em;
+}
+
+dl.portletPracticalSolutions dl.expandedInlineCollapsible dd.collapsibleContent {
+   padding: 1em 1em 0;
+}
+
+dl.portletPracticalSolutions a.more-related {
+   font-weight: bold;
+   float: right;
+}
+
+/*
+** Topics section specific styles
+*/
+
+body.template-topics-view #folder-listing {
+    width: 100%;
+}
+
+body.template-topics-view #folder-listing td {
+    width: 50%;
+    vertical-align: top;
+    margin: 1em;
+    border: 1px solid #C5CBD8;
+}
+
+body.template-topics-view #folder-listing ul {
+    list-style-position: inside;
+    list-style-type: disc;
+    margin: 1em;
+    padding: 1em;
+}
+
+body.template-topics-view .navTreeLevel1,
+body.template-topic-view .navTreeLevel3,
+body.template-topic-view .navTreeLevel2 .navTreeItem {
+    display: none;
+}
+
+body.template-topic-view .navTreeLevel2 .navTreeCurrentNode {
+    display: block;
+}
+
+/* Topic page view */
+body.template-topic-view #topic-view-heading-box {
+    background-color: #F7F8F9;
+    border: 1px solid #C5CBD8;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#topic-heading-text {
+    margin:1em;
+}
+
+body.template-topic-view #relatedMedia {
+    position: relative;
+    height: 165px;
+    width: 210px;
+    margin: 10px;
+    float: left;
+    overflow: hidden;
+}
+
+body.template-topics-view #relatedMedia {
+    position: relative;
+    width: 400px;
+    height: 330px;
+    float: right;
+    margin: 0px 0px 10px 10px;
+    overflow: hidden;
+}
+
+#slideswitch img {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:8;
+    opacity:0.0;
+    display: block;
+}
+
+#slideswitch img.active {
+    z-index:10;
+    opacity:1.0;
+}
+
+#slideswitch IMG.last-active {
+    z-index:9;
+}
+
+#slideswitch img.inactive {
+  display: none;
+}
+
+/* osha special for publications display */
+.publicationLanguageBox span.link-pdf-js{
+    display: none
+}
+
+/* </dtml-with> */
+
+/* Latest version of the documentation on pre-defined properties from Plone
+   can be found in CMFPlone/skins/plone_styles/ploneCustom.css.dtml */

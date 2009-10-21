@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<portlets>  
+      
+  <portletmanager 
+     name="osha.abovecontent.portlets"
+     type="osha.theme.browser.interfaces.IOSHAAboveContent" />    
+     
+  <portletmanager 
+     name="osha.belowcontent.portlets"
+     type="osha.theme.browser.interfaces.IOSHABelowContent" />     
+  
+  <portlet
+      addview="osha.AlertService"
+      title="Alert Service"
+      description="Provides the link to updates on topics of your choice." />    
+
+  <portlet
+      addview="osha.RollingQuotes"
+      title="Rolling Quotes"
+      description="A portlet which displays a Quote out of a folder at Random" />
+      
+  <portlet
+      addview="osha.Campaigns"
+      title="Campaigns"
+      description="Currently running campaigns." />  
+
+  <portlet
+      addview="osha.EW2007"
+      title="EW2007"
+      description="EW2007 Campaign portlet." />  
+
+  <portlet
+      addview="osha.FirstTime"
+      title="First Time"
+      description="Provides the link to an overview over the site." />  
+
+  <portlet
+      addview="osha.FreeNewsletter"
+      title="Free Newsletter"
+      description="Monthly review of strategic news." />  
+
+  <portlet
+      addview="osha.NetworkMemberLinks"
+      title="Network Member Links"
+      description="Additional categorised links with a special layout for a
+      particular country page." />  
+
+  <portlet
+      addview="osha.PracticalSolutions"
+      title="Practical Solutions"
+      description="The most recent practical solutions from each section." />  
+
+  <portlet
+      addview="osha.SEPAbout"
+      title="Single Entry Point - About"
+      description="Lists all static documents within the about folder of a single entry point." />  
+
+  <portlet
+      addview="osha.GoogleSearch"
+      title="Google Search"
+      description="Search the realm of OSHA using Google CSE" /> 
+
+  <portlet
+      addview="osha.InlineNavigation"
+      title="Inline Navigation Portlet"
+      description="Displays a navigation portlet within the body area" />  
+
+  <portlet
+      addview="osha.MoreAbout"
+      title="More About Portlet"
+      description="Lists the contents of a file named portlet_moreabout in the current context." />  
+
+
+  <portlet
+      addview="osha.lingualinks"
+      title="LinguaLink Portlet"
+      description="Manage LinguaLinks." />  
+
+
+  <portlet
+      addview="osha.document_fallback"
+      title="Document Fallback Portlet"
+      description="Lists the contents of a file and falls back to the default language if it is not available in the preferred." />
+
+  <portlet
+      addview="osha.top5"
+      title="Top5 Portlet"
+      description="Shows preconfigured links and displays the titles of the referenced objects with language fallback" />
+
+  <portlet
+      addview="osha.image"
+      title="Image/Flash Portlet"
+      description="Shows an Image/Flash and falls back to the default language if it is not available in the preferred." />
+
+  <portlet
+      addview="osha.OSHEvents"
+      title="OSHA Events portlet"
+      description="This portlet lists upcoming events. If you select one or more categories, only events with matching them will be shown." />
+
+  <portlet
+      addview="osha.OSHNews"
+      title="OSHA News portlet"
+      description="This portlet lists upcoming news. A target folder for the more-link can be chosen." />
+
+          
+</portlets>

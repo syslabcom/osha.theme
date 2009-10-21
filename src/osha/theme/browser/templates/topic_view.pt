@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+  <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+
+  <body>
+    <div metal:fill-slot="main">
+
+      <div class="visualClear"></div>
+
+      <div id="topic-view-heading-box">
+
+        <div id="relatedMedia"
+             tal:condition="view/hasRelatedMedia">
+          <tal:related_media replace="structure python:view.getRelatedMedia('200', 'mini')" />
+        </div>
+        <div id="topic-heading-text">
+          <h1 tal:content="context/Title">Title</h1>
+          <p tal:content="context/Description">Description</p>
+        </div>
+        <div class="visualClear"></div>
+      </div>
+      <div tal:content="structure context/CookedBody"></div>
+
+      <!-- this adds the slc.linkcollection -->
+      <span tal:replace="structure provider:plone.belowcontentbody"></span>
+      <div class="visualClear"></div>
+
+    </div>
+  </body>
+</html>

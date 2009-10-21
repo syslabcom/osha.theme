@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version = '1.2.16'
+version = '1.2.39'
 
 long_description = (
     read('README.txt')
@@ -21,7 +21,7 @@ long_description = (
     'Detailed Documentation\n'
     '**********************\n'
     + '\n' +
-    read('osha', 'theme', 'README.txt')
+    read('src', 'osha', 'theme', 'README.txt')
     + '\n' +
     'Contributors\n'
     '************\n'
@@ -49,13 +49,51 @@ setup(name='osha.theme',
       author_email='denis@webcouturier.com',
       url='http://www.webcouturier.com',
       license='GPL',
-      packages=find_packages(exclude=['ez_setup']),
+      packages = ['osha', 'osha/theme'],
+      package_dir = {'' : 'src'},
       namespace_packages=['osha'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
           'setuptools',
-          # -*- Extra requirements: -*-
+#          'Products.ATCountryWidget',
+          'Products.CallForContractors',
+          'Products.CaseStudy',
+          'Products.DataGridField',
+          'Products.FCKEditor',
+          'Products.LinguaPlone<2.3',
+          'Products.OSHATranslations',
+          'Products.OSHContentLink',
+          'Products.PressRoom',
+          'Products.PublicJobVacancy',
+          'Products.QueueCatalog',
+          'Products.RALink',
+          'Products.RemoteProvider',
+          'Products.RichDocument',
+          'Products.RiskAssessmentLink',
+          'Products.TextIndexNG3',
+          'Products.VocabularyPickerWidget',
+          'Products.collage',
+          'collective.captcha',
+          'collective.lead',
+          'dateable.chronos',
+          'osha.policy',
+          'osha.whoswho',
+          'p4a.calendar',
+          'p4a.fileimage',
+          'p4a.subtyper',
+          'p4a.plonevideoembed',
+          'plone.app.blob',
+          'plone.memoize',
+          'python_memcached',
+          'simplon.plone.ldap',
+          'slc.autotranslate',
+          'slc.clicksearch',
+          'slc.linguatools',
+          'slc.publications',
+          'slc.shoppinglist',
+          'slc.subsite',
+          'slc.xliff',
       ],
       tests_require=tests_require,
       extras_require=dict(tests=tests_require),
@@ -63,6 +101,5 @@ setup(name='osha.theme',
       entry_points="""
       # -*- entry_points -*- 
       """,
-      paster_plugins = ["ZopeSkel"],
       )      
       
