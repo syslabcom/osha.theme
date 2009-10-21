@@ -59,7 +59,7 @@
 
           <br clear="all" style="clear:both">
           <input type="submit" value="Search" i18n:attributes="value">
-          <input type="reset" value="Reset" i18n:attributes="value"
+          <input type="reset" value="Reset" i18n:attributes="value label_reset_form"
               tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'">
 
         </div>
@@ -78,7 +78,7 @@
                     ">
 <!--span tal:replace="query" /-->
         <strong>
-        <span i18n:translate="batch_x_items_matching_your_criteria"><span i18n:name="number" tal:content="python:len(results)">234</span> items match your criteria.</span>
+        <span i18n:translate="batch_x_search_results"><span i18n:name="number" tal:content="python:len(results)">234</span>  search results were found.</span>
         </strong>
 
         <div tal:condition="not: results">
