@@ -1,6 +1,12 @@
 osha.theme Changelog
 ====================
 
+1.2.39 (unreleased)
+-------------------
+
+- Various tweaks to the Cleaning Workers / Topics SEP, Practical Solutions
+  Advanced search field #375 #376 #409 (deroiste)
+
 1.2.38 (2009-10-20)
 -------------------
 
