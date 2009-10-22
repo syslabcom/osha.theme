@@ -683,7 +683,7 @@ margin:2em 0 2em 10.3em;
 }
 
 .listingBar {
-bottom:5em;
+bottom:7em;
 position:relative;
 }
 
