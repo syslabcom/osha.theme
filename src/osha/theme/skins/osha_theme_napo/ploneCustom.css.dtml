@@ -25,7 +25,7 @@ padding-top:5px;
 }
 
 #header img {
-margin-left:-30px;
+margin-left:-31px;
 position:relative;
 top:7px;
 }
@@ -222,7 +222,7 @@ width:700px;
 #region-content {
 min-height:500px;
 background: #ffffff url(/osha_theme_napo_images/napoHeaderMaster.jpg) no-repeat scroll bottom left;
-width:674px;
+width:676px;
 }
 
 #portal-column-content {
