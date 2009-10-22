@@ -7,6 +7,14 @@ background-attachment: fixed;
 padding:1em 1em 0 0;
 }
 
+.contentActions {
+width:677px;
+}
+
+.contentViews {
+width:678px;
+}
+
 #header {
 background-image:url(/osha_theme_napo_images/napoHeader13.gif);
 background-repeat:no-repeat;
@@ -189,6 +197,11 @@ padding:1em 1em 0 !important;
 
 h1, h2 {
 border-bottom:0px solid #FFFFC9;
+}
+
+.managePortletsLink {
+display:none;
+text-align:center;
 }
 
 
