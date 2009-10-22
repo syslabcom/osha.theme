@@ -328,6 +328,15 @@
         permission="zope2.View"
         for="*"
         />
+    <browser:viewlet
+        name="napo.languageselector"
+        manager="plone.app.layout.viewlets.interfaces.IContentViews"
+        class=".viewlets.OSHALanguageSelector"
+        layer=".interfaces.INAPOSpecific"
+        permission="zope2.View"
+        for="*"
+        />
+
 
     <!-- Render the browser title - overwritten so we can insert OSHA specific title -->
     <browser:viewlet

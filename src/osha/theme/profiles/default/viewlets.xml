@@ -44,6 +44,11 @@
       <viewlet name="osha.abovecontentportlets"
                insert-before="*" />
     </order>
+
+
+
+
+    <!-- NAPO FILMS -->
     <order manager="plone.abovecontenttitle" skinname="NAPO"
            based-on="Plone Default">
 	   <viewlet name="osha.napo.friendsmenu"
@@ -54,15 +59,43 @@
            based-on="Plone Default">
       <viewlet name="osha.napo.subheader"
 	      insert-after="osha.abovecontentportlets" />
-    </order>
-
-
-    <order manager="plone.contentviews" skinname="NAPO"
-           based-on="Plone Default">
       <viewlet name="osha.napo.header"
 	      insert-after="osha.abovecontentportlets" />
+      <viewlet name="napo.languageselector"
+	      insert-after="osha.napo.header" />
     </order>
 
+    <order manager="plone.belowcontent" skinname="NAPO"
+           based-on="Plone Default">
+      <viewlet name="osha.napo.belowfooter"
+              insert-after="*" />
+      <viewlet name="osha.napo.logofooter"
+              insert-before="osha.napo.belowfooter" />
+    </order>
+
+
+
+
+    <hidden manager="plone.portaltop" skinname="NAPO">
+            <viewlet name="osha.path_bar" />
+    </hidden>
+
+    <hidden manager="osha.header.dropdowns" skinname="NAPO">
+      <viewlet name="osha.networkchooser" />
+      <viewlet name="osha.languageselector" />
+    </hidden>
+
+    <hidden manager="plone.portalfooter" skinname="NAPO">
+            <viewlet name="osha.footer.actions" />
+    </hidden>
+
+    <hidden manager="plone.portalheader" skinname="NAPO">
+            <viewlet name="osha.logo" />
+            <viewlet name="osha.topactions" />
+    </hidden>
+
+
+    <!-- END NAPO -->
 
     <order manager="plone.portalfooter" skinname="*"
            based-on="Plone Default">
@@ -78,13 +111,6 @@
             insert-before="*" />
     </order>
     
-    <order manager="plone.belowcontent" skinname="NAPO"
-           based-on="Plone Default">
-      <viewlet name="osha.napo.belowfooter"
-	      insert-after="*" />
-      <viewlet name="osha.napo.logofooter"
-	      insert-before="osha.napo.belowfooter" />
-    </order>
 
 
     <hidden manager="plone.htmlhead" skinname="*">
@@ -134,23 +160,6 @@
       <viewlet name="osha.campaignarea" />
     </hidden>
 
-    <hidden manager="plone.portaltop" skinname="NAPO">
-	    <viewlet name="osha.path_bar" />
-    </hidden>
-
-    <hidden manager="osha.header.dropdowns" skinname="NAPO">
-      <viewlet name="osha.networkchooser" />
-      <viewlet name="osha.languageselector" />
-    </hidden>
-
-    <hidden manager="plone.portalfooter" skinname="NAPO">
-	    <viewlet name="osha.footer.actions" />
-    </hidden>
-
-    <hidden manager="plone.portalheader" skinname="NAPO">
-	    <viewlet name="osha.logo" />
-	    <viewlet name="osha.topactions" />
-    </hidden>
     
     
     
