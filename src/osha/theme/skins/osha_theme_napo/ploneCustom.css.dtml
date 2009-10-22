@@ -228,7 +228,11 @@ width:676px;
 
 #portal-column-content {
 padding:0;
-width:699px !important;
+width:699px!important;
+}
+
+#portal-columns {
+width:810px!important;
 }
 
 #portal-languageselector {
