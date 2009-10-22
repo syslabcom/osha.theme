@@ -231,6 +231,10 @@ padding:0;
 width:699px !important;
 }
 
+#portal-languageselector {
+float:right;
+margin:0 3em;
+}
 
 
 
