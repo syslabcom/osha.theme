@@ -3,6 +3,30 @@ background:transparent url(/osha_theme_napo_images/fondo.gif) repeat scroll 0 0;
 background-attachment: fixed;
 }
 
+dl.portletNavigationTree {
+  background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
+  height:500px;
+  width:222px;
+  border: 0px none transparent;
+}
+
+.portletNavigationTree dd {
+	padding-top:178px;
+}
+
+.navTreeItem a, dd.portletItem .navTreeItem a {
+  background-image:url(/osha_theme_napo_images/menuButton.gif);
+  background-repeat:no-repeat;
+  border:0 none transparent;
+  color:#FFFFFF !important;
+  display:block;
+  font-size:7.8pt;
+  font-weight:bold;
+  padding-bottom:17px!important;
+  padding-left:28px;
+  padding-top:7px;
+}
+
 #linkmovie {
 font-weight:bold;
 font-size:14pt;
