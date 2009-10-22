@@ -1,5 +1,5 @@
 body {
-background:#18B500 url(/osha_theme_napo_images/fondo.gif) repeat scroll 0 0!important;
+background:#18B500 url(/osha_theme_napo_images/fondo.gif) repeat-x scroll 0 0!important;
 background-attachment: fixed;
 }
 
