@@ -3,6 +3,36 @@ background:#18B500 url(/osha_theme_napo_images/fondo.gif) repeat scroll 0 0;
 background-attachment: fixed;
 }
 
+#header {
+background-image:url(/osha_theme_napo_images/napoHeader13.gif);
+background-repeat:no-repeat;
+color:#FFFFFF;
+font-size:0.9em;
+padding-left:30px;
+padding-top:5px;
+}
+
+#header img {
+margin-left:-30px;
+position:relative;
+top:7px;
+}
+
+#header ul {
+list-style-type:none;
+margin:0 0 -3px;
+}
+
+#header ul li {
+display:inline;
+margin-right:20px;
+}
+
+#header a {
+color:#FFFFFF;
+text-decoration:underline;
+}
+
 dl.portletNavigationTree {
   background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
   height:500px;
@@ -53,6 +83,13 @@ border:0px solid #FFFFC9;
 	display:inline;
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+.documentContent {
+background-color:transparent;
+background-image:url(/osha_theme_napo_images/fondoContent2.gif);
+background-repeat:repeat-y;
+width:677px;
 }
 
 #linkmovie {
