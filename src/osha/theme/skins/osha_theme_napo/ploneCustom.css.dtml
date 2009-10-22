@@ -91,9 +91,10 @@ border:0px solid #FFFFC9 !important;
 }
 
 #partners {
-  margin:0;
-  padding:0 0 1em;
-  width:700px;
+margin:0;
+padding:1em 0;
+width:790px;
+z-index:5;
 }
 
 #partners li {
