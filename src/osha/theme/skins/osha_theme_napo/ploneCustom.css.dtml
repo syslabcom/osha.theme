@@ -220,7 +220,7 @@ width:700px;
 }
 
 #region-content {
-min-height:500px;
+min-height:400px;
 background: #ffffff url(/osha_theme_napo_images/napoHeaderMaster.jpg) no-repeat scroll bottom left;
 width:676px;
 }
