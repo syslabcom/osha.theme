@@ -91,9 +91,9 @@ border:0px solid #FFFFC9 !important;
 }
 
 #partners {
-	margin:0px;
-	padding-bottom:-40px;
-	padding:0px;
+  margin:0;
+  padding:0 0 1em;
+  width:700px;
 }
 
 #partners li {
@@ -103,9 +103,10 @@ border:0px solid #FFFFC9 !important;
 }
 
 #bottompic {
-background:#18B500 none repeat scroll 0 0;
+/*background:#18B500 none repeat scroll 0 0;
 margin-left:-13px;
-padding-right:1px;
+padding-right:1px;*/
+display:none;
 }
 
 .documentContent {
@@ -218,6 +219,11 @@ width:540px
 width:700px;
 }
 
+#region-content {
+min-height:500px;
+background: #ffffff url(/osha_theme_napo_images/napoHeaderMaster.jpg) no-repeat scroll bottom left;
+width:674px;
+}
 
 
 
