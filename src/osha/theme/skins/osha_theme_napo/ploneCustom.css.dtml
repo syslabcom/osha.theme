@@ -225,7 +225,10 @@ background: #ffffff url(/osha_theme_napo_images/napoHeaderMaster.jpg) no-repeat 
 width:674px;
 }
 
-
+#portal-column-content {
+padding:0;
+width:699px !important;
+}
 
 
 
