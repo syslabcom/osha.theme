@@ -180,7 +180,7 @@ float:left;
 margin:0 0 0 0;
 }
 .textObjects {
-margin:2em 0 2em 10.3em;
+margin:3em 0 2em 10.3em;
 }
 
 .image-left {
