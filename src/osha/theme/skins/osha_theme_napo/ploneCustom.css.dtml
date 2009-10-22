@@ -194,11 +194,11 @@ body #portal-columns {
 	text-decoration:underline;
 }
 .documentContent {
-        background-image:url(/osha_theme_napo_images/fondoContent2.gif);
+    background-image:url(/osha_theme_napo_images/fondoContent2.gif);
 	background-repeat:repeat-y;
 	width:677px;
-        position:relative;
-	top:-16px;
+    position:relative;
+	top:-17px;
 	background-color:transparent;
 }
 #rahmen {
@@ -693,7 +693,9 @@ position:relative;
 border:0px solid Black;
 }
 
-
+.documentEditable .documentContent {
+border:0px solid #000000;
+}
 
 
 
