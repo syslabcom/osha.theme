@@ -210,7 +210,7 @@ background:#18B500 none repeat scroll 0 0;
 margin-left:-12px;
 padding-right:3px;
 position:relative;
-top:39px;
+top:38px;
 }
 #napo-imagemap {
     position: relative;
