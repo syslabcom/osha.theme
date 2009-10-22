@@ -59,7 +59,7 @@ dl.portletNavigationTree {
 .portletItem {
 border-left:0px solid #FFFFC9;
 border-right:0px solid #FFFFC9;
-margin:70px 0 0;
+margin:80px 0 0;
 }
 
 .portletHeader, .managedPortlet .portletHeader {
