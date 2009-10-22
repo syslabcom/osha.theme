@@ -77,6 +77,11 @@ border:0px solid #FFFFC9;
   padding-top:7px;
 }
 
+.navTreeCurrentItem {
+background-color:transparent;
+border:0px solid #FFFFC9 !important;
+}
+
 #partners {
 	margin:0px;
 	padding-bottom:-40px;
@@ -170,11 +175,6 @@ margin:0 0 0 0;
 margin:2em 0 2em 10.3em;
 }
 
-.listingBar {
-bottom:7em;
-position:relative;
-}
-
 .image-left {
 border:0px solid Black;
 }
@@ -187,7 +187,9 @@ border:0px solid #000000;
 padding:1em 1em 0 !important;
 }
 
-
+h1, h2 {
+border-bottom:0px solid #FFFFC9;
+}
 
 
 
