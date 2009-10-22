@@ -206,10 +206,11 @@ body #portal-columns {
 	margin-left:-30px;
 }
 #bottompic {
-	margin-left:-12px;
-	background: transparent none repeat scroll 0% 0%;
-	position:relative;
-	top:52px;
+background:#18B500 none repeat scroll 0 0;
+margin-left:-12px;
+padding-right:3px;
+position:relative;
+top:39px;
 }
 #napo-imagemap {
     position: relative;
