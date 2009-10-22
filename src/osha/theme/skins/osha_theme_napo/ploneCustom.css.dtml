@@ -204,8 +204,15 @@ display:none;
 text-align:center;
 }
 
+#napomain {
+width:129px;
+float:left;
+}
 
-
+.textnapomain {
+margin:3em 0 2em 10.3em;
+width:540px
+}
 
 
 
