@@ -1,5 +1,5 @@
 body {
-background:transparent url(/osha_theme_napo_images/fondo.gif) repeat scroll 0 0;
+background:#18B500 url(/osha_theme_napo_images/fondo.gif) repeat scroll 0 0;
 background-attachment: fixed;
 }
 
@@ -11,7 +11,22 @@ dl.portletNavigationTree {
 }
 
 .portletNavigationTree dd {
-	padding-top:178px;
+	padding-top:197px;
+}
+
+.portletItem {
+border-left:0px solid #FFFFC9;
+border-right:0px solid #FFFFC9;
+}
+
+.portletHeader, .managedPortlet .portletHeader {
+display:none;
+}
+
+.navTreeItem a:hover, dd.portletItem .navTreeItem a:hover {
+text-decoration:underline;
+background-color:transparent;
+border:0px solid #FFFFC9;
 }
 
 .navTreeItem a, dd.portletItem .navTreeItem a {
@@ -25,6 +40,19 @@ dl.portletNavigationTree {
   padding-bottom:17px!important;
   padding-left:28px;
   padding-top:7px;
+}
+
+#partners {
+	margin:0px;
+	padding-bottom:-40px;
+	padding:0px;
+        position:relative;
+	top:46px;
+}
+#partners li {
+	display:inline;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 #linkmovie {
