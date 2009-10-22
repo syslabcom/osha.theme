@@ -3,6 +3,10 @@ background:#18B500 url(/osha_theme_napo_images/fondo.gif) repeat scroll 0 0;
 background-attachment: fixed;
 }
 
+#portal-column-content {
+padding:1em 1em 0 0;
+}
+
 #header {
 background-image:url(/osha_theme_napo_images/napoHeader13.gif);
 background-repeat:no-repeat;
@@ -47,6 +51,7 @@ dl.portletNavigationTree {
 .portletItem {
 border-left:0px solid #FFFFC9;
 border-right:0px solid #FFFFC9;
+margin:70px 0 0;
 }
 
 .portletHeader, .managedPortlet .portletHeader {
@@ -76,13 +81,18 @@ border:0px solid #FFFFC9;
 	margin:0px;
 	padding-bottom:-40px;
 	padding:0px;
-        position:relative;
-	top:46px;
 }
+
 #partners li {
 	display:inline;
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+#bottompic {
+background:#18B500 none repeat scroll 0 0;
+margin-left:-13px;
+padding-right:1px;
 }
 
 .documentContent {
@@ -174,7 +184,7 @@ border:0px solid #000000;
 }
 
 .documentContent {
-padding:1em 1em 0.7em !important;
+padding:1em 1em 0 !important;
 }
 
 
