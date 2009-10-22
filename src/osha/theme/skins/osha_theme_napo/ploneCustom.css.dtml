@@ -689,7 +689,9 @@ bottom:5em;
 position:relative;
 }
 
-
+.image-left {
+border:0px solid Black;
+}
 
 
 
