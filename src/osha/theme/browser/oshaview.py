@@ -123,7 +123,13 @@ class OSHA(BrowserView):
                                'Occupational safety', 
                                'Occupational health',
                                'European Agency']
-        SUBJECT = list(context.Subject())
+
+
+        lang = getToolByName(context, 'portal_languages').getPreferredLanguage()
+        translate = getTranslationService().translate
+        domain="osha"
+        SUBJECT = [translate(target_language=lang, msgid=s, default=s, context=context, domain=domain) 
+            for s in context.Subject()]
 
         THESAURUS = []
         if hasattr(Acquisition.aq_inner(context), 'getField'):
@@ -145,7 +151,7 @@ class OSHA(BrowserView):
             if keywords is None:
                 keywords = ''
             else:
-                keywords = [x for x in keywords if x in (StringType, UnicodeType)]
+                keywords = [x for x in keywords if type(x) in (StringType, UnicodeType)]
                 keywords = ', '.join(keywords)
             
         meta['keywords'] = keywords
