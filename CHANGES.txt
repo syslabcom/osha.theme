@@ -4,7 +4,9 @@ osha.theme Changelog
 1.2.40 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- oshaview: fixed a bug introduced in revision 1835 that prevented any keyword from being 
+  displayed in the HTML header;  Also, keywords from the Subject list are now properly translated (thomasw)
+
 
 
 1.2.39 (2009-10-21)
