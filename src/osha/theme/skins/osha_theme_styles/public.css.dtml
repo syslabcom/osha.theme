@@ -1006,7 +1006,7 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
 
 
 #oshnetwork_editors_box {
-    background: lightgray;
+    background: #b0b0b0;
     border: 1px solid gray;
     margin-bottom:0.5em;
 }
