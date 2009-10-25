@@ -373,7 +373,7 @@ dl.portletInlineNavigationTree ul {
 .filter_column2 .field_vocab { width: 100%; padding: 2px 0; }
 .filter_column2 .field_vocab input { width: 50%; }
 .filter_column2 .field_vocab .searchButton { width: 15%; }
-.filter_column2 input[type="checkbox"] { vertical-align: left; width: 5%;}
+.filter_column2 input[type="checkbox"] { text-align: left; width: 5%;}
 .filter_column1 .field_default input,
 .filter_column2 .field_default input,
 .filter_column2 .field_default select { width: 80%; }
@@ -601,9 +601,6 @@ ul.linkList li {
 #boxBody {
 	border: 1px solid #000000;
     padding:5px 10px;
-}
-*html #boxBody {
-    margin-top:-5px;
 }
 #boxBody h3 {
 	color:#295994;

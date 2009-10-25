@@ -225,5 +225,9 @@ dd.portletItem .navTreeItem a {
     margin-left: 0.5%;
     width: 46%;
 }
+* html #boxBody {
+    margin-top:-5px;
+}
+
 
 /* </dtml-with> */
