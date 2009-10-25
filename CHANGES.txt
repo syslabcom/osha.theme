@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.2.42 (unreleased)
+1.2.42 (2009-10-25)
 -------------------
 
 - updated addthis code (pilz)
