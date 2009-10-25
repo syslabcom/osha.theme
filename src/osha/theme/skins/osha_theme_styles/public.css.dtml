@@ -1146,13 +1146,13 @@ dl.portletPracticalSolutions {
 }
 
 dl.portletPracticalSolutions dt.portletHeader {
-   background-color: orange;
+   background-color: #ffa500;
 }
 
 dl.portletPracticalSolutions dt.portletHeader,
 dl.portletPracticalSolutions dd.portletItem,
 dl.portletPracticalSolutions {
-   border-color: orange;
+   border-color: #ffa500;
 }
 
 dl.portletPracticalSolutions dl.collapsedInlineCollapsible dt.collapsibleHeader {
