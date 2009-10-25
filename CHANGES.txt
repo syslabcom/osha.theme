@@ -6,6 +6,7 @@ osha.theme Changelog
 
 - oshaview: fixed a bug introduced in revision 1835 that prevented any keyword from being 
   displayed in the HTML header;  Also, keywords from the Subject list are now properly translated (thomasw)
+- fixed accessibility problem where p must not appear within a span. This is due to the fact that the agency requires html rendering for descriptions. (pilz)
 
 
 
