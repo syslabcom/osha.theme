@@ -7,7 +7,9 @@ osha.theme Changelog
 - oshaview: fixed a bug introduced in revision 1835 that prevented any keyword from being 
   displayed in the HTML header;  Also, keywords from the Subject list are now properly translated (thomasw)
 - fixed accessibility problem where p must not appear within a span. This is due to the fact that the agency requires html rendering for descriptions. (pilz)
-
+- fixed additional CSS Bugs based on the Carsa report (pilz)
+- added flashobject.js (pilz)
+- converted flash portlet to use flashobject.js to load the film (pilz)
 
 
 1.2.39 (2009-10-21)

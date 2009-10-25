@@ -82,7 +82,7 @@ class Renderer(base.Renderer):
         modified = self.get_object() and self.get_object().modified() or ''
         return (modified, preflang)
 
-    @ram.cache(_render_cachekey)
+    #@ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
             
@@ -141,7 +141,7 @@ class Renderer(base.Renderer):
                 return imgob.getCanonical()
         return imgob
         
-    @memoize
+    #@memoize
     def tag(self):
         ob = self.get_object()
         if hasattr(Acquisition.aq_base(ob), 'content_type'):
@@ -154,7 +154,7 @@ class Renderer(base.Renderer):
             major=""
             minor=""
         if typ=='application/x-shockwave-flash':
-            return self.flash_snippet(url="%s?sourceid=banner" % ob.absolute_url(), width=self.data.width, height=self.data.height, alt=self.title(), title=self.title())
+            return self.flash_snippet()
         elif major=='image':
             return self.get_object().tag(height=self.data.height, width=self.data.width, alt=self.title(), title=self.title())
         else:
@@ -165,6 +165,25 @@ class Renderer(base.Renderer):
     def _data(self):
         return True
 
+    # flash helper methods - needs the following vars: url, id_attr, width, height
+    # could be made more versatile for the rest of the vars :) 
+    def flashcode(self):
+        flashtemplate = """var nm = new FlashObject("%s", "%s", "%s", "%s", "7", "#ffffff");
+        nm.addParam("quality", "high");
+        nm.addParam('allowfullscreen','true');
+        nm.addParam('allowscriptaccess','always');
+        nm.addParam('wmode','opaque');
+        nm.addVariable("sourceid", "banner");
+        nm.addVariable("hl", "en");
+        nm.addVariable("fs", "1");
+        nm.write("%s");"""
+        
+        ob = self.get_object()
+        return flashtemplate % (ob.absolute_url(), self.id_attr(),self.data.width, self.data.height, self.id_attr())
+
+    def id_attr(self):
+        ob = self.get_object()
+        return "flashobject-%s" % ob.UID()
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IImagePortlet)
