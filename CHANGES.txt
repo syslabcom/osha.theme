@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.2.40 (unreleased)
+1.2.40 (2009-10-25)
 -------------------
 
 - oshaview: fixed a bug introduced in revision 1835 that prevented any keyword from being 
