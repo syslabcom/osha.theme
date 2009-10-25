@@ -82,7 +82,7 @@ class Renderer(base.Renderer):
         modified = self.get_object() and self.get_object().modified() or ''
         return (modified, preflang)
 
-    #@ram.cache(_render_cachekey)
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
             
@@ -141,7 +141,7 @@ class Renderer(base.Renderer):
                 return imgob.getCanonical()
         return imgob
         
-    #@memoize
+    @memoize
     def tag(self):
         ob = self.get_object()
         if hasattr(Acquisition.aq_base(ob), 'content_type'):
