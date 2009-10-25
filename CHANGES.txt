@@ -5,6 +5,7 @@ osha.theme Changelog
 -------------------
 
 - updated addthis code (pilz)
+- added rss icon to blog view (pilz)
 
 
 1.2.41 (2009-10-25)

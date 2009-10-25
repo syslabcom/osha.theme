@@ -20,6 +20,16 @@
             Title or id
         </h1>
 
+        <div class="heading_rss_icon">
+            <a href="" 
+                title="Click here for the RSS feed"
+                tal:attributes="href string:${here/absolute_url}/RSS">
+                <img src="" 
+                    tal:attributes="src string:${here/portal_url}/icon_rss_feed.gif" 
+                    alt="Click here for the RSS Feed">
+            </a>
+        </div>
+
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
         <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">

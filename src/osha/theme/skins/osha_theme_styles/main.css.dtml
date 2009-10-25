@@ -616,7 +616,9 @@ ul.linkList li {
 form#blog_entry-base-edit div#archetypes-fieldname-osha_metadata {
     display: None;
 }
-
+.heading_rss_icon {
+    float:right;
+}
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
