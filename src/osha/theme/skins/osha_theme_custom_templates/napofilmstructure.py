@@ -1,4 +1,13 @@
 Films = [
+        ('id_napo_film_11', {
+            'title': 'title_napo_film_11',       
+            'description': 'description_napo_film_11',
+            'durlavi': 'http://media.osha.europa.eu/napo11/napo.leithur.time.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/napo11/napo.leithur.time.wmv',
+            'image_url': 'http://media.osha.europa.eu/napo11/preview.jpg',
+            'episodes' : [
+                        ]
+           }) ,
         ('id_napo_film_9', {
             'title': 'title_napo_film_9',       
             'description': 'description_napo_film_9',
