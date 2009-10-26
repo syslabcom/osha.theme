@@ -4,7 +4,8 @@ osha.theme Changelog
 1.2.43 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- vastly extended the help text on how to search for collections by "path:", plus added a hard link to
+  http://osha.europa.eu/directory; ticket 396 (thomasw) 
 
 
 1.2.42 (2009-10-25)
