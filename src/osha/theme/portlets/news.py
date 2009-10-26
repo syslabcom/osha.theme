@@ -76,4 +76,5 @@ class Renderer(news.Renderer):
             context = aq_parent(context)
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         navigation_root_url = portal_state.navigation_root_url()
-        return '%s/oshnews-view' % navigation_root_url
+        return '%s/news' % navigation_root_url
+
