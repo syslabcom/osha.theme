@@ -1,39 +1,8 @@
 <span tal:define="pps python:modules['Products.PythonScripts.standard'];
-                  rsstitle options/title; rsstitle python:pps.url_quote(rsstitle);
-                  rssurl options/url; rsstitle python:pps.url_quote(rssurl);
+                  rsstitle options/title; rsstitle_q python:pps.url_quote(rsstitle);
+                  rssurl options/url; rssurl_q python:pps.url_quote(rssurl);
 ">
-<a target="_blank" 
-   tal:attributes="href string:http://del.icio.us/post?title=${rsstitle}&url=${rssurl}"><img 
-   src="http://del.icio.us/favicon.ico" alt="delicious"></a>&nbsp;
-
-<a target="_blank" 
-   tal:attributes="href string:http://www.digg.com/submit?url=${rssurl}"><img 
-   src="http://www.digg.com/favicon.ico" alt="digg"></a>&nbsp;
-
-<a target="_blank" 
-   tal:attributes="href string:http://www.technorati.com/search/${rssurl}"><img 
-   src="http://www.technorati.com/favicon.ico" alt="technorati"></a>&nbsp;
-
-<a target="_blank" 
-   tal:attributes="href string:http://myweb2.search.yahoo.com/myresults/bookmarklet?u=${rssurl}"><img 
-   src="http://yahoo.com/favicon.ico" alt="yahoo"></a>
-
-<a target="_blank" 
-   tal:attributes="href string:http://meneame.net/submit.php?url=${rssurl}"><img 
-   src="http://meneame.net/favicon.ico" alt="meneame"></a>
-
-<a target="_blank" 
-   tal:attributes="href string:http://fusion.google.com/add?feedurl=${rssurl}"><img 
-   src="http://www.google.com/favicon.ico" alt="google"></a>
-
-
-<a target="_blank" 
-   tal:attributes="href string:http://www.netvibes.com/subscribe.php?url=${rssurl}"><img 
-   src="http://www.netvibes.com/img/favicon.png" alt="netvibes"></a>
-
-
-<a target="_blank" 
-   tal:attributes="href string:http://www.addtoany.com/?sitename=European%20Agency%20for%20Safety%20and%20Health%20at%20Work&siteurl=http%3A//osha.europa.eu/&linkname=${rsstitle}&linkurl=${rsstitle}&type=feed&ic=1"><img 
-   src="http://www.addtoany.com/subscribe.gif" width="103" height="16" border="0" title="Add to any service" alt="Add to any service"/></a>
-
+<!-- AddThis Button BEGIN -->
+<a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;pub=osha" tal:attributes="addthis:url rssurl; addthis:title rsstitle;"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pub=osha"></script>
+<!-- AddThis Button BEGIN -->
 </span>

@@ -3,6 +3,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from types import UnicodeType
+from Products.PythonScripts.standard import url_quote
 
 class IRSSFeedsView(Interface):
 
@@ -17,10 +18,10 @@ class RSSFeedsView(BrowserView):
 
     template = ViewPageTemplateFile('templates/rssfeeds.pt')
     buttons = ViewPageTemplateFile('templates/rssfeed_helpers.pt')
-    TYPES = {'News Item'    : "/%%(lang)s/news/RSS?RSSTitle=%(title)s", 
-             'Event'        : "/%%(lang)s/events/RSS?RSSTitle=%(title)s", 
-             'Publication'  : "/search_rss?RSSTitle=%(title)s&portal_type=File&object_provides=slc.publications.interfaces.IPublicationEnhanced&Language=en&Language=%%(lang)s&review_state=published&sort_on=%%(sorter)s",
-             'PressRelease' : "/search_rss?RSSTitle=%(title)s&portal_type=PressRelease&Language=%%(lang)s&review_state=published&sort_on=%%(sorter)s"}
+    TYPES = {'News Item'    : "/%(lang)s/news/RSS?RSSTitle=%(title)s", 
+             'Event'        : "/%(lang)s/events/RSS?RSSTitle=%(title)s", 
+             'Publication'  : "/search_rss?RSSTitle=%(title)s&portal_type=File&object_provides=slc.publications.interfaces.IPublicationEnhanced&Language=en&Language=%(lang)s&review_state=published&sort_on=%(sorter)s",
+             'PressRelease' : "/search_rss?RSSTitle=%(title)s&portal_type=PressRelease&Language=%(lang)s&review_state=published&sort_on=%(sorter)s"}
     
     def __call__(self):
         return self.template()
@@ -43,13 +44,13 @@ class RSSFeedsView(BrowserView):
             if doc_type == 'Publication':
                 title = doc_type.capitalize() + 's'
                 yield dict(doc_type=doc_type, title=title, 
-                           icon="publication_icon.gif", base_url = type_url % {'title' : title})        
+                           icon="publication_icon.gif", base_url = type_url)        
             else:
                 ti = portal_types.getTypeInfo(doc_type)
                 if ti:
                     title = ti.Title()+'s'
                     yield dict(doc_type=doc_type, title=title,
-                               icon=ti.getIcon(),base_url=type_url % {'title' : title})
+                               icon=ti.getIcon(),base_url=type_url)
                     
     def type_feeds(self):
         """ return all feeds by typical types and offer subfeeds by keyword
@@ -60,8 +61,8 @@ class RSSFeedsView(BrowserView):
         portal_path = self._getPortalPath()
                         
         for type in self._getTypesForFeeds():
-            url = portal_path + type['base_url'] % dict(lang=lang, sorter="effective")
-            
+            url = portal_path + type['base_url'] % dict(lang=lang, sorter="effective", title=url_quote(type['title']))
+
             retval.append( dict(
                     id=type['doc_type'], 
                     title=type['title'], 
@@ -92,7 +93,7 @@ class RSSFeedsView(BrowserView):
                 id=id, 
                 title=title, 
                 icon='topic_icon.gif',
-                url=(url_pattern %(dict(title=title, id=id, lang=lang))).encode('utf-8'),
+                url=(url_pattern %(dict(title=url_quote(title), id=id, lang=lang))).encode('utf-8'),
                 ))
         return retval
                     

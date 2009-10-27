@@ -4,7 +4,8 @@ osha.theme Changelog
 1.2.44 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- changed rss-feeds to use the addthis button - work for ticket 418  (pilz)
+
 
 
 1.2.43 (2009-10-27)
