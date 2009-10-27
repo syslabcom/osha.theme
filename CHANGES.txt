@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.2.43 (unreleased)
+1.2.43 (2009-10-27)
 -------------------
 
 - Added new napo film  rels to #364 (pilz)
