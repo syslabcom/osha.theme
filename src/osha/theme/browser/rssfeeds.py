@@ -89,11 +89,12 @@ class RSSFeedsView(BrowserView):
         retval = []
         lang = self._getPrefferedLanguage()
         for id, title in self._getTranslatedCategories():
+            url_title = unicode(url_quote(title.encode('utf-8')), 'utf-8')
             retval.append(dict(
                 id=id, 
                 title=title, 
                 icon='topic_icon.gif',
-                url=(url_pattern %(dict(title=url_quote(title), id=id, lang=lang))).encode('utf-8'),
+                url=(url_pattern %(dict(title=url_title, id=id, lang=lang))).encode('utf-8'),
                 ))
         return retval
                     
