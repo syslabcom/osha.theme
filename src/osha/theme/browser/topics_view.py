@@ -55,17 +55,18 @@ class TopicsView(TopicsBrowserView):
     template = ViewPageTemplateFile('templates/topics_view.pt')
     template.id = "topics-view"
 
-    def getPracticalSolutions(self):
-        """ Practical Solutions are in subfolders at the same level as
-        this Rich Document.
+    def __call__(self):
+        """
+        List published sub folders
         """
         context = self.context
-        if IFolderish.providedBy(context):
-            context = aq_parent(aq_inner(context))
-        practicalSolutions = context.contentValues(
-            filter={'portal_type':['Folder']}
+        folders = context.getFolderContents(
+            {'portal_type':'Folder', 'review_state':'published'}
             )
-        return practicalSolutions
+        middle_index = len(folders) - len(folders) / 2
+        self.left_folders = folders[:middle_index]
+        self.right_folders = folders[middle_index:]
+        return self.template()
 
 
 class TopicView(TopicsBrowserView):

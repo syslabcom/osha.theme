@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
       lang="en-US"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="osha">
 
   <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
 
@@ -24,40 +24,35 @@
       <p tal:content="context/Description">Description</p>
 
       <div class="visualClear"></div>
-      <tal:folders define="folders view/getPracticalSolutions;
-                           middle_index python:len(folders) - len(folders) / 2;
-                           left_folders  python:folders[:middle_index];
-                           right_folders python:folders[middle_index:]">
 
-        <table id="folder-listing" cellspacing="20"
-               tal:condition="folders">
-          <tr>
+      <table id="folder-listing" cellspacing="20"
+             tal:condition="view/left_folders">
+        <tr>
 
-            <td>
-              <ul>
-                <li tal:repeat="folder left_folders">
-                  <a href=""
-                     tal:attributes="href string:${folder/absolute_url}"
-                     tal:content="folder/Title" />
-                </li>
-              </ul>
-            </td>
+          <td>
+            <ul>
+              <li tal:repeat="folder view/left_folders">
+                <a href=""
+                   tal:attributes="href string:${folder/getURL}"
+                   tal:content="folder/Title" />
+              </li>
+            </ul>
+          </td>
 
-            <td>
-              <ul>
-                <li tal:repeat="folder right_folders">
-                  <a href=""
-                     tal:attributes="href string:${folder/absolute_url}"
-                     tal:content="folder/Title" />
-                </li>
-              </ul>
-            </td>
+          <td>
+            <ul>
+              <li tal:repeat="folder view/right_folders">
+                <a href=""
+                   tal:attributes="href string:${folder/getURL}"
+                   tal:content="folder/Title" />
+              </li>
+            </ul>
+          </td>
 
-          </tr>
-        </table>
+        </tr>
+      </table>
 
-        <div class="visualClear"></div>
-      </tal:folders>
+      <div class="visualClear"></div>
 
     </div>
   </body>
