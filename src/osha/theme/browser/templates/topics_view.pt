@@ -15,7 +15,7 @@
 
         <div id="relatedMedia" 
              tal:condition="view/hasRelatedMedia">
-          <tal:related_media replace="structure python:view.getRelatedMedia('400', 'preview')" />
+          <tal:related_media replace="structure python:view.getRelatedMedia('200', 'mini')" />
         </div>
 
       </div>

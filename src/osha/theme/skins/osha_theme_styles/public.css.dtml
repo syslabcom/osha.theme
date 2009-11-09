@@ -1233,8 +1233,8 @@ body.template-topic-view #relatedMedia {
 
 body.template-topics-view #relatedMedia {
     position: relative;
-    width: 400px;
-    height: 330px;
+    width: 200px;
+    height: 165px;
     float: right;
     margin: 0px 0px 10px 10px;
     overflow: hidden;
