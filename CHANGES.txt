@@ -5,7 +5,9 @@ osha.theme Changelog
 -------------------
 
 - changed rss-feeds to use the addthis button - work for ticket 418  (pilz)
-
+- Added new country flags for OSHNetwork (deroiste)
+- Various css and minor template tweaks to Topics and Practical Solutions and
+  Legislation views #374, #375, #376, #414 (deroiste)
 
 
 1.2.43 (2009-10-27)
