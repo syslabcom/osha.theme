@@ -1267,6 +1267,12 @@ body.template-topics-view #relatedMedia {
     display: none
 }
 
+/* osha special for publications display */
+div.collage-item h2 {
+   color: gray;
+   border: none;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
