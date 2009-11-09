@@ -197,7 +197,7 @@ class Renderer(base.Renderer):
         preflang = getToolByName(context,
                                  'portal_languages').getPreferredLanguage()
         query_string = self.getDBFilterQueryString(practical_solution)
-        url = "%s/%s/practical-solutions/%s?%s"\
+        url = "%s/%s/practical-solutions/%s?%s#database_search"\
               %(portal_url, preflang, practical_solution, query_string)
         return url
 
