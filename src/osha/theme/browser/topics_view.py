@@ -1,9 +1,9 @@
 from Acquisition import aq_parent, aq_inner
 from Products.ATContentTypes.interface.image import IATImage
-from Products.CMFCore.interfaces._content import IFolderish
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 from p4a.plonevideoembed.interfaces import IVideoLinkEnhanced
 
 
@@ -60,7 +60,8 @@ class TopicsView(TopicsBrowserView):
         List published sub folders
         """
         context = self.context
-        folders = context.getFolderContents(
+        parent = aq_parent(aq_inner(context))
+        folders = parent.getFolderContents(
             {'portal_type':'Folder', 'review_state':'published'}
             )
         middle_index = len(folders) - len(folders) / 2
