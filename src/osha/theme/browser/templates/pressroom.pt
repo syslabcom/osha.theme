@@ -93,9 +93,8 @@
         <table class="Tabelle">
             <tr>
             <td tal:repeat="contact view/getPresscontacts">
-                <div id="firstAdress" tal:condition="contact">
-                    <strong i18n:translate=""
-                        tal:content="contact/Description">International press</strong><br/>
+                <div>
+                    <strong tal:content="contact/Description">International press</strong><br/>
                     <span tal:replace="contact/Title" />,<br/>
                     <span tal:replace="contact/getJobtitle" /><br/><br/>
                     <span tal:replace="contact/getOrganization" />,<br/>
