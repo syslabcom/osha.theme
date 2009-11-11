@@ -4,7 +4,7 @@ osha.theme Changelog
 1.2.45 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- remove unnecessary (and potentially harmful) condition:contact from pressroom template (thomasw)
 
 
 1.2.44 (2009-11-09)
