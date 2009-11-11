@@ -1,31 +1,124 @@
-from Acquisition import aq_parent
-from zope.app.container.interfaces import INameChooser
-
-from zope.component import getUtility, getMultiAdapter
-
-from plone.app.contentrules.rule import Rule
-from plone.app.portlets.interfaces import ILeftColumn, IRightColumn
-from plone.app.portlets.storage import PortletAssignmentMapping 
-from plone.app.portlets.portlets import classic, events, news
-
-from plone.contentrules.engine.interfaces import IRuleStorage
-from plone.contentrules.rule.interfaces import IRuleAction
-
-from plone.portlets.interfaces import IPortletType 
-from plone.portlets.interfaces import IPortletManager
-from plone.portlets.interfaces import IPortletAssignmentMapping
-from plone.portlets.interfaces import ILocalPortletAssignmentManager
-from plone.portlets.constants import CONTEXT_CATEGORY as CONTEXT_PORTLETS
+from StringIO import StringIO
+import logging
 
 from AccessControl import getSecurityManager
 from AccessControl.SecurityManagement import newSecurityManager
-from StringIO import StringIO
-
-from Products.CMFCore.utils import getToolByName
+from Acquisition import aq_parent
 from Products.CMFCore.permissions import ManagePortal
+from Products.CMFCore.utils import getToolByName
 from Products.SEPStructure.util import addContentRule, assignRuleToObject
+from plone.app.contentrules.rule import Rule
+from plone.app.portlets.interfaces import ILeftColumn, IRightColumn
+from plone.app.portlets.portlets import classic, events, news
+from plone.app.portlets.storage import PortletAssignmentMapping 
+from plone.contentrules.engine.interfaces import IRuleStorage
+from plone.contentrules.rule.interfaces import IRuleAction
+from plone.portlets.constants import CONTEXT_CATEGORY as CONTEXT_PORTLETS
+from plone.portlets.interfaces import ILocalPortletAssignmentManager
+from plone.portlets.interfaces import IPortletAssignmentMapping
+from plone.portlets.interfaces import IPortletManager
+from plone.portlets.interfaces import IPortletType 
+from zope.app.container.interfaces import INameChooser
+from zope.component import getUtility, getMultiAdapter
 
 from osha.theme.config import EUROPEAN_NETWORK
+
+COUNTRY_LANGS = {'romania': [('en', u'English'), ('ro', u'Romanian')],
+                'united-kingdom': [('en', u'English')],
+                'estonia': [('en', u'English'), ('et', u'Estonian')],
+                'austria': [('de', u'German')],
+                'greece': [('en', u'English'), ('el', u'Greek')],
+                'hungary': [('en', u'English'), ('hu', u'Hungarian')],
+                'cyprus': [('en', u'English'), ('el', u'Greek')],
+                'turkey': [('en', u'English'), ('tr', u'Turkish')],
+                'eu-us': [('en', u'English')],
+                'mecklenburg-vorpommern': [('de', u'German')],
+                'italy': [('en', u'English'), ('it', u'Italian')],
+                'portugal': [('en', u'English'), ('pt', u'Portuguese')],
+                'lithuania': [('en', u'English'), ('lt', u'Lithuanian')],
+                'malta': [('en', u'English')],
+                'france': [('fr', u'French')],
+                'slovakia': [('en', u'English'), ('sk', u'Slovak')],
+                'ireland': [('en', u'English')],
+                'thueringen': [('de', u'German')],
+                'norway': [('en', u'English'), ('no', u'Norwegian')],
+                'luxemburg': [('fr', u'French')],
+                'sachsen-anhalt': [('de', u'German')],
+                'korea': [('en', u'English'), ('ko', u'Korean')],
+                'slovenia': [('en', u'English'), ('sl', u'Slovenian')],
+                'germany': [('en', u'English'), ('de', u'German')],
+                'belgium': [('nl', u'Dutch'), ('fr', u'French')],
+                'bayern': [('de', u'German')],
+                'rheinland-pfalz': [('de', u'German')],
+                'spain': [('en', u'English'), ('es', u'Spanish')],
+                'netherlands': [('nl', u'Dutch'), ('en', u'English')],
+                'denmark': [('da', u'Danish'), ('en', u'English')],
+                'poland': [('en', u'English'), ('pl', u'Polish')],
+                'finland': [('en', u'English'), ('fi', u'Finnish'), ('sv', u'Swedish')],
+                'sweden': [('en', u'English')],
+                'latvia': [('en', u'English'), ('lv', u'Latvian')],
+                'croatia': [('hr', u'Croatian'), ('en', u'English')],
+                'uems': [('en', u'English')],
+                'switzerland': [('en', u'English'), ('fr', u'French'), ('de', u'German'), ('it', u'Italian')],
+                'czech-republic': [('cs', u'Czech'), ('en', u'English')],
+                'bulgaria': [('bg', u'Bulgarian'), ('en', u'English')]}
+
+MEMBER_STATES = [
+    "Belgium",
+    "Bulgaria",
+    "Czech Republic",
+    "Denmark",
+    "Germany",
+    "Estonia",
+    "Ireland",
+    "Greece",
+    "Spain",
+    "France",
+    "Italy",
+    "Cyprus",
+    "Latvia",
+    "Lithuania",
+    "Luxembourg",
+    "Hungary",
+    "Malta",
+    "Netherlands",
+    "Austria",
+    "Poland",
+    "Portugal",
+    "Romania",
+    "Slovenia",
+    "Slovakia",
+    "Finland",
+    "Sweden",
+    "United Kingdom",
+    "Iceland",
+    "Liechtenstein",
+    "Norway",
+    "Switzerland",
+    "Croatia",
+    "The former Yugoslav Republic of Macedonia",
+    "Turkey",
+    "Albania",
+    "Bosnia and Herzegovina",
+    "Kosovo under UNSCR 1244/99",
+    "Montenegro",
+    "Serbia",
+    ]
+
+
+# Unless already present use English(?)
+not_present_on_current_site = ['luxembourg',
+    'iceland',
+    'liechtenstein',
+    'the-former-yugoslav-republic-of-macedonia',
+    'albania',
+    'bosnia-and-herzegovina',
+    'kosovo-under-unscr-1244/99',
+    'montenegro',
+    'serbia'
+    ]
+
+
 
 def run(self):
     """ - Create folder called oshnetwork (inside 'en' folder). DONE
@@ -37,6 +130,9 @@ def run(self):
         - Reuse the document_view to created oshnetwork_view
           folder.
     """
+    createCountryFolder(self)   
+    
+
     createContentRules(self) 
     createOSHNetworkFolder(self)
     createCountrySubfolders(self)
@@ -45,11 +141,6 @@ def run(self):
     addExternalPortlet(self)
     addEventsAndNewsPortlets(self)
     return 'Finished!'
-
-def login(self, portal):
-    site = aq_parent(portal)
-    user = site.acl_users.getUserById('admin').__of__(portal.acl_users)
-    newSecurityManager(None, user)
 
 def getParent(self):
     portal = getToolByName(self, 'portal_url').getPortalObject()
