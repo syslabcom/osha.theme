@@ -48,13 +48,14 @@ class Renderer(base.Renderer):
         """ Check if this page has been subtyped to provide annotated
         links """
         context = self.context
-        return IAnnotatedLinkList.providedBy(context) and context.annotatedlinklist
+        return IAnnotatedLinkList.providedBy(context) and \
+            context.Schema().getField('annotatedlinklist').get(context)
         
     @memoize
     def get_links_by_section(self, section):
         context = self.context
         if IAnnotatedLinkList.providedBy(self.context):
-            links = context.annotatedlinklist
+            links = context.Schema().getField('annotatedlinklist').get(context)
             return [i for i in links if i["section"] == section]
         else:
             return None
