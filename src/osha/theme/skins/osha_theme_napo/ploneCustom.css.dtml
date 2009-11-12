@@ -238,7 +238,79 @@ width:810px!important;
 #portal-languageselector {
 float:right;
 margin:0 3em;
+position:relative;
+bottom:28px;
 }
 
 
+/***************IE Fixes for the Napo Makeover for IE6**************/
+
+/*This should fix the width of the partner portlet for IE6*/
+
+* html #partners {
+	width:675px!important;
+}
+
+/*This should fix the position of Napo in the left Hand Navigation for IE6*/
+
+* html dl.portletNavigationTree {
+	position:relative;
+	top:80px;
+}
+
+/*This should fix the position of the left hand Navigation*/
+
+* html .portletNavigationTree dd {
+	padding-top:0px;
+	position:relative;
+	top:117px;
+}
+
+/*This should fix the position of the Language Selector*/
+
+* html #portal-languageselector {
+	position:relative;
+	bottom:28px;
+	left:30px;
+}
+
+/*This should fix the position of the region content*/
+
+* html #region-content {
+	position:relative;
+	bottom:20px;
+}
+
+
+/***************IE Fixes for the Napo Makeover for IE7**************/
+
+
+/*This should fix the position of Napo in the left Hand Navigation for IE7*/
+
+*+html dl.portletNavigationTree {
+	position:relative;
+	top:80px;
+}
+
+/*This should fix the position of the left hand Navigation*/
+
+*+html .portletNavigationTree dd {
+	padding-top:0px;
+	position:relative;
+	top:117px;
+}
+
+/*This should fix the position of the Language Selector*/
+
+*+html #portal-languageselector {
+	position:relative;
+	bottom:28px;
+}
+
+/*This should fix the position of the region content*/
+
+*+html #region-content {
+	position:relative;
+	bottom:20px;
+}
 
