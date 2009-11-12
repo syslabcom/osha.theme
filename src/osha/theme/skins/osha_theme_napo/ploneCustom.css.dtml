@@ -238,8 +238,6 @@ width:810px!important;
 #portal-languageselector {
 float:right;
 margin:0 3em;
-position:relative;
-bottom:28px;
 }
 
 
