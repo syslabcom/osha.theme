@@ -2,6 +2,7 @@
     i18n:domain="plone"
     tal:define="collection_url view/collection_url;
                 plone_view context/@@plone;
+                oshaview context/@@oshaview;
                 toLocalizedTime nocall:plone_view/toLocalizedTime;
                 getIcon nocall:plone_view/getIcon;">
 
@@ -21,7 +22,7 @@
         <a href="#"
            class="tile"
            tal:attributes="href python:view.getPath(obj);
-                           title obj/Description">
+                           title python:oshaview.cropHtmlText(obj.Description, 200)">
             <img tal:replace="structure item_icon/html_tag" />
             <span tal:replace="obj/pretty_title_or_id">
              Title
