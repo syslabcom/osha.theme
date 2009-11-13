@@ -1,16 +1,11 @@
-import Acquisition
 from zope.interface import implements
-from zope import schema
 from zope.formlib import form
-from zope.component import getMultiAdapter
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.memoize.instance import memoize
-from plone.memoize import ram
 from plone.app.portlets.portlets import base
 
 from osha.policy.adapter.subtyper import IAnnotatedLinkList
