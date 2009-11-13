@@ -144,6 +144,12 @@ del {
     text-decoration: line-through;
 }
 
+/* remove all filed under thingies */
+/* Here for blogentry_view
+.documentByLine .keyword-info {
+    display: none;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone 

@@ -4,6 +4,7 @@ osha.theme Changelog
 1.2.45 (unreleased)
 -------------------
 
+- display:none for the filed under text on the blog entry (pilz)
 - remove unnecessary (and potentially harmful) condition:contact from pressroom template (thomasw)
 
 
