@@ -20,30 +20,44 @@ from Products.ATContentTypes.interface import IImageContent, IFileContent
 
 
 class IImagePortlet(IPortletDataProvider):    
-    header = schema.TextLine(title=_(u"Portlet header"),
-                             description=_(u"Title of the rendered portlet"),
-                             required=True)
+    header = schema.TextLine(
+                        title=_(u"Portlet header"),
+                        description=_(u"Title of the rendered portlet"),
+                        required=True
+                        )
 
-    image = schema.Choice(title=_(u"Image"),
-                                  description=_(u"Locate the Image to show"),
-                                  required=True,
-                                  source=SearchableTextSourceBinder({'object_provides' : [IImageContent.__identifier__, IFileContent.__identifier__]},
-                                                                    default_query='path:'))
+    image = schema.Choice(
+                        title=_(u"Image"),
+                        description=_(u"Locate the Image to show"),
+                        required=True,
+                        source=SearchableTextSourceBinder(
+                            {'object_provides' : [IImageContent.__identifier__, IFileContent.__identifier__]},
+                            default_query='path:')
+                        )
 
-    url = schema.TextLine(title=_(u"URL"),
-                             description=_(u"URL around the image/flash"),
-                             required=False)
+    url = schema.TextLine(
+                        title=_(u"URL"),
+                        description=_(u"URL around the image/flash"),
+                        required=False
+                        )
 
-    show_box = schema.Bool(title=_(u"Display Box?"),
-                           description=_(u"Leave this unchecked if you only want to see your banner without a title and a box around."),
-                            )
+    show_box = schema.Bool(
+                        title=_(u"Display Box?"),
+                        description=_(u"Leave this unchecked if you only want "
+                            "to see your banner without a title and a box "
+                            "around."
+                            ),
+                        )
 
-    width = schema.TextLine(title=_(u"Width"),
-                             description=_(u"Enter display width"),
-                             )
-    height = schema.TextLine(title=_(u"Height"),
-                              description=_(u"Enter display height"),
-                              )
+    width = schema.TextLine(
+                        title=_(u"Width"),
+                        description=_(u"Enter display width"),
+                        )
+
+    height = schema.TextLine(
+                        title=_(u"Height"),
+                        description=_(u"Enter display height"),
+                        )
 
 
 class Assignment(base.Assignment):
@@ -127,6 +141,11 @@ class Renderer(base.Renderer):
 
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         portal = portal_state.portal()
+
+        # XXX: unrestrictedTraverse cannot handle unicode :(
+        if type(image_path) == unicode:
+            image_path = str(image_path)
+
         imgob = portal.restrictedTraverse(image_path, default=None)
         if not imgob:
             return None
