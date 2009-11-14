@@ -90,29 +90,29 @@
             </tr>
             <tr>
                 <td>
-                    <a href="/en/good_practice/index_ralink"
+                    <a href="/en/practical-solutions/risk-assessment-tools"
                        tal:attributes="href
-                           python:view.getLocalizedPath('good_practice/index_ralink')"
+                           python:view.getLocalizedPath('practical-solutions/risk-assessment-tools')"
                        i18n:translate="label_risk_assessment_tools">Risk Assessment Tools</a>
                 </td>
                 <td>
-                    <a href="/en/good_practice/index_casestudy"
+                    <a href="/en/practical-solutions/case-studies"
                        tal:attributes="href
-                           python:view.getLocalizedPath('good_practice/index_casestudy')"
+                           python:view.getLocalizedPath('practical-solutions/case-studies')"
                        i18n:translate="label_case_studies">Case Studies</a>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <a href="/en/good_practice/index_oshlink aggroviewer"
+                    <a href="/en/practical-solutions/useful-links"
                        tal:attributes="href
-                           python:view.getLocalizedPath('good_practice/index_oshlink')"
+                           python:view.getLocalizedPath('practical-solutions/useful-links')"
                        i18n:translate="label_useful_links">Useful Links</a>
                 </td>
                 <td>
-                    <a href="/en/good_practice/index_provider"
+                    <a href="/en/practical-solutions/providers"
                        tal:attributes="href
-                           python:view.getLocalizedPath('good_practice/index_provider')"
+                           python:view.getLocalizedPath('practical-solutions/providers')"
                        i18n:translate="label_providers">Providers</a>
                 </td>
             </tr>
