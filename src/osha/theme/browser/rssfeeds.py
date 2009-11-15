@@ -20,8 +20,8 @@ class RSSFeedsView(BrowserView):
     buttons = ViewPageTemplateFile('templates/rssfeed_helpers.pt')
     TYPES = {'News Item'    : "/%(lang)s/news/RSS?RSSTitle=%(title)s", 
              'Event'        : "/%(lang)s/events/RSS?RSSTitle=%(title)s", 
-             'Publication'  : "/search_rss?RSSTitle=%(title)s&portal_type=File&object_provides=slc.publications.interfaces.IPublicationEnhanced&Language=en&Language=%(lang)s&review_state=published&sort_on=%(sorter)s",
-             'PressRelease' : "/search_rss?RSSTitle=%(title)s&portal_type=PressRelease&Language=%(lang)s&review_state=published&sort_on=%(sorter)s"}
+             'Publication'  : "/%(lang)s/publications/search_rss?RSSTitle=%(title)s&portal_type=File&object_provides=slc.publications.interfaces.IPublicationEnhanced&Language=en&Language=%(lang)s&review_state=published&sort_on=%(sorter)s",
+             'PressRelease' : "/%(lang)s/press/search_rss?RSSTitle=%(title)s&portal_type=PressRelease&Language=%(lang)s&review_state=published&sort_on=%(sorter)s"}
     
     def __call__(self):
         return self.template()
@@ -57,7 +57,7 @@ class RSSFeedsView(BrowserView):
         """
 
         retval = []
-        lang = self._getPrefferedLanguage()
+        lang = self._getPreferedLanguage()
         portal_path = self._getPortalPath()
                         
         for type in self._getTypesForFeeds():
@@ -81,13 +81,13 @@ class RSSFeedsView(BrowserView):
     def _getPortalPath(self):
         return getToolByName(self.context, 'portal_url').getPortalObject().absolute_url()
     
-    def _getPrefferedLanguage(self):
+    def _getPreferedLanguage(self):
         return getToolByName(self.context, 'portal_languages').getPreferredLanguage()
     
     def subject_feeds(self):
         url_pattern = self._getPortalPath() + u"/search_rss?Subject=%(id)s&RSSTitle=%(title)s&Language=%(lang)s&review_state=published&sort_on=effective"
         retval = []
-        lang = self._getPrefferedLanguage()
+        lang = self._getPreferedLanguage()
         for id, title in self._getTranslatedCategories():
             url_title = unicode(url_quote(title.encode('utf-8')), 'utf-8')
             retval.append(dict(
