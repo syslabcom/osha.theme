@@ -2,7 +2,7 @@ osha.theme Changelog
 ====================
 
 
-1.2.45 (2009-11-15)
+1.2.45 (2009-11-16)
 -------------------
 
 - in the rss template now show the context url instead of the portal url as base for the feed. Prepares the fix for #304 (pilz)
