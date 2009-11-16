@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+
+  <body>
+    <div metal:fill-slot="main">
+
+
+        <h1  class="documentFirstHeading" tal:content="context/Title">Title</h1>
+
+        <!--metal:field use-macro="python:context.widget('text', mode='view')">
+          Body text
+        </metal:field-->
+
+Image Library
+
+    <h2>Access the library</h2>
+    
+    <p>You can browse images, audio and video material in this library. For the images, we have a gallery view and a thumbnail view. 
+        Go to the Events section to see media sorted by date. Use the search function to search the titles, descriptions and keywords.</p>
+        
+        <div style="float:left; width:33%; text-align:center; font-weight:bold;">
+            <img src="image_icon.gif" width="84px" style="border:1px solid grey;margin: 1em 0;" />
+            <br/> <a href="#">Image Gallery</a>
+        </div>
+        <div style="float:left; width:33%; text-align:center; font-weight:bold;">
+            <img src="image_icon.gif" width="84px" style="border:1px solid grey;margin: 1em 0;" />
+            <br/> <a href="#">Image Thumbs</a>
+        </div>
+        <div style="float:left; width:33%; text-align:center; font-weight:bold; background-color: #eee;">
+            <img src="image_icon.gif" width="84px" style="border:1px solid grey;margin: 1em 0;" />
+            <br/> <a href="#">Events</a>
+        </div>
+
+        <div style="float:left; width:33%; text-align:center; font-weight:bold;">
+            <img src="image_icon.gif" width="84px" style="border:1px solid grey;margin: 1em 0;" />
+            <br/> <a href="#">Audio</a>
+        </div>
+        <div style="float:left; width:33%; text-align:center; font-weight:bold;">
+            <img src="image_icon.gif" width="84px" style="border:1px solid grey;margin: 1em 0;" />
+            <br/> <a href="#">Video</a>
+        </div>
+        <div style="float:left; width:33%; text-align:center; font-weight:bold;background-color: #eee;">
+            <img src="image_icon.gif" width="84px" style="border:1px solid grey;margin: 1em 0;" />
+            <br/> <a href="#">Search</a>
+        </div>
+        
+    <div class="visualClear"></div>
+
+    <h2>Upload images, audio and video</h2>
+    
+    <p>Upload new images, audio or video into the library. To upload new media content, create an event with title and description and upload your files.</p>
+
+    <form action="@@image-library-upload" method="post">
+        <div class="field"><label>Title</label><br/> 
+            <input type="text" name="title"> 
+        </div>
+        <div class="field"><label>Description</label>
+            <textarea name="description"></textarea>
+        </div>
+        <div class="form-controls">
+            <input type="submit" name="form.button.add_image_folder" value="Add Image Folder">
+            <input type="submit" name="form.button.add_audio_folder" value="Add Audio Folder">
+            <input type="submit" name="form.button.add_video_folder" value="Add Video Folder">
+        </div>
+    </form>
+    
+    <h2>Tag existing media</h2>
+
+    <p>You can tag media by using the bulk tagger, where you can quickly tag multiple objects without reloading the page. 
+        Select an event you want to tag:</p>
+        
+    <form action="image-library-tag-event" method="post">
+        <select name="event" onchange="window.location=this.options[this.selectedIndex].getAttributeNode('value').value+'/@@bulk_tagger'">
+            <option tal:repeat="te view/taggable_events" tal:attributes="value te/value" tal:content="te/content"></option>
+        </select>
+    </form>
+    
+    </div>
+  </body>
+</html>

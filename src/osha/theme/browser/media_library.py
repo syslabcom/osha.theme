@@ -4,12 +4,59 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
+from Products.Five.browser import BrowserView
 from osha.theme.browser.dbfilter import DBFilterView
+from Products.CMFPlone.PloneFolder import PloneFolder 
 
+class MediaLibraryTagEventView(BrowserView):
+    """ View to redirect to the bulk tagger for an event
+    """
+    def __call__(self):
+        event = self.request.get('event', '')
+        return "ok, selected event %s" % event
 
-class ImageLibrarySearchView(DBFilterView):
-    """View for the Image Library Search.
+class MediaLibraryView(BrowserView):
+    """View for the media Library
+    """
+    template = ViewPageTemplateFile('templates/media_library.pt')
+    template.id = "media-library"
+    
+    def __call__(self):
+        self.request.set('disable_border', True)
+        return self.template()
+        
+    def taggable_events(self):
+        folders = self.context.contentValues(filter={'portal_type':['Folder', 'Large Plone Folder']})
+        folders.sort(lambda x,y: cmp(x.Title(),y.Title()) )
+        for folder in folders:
+            yield dict(value=folder.getId(), content=folder.Title())
+    
+class MediaLibraryUploadView(BrowserView):
+    """ View to create the appropriate folder
+    """
+    
+    def __call__(self):
+        """ create the folder and configure it depending on the button pressed
+        """
+        
+        type_name = "Folder"
+        id = self.context.generateUniqueId(type_name)
+        new_id = self.context.invokeFactory(id=id, type_name=type_name)
+
+        folder = getattr(self.context, new_id)
+        folder.processForm(self.request)
+
+        if self.request.get('form.button.add_image_folder', None):
+            pass
+        elif self.request.get('form.button.add_audio_folder', None):
+            pass
+        elif self.request.get('form.button.add_video_folder', None):
+            pass
+        return self.request.RESPONSE.redirect("%s/flashupload" % folder.absolute_url())
+            
+            
+class MediaLibrarySearchView(DBFilterView):
+    """View for the media Library Search.
     
     This makes a specialised search form which is used to retrieve images from the 
     Digital Assets library.
@@ -17,17 +64,9 @@ class ImageLibrarySearchView(DBFilterView):
     shows the results as a gallery view.
     """
 
-    template = ViewPageTemplateFile('templates/image_library_search.pt')
-    template.id = "image-library-search"
+    template = ViewPageTemplateFile('templates/media_library_search.pt')
+    template.id = "media-library-search"
 
-    portal_types_map = {
-            "useful-links":"OSH_Link",
-            "risk-assessment-tools":"RALink",
-            "case-studies":"CaseStudy",
-            "providers":"Provider",
-            "faqs":"FAQs",
-            "publications": "Publication"
-            }
 
     def __call__(self):
         self.request.set('disable_border', True)

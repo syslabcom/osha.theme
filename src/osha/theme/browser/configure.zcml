@@ -166,11 +166,31 @@
         permission="zope.Public"
         />
 
-    <!-- Image Library Search -->
+    <!-- Media Library -->
     <browser:page
         for="*"
-        name="image-library-search"
-        class=".image_library_search.ImageLibrarySearchView"
+        name="media-library-search"
+        class=".media_library.MediaLibrarySearchView"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        for="*"
+        name="media-library"
+        class=".media_library.MediaLibraryView"
+        permission="zope.Public"
+        />
+    <browser:page
+        for="*"
+        name="media-library-tag-event"
+        class=".media_library.MediaLibraryTagEventView"
+        permission="zope.Public"
+        />
+    
+    <browser:page
+        for="*"
+        name="media-library-upload"
+        class=".media_library.MediaLibraryUploadView"
         permission="zope.Public"
         />
 
