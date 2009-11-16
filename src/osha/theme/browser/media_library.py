@@ -8,6 +8,9 @@ from Products.Five.browser import BrowserView
 from osha.theme.browser.dbfilter import DBFilterView
 from Products.CMFPlone.PloneFolder import PloneFolder 
 
+from p4a.subtyper.interfaces import ISubtyper
+from zope.component import getUtility
+
 class MediaLibraryTagEventView(BrowserView):
     """ View to redirect to the bulk tagger for an event
     """
@@ -46,12 +49,18 @@ class MediaLibraryUploadView(BrowserView):
         folder = getattr(self.context, new_id)
         folder.processForm(self.request)
 
+
         if self.request.get('form.button.add_image_folder', None):
-            pass
+            folder._setProperty('layout', 'galleryview', 'string')
+            
         elif self.request.get('form.button.add_audio_folder', None):
-            pass
+            subtyper = getUtility(ISubtyper)
+            subtyper.change_type(folder, 'p4a.audio.FolderAudioContainer')
+            
         elif self.request.get('form.button.add_video_folder', None):
-            pass
+            subtyper = getUtility(ISubtyper)
+            subtyper.change_type(folder, 'p4a.video.FolderVideoContainer')
+            
         return self.request.RESPONSE.redirect("%s/flashupload" % folder.absolute_url())
             
             

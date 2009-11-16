@@ -19,7 +19,8 @@ Image Library
     <h2>Access the library</h2>
     
     <p>You can browse images, audio and video material in this library. For the images, we have a gallery view and a thumbnail view. 
-        Go to the Events section to see media sorted by date. Use the search function to search the titles, descriptions and keywords.</p>
+        Go to the Events section to see media sorted by date. Use the search function to search the titles, descriptions and keywords.
+        If you want to work on existing media, go to the events section.</p>
         
         <div style="float:left; width:33%; text-align:center; font-weight:bold;">
             <img src="image_icon.gif" width="84px" style="border:1px solid grey;margin: 1em 0;" />
@@ -53,7 +54,7 @@ Image Library
     
     <p>Upload new images, audio or video into the library. To upload new media content, create an event with title and description and upload your files.</p>
 
-    <form action="@@image-library-upload" method="post">
+    <form action="@@media-library-upload" method="post">
         <div class="field"><label>Title</label><br/> 
             <input type="text" name="title"> 
         </div>
@@ -72,7 +73,7 @@ Image Library
     <p>You can tag media by using the bulk tagger, where you can quickly tag multiple objects without reloading the page. 
         Select an event you want to tag:</p>
         
-    <form action="image-library-tag-event" method="post">
+    <form action="media-library-tag-event" method="post">
         <select name="event" onchange="window.location=this.options[this.selectedIndex].getAttributeNode('value').value+'/@@bulk_tagger'">
             <option tal:repeat="te view/taggable_events" tal:attributes="value te/value" tal:content="te/content"></option>
         </select>
