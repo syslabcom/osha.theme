@@ -5,6 +5,7 @@ osha.theme Changelog
 1.2.45 (2009-11-16)
 -------------------
 
+- added db_filter based image search for DAL named @@image-library-search. Bases on deroiste's code (pilz)
 - in the rss template now show the context url instead of the portal url as base for the feed. Prepares the fix for #304 (pilz)
 - display:none for the filed under text on the blog entry (pilz)
 - remove unnecessary (and potentially harmful) condition:contact from pressroom template (thomasw)

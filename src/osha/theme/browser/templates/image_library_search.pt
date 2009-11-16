@@ -1,0 +1,200 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+  <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+
+  <body>
+    <div metal:fill-slot="main">
+
+      <span tal:define="keyword view/get_keyword;
+                        subcategory request/subcategory | string:;
+                        object_implements request/object_implements | string:;
+                        SearchableText request/SearchableText|string:;
+                        multilingual_thesaurus request/multilingual_thesaurus|string:;
+                        nace request/nace|string:;
+                        nace python:nace==[''] and '' or nace;
+                        category request/category|string:;
+                        is_search_expanded request/is_search_expanded |string:;
+                        Batch python:modules['Products.CMFPlone'].Batch;
+                        DateTime python:modules['DateTime'].DateTime;
+                        b_size python:20;b_start python:0;
+                        b_start request/b_start | b_start;
+                        desc_length site_properties/search_results_description_length;
+                        desc_ellipsis site_properties/ellipsis;
+                        searchterm request/SearchableText|nothing;
+                        ">
+
+        <h1  class="documentFirstHeading" tal:content="context/Title">Title</h1>
+
+        <!--metal:field use-macro="python:context.widget('text', mode='view')">
+          Body text
+        </metal:field-->
+
+        <br clear="all">
+
+        <form id="database_search"
+              tal:attributes="action template/id" method="get">
+
+          <div id="filter_searchfields">
+
+            <h1>Search in the Digital Assets Library</h1>
+            <div class="field_default">
+              <input type="text"
+                     id="SearchableText"
+                     name="SearchableText"
+                     size="40"
+                     tal:attributes="value request/SearchableText|nothing"
+                     />
+            </div>
+            
+            <div class="field_default"
+                 tal:define="value keyword; size python: 1">
+
+              <span tal:attributes="class python:value and 'hiddenStructure' or ''">
+                <metal:use use-macro="here/filter_macros/macros/Subject"></metal:use>
+              </span>
+
+              <tal:has_categories condition="keyword">
+                <label>
+                  <span i18n:translate="label_category">
+                    Category</span>: <tal:categories
+                                        content="keyword">
+                  </tal:categories>
+                </label>
+                <div class="field_default"
+                     tal:define="root_node   keyword;
+                                 vocabulary  string:Subcategory;
+                                 value       subcategory;
+                                 fieldName   string:subcategory;">
+                  <label
+                     i18n:translate="label_subcategory"
+                     >Subcategory
+                  </label><br />
+                  <metal:use use-macro="context/filter_macros/macros/ATVocabularyDropdown"></metal:use>
+                </div>
+              </tal:has_categories>
+            </div>
+            
+
+            <dl id="image-controls" class="collapsible inline collapsedOnLoad"
+                tal:define="expanded_css python:is_search_expanded and 'expandedOnLoad' or 'collapsedOnLoad'"
+                tal:attributes="class string:collapsible inline ${expanded_css}">
+              <dt class="collapsibleHeader"
+                  onclick="javascript: OSHA.toggleHiddenField('is_search_expanded')"
+                  i18n:translate="action_advanced_search">Advanced search</dt>
+              <input id="is_search_expanded" type="hidden"
+                     name="is_search_expanded" value=""
+                     tal:attributes="value is_search_expanded" />
+              <dd class="collapsibleContent">
+                <div class="formHelp"
+                     i18n:translate="help_advanced_search">
+                  Filter your search by selecting one or more of
+                  the filters.
+                </div>
+
+                <div class="filter_column1">
+
+
+                    <div class="field_vocab"
+                         tal:define="level python:2;
+                                     portal_type string:OSH_Link">
+                      <metal:use use-macro="context/filter_macros/macros/NACE"></metal:use>
+                    </div>
+
+
+                </div>
+
+                <div class="filter_column2">
+                  <div class="field_vocab"
+                       tal:define="portal_type string:OSH_Link">
+                    <metal:use use-macro="context/filter_macros/macros/MultilingualThesaurus"></metal:use>
+                  </div>
+
+                </div>
+                <div class="visualClear"></div>
+
+              </dd>
+
+            </dl>
+
+            <div class="formControls">
+              <input class="context"
+                     type="submit"
+                     name="submit"
+                     value="Search"
+                     i18n:domain="plone"
+                     i18n:attributes="value label_search;"
+                     />
+              <input  class="context" type="reset" value="Reset"
+                      tal:attributes="onclick string:window.location='${context/absolute_url}/${template/getId}'" />
+
+            </div>
+          </div>
+        </form>
+
+        <div tal:define="results view/search">
+
+          <i>Filtered by:
+          <span tal:replace="view/buildQuery"></span>
+          </i>
+
+          <h2>
+            <span i18n:translate="heading_search_results">
+              Search results
+            </span>
+            <span class="discreet">
+              &mdash;
+              <span i18n:translate="batch_x_items_matching_your_criteria"
+                    ><tal:number i18n:name="number"
+                                 content="python:len(results)"
+                                 >234 </tal:number>
+              </span> items matching your search terms
+            </span>
+          </h2>
+
+          <div tal:condition="not: results">
+            <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>
+          </div>
+
+          <div tal:condition="results"
+               tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+
+            <dl id="db_results">
+              <metal:macro use-macro="context/oshmacros/macros/searchresults_gallery" />
+<!--              <tal:results repeat="result batch">
+                <tal:entry define="provider_helper context/@@provider_helper;
+                                   result_url result/getURL;
+                                   url result/getRemoteUrl | result_url;
+                                   title result/Title|string:;
+                                   item_cas result/getCas|string:;
+                                   item_einecs result/getEinecs|string:;
+                                   item_remoteLanguage result/getRemoteLanguage|string:;
+                                   item_subject result/Subject | python:[];
+                                   item_modified result/modified;
+                                   item_pubdate result/effective;
+                                   item_creator result/Creator;
+                                   gc python:context.portal_languages.getNameForLanguageCode;
+                                   ">
+
+                  <metal:macro use-macro="context/oshmacros/macros/searchresults_gallery" />
+
+                </tal:entry>
+              </tal:results>
+-->
+            </dl>
+
+            <div class="visualClear" ></div>
+
+            <div metal:use-macro="context/batch_macros/macros/navigation" />
+
+          </div>
+
+        </div>
+
+      </span>
+
+    </div>
+  </body>
+</html>

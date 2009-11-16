@@ -166,6 +166,15 @@
         permission="zope.Public"
         />
 
+    <!-- Image Library Search -->
+    <browser:page
+        for="*"
+        name="image-library-search"
+        class=".image_library_search.ImageLibrarySearchView"
+        permission="zope.Public"
+        />
+
+
 <!-- OSHA NapoEpisodeView-->
     <browser:page
         for="*"

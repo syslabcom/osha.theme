@@ -117,6 +117,57 @@
       </tal:defines>
     </metal:macro>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <metal:macro define-macro="searchresults_gallery">
+
+        <tal:images tal:condition="batch" tal:repeat="image batch">
+            <div class="photoAlbumEntry" tal:condition="python:image.portal_type=='Image'">
+                        <a tal:define="image_ob image/getObject; id python:int(b_start)+int(repeat['image'].number()-1)"
+                           tal:attributes="href string:${image_ob/absolute_url}/view;
+                                           title image/Description">
+                            <span class="photoAlbumEntryWrapper">
+                            <img src="" alt="" tal:replace="structure python:image_ob.tag(scale='thumb', title=image_ob.Description())" />
+                            </span>
+                    <span class="photoAlbumEntryTitle" tal:content="image_ob/pretty_title_or_id">
+                       Title
+                    </span>
+                        </a>
+            </div>
+            <div class="photoAlbumEntry" tal:condition="python:image.portal_type=='File'">
+                    <a tal:define="image_ob image/getObject; id python:int(b_start)+int(repeat['image'].number()-1)"
+                       tal:attributes="href string:${image_ob/absolute_url}/view;
+                                       title image/Description">
+                        <span class="photoAlbumEntryWrapper">
+                            File representation here
+                        </span>
+                <span class="photoAlbumEntryTitle" tal:content="image_ob/pretty_title_or_id">
+                   Title
+                </span>
+                    </a>
+                
+            </div>
+        </tal:images>
+
+
+    <p class="discreet"
+       tal:condition="python:not batch">
+        No media found.
+    </p>
+    </metal:macro>
+
   </body>
 
 </html>
