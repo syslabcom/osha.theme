@@ -2,13 +2,16 @@ osha.theme Changelog
 ====================
 
 
-1.2.45 (2009-11-16)
+1.2.45 (2009-11-17)
 -------------------
 
+- added db_filter based image search for DAL named @@image-library-search. Bases on deroiste's code (pilz)
 - in the rss template now show the context url instead of the portal url as base for the feed. Prepares the fix for #304 (pilz)
 - display:none for the filed under text on the blog entry (pilz)
 - remove unnecessary (and potentially harmful) condition:contact from pressroom template (thomasw)
 - fixed oshnetwork links to practical-solutions (deroiste)
+- 'patch' for TextIndexNG3: overriding addSearchableTextField for CMFContentAdapter and FileAdapter, as we recently get a
+   string for SearchableText(). Probably limited to OSHA (thomasw)
 
 1.2.44 (2009-11-09)
 -------------------
