@@ -2,7 +2,7 @@ osha.theme Changelog
 ====================
 
 
-1.2.46 (unreleased)
+1.2.46 (2009-11-17)
 -------------------
 
 - Nothing changed yet.
