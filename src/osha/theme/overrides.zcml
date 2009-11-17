@@ -21,4 +21,8 @@
 
     <include file="portlets/overrides.zcml" />
 
+    <adapter factory=".adapter_textindexng3.ATFileAdapter"/>
+
+    <adapter factory=".adapter_textindexng3.ContentAdapter"/>
+
 </configure>
