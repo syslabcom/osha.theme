@@ -2,7 +2,7 @@ osha.theme Changelog
 ====================
 
 
-1.2.45 (2009-11-16)
+1.2.45 (2009-11-17)
 -------------------
 
 - added db_filter based image search for DAL named @@image-library-search. Bases on deroiste's code (pilz)
