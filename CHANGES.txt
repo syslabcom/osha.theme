@@ -2,7 +2,7 @@ osha.theme Changelog
 ====================
 
 
-1.2.47 (unreleased)
+1.2.47 (2009-11-18)
 -------------------
 
 - removed unfortunate nagigation caching (pilz)
