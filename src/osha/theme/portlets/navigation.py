@@ -43,7 +43,7 @@ class Renderer(navigation.Renderer):
     _template = ViewPageTemplateFile('navigation.pt')
     recurse = ViewPageTemplateFile('navigation_recurse.pt')
 
-    @ram.cache(render_cachekey)
+    #@ram.cache(render_cachekey)
     def render(self):
         return self._template()
             
