@@ -5,7 +5,8 @@ osha.theme Changelog
 1.2.48 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Configured practical solutions views for FAQs and changed them to search by
+  Language instead of getRemoteLanguage#375 (deroiste)
 
 
 1.2.47 (2009-11-18)
