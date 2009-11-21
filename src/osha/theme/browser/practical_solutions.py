@@ -21,17 +21,11 @@ class PracticalSolutionsView(DBFilterView):
     gpawards = ''
     intro = ''
     has_section_details = False
-    # sections = ['useful-links',
-    #             'risk-assessment-tools',
-    #             'case-studies',
-    #             'providers',
-    #             'faqs']
-    # Commenting out faqs temporarily
-
     sections = ['useful-links',
                 'risk-assessment-tools',
                 'case-studies',
-                'providers']
+                'providers',
+                'faqs']
 
     def __call__(self):
         self.request.set('disable_border', True)
@@ -55,9 +49,9 @@ class PracticalSolutionsView(DBFilterView):
         context = self.context
         preflang = getToolByName(self.context,
                                  'portal_languages').getPreferredLanguage()
-        search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider"]
+        search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider", "HelpCenterFAQ"]
         query = In('portal_type', search_portal_types)\
-                & In('getRemoteLanguage', preflang)\
+                & In('Language', preflang)\
                 & Eq('review_state','published')
         return query
 
@@ -104,7 +98,7 @@ class PracticalSolutionView(DBFilterView):
             "risk-assessment-tools":"RALink",
             "case-studies":"CaseStudy",
             "providers":"Provider",
-            "faqs":"FAQs",
+            "faqs":"HelpCenterFAQ",
             "publications": "Publication"
             }
 
@@ -171,7 +165,8 @@ class PracticalSolutionView(DBFilterView):
         # nothing makes no sense.
         if not search_portal_types:
             search_portal_types = ['OSH_Link', 'RALink',
-                                   'CaseStudy', 'Provider']
+                                   'CaseStudy', 'Provider',
+                                   'HelpCenterFAQ']
         TYPES = [
             ('Useful links', 'OSH_Link',
              'OSH_Link' in search_portal_types) ,
@@ -181,6 +176,8 @@ class PracticalSolutionView(DBFilterView):
              'CaseStudy' in search_portal_types) ,
             ('Providers', 'Provider',
              'Provider' in search_portal_types) ,
+            ('FAQ', 'HelpCenterFAQ',
+             'HelpCenterFAQ' in search_portal_types) ,
                 ]
         return TYPES
 
@@ -233,10 +230,10 @@ class PracticalSolutionView(DBFilterView):
 
         preflang = getToolByName(self.context,
                                  'portal_languages').getPreferredLanguage()
-        getRemoteLanguage = self.request.get('getRemoteLanguage', preflang)
-        if getRemoteLanguage:
-            query = query & In('getRemoteLanguage', getRemoteLanguage)
-            #query.update({'getRemoteLanguage':getRemoteLanguage})
+        language = self.request.get('Language', preflang)
+        if language:
+            query = query & In('Language', language)
+            #query.update({'language':language})
 
         subcategory = self.request.get('subcategory', '')
         if subcategory:

@@ -16,7 +16,7 @@
                         nace request/nace|string:;
                         nace python:nace==[''] and '' or nace;
                         category request/category|string:;
-                        getRemoteLanguage request/getRemoteLanguage|string:;
+                        language request/language|string:;
                         country request/country|string:;
                         search_portal_types view/search_portal_types;
                         is_search_expanded request/is_search_expanded |string:;
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="field_default">
-                      <metal:use use-macro="context/filter_macros/macros/RemoteLanguage_compact"></metal:use>
+                      <metal:use use-macro="context/filter_macros/macros/Language"></metal:use>
                     </div>
 
                     <div class="field_default" tal:define="value country">

@@ -57,7 +57,7 @@
 
       <tal:gpawards replace="structure view/gpawards "></tal:gpawards>
 
-      <span tal:define="getRemoteLanguage request/getRemoteLanguage|string:;
+      <span tal:define="language request/language|string:;
                         country request/country|string:;
                         DateTime python:modules['DateTime'].DateTime;
                         desc_ellipsis site_properties/ellipsis;
