@@ -12,106 +12,113 @@
       <tal:defines define="oshaview python:context.restrictedTraverse('@@oshaview');">
 
         <dt>
-            
-        <metal:macro define-macro="provider">
+          
+          <metal:macro define-macro="provider">
             <div tal:define="provuid python: getattr(result, 'getRemoteProviderUID' , [])"
                  tal:condition="python:provuid and len(provuid)">
               
               <fieldset tal:define="providers python:provider_helper.getMyProviders(result)"
                         style="font-weight: normal; float: right; padding: 0 5px 0 5px; width: 16em; margin:-0.5em -19em 0 10px; position:static">
-                 <legend style=" padding-top:0px;" i18n:translate="provider_of_information">
-                     Provider of this information
-                 </legend>
+                <legend style=" padding-top:0px;" i18n:translate="provider_of_information">
+                  Provider of this information
+                </legend>
 
                 <p tal:repeat="provider providers">
-                    <a href="" rel="nofollow" tal:attributes="href provider/absolute_url"><span
-                        tal:replace="provider/Title"></span></a><br />
-                        <!--img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
-                        <a class="link" href="" rel="nofollow" tal:attributes="href provider/getRemoteUrl"><span 
-                    i18n:translate="provider_goto_url">Go to provider's website</span></a-->
+                  <a href="" rel="nofollow" tal:attributes="href provider/absolute_url"><span
+                                                                                           tal:replace="provider/Title"></span></a><br />
+                  <!--img tal:replace="structure python:getattr(portal, 'link_external.gif').tag()"/>  
+                  <a class="link" href="" rel="nofollow" tal:attributes="href provider/getRemoteUrl"><span 
+                                                                                                        i18n:translate="provider_goto_url">Go to provider's website</span></a-->
                 </p>
               </fieldset>
             </div>
           </metal:macro>            
-            <img tal:attributes="src string:${result/getIcon};
-                             alt string:Link icon" />
-            <a tal:content="title" 
-                tal:attributes="href string:$result_url/view"
-                rel="nofollow" />                 
+          <img tal:attributes="src string:${result/getIcon};
+                               alt string:Link icon" />
+          <a tal:content="title" 
+             tal:attributes="href string:$result_url/view"
+             rel="nofollow" />                 
         </dt>
 
         <dd>
           <tal:publication_date>
             <em>
-                <span tal:condition="python: item_pubdate.year() >= 1900" 
-				tal:replace="python:toLocalizedTime(item_pubdate, long_format=0)">
+              <span tal:condition="python: item_pubdate.year() >= 1900" 
+		    tal:replace="python:toLocalizedTime(item_pubdate, long_format=0)">
+                August 16, 2001 at 23:35:59
+              </span>
+	      <span tal:condition="python: item_pubdate.year() < 1900"
+		    i18n:translate="">No publication date set</span>
+              <tal:modified>
+                - <tal:label i18n:translate="box_item_modified">
+                  Last modified:
+                </tal:label>
+                <span tal:replace="python:toLocalizedTime(item_modified, long_format=0)"
+                      tal:on-error="python:toLocalizedTime('2000/01/01', long_format=0)">
                   August 16, 2001 at 23:35:59
                 </span>
-				<span tal:condition="python: item_pubdate.year() < 1900"
-				i18n:translate="">No publication date set</span>
-                <tal:modified>
-                    - <tal:label i18n:translate="box_item_modified">
-                     Last modified:
-                    </tal:label>
-                    <span tal:replace="python:toLocalizedTime(item_modified, long_format=0)"
-                        tal:on-error="python:toLocalizedTime('2000/01/01', long_format=0)">
-                      August 16, 2001 at 23:35:59
-                    </span>
-                </tal:modified>
-              </em>
+              </tal:modified>
+            </em>
           </tal:publication_date>
-            
+          
+          <tal:faq condition="python: result.portal_type == 'HelpCenterFAQ'">
+            <p tal:define="descr python:result.getObject().getAnswer()"
+               tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
+          </tal:faq>
+ 
+          <tal:notfaq condition="python: result.portal_type != 'HelpCenterFAQ'">
             <p tal:define="descr result/Description" 
                tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
+          </tal:notfaq>
 
-            <tal:url condition="url">
-                <a tal:attributes="href string:$url"
-                rel="nofollow" tal:content="url">Remote URL</a>
-            </tal:url>
-            <br/>
-            <tal:remotelanguage condition="item_remoteLanguage">
-                <strong><tal:remotelanguagetrans i18n:translate="box_item_remotelanguage">
-                     Languages: 
-                </tal:remotelanguagetrans></strong>
-                <span tal:repeat="lang item_remoteLanguage" tal:omit-tag="">
-                    <span tal:replace="python:gc(lang)"/><span tal:omit-tag="" tal:condition="not:repeat/lang/end">,</span> 
+          <tal:url condition="url">
+            <a tal:attributes="href string:$url"
+               rel="nofollow" tal:content="url">Remote URL</a>
+          </tal:url>
+          <br/>
+          <tal:remotelanguage condition="item_remoteLanguage">
+            <strong><tal:remotelanguagetrans i18n:translate="box_item_remotelanguage">
+                Languages: 
+            </tal:remotelanguagetrans></strong>
+            <span tal:repeat="lang item_remoteLanguage" tal:omit-tag="">
+              <span tal:replace="python:gc(lang)"/><span tal:omit-tag="" tal:condition="not:repeat/lang/end">,</span> 
+            </span>
+          </tal:remotelanguage>
+          <br tal:condition="item_subject"/>
+          <tal:Subject condition="item_subject">
+            <strong><tal:desc>
+                See also:
+            </tal:desc></strong>
+            <tal:define define="seplist python:oshaview.getSingleEntryPointsBySubject(item_subject)">
+              <tal:repeat repeat="sep seplist">
+                <a tal:attributes="href sep/url"
+                   tal:content="sep/title" /> 
+                <span tal:omit-tag="" tal:condition="not:repeat/sep/end">|</span> 
+              </tal:repeat>
+            </tal:define>
+          </tal:Subject>
+
+
+          <div class="documentByLine" style="border-top: 1px dashed gray;margin-top:0.5em;">
+            <span:notanon tal:condition="not:isAnon">                    
+              <tal:creator define="author python:mtool.getMemberInfo(item_creator)" >
+                <span tal:replace="python:author and author['fullname'] or item_creator">
+                  OSHA
                 </span>
-            </tal:remotelanguage>
-            <br tal:condition="item_subject"/>
-            <tal:Subject condition="item_subject">
-                <strong><tal:desc>
-                  See also:
-                </tal:desc></strong>
-                <tal:define define="seplist python:oshaview.getSingleEntryPointsBySubject(item_subject)">
-                    <tal:repeat repeat="sep seplist">
-                              <a tal:attributes="href sep/url"
-                                 tal:content="sep/title" /> 
-                                 <span tal:omit-tag="" tal:condition="not:repeat/sep/end">|</span> 
-                    </tal:repeat>
-                </tal:define>
-            </tal:Subject>
+              </tal:creator>
+              <tal:review_state define="state result/review_state">
+                | <span tal:attributes="class string:state-$state" tal:content="state">
+                  review state
+                </span>
+              </tal:review_state>
+              | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/content_status_history">Modify workflow</a>
+              | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a> 
+            </span:notanon>
 
 
-            <div class="documentByLine" style="border-top: 1px dashed gray;margin-top:0.5em;">
-                <span:notanon tal:condition="not:isAnon">                    
-                    <tal:creator define="author python:mtool.getMemberInfo(item_creator)" >
-                        <span tal:replace="python:author and author['fullname'] or item_creator">
-                            OSHA
-                        </span>
-                    </tal:creator>
-                    <tal:review_state define="state result/review_state">
-                        | <span tal:attributes="class string:state-$state" tal:content="state">
-                            review state
-                        </span>
-                    </tal:review_state>
-                        | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/content_status_history">Modify workflow</a>
-                        | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a> 
-                </span:notanon>
-
-
-            </div>
-            
-            <div class="visualClear" ></div>
+          </div>
+          
+          <div class="visualClear" ></div>
         </dd>
         
       </tal:defines>
@@ -133,39 +140,39 @@
 
     <metal:macro define-macro="searchresults_gallery">
 
-        <tal:images tal:condition="batch" tal:repeat="image batch">
-            <div class="photoAlbumEntry" tal:condition="python:image.portal_type=='Image'">
-                        <a tal:define="image_ob image/getObject; id python:int(b_start)+int(repeat['image'].number()-1)"
-                           tal:attributes="href string:${image_ob/absolute_url}/view;
-                                           title image/Description">
-                            <span class="photoAlbumEntryWrapper">
-                            <img src="" alt="" tal:replace="structure python:image_ob.tag(scale='thumb', title=image_ob.Description())" />
-                            </span>
-                    <span class="photoAlbumEntryTitle" tal:content="image_ob/pretty_title_or_id">
-                       Title
-                    </span>
-                        </a>
-            </div>
-            <div class="photoAlbumEntry" tal:condition="python:image.portal_type=='File'">
-                    <a tal:define="image_ob image/getObject; id python:int(b_start)+int(repeat['image'].number()-1)"
-                       tal:attributes="href string:${image_ob/absolute_url}/view;
-                                       title image/Description">
-                        <span class="photoAlbumEntryWrapper">
-                            File representation here
-                        </span>
-                <span class="photoAlbumEntryTitle" tal:content="image_ob/pretty_title_or_id">
-                   Title
-                </span>
-                    </a>
-                
-            </div>
-        </tal:images>
+      <tal:images tal:condition="batch" tal:repeat="image batch">
+        <div class="photoAlbumEntry" tal:condition="python:image.portal_type=='Image'">
+          <a tal:define="image_ob image/getObject; id python:int(b_start)+int(repeat['image'].number()-1)"
+             tal:attributes="href string:${image_ob/absolute_url}/view;
+                             title image/Description">
+            <span class="photoAlbumEntryWrapper">
+              <img src="" alt="" tal:replace="structure python:image_ob.tag(scale='thumb', title=image_ob.Description())" />
+            </span>
+            <span class="photoAlbumEntryTitle" tal:content="image_ob/pretty_title_or_id">
+              Title
+            </span>
+          </a>
+        </div>
+        <div class="photoAlbumEntry" tal:condition="python:image.portal_type=='File'">
+          <a tal:define="image_ob image/getObject; id python:int(b_start)+int(repeat['image'].number()-1)"
+             tal:attributes="href string:${image_ob/absolute_url}/view;
+                             title image/Description">
+            <span class="photoAlbumEntryWrapper">
+              File representation here
+            </span>
+            <span class="photoAlbumEntryTitle" tal:content="image_ob/pretty_title_or_id">
+              Title
+            </span>
+          </a>
+          
+        </div>
+      </tal:images>
 
 
-    <p class="discreet"
-       tal:condition="python:not batch">
+      <p class="discreet"
+         tal:condition="python:not batch">
         No media found.
-    </p>
+      </p>
     </metal:macro>
 
   </body>
