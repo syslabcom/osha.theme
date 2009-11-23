@@ -16,7 +16,7 @@
                         nace request/nace|string:;
                         nace python:nace==[''] and '' or nace;
                         category request/category|string:;
-                        Language context/portal_languages/getPreferredLanguage;
+                        Language request/Language | context/portal_languages/getPreferredLanguage;
                         country request/country|string:;
                         search_portal_types view/search_portal_types;
                         is_search_expanded request/is_search_expanded |string:;
