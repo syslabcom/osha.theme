@@ -2,14 +2,41 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="osha">
-    
+
+  <!-- overridethe renderer so that we can provide the collage context -->
+  <browser:page
+     name="renderer"
+     for="Products.Collage.interfaces.ICollage"
+     permission="zope.Public"
+     class="osha.theme.browser.collageviews.SimpleContainerRenderer"
+     template="collageviews/collage_renderer.pt"
+     />
+  
+  <browser:page
+     name="renderer"
+     for="Products.Collage.interfaces.ICollageRow"
+     permission="zope.Public"
+     class="osha.theme.browser.collageviews.SimpleContainerRenderer"
+     template="collageviews/row_renderer.pt"
+     />
+  
+  <browser:page
+     name="renderer"
+     for="Products.Collage.interfaces.ICollageColumn"
+     permission="zope.Public"
+     class="osha.theme.browser.collageviews.SimpleContainerRenderer"
+     template="collageviews/column_renderer.pt"
+     />
+
+
+
   <!-- News Item -->
    <browser:page
      name="standard"
      for="Products.ATContentTypes.content.newsitem.ATNewsItem"
      permission="zope.Public"
      template="collageviews/newsitem_teaser.pt"
-     class="Products.Collage.browser.views.BaseView"
+     class="osha.theme.browser.collageviews.BaseView"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
@@ -22,5 +49,8 @@
      class="osha.theme.browser.collageviews.EventRightColumn"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
+
+
+
 
 </configure> 

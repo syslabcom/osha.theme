@@ -31,7 +31,7 @@
      for="Products.OSHContentLink.OSH_Link.OSH_Link"
      permission="zope.Public"
      template="collageviews/oshlink_standard.pt"
-     class="Products.Collage.browser.views.BaseView"
+     class="osha.theme.browser.collageviews.BaseView"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
@@ -60,7 +60,7 @@
      for="Products.ATContentTypes.content.newsitem.ATNewsItem"
      permission="zope.Public"
      template="collageviews/newsitem_standard.pt"
-     class="Products.Collage.browser.views.BaseView"
+     class="osha.theme.browser.collageviews.BaseView"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
@@ -71,7 +71,7 @@
      for="Products.ATContentTypes.content.event.ATEvent"
      permission="zope.Public"
      template="collageviews/event_basic.pt"
-     class="Products.Collage.browser.views.BaseView"
+     class="osha.theme.browser.collageviews.BaseView"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
@@ -81,7 +81,7 @@
      for="plone.app.blob.content.ATBlob"
      permission="zope.Public"
      template="collageviews/file_standard.pt"
-     class="Products.Collage.browser.views.BaseView"
+     class="osha.theme.browser.collageviews.BaseView"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
@@ -101,7 +101,7 @@
      for="Products.PressRoom.content.PressRelease.PressRelease"
      permission="zope.Public"
      template="collageviews/pressrelease_standard.pt"
-     class="Products.Collage.browser.views.BaseView"
+     class="osha.theme.browser.collageviews.BaseView"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
