@@ -18,6 +18,7 @@ from slc.subsite.root import getSubsiteRoot
 from slc.subsite.interfaces import ISubsiteEnhanced
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 from p4a.calendar import interfaces as p4aCalendarInterfaces
+from Products.validation import validation
 
 class OSHA(BrowserView):
     implements(IOSHA)
@@ -244,6 +245,29 @@ class OSHA(BrowserView):
         return INTERNATIONAL_NETWORK        
 
 
+    def handleOSHMailUrls(self, text, id=''):
+        """ turn relative URLs into absolute URLs based on the context's URL """
+        #import pdb; pdb.set_trace()
+        
+        links = []
+        isURL = validation.validatorFor('isURL')
+        if isURL(text)==1:
+            links.append(text)
+        else:
+            for link in retrieveSTX(text):
+                links.append(link)
+    
+            for link in retrieveHTML(text):
+                links.append(link)
+            
+        au = self.context.absolute_url()
+        for link in links:
+            if not link.startswith('mailto'):
+                joinchar = link.find('?')>0 and '&' or '?'
+                newlink = "%(link)s%(joinchar)sutm_source=oshmail&utm_medium=email&utm_campaign=%(campaign)s" % dict(
+                    link=urljoin(au, link), joinchar=joinchar, campaign=id!='' and id or 'oshmail')
+                text = text.replace(link, newlink)
+        return text
 
     def makeAbsoluteUrls(self, text):
         """ turn relative URLs into absolute URLs based on the context's URL """
