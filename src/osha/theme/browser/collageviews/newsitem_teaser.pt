@@ -5,6 +5,7 @@
     oshaview here/@@oshaview;
     collage_id view/getCollageId;
     obj_description python:oshaview.handleOSHMailUrls(obj_description, collage_id);
+    ga_url python:oshaview.handleOSHMailUrls(url, collage_id);
     title_or_id here/pretty_title_or_id;">
 
 
@@ -19,7 +20,7 @@
                  tal:condition="here/image_mini|nothing"
                  xtal:on-error="nothing">
                 <a href="#"
-                   tal:attributes="href string:$url"
+                   tal:attributes="href ga_url"
                    class="parent-fieldname-image">
                    <img tal:attributes="src string:${url}/image; alt title_or_id;" />
                 </a>

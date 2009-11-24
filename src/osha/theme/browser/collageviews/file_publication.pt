@@ -1,6 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<dl tal:define="url here/absolute_url;
+<dl tal:define="url string:${here/absolute_url}/view;
     obj_description here/Description;
     title_or_id here/pretty_title_or_id;
     effective here/getEffectiveDate;
@@ -15,7 +15,7 @@
         <img src="publication_icon.gif" 
             tal:attributes="src string:${plone/navigationRootUrl}/publication_icon.gif"/>
         <a href="#"
-            tal:attributes="href string:$url/view" tal:content="title_or_id">
+            tal:attributes="href url" tal:content="title_or_id">
         </a>
    </dt>
   
