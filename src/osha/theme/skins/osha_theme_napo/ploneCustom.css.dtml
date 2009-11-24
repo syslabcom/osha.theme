@@ -133,7 +133,9 @@ margin-bottom:1.5em;
 #dancing2008Video {
 	float:left;
 	margin-right:30px;
-	margin-top:80px;
+	margin-left:40px;
+	margin-top:60px;
+	margin-bottom:40px;
 	padding:0 1em 0 0;
 	width:425px;
 }
@@ -141,17 +143,17 @@ margin-bottom:1.5em;
 #linkNapo {
 float:right;
 margin:5px 0;
-width:200px;
+width:160px;
 }
 #linkFilms {
 float:right;
 margin:5px 0;
-width:200px;
+width:160px;
 }
 #linkGallery {
 float:right;
 margin:5px 0;
-width:200px;
+width:160px;
 }
 
 .napo {
