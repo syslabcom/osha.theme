@@ -120,7 +120,7 @@ class Renderer(base.Renderer):
                 symbol = '&'
             else:
                 symbol = '?'
-            return "%s%ssourceid=banner" % (self.data.url, symbol)
+            return "%s%ssourceid=banner&utm_source=home&utm_medium=banner&utm_campaign=campaign" % (self.data.url, symbol)
         return u''
 
     @memoize
