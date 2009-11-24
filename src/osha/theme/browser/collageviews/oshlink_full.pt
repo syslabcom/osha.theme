@@ -2,7 +2,8 @@
 
 <tal:block define="obj_description here/Description;
             oshaview here/@@oshaview;
-            obj_description python:oshaview.makeAbsoluteUrls(obj_description);
+            collage_id view/getCollageId;
+            obj_description python:oshaview.handleOSHMailUrls(obj_description, collage_id);
             provider_helper here/@@provider_helper; 
             ext_url here/getRemoteUrl|string:;
             ploneview python:here.restrictedTraverse('@@plone');
@@ -73,8 +74,8 @@
 
          <dl tal:condition="providers">
          <tal:repeat tal:repeat="provider providers">
-             <dt>
-                 <a rel="nofollow" href="" tal:attributes="href provider/absolute_url" tal:content="provider/Title" />
+             <dt tal:define="url python:oshaview.handleOSHMailUrls(provider.absolute_url(), collage_id)">
+                 <a rel="nofollow" href="" tal:attributes="href url" tal:content="provider/Title" />
              </dt>
              <dd>
              <p tal:condition="provider/Description" tal:content="structure provider/Description"></p>
@@ -88,10 +89,11 @@
                  </span>
              </div>
              
+
              <div class="field">
                  <label i18n:translate="label_url">Url:</label>
-                 <div>
-                 <a rel="nofollow" class="link" href="" tal:attributes="href provider/getRemoteUrl" tal:content="provider/getRemoteUrl" />
+                 <div tal:define="url python:oshaview.handleOSHMailUrls(provider.getRemoteUrl(), collage_id)">
+                 <a rel="nofollow" class="link" href="" tal:attributes="href url" tal:content="provider/getRemoteUrl" />
                  </div>
              </div>
             </dd>
@@ -109,8 +111,8 @@
         
         <dl>
             <tal:block repeat="section sections">
-                <dt>
-                    <a href="" tal:attributes="href string:${section/url}"
+                <dt tal:define="url python:oshaview.handleOSHMailUrls(section.get('url'), collage_id)">
+                    <a href="" tal:attributes="href url"
                         tal:content="section/title">Feature title</a>
                 </dt>
             </tal:block>

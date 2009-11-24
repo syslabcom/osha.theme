@@ -4,6 +4,9 @@
     title_or_id here/pretty_title_or_id;
     plone_view here/@@plone;
     getIcon nocall:plone_view/getIcon;
+    oshaview here/@@oshaview;
+    collage_id view/getCollageId;
+    url python:oshaview.handleOSHMailUrls(url, collage_id);
     item_icon python:getIcon(here);
     date here/start">
     

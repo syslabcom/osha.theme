@@ -5,6 +5,9 @@
     title_or_id here/pretty_title_or_id;
     effective here/getEffectiveDate;
     plone context/@@plone;
+    oshaview here/@@oshaview;
+    collage_id view/getCollageId;
+    url python:oshaview.handleOSHMailUrls(url, collage_id);
     toLocalizedTime nocall:plone/toLocalizedTime">
 
 

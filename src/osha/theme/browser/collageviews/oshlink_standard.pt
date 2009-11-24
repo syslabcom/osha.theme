@@ -3,7 +3,9 @@
 <span tal:define="url here/absolute_url;
     obj_description here/Description;
     oshaview here/@@oshaview;
-    obj_description python:oshaview.makeAbsoluteUrls(obj_description);">
+    collage_id view/getCollageId;
+    obj_description python:oshaview.handleOSHMailUrls(obj_description, collage_id);
+    url python:oshaview.handleOSHMailUrls(url, collage_id);">
 
     <h2> <a href="#" tal:attributes="href url"><span tal:content="here/Title">title</span></a></h2>
 

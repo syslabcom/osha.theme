@@ -3,7 +3,8 @@
 <span tal:define="url here/absolute_url;
     obj_description here/Description;
     oshaview here/@@oshaview;
-    obj_description python:oshaview.makeAbsoluteUrls(obj_description);
+    collage_id view/getCollageId;
+    obj_description python:oshaview.handleOSHMailUrls(obj_description, collage_id);
     title_or_id here/pretty_title_or_id;">
 
 
