@@ -131,7 +131,27 @@ margin-bottom:1.5em;
 }
 
 #dancing2008Video {
-padding:0 10em;
+	float:left;
+	margin-right:30px;
+	margin-top:30px;
+	padding:0 1em 0 0;
+	width:425px;
+}
+
+#linkNapo {
+float:right;
+
+width:200px;
+}
+#linkFilms {
+float:right;
+
+width:200px;
+}
+#linkGallery {
+float:right;
+
+width:200px;
 }
 
 .documentFirstHeading {
