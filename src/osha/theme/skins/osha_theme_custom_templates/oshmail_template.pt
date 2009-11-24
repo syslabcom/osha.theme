@@ -82,7 +82,10 @@
     tal:define="ltool nocall:here/portal_languages;
                 propstool nocall:here/portal_properties;
                 site_props nocall:propstool/site_properties;
-                  prefLang ltool/getPreferredLanguage">
+                prefLang ltool/getPreferredLanguage;
+                oshaview here/@@oshaview;
+                collage_id here/getId;
+                url python:oshaview.handleOSHMailUrls('http://osha.europa.eu', collage_id);">
 
 <div id="visual-portal-wrapper">
 
@@ -97,7 +100,7 @@
         <td rowspan="2" tal:attributes="rowspan python:test(dbo, '1', '2')" id="portal-logo-wrapper">
     <div id="portal-logo">
     <a href="/"
-       tal:attributes="href string:http://osha.europa.eu">
+       tal:attributes="href url">
        <span tal:omit-tag="" tal:on-error="nothing" >
          <img alt="" title="" tal:define="logo python: prefLang=='en' and 'logo.gif' or 'logo_'+prefLang+'.gif'"
             tal:attributes="src string:http://osha.europa.eu/${logo};
@@ -163,9 +166,11 @@
             condition="python:len(served_languages)>1">
             <div i18n:domain="osha" style="text-align: center" 
                 tal:define="thisurl string:${here/absolute_url}/${template/id}">    
-         
+
               <span tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang[0]" 
-                        href="" tal:attributes="href python:thisurl+'?set_language='+lang[0]" 
+                        tal:define="lang_url python:thisurl+'?set_language='+lang[0];
+                            url python:oshaview.handleOSHMailUrls(lang_url, collage_id);"
+                        href="" tal:attributes="href url" 
                         tal:content="python:lang_info.has_key(lang[0]) and lang_info[lang[0]]['native'] or lang[1]">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
             </div>   
         </tal:block>
