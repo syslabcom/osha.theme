@@ -163,6 +163,9 @@ class IOSHA(Interface):
     def getInternationalNetwork():
         """ returns the sites from the European Network """
 
+    def handleOSHMailUrls(text, id=''):
+        """ turn relative URLs into absolute URLs based on the context's URL; append google analytics code """
+
     def makeAbsoluteUrls(text):
         """ make absolute urls out of relative urls """
 

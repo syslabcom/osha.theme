@@ -4,6 +4,7 @@ from time import time
 import datetime
 from osha.theme.browser.interfaces import IOSHA
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import getSiteEncoding
 from Products.Five import BrowserView
 from zope.interface import implements, alsoProvides
 from plone.memoize.instance import memoize
@@ -246,9 +247,10 @@ class OSHA(BrowserView):
 
 
     def handleOSHMailUrls(self, text, id=''):
-        """ turn relative URLs into absolute URLs based on the context's URL """
-        #import pdb; pdb.set_trace()
-        
+        """ turn relative URLs into absolute URLs based on the context's URL; append google analytics code """
+        encoding = getSiteEncoding(self)
+        if type(text)==unicode:
+            text = text.encode(encoding)
         links = []
         isURL = validation.validatorFor('isURL')
         if isURL(text)==1:
@@ -267,6 +269,7 @@ class OSHA(BrowserView):
                 newlink = "%(link)s%(joinchar)sutm_source=oshmail&utm_medium=email&utm_campaign=%(campaign)s" % dict(
                     link=urljoin(au, link), joinchar=joinchar, campaign=id!='' and id or 'oshmail')
                 text = text.replace(link, newlink)
+        text = text.decode(encoding)
         return text
 
     def makeAbsoluteUrls(self, text):
