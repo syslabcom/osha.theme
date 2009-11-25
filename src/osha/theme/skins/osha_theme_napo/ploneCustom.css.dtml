@@ -271,7 +271,12 @@ width:810px!important;
 float:right;
 margin:0 3em;
 }
+/**********************Css for Gallery Section**********************/
 
+#friendsmenu .tileItem {
+	width:200px;
+	float:left;fl
+}
 
 /***************IE Fixes for the Napo Makeover for IE6**************/
 
