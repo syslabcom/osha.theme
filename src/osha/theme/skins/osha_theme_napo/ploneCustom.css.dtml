@@ -278,6 +278,11 @@ margin:0 3em;
 	float:left;
 }
 
+#friendsmenu img {
+	width:200px;
+	float:left;
+}
+
 /***************IE Fixes for the Napo Makeover for IE6**************/
 
 /*This should fix the width of the partner portlet for IE6*/
