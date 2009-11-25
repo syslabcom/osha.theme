@@ -4,7 +4,7 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="plone">
+      i18n:domain="osha">
   <head><title></title></head>
   <body>
 
@@ -48,11 +48,11 @@
                 August 16, 2001 at 23:35:59
               </span>
 	      <span tal:condition="python: item_pubdate.year() < 1900"
-		    i18n:translate="">No publication date set</span>
+		    i18n:translate="label_no_publication_date_set">No publication date set</span>
               <tal:modified>
-                - <tal:label i18n:translate="box_item_modified">
-                  Last modified:
-                </tal:label>
+                - <tal:label i18n:translate="listingheader_modified">
+                  Last modified
+                </tal:label>:
                 <span tal:replace="python:toLocalizedTime(item_modified, long_format=0)"
                       tal:on-error="python:toLocalizedTime('2000/01/01', long_format=0)">
                   August 16, 2001 at 23:35:59
@@ -65,7 +65,7 @@
             <p tal:define="descr python:result.getObject().getAnswer()"
                tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
           </tal:faq>
- 
+          
           <tal:notfaq condition="python: result.portal_type != 'HelpCenterFAQ'">
             <p tal:define="descr result/Description" 
                tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
@@ -77,16 +77,16 @@
           </tal:url>
           <br/>
           <tal:remotelanguage condition="item_remoteLanguage">
-            <strong><tal:remotelanguagetrans i18n:translate="box_item_remotelanguage">
-                Languages: 
-            </tal:remotelanguagetrans></strong>
+            <strong><tal:remotelanguagetrans i18n:translate="label_languages">
+                Languages
+            </tal:remotelanguagetrans>:</strong>
             <span tal:repeat="lang item_remoteLanguage" tal:omit-tag="">
               <span tal:replace="python:gc(lang)"/><span tal:omit-tag="" tal:condition="not:repeat/lang/end">,</span> 
             </span>
           </tal:remotelanguage>
           <br tal:condition="item_subject"/>
           <tal:Subject condition="item_subject">
-            <strong><tal:desc>
+            <strong><tal:desc i18n:translate="heading_oshcontent_seealso">
                 See also:
             </tal:desc></strong>
             <tal:define define="seplist python:oshaview.getSingleEntryPointsBySubject(item_subject)">
