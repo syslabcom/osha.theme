@@ -992,16 +992,12 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
 }
 
 #network-member-flag {
-  width: 178px;
-  height: 101px;
-  background-image: url(image_frame.png);
   float:right;
 }
 
 #network-member-flag img {
-  padding-left:15px;
-  padding-top:0px;
-  border: 0;
+  padding: 0px;
+  border: 1px solid black;
 }
 
 
