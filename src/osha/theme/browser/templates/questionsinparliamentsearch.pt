@@ -73,7 +73,7 @@
 
   <div>
     <div tal:define="query view/make_query;
-                     res python:here.portal_catalog(query);
+                     res python:here.queryCatalog(query);
                      results res;
                     ">
 <!--span tal:replace="query" /-->
