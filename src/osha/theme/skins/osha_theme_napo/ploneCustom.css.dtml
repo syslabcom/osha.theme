@@ -275,7 +275,7 @@ margin:0 3em;
 
 #friendsmenu .tileItem {
 	width:200px;
-	float:left;fl
+	float:left;
 }
 
 /***************IE Fixes for the Napo Makeover for IE6**************/
