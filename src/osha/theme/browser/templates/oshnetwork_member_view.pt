@@ -41,16 +41,10 @@
 
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
-        <tal:flag define="flag view/getNationalFlag">
-            <tal:has_flag condition="flag">
-                <div id="network-member-flag">
-                    <img class="image-right" src="national_flag.png"
-                        alt="National Flag" width="150" height="75"
-                        tal:attributes="src flag/absolute_url;
-                            alt flag/Title;"/>
-                </div>
-            </tal:has_flag>
-        </tal:flag>
+
+        <div id="network-member-flag">
+          <tal:flag replace="structure view/getNationalFlag"/>        
+        </div>
 
         <p tal:condition="python: not text and is_editable"
            i18n:domain="plone"

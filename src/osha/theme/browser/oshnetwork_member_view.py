@@ -1,5 +1,6 @@
 from DateTime import DateTime
 
+from zope.app.component.hooks import getSite
 from zope.interface import implements
 from zope.i18nmessageid import MessageFactory
 from Products.Five import BrowserView
@@ -35,16 +36,16 @@ class OSHNetworkMemberView(BrowserView):
         return "/%s/%s" % (language, path)
 
     def getNationalFlag(self):
-        """ Look for an image called 'national_flag.png' in the folder
-        of the canonical translation of the network member. """
         context = self.context
-        canonical_parent = context.getCanonical().aq_inner.aq_parent
-        flag = None
-        flag_src = "national_flag.png"
-        if flag_src in canonical_parent.objectIds():
-            path = canonical_parent.absolute_url_path()
-            flag = context.unrestrictedTraverse(path+"/"+flag_src)
-        return flag
+        country = context.aq_inner.aq_parent.getId()
+        flag = country + "_large.gif"
+        try:
+            img = context.restrictedTraverse(flag)
+            flag_tag = img.tag()
+        except AttributeError:
+            flag_tag = ""
+
+        return flag_tag
 
     def getNews(self):
         """ return the brains for relevant news items """
