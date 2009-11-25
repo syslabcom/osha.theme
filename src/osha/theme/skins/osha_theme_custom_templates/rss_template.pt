@@ -47,7 +47,7 @@
     <rdf:Seq>
         <tal:block repeat="obj_item python: objects">
             <rdf:li rdf:resource="" tal:define="objurl obj_item/getURL|obj_item/absolute_url"
-                tal:attributes="rdf:resource string:${objurl}?sourceid=rss&utm_source=home&utm_medium=rss&utm_campaign=rssfeeds" />
+                tal:attributes="rdf:resource string:${objurl}?sourceid=rss&amp;utm_source=home&amp;utm_medium=rss&amp;utm_campaign=rssfeeds" />
         </tal:block>
     </rdf:Seq>
   </items>
@@ -55,9 +55,9 @@
 </channel>
 
 <tal:block repeat="brain python: objects">
-  <item rdf:about="" tal:attributes="rdf:about string:${objurl}?sourceid=rss&utm_source=home&utm_medium=rss&utm_campaign=rssfeeds" tal:define="obj_item brain/getObject|nocall:brain;objurl obj_item/getURL|obj_item/absolute_url">
+  <item rdf:about="" tal:attributes="rdf:about string:${objurl}?sourceid=rss&amp;utm_source=home&amp;utm_medium=rss&amp;utm_campaign=rssfeeds" tal:define="obj_item brain/getObject|nocall:brain;objurl obj_item/getURL|obj_item/absolute_url">
     <title tal:content="obj_item/pretty_title_or_id">Title</title>
-    <link tal:content="string:${obj_item/Identifier}?sourceid=rss&utm_source=home&utm_medium=rss&utm_campaign=rssfeeds">Identifier</link>
+    <link tal:content="string:${obj_item/Identifier}?sourceid=rss&amp;utm_source=home&amp;utm_medium=rss&amp;utm_campaign=rssfeeds">Identifier</link>
     <description tal:content="obj_item/Description">Description</description>
     <dc:publisher>European Agency for Safety and Health at Work</dc:publisher>
     <dc:creator>European Agency for Safety and Health at Work</dc:creator>

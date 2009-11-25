@@ -2,10 +2,10 @@ osha.theme Changelog
 ====================
 
 
-1.2.49 (unreleased)
+1.2.49 (2009-11-25)
 -------------------
 
-- Nothing changed yet.
+- fix for the rsstemplate, wrong xml encoding (pilz)
 
 
 1.2.48 (2009-11-25)
@@ -13,7 +13,7 @@ osha.theme Changelog
 
 - Added oshnetwork member flags (pecek, deroiste)
 - Configured practical solutions views for FAQs and changed them to search by
-  Language instead of getRemoteLanguage#375 (deroiste)
+  Language instead of getRemoteLanguage #375 (deroiste)
 - replaced portal_catalog(query) with queryCatalog in question-in-
   parliament-search, due to different results (thomasw)
 - added Google analytics code to OSHMail (thomasw)
@@ -40,7 +40,7 @@ osha.theme Changelog
 1.2.45 (2009-11-17)
 -------------------
 
-- added db_filter based image search for DAL named @@image-library-search. Bases on deroiste's code (pilz)
+- added db_filter based image search for DAL named @@image-library-search. Bases on deroistes code (pilz)
 - in the rss template now show the context url instead of the portal url as base for the feed. Prepares the fix for #304 (pilz)
 - display:none for the filed under text on the blog entry (pilz)
 - remove unnecessary (and potentially harmful) condition:contact from pressroom template (thomasw)
