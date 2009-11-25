@@ -7,6 +7,9 @@ osha.theme Changelog
 
 - Configured practical solutions views for FAQs and changed them to search by
   Language instead of getRemoteLanguage#375 (deroiste)
+- replaced portal_catalog(query) with queryCatalog in question-in-
+  parliament-search, due to different results (thomasw)
+- added Google analytics code to OSHMail (thomasw)
 
 
 1.2.47 (2009-11-18)
