@@ -64,8 +64,8 @@
 
             <h1 tal:content="view/get_i18n_database_search_heading"
                 >Search in the Risk Assessment Database
-
             </h1>
+
             <div class="field_default">
               <input type="text"
                      id="SearchableText"
@@ -132,7 +132,7 @@
 
                     <tal:has_categories condition="keyword">
                       <label>
-                        <span i18n:translate="label_category" 
+                        <span i18n:translate="label_category"
                               i18n:domain="plone">
                           Category</span>: <tal:categories
                                               content="keyword">
@@ -179,7 +179,11 @@
                      i18n:domain="plone"
                      i18n:attributes="value label_search;"
                      />
-              <input  class="context" type="reset" value="Reset"
+              <input  class="context" 
+                      type="reset" 
+                      value="Reset"
+                      i18n:domain="osha"
+                      i18n:attributes="value Reset"
                       tal:attributes="onclick string:window.location='${context/absolute_url}/${template/getId}'" />
 
             </div>
@@ -202,7 +206,7 @@
                     ><tal:number i18n:name="number"
                                  content="python:len(results)"
                                  >234 </tal:number>
-              </span> items matching your search terms
+              </span>
             </span>
           </h2>
 
