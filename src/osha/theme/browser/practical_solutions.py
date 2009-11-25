@@ -154,6 +154,17 @@ class PracticalSolutionView(DBFilterView):
                                                local_search_portal_type)
         return search_portal_types
 
+    def translate(self, msgid):
+        context = self.context
+        trans_tool = getToolByName(context, "translation_service")
+        preflang = getToolByName(self.context,
+                                 'portal_languages').getPreferredLanguage()
+        return trans_tool.utranslate("osha",
+                                         msgid,
+                                         {},
+                                         context=context,
+                                         target_language=preflang)
+
     def search_types(self):
         """ Return a list of translated search types to select
         from. This overrides the DBFilterView method to remove
@@ -168,17 +179,18 @@ class PracticalSolutionView(DBFilterView):
                                    'CaseStudy', 'Provider',
                                    'HelpCenterFAQ']
         TYPES = [
-            ('Useful links', 'OSH_Link',
+            (self.translate("label_useful_links"), 'OSH_Link',
              'OSH_Link' in search_portal_types) ,
-            ('Risk assessment tools', 'RALink',
+            (self.translate("label_risk_assessment_tools"), 'RALink',
              'RALink' in search_portal_types) ,
-            ('Case studies', 'CaseStudy',
+            (self.translate("label_case_studies"), 'CaseStudy',
              'CaseStudy' in search_portal_types) ,
-            ('Providers', 'Provider',
+            (self.translate("label_providers"), 'Provider',
              'Provider' in search_portal_types) ,
-            ('FAQ', 'HelpCenterFAQ',
+            (self.translate("FAQ"), 'HelpCenterFAQ',
              'HelpCenterFAQ' in search_portal_types) ,
                 ]
+
         return TYPES
 
     def search_portal_types(self):

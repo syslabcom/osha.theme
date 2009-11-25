@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
       lang="en-US"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="osha">
 
   <metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
 
@@ -98,7 +98,7 @@
                        i18n:translate="label_database"> Database </label><br />
 
                     <div class="formHelp"
-                         i18n:translate="help_search_database">
+                         i18n:translate="help_advanced_search_database">
                       Select the database types you want to search.
                     </div>
 
@@ -132,7 +132,8 @@
 
                     <tal:has_categories condition="keyword">
                       <label>
-                        <span i18n:translate="label_category">
+                        <span i18n:translate="label_category" 
+                              i18n:domain="plone">
                           Category</span>: <tal:categories
                                               content="keyword">
                         </tal:categories>
