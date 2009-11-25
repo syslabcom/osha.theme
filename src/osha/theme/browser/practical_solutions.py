@@ -51,7 +51,7 @@ class PracticalSolutionsView(DBFilterView):
                                  'portal_languages').getPreferredLanguage()
         search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider", "HelpCenterFAQ"]
         query = In('portal_type', search_portal_types)\
-                & In('Language', [preflang, ""])\
+                & In('Language', preflang)\
                 & Eq('review_state','published')
         return query
 
@@ -244,7 +244,7 @@ class PracticalSolutionView(DBFilterView):
                                  'portal_languages').getPreferredLanguage()
         language = self.request.get('Language', preflang)
         if language:
-            query = query & In('Language', [language, ""])
+            query = query & In('Language', language)
             #query.update({'language':language})
 
         subcategory = self.request.get('subcategory', '')
