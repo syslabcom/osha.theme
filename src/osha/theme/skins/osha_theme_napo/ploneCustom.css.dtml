@@ -274,15 +274,15 @@ margin:0 3em;
 /**********************Css for Gallery Section**********************/
 
 #gallery-image {
-	width:200px;
+	border:1px solid blue;
 	float:left;
-	border:1px solid red;
+	margin-right:20px;
+	width:200px;
 }
 
 #gallery-text {
-	width:200px;
 	float:left;
-	border:1px solid red;
+	width:440px;
 }
 
 
