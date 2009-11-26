@@ -273,22 +273,18 @@ margin:0 3em;
 }
 /**********************Css for Gallery Section**********************/
 
-.documentContent#friendsmenu .tileItem {
-	width:200px;
-	float:left;
-	border:1px solid red;
-}
-
-.documentContent#friendsmenu img {
-	width:200px;
-	float:left;
-	border:1px solid red;
-}
-
 #friendsmenu.tileItem {
- 	width:200px;
+	width:200px;
+	float:left;
 	border:1px solid red;
 }
+
+#friendsmenu img {
+	width:200px;
+	float:left;
+	border:1px solid red;
+}
+
 
 /***************IE Fixes for the Napo Makeover for IE6**************/
 
