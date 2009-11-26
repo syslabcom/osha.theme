@@ -19,9 +19,12 @@
 
         <div id="oshnetwork_editors_box" tal:condition="isEditor">
             <ul>
-                <li><a tal:attributes="href string:${container/absolute_url}/edit">Edit this page</a></li>
-                <li><a tal:attributes="href string:${container/absolute_url}/../news/folder_contents">Manage News</a></li>
-                <li><a tal:attributes="href string:${container/absolute_url}/../events/folder_contents">Manage Events</a></li>
+                <li><a tal:attributes="href string:${container/absolute_url}/edit"
+                       i18n:translate="label_edit_this_page">Edit this page</a></li>
+                <li><a tal:attributes="href string:${container/absolute_url}/../news/folder_contents"
+                       i18n:translate="label_manage_news">Manage News</a></li>
+                <li><a tal:attributes="href string:${container/absolute_url}/../events/folder_contents"
+                       i18n:translate="label_manage_events">Manage Events</a></li>
             </ul>
         </div>
 
