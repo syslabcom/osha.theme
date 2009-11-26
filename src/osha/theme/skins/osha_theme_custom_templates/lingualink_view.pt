@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en"
+      i18n:domain="BlueLinguaLink">
+
+<body>
+    <metal:body define-macro="body">
+        <p class="documentDescription"
+           tal:content="here/Description"
+           tal:condition="here/Description">
+            Description
+        </p>
+        <h1 i18n:domain="linguaplone"
+            i18n:translate="header_translation_unavailable">
+            Translation Unavailable
+        </h1>
+
+        <p i18n:translate="sorry_text">
+            We apologize. The selected content is available only in another 
+            language. 
+        </p>
+
+        <tal:define    define="target python:context.getLinkTarget();
+                                translations target/getTranslations|nothing">
+            <p tal:on-error="python:context.restrictedTraverse('/'.join(target.getPhysicalPath()))"  tal:condition="python: target and len(translations) == 1"
+               tal:define="lang python:translations.keys()[0];
+                           obj python:translations[lang][0]"
+               i18n:translate="description_read_translated_versions_single">
+                Would you like to view it anyway in 
+                <a href="#" 
+                   i18n:name="language"
+                   tal:attributes="href obj/absolute_url;
+                                   title obj/title_or_id"
+                   tal:content="python:context.portal_languages.getNameForLanguageCode(lang)" >language</a>?
+            </p>
+            <p tal:on-error="nothing" tal:condition="python: target and len(translations) > 1"
+               i18n:translate="description_read_translated_versions_list">
+                Would you like to view it anyway in:
+            </p>
+
+            <ul tal:on-error="nothing" tal:condition="python: target and len(translations) > 1">
+                <tal:repeat tal:repeat="lang translations">
+                    <li tal:define="obj python:translations[lang][0]">
+                        <a href="#" 
+                           tal:attributes="href obj/absolute_url;
+                                           title obj/title_or_id"
+                           tal:content="python:context.portal_languages.getNameForLanguageCode(lang)" >language</a>
+                    </li>
+                </tal:repeat>
+            </ul>
+        </tal:define>
+    </metal:body>
+</body>
+</html>
