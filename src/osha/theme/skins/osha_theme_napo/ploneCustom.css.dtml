@@ -285,6 +285,10 @@ margin:0 3em;
 	width:440px;
 }
 
+.tileItem {
+border-top:1px solid blue;
+}
+
 
 /***************IE Fixes for the Napo Makeover for IE6**************/
 
