@@ -1265,9 +1265,8 @@ body.template-topics-view #relatedMedia {
 }
 
 /* osha special for publications display */
-div.collage-item h2 {
-   color: gray;
-   border: none;
+div.collage-item  {
+    margin-bottom: 2em;
 }
 
 /* </dtml-with> */
