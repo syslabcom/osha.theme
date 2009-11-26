@@ -29,7 +29,7 @@ class TestRSS(unittest.TestCase):
         view = RSSFeedsView(None, None)
         view._getTranslatedCategories = lambda: [('1', 'one'), ('2', 'two'), ('3', u'dreiö')]
         view._getPortalPath = lambda: "portal_path"
-        view._getPrefferedLanguage = lambda: "en"
+        view._getPreferedLanguage = lambda: "en"
         view._getTypesForFeeds = lambda: [{'doc_type' :'doc_type', 
                                            'title' : 'nice title',
                                            'icon' : 'nice icon.png',
