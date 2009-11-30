@@ -19,7 +19,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface import IImageContent, IFileContent
 
 
-class IImagePortlet(IPortletDataProvider):    
+class IImagePortlet(IPortletDataProvider):
     header = schema.TextLine(
                         title=_(u"Portlet header"),
                         description=_(u"Title of the rendered portlet"),
@@ -52,11 +52,13 @@ class IImagePortlet(IPortletDataProvider):
     width = schema.TextLine(
                         title=_(u"Width"),
                         description=_(u"Enter display width"),
+                        required=False
                         )
 
     height = schema.TextLine(
                         title=_(u"Height"),
                         description=_(u"Enter display height"),
+                        required=False
                         )
 
 
@@ -68,7 +70,7 @@ class Assignment(base.Assignment):
     show_box = False
     width='200'
     height='60'
-    
+
     def __init__(self, header=u"", image=None, url=u"", show_box=False, width='200', height='60'):
         self.header = header
         self.image = image
@@ -83,14 +85,14 @@ class Assignment(base.Assignment):
         "manage portlets" screen. Here, we use the title that the user gave.
         """
         return self.header
-              
+
 
 class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('image.pt')
     flash_snippet = ViewPageTemplateFile('flashsnippet.pt')
-    
-    
+
+
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         modified = self.get_object() and self.get_object().modified() or ''
@@ -99,16 +101,16 @@ class Renderer(base.Renderer):
     @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
-            
+
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')        
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         self.portal = portal_state.portal()
 
     @property
     def available(self):
         return self._data()
-        
+
     @memoize
     def title(self):
         return self.data.header
@@ -135,7 +137,7 @@ class Renderer(base.Renderer):
 
         if image_path.startswith('/'):
             image_path = image_path[1:]
-        
+
         if not image_path:
             return None
 
@@ -149,17 +151,17 @@ class Renderer(base.Renderer):
         imgob = portal.restrictedTraverse(image_path, default=None)
         if not imgob:
             return None
-            
+
         portal_languages = getToolByName(self.context, 'portal_languages')
         preflang = portal_languages.getPreferredLanguage()
-        
+
         if preflang != imgob.Language():
             if imgob.hasTranslation(preflang):
                 return imgob.getTranslation(preflang)
             else:
                 return imgob.getCanonical()
         return imgob
-        
+
     @memoize
     def tag(self):
         ob = self.get_object()
@@ -175,17 +177,19 @@ class Renderer(base.Renderer):
         if typ=='application/x-shockwave-flash':
             return self.flash_snippet()
         elif major=='image':
-            return self.get_object().tag(height=self.data.height, width=self.data.width, alt=self.title(), title=self.title())
+            height = True and self.data.height or "90%"
+            width = True and self.data.width or "90%"
+            return self.get_object().tag(height=height, width=width, alt=self.title(), title=self.title())
         else:
             return ''
-    
-    
+
+
     @memoize
     def _data(self):
         return True
 
     # flash helper methods - needs the following vars: url, id_attr, width, height
-    # could be made more versatile for the rest of the vars :) 
+    # could be made more versatile for the rest of the vars :)
     def flashcode(self):
         flashtemplate = """var nm = new FlashObject("%s", "%s", "%s", "%s", "7", "#ffffff");
         nm.addParam("quality", "high");
@@ -196,9 +200,11 @@ class Renderer(base.Renderer):
         nm.addVariable("hl", "en");
         nm.addVariable("fs", "1");
         nm.write("%s");"""
-        
+
         ob = self.get_object()
-        return flashtemplate % (ob.absolute_url(), self.id_attr(),self.data.width, self.data.height, self.id_attr())
+        height = True and self.data.height or "90%"
+        width = True and self.data.width or "90%"
+        return flashtemplate % (ob.absolute_url(), self.id_attr(), width, height, self.id_attr())
 
     def id_attr(self):
         ob = self.get_object()
@@ -209,7 +215,7 @@ class AddForm(base.AddForm):
     label = _(u"Add Image/Flash Portlet")
     description = _(u"Display an Image/Flash in the appropriate language with Language Fallback")
     form_fields['image'].custom_widget = UberSelectionWidget
-    
+
     def create(self, data):
         return Assignment(header=data.get('header', u""),
                           image=data.get('image', u""),

@@ -1,17 +1,17 @@
 <tal:cond condition="view/tag">
-<dl class="portlet portletImage">
+  <dl class="portlet portletImage">
     <dt tal:condition="view/show_box"
         class="portletHeader">
-        <span class="portletTopLeft"></span>
-        <span tal:replace="view/title" />
-        <span class="portletTopRight"></span>
+      <span class="portletTopLeft"></span>
+      <span tal:replace="view/title" />
+      <span class="portletTopRight"></span>
     </dt>
 
     <dd class="portletItem odd">
-        <a tal:condition="view/url" 
-           tal:attributes="href view/url" tal:content="structure view/tag" target="_blank"></a>        
-        <span tal:condition="not:view/url" tal:replace="structure view/tag" />
+      <a tal:condition="view/url" 
+         tal:attributes="href view/url" tal:content="structure view/tag" target="_blank"></a>        
+      <span tal:condition="not:view/url" tal:replace="structure view/tag" />
     </dd>
-        
-</dl>
+    
+  </dl>
 </tal:cond>

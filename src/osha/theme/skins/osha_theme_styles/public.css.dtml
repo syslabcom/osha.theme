@@ -974,6 +974,13 @@ div.managedPortlet.portlet {
     padding-left:18px;
 }
 
+/* portletImage */
+
+d.portletDocumentFallback embed,
+dl.portletImage img {
+   width: 90%;
+}
+
 /* manage portlets */
 
 .section div {
