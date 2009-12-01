@@ -976,7 +976,7 @@ div.managedPortlet.portlet {
 
 /* portletImage */
 
-d.portletDocumentFallback embed,
+dl.portletDocumentFallback embed,
 dl.portletImage img {
    width: 90%;
 }
