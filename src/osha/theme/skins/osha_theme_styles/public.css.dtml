@@ -974,11 +974,15 @@ div.managedPortlet.portlet {
     padding-left:18px;
 }
 
-/* portletImage */
+/* portletImage or Flash object in portletDocumentFallback */
 
-dl.portletDocumentFallback embed,
-dl.portletImage img {
+div#portal-column-one dl.portletImage img {
    width: 90%;
+}
+
+div#portal-column-one dl.portletDocumentFallback embed,
+div#portal-column-one dl.portletDocumentFallback object {
+   width: 100%;
 }
 
 /* manage portlets */
