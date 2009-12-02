@@ -41,14 +41,6 @@ class IImagePortlet(IPortletDataProvider):
                         required=False
                         )
 
-    show_box = schema.Bool(
-                        title=_(u"Display Box?"),
-                        description=_(u"Leave this unchecked if you only want "
-                            "to see your banner without a title and a box "
-                            "around."
-                            ),
-                        )
-
     width = schema.TextLine(
                         title=_(u"Width"),
                         description=_(u"Enter display width"),
@@ -176,12 +168,27 @@ class Renderer(base.Renderer):
             minor=""
         if typ=='application/x-shockwave-flash':
             return self.flash_snippet()
+
         elif major=='image':
-            height = True and self.data.height or "90%"
+
+            result = '<img src="%s"' % ob.absolute_url()
+            title = getattr(self, 'title', '')
+            result = '%s alt="%s title=%s"' % (result, title, title)
+
             width = True and self.data.width or "90%"
-            return self.get_object().tag(height=height, width=width, alt=self.title(), title=self.title())
+            result = '%s width="%s"' % (result, width)
+
+            # % heights don't work well in webkit based browsers
+            # but leaving out the height attribute works
+            height = self.data.height
+            if height:
+                result = '%s height="%s"' % (result, height)
+
+            return '%s />' % result
+
         else:
             return ''
+
 
 
     @memoize
