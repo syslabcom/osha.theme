@@ -10,7 +10,7 @@
 
 networkfolder = context
 for i in context.REQUEST.PARENTS:
-    if i.getId()=='oshnetwork':
+    if i.getId()=='fopnetwork':
         networkfolder = i
 
 return networkfolder.absolute_url()
