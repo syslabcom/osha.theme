@@ -276,17 +276,19 @@ margin:0 3em;
 #gallery-image {
 	border:1px solid blue;
 	float:left;
-	margin-right:20px;
+	margin-right:10px;
 	width:200px;
 }
 
 #gallery-text {
 	float:left;
-	width:440px;
+	width:110px;
 }
 
 .tileItem {
-border-top:1px solid blue;
+	border-top:0px solid blue!important;
+	float:left;
+	width:330px;
 }
 
 
