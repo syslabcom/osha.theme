@@ -273,19 +273,19 @@ margin:0 3em;
 }
 /**********************Css for Gallery Section**********************/
 
-#gallery-image {
+.section-sub-napo #gallery-image {
 	border:1px solid blue;
 	float:left;
 	margin-right:10px;
 	width:200px;
 }
 
-#gallery-text {
+.section-sub-napo #gallery-text {
 	float:left;
 	width:110px;
 }
 
-.tileItem {
+.section-sub-napo .tileItem {
 	border-top:0px solid blue!important;
 	float:left;
 	width:330px;
