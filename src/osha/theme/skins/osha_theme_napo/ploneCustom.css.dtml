@@ -174,47 +174,34 @@ h3 {
 display:none;
 }
 
+.boxfriends {
+width:100%;
+height:200px;
+}
+
 #imageboss {
 float:left;
-margin:0 1em 0 1em;
-}
-.textboss {
-margin:3em 0 0;
+margin:0 0 0 1em;
 }
 #imagenapette {
 float:left;
 margin:0 0 0 1em;
 }
-.textNapette {
-margin:4em 0 5em 10.3em;
-}
 #imagestrudel {
 float:left;
-margin:0 0 0 0;
-}
-.textStrudel {
-margin:4em 0 5em 10.3em;
+margin:0 0 0 1em;
 }
 #imagecollegue {
 float:left;
-margin:0 0 0 0;
-}
-.textCollegue {
-margin:4em 0 5em 10.3em;
+margin:0 0 0 1em;
 }
 #imageanimals {
 float:left;
-margin:0 0 0 0;
-}
-.textAnimals {
-margin:2em 0 2em 10.3em;
+margin:0 0 0 1em;
 }
 #imageobjects {
 float:left;
-margin:0 0 0 0;
-}
-.textObjects {
-margin:3em 0 2em 10.3em;
+margin:0 0 0 1em;
 }
 
 .image-left {
