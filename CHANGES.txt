@@ -5,7 +5,7 @@ osha.theme Changelog
 -------------------
 
 - Fixed a bug in folder_listing.pt that is causing problems with seminars (jcbrand)
-
+- Added EUPL license (deroiste)
 
 1.2.49 (2009-11-25)
 -------------------
