@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+1.2.50 (Unreleased)
+-------------------
+
+- Fixed a bug in folder_listing.pt that is causing problems with seminars (jcbrand)
+
 
 1.2.49 (2009-11-25)
 -------------------
