@@ -1,14 +1,23 @@
-from plone.app.portlets.portlets import news
-from Products.AdvancedQuery import Or, Eq, And, In, Le
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.memoize.instance import memoize
-from plone.memoize import ram
+import logging
+
 from Acquisition import aq_inner, aq_parent
-from Products.CMFCore.utils import getToolByName
-from zope.component import getMultiAdapter
-from plone.memoize.compress import xhtml_compress
 from DateTime import DateTime
+
+from zope.component import getMultiAdapter
+
 from plone.app.portlets.cache import render_cachekey
+from plone.app.portlets.portlets import news
+
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
+
+from Products.AdvancedQuery import Or, Eq, And, In, Le
+from Products.CMFCore.utils import getToolByName
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
+log = logging.getLogger('osha.theme/portlets/news.py')
+
 
 class Renderer(news.Renderer):
     """Dynamically override standard header for news portlet"""
@@ -66,7 +75,11 @@ class Renderer(news.Renderer):
             queryBoth = queryBoth & In('Subject', kw)
         queryEffective = Le('effective', DateTime())
         query = And(Or(queryA, queryB), queryBoth, queryEffective)
-        return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
+        try:
+            return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
+        except KeyError, e:
+            log.error('KeyError: %s' %  e.__str__())
+            return []
 
 
     @memoize
