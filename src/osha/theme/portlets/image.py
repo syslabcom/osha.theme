@@ -1,4 +1,7 @@
+import logging 
+
 import Acquisition
+
 from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
@@ -18,6 +21,7 @@ from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 from Products.ATContentTypes.interface import IImageContent, IFileContent
 
+log = logging.getLogger('osha.theme.portlets.image.py')
 
 class IImagePortlet(IPortletDataProvider):
     header = schema.TextLine(
@@ -92,7 +96,11 @@ class Renderer(base.Renderer):
 
     @ram.cache(_render_cachekey)
     def render(self):
-        return xhtml_compress(self._template())
+        try:
+            return xhtml_compress(self._template())
+        except AttributeError, e:
+            log.error(e.__str__())
+            return 'There was an error while rendering this portlet.'
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
