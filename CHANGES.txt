@@ -4,6 +4,7 @@ osha.theme Changelog
 1.2.50 (Unreleased)
 -------------------
 
+- Added FAQ to practical solutions portlet (deroiste)
 - Fixed a bug in folder_listing.pt that is causing problems with seminars (jcbrand)
 - Added EUPL license (deroiste)
 
