@@ -42,7 +42,7 @@ class WorklistView(DBFilterView):
             ('Case Study', 'CaseStudy', 'CaseStudy' in search_portal_types) ,
             ('Provider', 'Provider', 'Provider' in search_portal_types) ,
             ('Publication', 'Publication', 'Publication' in search_portal_types) ,
-            ('Frequently Asked Question', 'HelpCenterFAQ', 'HelpCenterFAQ' in search_portal_types) ,
+            ('Frequently Asked Question (FAQ)', 'HelpCenterFAQ', 'HelpCenterFAQ' in search_portal_types) ,
             ('Legislation Directive', 'Directive', 'Directive' in search_portal_types),
             ('Legislation Modification', 'Modification', 'Modification' in search_portal_types),
             ('Legislation Amendment', 'Amendment', 'Amendment' in search_portal_types),
