@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.2.50 (Unreleased)
+1.2.50 (2009-12-07)
 -------------------
 
 - Added FAQ to practical solutions portlet (deroiste)
