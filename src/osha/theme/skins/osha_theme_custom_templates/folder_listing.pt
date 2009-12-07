@@ -28,17 +28,21 @@
 
     <div tal:replace="structure provider:plone.abovecontentbody" />
 
+    <!--
+        This thing is causing a lot of trouble... not sure what it's for.
+
     <div metal:define-macro="text-field-view"
             id="parent-fieldname-text" class="stx"
             tal:define="kss_class python:getKssClasses('text',
                         templateId=templateId, macro='text-field-view');
-                        schema nocall:here/schema|nothing;
-                        text python:schema and schema().get('text', {}).get(here, None)"
+                        schema here/schema|nothing;
+                        text python:schema and schema.get('text', {}).get(here, None)"
             tal:condition="text"
             tal:attributes="class python:test(here.Format() in ('text/structured',
                                                 'text/x-rst', ), 'stx' + kss_class, 'plain' + kss_class)">
         <div metal:define-slot="inside" tal:replace="structure text">The body</div>
     </div>
+    -->
 
     <metal:listingmacro define-macro="listing">
     <tal:foldercontents define="contentFilter contentFilter|request/contentFilter|nothing;

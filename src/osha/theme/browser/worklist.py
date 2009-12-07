@@ -18,29 +18,37 @@ class WorklistView(DBFilterView):
         return self.template() 
 
     def search_types(self):
-        """ returns a list of translated search types to select from 
-        This method is overwritten from dbfilter to provide a default list of types, so that all 
-        are selected initially"""
+        """ Returns a list of translated search types to select from.
+            This method is overwritten from dbfilter to provide a default 
+            list of types, so that all are selected initially.
+        """
         context = Acquisition.aq_inner(self.context)
         
-        default = ['OSH_Link', 'RALink', 'CaseStudy', 'Provider', 'Publication', 'Directive', 'Modification','Amendment','Note','Proposal']
+        default = [
+                'OSH_Link', 'RALink', 'CaseStudy', 
+                'Provider', 'Publication', 'HelpCenterFAQ', 
+                'Directive', 'Modification', 'Amendment',
+                'Note', 'Proposal'
+                ]
+
         local_portal_types = context.getProperty('search_portal_types', default)
         search_portal_types = self.request.get('search_portal_types', local_portal_types)
         if not search_portal_types:
             search_portal_types = default
 
         TYPES = [ 
-            ('OSH Link', 'OSH_Link', 'OSH_Link' in search_portal_types) ,
+            ('OSH Resource', 'OSH_Link', 'OSH_Link' in search_portal_types) ,
             ('Risk Assessment Link', 'RALink', 'RALink' in search_portal_types) ,
             ('Case Study', 'CaseStudy', 'CaseStudy' in search_portal_types) ,
             ('Provider', 'Provider', 'Provider' in search_portal_types) ,
             ('Publication', 'Publication', 'Publication' in search_portal_types) ,
+            ('Frequently Asked Question', 'HelpCenterFAQ', 'HelpCenterFAQ' in search_portal_types) ,
             ('Legislation Directive', 'Directive', 'Directive' in search_portal_types),
             ('Legislation Modification', 'Modification', 'Modification' in search_portal_types),
             ('Legislation Amendment', 'Amendment', 'Amendment' in search_portal_types),
             ('Legislation Note', 'Note', 'Note' in search_portal_types),
             ('Legislation Proposal', 'Proposal', 'Proposal' in search_portal_types)
-                ]
+            ]
         return TYPES
 
 

@@ -33,17 +33,17 @@
                     <td class="big-target pressbox-pr-off"
                         onmouseover='jq(this).addClass("pressbox-pr-on");jq(this).removeClass("pressbox-pr-off");'
                         onmouseout='jq(this).removeClass("pressbox-pr-on");jq(this).addClass("pressbox-pr-off");'>
-                        <a href="dynamic-pressroom-releases" i18n:translate="osha_label_pressbox_pressreleases">Press Releases</a>
+                        <a href="dynamicpressroom-releases" i18n:translate="osha_label_pressbox_pressreleases">Press Releases</a>
                     </td>
                     <td class="big-target pressbox-articles-off"
                         onmouseover='jq(this).addClass("pressbox-articles-on");jq(this).removeClass("pressbox-articles-off");'
                         onmouseout='jq(this).removeClass("pressbox-articles-on");jq(this).addClass("pressbox-articles-off");'>
-                        <a href="dynamic-pressroom-articles" i18n:translate="osha_label_pressbox_articles">Articles and<br> Interviews</a>
+                        <a href="dynamicpressroom-articles" i18n:translate="osha_label_pressbox_articles">Articles and<br> Interviews</a>
                     </td>
                     <td class="big-target pressbox-photos-off"
                         onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");'
                         onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'>
-                        <a href="dynamic-pressroom-audiovisual" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
+                        <a href="dynamicpressroom-audiovisual" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
                     </td>
                 </tr>
             </table>

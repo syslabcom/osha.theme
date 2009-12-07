@@ -110,33 +110,6 @@
 
     <browser:page
         for="*"
-        name="dynamic-pressroom-releases"
-        class=".pressroom.DynamicPressRoomView"
-        permission="zope.Public"
-        allowed_interface=".interfaces.IPressRoomView"
-        template="templates/press_releases.pt"
-        />
-
-    <browser:page
-        for="*"
-        name="dynamic-pressroom-articles"
-        class=".pressroom.DynamicPressRoomView"
-        permission="zope.Public"
-        allowed_interface=".interfaces.IPressRoomView"
-        template="templates/press_articles.pt"
-        />
-
-    <browser:page
-        for="*"
-        name="dynamic-pressroom-audiovisual"
-        class=".pressroom.DynamicPressRoomView"
-        permission="zope.Public"
-        allowed_interface=".interfaces.IPressRoomView"
-        template="templates/press_audiovisual.pt"
-        />
-
-    <browser:page
-        for="*"
         name="pressroom-config-form"
         class=".pressroom.DynamicPressRoomConfigurationForm"
         permission="cmf.ModifyPortalContent"
@@ -151,7 +124,7 @@
         allowed_interface=".interfaces.INapoFilmView"
         />
 
-<!-- OSHA Practical Solutions Views -->
+    <!-- OSHA Practical Solutions Views -->
     <browser:page
         for="Products.ATContentTypes.interface.folder.IATFolder"
         name="practical-solutions"
@@ -167,8 +140,7 @@
         />
 
 
-
-<!-- OSHA NapoEpisodeView-->
+    <!-- OSHA NapoEpisodeView-->
     <browser:page
         for="*"
         name="napoepisode"
@@ -419,7 +391,7 @@
         template="templates/abovecontent_portlets.pt"
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"
@@ -427,7 +399,7 @@
         name="manage-oshaabove"
         template="templates/manage_osha_above.pt"
         permission="plone.app.portlets.ManagePortlets"
-    />
+        />
 
     <!-- Above content portlets -->
     <browser:viewlet
@@ -436,7 +408,7 @@
         template="templates/belowcontent_portlets.pt"
         layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
-    />
+        />
     
     
     <browser:page
@@ -445,276 +417,276 @@
         name="manage-oshabelow"
         template="templates/manage_osha_below.pt"
         permission="plone.app.portlets.ManagePortlets"
-    />
+        />
 
     <browser:page
         for="*"
         name="rss-feeds"
         class=".rssfeeds.RSSFeedsView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="oshtopic-view"
         class=".oshtopic_view.OSHTopicView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="oshnews-view"
         class=".oshnews_view.OSHNewsView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="oshnews-local-view"
         class=".oshnews_view.OSHNewsLocalView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="oshevent-view"
         class=".oshevent_view.OSHEventView"
         permission="zope2.View"
-    />
+        />
 
-  <!--browser:page
-      name="oshevents"
-      for="*"
-      permission="zope2.View"
-      class=".oshevents.EventListingView"
-      attribute="upcomingEvents"
-      />
+    <!--browser:page
+        name="oshevents"
+        for="*"
+        permission="zope2.View"
+        class=".oshevents.EventListingView"
+        attribute="upcomingEvents"
+        />
 
-  <browser:page
-      name="past_oshevents"
-      for="*"
-      permission="zope2.View"
-      class=".oshevents.EventListingView"
-      attribute="pastEvents"
-      /-->
+    <browser:page
+        name="past_oshevents"
+        for="*"
+        permission="zope2.View"
+        class=".oshevents.EventListingView"
+        attribute="pastEvents"
+        /-->
 
-  <browser:page
-      name="month.html"
-      for="p4a.calendar.interfaces.ICalendarEnhanced"
-      permission="zope2.View"
-      class=".month.MonthView"
-      layer=".interfaces.IThemeSpecific"
-      template="templates/oshevent_calendar.pt"
-      />
+    <browser:page
+        name="month.html"
+        for="p4a.calendar.interfaces.ICalendarEnhanced"
+        permission="zope2.View"
+        class=".month.MonthView"
+        layer=".interfaces.IThemeSpecific"
+        template="templates/oshevent_calendar.pt"
+        />
 
-  <browser:page
-      name="month.html"
-      for="p4a.calendar.interfaces.ICalendarEnhanced"
-      permission="zope2.View"
-      class=".month.MonthView"
-      layer=".interfaces.IHW2008Specific"
-      template="templates/oshevent_calendar.pt"
-      />
+    <browser:page
+        name="month.html"
+        for="p4a.calendar.interfaces.ICalendarEnhanced"
+        permission="zope2.View"
+        class=".month.MonthView"
+        layer=".interfaces.IHW2008Specific"
+        template="templates/oshevent_calendar.pt"
+        />
 
     <browser:page
         for="*"
         name="publications-overview"
         class=".publications.PublicationsSearchView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="questions-in-parliament-search"
         class=".publications.QuestionsInParliamentSearchView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="topics-view"
         class=".topics_view.TopicsView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="topic-view"
         class=".topics_view.TopicView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="seplisting"
         class=".seplisting.SEPListingView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_alphabetical"
         class=".index_alphabetical.IndexAlphabetical"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_atoz"
         class=".index_atoz.IndexAtoZView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="site_update"
         class=".site_update.SiteUpdateView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_providers"
         class=".dbfilter.ProviderDBFilterView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="db_filter"
         class=".dbfilter.DBFilterView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_provider"
         class=".dbfilter.ProviderDBFilterView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_oshlink"
         class=".dbfilter.OSHLinkDBFilterView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_ralink"
         class=".dbfilter.RALinkDBFilterView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_casestudy"
         class=".dbfilter.CaseStudyDBFilterView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_directive"
         class=".dbfilter.DirectiveDBFilterView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="ro_filter"
         class=".rofilter.ROFilterView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="index_ro_metadata"
         class=".index_ro_metadata.IndexROMetadataView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="search_ro"
         class=".search_ro.SearchROView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="worklist"
         class=".worklist.WorklistView"
         permission="zope2.View"
-    />
+        />
 
     <browser:page
         for="*"
         name="broken-link-log"
         class=".brokenlinks.BrokenLinkLog"
         permission="zope2.View"
-    />
+        />
 
+    <browser:page
+        for="*"
+        name="sitemap_builder_view"
+        class=".navigation.CatalogSiteMap"
+        permission="zope.Public"
+        allowed_attributes="siteMap"
+        layer=".interfaces.IOSHAThemeLayer"
+        />
 
-  <browser:page
-      for="*"
-      name="sitemap_builder_view"
-      class=".navigation.CatalogSiteMap"
-      permission="zope.Public"
-      allowed_attributes="siteMap"
-      layer=".interfaces.IOSHAThemeLayer"
-      />
+    <browser:page
+        name="sitemap.xml.gz"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".sitemap.SiteMapView"
+        permission="zope2.Public"
+        layer=".interfaces.IOSHAThemeLayer"
+        />
 
-  <browser:page
-      name="sitemap.xml.gz"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".sitemap.SiteMapView"
-      permission="zope2.Public"
-      layer=".interfaces.IOSHAThemeLayer"
-     />
+    <browser:page
+        name="newsmap.xml.gz"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".sitemap.NewsMapView"
+        permission="zope2.Public"
+        layer=".interfaces.IOSHAThemeLayer"
+        />
 
-  <browser:page
-      name="newsmap.xml.gz"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      class=".sitemap.NewsMapView"
-      permission="zope2.Public"
-      layer=".interfaces.IOSHAThemeLayer"
-     />
+    <browser:page
+        name="getVocabularyPath"
+        for="*"
+        class=".vocabulary.VocabularyPathView"
+        permission="zope2.Public"
+        />
 
-  <browser:page
-    name="getVocabularyPath"
-    for="*"
-    class=".vocabulary.VocabularyPathView"
-    permission="zope2.Public"
-    />
+    <browser:page
+        name="faq_view"
+        for="Products.ATContentTypes.interface.folder.IATFolder"
+        class=".faq_view.FAQView"
+        permission="zope2.View"
+        />
 
-  <browser:page
-    name="faq_view"
-    for="Products.ATContentTypes.interface.folder.IATFolder"
-    class=".faq_view.FAQView"
-    permission="zope2.View"
-    />
+    <browser:page
+        name="teaser-view"
+        for="*"
+        class=".teaserview.TeaserView"
+        permission="zope2.View"
+        />
 
-  <browser:page
-    name="teaser-view"
-    for="*"
-    class=".teaserview.TeaserView"
-    permission="zope2.View"
-    />
+    <browser:page
+        name="teaser-archive-view"
+        for="*"
+        class=".teaserview.TeaserArchiveView"
+        permission="zope2.View"
+        />
 
-  <browser:page
-    name="teaser-archive-view"
-    for="*"
-    class=".teaserview.TeaserArchiveView"
-    permission="zope2.View"
-    />
+    <browser:page
+        name="resource_listing"
+        for="*"
+        class=".resource_listing.ResourceListingView"
+        permission="zope2.View"
+        />
 
-  <browser:page
-    name="resource_listing"
-    for="*"
-    class=".resource_listing.ResourceListingView"
-    permission="zope2.View"
-    />
 
 </configure>
