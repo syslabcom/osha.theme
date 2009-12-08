@@ -1,5 +1,6 @@
 <dl class="portlet portletPracticalSolutions"
-    tal:define="publications view/getRecentPublications">
+    tal:define="publications view/getRecentPublications"
+    i18n:domain="osha">
 
   <dt class="portletHeader"
       i18n:translate="heading_publications">
@@ -30,7 +31,8 @@
 
 <dl class="portlet portletPracticalSolutions"
     tal:define="solutions view/getRecentPracticalSolutions;
-                titles python:view.getLocalisedSectionTitles()">
+                titles python:view.getLocalisedSectionTitles()"
+    i18n:domain="osha">
 
   <dt class="portletHeader"
       i18n:translate="heading_practical_solutions">
