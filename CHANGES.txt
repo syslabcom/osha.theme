@@ -1,8 +1,8 @@
 osha.theme Changelog
 ====================
 
-1.2.51 (unreleased)
-------------------
+1.2.51 (2009-12-10)
+-------------------
 
 - Commented out FAQ from practical solutions portlet since there are
   no FAQs yet (deroiste)
