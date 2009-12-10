@@ -7,7 +7,7 @@ osha.theme Changelog
 - Commented out FAQ from practical solutions portlet since there are
   no FAQs yet (deroiste)
 - Renamed OSHNetwork flags so that they will appear correctly
- (deroiste) 
+  (deroiste) 
 - Reverted CSS so that only images and flash in the left hand side
   which don't have a set height and width will be stretched via the
   template (deroiste)
