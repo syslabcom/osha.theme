@@ -974,16 +974,6 @@ div.managedPortlet.portlet {
     padding-left:18px;
 }
 
-/* portletImage or Flash object in portletDocumentFallback */
-
-div#portal-column-one dl.portletImage img {
-   width: 90%;
-}
-
-div#portal-column-one dl.portletDocumentFallback embed,
-div#portal-column-one dl.portletDocumentFallback object {
-   width: 100%;
-}
 
 /* manage portlets */
 
