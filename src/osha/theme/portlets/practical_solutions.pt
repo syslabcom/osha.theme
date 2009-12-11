@@ -61,11 +61,11 @@
              >
           <span i18n:translate="label_providers">Providers</span> -
           <span i18n:translate="search">search</span></a></li>
-      <!-- li><a href="db_filter?"
+      <li><a href="db_filter?"
              tal:attributes="href python:view.getPracticalSolutionsURL('faqs')"
              >
           <span i18n:translate="FAQ">FAQ</span> -
-          <span i18n:translate="search">search</span></a></li -->
+          <span i18n:translate="search">search</span></a></li>
 
     </ul>
   </dd>
