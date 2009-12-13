@@ -271,7 +271,11 @@ class OSHA(BrowserView):
                 # below is a fix for the problem that you have two links in text, one being a prefix of the 
                 # other and appearing below it. In this case, the smaller one will be replaced with GA postfix in the longer one
                 # as fix, only replace links which terminate with a ". Of course this requires that all links are closed properly
-                text = text.replace(link+'"', newlink+'"')
+                # if the text already is a URL however, we don't want this hack
+                if isURL(text)==1:
+                    text = text.replace(link, newlink)
+                else:
+                    text = text.replace(link+'"', newlink+'"')
         text = text.decode(encoding)
         return text
 
