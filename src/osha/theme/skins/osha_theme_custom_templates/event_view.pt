@@ -33,7 +33,7 @@
         
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
-				<fieldset>
+                <fieldset>
         <legend i18n:translate="legend_event_details" i18n:domain="osha">Event details</legend> 
 
          <div class="field">
@@ -42,13 +42,13 @@
             <tr>
                 <th i18n:translate="label_event_location">Location</th>
                 <td>
-                	<metal:field use-macro="python:here.widget('location', mode='view')">
+                    <metal:field use-macro="python:here.widget('location', mode='view')">
                         Location
                   </metal:field>
                 </td>
                 <th i18n:translate="label_contact_name">Contact Name</th>
                 <td>
-                	<metal:field use-macro="python:here.widget('contactName', mode='view')">
+                    <metal:field use-macro="python:here.widget('contactName', mode='view')">
                         Contact Name
                   </metal:field>
                 </td>
@@ -56,12 +56,12 @@
             <tr>
                 <th i18n:translate="heading_add_to_calendar">Add event to calendar</th>
                 <td>
-									<a href="#"
+                                    <a href="#"
                        tal:attributes="href string:$here_url/vcs_view"
                        title="Add this item to your vCal calendar"
                        i18n:attributes="title title_add_to_vcal;">
                         <img tal:replace="structure here/icon_export_vcal.png" src="" alt="" />
-                        <span i18n:translate="label_add_to_vcal">vCal</span></a>                	
+                        <span i18n:translate="label_add_to_vcal">vCal</span></a>                    
                </td>
                 <tal:block define="contact_email here/contact_email"
                     condition="here/contact_email">
@@ -76,23 +76,23 @@
             <tr class="lastrow">
                 <th></th>
                 <td>
-									<a href="#"
+                                    <a href="#"
                        tal:attributes="href string:$here_url/ics_view"
                        title="Add this item to your iCal calendar"
                        i18n:attributes="title title_add_to_ical;">
                         <img tal:replace="structure here/icon_export_ical.png" src="" alt="" />
-                        <span i18n:translate="label_add_to_ical">iCal</span></a>                	
+                        <span i18n:translate="label_add_to_ical">iCal</span></a>                    
                 </td>
                 <th id="t6" i18n:translate="label_contact_phone">Contact Phone</th>
                 <td headers="t6" class="tel">                        
-                	<metal:field use-macro="python:here.widget('contactPhone', mode='view')">
+                    <metal:field use-macro="python:here.widget('contactPhone', mode='view')">
                         Phone number
                   </metal:field>
                 </td>
             </tr>
-						<tr>
-							<th i18n:translate="label_start_date" i18n:domain="osha">Start Date</th>
-							<td>
+                        <tr>
+                            <th i18n:translate="label_start_date" i18n:domain="osha">Start Date</th>
+                            <td>
                  <span metal:define-macro="startdate-field-view"
                         class="dtstart"
                         tal:define="kss_class python:getKssClasses('startDate',
@@ -105,10 +105,10 @@
                               tal:content="python:here.toLocalizedTime(here.start(),
                               long_format=1)">Start Date Time</span>
                   </span>
-							</td>						
-								<th i18n:translate="label_end_date" i18n:domain="osha">End Date</th>
-								<td>
-									<span metal:define-macro="enddate-field-view"
+                            </td>                       
+                                <th i18n:translate="label_end_date" i18n:domain="osha">End Date</th>
+                                <td>
+                                    <span metal:define-macro="enddate-field-view"
                         class="dtend"
                         tal:define="kss_class python:getKssClasses('endDate',
                                     templateId=templateId, macro='enddate-field-view');"
@@ -119,9 +119,9 @@
                                 tal:attributes="title python:here.end()"
                                 tal:content="python:here.toLocalizedTime(here.end(),
                                 long_format=1)">End Date Time</span>
-                  </span>								
+                  </span>                               
               </td>
-						</tr>          
+                        </tr>          
 
 
             <tr tal:condition="here/getAttendees|nothing">
