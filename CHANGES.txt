@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - Fixed handleOSHMailUrls() in the osha-view so that links in news and events
   correctly receive google analytics params again (thomasw)
+- event_view: hide contact phone and e-mail when empty; display additional
+  field for selected Subject(s) (thomasw)
 
 
 1.2.51 (2009-12-10)

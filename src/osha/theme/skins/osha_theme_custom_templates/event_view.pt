@@ -46,12 +46,14 @@
                         Location
                   </metal:field>
                 </td>
-                <th i18n:translate="label_contact_name">Contact Name</th>
-                <td>
-                    <metal:field use-macro="python:here.widget('contactName', mode='view')">
-                        Contact Name
-                  </metal:field>
-                </td>
+                <span tal:condition="here/contact_name">
+                    <th i18n:translate="label_contact_name">Contact Name</th>
+                    <td>
+                        <metal:field use-macro="python:here.widget('contactName', mode='view')">
+                            Contact Name
+                      </metal:field>
+                    </td>
+                </span>
             </tr>
             <tr>
                 <th i18n:translate="heading_add_to_calendar">Add event to calendar</th>
@@ -83,12 +85,14 @@
                         <img tal:replace="structure here/icon_export_ical.png" src="" alt="" />
                         <span i18n:translate="label_add_to_ical">iCal</span></a>                    
                 </td>
-                <th id="t6" i18n:translate="label_contact_phone">Contact Phone</th>
-                <td headers="t6" class="tel">                        
-                    <metal:field use-macro="python:here.widget('contactPhone', mode='view')">
-                        Phone number
-                  </metal:field>
-                </td>
+                <span tal:condition="here/contact_phone">
+                    <th id="t6" i18n:translate="label_contact_phone">Contact Phone</th>
+                    <td headers="t6" class="tel">                        
+                        <metal:field use-macro="python:here.widget('contactPhone', mode='view')">
+                            Phone number
+                      </metal:field>
+                    </td>
+                </span>
             </tr>
                         <tr>
                             <th i18n:translate="label_start_date" i18n:domain="osha">Start Date</th>
@@ -123,6 +127,14 @@
               </td>
                         </tr>          
 
+            <tr>
+                <th valign="top">Category</th>
+                <td><span tal:repeat="category here/Subject">
+                    <span i18n:translate="" i18n:domain="osha"><span tal:replace="category"></span></span><span
+                     tal:condition="not:repeat/category/end">, </span>
+                    </span>
+                </td>
+            </tr>
 
             <tr tal:condition="here/getAttendees|nothing">
                 <th i18n:translate="contact_attendees">Attendees</th>
