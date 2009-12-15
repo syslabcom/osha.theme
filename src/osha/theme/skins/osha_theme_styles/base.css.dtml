@@ -145,7 +145,7 @@ del {
 }
 
 /* remove all filed under thingies */
-/* Here for blogentry_view
+/* Here for blogentry_view */
 .documentByLine .keyword-info {
     display: none;
 }
