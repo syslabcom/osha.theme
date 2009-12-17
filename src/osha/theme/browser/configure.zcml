@@ -124,6 +124,15 @@
         allowed_interface=".interfaces.INapoFilmView"
         />
 
+    <browser:viewlet
+        name="napo.languageselector"
+        manager="plone.app.layout.viewlets.interfaces.IContentViews"
+        class=".viewlets.OSHALanguageSelector"
+        layer=".interfaces.INAPOSpecific"
+        permission="zope2.View"
+        for="*"
+        />
+
     <!-- OSHA Practical Solutions Views -->
     <browser:page
         for="Products.ATContentTypes.interface.folder.IATFolder"
