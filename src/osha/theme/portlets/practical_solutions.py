@@ -59,7 +59,7 @@ class Renderer(base.Renderer):
             "risk-assessment-tools":"RALink",
             "case-studies":"CaseStudy",
             "providers":"Provider",
-            "faqs":"FAQs",
+            "faqs":"HelpCenterFAQ",
             "publications": "Publication"
             }
 
@@ -92,6 +92,10 @@ class Renderer(base.Renderer):
 
     def getBrainsBySection(self, brains, brains_per_section):
         """
+        NOTE: this was no longer required for the portlet, but may be
+        used again in the future
+
+
         Return a number of brains for each section.
 
         To avoid doing a separate catalog query for each section the
