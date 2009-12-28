@@ -1,14 +1,11 @@
 from zope.interface import implements
+
 from Products.CMFCore.utils import getToolByName
-from plone.app.controlpanel.search import ISearchSchema
 from Products.Archetypes.utils import DisplayList
 
-from osha.theme import OSHAMessageFactory as _
-
 from slc.alertservice.interfaces import ISubjectGetter
-from slc.alertservice.interfaces import ITypesGetter
 
-
+from osha.theme import OSHAMessageFactory as _
 
 class SubjectGetter(object):
     implements(ISubjectGetter)
