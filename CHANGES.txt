@@ -5,6 +5,7 @@ osha.theme Changelog
 -------------------
 
 - fixed practical solutions portlet link to FAQs (deroiste)
+- removed unused import statements in adapter.py and alertservice.py (jcbrand)
 
 
 1.2.53 (2009-12-17)
