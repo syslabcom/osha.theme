@@ -1,23 +1,21 @@
 from copy import copy
 
 import Acquisition
-from zope.app.form.browser import MultiCheckBoxWidget
-from zope.component import getMultiAdapter
+
 from zope.formlib import form
 from zope import schema
 from zope.interface import implements
 
-from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
+from zope.app.form.browser import MultiCheckBoxWidget
+
+from plone.portlets.interfaces import IPortletDataProvider
+
+from plone.app.portlets.portlets import base
+
+from Products.AdvancedQuery import In, Eq, Or
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.app.portlets.portlets import base
-from plone.memoize import ram
-from plone.memoize.instance import memoize
-from plone.portlets.interfaces import IPortletDataProvider
-
-from osha.policy.adapter.subtyper import IAnnotatedLinkList
-from osha.theme.vocabulary import AnnotatableLinkListVocabulary
 
 
 class IPracticalSolutionsPortlet(IPortletDataProvider):

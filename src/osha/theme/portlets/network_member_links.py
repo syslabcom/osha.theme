@@ -9,7 +9,7 @@ from plone.memoize.instance import memoize
 from plone.app.portlets.portlets import base
 
 from osha.policy.adapter.subtyper import IAnnotatedLinkList
-from osha.theme.vocabulary import AnnotatableLinkListVocabulary
+from osha.adaptation.vocabulary import AnnotatableLinkListVocabulary
 
 class IOSHNetworkMemberLinksPortlet(IPortletDataProvider):
     pass
