@@ -79,6 +79,7 @@ setup(name='osha.theme',
           'collective.captcha',
           'collective.lead',
           'dateable.chronos',
+          'osha.adaptation',
           'osha.policy',
           'osha.whoswho',
           'p4a.calendar',
@@ -101,7 +102,8 @@ setup(name='osha.theme',
       extras_require=dict(tests=tests_require),
       test_suite = 'osha.theme.tests.test_docs.test_suite',
       entry_points="""
-      # -*- entry_points -*- 
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )      
       
