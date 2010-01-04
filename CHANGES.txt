@@ -4,7 +4,8 @@ osha.theme Changelog
 1.2.56 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- changed topic(s) view to use image(s)/video from the canonical
+  translation for all languages #428 (deroiste)
 
 
 1.2.55 (2009-12-28)
