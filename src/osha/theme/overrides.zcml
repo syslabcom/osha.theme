@@ -1,28 +1,31 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="osha.theme">
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   xmlns:zcml="http://namespaces.zope.org/zcml"    
+   i18n_domain="osha.theme">
 
-     <!-- Overwrite subscription utilites for the alertservice -->
-     <utility factory=".alertservice.SubjectGetter" 
-              provides="slc.alertservice.interfaces.ISubjectGetter"
-              name="alertservice.subjectgetter"
-            />
+  <!-- Overwrite subscription utilites for the alertservice -->
+  <utility zcml:condition="installed slc.alertservice"
+           factory=".alertservice.SubjectGetter" 
+           provides="slc.alertservice.interfaces.ISubjectGetter"
+           name="alertservice.subjectgetter"
+           />
 
-     <utility factory=".alertservice.TypesGetter"
-            provides="slc.alertservice.interfaces.ITypesGetter"
-            name="alertservice.typesgetter"
-             />
+  <utility zcml:condition="installed slc.alertservice"
+           factory=".alertservice.TypesGetter"
+           provides="slc.alertservice.interfaces.ITypesGetter"
+           name="alertservice.typesgetter"
+           />
 
-    <include file="browser/overrides.zcml" />
+  <include file="browser/overrides.zcml" />
 
-    <!-- Include overriding Collage views -->
-    <include file="browser/collageviews_overrides.zcml" />
+  <!-- Include overriding Collage views -->
+  <include file="browser/collageviews_overrides.zcml" />
 
-    <include file="portlets/overrides.zcml" />
+  <include file="portlets/overrides.zcml" />
 
-    <adapter factory=".adapter_textindexng3.ATFileAdapter"/>
+  <adapter factory=".adapter_textindexng3.ATFileAdapter"/>
 
-    <adapter factory=".adapter_textindexng3.ContentAdapter"/>
+  <adapter factory=".adapter_textindexng3.ContentAdapter"/>
 
 </configure>
