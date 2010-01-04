@@ -17,9 +17,11 @@ class TopicsBrowserView(BrowserView):
         return self.template()
 
     def hasRelatedMedia(self):
-        """ Has some related images or videos.
         """
-        context = self.context
+        Check that the canonical translation has some related images
+        or videos.
+        """
+        context = self.context.getCanonical()
         related_items = context.getRelatedItems()
         media = [i for i in related_items if
                  IVideoLinkEnhanced.providedBy(i)
@@ -27,9 +29,11 @@ class TopicsBrowserView(BrowserView):
         return media and True or False
 
     def getRelatedMedia(self, video_width, image_scale):
-        """ Return a video, slideshow or image.
         """
-        context = self.context
+        Return html for a video, slideshow or image from the related
+        items of the canonical translation.
+        """
+        context = self.context.getCanonical()
         related_items = context.getRelatedItems()
         videos = [i for i in related_items if
                   IVideoLinkEnhanced.providedBy(i)]
