@@ -1,25 +1,27 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser"
-           xmlns:plone="http://namespaces.plone.org/plone">
+           xmlns:plone="http://namespaces.plone.org/plone"
+           xmlns:zcml="http://namespaces.zope.org/zcml">
 
- <include package="plone.app.portlets" />
+  <include package="plone.app.portlets" />
 
-    <plone:portlet
-        name="plone.portlet.collection.Collection"
-        interface=".portlets.oshcollection.ICollectionPortlet"
-        assignment=".portlets.oshcollection.Assignment"
-        renderer=".portlets.oshcollection.Renderer"
-        addview=".portlets.oshcollection.AddForm"
-        editview=".portlets.oshcollection.EditForm"
-        />
+  <plone:portlet
+     name="plone.portlet.collection.Collection"
+     interface=".portlets.oshcollection.ICollectionPortlet"
+     assignment=".portlets.oshcollection.Assignment"
+     renderer=".portlets.oshcollection.Renderer"
+     addview=".portlets.oshcollection.AddForm"
+     editview=".portlets.oshcollection.EditForm"
+     />
 
- <plone:portlet
+  <plone:portlet
+     zcml:condition="installed slc.googlesearch"
      name="slc.GoogleSearchBox"
      interface="slc.googlesearch.portlets.searchbox.ICSEPortlet"
      assignment="slc.googlesearch.portlets.searchbox.Assignment"
      renderer=".portlets.googlesearchbox.Renderer"
      addview="slc.googlesearch.portlets.searchbox.AddForm"
-	 editview="slc.googlesearch.portlets.searchbox.EditForm"
+     editview="slc.googlesearch.portlets.searchbox.EditForm"
      />
-
+  
 </configure>
