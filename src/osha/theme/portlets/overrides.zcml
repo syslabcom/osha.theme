@@ -15,7 +15,6 @@
      />
 
   <plone:portlet
-     zcml:condition="installed slc.googlesearch"
      name="slc.GoogleSearchBox"
      interface="slc.googlesearch.portlets.searchbox.ICSEPortlet"
      assignment="slc.googlesearch.portlets.searchbox.Assignment"

@@ -5,8 +5,7 @@
    i18n_domain="osha.theme">
 
   <!-- Overwrite subscription utilites for the alertservice -->
-  <utility zcml:condition="installed slc.alertservice"
-           factory=".alertservice.SubjectGetter" 
+  <utility factory=".alertservice.SubjectGetter" 
            provides="slc.alertservice.interfaces.ISubjectGetter"
            name="alertservice.subjectgetter"
            />
