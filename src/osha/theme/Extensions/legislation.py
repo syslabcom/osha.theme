@@ -1,1 +1,1 @@
-/home/cillian/Syslab/OSHA/scripts/legislation.py
+link /home/cillian/Syslab/OSHA/scripts/legislation.py
