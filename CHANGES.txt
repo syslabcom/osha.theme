@@ -1,11 +1,17 @@
 osha.theme Changelog
 ====================
 
-1.2.56 (unreleased)
+1.2.56 (2010-01-18)
 -------------------
 
-- Nothing changed yet.
-
+- changed topic(s) view to use image(s)/video from the canonical
+  translation for all languages #428 (deroiste)
+- fixed a lethal h3 display:none. After update, remove ploneCustom.css from
+  napocustom skinsfolder and test the appearance of filmtitles on napo-films.
+- Added skins/osha_theme_scripts/discussion_reply.cpy to fix issue #441. After
+  the upgrade, the osha_theme_scripts layer must be moved above qplonecomments
+  and the discussion_reply.cpy script must be removed from the 'custom' folder. Then comments need to be tested. (jcbrand)
+- removed osha.adaptation from requirements, not to be deployed yet (thomasw)
 
 1.2.56b10 (2010-01-04)
 ----------------------
