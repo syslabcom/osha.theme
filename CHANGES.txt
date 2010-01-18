@@ -1,11 +1,11 @@
 osha.theme Changelog
 ====================
 
-1.2.57 (unreleased)
+1.2.57 (2010-01-18)
 -------------------
 
-- Nothing changed yet.
-
+- reverted portlets/network_member_links.py and vocabulary.py to not depend on
+  osha.adaptation. This is temporary until that egg can be released (jcbrand)
 
 1.2.56 (2010-01-18)
 -------------------
