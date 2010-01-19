@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.3.0b1 (unreleased)
+1.3.0b1 (2010-01-19)
 --------------------
 
 - Removed AnnotatableLinkListVocabulary, now located in osha.adaptation (jcbrand)
