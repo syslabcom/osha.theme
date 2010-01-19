@@ -30,13 +30,12 @@
         name="osha.theme.PressContactVocabulary"
         /> 
 
-    <!-- XXX: This needs to be removed before osha.adaptation integration 
+    <!-- XXX: This needs to be removed before osha.adaptation integration -->
     <utility
         component=".vocabulary.AnnotatableLinkListVocabulary"
         name="osha.theme.AnnotatableLinkListVocabulary"
         provides="Products.Archetypes.interfaces._vocabulary.IVocabulary"
         /> 
-    -->
 
 
 </configure>
