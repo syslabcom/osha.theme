@@ -8,6 +8,7 @@
     </dt>
 
     <dd class="portletItem odd">
+      <div class="visualClear"><!-- --></div>
       <a tal:condition="view/url" 
          tal:attributes="href view/url" tal:content="structure view/tag" target="_blank"></a>        
       <span tal:condition="not:view/url" tal:replace="structure view/tag" />
