@@ -56,6 +56,14 @@ class IImagePortlet(IPortletDataProvider):
                         description=_(u"Enter display height"),
                         required=False
                         )
+    show_box = schema.Bool(
+                        title=_(u"Display Box?"),
+                        description=_(u"Leave this unchecked if you only want "
+                            "to see your banner without a title and a box "
+                            "around."
+                            ),
+                        )
+
 
 
 class Assignment(base.Assignment):
