@@ -1,10 +1,12 @@
 osha.theme Changelog
 ====================
 
-1.2.58 (unreleased)
+1.2.58 (2010-01-19)
 -------------------
 
-- Nothing changed yet.
+- portlets/image: readded the showbox attribute to allow portlets without a box (pilz)
+- portlets/image: added a clear in case a box is really used so that it does not
+  overlap with the image (pilz)
 
 
 1.2.57 (2010-01-18)
