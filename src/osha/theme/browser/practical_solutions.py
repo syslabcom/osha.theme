@@ -247,7 +247,10 @@ class PracticalSolutionView(DBFilterView):
             query = query & In('Language', (language,''))
             #query.update({'language':language})
 
-        getRemoteLanguage = self.request.get('getRemoteLanguage', preflang)
+        # don't handle remoteLanguage for FAQHelpcenter items
+        getRemoteLanguage = self.request.get('getRemoteLanguage', 
+            self.get_search_portal_type() != 'HelpCenterFAQ' and preflang
+            or '')
         if getRemoteLanguage:
             query = query & In('getRemoteLanguage', getRemoteLanguage)
 
