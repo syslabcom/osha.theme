@@ -165,42 +165,18 @@ class Renderer(base.Renderer):
         results = brains[:3]
         return results
 
-    def getDBFilterQueryString(self, practical_solution):
-        """ Construct the query string for db_filter with the relevant
-        language, database and keywords"""
-        context = self.context
-        subjects = self.data.subject
-        keyword_query = ["&keywords:list="+i for i in subjects][0]
-        preflang = getToolByName(context,
-                                 'portal_languages').getPreferredLanguage()
-        database = ""
-        if self.portal_types_map.has_key(practical_solution):
-            database = self.portal_types_map[practical_solution]
-        query_string = "getRemoteLanguage=%s&search_portal_types:list=%s%s" \
-              %(preflang, database, keyword_query)
-        return query_string
-
-    def getDBFilterURL(self, practical_solution):
-        context = self.context
-        portal_url = getToolByName(context, 'portal_url')()
-        preflang = getToolByName(context,
-                                 'portal_languages').getPreferredLanguage()
-        query_string = self.getDBFilterQueryString(practical_solution)
-        url = "%s/%s/db_filter?%s"\
-              %(portal_url, preflang, query_string)
-        return url
-
     def getPracticalSolutionsURL(self, practical_solution):
         """ Construct the url for links to the practical solution page
         of filtered results according to language.
         """
         context = self.context
+        subjects = self.data.subject
         portal_url = getToolByName(context, 'portal_url')()
         preflang = getToolByName(context,
                                  'portal_languages').getPreferredLanguage()
-        query_string = self.getDBFilterQueryString(practical_solution)
+        keyword_query = ["keywords:list="+i for i in subjects][0]
         url = "%s/%s/practical-solutions/%s?%s#database_search"\
-              %(portal_url, preflang, practical_solution, query_string)
+              %(portal_url, preflang, practical_solution, keyword_query)
         return url
 
     def getRecentPracticalSolutions(self):
