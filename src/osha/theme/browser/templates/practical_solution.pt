@@ -17,8 +17,8 @@
                         nace python:nace==[''] and '' or nace;
                         category request/category|string:;
                         Language request/Language | context/portal_languages/getPreferredLanguage;
+                        getRemoteLanguage request/getRemoteLanguage  | context/portal_languages/getPreferredLanguage;
                         country request/country|string:;
-                        search_portal_types view/search_portal_types;
                         is_search_expanded request/is_search_expanded |string:;
                         Batch python:modules['Products.CMFPlone'].Batch;
                         DateTime python:modules['DateTime'].DateTime;
@@ -94,7 +94,7 @@
                 <div class="filter_column1">
 
                   <div class="field">
-                    <label
+                    <!--label
                        i18n:translate="label_database"> Database </label><br />
 
                     <div class="formHelp"
@@ -108,10 +108,15 @@
                              tal:attributes="value python:T[1];
                                              checked python: 'checked' and T[2] or ''" />
                       <span tal:content="python:T[0]" ></span>
-                    </div>
+                    </div-->
+                    <input type="hidden" name="search_portal_types:list" 
+                        tal:attributes="value view/get_search_portal_type" />
 
-                    <div class="field_default">
+                    <!--div class="field_default">
                       <metal:use use-macro="context/filter_macros/macros/Language"></metal:use>
+                    </div-->
+                    <div class="field_default">
+                        <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
                     </div>
 
                     <div class="field_default" tal:define="value country">
@@ -192,9 +197,9 @@
 
         <div tal:define="results view/search">
 
-          <!--i>Filtered by:
+          <i>Filtered by:
           <span tal:replace="view/buildQuery"></span>
-          </i-->
+          </i>
 
           <h2>
             <span i18n:translate="heading_search_results">

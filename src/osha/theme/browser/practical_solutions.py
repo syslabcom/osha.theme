@@ -244,8 +244,12 @@ class PracticalSolutionView(DBFilterView):
                                  'portal_languages').getPreferredLanguage()
         language = self.request.get('Language', preflang)
         if language:
-            query = query & In('Language', language)
+            query = query & In('Language', (language,''))
             #query.update({'language':language})
+
+        getRemoteLanguage = self.request.get('getRemoteLanguage', preflang)
+        if getRemoteLanguage:
+            query = query & In('getRemoteLanguage', getRemoteLanguage)
 
         subcategory = self.request.get('subcategory', '')
         if subcategory:
