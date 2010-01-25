@@ -18,6 +18,7 @@
                         category request/category|string:;
                         Language request/Language | context/portal_languages/getPreferredLanguage;
                         getRemoteLanguage request/getRemoteLanguage  | context/portal_languages/getPreferredLanguage;
+                        get_search_portal_type view/get_search_portal_type;
                         country request/country|string:;
                         is_search_expanded request/is_search_expanded |string:;
                         Batch python:modules['Products.CMFPlone'].Batch;
@@ -94,6 +95,11 @@
                 <div class="filter_column1">
 
                   <div class="field">
+
+                    <!-- 
+                    Disabling the "database" selector, as it leads to a logical problem.
+                    -->
+                    
                     <!--label
                        i18n:translate="label_database"> Database </label><br />
 
@@ -109,13 +115,19 @@
                                              checked python: 'checked' and T[2] or ''" />
                       <span tal:content="python:T[0]" ></span>
                     </div-->
-                    <input type="hidden" name="search_portal_types:list" 
-                        tal:attributes="value view/get_search_portal_type" />
+                    <!--input type="hidden" name="search_portal_types:list" 
+                        tal:attributes="value get_search_portal_type" /-->
 
+                    <!-- 
+                    Exchanged the "Language" selector with "remoteLanguage", to be consistent
+                    with the worklist ("language problems", "lost content").
+                    For FAQ items, the language filter is not shown.
+                    -->
                     <!--div class="field_default">
                       <metal:use use-macro="context/filter_macros/macros/Language"></metal:use>
                     </div-->
-                    <div class="field_default">
+                    <div class="field_default"
+                        tal:condition="python: get_search_portal_type!='HelpCenterFAQ'">
                         <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
                     </div>
 
