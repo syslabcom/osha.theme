@@ -147,7 +147,7 @@ class Renderer(base.Renderer):
         """
         context = Acquisition.aq_inner(self.context)
         subject = self.data.subject
-        search_portal_types = ["Publication"]
+        lang = self.context.portal_languages.getPreferredLanguage()
         # Publications are Files which implement the
         # IPublicationEnhanced interface
         query = ( Eq('portal_type', 'File') & \
@@ -155,9 +155,7 @@ class Renderer(base.Renderer):
                          'slc.publications.interfaces.IPublicationEnhanced') & \
                       In('Subject', subject)
                   )
-        query = Or(query,
-                   In('portal_type', search_portal_types)
-                   ) & Eq('review_state','published')
+        query = query & Eq('review_state','published') & In('Language', ['', lang])
         pc = getToolByName(context, 'portal_catalog')
         if hasattr(pc, 'getZCatalog'):
             pc = pc.getZCatalog()
