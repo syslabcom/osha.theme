@@ -127,7 +127,8 @@
                       <metal:use use-macro="context/filter_macros/macros/Language"></metal:use>
                     </div-->
                     <div class="field_default"
-                        tal:condition="python: get_search_portal_type!='HelpCenterFAQ'">
+                        tal:condition="python: get_search_portal_type!='HelpCenterFAQ'"
+                        tal:define="multiple string:multiple">
                         <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
                     </div>
 

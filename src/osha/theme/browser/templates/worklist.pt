@@ -98,7 +98,8 @@
                     value country">
               <metal:use use-macro="here/filter_macros/macros/MultiCountry_compact"></metal:use>
             </div>
-            <div class="field_default">
+            <div class="field_default"
+              tal:define="multiple string:multiple">
                 <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
             </div>
             <div class="field_default">
