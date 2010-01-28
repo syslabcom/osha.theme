@@ -107,6 +107,15 @@
      addview=".oshmail.AddForm"
      />        
 
+<!-- Network Member Links portlet -->
+ <plone:portlet
+     name="osha.NetworkMemberLinks"
+     interface=".network_member_links.IOSHNetworkMemberLinksPortlet"
+     assignment=".network_member_links.Assignment"
+     renderer=".network_member_links.Renderer"
+     addview=".network_member_links.AddForm"
+     editview=".network_member_links.EditForm"
+     />
 
 <!-- Practical Solutions portlet used on the Topics page -->
  <plone:portlet
