@@ -28,6 +28,7 @@
                    getRemoteLanguage request/getRemoteLanguage|string:;
                    country request/country|string:;
                    search_portal_types view/search_portal_types;
+                   search_types view/search_types;
                    review_state request/review_state|python:['private', 'published', 'to_amend', 'pending', 'checked'];
                    Creator request/Creator|string:;
                    getRemoteUrl request/getRemoteUrl|string:;
@@ -63,10 +64,11 @@
             
             <div class="field_default" 
                  tal:define="size python:6;
-                    		 wfname string:osh_workflow">
+                             wfname string:osh_workflow">
               <metal:use use-macro="here/filter_macros/macros/ReviewState_compact"></metal:use>
             </div>
             
+            <br />
             <div class="field">
                 <label i18n:translate="label_database"> Database </label><br>
                 
@@ -74,13 +76,15 @@
                     Select the database types you want to search.
                 </div>
 
-                <div tal:repeat="T view/search_types">
-                    <input class="input_checkbox" type="checkbox" 
-                           name="search_portal_types:list"
-                           tal:attributes="value python:T[1];
-                                           checked python: 'checked' and T[2] or ''" />
-                    <span tal:content="python:T[0]" />
-                </div>
+               <select name="search_portal_types:list" multiple="multiple" size="12"
+                    tal:attributes="size python:len(search_types)">
+                    <option tal:repeat="T search_types"
+                        tal:attributes="value python:T[1];
+                            selected python:T[2] and 'selectes' or ''">
+                            <span tal:replace="python:T[0]" />
+                    </option>
+                </select>
+
             </div>
                         
           </div>
