@@ -210,9 +210,9 @@
 
         <div tal:define="results view/search">
 
-          <i>Filtered by:
+          <!--i>Filtered by:
           <span tal:replace="view/buildQuery"></span>
-          </i>
+          </i-->
 
           <h2>
             <span i18n:translate="heading_search_results">
