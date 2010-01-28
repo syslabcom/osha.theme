@@ -6,6 +6,9 @@ osha.theme Changelog
 
 - Moved FOP / OSHNetwork code to osha.fop. Note: network_member_links
   portlets will need to be migrated after this update (deroiste)
+- worklist: replaced the list of checkboxes for database types with a multi-
+  select field (thomasw)
+- practical-solutions-portlet: fixed language soup (pilz)
 
 
 1.3.0b1 (2010-01-19)
