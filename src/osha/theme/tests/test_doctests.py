@@ -17,9 +17,4 @@ def test_suite():
                    package='osha.theme',
                    test_class=OshaThemeFunctionalTestCase) ,
 
-            Suite('tests/oshnetwork_member_view.txt',
-                   optionflags=OPTIONFLAGS,
-                   package='osha.theme',
-                   test_class=OshaThemeFunctionalTestCase) ,
-
         ))

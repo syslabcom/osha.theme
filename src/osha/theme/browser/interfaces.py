@@ -37,17 +37,6 @@ class INAPOSpecific(IThemeSpecific):
     """Marker interface that defines a Zope 3 skin layer.
     """
 
-class IOSHNetworkMemberView(Interface):
-    """Marker interface that defines a Zope 3 skin layer.
-    """
-
-    def getLocalizedPath(path):
-        """ A method to prefix a path with the currently selected language
-        string """
-
-    def getNews(number_of_items):
-        """ return the brains for relevant news items """
-
 class IPressRoomView(Interface):
     """ A View for Pressroom to show Snydication Information """
 

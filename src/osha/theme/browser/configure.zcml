@@ -81,15 +81,6 @@
         allowed_interface=".interfaces.IRollingQuotesToolsView"
             />
 
-    <!-- OSHA Network Member -->
-    <browser:page
-        for="*"
-        name="oshnetwork-member-view"
-        class=".oshnetwork_member_view.OSHNetworkMemberView"
-        permission="zope.Public"
-        allowed_interface=".interfaces.IOSHNetworkMemberView"
-        />
-
     <!-- OSHA PressRoom-->
     <browser:page
         for="*"

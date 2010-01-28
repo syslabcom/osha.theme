@@ -41,12 +41,6 @@
       description="Monthly review of strategic news." />  
 
   <portlet
-      addview="osha.NetworkMemberLinks"
-      title="Network Member Links"
-      description="Additional categorised links with a special layout for a
-      particular country page." />  
-
-  <portlet
       addview="osha.PracticalSolutions"
       title="Practical Solutions"
       description="The most recent practical solutions from each section." />  
