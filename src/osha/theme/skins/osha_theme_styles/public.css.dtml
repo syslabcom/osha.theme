@@ -992,11 +992,11 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
     display: None;
 }
 
-body.template-oshnetwork-member-view div#fop-translations {
+div#available-translations {
    float: right;
 }
 
-body.template-oshnetwork-member-view div#fop-translations form {
+div#available-translations form {
    float: right;
 }
 
