@@ -118,6 +118,7 @@
                     <!--input type="hidden" name="search_portal_types:list" 
                         tal:attributes="value get_search_portal_type" /-->
 
+
                     <!-- 
                     Exchanged the "Language" selector with "remoteLanguage", to be consistent
                     with the worklist ("language problems", "lost content").
@@ -144,16 +145,17 @@
                   <div class="field_default"
                        tal:define="value keyword; size python: 1">
 
-                    <span tal:attributes="class python:value and 'hiddenStructure' or ''">
+                    <span tal:attributes="class python:(value and get_search_portal_type!='HelpCenterFAQ')
+                        and 'hiddenStructure' or ''">
                       <metal:use use-macro="here/filter_macros/macros/Subject"></metal:use>
                     </span>
 
-                    <tal:has_categories condition="keyword">
+                    <tal:has_categories condition="python:keyword and get_search_portal_type!='HelpCenterFAQ'">
                       <label>
                         <span i18n:translate="label_category"
                               i18n:domain="plone">
                           Category</span>: <tal:categories
-                                              content="keyword">
+                                              content="keyword" i18n:translate="" i18n:domain="osha">
                         </tal:categories>
                       </label>
                       <div class="field_default"
