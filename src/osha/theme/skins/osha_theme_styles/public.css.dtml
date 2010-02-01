@@ -993,6 +993,14 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
 }
 
 div#available-translations {
+   display: none;
+}
+
+body.template-oshnetwork-member-view div#available-translations {
+   display: block;
+}
+
+div#available-translations {
    float: right;
 }
 
