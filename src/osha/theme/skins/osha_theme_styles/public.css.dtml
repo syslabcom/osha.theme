@@ -1004,8 +1004,8 @@ div#available-translations {
    float: right;
 }
 
-div#available-translations form {
-   float: right;
+div#available-translations .selected {
+   font-weight: bold;
 }
 
 #network-member-flag {
