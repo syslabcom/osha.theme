@@ -88,8 +88,14 @@
 
             <div class="field_default">
                <metal:use use-macro="here/filter_macros/macros/RemoteUrl"></metal:use>
-            </div> 
+            </div>
+
+            <div class="field_date">
+                <metal:block use-macro="here/filter_macros/macros/ModifiedDate" i18n:domain="plone" />
+            </div>
+
           </div>
+
           
           <div class="filter_column2">
             <!--div class="columnTop field">

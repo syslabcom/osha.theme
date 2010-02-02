@@ -369,6 +369,7 @@ dl.portletInlineNavigationTree ul {
 .field_vocab { margin-top:5px; }
 .filter_column1 select,
   .filter_column2 li  { width: 80%; }
+.filter_column1 .field_date select { width: auto; }
 .filter_column1 .field_default, .filter_column2 .field_default,
 .filter_column2 .field_vocab { width: 100%; padding: 2px 0; }
 .filter_column2 .field_vocab input { width: 50%; }

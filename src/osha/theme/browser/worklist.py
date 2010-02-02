@@ -2,7 +2,8 @@ import Acquisition
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
+from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic, Between
+from DateTime import DateTime
 
 from osha.theme.browser.dbfilter import DBFilterView
 
@@ -135,8 +136,26 @@ class WorklistView(DBFilterView):
         if review_state:
             query = query & In('review_state', review_state)
 
+        modified_year = self.request.get('modified_year', '')
+        modified_month = self.request.get('modified_month', '')
+        modified_day = self.request.get('modified_day', '')
+        modified_mode = self.request.get('modified_mode', '')
+        mdr = self.request.get('modified_days_range', 0)
+
+        if modified_year and modified_month: 
+            if not modified_day:
+                modified_day = 1
+            searchdate = DateTime('%d/%d/%d' % (modified_year, modified_month, modified_day))
+            if modified_mode=='before':
+                query = query & Le('modified', searchdate)
+            elif modified_mode=='after':
+                query = query & Ge('modified', searchdate)
+            elif modified_mode=='range':
+                query = query & Between('modified', searchdate-mdr, searchdate+mdr)
+
         lang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         query = query & In('Language', [lang, ''])
+
         return query
 
 
