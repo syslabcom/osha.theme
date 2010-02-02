@@ -84,9 +84,11 @@
                             <span tal:replace="python:T[0]" />
                     </option>
                 </select>
-
             </div>
-                        
+
+            <div class="field_default">
+               <metal:use use-macro="here/filter_macros/macros/RemoteUrl"></metal:use>
+            </div> 
           </div>
           
           <div class="filter_column2">
@@ -94,7 +96,8 @@
               <label i18n:translate="label_search_filters">Filters</label>
             </div-->
 
-            <div class="field_default">
+            <div class="field_default"
+                tal:define="multiple string:multiple; size string:7">
                <metal:use use-macro="here/filter_macros/macros/Author_compact"></metal:use>
             </div> 
              <div class="field_default" 
@@ -106,9 +109,6 @@
               tal:define="multiple string:multiple">
                 <metal:use use-macro="here/filter_macros/macros/RemoteLanguage_compact"></metal:use>
             </div>
-            <div class="field_default">
-               <metal:use use-macro="here/filter_macros/macros/RemoteUrl_compact"></metal:use>
-            </div> 
             <div class="field_vocab">
                <metal:use use-macro="here/filter_macros/macros/Subcategory"></metal:use>
             </div>

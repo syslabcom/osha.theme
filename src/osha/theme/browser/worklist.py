@@ -38,7 +38,7 @@ class WorklistView(DBFilterView):
 
         TYPES = [ 
             ('OSH Resource', 'OSH_Link', 'OSH_Link' in search_portal_types) ,
-            ('Risk Assessment Link', 'RALink', 'RALink' in search_portal_types) ,
+            ('Risk Assessment Tool', 'RALink', 'RALink' in search_portal_types) ,
             ('Case Study', 'CaseStudy', 'CaseStudy' in search_portal_types) ,
             ('Provider', 'Provider', 'Provider' in search_portal_types) ,
             ('Publication', 'Publication', 'Publication' in search_portal_types) ,
@@ -113,12 +113,10 @@ class WorklistView(DBFilterView):
         if SearchableText != '':
             query = query & Generic('SearchableText', {'query': SearchableText, 'ranking_maxhits': 10000 })
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
-
-        
         
         Creator = self.request.get('Creator', '')
         if Creator:
-            query = query & Eq('Creator', Creator)
+            query = query & In('Creator', Creator)
             #query.update(dict(Creator=Creator))
 
         subcategory = list(self.request.get('subcategory', ''))
