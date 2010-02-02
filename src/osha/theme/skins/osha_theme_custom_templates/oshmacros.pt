@@ -43,11 +43,11 @@
         <dd>
           <tal:publication_date>
             <em>
-              <span tal:condition="python: item_pubdate.year() >= 1900"
+              <span tal:condition="python: item_pubdate and item_pubdate.year() >= 1900"
             tal:replace="python:toLocalizedTime(item_pubdate, long_format=0)">
                 August 16, 2001 at 23:35:59
               </span>
-          <span tal:condition="python: item_pubdate.year() < 1900"
+          <span tal:condition="python: not item_pubdate or item_pubdate.year() < 1900"
             i18n:translate="label_no_publication_date_set">No publication date set</span>
               <tal:modified>
                 - <tal:label i18n:translate="listingheader_modified">
