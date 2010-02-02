@@ -15,18 +15,18 @@ class WorklistView(DBFilterView):
     def __call__(self):
         self.request.set('disable_border', True)
 
-        return self.template() 
+        return self.template()
 
     def search_types(self):
         """ Returns a list of translated search types to select from.
-            This method is overwritten from dbfilter to provide a default 
+            This method is overwritten from dbfilter to provide a default
             list of types, so that all are selected initially.
         """
         context = Acquisition.aq_inner(self.context)
-        
+
         default = [
-                'OSH_Link', 'RALink', 'CaseStudy', 
-                'Provider', 'Publication', 'HelpCenterFAQ', 
+                'OSH_Link', 'RALink', 'CaseStudy',
+                'Provider', 'Publication', 'HelpCenterFAQ',
                 'Directive', 'Modification', 'Amendment',
                 'Note', 'Proposal'
                 ]
@@ -36,7 +36,7 @@ class WorklistView(DBFilterView):
         if not search_portal_types:
             search_portal_types = default
 
-        TYPES = [ 
+        TYPES = [
             ('OSH Resource', 'OSH_Link', 'OSH_Link' in search_portal_types) ,
             ('Risk Assessment Tool', 'RALink', 'RALink' in search_portal_types) ,
             ('Case Study', 'CaseStudy', 'CaseStudy' in search_portal_types) ,
@@ -56,7 +56,7 @@ class WorklistView(DBFilterView):
         """ compute the list of query params to search for portal_types"""
         context = Acquisition.aq_inner(self.context)
         #local_portal_types = context.getProperty('search_portal_types', []);
-        # we need to use the output of search_types() as default, not the 
+        # we need to use the output of search_types() as default, not the
         # local Property search_portal_types
         search_types = [x[1] for x in self.search_types()]
         search_portal_types = list(self.request.get('search_portal_types', search_types))
@@ -70,7 +70,7 @@ class WorklistView(DBFilterView):
         else:
             query = In('portal_type', search_portal_types)
 
-                    
+
         return query
 
     def buildQuery(self):
@@ -82,38 +82,38 @@ class WorklistView(DBFilterView):
         local_keyword = context.getProperty('keyword', '')
         keywords = self.request.get('keywords', local_keyword)
         if keywords:
-            query = query & In('Subject', keywords)    
+            query = query & In('Subject', keywords)
             #query.update({'Subject':keywords})
 
         nace = list(self.request.get('nace', ''))
         if '' in nace:
             nace.remove('')
         if nace:
-            query = query & In('nace', nace)    
+            query = query & In('nace', nace)
             #query.update({'nace':nace})
 
         multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
         if '' in multilingual_thesaurus:
             multilingual_thesaurus.remove('')
         if multilingual_thesaurus:
-            query = query & In('multilingual_thesaurus', multilingual_thesaurus)    
+            query = query & In('multilingual_thesaurus', multilingual_thesaurus)
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
         getRemoteLanguage = self.request.get('getRemoteLanguage', '')
         if getRemoteLanguage:
-            query = query & In('getRemoteLanguage', getRemoteLanguage)    
+            query = query & In('getRemoteLanguage', getRemoteLanguage)
             #query.update({'getRemoteLanguage':getRemoteLanguage})
 
         country = self.request.get('country', '')
         if country:
-            query = query & In('country', country)    
+            query = query & In('country', country)
             #query.update({'country':country})
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
             query = query & Generic('SearchableText', {'query': SearchableText, 'ranking_maxhits': 10000 })
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
-        
+
         Creator = self.request.get('Creator', '')
         if Creator:
             query = query & In('Creator', Creator)
@@ -123,20 +123,20 @@ class WorklistView(DBFilterView):
         if '' in subcategory:
             subcategory.remove('')
         if subcategory:
-            query = query & In('subcategory', subcategory)    
+            query = query & In('subcategory', subcategory)
             #query.update({'subcategory':subcategory})
 
         getRemoteUrl = self.request.get('getRemoteUrl', '')
         if getRemoteUrl:
-            query = query & Eq('getRemoteUrl', getRemoteUrl)    
+            query = query & Eq('getRemoteUrl', getRemoteUrl)
             #query.update(dict(getRemoteUrl=getRemoteUrl))
 
         review_state = self.request.get('review_state', ['private', 'published', 'to_amend', 'pending', 'checked'])
         if review_state:
-            query = query & In('review_state', review_state)    
+            query = query & In('review_state', review_state)
 
-        lang = getToolByName(self.context, 'portal_languages').getPreferredLanguage() 
+        lang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         query = query & In('Language', [lang, ''])
         return query
-        
-        
+
+
