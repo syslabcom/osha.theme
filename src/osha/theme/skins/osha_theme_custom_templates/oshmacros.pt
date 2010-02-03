@@ -113,6 +113,9 @@
               </tal:review_state>
               | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/content_status_history">Modify workflow</a>
               | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a>
+            <span tal:define="item_is_versionable item_is_versionable|nothing" tal:condition="item_is_versionable">
+                | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/versions_history_form">History</a>
+            </span>
             </span:notanon>
 
 
