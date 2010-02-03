@@ -159,6 +159,7 @@
                         </tal:categories>
                       </label>
                       <div class="field_default"
+                           tal:condition="python:view.has_subcategory(keyword)"
                            tal:define="root_node   keyword;
                                        vocabulary  string:Subcategory;
                                        value       subcategory;

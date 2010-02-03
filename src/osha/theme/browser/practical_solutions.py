@@ -211,6 +211,15 @@ class PracticalSolutionView(DBFilterView):
         query = query & Eq('review_state','published')
         return query
 
+    def has_subcategory(self, subject=''):
+        """ Do we have subcategory values for the given subject?
+        """
+        pvt = getToolByName(self.context, 'portal_vocabularies')
+        vocab = getattr(pvt, 'Subcategory', None)
+        if not vocab:
+            return False
+        return bool(vocab.getTermByKey(subject))
+
     def buildQuery(self):
         """ Build the query based on the request.
         Overriding this method from DBFilter because it treats an
