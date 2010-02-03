@@ -161,7 +161,9 @@
         </div>
 
     <div tal:condition="results"
-         tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+         tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);
+                     pr nocall:here/portal_repository;
+                     versionablelist pr/getVersionableContentTypes;">
         
         <dl id="db_results">
         <tal:results repeat="result batch">
@@ -174,6 +176,7 @@
                            item_modified result/modified;
                            item_pubdate result/effective;
                            item_creator result/Creator;
+                           item_is_versionable python: result.portal_type in versionablelist;
                            gc python:here.portal_languages.getNameForLanguageCode;
                            ">
             
