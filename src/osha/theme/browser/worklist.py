@@ -38,7 +38,7 @@ class WorklistView(DBFilterView):
             search_portal_types = default
 
         TYPES = [
-            ('OSH Resource', 'OSH_Link', 'OSH_Link' in search_portal_types) ,
+            ('Useful Link', 'OSH_Link', 'OSH_Link' in search_portal_types) ,
             ('Risk Assessment Tool', 'RALink', 'RALink' in search_portal_types) ,
             ('Case Study', 'CaseStudy', 'CaseStudy' in search_portal_types) ,
             ('Provider', 'Provider', 'Provider' in search_portal_types) ,
