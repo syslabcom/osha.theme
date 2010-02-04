@@ -993,8 +993,9 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
 }
 
 body.template-oshnetwork-member-view div#available-translations {
-    line-height: 1.5em;
-    margin: 0 1em;
+   line-height: 1.5em;
+   margin: 0 1em;
+   white-space: nowrap;
 }
 
 div#available-translations {
