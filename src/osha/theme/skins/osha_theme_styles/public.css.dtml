@@ -992,12 +992,9 @@ body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
     display: None;
 }
 
-div#available-translations {
-   display: none;
-}
-
 body.template-oshnetwork-member-view div#available-translations {
-   display: block;
+    line-height: 1.5em;
+    margin: 0 1em;
 }
 
 div#available-translations {
