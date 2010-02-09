@@ -620,6 +620,17 @@ form#blog_entry-base-edit div#archetypes-fieldname-osha_metadata {
 .heading_rss_icon {
     float:right;
 }
+
+div.kssattr-atfieldname-osha_metadata{
+    display: None;
+}
+
+body.section-fop-belgium div.kssattr-atfieldname-osha_metadata,
+body.section-fop-luxemburg div.kssattr-atfieldname-osha_metadata,
+body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
+    display: block;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
