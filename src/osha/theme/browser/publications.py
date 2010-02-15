@@ -49,7 +49,7 @@ class PublicationsSearchView(BrowserView):
         url = ""
         if preflang != "en":
             solution = self.aq_parent.getCanonical().absolute_url()
-\            keywords = self.request.get("Subject", "")
+            keywords = self.request.get("Subject", "")
             url = "%s?Subject:list=%s"\
                   % (solution, keywords)
         return url
