@@ -282,5 +282,19 @@ class PracticalSolutionView(DBFilterView):
                 {'query': SearchableText, 'ranking_maxhits': 10000 }
                 )
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
-
         return query
+
+    def get_link_to_english_solutions(self):
+        """
+        If the selected language is not English, then return a link to
+        the equivalent search results in English
+        """
+        preflang = getToolByName(self.context,
+                                 'portal_languages').getPreferredLanguage()
+        url = ""
+        if preflang != "en":
+            solution = self.aq_parent.getCanonical().absolute_url()
+            keywords = self.request.get("keywords", "")
+            url = "%s?keywords:list=%s#database_search"\
+                  % (solution, keywords)
+        return url

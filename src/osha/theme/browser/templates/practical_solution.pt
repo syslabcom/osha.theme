@@ -218,7 +218,8 @@
           </i-->
 
           <h2>
-            <span i18n:translate="heading_search_results">
+     
+       <span i18n:translate="heading_search_results">
               Search results
             </span>
             <span class="discreet">
@@ -228,6 +229,14 @@
                                  content="python:len(results)"
                                  >234 </tal:number>
               </span>
+              <a href="/en/practical-solutions/useful-links?keywords:list=#database_search"
+                 tal:define="url view/get_link_to_english_solutions"
+                 tal:condition="url"
+                 i18n:translate="label_more_results_in_en"
+                 tal:attributes="href url"
+                 >
+                Check for more results in EN.
+              </a>
             </span>
           </h2>
 
