@@ -295,6 +295,8 @@ class PracticalSolutionView(DBFilterView):
         if preflang != "en":
             solution = self.aq_parent.getCanonical().absolute_url()
             keywords = self.request.get("keywords", "")
+            if keywords != [""]:
+                keywords = keywords[0]
             url = "%s?keywords:list=%s#database_search"\
                   % (solution, keywords)
         return url
