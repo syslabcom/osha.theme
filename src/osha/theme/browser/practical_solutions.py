@@ -284,7 +284,7 @@ class PracticalSolutionView(DBFilterView):
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
         return query
 
-    def get_link_to_english_solutions(self):
+    def get_link_to_english_results(self):
         """
         If the selected language is not English, then return a link to
         the equivalent search results in English

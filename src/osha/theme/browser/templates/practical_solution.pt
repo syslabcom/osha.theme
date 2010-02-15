@@ -233,7 +233,7 @@
                                  >234 </tal:number>
               </span>
               <a href="/en/practical-solutions/useful-links?keywords:list=#database_search"
-                 tal:define="url view/get_link_to_english_solutions"
+                 tal:define="url view/get_link_to_english_results"
                  tal:condition="url"
                  i18n:translate="label_more_results_in_en"
                  tal:attributes="href url"
