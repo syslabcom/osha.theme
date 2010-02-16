@@ -98,16 +98,16 @@
           <span i18n:translate="batch_x_items_matching_your_criteria"><span i18n:name="number" tal:content="python:len(results)">234</span> items match your criteria.</span>
         </strong>
 
-        <span class="discreet">
+        <strong>
           <a href="/en/publications/publications-overview?Subject:list=#database_search"
              tal:define="url view/get_link_to_english_results"
              tal:condition="url"
              i18n:translate="label_more_results_in_en"
              tal:attributes="href url"
              >
-            Check for more results in EN.
+            Check for more results in EN
           </a>
-        </span>
+        </strong>
 
         <div tal:condition="not: results">
           <p><strong i18n:translate="description_no_results_found">No results were found.</strong></p>

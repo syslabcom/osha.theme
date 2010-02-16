@@ -253,18 +253,19 @@ class PracticalSolutionView(DBFilterView):
                                  'portal_languages').getPreferredLanguage()
         language = self.request.get('Language', preflang)
         if language:
-            query = query & In('Language', (language,''))
-            #query.update({'language':language})
+            if language == "en":
+                query = query & In('Language', (language,''))
+            else:
+                query = query & Eq('Language', language)
 
         # don't handle remoteLanguage for FAQHelpcenter items
         spt = self.get_search_portal_type()
         faq_condition = type(spt) == list and 'HelpCenterFAQ' in spt or spt == 'HelpCenterFAQ'
-        getRemoteLanguage = self.request.get('getRemoteLanguage', 
-            not faq_condition and preflang
-            or '')
+        getRemoteLanguage = self.request.get('getRemoteLanguage',
+                                             not faq_condition and preflang
+                                             or '')
         if getRemoteLanguage:
             query = query & In('getRemoteLanguage', getRemoteLanguage)
-
         subcategory = self.request.get('subcategory', '')
         if subcategory:
             query = query & In('subcategory', subcategory)
@@ -295,7 +296,7 @@ class PracticalSolutionView(DBFilterView):
         if preflang != "en":
             solution = self.aq_parent.getCanonical().absolute_url()
             keywords = self.request.get("keywords", "")
-            if keywords != [""]:
+            if keywords and keywords != [""]:
                 keywords = keywords[0]
             url = "%s?keywords:list=%s#database_search"\
                   % (solution, keywords)

@@ -52,7 +52,7 @@ class PublicationsSearchView(BrowserView):
             keywords = self.request.get("Subject", "")
             if keywords != [""]:
                 keywords = keywords[0]
-            url = "%s?Subject:list=%s"\
+            url = "%s/publications-overview?Subject:list=%s"\
                   % (solution, keywords)
         return url
 
