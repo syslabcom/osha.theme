@@ -984,7 +984,7 @@ div.managedPortlet.portlet {
 
 
 /*
-** oshnetwork member view specific styles
+** oshnetwork member / fop view specific styles
 */
 
 body.template-oshnetwork-member-view .managePortletsLink,
@@ -1016,6 +1016,9 @@ div#available-translations .selected {
   border: 1px solid black;
 }
 
+#fop-main-promotion {
+   background-color: #E6E8ED;
+}
 
 #oshnetwork_editors_box {
     background: #b0b0b0;
