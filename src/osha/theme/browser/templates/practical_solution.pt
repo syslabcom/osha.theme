@@ -234,7 +234,8 @@
                                  >234 </tal:number>
               </span>
             </span>
-
+            <!--
+               Commenting out temporarily for PU
             <a href="/en/practical-solutions/useful-links?keywords:list=#database_search"
                tal:define="url view/get_link_to_english_results"
                tal:condition="url"
@@ -242,7 +243,7 @@
                tal:attributes="href url">
               Check for more results in EN
             </a>
-
+            -->
           </h2>
 
           <div tal:condition="not: results">
