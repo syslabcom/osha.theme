@@ -29,6 +29,7 @@ osha.theme Changelog
 - Fixed the path to publications-overview, changed link style, fixed bug which
   threw an exception when no keywords were passed to the form, included language
   neutral results when English is selected. #766 (deroiste)
+- Adding background color for the fop main promotion portlet (deroiste)
 
 
 
