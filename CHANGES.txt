@@ -4,7 +4,32 @@ osha.theme Changelog
 1.3.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Floating the available-translations viewlet from osha.fop to put it in the
+  right place. #611 (deroiste)
+- Hiding the available-translations viewlet via css, displaying it only on the
+  oshnetwork-member-view #611 (deroiste)
+- Changing the available-translations portlet to use links instead of a selection
+  list and updating the CSS for that #611 (deroiste)
+- oshmacros.pt: don't throw error if item_pubdate is None (thomasw)
+- Modified worklist #618: can select more than 1 Author; added field for
+  "modification date"; display a link to an object's history in the result list
+  if the item is versionable and the user is logged in; added better explanation
+  for the "remote URL" (thomasw)
+- Search form for practical_solution: don't show an empty select drop-down for
+  subcategories without a second level (thomasw)
+- Fix for funny buildout/setuptools issues: FCKEditor -> FCKeditor in
+  setup.py (gerken)
+- Tweaking the css for the additional languages selection, related to osha.fop
+  #611 (deroiste)
+- hide the field osha_metadata except on the specified sections (thomasw)
+- Removing language neutral results from the practical solutions portlet, as
+  requested in #766 (deroiste)
+- Adding a link to the English language results in varoious searches
+  #766 (deroiste)
+- Fixed the path to publications-overview, changed link style, fixed bug which
+  threw an exception when no keywords were passed to the form, included language
+  neutral results when English is selected. #766 (deroiste)
+
 
 
 1.3.5 (2010-01-29)
