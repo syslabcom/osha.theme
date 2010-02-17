@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.3.6 (unreleased)
+1.3.6 (2010-02-17)
 ------------------
 
 - Floating the available-translations viewlet from osha.fop to put it in the

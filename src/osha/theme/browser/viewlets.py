@@ -21,6 +21,7 @@ from plone.app.layout.viewlets import common
 from plone.app.portlets.cache import get_language
 
 from slc.subsite.interfaces import ISubsiteEnhanced
+from Products.RemoteProvider.content.interfaces import IProvider
 
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 from osha.theme.config import *
@@ -418,4 +419,29 @@ class OSHANapoBelowFooterViewlet(common.ViewletBase):
 class AddThisButtonViewlet(common.ViewletBase):
     render = ViewPageTemplateFile('templates/addthis.pt')
     
+        
+class ProviderToOSHLinkViewlet(common.ViewletBase):
+
+    render = ViewPageTemplateFile('templates/provider_to_oshlink.pt')
+    
+    def showeditbox(self):
+        user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
+        if user.has_role(('Manager', 'Reviewer')):
+            return True
+        return False
+    
+    def show(self):
+        if not IProvider.providedBy(self.context):
+            return False
+        qi = getToolByName(self.context, 'portal_quickinstaller')
+        if not qi.isProductInstalled('Products.RemoteProvider'):
+            return False
+        user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
+        if user.has_role(('Manager', 'Reviewer')):
+            return True
+        return False
+
+    def getUID(self):
+        return self.context.UID()
+
         
