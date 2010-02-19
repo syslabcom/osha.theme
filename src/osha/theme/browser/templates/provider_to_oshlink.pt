@@ -1,0 +1,11 @@
+<div id="osha-provier-to-oshlink" style="border: 1px solid black;"
+        tal:condition="view/show">
+  <tal:global>
+    <p>If this Provider should actually be an OSH Link ("Useful Link"), you can switch
+    the content type
+        <a href="#" tal:attributes="href string:${here/portal_url}/oshcontent_switch_form?uid=${view/getUID}">
+            using this form</a>.
+    </p>
+
+  </tal:global>
+</div>

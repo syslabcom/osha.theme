@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+  <metal:block fill-slot="base">
+    <tal:block tal:define="dummy python:request.set('disable_border', 1)" tal:replace="nothing" />
+  </metal:block>
+
+
+<body>
+
+<div metal:fill-slot="main" i18n:domain="osha"
+    tal:define="portal_url here/portal_url;
+				content_info view/getContentInfo">
+
+
+	<div tal:condition="content_info"
+		>
+		<h1>Switch <span tal:replace="string:${content_info/portal_type} '${content_info/title}'" />
+			to <span tal:replace="content_info/target_type" /></h1>
+	</div>
+	<div tal:condition="not:content_info">
+		<h1>Error</h1>
+		It was not possible to retrieve information about the content
+		object you wanted to change.
+	</div>
+</div>
+</body>
+</html>
