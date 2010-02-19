@@ -1002,6 +1002,10 @@ div#available-translations {
    float: right;
 }
 
+div#available-translations select {
+   font-size: 94%;
+}
+
 div#available-translations .selected {
    font-weight: bold;
 }
