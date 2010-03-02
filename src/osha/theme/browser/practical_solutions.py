@@ -252,11 +252,10 @@ class PracticalSolutionView(DBFilterView):
         preflang = getToolByName(self.context,
                                  'portal_languages').getPreferredLanguage()
         language = self.request.get('Language', preflang)
+        # Important! Always include neutral! Neutral == relevant for ALL
+        # languages!!!
         if language:
-            if language == "en":
-                query = query & In('Language', (language,''))
-            else:
-                query = query & Eq('Language', language)
+            query = query & In('Language', (language,''))
 
         # don't handle remoteLanguage for FAQHelpcenter items
         spt = self.get_search_portal_type()
