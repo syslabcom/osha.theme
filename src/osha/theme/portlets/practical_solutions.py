@@ -155,7 +155,11 @@ class Renderer(base.Renderer):
                          'slc.publications.interfaces.IPublicationEnhanced') & \
                       In('Subject', subject)
                   )
-        query = query & Eq('review_state','published') & Eq('Language', lang)
+        query = query & Eq('review_state','published')
+        if lang == "en":
+            query = query & In('Language', [lang, ""])
+        else:
+            query = query & Eq('Language', lang)
         pc = getToolByName(context, 'portal_catalog')
         if hasattr(pc, 'getZCatalog'):
             pc = pc.getZCatalog()
