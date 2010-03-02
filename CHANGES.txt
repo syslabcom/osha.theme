@@ -4,6 +4,8 @@ osha.theme Changelog
 1.3.7 (unreleased)
 ------------------
 
+- Practical Solution portlet: Include Language Neutral results when
+  "en" is selected. #766 (deroiste)
 - Practical solution search: ALWAYS include the neutral language! Neutral means
   it is relevant in all languages (thomasw) 
 
