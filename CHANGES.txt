@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.3.7 (unreleased)
+1.3.7 (2010-03-07)
 ------------------
 
 - Practical Solution portlet: Include Language Neutral results when
