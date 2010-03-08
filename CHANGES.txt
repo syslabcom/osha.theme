@@ -4,6 +4,7 @@ osha.theme Changelog
 1.3.7 (2010-03-07)
 ------------------
 
+- Changed Napo logofooter to point inrs.fr to french version instead of english (part of #826) (pilz)
 - Practical Solution portlet: Include Language Neutral results when
   "en" is selected. #766 (deroiste)
 - Practical solution search: ALWAYS include the neutral language! Neutral means
