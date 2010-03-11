@@ -988,8 +988,10 @@ div.managedPortlet.portlet {
 */
 
 body.template-oshnetwork-member-view .managePortletsLink,
-body.template-oshnetwork-member-view div#slc-linkcollection-linkbox {
-    display: None;
+body.template-oshnetwork-member-view div#slc-linkcollection-linkbox,
+body.template-oshnetwork-member-view #portal-breadcrumbs span,
+body.template-oshnetwork-member-view #portal-breadcrumbs a {
+    display: none;
 }
 
 body.template-oshnetwork-member-view div#available-translations {
