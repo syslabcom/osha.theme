@@ -11,15 +11,16 @@
     tal:condition="view/show">
 
     <span tal:condition="not:existing">
-        <p>If this Provider should actually be an OSH Resource ("Useful Link"), you can switch
+        <p>If this OSH Resource ("Useful Link") should actually be a Provider, you can switch
         the content type
             <a href="#" tal:attributes="href string:${here/absolute_url}/oshcontent_switch_form?uid=${view/getUID}">
                 using this form</a>.
         </p>
     </span>
     <p tal:condition="existing">
-        This Provider has already been transformed into an OSH Resource and <a href="" tal:attributes="href existing"
-        target="_blank">is available here.</a>
+        This OSH Resource has already been transformed into a Provider and <a href="" tal:attributes="href existing"
+        target="_blank">is available here</a>
     </p>
+
 
 </div>

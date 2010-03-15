@@ -197,3 +197,9 @@ class IOSHAAboveContent(IAdditionalPortletManager):
 class IOSHABelowContent(IAdditionalPortletManager):
     """Portlet manager below the content area.
     """     
+
+class IOSHContentSwitcher(Interface):
+    """Switch content type of OSH content (form)"""
+
+class ISwitchOSHContent(Interface):
+    """Switch content type of OSH content (executing method)"""

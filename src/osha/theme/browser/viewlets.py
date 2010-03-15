@@ -10,6 +10,7 @@ from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 from Products.LinguaPlone.interfaces import ITranslatable
+from zope.annotation.interfaces import IAnnotations
 
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
@@ -21,9 +22,12 @@ from plone.app.layout.viewlets import common
 from plone.app.portlets.cache import get_language
 
 from slc.subsite.interfaces import ISubsiteEnhanced
+from Products.RemoteProvider.content.interfaces import IProvider
+from Products.OSHContentLink.interfaces import IOSH_Link
 
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 from osha.theme.config import *
+
 
 class OSHALanguageSelector(TranslatableLanguageSelector):
     """ Override LinguaPlone's language selector to provide our own template
@@ -419,3 +423,56 @@ class AddThisButtonViewlet(common.ViewletBase):
     render = ViewPageTemplateFile('templates/addthis.pt')
     
         
+class OSHAContentSwitcherViewlet(common.ViewletBase):
+
+    def showeditbox(self):
+        user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
+        if user.has_role(('Manager', 'Reviewer')):
+            return True
+        return False
+
+    def getUID(self):
+        return self.context.UID()
+
+    def getExisting(self):
+        portal_catalog = getToolByName(self.context, 'portal_catalog')
+        ann = IAnnotations(self.context)
+        existing_uid = ann.get(EXISTING_SWITCHED_CONTENT_UID, '')
+        existing_url = ''
+        if existing_uid:
+            res = portal_catalog(UID=existing_uid)
+            existing = len(res) and res[0].getObject()
+            existing_url = existing and existing.absolute_url()
+        return existing_url
+
+
+class ProviderToOSHLinkViewlet(OSHAContentSwitcherViewlet):
+
+    render = ViewPageTemplateFile('templates/provider_to_oshlink.pt')
+
+    def show(self):
+        if not IProvider.providedBy(self.context):
+            return False
+        qi = getToolByName(self.context, 'portal_quickinstaller')
+        if not qi.isProductInstalled('Products.RemoteProvider'):
+            return False
+        user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
+        if user.has_role(('Manager', 'Reviewer')):
+            return True
+        return False
+
+
+class OSHLinkToProviderViewlet(OSHAContentSwitcherViewlet):
+
+    render = ViewPageTemplateFile('templates/oshlink_to_provider.pt')
+
+    def show(self):
+        if not IOSH_Link.providedBy(self.context):
+            return False
+        qi = getToolByName(self.context, 'portal_quickinstaller')
+        if not qi.isProductInstalled('Products.OSHContentLink'):
+            return False
+        user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
+        if user.has_role(('Manager', 'Reviewer')):
+            return True
+        return False

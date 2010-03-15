@@ -688,5 +688,40 @@
         permission="zope2.View"
         />
 
+    <!-- Switching from Provider to OSH Link -->
+    <browser:viewlet
+        name="osha.theme.provider_to_oshlink"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class=".viewlets.ProviderToOSHLinkViewlet"
+        permission="zope2.View"
+        />
+
+    <browser:viewlet
+        name="osha.theme.oshlink_to_provider"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        class=".viewlets.OSHLinkToProviderViewlet"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="Products.RemoteProvider.content.interfaces.IProvider"
+        name="oshcontent_switch_form"
+        class=".oshcontent_switcher.OSHContentSwitcher"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="Products.OSHContentLink.interfaces.IOSH_Link"
+        name="oshcontent_switch_form"
+        class=".oshcontent_switcher.OSHContentSwitcher"
+        permission="zope2.View"
+        />
+
+  <browser:page
+      for="*"
+      name="switch_osh_content"
+      class=".oshcontent_switcher.SwitchOSHContent"
+      permission="zope2.View"
+      />
 
 </configure>
