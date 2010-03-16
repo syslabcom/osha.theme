@@ -29,7 +29,10 @@ class OSHContentSwitcher(BrowserView):
         res = portal_catalog(UID=self.uid)
         if len(res) == 0:
             return None
-        obj = res[0].getObject()
+        try:
+            obj = res[0].getObject()
+        except:
+            obj = None
         if obj is None:
             return None
         portal_type = obj.portal_type
@@ -42,6 +45,7 @@ class OSHContentSwitcher(BrowserView):
             existing = len(res) and res[0].getObject()
             existing_url = existing and existing.absolute_url()
         target_type = portal_type == 'OSH_Link' and 'Provider' or 'OSH Resource'
+        portal_type = portal_type == 'OSH_Link' and 'OSH Resource' or 'Provider'
         return dict(uid=self.uid,
                 portal_type=portal_type,
                 target_type=target_type,
