@@ -5,6 +5,7 @@ osha.theme Changelog
 ------------------
 
 - Hiding the breadcrumbs for the FOP section #611 (deroiste)
+- Added OSH_Link-to-Provider (and vice versa) switcher, #619 (thomasw)
 
 
 1.3.7 (2010-03-07)
