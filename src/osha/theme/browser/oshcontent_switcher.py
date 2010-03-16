@@ -8,9 +8,10 @@ from zope.component import getUtility
 from Products.OSHContentLink.interfaces import IOSH_Link
 from Products.RemoteProvider.content.interfaces import IProvider
 from zope.annotation.interfaces import IAnnotations
+from Products.statusmessages.interfaces import IStatusMessage
 from osha.theme.config import *
 
-LinkToProvider = ['title',  'remoteUrl', 'remoteLanguage', 'country', 'subcategory', 'multilingual_thesaurus', 'nace', ]
+COMMON_FIELDS = ['title',  'remoteUrl', 'remoteLanguage', 'country', 'subcategory', 'multilingual_thesaurus', 'nace', ]
 
 
 class OSHContentSwitcher(BrowserView):
@@ -40,7 +41,7 @@ class OSHContentSwitcher(BrowserView):
             res = portal_catalog(UID=existing_uid)
             existing = len(res) and res[0].getObject()
             existing_url = existing and existing.absolute_url()
-        target_type = portal_type == 'OSH_Link' and 'Provider' or 'OSH_Link'
+        target_type = portal_type == 'OSH_Link' and 'Provider' or 'OSH Resource'
         return dict(uid=self.uid,
                 portal_type=portal_type,
                 target_type=target_type,
@@ -55,45 +56,74 @@ class SwitchOSHContent(BrowserView):
     def __call__(self, skipRedirect=False, **args):
         context = self.context
         request = context.REQUEST
+        status = IStatusMessage(request)
+        errors = list()
         plone_utils = getToolByName(context, 'plone_utils')
-        id =request.get('id')
-
+        id = request.get('id')
+        uid = request.get('uid')
 
         if IProvider.providedBy(context):
-            message = "provider!"
+            target = context.restrictedTraverse('/osha/portal/data/links')
+            if not target:
+                 errors.append("Error: folder for adding the OSH Resource could not be found")
+            else:
+                if getattr(aq_base(target), id, None):
+                    errors.append("The ID '%s' already exists as an OSH Resource."
+                    " Please choose a different id" %id)
+                else:
+                    target.invokeFactory(id=id, type_name="OSH_Link")
+                    obj = getattr(target, id)
+                    for fname in COMMON_FIELDS:
+                        value = context.getField(fname).getAccessor(context)()
+                        obj.getField(fname).getMutator(obj)(value)
+                    obj.setText(context.Description())
+                    obj.reindexObject()
+                    ann = IAnnotations(context)
+                    ann[EXISTING_SWITCHED_CONTENT_UID] = obj.UID()
+                    status.addStatusMessage("Switching content was successful! See the box below for a link to "
+                    "the new OSH Resource.", type='info')
+                    try:
+                        pwt = getToolByName(context, 'portal_workflow')
+                        pwt.doActionFor(context, 'delete')
+                        status.addStatusMessage("The workflow state on this Provider was set to 'deleted'",
+                            type='info')
+                    except:
+                         status.addStatusMessage("Setting the workflow state to 'deleted' was NOT possible.",
+                            type="warning")
         elif IOSH_Link.providedBy(context):
             target = context.restrictedTraverse('/osha/portal/data/provider')
             if not target:
-                message = "Error: folder for adding the Provider could not be found"
+                 errors.append("Error: folder for adding the Provider could not be found")
             else:
                 if getattr(aq_base(target), id, None):
-                    message = "The ID '%s' already exists as a Provider. Please choose a different id"
+                     errors.append("The ID '%s' already exists as a Provider. Please choose a different id" %id)
                 else:
-
-                    #import pdb; pdb.set_trace()
                     target.invokeFactory(id=id, type_name="Provider")
                     obj = getattr(target, id)
-                    for fname in LinkToProvider:
+                    for fname in COMMON_FIELDS:
                         value = context.getField(fname).getAccessor(context)()
                         obj.getField(fname).getMutator(obj)(value)
                     obj.setDescription(context.getText())
                     obj.reindexObject()
                     ann = IAnnotations(context)
                     ann[EXISTING_SWITCHED_CONTENT_UID] = obj.UID()
-                    message = "Switching content was successful!"
+                    status.addStatusMessage("Switching content was successful! See the box below for a link to "
+                    "the new Provider.", type='info')
                     try:
                         pwt = getToolByName(context, 'portal_workflow')
                         pwt.doActionFor(context, 'delete')
-                        message += "\nSet workflow state to 'deleted'"
+                        status.addStatusMessage("The workflow state on this OSH Resource was set to 'deleted'",
+                            type='info')
                     except:
-                        message += "Setting workflow state to 'deleted' was NOT possible"
-
-
+                         status.addStatusMessage("Setting the workflow state to 'deleted' was NOT possible.",
+                            type="warning")
         else:
-            message = "An error occurred"
+            errors.append('This form was used on content other than a Provider or OSH Resource.')
 
-
-        if not skipRedirect:
+        if len(errors):
+            path = "%s/oshcontent_switch_form?uid=%s&id=%s" % (context.absolute_url(), uid, id)
+            for error in errors:
+                status.addStatusMessage(error, type="error")
+        else:
             path = context.absolute_url()
-            plone_utils.addPortalMessage(message)
-            self.request.RESPONSE.redirect(path)
+        self.request.RESPONSE.redirect(path)
