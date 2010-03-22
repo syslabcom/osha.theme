@@ -220,10 +220,10 @@
  <javascript cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="True" expression=""
     id="++resource++jquery-ui-1.7.2.min.js" inline="False"/>
- <javascript cacheable="True" compression="safe" conditionalcomment=""
+ <!-- javascript cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="True"
     expression="python: here.restrictedTraverse('@@image-editor-utility').should_include(request)"
-    id="++resource++jquery.imgareaselect-0.8.min.js" inline="False"/>
+    id="++resource++jquery.imgareaselect-0.8.min.js" inline="False"/ -->
  <javascript cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="True"
     expression="python: here.restrictedTraverse('@@plonetruegallery_util').should_include('slideshow')"
@@ -238,7 +238,4 @@
  <javascript cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="True" expression=""
     id="++resource++slc.linguatools.static/linguatools.js" inline="False"/>
- <javascript cacheable="True" compression="safe" conditionalcomment=""
-    cookable="True" enabled="True" expression=""
-    id="++resource++fusionmaps_js/linkcollection.js" inline="False"/>
 </object>
