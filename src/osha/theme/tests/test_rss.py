@@ -57,10 +57,15 @@ class TestOshaRSS(OshaThemeFunctionalTestCase):
     def test_configuration(self):
         url = self.portal.absolute_url() + '/@@rss-feeds'
         self.browser.open(url)
-        self.assertTrue('News Items' in self.browser.contents)        
-        self.assertTrue('Events' in self.browser.contents)        
-        self.assertTrue('Publications' in self.browser.contents)
-        self.assertEquals(3, self.browser.contents.count('Latest'))        
+        self.assertTrue('EU-OSHA News Items' in self.browser.contents)
+        self.assertTrue('RSSTitle=EU-OSHA%20News%20Items' in self.browser.contents)
+        self.assertTrue('EU-OSHA Events' in self.browser.contents)
+        self.assertTrue('RSSTitle=EU-OSHA%20Events' in self.browser.contents)
+        self.assertTrue('EU-OSHA Publications' in self.browser.contents)
+        self.assertTrue('RSSTitle=EU-OSHA%20Publications' in self.browser.contents)
+        self.assertTrue('EU-OSHA Blog' in self.browser.contents)
+        self.assertTrue('RSSTitle=EU-OSHA%20Blog' in self.browser.contents)
+        self.assertEquals(3, self.browser.contents.count('Latest'))
 
         
 def test_suite():

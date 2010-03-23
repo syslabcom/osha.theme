@@ -42,13 +42,13 @@ class RSSFeedsView(BrowserView):
 
         for doc_type, type_url in self.TYPES.items():
             if doc_type == 'Publication':
-                title = doc_type.capitalize() + 's'
+                title = 'EU-OSHA ' + doc_type.capitalize() + 's'
                 yield dict(doc_type=doc_type, title=title, 
                            icon="publication_icon.gif", base_url = type_url)        
             else:
                 ti = portal_types.getTypeInfo(doc_type)
                 if ti:
-                    title = ti.Title()+'s'
+                    title = 'EU-OSHA ' + ti.Title()+'s'
                     yield dict(doc_type=doc_type, title=title,
                                icon=ti.getIcon(),base_url=type_url)
                     
@@ -76,7 +76,7 @@ class RSSFeedsView(BrowserView):
         Return list of tuples, tuple 1 is the category id, tuple 2 the title
         of the category"""
         oshaview = self.context.restrictedTraverse('@@oshaview')
-        return oshaview.getTranslatedCategories()        
+        return oshaview.getTranslatedCategories()
     
     def _getPortalPath(self):
         return getToolByName(self.context, 'portal_url').getPortalObject().absolute_url()
@@ -89,6 +89,7 @@ class RSSFeedsView(BrowserView):
         retval = []
         lang = self._getPreferedLanguage()
         for id, title in self._getTranslatedCategories():
+            title = 'EU-OSHA ' + title
             url_title = unicode(url_quote(title.encode('utf-8')), 'utf-8')
             retval.append(dict(
                 id=id, 
