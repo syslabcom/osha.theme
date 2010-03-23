@@ -1,4 +1,130 @@
 Films = [
+        ('id_napo_film_14', {
+            'title': 'title_napo_film_14',       
+            'description': 'description_napo_film_14',
+            'durlavi': '', 
+            'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/save_maintenance.wmv',
+            'image_url': 'http://media.osha.europa.eu/safe_maintenance/preview.jpg',
+            'episodes' : [
+                { 'id': 'id_napo_episode_14_0'
+                , 'title': 'title_napo_episode_14_0'
+                , 'image_url': 'http://media.osha.europa.eu/safe_maintenance/thumbnails/preview.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-00-intro-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-00-intro-eng.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_14_1'
+                , 'title': 'title_napo_episode_14_1'
+                , 'image_url': 'http://media.osha.europa.eu/safe_maintenance/thumbnails/Lock out.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-01-lock-out-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-01-lock-out-eng.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_14_2'
+                , 'title': 'title_napo_episode_14_2'
+                , 'image_url': 'http://media.osha.europa.eu/safe_maintenance/thumbnails/Hidden hazards.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-02-hidden-hazard-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-02-hidden-hazards-eng.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_14_3'
+                , 'title': 'title_napo_episode_14_3'
+                , 'image_url': "http://media.osha.europa.eu/safe_maintenance/thumbnails/Don't improvise.jpg"
+                , 'durlavi': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-03-dont-improvise-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-03-dont-improvise-eng.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_14_4'
+                , 'title': 'title_napo_episode_14_4'
+                , 'image_url': 'http://media.osha.europa.eu/safe_maintenance/thumbnails/In a rush.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-04-in-a-rush-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-04-in-a-rush-eng.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_14_5'
+                , 'title': 'title_napo_episode_14_5'
+                , 'image_url': 'http://media.osha.europa.eu/safe_maintenance/thumbnails/Danger within.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-05-danger-within-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-05-danger-within-eng.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_14_6'
+                , 'title': 'title_napo_episode_14_6'
+                , 'image_url': 'http://media.osha.europa.eu/safe_maintenance/thumbnails/One, two, what to do.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-06-one-two-what-to-do-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-06-one-two-what-to-do-eng.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_14_7'
+                , 'title': 'title_napo_episode_14_7'
+                , 'image_url': 'http://media.osha.europa.eu/safe_maintenance/thumbnails/N9-07_the-end.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-07-the-end-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/safe_maintenance/napo-maintenance-07-the-end-eng.wmv'                
+                } ,
+                        ]
+           }) ,
+
+        ('id_napo_film_13', {
+            'title': 'title_napo_film_13',       
+            'description': 'description_napo_film_13',
+            'durlavi': 'http://media.osha.europa.eu/protect_your_skin/protect_your_skin.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/protect_your_skin/protect_your_skin.wmv',
+            'image_url': 'http://media.osha.europa.eu/protect_your_skin/preview.jpg',
+            'episodes' : [
+                        ]
+           }) ,
+
+        ('id_napo_film_12', {
+            'title': 'title_napo_film_12',       
+            'description': 'description_napo_film_12',
+            'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo.leithur.time.avi', 
+            'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo.leithur.time.wmv',
+            'image_url': 'http://media.osha.europa.eu/danger_chemicals/preview.jpg',
+            'episodes' : [
+                { 'id': 'id_napo_episode_12_0'
+                , 'title': 'title_napo_episode_12_0'
+                , 'image_url': 'http://media.osha.europa.eu/danger_chemicals/thumbnails/Danger chemicals.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-00-start-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-00-intro-en.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_12_1'
+                , 'title': 'title_napo_episode_12_1'
+                , 'image_url': 'http://media.osha.europa.eu/danger_chemicals/thumbnails/Harmful.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-01-harmful-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-01-harmful-en.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_12_2'
+                , 'title': 'title_napo_episode_12_2'
+                , 'image_url': 'http://media.osha.europa.eu/danger_chemicals/thumbnails/Irritant.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-02-irritant-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-02-irritant-en.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_12_3'
+                , 'title': 'title_napo_episode_12_3'
+                , 'image_url': 'http://media.osha.europa.eu/danger_chemicals/thumbnails/Flammable.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-03-flammable-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-03-flammable-en.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_12_4'
+                , 'title': 'title_napo_episode_12_4'
+                , 'image_url': 'http://media.osha.europa.eu/danger_chemicals/thumbnails/Corrosive.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-04-corrosive-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-04-corrosive-en.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_12_5'
+                , 'title': 'title_napo_episode_12_5'
+                , 'image_url': 'http://media.osha.europa.eu/danger_chemicals/thumbnails/Toxic.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-05-toxic-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-05-toxic-en.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_12_6'
+                , 'title': 'title_napo_episode_12_6'
+                , 'image_url': 'http://media.osha.europa.eu/danger_chemicals/thumbnails/Chemical risks at work.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-06-dangerous-for-environment-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-06-dangerous-for-the-environment.wmv'                
+                } ,
+                { 'id': 'id_napo_episode_12_7'
+                , 'title': 'title_napo_episode_12_7'
+                , 'image_url': 'http://media.osha.europa.eu/danger_chemicals/thumbnails/The end.jpg'
+                , 'durlavi': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-07-under-pressure-the-end-eng.avi'
+                , 'durlwmv': 'http://media.osha.europa.eu/danger_chemicals/napo-sgh-07-under-pressure-the-end.wmv'                
+                } ,
+                        ]
+           }) ,
+
         ('id_napo_film_11', {
             'title': 'title_napo_film_11',       
             'description': 'description_napo_film_11',
@@ -8,6 +134,7 @@ Films = [
             'episodes' : [
                         ]
            }) ,
+
         ('id_napo_film_9', {
             'title': 'title_napo_film_9',       
             'description': 'description_napo_film_9',
@@ -627,3 +754,4 @@ Films = [
         ]   
 
 return Films
+
