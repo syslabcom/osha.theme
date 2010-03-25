@@ -1,0 +1,11 @@
+
+<div id="inline-content-viewlet" class="backlinks"
+    tal:define="obj view/getContentObject"
+     tal:condition="view/show">
+
+    <span tal:replace="structure obj/getText"></span>
+    <span tal:condition="view/showeditlink">
+        <a href="#" tal:attributes="href string:${obj/absolute_url}/edit">[Edit]</a>
+    </span>
+
+</div>

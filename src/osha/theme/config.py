@@ -6,6 +6,8 @@ FEED_KEY = 'feed_key'
 KEYWORDS_KEY = 'keyword_list'
 PRESS_CONTACTS_KEY = 'press_contacts'
 
+INLINE_CONTENT_VIEWLET_NAME = 'inline_content_viewlet'
+
 # European network. Used by network_chooser view
 # Will later be factored out to be editable through the web
 EUROPEAN_NETWORK = (

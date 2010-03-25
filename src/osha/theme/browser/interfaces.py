@@ -203,3 +203,6 @@ class IOSHContentSwitcher(Interface):
 
 class ISwitchOSHContent(Interface):
     """Switch content type of OSH content (executing method)"""
+
+class IInlineContentViewlet(Interface):
+    """ Marker interface that makes the InlineContentViewlet visible """

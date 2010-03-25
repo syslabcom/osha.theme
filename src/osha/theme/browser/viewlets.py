@@ -3,7 +3,7 @@ from time import time
 
 from zope.component import getMultiAdapter
 
-from Acquisition import aq_base, aq_inner
+from Acquisition import aq_base, aq_inner, aq_parent
 
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
@@ -26,6 +26,7 @@ from Products.RemoteProvider.content.interfaces import IProvider
 from Products.OSHContentLink.interfaces import IOSH_Link
 
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
+from osha.theme.browser.interfaces import IInlineContentViewlet
 from osha.theme.config import *
 
 
@@ -476,3 +477,25 @@ class OSHLinkToProviderViewlet(OSHAContentSwitcherViewlet):
         if user.has_role(('Manager', 'Reviewer')):
             return True
         return False
+
+
+class InlineContentViewlet(common.ViewletBase):
+    
+    render = ViewPageTemplateFile('templates/inline_content_viewlet.pt')
+    
+    def showeditlink(self):
+        user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
+        if user.has_role(('Manager', 'Reviewer')):
+            return True
+        return False
+
+    def getContentObject(self):
+        return getattr(aq_parent(aq_inner(self.context)), INLINE_CONTENT_VIEWLET_NAME, None)
+
+    def show(self):
+        if not IInlineContentViewlet.providedBy(self.context):
+            return False
+        if not self.getContentObject():
+            return False
+        return True
+

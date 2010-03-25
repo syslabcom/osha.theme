@@ -30,4 +30,10 @@
         name="osha.theme.PressContactVocabulary"
         /> 
 
+    <adapter
+        for=".browser.interfaces.IInlineContentViewlet"
+        provides=".browser.interfaces.IInlineContentViewlet"
+        factory=".adapter.InlineContentViewletAdapter"
+        />
+
 </configure>

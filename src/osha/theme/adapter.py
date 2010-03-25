@@ -9,6 +9,7 @@ from plone.app.portlets.portlets.navigation import INavigationPortlet, getRootPa
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
 from Products.CMFPlone.browser.navtree import SitemapNavtreeStrategy
+from osha.theme.browser.interfaces import IInlineContentViewlet
 
 # Special Query Builder for the Root object to build a query which takes the 
 # language trees into account and shows the 2nd level navi below /en, /de, etc.
@@ -123,5 +124,9 @@ class NavtreeStrategy(SitemapNavtreeStrategy):
             return False
         else:
             return True        
- 
 
+class InlineContentViewletAdapter(object):
+    """adapts an object to support displaying the inline content viewlet
+    """
+    implements(IInlineContentViewlet)
+    adapts(IInlineContentViewlet)
