@@ -631,6 +631,107 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
     display: block;
 }
 
+/****************styles for the new class requested by Manuela in ticket #855*****************/
+
+#boxing_styles_inner_content {
+    background-color:#F7F8F9;
+    border:1px solid #C5CBD8;
+    width:80%;
+    margin:1em auto;  
+    padding:1em; 
+}
+
+.boxing_styles_inner_content {
+    background-color:#F7F8F9;
+    border:1px solid #C5CBD8;
+    font-size:100%;
+    width:80%;
+    margin:1em auto;
+    padding:1em;
+}
+
+.boxing_styles_inner_content tbody {
+    
+}
+
+.boxing_styles_inner_content tr {
+    
+}
+
+.boxing_styles_inner_content td {
+    padding:3px;
+    /*border:1px solid #c1c1c1;*/
+}
+
+.boxing_styles_inner_content p {
+    line-height:1.5em;
+    margin:0 0 0.75em;
+}
+
+.boxing_styles_inner_content ul {
+line-height:1.5em;
+list-style-image:url(http://osha.europa.eu/bullet.gif);
+list-style-type:square;
+margin:0.5em 0 0 0;
+padding-left:15px;
+}
+
+.boxing_styles_inner_content li {
+    margin-bottom:0.5em;
+}
+
+/***********styles for full width****************/
+
+#boxing_styles_content {
+    background-color:#F7F8F9;
+    border:1px solid #C5CBD8;
+    width:100%;
+    margin:1em auto;
+    padding:1em; 
+}
+
+.boxing_styles_content {
+    background-color:#F7F8F9;
+    border:1px solid #C5CBD8;
+    font-size:100%;
+    width:100%;
+    margin:1em auto;
+    padding:1em;
+}
+
+.boxing_styles_content tbody {
+    
+}
+
+.boxing_styles_content tr {
+    
+}
+
+.boxing_styles_content td {
+    padding:3px;
+    /*border:1px solid #c1c1c1;*/
+}
+
+.boxing_styles_content p {
+    line-height:1.5em;
+    margin:0 0 0.75em;
+}
+
+.boxing_styles_content ul {
+line-height:1.5em;
+list-style-image:url(http://osha.europa.eu/bullet.gif);
+list-style-type:square;
+margin:0.5em 0 0 0;
+padding-left:15px;
+}
+
+.boxing_styles_content li {
+    margin-bottom:0.5em;
+}
+
+
+
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
