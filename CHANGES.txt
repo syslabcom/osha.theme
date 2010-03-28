@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.3.9 (unreleased)
+1.3.9 (2010-03-28)
 ------------------
 
 - quick'n'dirty solution for #627: a new viewlet is registered that
