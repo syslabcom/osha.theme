@@ -4,7 +4,7 @@ osha.theme Changelog
 1.3.9 (2010-03-28)
 ------------------
 
-- quick'n'dirty solution for #627: a new viewlet is registered that
+- quick n dirty solution for #627: a new viewlet is registered that
   displays the contents of a doc called inline_content_viewlet below the
   title on objects with the marker i-face IInlineContentViewlet (thomasw)
 
