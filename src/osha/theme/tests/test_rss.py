@@ -35,12 +35,12 @@ class TestRSS(unittest.TestCase):
                                            'icon' : 'nice icon.png',
                                            'base_url' : '/search_rss?RSSTitle=nice%%20title&%(lang)s/%(sorter)s'}]
 
-        should_be = [{'url': 'portal_path/search_rss?Subject=1&RSSTitle=one&Language=en&review_state=published&sort_on=effective', 
-                      'icon': 'topic_icon.gif', 'id': '1', 'title': 'one'}, 
-                     {'url': 'portal_path/search_rss?Subject=2&RSSTitle=two&Language=en&review_state=published&sort_on=effective', 
-                      'icon': 'topic_icon.gif', 'id': '2', 'title': 'two'},  
-                     {'url': 'portal_path/search_rss?Subject=3&RSSTitle=drei%C3%83%C2%B6&Language=en&review_state=published&sort_on=effective', 
-                      'icon': 'topic_icon.gif', 'id': '3', 'title': u'drei\xc3\xb6'}]
+        should_be = [{'url': 'portal_path/search_rss?Subject=1&RSSTitle=EU-OSHA%20one&Language=en&review_state=published&sort_on=effective', 
+                      'icon': 'topic_icon.gif', 'id': '1', 'title': 'EU-OSHA one'}, 
+                     {'url': 'portal_path/search_rss?Subject=2&RSSTitle=EU-OSHA%20two&Language=en&review_state=published&sort_on=effective', 
+                      'icon': 'topic_icon.gif', 'id': '2', 'title': 'EU-OSHA two'},  
+                     {'url': 'portal_path/search_rss?Subject=3&RSSTitle=EU-OSHA%20drei%C3%83%C2%B6&Language=en&review_state=published&sort_on=effective', 
+                      'icon': 'topic_icon.gif', 'id': '3', 'title': u'EU-OSHA drei\xc3\xb6'}]
         and_is = view.subject_feeds()
         self.assertEquals(should_be, and_is)
         
