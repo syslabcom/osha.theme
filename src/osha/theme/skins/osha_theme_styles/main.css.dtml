@@ -633,13 +633,6 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 
 /****************styles for the new class requested by Manuela in ticket #855*****************/
 
-#boxing_styles_inner_content {
-    background-color:#F7F8F9;
-    border:1px solid #C5CBD8;
-    width:80%;
-    margin:1em auto;  
-    padding:1em; 
-}
 
 .boxing_styles_inner_content {
     background-color:#F7F8F9;
@@ -660,7 +653,6 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 
 .boxing_styles_inner_content td {
     padding:3px;
-    /*border:1px solid #c1c1c1;*/
 }
 
 .boxing_styles_inner_content p {
@@ -682,19 +674,10 @@ padding-left:15px;
 
 /***********styles for full width****************/
 
-#boxing_styles_content {
-    background-color:#F7F8F9;
-    border:1px solid #C5CBD8;
-    width:100%;
-    margin:1em auto;
-    padding:1em; 
-}
-
 .boxing_styles_content {
     background-color:#F7F8F9;
     border:1px solid #C5CBD8;
     font-size:100%;
-    width:100%;
     margin:1em auto;
     padding:1em;
 }
@@ -709,7 +692,6 @@ padding-left:15px;
 
 .boxing_styles_content td {
     padding:3px;
-    /*border:1px solid #c1c1c1;*/
 }
 
 .boxing_styles_content p {
