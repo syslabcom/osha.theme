@@ -4,7 +4,9 @@ osha.theme Changelog
 1.3.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Removing the eu FOP drop down list, this is being replaced by a link
+  to 'National Focal Points' from the main navigation which will lead
+  to /oshnetwork/focal-points #960 (deroiste)
 
 
 1.3.10 (2010-04-05)
