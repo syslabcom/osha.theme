@@ -23,7 +23,7 @@
             <a href="#"
                tal:attributes="href string:${here/absolute_url}/image/image_view_fullscreen"
                class="parent-fieldname-image">
-               <img tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt="" />
+               <img width="100" tal:replace="structure python: here.tag(scale='mini', css_class='newsImage')" src="" alt="" />
             </a>
             <p class="discreet">
               <metal:field use-macro="python:here.widget('imageCaption', mode='view')">
