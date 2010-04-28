@@ -4,14 +4,13 @@ osha.theme Changelog
 1.3.13 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- hardcoded image width for news items in Collage to 100 (pilz)
 
 
 1.3.12 (2010-04-27)
 -------------------
 
 - updated link in worklist form to point to new BIRT reports (pilz)
-- hardcoded image width for news items in Collage to 100 (pilz)
 
 
 1.3.11 (2010-04-18)
