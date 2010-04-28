@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.3.13 (unreleased)
+1.3.13 (2010-04-28)
 -------------------
 
 - hardcoded image width for news items in Collage to 100 (pilz)
