@@ -142,7 +142,10 @@ class Renderer(base.Renderer):
 
     def replace_link(self, mobj):
         link = mobj.group(1)
-        text = mobj.group(0).replace(link, '%s?sourceid=%s' %(link, self.myid))
+        if '?' in link:
+            text = mobj.group(0).replace(link, '%s&sourceid=%s' %(link, self.myid))
+        else:
+            text = mobj.group(0).replace(link, '%s?sourceid=%s' %(link, self.myid))
         return text
 
     def modifyLinks(self, text):
