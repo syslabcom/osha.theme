@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.3.15 (unreleased)
+1.3.15 (2010-05-02)
 -------------------
 
 - Fixed link replacer which appends the sourceid tag to also respect urls with parameters fixes #1120 (pilz)
