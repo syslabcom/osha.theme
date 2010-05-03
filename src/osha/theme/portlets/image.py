@@ -225,7 +225,7 @@ class Renderer(base.Renderer):
         nm.write("%s");"""
 
         ob = self.get_object()
-        height = True and self.data.height or "90%"
+        height = True and self.data.height or ""
         width = True and self.data.width or "90%"
         return flashtemplate % (ob.absolute_url(), self.id_attr(), width, height, self.id_attr())
 
