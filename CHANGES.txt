@@ -5,7 +5,7 @@ osha.theme Changelog
 -------------------
 
 - fixed height fallback in image portlet. Now a flash portlet can be 100% width, fixes #1037 (pilz)
-- Created a Publications portlet, requested in #1063 - it is identical to the Practical
+- Created a Publications portlet, requested in #627 - it is identical to the Practical
   Solutions portlet, except that it only shows publications (thomasw)
 
 
