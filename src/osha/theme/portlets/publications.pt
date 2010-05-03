@@ -1,0 +1,32 @@
+<dl class="portlet portletPracticalSolutions"
+    tal:define="publications view/getRecentPublications"
+    i18n:domain="osha">
+
+  <dt class="portletHeader"
+      i18n:translate="heading_publications">
+    Publications
+  </dt>
+
+  <dd class="portletItem">
+    <ul class="linkList">
+      <li  tal:repeat="publication python:publications">
+        <a href=""
+           class="tile"
+           tal:attributes="href string:${publication/getPath}/view;
+                           title publication/Title;">
+          <img tal:attributes="src publication/getIcon" />
+          <tal:title replace="publication/Title"></tal:title>
+        </a>
+        <a class="more-related"
+           i18n:translate="label_more"
+           tal:condition="repeat/publication/end"
+           tal:attributes="href view/getMorePublicationsUrl"
+           href="db_filter?">More</a>
+        <div class="visualClear"></div>
+      </li>
+    </ul>
+  </dd>
+
+</dl>
+
+

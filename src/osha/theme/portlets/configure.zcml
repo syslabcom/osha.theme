@@ -127,6 +127,15 @@
      editview=".practical_solutions.EditForm"
      />
 
+ <plone:portlet
+     name="osha.Publications"
+     interface=".publications.IPublicationsPortlet"
+     assignment=".publications.Assignment"
+     renderer=".publications.Renderer"
+     addview=".publications.AddForm"
+     editview=".publications.EditForm"
+     />
+
  <!-- Campaigns portlet -->
  <plone:portlet
      name="osha.Campaigns"
@@ -134,7 +143,7 @@
      assignment=".campaigns.Assignment"
      renderer=".campaigns.Renderer"
      addview=".campaigns.AddForm"
-     />        
+     />
 
  <!-- EW2007 portlet -->
  <plone:portlet

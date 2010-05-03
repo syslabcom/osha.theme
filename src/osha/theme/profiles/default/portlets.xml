@@ -43,7 +43,12 @@
   <portlet
       addview="osha.PracticalSolutions"
       title="Practical Solutions"
-      description="The most recent practical solutions from each section." />  
+      description="The most recent practical solutions from each section." /> 
+
+  <portlet
+      addview="osha.Publications"
+      title="Publications"
+      description="The most recent publications from each section." /> 
 
   <portlet
       addview="osha.SEPAbout"
