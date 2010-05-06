@@ -29,10 +29,17 @@ class OSHContentSwitcher(BrowserView):
         res = portal_catalog(UID=self.uid)
         if len(res) == 0:
             return None
-        try:
-            obj = res[0].getObject()
-        except:
-            obj = None
+        res_map = [x for x in res]
+        # We might actually find more than one result for our UID
+        # This happens when we have stale catalog entries
+        # Therefore test all results and use the one that is valid
+        while len(res_map):
+            try:
+                xx = res_map.pop()
+                obj = xx.getObject()
+                break
+            except:
+                obj = None
         if obj is None:
             return None
         portal_type = obj.portal_type

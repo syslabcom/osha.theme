@@ -13,38 +13,39 @@
 <div metal:fill-slot="main" i18n:domain="osha"
     tal:define="portal_url here/portal_url;
                 uid request/uid|string:;
-                content_info view/getContentInfo;
-                id request/id|content_info/id;
-                existing_url content_info/existing_url;">
+                content_info view/getContentInfo;">
 
 
     <div tal:condition="content_info">
+	  <span tal:define="id request/id|content_info/id;
+                existing_url content_info/existing_url;">
+	    <h1>Switch <span tal:replace="string:${content_info/portal_type} '${content_info/title}'" />
+	            to <span tal:replace="content_info/target_type" /></h1>
 
-        <h1>Switch <span tal:replace="string:${content_info/portal_type} '${content_info/title}'" />
-            to <span tal:replace="content_info/target_type" /></h1>
+	    <p tal:condition="existing_url">This <span tal:replace="string:${content_info/portal_type}" /> has already been
+	     transformed and <a href="" tal:attributes="href existing_url" target="_new">is available here</a>
+	    </p>
 
-    <p tal:condition="existing_url">This <span tal:replace="string:${content_info/portal_type}" /> has already been
-     transformed and <a href="" tal:attributes="href existing_url" target="_new">is available here</a>
-    </p>
+	    <span tal:condition="not:existing_url">
+		    <form action="switch_osh_content" tal:attributes="action string:${here/absolute_url}/switch_osh_content">
 
-    <span tal:condition="not:existing_url">
-    <form action="switch_osh_content" tal:attributes="action string:${here/absolute_url}/switch_osh_content">
+		        <p>All relevant fields will be copied over. This <span tal:replace="string:${content_info/portal_type}" />
+		            will be set to the workflow state "deleted" to hide it from view.</p>
 
-        <p>All relevant fields will be copied over. This <span tal:replace="string:${content_info/portal_type}" />
-            will be set to the workflow state "deleted" to hide it from view.</p>
-
-        <p><label>ID (you can usually leave it as it is)</label><br/>
-            <input type="text" size="60" name="id" value="" tal:attributes="value id" /></p>
-        <input type="hidden" name="uid" value="uid" tal:attributes="value uid" />
-        <input type="hidden" name="template_id" tal:attributes="value template/getId" />
-        <p><input type="submit" value="Go! Do the switch."/></p>
-    </form>
-    </span>
+		        <p><label>ID (you can usually leave it as it is)</label><br/>
+		            <input type="text" size="60" name="id" value="" tal:attributes="value id" /></p>
+		        <input type="hidden" name="uid" value="uid" tal:attributes="value uid" />
+		        <input type="hidden" name="template_id" tal:attributes="value template/getId" />
+		        <p><input type="submit" value="Go! Do the switch."/></p>
+		    </form>
+	    </span>
+	  </span>
     </div>
     <div tal:condition="not:content_info">
         <h1>Error</h1>
-        It was not possible to retrieve information about the content
-        object you wanted to change.
+        <p>It was not possible to retrieve information about the content
+        object you wanted to change.<br/>
+        The is might be due to a stale catalog entry</p>
     </div>
 </div>
 </body>
