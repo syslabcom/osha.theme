@@ -8,7 +8,11 @@ from p4a.plonevideoembed.interfaces import IVideoLinkEnhanced
 
 
 class TopicsBrowserView(BrowserView):
-    """ A base class for the topic browser views to inherit from """
+    """
+    This class is used for @@topic-view which has a special layout
+    which shows related Image or Videos at the top, and uses
+    slc.linkcollection in the footer
+    """
     images = []
     slideswitch_template = ViewPageTemplateFile('templates/slideswitch.pt')
     image_scale = "mini"
