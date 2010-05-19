@@ -10,9 +10,7 @@
     <metal:body define-macro="body_macro"
                 tal:define="templateId template/getId">
 
-
-        <h1 class="documentFirstHeading" tal:content="view/Title"> 
-        </h1>
+        <h1 class="documentFirstHeading" tal:content="view/Title"> </h1>
 
         <metal:listingmacro define-macro="listing">
         <tal:topiccontents define="topicContents view/queryCatalog;

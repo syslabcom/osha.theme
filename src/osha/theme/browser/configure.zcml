@@ -511,6 +511,13 @@
 
     <browser:page
         for="*"
+        name="seminars-view"
+        class=".topics_view.SeminarsView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
         name="topic-view"
         class=".topics_view.TopicView"
         permission="zope2.View"

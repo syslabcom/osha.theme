@@ -1,8 +1,6 @@
 from Acquisition import aq_inner, aq_parent
 from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import PloneMessageFactory as _
-from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from osha.theme.browser.dbfilter import DBFilterView

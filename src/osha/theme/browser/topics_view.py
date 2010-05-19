@@ -1,11 +1,10 @@
 from Acquisition import aq_parent, aq_inner
+
 from Products.ATContentTypes.interface.image import IATImage
-from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from p4a.plonevideoembed.interfaces import IVideoLinkEnhanced
-
 
 class TopicsBrowserView(BrowserView):
     """
@@ -78,8 +77,32 @@ class TopicsView(TopicsBrowserView):
         return self.template()
 
 
+class SeminarsView(TopicsBrowserView):
+    """ View class for listing seminars
+        Similiar to the @@topics-view for Single Entry Points
+    """
+    template = ViewPageTemplateFile('templates/seminars_view.pt')
+    template.id = "seminars-view"
+
+    def __call__(self):
+        """
+        List published sub folders
+        """
+        context = self.context
+        parent = aq_parent(aq_inner(context))
+        seminars = parent.getFolderContents(
+                        {   'portal_type':'SPSeminar', 
+                            'review_state':'published',
+                            'sort_on': 'start', 
+                            'sort_order': 'reverse',
+                        })
+        self.seminars = seminars
+        return self.template()
+
+
 class TopicView(TopicsBrowserView):
     """ View class for /topics/topic
     """
     template = ViewPageTemplateFile('templates/topic_view.pt')
     template.id = "topic-view"
+
