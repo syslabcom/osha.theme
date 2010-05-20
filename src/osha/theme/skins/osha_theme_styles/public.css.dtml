@@ -937,6 +937,23 @@ div.managedPortlet.portlet {
     margin-top:1.5em;
 }
 
+dl.portletSubscribe dd {
+   margin: 5px 0;
+}
+
+dl.portletSubscribe a {
+   color: black !important;
+   font-weight: bold;
+}
+
+dl.portletSubscribe #newsletter {
+   background-color: #FFEE22;
+}
+
+dl.portletSubscribe #alerts {
+   background-color: #99EE22;
+}
+
 #dashboard-portlets1 div.managedPortlet a,
 #dashboard-portlets2 div.managedPortlet a,
 #dashboard-portlets3 div.managedPortlet a,
