@@ -42,13 +42,13 @@
                                         item_einecs result/getEinecs|string:;
                                         item_remoteLanguage result/getRemoteLanguage|string:;
                                         item_subject result/Subject | python:[];
-                                        item_modified result/modified;
-                                        item_pubdate result/effective;
+                                        item_enddate result/end;
+                                        item_startdate result/start;
                                         item_creator result/Creator;
                                         gc python:here.portal_languages.getNameForLanguageCode;
                                         ">
 
-                        <metal:macro use-macro="here/oshmacros/macros/searchresults" />
+                        <metal:macro use-macro="here/oshmacros/macros/searchresults_seminars" />
                     </tal:entry>
                 </tal:results>
                 </dl>
