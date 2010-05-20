@@ -107,6 +107,24 @@
      addview=".oshmail.AddForm"
      />        
 
+ <!-- Mailing list Subscribe portlet -->
+ <plone:portlet
+     name="osha.Subscribe"
+     interface=".subscribe_mailinglists.ISubscribePortlet"
+     assignment=".subscribe_mailinglists.Assignment"
+     renderer=".subscribe_mailinglists.Renderer"
+     addview=".subscribe_mailinglists.AddForm"
+     />        
+
+ <!-- Follow us portlet -->
+ <plone:portlet
+     name="osha.FollowUs"
+     interface=".follow_us.IFollowUsPortlet"
+     assignment=".follow_us.Assignment"
+     renderer=".follow_us.Renderer"
+     addview=".follow_us.AddForm"
+     />        
+
 <!-- Network Member Links portlet -->
  <plone:portlet
      name="osha.NetworkMemberLinks"

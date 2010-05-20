@@ -1,0 +1,31 @@
+<dl class="portlet portletFollowUs"
+    i18n:domain="osha">
+
+  <dt class="portletHeader">
+    <span class="portletTopLeft"></span>
+    <span class="tile"
+          i18n:translate="heading_follow_us">
+      Follow us
+    </span>
+    <span class="portletTopRight"></span>
+  </dt>
+
+  <dd class="portletItem">
+    <a href="http://twitter.com/eu_osha"
+       ><img src="/twitter-logo.jpg"
+             tal:attributes="src string:${here/portal_url}/twitter-logo.jpg"
+             width="30" height="30"
+             /></a>
+    <a href="http://www.youtube.com/EUOSHA"
+       ><img src="/youtube.gif"
+             tal:attributes="src string:${here/portal_url}/youtube.gif"
+             width="30" height="30"
+             /></a>
+    <a href="http://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work"
+       ><img src="/linkedin-logo.jpg"
+             tal:attributes="src string:${here/portal_url}/linkedin-logo.jpg"
+             width="30" height="30"
+             /></a>
+  </dd>
+
+</dl>

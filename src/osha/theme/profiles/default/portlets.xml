@@ -16,6 +16,16 @@
       description="Provides the link to updates on topics of your choice." />    
 
   <portlet
+      addview="osha.Subscribe"
+      title="Subscribe to Mailing Lists"
+      description="Provides links to mailing lists" />
+
+  <portlet
+      addview="osha.FollowUs"
+      title="Follow us on Twitter, LinkedIn etc."
+      description="Provides links to social network sites such as Twitter, LinkedIn etc." />
+
+  <portlet
       addview="osha.RollingQuotes"
       title="Rolling Quotes"
       description="A portlet which displays a Quote out of a folder at Random" />

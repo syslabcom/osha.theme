@@ -1,0 +1,30 @@
+<dl class="portlet portletSubscribe"
+    i18n:domain="osha">
+
+  <dt class="portletHeader">
+    <span class="portletTopLeft"></span>
+    <span class="tile"
+          i18n:translate="heading_subscribe">
+      Subscribe
+    </span>
+    <span class="portletTopRight"></span>
+  </dt>
+
+  <dd class="portletItem">
+    <a rel="nofollow" 
+       href="http://osha.europa.eu/en/news/oshmail/?sourceid=oshmailbanner&utm_source=home&utm_medium=banner&utm_campaign=oshmail"
+       i18n:translate="label_free_newsletter"
+       >Free newsletter</a>
+  </dd>
+
+  <dd class="portletItem">
+    <a rel="nofollow" 
+       href="href string:http://osha.europa.eu/${view/preflang}/alertservice?sourceid=alertbanner&utm_source=home&utm_medium=banner&utm_campaign=alertservice"
+       i18n:translate="label_alert_service"
+       >Free alert service</a>
+  </dd>
+
+  <dd class="portletFooter">
+  </dd>
+
+</dl>
