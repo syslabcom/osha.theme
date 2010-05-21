@@ -937,8 +937,8 @@ div.managedPortlet.portlet {
     margin-top:1.5em;
 }
 
-dl.portletSubscribe dd {
-   margin: 5px 0;
+dl.portletSubscribe dd a {
+   padding: 5px;
 }
 
 dl.portletSubscribe a {
@@ -946,11 +946,13 @@ dl.portletSubscribe a {
    font-weight: bold;
 }
 
-dl.portletSubscribe #newsletter {
+dl.portletSubscribe #newsletter a {
+   display: block;
    background-color: #FFEE22;
 }
 
-dl.portletSubscribe #alerts {
+dl.portletSubscribe #alerts a {
+   display: block;
    background-color: #99EE22;
 }
 
