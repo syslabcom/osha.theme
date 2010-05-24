@@ -56,7 +56,7 @@ class TeaserView(BrowserView):
 
 
     def getBodyText(self):
-        """ returns body text of collection  if present """
+        """ returns body text of collection if present """
         context = aq_base(aq_inner(self.context))
         text = getattr(context, 'getText', None) and context.getText() or ''
         return text
@@ -64,11 +64,12 @@ class TeaserView(BrowserView):
     def showLinkToNewsItem(self):
         return self.context.getProperty('show_link_to_news_item', True)
 
-class TeaserArchiveView(BrowserView):
+
+class TeaserArchiveView(TeaserView):
     """ used for displaying archived  teasers"""
     
     template = ViewPageTemplateFile('templates/teaser_view.pt')
-    template.id = "teaser-view"
+    template.id = "teaser-archive-view"
 
     def __call__(self):
         context = aq_inner(self.context)
@@ -91,7 +92,6 @@ class TeaserArchiveView(BrowserView):
                 canonical_path = '/'.join(teaser.getCanonical().getPhysicalPath())
                 paths.append(canonical_path)
             except:
-                
                 pass
 
         state = 'published'
@@ -110,6 +110,3 @@ class TeaserArchiveView(BrowserView):
         self.items = catalog(query)
         return self.template()
 
-        
-    def showLinkToNewsItem(self):
-        return self.context.getProperty('show_link_to_news_item', True)
