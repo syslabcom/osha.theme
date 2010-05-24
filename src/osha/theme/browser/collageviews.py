@@ -44,6 +44,8 @@ class PublicationView(BaseView):
 class PressReleaseBaseView(BaseView):
     title = 'Headline'
 
+class DocumentTextView(BaseView):
+    title = 'Text'
 
 class SimpleContainerRenderer(BrowserView):
     def getItems(self, contents=None):

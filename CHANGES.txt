@@ -4,7 +4,7 @@ osha.theme Changelog
 1.3.17 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Overriding text-only view for documents in Collage for the social media section #1063 (thomasw)
 
 
 1.3.16 (2010-05-06)

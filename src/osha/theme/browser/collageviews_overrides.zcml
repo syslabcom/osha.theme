@@ -51,6 +51,14 @@
      />
 
 
-
+  <!-- Document -->
+  <browser:page
+     name="text"
+     for="Products.ATContentTypes.content.document.ATDocument"
+     permission="zope.Public"
+     template="collageviews/document_text.pt"
+     class="osha.theme.browser.collageviews.DocumentTextView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
 
 </configure> 

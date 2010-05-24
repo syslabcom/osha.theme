@@ -1,0 +1,12 @@
+<tal:manager replace="structure provider:collage.ContentManager" />
+<div class="text-document">
+    <div metal:define-macro="text"
+         tal:define="oshaview here/@@oshaview;
+             collage_id view/getCollageId;
+             text python: here.CookedBody(stx_level=2);
+             text python:oshaview.handleOSHMailUrls(text, collage_id);"
+         tal:condition="text"
+         class="plain" id="collage-document-text">
+      <span metal:define-slot="inside"
+            tal:replace="structure text">text</span>
+</div>
