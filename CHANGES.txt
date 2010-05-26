@@ -1,12 +1,16 @@
 osha.theme Changelog
 ====================
 
-1.3.17 (unreleased)
+1.3.17 (2010-05-26)
 -------------------
 
 - Overriding text-only view for documents in Collage for the social media section #1063 (thomasw)
 - Re-enabled the commented batching in the teaser-view template, but only for the
   archive view #1245 (thomasw)
+- Add new macro for showing the seminars. Display start and end date instead of 
+  published and modified (jcbrand)
+- Adding two custom portlets for the new right hand column layout #1216 (deroiste)
+
 
 
 1.3.16 (2010-05-06)
