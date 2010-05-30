@@ -168,7 +168,7 @@ class Renderer(collection.Renderer):
             contextpath = "/".join(context.getPhysicalPath())
             return "%s/@@oshtopic-view?tp=%s" % (context.absolute_url(), collectionpath)
 
-    @memoize
+#    @memoize
     def getPath(self, ob):
         path = ob.getURL()
         context = Acquisition.aq_inner(self.context)

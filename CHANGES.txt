@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - customized simpleattachment widgets to not use the catalog
   [pilz]
+- fixed wrong caching in oshcollections portlet. getPath is not cacheable
+  [pilz]
 
 1.3.17 (2010-05-26)
 -------------------
