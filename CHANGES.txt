@@ -4,8 +4,8 @@ osha.theme Changelog
 1.3.18 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- customized simpleattachment widgets to not use the catalog
+  [pilz]
 
 1.3.17 (2010-05-26)
 -------------------
