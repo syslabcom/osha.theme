@@ -956,6 +956,20 @@ dl.portletSubscribe #alerts a {
    background-color: #99EE22;
 }
 
+dl.portletFollowUs div.boxing_styles_inner_content {
+   width: auto;
+   margin: 0;
+   border-bottom: none;
+}
+
+dl.portletFollowUs div.boxing_styles_inner_content dt {
+   padding-bottom: 1em;
+}
+
+dl.portletFollowUs div.boxing_styles_inner_content dd {
+   margin: 0;
+}
+
 #dashboard-portlets1 div.managedPortlet a,
 #dashboard-portlets2 div.managedPortlet a,
 #dashboard-portlets3 div.managedPortlet a,
