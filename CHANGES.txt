@@ -8,6 +8,8 @@ osha.theme Changelog
   [pilz]
 - fixed wrong caching in oshcollections portlet. getPath is not cacheable
   [pilz]
+- Fixed the oshmacro used for seminars-view, several things were missing
+  [thomasw]
 
 1.3.17 (2010-05-26)
 -------------------
