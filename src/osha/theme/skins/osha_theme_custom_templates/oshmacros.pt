@@ -125,7 +125,13 @@
 
 <metal:macro define-macro="searchresults_seminars">
     <tal:defines define="oshaview python:context.restrictedTraverse('@@oshaview');">
+
     <dd>
+       <p>
+        <span tal:condition="result/location">
+          <em tal:content="result/location">location</em>
+          <br />
+        </span>
         <em>
             <span tal:condition="python: item_startdate and item_startdate.year() >= 1900"
                   tal:replace="python:item_startdate.strftime('%d %b %Y')"
@@ -138,16 +144,15 @@
                 August 16, 2001 at 23:35:59
             </span>
         </em>
+       </p> 
 
-        <tal:faq condition="python: result.portal_type == 'HelpCenterFAQ'">
-        <p tal:define="descr python:result.getObject().getAnswer()"
-            tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
-        </tal:faq>
+        <div>
+          <a href="#" tal:attributes="href result/getURL">
+             <strong tal:content="result/Title">title</strong></a>
+        </div>
 
-        <tal:notfaq condition="python: result.portal_type != 'HelpCenterFAQ'">
         <p tal:define="descr result/Description"
             tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
-        </tal:notfaq>
 
         <tal:url condition="url">
         <a tal:attributes="href string:$url"
