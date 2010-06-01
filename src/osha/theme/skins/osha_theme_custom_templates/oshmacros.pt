@@ -124,7 +124,12 @@
 
 
 <metal:macro define-macro="searchresults_seminars">
-    <tal:defines define="oshaview python:context.restrictedTraverse('@@oshaview');">
+    <tal:defines define="oshaview python:context.restrictedTraverse('@@oshaview');
+        obj result/getObject">
+
+   <div tal:condition="obj/getLogo" class="seminars-preview-img">
+       <img tal:attributes="src string:${result/getURL}/logo" width="60" />
+   </div>
 
     <dd>
        <p>
@@ -181,9 +186,8 @@
         </tal:define>
         </tal:Subject>
 
-
-        <div class="documentByLine" style="border-top: 1px dashed gray;margin-top:0.5em;">
         <span:notanon tal:condition="not:isAnon">
+          <div class="documentByLine" style="border-top: 1px dashed gray;margin-top:0.5em;">
             <tal:creator define="author python:mtool.getMemberInfo(item_creator)" >
             <span tal:replace="python:author and author['fullname'] or item_creator">
                 OSHA
@@ -199,9 +203,8 @@
         <span tal:define="item_is_versionable item_is_versionable|nothing" tal:condition="item_is_versionable">
             | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/versions_history_form">History</a>
         </span>
-        </span:notanon>
-
         </div>
+      </span:notanon>
 
         <div class="visualClear" ></div>
     </dd>
