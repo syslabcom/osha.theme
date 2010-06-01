@@ -1310,7 +1310,6 @@ body.template-topic-view #relatedMedia {
 body.template-seminars-view #relatedMedia {
     position: relative;
     height: 100%;
-    width: 210px;
     margin: 10px;
     float: left;
     overflow: hidden;
@@ -1323,6 +1322,16 @@ body.template-topics-view #relatedMedia {
     float: right;
     margin: 0px 0px 10px 10px;
     overflow: hidden;
+}
+
+div.seminars-preview-img {
+  float: left;
+}
+
+div.seminars-preview-img img {
+  padding: 3px;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 
 #slideswitch img {
