@@ -163,28 +163,6 @@
         <a tal:attributes="href string:$url"
             rel="nofollow" tal:content="url">Remote URL</a>
         </tal:url>
-        <br/>
-        <tal:remotelanguage condition="item_remoteLanguage">
-        <strong><tal:remotelanguagetrans i18n:translate="label_languages">
-            Languages
-        </tal:remotelanguagetrans>:</strong>
-        <span tal:repeat="lang item_remoteLanguage" tal:omit-tag="">
-            <span tal:replace="python:gc(lang)"/><span tal:omit-tag="" tal:condition="not:repeat/lang/end">,</span>
-        </span>
-        </tal:remotelanguage>
-        <br tal:condition="item_subject"/>
-        <tal:Subject condition="item_subject">
-        <strong><tal:desc i18n:translate="heading_oshcontent_seealso">
-            See also:
-        </tal:desc></strong>
-        <tal:define define="seplist python:oshaview.getSingleEntryPointsBySubject(item_subject)">
-            <tal:repeat repeat="sep seplist">
-            <a tal:attributes="href sep/url"
-                tal:content="sep/title" />
-            <span tal:omit-tag="" tal:condition="not:repeat/sep/end">|</span>
-            </tal:repeat>
-        </tal:define>
-        </tal:Subject>
 
         <span:notanon tal:condition="not:isAnon">
           <div class="documentByLine" style="border-top: 1px dashed gray;margin-top:0.5em;">
