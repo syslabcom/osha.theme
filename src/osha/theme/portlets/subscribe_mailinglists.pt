@@ -4,7 +4,7 @@
   <dt class="portletHeader">
     <span class="portletTopLeft"></span>
     <span class="tile"
-          i18n:translate="heading_subscribe">
+          i18n:translate="Subscribe">
       Subscribe
     </span>
     <span class="portletTopRight"></span>
@@ -13,14 +13,14 @@
   <dd class="portletItem" id="newsletter">
     <a rel="nofollow" 
        tal:attributes="href string:http://osha.europa.eu/${view/preflang}/news/oshmail/?sourceid=oshmailbanner&utm_source=home&utm_medium=banner&utm_campaign=oshmail"
-       i18n:translate="label_free_newsletter"
+       i18n:translate="Free Newsletter"
        >Free newsletter</a>
   </dd>
 
   <dd class="portletItem" id="alerts">
     <a rel="nofollow" 
        tal:attributes="href string:http://osha.europa.eu/${view/preflang}/alertservice?sourceid=alertbanner&utm_source=home&utm_medium=banner&utm_campaign=alertservice"
-       i18n:translate="label_alert_service"
+       i18n:translate="Alert Service"
        >Free alert service</a>
   </dd>
 
