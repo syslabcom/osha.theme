@@ -12,7 +12,7 @@
 
   <dd class="portletItem" id="newsletter">
     <a rel="nofollow" 
-       tal:attributes="href http://osha.europa.eu/${view/preflang}/news/oshmail/?sourceid=oshmailbanner&utm_source=home&utm_medium=banner&utm_campaign=oshmail"
+       tal:attributes="href string:http://osha.europa.eu/${view/preflang}/news/oshmail/?sourceid=oshmailbanner&utm_source=home&utm_medium=banner&utm_campaign=oshmail"
        i18n:translate="label_free_newsletter"
        >Free newsletter</a>
   </dd>
