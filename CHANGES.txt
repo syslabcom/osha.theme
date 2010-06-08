@@ -1,12 +1,17 @@
 osha.theme Changelog
 ====================
 
+
+1.3.20dev (unreleased)
+-------------------
+
+- No changes yet
+
 1.3.19 (2010-06-08)
 -------------------
 
 - bugfix: missing tal:attributes from subscribe_mailinglists links
   #1216 (deroiste)
-
 
 1.3.18 (2010-06-01)
 -------------------
