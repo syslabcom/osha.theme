@@ -69,7 +69,7 @@ GERMAN_NETWORK = (
     ('DGUV', 'www.dguv.de/inhalt/index.html'),
     ('Baden-Württb.', 'www.gaa.baden-wuerttemberg.de'),
     ('Bayern', 'by.osha.de'),
-    ('Berlin', 'www.berlin.de/sen/gesundheit/arbeitsschutz/index.html'),
+    ('Berlin', 'www.berlin.de/sen/verbraucherschutz/arbeitsschutz/index.html'),
     ('Brandenburg', 'bb.osha.de'),
     ('Hamburg', 'fhh.hamburg.de/stadt/Aktuell/behoerden/bsg/verbraucherschutz/arbeitsschutz/start.html'),
     ('Hessen', 'www.sozialnetz-hessen.de/li/uc/kme'),
