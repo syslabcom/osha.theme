@@ -1,6 +1,11 @@
 osha.theme Changelog
 ====================
 
+1.3.20dev (unreleased)
+-------------------
+
+- Adding a method to oshaview so we can get the number of people
+  subscribed to the alert service #1330 (deroiste)
 
 1.3.20 (2010-06-08)
 -------------------
