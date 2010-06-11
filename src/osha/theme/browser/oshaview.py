@@ -344,3 +344,15 @@ class OSHA(BrowserView):
         """ see interface """
         return hasattr(Acquisition.aq_base(Acquisition.aq_inner(self.context)), name) and getattr(self.context, name) or None
 #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
+
+    def getNumAlertSubscribers(self):
+        """ This is the same as num_subscribers in portlets/alertservice.py
+        Copied here so we can access it from a page template. #1330
+        """
+        context = Acquisition.aq_inner(self.context)
+        portal_alerts = getToolByName(context, 'portal_alertservice')
+        try:
+            n = len(portal_alerts.nprofiles.objectIds())
+        except:
+            n=''
+        return n
