@@ -56,6 +56,16 @@ class PublicationsSearchView(BrowserView):
                   % (solution, keywords)
         return url
 
+class PublicationsListView(BrowserView):
+    """ View for displaying publications by subfolder. Replaces index_html
+    """
+    template = ViewPageTemplateFile('templates/publicationlist.pt')
+    template.id = "publications-list"
+
+    def __call__(self):
+        self.request.set('disable_border', True)
+        return self.template()
+
 
 class QuestionsInParliamentSearchView(BrowserView):
     """ View for displaying the publications search page for Questions In Parliament on BeSWIC.be

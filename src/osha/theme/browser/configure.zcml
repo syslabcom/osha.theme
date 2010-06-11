@@ -497,6 +497,13 @@
 
     <browser:page
         for="*"
+        name="publications-list"
+        class=".publications.PublicationsListView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
         name="questions-in-parliament-search"
         class=".publications.QuestionsInParliamentSearchView"
         permission="zope2.View"

@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+  <metal:block fill-slot="top_slot"
+               tal:define="dummy python:request.set('disable_border',1)" />
+
+  <div metal:fill-slot="main" i18n:domain="osha" tal:on-error="nothing"
+       tal:define="folders python:context.listFolderContents({'portal_type': ['Folder', 'Large Plone Folder'], 'review_state': ['published']});
+                   ">
+    <style type="text/css">
+      .floatcontrol { width:45%; float:left;  margin: 5px; }
+    </style>
+
+    <div>
+      <h1 class="documentFirstHeading">Publications – sorted by type of publication</h1>
+      <div style="float:left; margin-right: 10px;">
+        <img src="publications.gif" alt="" />
+      </div>
+      <div class="pullquote">All of the Agency&acute;s publications can be downloaded free of charge.</div>
+      <p>Here you can find a brief explanation of the different types of publication that we make available through our website, and how they differ from each other in terms of their approach, and the audience they are aimed at. Should you wish, you can search our <b>publications by publication type</b>, as well as <a href="/en/publications/@@publications-overview"><b>by subject and keyword</b></a>.</p>
+
+      <tal:block repeat="sub folders">
+        <h2 class="header_publication" tal:content="sub/Title" />
+        <p tal:content="sub/Description" />
+        <p class="header_link">Read our <a href="" tal:attributes="href sub/absolute_url" tal:content="sub/Title" /></p>
+      </tal:block>
+
+    </div>
+
+
+    <div style="border-top:1px solid gray;">
+      <p><font size="1" color="#333333">To be able to see our most recent pdf publications, you will need to have installed the latest version of the Adobe Acrobat Reader, available at <a href="http://www.adobe.com/">www.adobe.com</a>.</font></p>
+      <p><font size="1" color="#333333">Access all the EU publications on the <a href="http://bookshop.europa.eu/eubookshop/index.action">EU-bookshop</a></font></p>
+    </div>
+
+
+  </div>
+</html>
