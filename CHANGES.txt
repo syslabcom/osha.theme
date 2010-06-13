@@ -6,6 +6,9 @@ osha.theme Changelog
 
 - Adding a method to oshaview so we can get the number of people
   subscribed to the alert service #1330 (deroiste)
+- Adding browser view @@publications-list that dynamically lists all
+  publication types #728 (reinhardt)
+- Fixed link in german network dropdown (pilz)
 
 1.3.20 (2010-06-08)
 -------------------
