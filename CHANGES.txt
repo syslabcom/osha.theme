@@ -4,7 +4,8 @@ osha.theme Changelog
 1.3.22 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Since FAQs now have Subcategory, show the Subcat-selector in the practical
+  solution search (thomasw)
 
 
 1.3.21 (2010-06-13)
