@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.3.20dev (unreleased)
+1.3.21 (2010-06-13)
 -------------------
 
 - Adding a method to oshaview so we can get the number of people
