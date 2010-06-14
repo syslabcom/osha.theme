@@ -18,21 +18,21 @@
       <div style="float:left; margin-right: 10px;">
         <img src="publications.gif" alt="" />
       </div>
-      <div class="pullquote">All of the Agency&acute;s publications can be downloaded free of charge.</div>
-      <p>Here you can find a brief explanation of the different types of publication that we make available through our website, and how they differ from each other in terms of their approach, and the audience they are aimed at. Should you wish, you can search our <b>publications by publication type</b>, as well as <a href="/en/publications/@@publications-overview"><b>by subject and keyword</b></a>.</p>
+      <div class="pullquote" i18n:translate="all_agency_publications">All of the Agency&acute;s publications can be downloaded free of charge.</div>
+      <p tal:content="structure here/Description">Here you can find a brief explanation of the different types of publication that we make available through our website, and how they differ from each other in terms of their approach, and the audience they are aimed at. Should you wish, you can search our <b>publications by publication type</b>, as well as <a href="/en/publications/@@publications-overview"><b>by subject and keyword</b></a>.</p>
 
       <tal:block repeat="sub folders">
-        <h2 class="header_publication" tal:content="sub/Title" />
+        <h2 class="header_publication" id="" tal:attributes="id sub/getId" tal:content="sub/Title" />
         <p tal:content="sub/Description" />
-        <p class="header_link">Read our <a href="" tal:attributes="href sub/absolute_url" tal:content="sub/Title" /></p>
+        <p class="header_link" i18n:translate="publication_read_our">Read our <a href="" i18n:name="pubtype" tal:attributes="href sub/absolute_url" tal:content="sub/Title" /></p>
       </tal:block>
 
     </div>
 
 
     <div style="border-top:1px solid gray;">
-      <p><font size="1" color="#333333">To be able to see our most recent pdf publications, you will need to have installed the latest version of the Adobe Acrobat Reader, available at <a href="http://www.adobe.com/">www.adobe.com</a>.</font></p>
-      <p><font size="1" color="#333333">Access all the EU publications on the <a href="http://bookshop.europa.eu/eubookshop/index.action">EU-bookshop</a></font></p>
+      <p i18n:translate="download_adobe_reader"><font size="1" color="#333333">To be able to see our most recent pdf publications, you will need to have installed the latest version of the Adobe Acrobat Reader, available at <a href="http://www.adobe.com/" i18n:name="reader_download">www.adobe.com</a>.</font></p>
+      <p i18n:translate="label_eu_bookshop"><font size="1" color="#333333">Access all the EU publications on the <a href="http://bookshop.europa.eu/eubookshop/index.action" i18n:name="link_eu_bookshop">EU-bookshop</a></font></p>
     </div>
 
 
