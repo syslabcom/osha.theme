@@ -27,6 +27,15 @@
 
   <!-- OSH-Link -->
   <browser:page
+     name="short"
+     for="Products.OSHContentLink.OSH_Link.OSH_Link"
+     permission="zope.Public"
+     template="collageviews/oshlink_short.pt"
+     class="osha.theme.browser.collageviews.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <browser:page
      name="standard"
      for="Products.OSHContentLink.OSH_Link.OSH_Link"
      permission="zope.Public"
