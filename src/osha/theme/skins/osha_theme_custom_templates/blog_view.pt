@@ -234,6 +234,8 @@
         </tal:foldercontents>
         </metal:listingmacro>
 
+        <a href="" tal:condition="context/other_view_url | nothing" tal:attributes="href context/other_view_url" tal:content="context/other_view_name">See older blog entries</a>
+
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </metal:main-macro>
