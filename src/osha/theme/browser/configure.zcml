@@ -738,6 +738,14 @@
       permission="zope2.View"
       />
 
+  <!-- Renders an object in a different location of the site when passed the path to it #1150 -->
+  <browser:page
+      for="*"
+      name="slc.telescope"
+      class=".telescope.TelescopeView"
+      permission="zope2.View"
+      />
+
     <!-- Inline content viewlet -->
     <browser:viewlet
         name="osha.theme.inline_content_viewlet"

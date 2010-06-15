@@ -4,6 +4,9 @@ osha.theme Changelog
 1.3.23 (unreleased)
 -------------------
 
+- adding the TelescopeView which takes a path to an object in the
+  query string and renders it in the current context #1150. Note: this
+  must be explicitly blocked from google before it is used (deroiste)
 - added an oshlink short template (pilz).
 - Copied faq_view.pt from PHC, to insert plone.belowcontentbody at the bottom.
   This gives us access to the +History link (thomasw)
