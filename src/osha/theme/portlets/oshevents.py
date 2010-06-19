@@ -111,7 +111,9 @@ class Renderer(events.Renderer):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         calendar_path = self.data.calendar_path
         subject = self.data.subject
-        return (calendar_path, preflang, subject)
+        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        navigation_root_path = self.navigation_root_path()
+        return (calendar_path, preflang, subject, navigation_root_path, portal_state)
 
     @ram.cache(_render_cachekey)
     def render(self):
@@ -146,7 +148,7 @@ class Renderer(events.Renderer):
                        end={'query': DateTime(),
                             'range': 'min'},
                        sort_on='start',
-                       Language=['', self.preflang],
+                       Language=[''],
                        sort_limit=limit)
         # If a subject is selected, use that for the query and disregard the NavigationRoot
         if len(subject):
