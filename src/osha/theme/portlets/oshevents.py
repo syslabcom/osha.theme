@@ -112,7 +112,7 @@ class Renderer(events.Renderer):
         calendar_path = self.data.calendar_path
         subject = self.data.subject
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        navigation_root_path = self.navigation_root_path()
+        navigation_root_path = self.navigation_root_path
         return (calendar_path, preflang, subject, navigation_root_path, portal_state)
 
     @ram.cache(_render_cachekey)
