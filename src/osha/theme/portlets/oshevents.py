@@ -111,9 +111,8 @@ class Renderer(events.Renderer):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         calendar_path = self.data.calendar_path
         subject = self.data.subject
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         navigation_root_path = self.navigation_root_path
-        return (calendar_path, preflang, subject, navigation_root_path, portal_state)
+        return (calendar_path, preflang, subject, navigation_root_path)
 
     @ram.cache(_render_cachekey)
     def render(self):
