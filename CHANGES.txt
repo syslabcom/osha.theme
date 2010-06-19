@@ -4,7 +4,7 @@ osha.theme Changelog
 1.3.25 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- properly fix cachekey (pilz)
 
 
 1.3.24 (2010-06-19)
