@@ -147,7 +147,7 @@ class Renderer(events.Renderer):
                        end={'query': DateTime(),
                             'range': 'min'},
                        sort_on='start',
-                       Language=[''],
+                       Language=['', self.preflang],
                        sort_limit=limit)
         # If a subject is selected, use that for the query and disregard the NavigationRoot
         if len(subject):
