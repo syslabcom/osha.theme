@@ -20,6 +20,7 @@
       </div>
       <div class="pullquote" i18n:translate="all_agency_publications">All of the Agency&acute;s publications can be downloaded free of charge.</div>
       <p tal:content="structure here/Description">Here you can find a brief explanation of the different types of publication that we make available through our website, and how they differ from each other in terms of their approach, and the audience they are aimed at. Should you wish, you can search our <b>publications by publication type</b>, as well as <a href="/en/publications/@@publications-overview"><b>by subject and keyword</b></a>.</p>
+      <div class="visualClear"></div>
 
       <tal:block repeat="sub folders">
         <h2 class="header_publication" id="" tal:attributes="id sub/getId" tal:content="sub/Title" />
