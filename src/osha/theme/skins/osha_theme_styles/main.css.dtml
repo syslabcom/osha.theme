@@ -295,7 +295,7 @@ dl.portletImage .portletItem {
     text-align:center;
     background-color:transparent;
 }
-dl.portletImage-flash {
+dd.portletItem dl.portletImage-flash {
     margin-top: 1em;
 }
 dl.portletInlineNavigationTree li {
