@@ -1,6 +1,13 @@
 osha.theme Changelog
 ====================
 
+1.3.27 (unreleased)
+-------------------
+
+- slc.telescope view: Replacing urls which depend on the context of
+  the target object with its proper url. #1150 (deroiste)
+
+
 1.3.26 (2010-06-21)
 -------------------
 
