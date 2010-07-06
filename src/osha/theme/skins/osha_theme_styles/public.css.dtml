@@ -651,6 +651,10 @@ table.plain th {
     margin-top: 0.5em;
     margin-bottom:2.5em;
 }
+.tileItem.contenttype-blog-entry {
+    padding:5px;
+    background: #efefef;
+}
 .tileHeadline {
     border: none;
     font-size: 110%;
