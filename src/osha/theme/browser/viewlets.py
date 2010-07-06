@@ -178,13 +178,13 @@ class OSHANetworkchooser(common.ViewletBase):
         subsite_path = oshaview.subsiteRootPath()
 
         if subsite_path.split('/')[-1]=='netherlands':
-            return (self.int(), self.nl())
+            return (self.nl(),)
 
         elif subsite_path.split('/')[-1]=='germany':
-            return (self.int(), self.de())
+            return (self.de(),)
 
         else:
-            return (self.int(),)
+            return tuple()
 
     def de(self):
         """ returns the sites from the European Network """
