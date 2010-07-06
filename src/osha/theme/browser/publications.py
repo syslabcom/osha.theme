@@ -62,6 +62,16 @@ class PublicationsListView(BrowserView):
     template = ViewPageTemplateFile('templates/publicationlist.pt')
     template.id = "publications-list"
 
+    def getContents(self):
+        """ CMFCore's ContentFilter class (from PortalFolder.py ignores review_state as a
+        parameter in the filter. Therefore we need to define our own query and cannot use
+        listFolderContents."""
+        pc = getToolByName(self.context, 'portal_catalog')
+        path = '/'.join(self.context.getPhysicalPath())
+        query = {'portal_type': ['Folder', 'Large Plone Folder'], 'review_state': ['published'],
+                'path': {'query': path, 'depth': 1}, 'sort_on': 'getObjPositionInParent' }
+        return pc(query)
+
     def __call__(self):
         self.request.set('disable_border', True)
         return self.template()

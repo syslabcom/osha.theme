@@ -9,6 +9,7 @@ osha.theme Changelog
 - removed International network dropdown #1405 (thomasw)
 - No more extrawurst for German FOP: removed European and International
   network dropdown, related to #1405 (thomasw)
+- publications-list: filter for review_state=published #728 (thomasw)
 
 
 1.3.26 (2010-06-21)

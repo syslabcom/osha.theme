@@ -7,8 +7,7 @@
                tal:define="dummy python:request.set('disable_border',1)" />
 
   <div metal:fill-slot="main" i18n:domain="osha" tal:on-error="nothing"
-       tal:define="folders python:context.listFolderContents({'portal_type': ['Folder', 'Large Plone Folder'], 'review_state': ['published']});
-                   ">
+       tal:define="folders view/getContents">
     <style type="text/css">
       .floatcontrol { width:45%; float:left;  margin: 5px; }
     </style>
@@ -25,7 +24,7 @@
       <tal:block repeat="sub folders">
         <h2 class="header_publication" id="" tal:attributes="id sub/getId" tal:content="sub/Title" />
         <p tal:content="sub/Description" />
-        <p class="header_link" i18n:translate="publication_read_our">Read our <a href="" i18n:name="pubtype" tal:attributes="href sub/absolute_url" tal:content="sub/Title" /></p>
+        <p class="header_link" i18n:translate="publication_read_our">Read our <a href="" i18n:name="pubtype" tal:attributes="href sub/getURL" tal:content="sub/Title" /></p>
       </tal:block>
 
     </div>
