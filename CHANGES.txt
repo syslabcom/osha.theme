@@ -7,6 +7,8 @@ osha.theme Changelog
 - slc.telescope view: Replacing urls which depend on the context of
   the target object with its proper url. #1150 (deroiste)
 - removed International network dropdown #1405 (thomasw)
+- No more extrawurst for German FOP: removed European and International
+  network dropdown, related to #1405 (thomasw)
 
 
 1.3.26 (2010-06-21)

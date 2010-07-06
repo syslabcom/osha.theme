@@ -7,7 +7,7 @@
 
         <form name="networkchooser" 
               action=""> 
-              <div class="dropdown">
+              <!--div class="dropdown">
                    <label for="euNetwork"
                           class="hiddenStructure"
                           i18n:translate="">European Network</label>
@@ -41,7 +41,7 @@
                    <noscript>
                       <input name="form.button.GoIntNetwork" type="submit" value="Go" />
                    </noscript> 
-              </div>
+              </div-->
 
               <div class="dropdown">
                    <label for="germanNetwork"
