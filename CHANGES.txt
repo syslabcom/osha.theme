@@ -5,6 +5,8 @@ osha.theme Changelog
 -------------------
 
 - Added i18n translation for title of publications-list #728 (thomasw)
+- added a link rel canonical to have a canonical url for GA #1194 
+  [pilz]
 
 
 1.3.27 (2010-07-06)
