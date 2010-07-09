@@ -25,6 +25,7 @@
 
     <metal:baseslot define-slot="base">
       <base tal:attributes="href here/renderBase" /><!--[if lt IE 7]></base><![endif]-->
+      <link rel="canonical" tal:attributes="href here/renderBase" />
     </metal:baseslot>
 
     <meta name="generator" content="Plone - http://plone.org" />
