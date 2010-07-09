@@ -13,7 +13,7 @@
     </style>
 
     <div>
-      <h1 class="documentFirstHeading">Publications – sorted by type of publication</h1>
+      <h1 class="documentFirstHeading" i18n:translate="label_publications_by_type">Publications – sorted by type of publication</h1>
       <div style="float:left; margin-right: 10px;">
         <img src="publications.gif" alt="" />
       </div>
