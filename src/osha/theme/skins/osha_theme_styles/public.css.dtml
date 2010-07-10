@@ -1264,6 +1264,7 @@ dl.portletPracticalSolutions a.more-related {
 
 body.template-topics-view #folder-listing {
     width: 100%;
+    border-collapse:collapse;
 }
 
 body.template-topics-view #folder-listing td {
