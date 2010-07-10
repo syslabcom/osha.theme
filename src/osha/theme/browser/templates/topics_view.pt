@@ -18,12 +18,13 @@
           <tal:related_media replace="structure python:view.getRelatedMedia('200', 'mini')" />
         </div>
 
+        <h1 tal:content="context/Title">Title</h1>
+        <p tal:content="context/Description">Description</p>
+
+        <div class="visualClear"></div>
+
       </div>
 
-      <h1 tal:content="context/Title">Title</h1>
-      <p tal:content="context/Description">Description</p>
-
-      <div class="visualClear"></div>
 
       <table id="folder-listing" cellspacing="20"
              tal:condition="view/left_folders">
