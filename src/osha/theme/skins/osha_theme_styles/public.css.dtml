@@ -1294,7 +1294,7 @@ body.template-topic-view .navTreeLevel2 .navTreeCurrentNode {
 div#topic-view-heading-box {
     background-color: #F7F8F9;
     border: 1px solid #C5CBD8;
-    padding: 5px;
+    padding: 1em;
     margin-bottom: 10px;
 }
 

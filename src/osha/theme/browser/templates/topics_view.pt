@@ -26,7 +26,7 @@
       </div>
 
 
-      <table id="folder-listing" cellspacing="20"
+      <table id="folder-listing" 
              tal:condition="view/left_folders">
         <tr>
 
