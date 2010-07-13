@@ -9,6 +9,8 @@ osha.theme Changelog
   [pilz]
 - fixed wrong nesting in topics-view
   [pilz]
+- removed stale GA parameters where they should not be
+  [pilz]
 
 
 1.3.27 (2010-07-06)
