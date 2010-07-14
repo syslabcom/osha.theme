@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.3.28 (unreleased)
+1.3.28 (2010-07-14)
 -------------------
 
 - Added i18n translation for title of publications-list #728 (thomasw)
