@@ -10,7 +10,7 @@ from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 from Products.LinguaPlone.interfaces import ITranslatable
-from zope.annotation.interfaces import IAnnotations
+from zope.annotation.interfaces import IAnnotations, IAnnotatable
 
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
@@ -437,6 +437,8 @@ class OSHAContentSwitcherViewlet(common.ViewletBase):
 
     def getExisting(self):
         portal_catalog = getToolByName(self.context, 'portal_catalog')
+        if not IAnnotatable.providedBy(self.context):
+            return ''
         ann = IAnnotations(self.context)
         existing_uid = ann.get(EXISTING_SWITCHED_CONTENT_UID, '')
         existing_url = ''

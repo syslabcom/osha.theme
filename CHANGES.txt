@@ -4,7 +4,9 @@ osha.theme Changelog
 1.3.29 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- OSHAContentSwitcherViewlet: Only call IAnnotation on objects that are
+  IAnnotatable (thomasw)
+- added the linkabsolutizer used for oshmail also for shortmessage (pilz)
 
 
 1.3.28 (2010-07-14)
