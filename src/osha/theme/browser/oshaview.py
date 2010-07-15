@@ -295,7 +295,7 @@ class OSHA(BrowserView):
                 #text = text.replace(link, urljoin(au, link))
                 joinchar = link.find('?')>0 and '&' or '?'
                 newlink = "%(link)s%(joinchar)sutm_source=shortmessage&utm_medium=email&utm_campaign=%(campaign)s" % dict(
-                    link=urljoin(au, link), joinchar=joinchar, campaign=id!='' and id or 'shortmessage')
+                    link=urljoin(au, link), joinchar=joinchar, campaign='shortmessage')
                 # below is a fix for the problem that you have two links in text, one being a prefix of the 
                 # other and appearing below it. In this case, the smaller one will be replaced with GA postfix in the longer one
                 # as fix, only replace links which terminate with a ". Of course this requires that all links are closed properly
