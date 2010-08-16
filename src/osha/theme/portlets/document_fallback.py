@@ -37,7 +37,14 @@ class IDocumentFallbackPortlet(IPortletDataProvider):
                                   required=True,
                                   source=SearchableTextSourceBinder({'object_provides' : IATDocument.__identifier__},
                                                                     default_query='path:'))
-                      
+
+    omit_border = schema.Bool(
+        title=_(u"Omit portlet border"),
+        description=_(u"Tick this box if you want to render the text above "
+                      "without the standard header, border or footer."),
+        required=True,
+        default=False)
+
 class Assignment(base.Assignment):
     """
     Portlet assignment.    
@@ -49,10 +56,12 @@ class Assignment(base.Assignment):
 
     header = u""
     target_document=None
+    omit_border = False
 
-    def __init__(self, header=u"", target_document=None):
+    def __init__(self, header=u"", target_document=None, omit_border=False):
         self.header = header
         self.target_document = target_document
+        self.omit_border = omit_border
 
     @property
     def title(self):
@@ -87,7 +96,7 @@ class Renderer(base.Renderer):
         modified = self.document() and self.document().modified() or ''
         return (modified, roles, preflang)
 
-    @ram.cache(_render_cachekey)
+    #@ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
