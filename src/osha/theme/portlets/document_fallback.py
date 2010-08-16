@@ -96,7 +96,7 @@ class Renderer(base.Renderer):
         modified = self.document() and self.document().modified() or ''
         return (modified, roles, preflang)
 
-    #@ram.cache(_render_cachekey)
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
