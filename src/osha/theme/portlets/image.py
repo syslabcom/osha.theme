@@ -100,7 +100,8 @@ class Renderer(base.Renderer):
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         modified = self.get_object() and self.get_object().modified() or ''
-        return (modified, preflang)
+        path = self.data.image
+        return (modified, preflang, path)
 
     @ram.cache(_render_cachekey)
     def render(self):
