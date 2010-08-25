@@ -1,17 +1,17 @@
 osha.theme Changelog
 ====================
 
-1.3.31 (unreleased)
+1.3.31 (2010-08-25)
 -------------------
 
 - add possibility to omit_border to documentfallback portlet #1695 [thomasw]
-
+- finally deploy #766, a link to the en publications [pilz]
+- more sesnible cache-key for image/flash portlet [thomasw]
 
 1.3.30 (2010-07-22)
 -------------------
 
-- Nothing changed yet.
-
+- Bugfix: css portletImage-flash is in a div element rather than a dl (deroiste)
 
 1.3.29 (2010-07-18)
 -------------------
