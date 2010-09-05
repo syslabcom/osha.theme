@@ -31,8 +31,12 @@ class OSHA(BrowserView):
         text = portal_transforms.convert('html_to_text', text).getData()
         return context.restrictedTraverse('@@plone').cropText(text, length, ellipsis)
 
+    def _render_cachekey_getSEPs(method, self):
+        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        url = self.context.REQUEST.get('SERVER_URL')
+        return (preflang, url)
 
-    @ram.cache(lambda *args: time() // (60 * 60))
+    @ram.cache(_render_cachekey_getSEPs)
     def getSingleEntryPoints(self):
         """ Retrieve all sections implementing ISubsite that match the local Subjects """
         portal_catalog = getToolByName(self, 'portal_catalog')
