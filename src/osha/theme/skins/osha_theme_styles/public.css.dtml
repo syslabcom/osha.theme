@@ -1339,6 +1339,10 @@ div.seminars-preview-img img {
   margin-bottom: 5px;
 }
 
+div#seminar-content div#add_to_calendar{
+    display: none;
+}
+
 #slideswitch img {
     position:absolute;
     top:0;
