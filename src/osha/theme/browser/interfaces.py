@@ -9,6 +9,12 @@ from plone.portlets.interfaces import IPortletManager
 
 _ = MessageFactory('osha.theme')
 
+class IOSHmailView(Interface):
+    """ oshmail overview including subscription """
+
+    def subscribe():
+        """ subscribe to oshmail """
+        
 class IOSHAThemeLayer(Interface):
     """ Marker Interface used by BrowserLayer
     """

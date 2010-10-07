@@ -1,0 +1,118 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+      <metal:javascriptslot fill-slot="javascript_head_slot">
+      </metal:javascriptslot>
+      <metal:css fill-slot='css_slot'>
+      <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+      </metal:css>
+
+<body>
+
+<div metal:fill-slot="main" 
+     tal:define="templateId template/getId; currlang here/portal_languages/getPreferredLanguage">
+
+    <div id="content">
+        <div class="message warning" 
+             tal:condition="request/portal_status_message | nothing"
+             tal:content="request/portal_status_message | nothing" />
+      <div id="mainContent">
+        <h1>
+          OSHmail service
+        </h1>
+        <div class="introduction">
+          <p>
+            Welcome to <strong>OSHmail</strong>, the electronic newsletter issued by the European Agency for Safety and Health at Work that has already <strong><span tal:replace="view/get_num_subscribers">44169</span> subscribers</strong>.
+          </p>
+        </div>
+        <form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
+          <fieldset class="concise">
+            <legend>Subscribe to OSHmail</legend> <label>Name <input type="text" name="name" class="span-6" /></label> <label>E-mail address* <input type="text" name="emailaddress" class="span-6" /></label>
+          </fieldset>
+        
+          <fieldset class="buttonBar">
+            <button type="submit" name="subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button> 
+            <button type="submit" name="unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
+          </fieldset>
+        </form>
+        <hr class="clear" />
+        <p>
+          Subscribe now for free and get:
+        </p>
+        <ul>
+          <li>the latest safety and health news from around the world;
+          </li>
+          <li>e-mails that are <strong>custom tailored</strong> to your interest;
+          </li>
+          <li>updates on <a href="#" tal:attributes="href string:${here/portal_url}/${currlang}/campaigns">campaigns</a> and activities organised by the Agency;
+          </li>
+          <li>forthcoming <a href="#" tal:attributes="href string:${here/portal_url}/${currlang}/news/events">events</a>;
+          </li>
+          <li>the latest Agency <a href="/en/publications" tal:attributes="href string:${here/portal_url}/${currlang}/publications">publications</a>;
+          </li>
+          <li>updates on EU legislation;
+          </li>
+          <li>in 22 languages…
+          </li>
+        </ul>
+      </div>
+      <div id="portlets">
+        <!--div class="portlet" id="portletLanguages">
+          <p>
+            <a href="http://osha.europa.eu/da/campaigns/hw2010/partners/index_html?set_language=da">Dansk</a> | <a href="http://osha.europa.eu/de/campaigns/hw2010/partners/index_html?set_language=de">Deutsch</a> | <a href="http://osha.europa.eu/et/campaigns/hw2010/partners/index_html?set_language=et">Eesti</a> | <a href="http://osha.europa.eu/en/campaigns/hw2010/partners/index_html?set_language=en" class="current">English</a> | <a href="http://osha.europa.eu/es/campaigns/hw2010/partners/index_html?set_language=es">Español</a> | <a href="http://osha.europa.eu/fr/campaigns/hw2010/partners/index_html?set_language=fr">Français</a> | <a href="http://osha.europa.eu/it/campaigns/hw2010/partners/index_html?set_language=it">Italiano</a> | <a href="http://osha.europa.eu/lv/campaigns/hw2010/partners/index_html?set_language=lv">Latviešu</a> | <a href="http://osha.europa.eu/lt/campaigns/hw2010/partners/index_html?set_language=lt">Lietuviskai</a> | <a href="http://osha.europa.eu/hu/campaigns/hw2010/partners/index_html?set_language=hu">Magyar</a> | <a href="http://osha.europa.eu/mt/campaigns/hw2010/partners/index_html?set_language=mt">Malti</a> | <a href="http://osha.europa.eu/nl/campaigns/hw2010/partners/index_html?set_language=nl">Nederlands</a> | <a href="http://osha.europa.eu/pl/campaigns/hw2010/partners/index_html?set_language=pl">Polski</a> | <a href="http://osha.europa.eu/pt/campaigns/hw2010/partners/index_html?set_language=pt">Português</a> | <a href="http://osha.europa.eu/ro/campaigns/hw2010/partners/index_html?set_language=ro">Română</a> | <a href="http://osha.europa.eu/sk/campaigns/hw2010/partners/index_html?set_language=sk">Slovenčina</a> | <a href="http://osha.europa.eu/sl/campaigns/hw2010/partners/index_html?set_language=sl">Slovenščina</a> | <a href="http://osha.europa.eu/fi/campaigns/hw2010/partners/index_html?set_language=fi">Suomi</a> | <a href="http://osha.europa.eu/sv/campaigns/hw2010/partners/index_html?set_language=sv">Svenska</a> | <a href="http://osha.europa.eu/cs/campaigns/hw2010/partners/index_html?set_language=cs">Čeština</a> | <a href="http://osha.europa.eu/el/campaigns/hw2010/partners/index_html?set_language=el">Ελληνικά</a> | <a href="http://osha.europa.eu/bg/campaigns/hw2010/partners/index_html?set_language=bg">Български</a>
+          </p>
+        </div-->
+        <div class="portlet" id="portletLatestIssue" tal:define="latest view/getLatestIssue">
+          <h2 i18n:translate="label_latest_issue" i18n:domain="osha">
+            Latest issue
+          </h2>
+          <img src="http://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini" 
+               tal:attributes="src view/get_image" alt="Latest OSHMail Issue"
+               tal:condition="view/get_image" />
+          <h4>
+            <span tal:define="date latest/effective" 
+                  tal:replace="string:${date/Month} ${date/year}">October 2010</span>
+          </h4>
+          <ul class="links">
+            <li tal:repeat="latest_teaser view/latest_teasers">
+              <a href="#" tal:attributes="href latest/getURL" tal:content="latest_teaser">Title of teaser</a>
+            </li>
+          </ul>
+        </div>
+        <div class="portlet" id="portletOlderIssues">
+          <h2 i18n:translate="label_previous_issues" i18n:domain="osha">
+            Previous issues
+          </h2>
+          <h3 tal:content="view/thisyear">
+            2010
+          </h3>
+          <ul class="links" tal:define="issues view/thisyears_issues">
+            <li tal:repeat="issue issues">
+              <a tal:define="data python:issue[1]" 
+                 href="#" tal:attributes="href data/url" tal:content="data/title">OSHmail 91 - 2009</a>
+            </li>
+          </ul>
+          <h3 tal:content="view/lastyear">
+            2009
+          </h3>
+          <ul class="links" tal:define="issues view/lastyears_issues">
+            <li tal:repeat="issue issues">
+              <a tal:define="data python:issue[1]" 
+                 href="#" tal:attributes="href data/url" tal:content="data/title">OSHmail 91 - 2009</a>
+            </li>
+          </ul>
+          <p>
+            Load <a href="#">older newsletters</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+
+</body>
+</html>

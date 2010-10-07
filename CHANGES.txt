@@ -4,7 +4,8 @@ osha.theme Changelog
 1.3.34 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Added new oshmail registration page
+  [pilz]
 
 
 1.3.33 (2010-09-12)
