@@ -51,7 +51,10 @@ class OSHmailView(BrowserView):
         " return the latest teasers from the latest oshmail "
         latest = self.getLatestIssue()
         teasers = []
-        col1 = latest.getObject()['1']['1']
+        try:
+            col1 = latest.getObject()['1']['1']
+        except KeyError:
+            return []
         for aliasid in col1.keys()[:3]:
             alias = col1[aliasid]
             target = alias.get_target()
@@ -61,7 +64,10 @@ class OSHmailView(BrowserView):
     def get_image(self):
         " find a suitable image to show "
         latest = self.getLatestIssue()
-        col1 = latest.getObject()['1']['1']
+        try:
+            col1 = latest.getObject()['1']['1']
+        except KeyError:
+            return ''
         for aliasid in col1.keys()[:3]:
             alias = col1[aliasid]
             target = alias.get_target()
@@ -91,7 +97,7 @@ class OSHmailView(BrowserView):
                 latestissue = issue
             (name, num) = issue['getId'].split('-')
             yearlist = yearmap.get(date.year(), [])
-            yearlist.append( (num, dict(id=issue['getId'], 
+            yearlist.append( (int(num), dict(id=issue['getId'], 
                                         day=date.Day(), 
                                         month=date.Month(), 
                                         year=date.year(), 
