@@ -182,7 +182,9 @@ class OSHA(BrowserView):
         """
         context = Acquisition.aq_inner(self.context)
         portal_url = getToolByName(context, 'portal_url')
-        return '%s%s/image' % (portal_url(), '/'.join(context.getPhysicalPath()))
+        if hasattr(context.aq_explicit, 'getImage'):
+            return "%s/image" % (context.absolute_url())
+        return ''
 
 
     def sendto(self, send_to_address, send_from_address, comment,

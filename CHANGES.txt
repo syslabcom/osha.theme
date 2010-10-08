@@ -4,7 +4,8 @@ osha.theme Changelog
 1.3.35 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Made Facebook Imagelink conditional 
+  [pilz]
 
 
 1.3.34 (2010-10-07)

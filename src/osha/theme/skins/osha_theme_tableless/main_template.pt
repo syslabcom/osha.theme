@@ -38,7 +38,7 @@
           tal:attributes="name python:keyval[0];
                           content python:keyval[1];" />
 
-    <link rel="image_src" tal:attributes="href oshaview/getPageShareImageSource" />
+    <link rel="image_src" tal:condition="oshaview/getPageShareImageSource" tal:attributes="href oshaview/getPageShareImageSource" />
 
     <!-- Internet Explorer CSS Fixes -->
     <tal:iefixstart replace="structure string:&lt;!--[if IE]&gt;" />
