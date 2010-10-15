@@ -71,7 +71,8 @@ class Renderer(base.Renderer):
 
     #@ram.cache(_render_cachekey)
     def render(self):
-        return xhtml_compress(self._template())
+        #return xhtml_compress(self._template())
+        return self._template()
             
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)

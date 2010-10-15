@@ -4,7 +4,8 @@ osha.theme Changelog
 1.3.36 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- removed template compression to avoid unicode bug 
+  [pilz]
 
 
 1.3.35 (2010-10-08)
