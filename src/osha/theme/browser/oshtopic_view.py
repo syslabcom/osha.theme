@@ -73,7 +73,7 @@ class OSHTopicView(BrowserView):
         return self.getTopic().Format()        
         
     def queryCatalog(self):
-        return self.getTopic().queryCatalog(batch=True)        
+        return self.getTopic().queryCatalog()        
 
     def getCustomViewFields(self):
         return self.getTopic().getCustomViewFields()
