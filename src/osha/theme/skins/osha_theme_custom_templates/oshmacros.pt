@@ -59,12 +59,12 @@
             </em>
           </tal:publication_date>
 
-          <tal:faq condition="python: result.portal_type == 'HelpCenterFAQ'">
+          <tal:faq condition="python: result['portal_type'] == 'HelpCenterFAQ'">
             <p tal:define="descr python:result.getObject().getAnswer()"
                tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
           </tal:faq>
 
-          <tal:notfaq condition="python: result.portal_type != 'HelpCenterFAQ'">
+          <tal:notfaq condition="python: result['portal_type'] != 'HelpCenterFAQ'">
             <p tal:define="descr result/Description"
                tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
           </tal:notfaq>
