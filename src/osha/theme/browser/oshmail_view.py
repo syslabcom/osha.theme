@@ -47,6 +47,15 @@ class OSHmailView(BrowserView):
         latestissue, issues = self._get_issues()
         return issues.get(self.lastyear(), [])
         
+    def oldernewsletters(self):
+        " return all other newsletters older than last years "
+        latestissue, issues = self._get_issues()
+        if self.thisyear() in issues.keys():
+            del issues[self.thisyear()]
+        if self.lastyear() in issues.keys():
+            del issues[self.lastyear()]
+        return issues
+        
     def latest_teasers(self):
         " return the latest teasers from the latest oshmail "
         latest = self.getLatestIssue()

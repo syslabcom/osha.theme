@@ -10,7 +10,9 @@ osha.theme Changelog
   [pilz]
 - fixed access to portal type in oshmacros
   [pilz]
-
+- added archive function to newsletter subscription view
+  [pilz]
+  
 1.3.35 (2010-10-08)
 -------------------
 

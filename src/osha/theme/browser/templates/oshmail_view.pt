@@ -4,9 +4,15 @@
       i18n:domain="plone">
 
       <metal:javascriptslot fill-slot="javascript_head_slot">
+      <script type="text/javascript" language="javascript">
+      function displaynl () {
+          jQuery('.fadercontrol').hide();
+          jQuery('.older-newsletter').fadeIn('slow');   
+      }</script>
       </metal:javascriptslot>
       <metal:css fill-slot='css_slot'>
       <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+      <style type="text/css">.older-newsletter {display:none;}</style>
       </metal:css>
 
 <body>
@@ -103,9 +109,20 @@
                  href="#" tal:attributes="href data/url" tal:content="data/title">OSHmail 91 - 2009</a>
             </li>
           </ul>
-          <p>
-            Load <a href="#">older newsletters</a>.
+          <p class="fadercontrol">
+            Load <a onclick="displaynl()" href="javascript:return false;">older newsletters</a>.
           </p>
+          <tal:repeat define="oldernl view/oldernewsletters" repeat="nl oldernl/keys">
+          <h3 tal:content="nl" class="older-newsletter">
+            2009
+          </h3>
+          <ul class="links older-newsletter" tal:define="issues python:oldernl[nl]">
+            <li tal:repeat="issue issues">
+              <a tal:define="data python:issue[1]" 
+                 href="#" tal:attributes="href data/url" tal:content="data/title">OSHmail 91 - 2009</a>
+            </li>
+          </ul>
+          </tal:repeat>
         </div>
       </div>
     </div>
