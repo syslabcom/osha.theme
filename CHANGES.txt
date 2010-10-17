@@ -4,7 +4,8 @@ osha.theme Changelog
 1.3.37 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Small fix to make event_view html more valid
+  [pilz]
 
 
 1.3.36 (2010-10-17)

@@ -42,9 +42,11 @@
             <tr>
                 <th i18n:translate="label_event_location">Location</th>
                 <td>
+                    <tal:cond condition="here/getLocation">
                     <metal:field use-macro="python:here.widget('location', mode='view')">
                         Location
-                  </metal:field>
+                    </metal:field>
+                    </tal:cond>
                 </td>
                 <span tal:condition="here/contact_name">
                     <th i18n:translate="label_contact_name">Contact Name</th>
