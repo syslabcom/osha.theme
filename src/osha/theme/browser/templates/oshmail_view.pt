@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="osha">
 
       <metal:javascriptslot fill-slot="javascript_head_slot">
       <script type="text/javascript" language="javascript">
@@ -29,38 +29,42 @@
           OSHmail service
         </h1>
         <div class="introduction">
-          <p>
-            Welcome to <strong>OSHmail</strong>, the electronic newsletter issued by the European Agency for Safety and Health at Work that has already <strong><span tal:replace="view/get_num_subscribers">44169</span> subscribers</strong>.
+          <p i18n:translate="oshmail_intro_welcome">
+            Welcome to <strong i18n:name="oshmail">OSHmail</strong>, the electronic newsletter issued by the European Agency for Safety and Health at Work.
           </p>
+        <!-- that has already <strong><span i18n:name="number" tal:replace="view/get_num_subscribers">44169</span> subscribers</strong> -->
         </div>
         <form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
           <fieldset class="concise">
-            <legend>Subscribe to OSHmail</legend> <label>Name <input type="text" name="name" class="span-6" /></label> <label>E-mail address* <input type="text" name="emailaddress" class="span-6" /></label>
+            <legend i18n:translate="oshmail_header_subscribe">Subscribe to OSHmail</legend> <label> <span i18n:translate="label_name">Name</span> <input type="text" name="name" class="span-6" /></label> <label><span i18n:translate="portlet_oshmail_email">E-mail address</span>* <input type="text" name="emailaddress" class="span-6" /></label>
           </fieldset>
         
           <fieldset class="buttonBar">
-            <button type="submit" name="subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button> 
-            <button type="submit" name="unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
+            <button type="submit" name="subscribe" i18n:translate="Subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button> 
+            <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
           </fieldset>
         </form>
         <hr class="clear" />
-        <p>
+        <!--p i18n:translate="oshmail_intro_subsribe_now">
           Subscribe now for free and get:
+        </p-->
+        <p i18n:translate="oshmail_intro_every_month">
+            Every month, <strong i18n:name="oshmail">OSHmail</strong> informs you of the latest developments in occupational safety and health:
         </p>
         <ul>
-          <li>the latest safety and health news from around the world;
+          <li i18n:translate="oshmail_list_1">the latest safety and health news from around the world;
           </li>
-          <li>e-mails that are <strong>custom tailored</strong> to your interest;
+          <!--li i18n:translate="oshmail_list_2">e-mails that are <strong>custom tailored</strong> to your interest;
+          </li-->
+          <li i18n:translate="oshmail_list_3">updates on campaigns and activities organised by the Agency;
           </li>
-          <li>updates on <a href="#" tal:attributes="href string:${here/portal_url}/${currlang}/campaigns">campaigns</a> and activities organised by the Agency;
+          <li i18n:translate="oshmail_list_4">forthcoming events;
           </li>
-          <li>forthcoming <a href="#" tal:attributes="href string:${here/portal_url}/${currlang}/news/events">events</a>;
+          <li i18n:translate="oshmail_list_5">the latest Agency publications;
           </li>
-          <li>the latest Agency <a href="/en/publications" tal:attributes="href string:${here/portal_url}/${currlang}/publications">publications</a>;
+          <li i18n:translate="oshmail_list_6">updates on EU legislation;
           </li>
-          <li>updates on EU legislation;
-          </li>
-          <li>in 22 languages…
+          <li i18n:translate="oshmail_list_7">in 22 languages…
           </li>
         </ul>
       </div>
@@ -71,7 +75,7 @@
           </p>
         </div-->
         <div class="portlet" id="portletLatestIssue" tal:define="latest view/getLatestIssue">
-          <h2 i18n:translate="label_latest_issue" i18n:domain="osha">
+          <h2 i18n:translate="label_latest_issue">
             Latest issue
           </h2>
           <img src="http://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini" 
@@ -109,8 +113,8 @@
                  href="#" tal:attributes="href data/url" tal:content="data/title">OSHmail 91 - 2009</a>
             </li>
           </ul>
-          <p class="fadercontrol">
-            Load <a onclick="displaynl()" href="javascript:return false;">older newsletters</a>.
+          <p class="fadercontrol" i18n:translate="label_load_older">
+            Load <a onclick="displaynl()" href="javascript:return false;" i18n:name="link"><span i18n:translate="label_older_newsletters">older newsletters</span></a>.
           </p>
           <tal:repeat define="oldernl view/oldernewsletters" repeat="nl oldernl/keys">
           <h3 tal:content="nl" class="older-newsletter">
