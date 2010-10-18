@@ -36,7 +36,7 @@
         </div>
         <form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
           <fieldset class="concise">
-            <legend i18n:translate="oshmail_header_subscribe">Subscribe to OSHmail</legend> <label> <span i18n:translate="label_name">Name</span> <input type="text" name="name" class="span-6" /></label> <label><span i18n:translate="portlet_oshmail_email">E-mail address</span>* <input type="text" name="emailaddress" class="span-6" /></label>
+            <legend i18n:translate="oshmail_header_subscribe">Subscribe to OSHmail</legend> <label><span i18n:translate="label_name" tal:omit-tag="">Name</span> <input type="text" name="name" class="span-6" /></label> <label><span i18n:translate="portlet_oshmail_email" tal:omit-tag="">E-mail address</span>* <input type="text" name="emailaddress" class="span-6" /></label>
           </fieldset>
         
           <fieldset class="buttonBar">
