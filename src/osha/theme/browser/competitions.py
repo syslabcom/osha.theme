@@ -33,7 +33,7 @@ class CompetitionsView(BrowserView):
         query = dict(portal_type='Folder', path=self.path,
             review_state='published',
             effective=dict(query=self.now, range='min'))
-        return self._getCompetitions(query)
+        return self._getCompetitionsWithImages(query)
 
     def getOngoing(self):
         """ Get ongoing competitions """
@@ -41,7 +41,7 @@ class CompetitionsView(BrowserView):
             review_state='published',
             effective=dict(query=self.now, range='max'),
             expires=dict(query=self.now, range='min'))
-        return self._getCompetitions(query)
+        return self._getCompetitionsWithImages(query)
 
     def _getCompetitions(self, query):
         catalog = getToolByName(self.context, 'portal_catalog')
@@ -49,14 +49,21 @@ class CompetitionsView(BrowserView):
         res = catalog(query)
         for r in res:
             folder = r.getObject()
-            img = ''
-            item = folder
-            default_view = getattr(folder, folder.defaultView())
+            competitions.append(folder)
+        return competitions
+
+    def _getCompetitionsWithImages(self, query):
+        result = list()
+        competitions = self._getCompetitions(query)
+        for competition in competitions:
+            images = ''
+            default_view = getattr(competition, competition.defaultView())
+            item = competition
             if IBaseContent.providedBy(default_view):
                 images = self.getRelatedImages(default_view, 'mini')
                 item = default_view
-            competitions.append(dict(item=item, images=images))
-        return competitions
+            result.append(dict(item=item, images=images))
+        return result
 
     def getRelatedImages(self, obj, image_scale):
         """
@@ -88,3 +95,18 @@ class CompetitionDetail(CompetitionsView):
     def getTeaserImage(self):
         images = self.getRelatedImages(self.context, 'mini')
         return len(images) and images[0] or ''
+
+    def thisyear(self):
+        " return this years number "
+        return self.now.year()
+        
+    def lastyear(self):
+        " return last years number "
+        return self.now.year()-1
+
+    def getClosed(self):
+        " get closed competitions "
+        query = dict(portal_type='Folder', path=self.path,
+            review_state='published',
+            effective=dict(query=self.now, range='max'),
+            expires=dict(query=self.now, range='max'))

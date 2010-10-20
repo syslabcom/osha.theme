@@ -94,9 +94,62 @@
                 </span>
             </ul>
         </div>
+	</div>
+                          <div id="portlets">
+                            <!-- InstanceBeginEditable name="Portlets" -->
+                           <div class="portlet" id="portletBanner">
+                              <p>
+                                <img src="../Media/banner-countdown.gif" width="185" height="145" alt="Banner Countdown" />
+                              </p>
+                            </div>
 
+                            <div class="portlet" id="portletOlderIssues">
+                              <h2 i18n:translate="label_closed_competitions">
+                                Closed competitions
+                              </h2>
+                              <h3>
+                                2010
+                              </h3>
+                              <ul class="links">
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                              </ul>
+                              <h3>
+                                2009
+                              </h3>
+                              <ul class="links">
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                                <li>
+                                  <a href="#">Lorem ipsum dolor sit</a>
+                                </li>
+                              </ul>
+                              <p>
+                                Load <a href="#">all competitions</a>.
+                              </p>
+                            </div>
+						</div>
 
-      </div>
 </div>
 </body>
 </html>
