@@ -43,6 +43,14 @@ class CompetitionsView(BrowserView):
             expires=dict(query=self.now, range='min'))
         return self._getCompetitionsWithImages(query)
 
+    def getClosed(self):
+        " get closed competitions "
+        query = dict(portal_type='Folder', path=self.path,
+            review_state='published',
+            effective=dict(query=self.now, range='max'),
+            expires=dict(query=self.now, range='max'))
+        return self._getCompetitions(query)
+
     def _getCompetitions(self, query):
         catalog = getToolByName(self.context, 'portal_catalog')
         competitions = list()
@@ -82,6 +90,14 @@ class CompetitionsView(BrowserView):
             scaled.append(scaled_img.absolute_url())
         return scaled
 
+    def thisyear(self):
+        " return this years number "
+        return self.now.year()
+
+    def lastyear(self):
+        " return last years number "
+        return self.now.year() - 1
+
 
 class CompetitionDetail(CompetitionsView):
     implements(ICompetitionDetail)
@@ -95,18 +111,3 @@ class CompetitionDetail(CompetitionsView):
     def getTeaserImage(self):
         images = self.getRelatedImages(self.context, 'mini')
         return len(images) and images[0] or ''
-
-    def thisyear(self):
-        " return this years number "
-        return self.now.year()
-        
-    def lastyear(self):
-        " return last years number "
-        return self.now.year()-1
-
-    def getClosed(self):
-        " get closed competitions "
-        query = dict(portal_type='Folder', path=self.path,
-            review_state='published',
-            effective=dict(query=self.now, range='max'),
-            expires=dict(query=self.now, range='max'))
