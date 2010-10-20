@@ -471,7 +471,7 @@
         />
 
     <browser:page
-        for="*"
+        for="Products.Archetypes.interfaces.IBaseContent"
         name="competition-detail"
         class=".competitions.CompetitionDetail"
         allowed_interface=".interfaces.ICompetitionDetail"
