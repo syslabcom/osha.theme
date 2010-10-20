@@ -4,7 +4,8 @@ osha.theme Changelog
 1.3.38 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- oshtopic-view now returns a proper 400 if called without arguments
+  [pilz]
 
 
 1.3.37 (2010-10-17)
