@@ -20,9 +20,36 @@
 
 <div metal:fill-slot="main">
       <div id="mainContent">
-        <h1>
+        <h1 tal:content="here/Title">
           Competitions
         </h1>
+        <div class="introduction">
+          <p tal:content="here/Description">
+            Description
+          </p>
+        </div>
+
+        <div class="upcomingCompetitions"
+            tal:define="upcoming view/getUpcoming">
+          <h2 i18n:translate="label_upcoming_competitions" tal:condition="python:len(upcoming)">
+            Upcoming competitions
+          </h2>
+          <span tal:repeat="competition upcoming" tal:omit-tag="">
+              <div class="section" 
+                tal:define="item nocall:competition/item;
+                            img competition/img">
+              <a href="#" tal:attributes="href item/absolute_url"><img src="#" alt="Page 1" class="span-4 floatBefore" 
+                tal:attributes="src img" /></a>
+              <h4>
+                <a href="#" tal:attributes="href item/absolute_url" tal:content="item/Title">Photocompetition 2011</a>
+              </h4>
+              <p>
+                <span tal:replace="item/Description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae voluptas sit aspernatur aut odit aut fugit.</span> <a href="#" tal:attributes="href item/absolute_url">Learn more</a>
+              </p>
+              </div>
+          </span>
+        </div>
+
       </div>
 </div>
 </body>
