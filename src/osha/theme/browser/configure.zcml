@@ -23,6 +23,11 @@
         name="jquery.bigtarget.1.0.1.js"
         />
 
+    <browser:resourceDirectory
+        name="osha.theme.behaviour"
+        directory="behaviour"
+        />
+
     <!-- Include Collage views -->
     <include file="collage.zcml" />
 
