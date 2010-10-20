@@ -462,6 +462,22 @@
         permission="zope2.View"
         />
 
+    <browser:page
+        for="*"
+        name="competitions-view"
+        class=".competitions.CompetitionsView"
+        allowed_interface=".interfaces.ICompetitionsView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
+        name="competition-detail"
+        class=".competitions.CompetitionDetail"
+        allowed_interface=".interfaces.ICompetitionDetail"
+        permission="zope2.View"
+        />
+
     <!--browser:page
         name="oshevents"
         for="*"

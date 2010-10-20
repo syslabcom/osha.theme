@@ -1,0 +1,29 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+      <metal:javascriptslot fill-slot="javascript_head_slot">
+      <script type="text/javascript" language="javascript">
+      function displaynl () {
+          jQuery('.fadercontrol').hide();
+          jQuery('.older-newsletter').fadeIn('slow');   
+      }</script>
+      </metal:javascriptslot>
+      <metal:css fill-slot='css_slot'>
+      <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8" 
+        tal:attributes="href string:$portal_url/lipstick.css"/>
+      <style type="text/css">.older-newsletter {display:none;}</style>
+      </metal:css>
+
+<body>
+
+<div metal:fill-slot="main">
+      <div id="mainContent">
+        <h1>
+          Competitions
+        </h1>
+      </div>
+</div>
+</body>
+</html>

@@ -212,3 +212,9 @@ class ISwitchOSHContent(Interface):
 
 class IInlineContentViewlet(Interface):
     """ Marker interface that makes the InlineContentViewlet visible """
+
+class ICompetitionsView(Interface):
+    """ Overview of all competitions """
+
+class ICompetitionDetail(Interface):
+    """ Detail view of one competition """
