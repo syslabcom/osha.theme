@@ -29,15 +29,13 @@
                                 <img src="#" tal:attributes="src view/getTeaserImage" />
                               </p>
                               <p tal:content="here/Description">
-                                … and 'Action!' For a safer, healthier and more productive place to work. EU-OSHA sponsors the Healthy Workplaces Film Award for the best documentary on work-related topics. The award is presented at the International Leipzig Festival for Documentary and Animated Film. The successful cooperation allows EU-OSHA to call attention to its mission of promoting safer and healthier workplaces in Europe. DOK Leipzig is a thought-provoking festival with a fascinating selection of films dealing with challenging living and working conditions. The Healthy Workplaces Film Award is endowed with € 8,000 and honours a documentary film that focuses on people’s working conditions in an ever-changing world.
+                                Description
                               </p>
                             </div>
 
 
       </div>
 
-	<div class="visualClear"></div>
-	<div tal:replace="structure provider:plone.belowcontentbody" />
 
 </div>
 </body>
