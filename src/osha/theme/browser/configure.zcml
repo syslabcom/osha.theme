@@ -468,7 +468,7 @@
         />
 
     <browser:page
-        for="*"
+        for="Products.Archetypes.interfaces.IBaseContent"
         name="competitions-view"
         class=".competitions.CompetitionsView"
         allowed_interface=".interfaces.ICompetitionsView"
