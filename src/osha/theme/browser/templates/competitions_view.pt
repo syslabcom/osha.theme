@@ -48,29 +48,6 @@
           </p>
         </div>
 
-        <div class="upcomingCompetitions"
-            tal:define="upcoming view/getUpcoming">
-          <h2 i18n:translate="label_upcoming_competitions" tal:condition="python:len(upcoming)">
-            Upcoming competitions
-          </h2>
-          <span tal:repeat="competition upcoming" tal:omit-tag="">
-              <div class="section"
-                tal:define="item nocall:competition/item;
-                            images competition/images;
-                            img_src python:len(images) and images[0] or ''">
-              <a href="#" tal:attributes="href item/absolute_url"><img src="#" alt="Page 1" class="span-4 floatBefore"
-                tal:attributes="src img_src" /></a>
-              <h4>
-                <a href="#" tal:attributes="href item/absolute_url" tal:content="item/Title">Photocompetition 2011</a>
-              </h4>
-              <p>
-                <span tal:replace="item/Description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae voluptas sit aspernatur aut odit aut fugit.</span> <a href="#" tal:attributes="href item/absolute_url" i18n:translate="label_learn_more">Learn more</a>
-              </p>
-              </div>
-          </span>
-        </div>
-
-
         <div id="ongoingCompetitions" tal:define="ongoing view/getOngoing" tal:condition="ongoing">
             <h2 i18n:translate="label_ongoing_competitions">
               Ongoing competitions
@@ -94,6 +71,29 @@
                 </span>
             </ul>
         </div>
+
+        <div class="upcomingCompetitions"
+            tal:define="upcoming view/getUpcoming">
+          <h2 i18n:translate="label_upcoming_competitions" tal:condition="python:len(upcoming)">
+            Upcoming competitions
+          </h2>
+          <span tal:repeat="competition upcoming" tal:omit-tag="">
+              <div class="section"
+                tal:define="item nocall:competition/item;
+                            images competition/images;
+                            img_src python:len(images) and images[0] or ''">
+              <a href="#" tal:attributes="href item/absolute_url"><img src="#" alt="Page 1" class="span-4 floatBefore"
+                tal:attributes="src img_src" /></a>
+              <h4>
+                <a href="#" tal:attributes="href item/absolute_url" tal:content="item/Title">Photocompetition 2011</a>
+              </h4>
+              <p>
+                <span tal:replace="item/Description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae voluptas sit aspernatur aut odit aut fugit.</span> <a href="#" tal:attributes="href item/absolute_url" i18n:translate="label_learn_more">Learn more</a>
+              </p>
+              </div>
+          </span>
+        </div>
+
     </div>
 
 
