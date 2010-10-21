@@ -98,11 +98,11 @@
 
 
     <div id="portlets">
-        <div class="portlet portletMoreAbout" id="portletBanner" tal:condition="view/moreAboutContent">
-            <div class="portletHeader" tal:condition="view/moreAboutEditable">
-                <a tal:attributes="href view/moreAboutEditlink">[edit]</a>
+        <div class="portlet portletBanner" id="portletBanner" tal:condition="view/bannerContent">
+            <div class="portletHeader" tal:condition="view/bannerEditable">
+                <a tal:attributes="href view/bannerEditlink">[edit]</a>
             </div>
-            <span tal:replace="structure view/moreAboutContent" />
+            <span tal:replace="structure view/bannerContent" />
         </div>
 
         <div class="portlet" id="portletOlderIssues">
@@ -142,6 +142,13 @@
                     </li>
                 </ul>
             </tal:repeat>
+        </div>
+
+        <div class="portlet portletMoreAbout" id="portletMoreAbout" tal:condition="view/moreAboutContent">
+            <div class="portletHeader" tal:condition="view/moreAboutEditable">
+                <a tal:attributes="href view/moreAboutEditlink">[edit]</a>
+            </div>
+            <span tal:replace="structure view/moreAboutContent" />
         </div>
     </div>
 

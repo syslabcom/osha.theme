@@ -147,31 +147,47 @@ class CompetitionsView(BrowserView):
         return self.now.year() - 1
 
     def moreAboutEditable(self):
-        f = self._getfile()
+        f = self._getfile('more-about')
         mtool = getToolByName(self.context, 'portal_membership')
         return mtool.checkPermission('Modify portal content', f)
 
     def moreAboutEditlink(self):
-        f = self._getfile()
+        f = self._getfile('more-about')
         return f.absolute_url() + '/edit'
 
-    # @memoize
-    def _getfile(self):
+    def bannerEditable(self):
+        f = self._getfile('banner')
+        mtool = getToolByName(self.context, 'portal_membership')
+        return mtool.checkPermission('Modify portal content', f)
+
+    def bannerEditlink(self):
+        f = self._getfile('banner')
+        return f.absolute_url() + '/edit'
+
+    def _getfile(self, fname):
         folder = self.context.restrictedTraverse(self.path)
-        if getattr(aq_base(folder), 'more-about',
-            getattr(aq_base(folder.getCanonical()), 'more-about', None)):
-            portlet_moreabout = getattr(folder, 'more-about',
-                getattr(folder.getCanonical(), 'more-about', None))
+        if getattr(aq_base(folder), fname,
+            getattr(aq_base(folder.getCanonical()), fname, None)):
+            portlet_moreabout = getattr(folder, fname,
+                getattr(folder.getCanonical(), fname, None))
             return portlet_moreabout
         return None
 
     # @memoize
     def moreAboutContent(self):
-        return self._getfile() and self._getfile().getText() or None
+        return self._getfile('more-about') and self._getfile('more-about').getText() or None
 
     # @memoize
     def moreAboutTitle(self):
-        return self._getfile() and self._getfile().Title() or None
+        return self._getfile('more-about') and self._getfile('more-about').Title() or None
+
+    # @memoize
+    def bannerContent(self):
+        return self._getfile('banner') and self._getfile('banner').getText() or None
+
+    # @memoize
+    def bannerTitle(self):
+        return self._getfile('banner') and self._getfile('banner').Title() or None
 
 
 class CompetitionDetail(CompetitionsView):
