@@ -32,23 +32,27 @@ class CompetitionsView(BrowserView):
     def getUpcoming(self):
         """ Get upcoming competitions """
         query = dict(portal_type='Folder', path=self.path,
-            review_state='published',
+            review_state='published', show_inactive=True,
             effective=dict(query=self.now, range='min'))
-        return self._getCompetitionsWithImages(query)
+        competitions = self._getCompetitionsWithImages(query)
+        print "upcoming:", competitions
+        return competitions
 
     def getOngoing(self):
         """ Get ongoing competitions """
         query = dict(portal_type='Folder', path=self.path,
-            review_state='published',
+            review_state='published', show_inactive=True,
             effective=dict(query=self.now, range='max'),
             expires=dict(query=self.now, range='min'))
-        return self._getCompetitionsWithImages(query)
+        competitions = self._getCompetitionsWithImages(query)
+        print "ongoing:", competitions
+        return competitions
 
     # @memoize
     def getClosed(self):
         " get closed competitions "
         query = dict(portal_type='Folder', path=self.path,
-            review_state='published',
+            review_state='published', show_inactive=True,
             effective=dict(query=self.now, range='max'),
             expires=dict(query=self.now, range='max'))
         competitions = self._getCompetitions(query)
@@ -68,6 +72,7 @@ class CompetitionsView(BrowserView):
             yearlist.reverse()
             yearmap[year] = yearlist
 
+        print "closed", yearmap
         return yearmap
 
     def getThisyearsCompetitions(self):
@@ -92,7 +97,7 @@ class CompetitionsView(BrowserView):
     def _getCompetitions(self, query):
         catalog = getToolByName(self.context, 'portal_catalog')
         competitions = list()
-        res = catalog(query)
+        res = catalog(**query)
         for r in res:
             folder = r.getObject()
             competitions.append(folder)
@@ -135,6 +140,32 @@ class CompetitionsView(BrowserView):
     def lastyear(self):
         " return last years number "
         return self.now.year() - 1
+
+    def moreAboutEditable(self):
+        f = self._getfile()
+        mtool = getToolByName(self.context, 'portal_membership')
+        return mtool.checkPermission('Modify portal content', f)
+
+    def moreAboutEditlink(self):
+        f = self._getfile()
+        return f.absolute_url() + '/edit'
+
+    # @memoize
+    def _getfile(self):
+        context = aq_inner(self.context)
+        portlet_moreabout = getattr(context, 'more-about',
+            getattr(context.getCanonical(), 'more-about', None))
+        if portlet_moreabout is None:
+            return None
+        return portlet_moreabout
+
+    # @memoize
+    def moreAboutContent(self):
+        return self._getfile() and self._getfile().getText() or None
+
+    # @memoize
+    def moreAboutTitle(self):
+        return self._getfile() and self._getfile().Title() or None
 
 
 class CompetitionDetail(CompetitionsView):

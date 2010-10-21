@@ -97,13 +97,13 @@
     </div>
 
 
-     <div id="portlets">
-       <!-- InstanceBeginEditable name="Portlets" -->
-        <div class="portlet" id="portletBanner">
-           <p>
-             <img src="../Media/banner-countdown.gif" width="185" height="145" alt="Banner Countdown" />
-           </p>
-         </div>
+    <div id="portlets">
+        <div class="portlet portletMoreAbout" id="portletBanner" tal:condition="view/moreAboutContent">
+            <div class="portletHeader" tal:condition="view/moreAboutEditable">
+                <a tal:attributes="href view/moreAboutEditlink">[edit]</a>
+            </div>
+            <span tal:replace="structure view/moreAboutContent" />
+        </div>
 
         <div class="portlet" id="portletOlderIssues">
             <h2 i18n:translate="label_closed_competitions">
