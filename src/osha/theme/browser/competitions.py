@@ -6,7 +6,7 @@ from Products.Archetypes.interfaces._base import IBaseContent, IBaseFolder
 from Products.ATContentTypes.interface.image import IATImage
 from Products.CMFCore.utils import getToolByName
 from DateTime import DateTime
-from Acquisition import aq_parent, aq_inner
+from Acquisition import aq_parent, aq_inner, aq_base
 from plone.memoize.instance import memoize
 
 
@@ -56,6 +56,10 @@ class CompetitionsView(BrowserView):
             effective=dict(query=self.now, range='max'),
             expires=dict(query=self.now, range='max'))
         competitions = self._getCompetitions(query)
+        return self.sortByDate(competitions)
+
+    # @memoize
+    def sortByDate(self, competitions):
         yearmap = dict()
         for competition in competitions:
             date = competition.effective()
@@ -72,7 +76,6 @@ class CompetitionsView(BrowserView):
             yearlist.reverse()
             yearmap[year] = yearlist
 
-        print "closed", yearmap
         return yearmap
 
     def getThisyearsCompetitions(self):
@@ -98,9 +101,11 @@ class CompetitionsView(BrowserView):
         catalog = getToolByName(self.context, 'portal_catalog')
         competitions = list()
         res = catalog(**query)
+        context_folder = self.context.restrictedTraverse(self.path)
         for r in res:
             folder = r.getObject()
-            competitions.append(folder)
+            if folder != context_folder:
+                competitions.append(folder)
         return competitions
 
     def _getCompetitionsWithImages(self, query):
@@ -152,12 +157,13 @@ class CompetitionsView(BrowserView):
 
     # @memoize
     def _getfile(self):
-        context = aq_inner(self.context)
-        portlet_moreabout = getattr(context, 'more-about',
-            getattr(context.getCanonical(), 'more-about', None))
-        if portlet_moreabout is None:
-            return None
-        return portlet_moreabout
+        folder = self.context.restrictedTraverse(self.path)
+        if getattr(aq_base(folder), 'more-about',
+            getattr(aq_base(folder.getCanonical()), 'more-about', None)):
+            portlet_moreabout = getattr(folder, 'more-about',
+                getattr(folder.getCanonical(), 'more-about', None))
+            return portlet_moreabout
+        return None
 
     # @memoize
     def moreAboutContent(self):
@@ -174,9 +180,26 @@ class CompetitionDetail(CompetitionsView):
     template = ViewPageTemplateFile('templates/competition_detail.pt')
     template.id = "competition-detail"
 
+    def __init__(self, context, request):
+        super(CompetitionDetail, self).__init__(context, request)
+        if IBaseFolder.providedBy(context):
+            self.parent = aq_parent(aq_inner(context))
+        else:
+            self.parent = aq_parent(aq_parent(aq_inner(context)))
+        self.parent = '/'.join(self.parent.getPhysicalPath())
+
     def __call__(self):
         return self.template()
 
     def getTeaserImage(self):
         images = self.getRelatedImages(self.context, 'mini')
         return len(images) and images[0] or ''
+
+    def getClosed(self):
+        " get closed competitions "
+        query = dict(portal_type='Folder', path=self.parent,
+            review_state='published', show_inactive=True)
+        competitions = self._getCompetitions(query)
+        competitions = [x for x in competitions
+            if '/'.join(x.getPhysicalPath()) != self.path]
+        return self.sortByDate(competitions)
