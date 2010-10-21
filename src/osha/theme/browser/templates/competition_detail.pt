@@ -33,6 +33,10 @@
           </p>
         </div>
 
+          <p tal:content="structure here/getText">
+            Text
+          </p>
+
         <span tal:replace="structure provider:plone.belowcontentbody"></span>
       </div>
 
