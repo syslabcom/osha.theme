@@ -7,6 +7,7 @@ from Products.ATContentTypes.interface.image import IATImage
 from Products.CMFCore.utils import getToolByName
 from DateTime import DateTime
 from Acquisition import aq_parent, aq_inner
+from plone.memoize.instance import memoize
 
 
 class CompetitionsView(BrowserView):
@@ -43,13 +44,50 @@ class CompetitionsView(BrowserView):
             expires=dict(query=self.now, range='min'))
         return self._getCompetitionsWithImages(query)
 
+    # @memoize
     def getClosed(self):
         " get closed competitions "
         query = dict(portal_type='Folder', path=self.path,
             review_state='published',
             effective=dict(query=self.now, range='max'),
             expires=dict(query=self.now, range='max'))
-        return self._getCompetitions(query)
+        competitions = self._getCompetitions(query)
+        yearmap = dict()
+        for competition in competitions:
+            date = competition.effective()
+            yearlist = yearmap.get(date.year(), [])
+            yearlist.append((date.month(), dict(id=competition.getId(),
+                                        url=competition.absolute_url(),
+                                        title=competition.Title()),
+                                ))
+            yearmap[date.year()] = yearlist
+
+        for year in yearmap.keys():
+            yearlist = yearmap[year]
+            yearlist.sort()
+            yearlist.reverse()
+            yearmap[year] = yearlist
+
+        return yearmap
+
+    def getThisyearsCompetitions(self):
+        " get closed competitions from this year "
+        yearmap = self.getClosed()
+        return yearmap.get(self.thisyear(), [])
+
+    def getLastyearsCompetitions(self):
+        " get closed competitions from last year "
+        yearmap = self.getClosed()
+        return yearmap.get(self.lastyear(), [])
+
+    def getOldCompetitions(self):
+        " return all other newsletters older than last years "
+        yearmap = self.getClosed()
+        if self.thisyear() in yearmap.keys():
+            del yearmap[self.thisyear()]
+        if self.lastyear() in yearmap.keys():
+            del yearmap[self.lastyear()]
+        return yearmap
 
     def _getCompetitions(self, query):
         catalog = getToolByName(self.context, 'portal_catalog')

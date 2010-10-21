@@ -15,9 +15,9 @@
     <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/base.js" type="text/javascript" charset="utf-8">
 </script>
       <script type="text/javascript" language="javascript">
-      function displaynl () {
+      function displaycomp () {
           jQuery('.fadercontrol').hide();
-          jQuery('.older-newsletter').fadeIn('slow');   
+          jQuery('.older-competitions').fadeIn('slow');
       }</script>
 
     <script type="text/javascript">
@@ -30,15 +30,15 @@
     </script>
       </metal:javascriptslot>
       <metal:css fill-slot='css_slot'>
-      <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8" 
+      <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8"
         tal:attributes="href string:$portal_url/lipstick.css"/>
-      <style type="text/css">.older-newsletter {display:none;}</style>
+      <style type="text/css">.older-competitions {display:none;}</style>
       </metal:css>
 
 <body>
 
 <div metal:fill-slot="main">
-      <div id="mainContent">
+    <div id="mainContent">
         <h1 tal:content="here/Title">
           Competitions
         </h1>
@@ -54,11 +54,11 @@
             Upcoming competitions
           </h2>
           <span tal:repeat="competition upcoming" tal:omit-tag="">
-              <div class="section" 
+              <div class="section"
                 tal:define="item nocall:competition/item;
                             images competition/images;
                             img_src python:len(images) and images[0] or ''">
-              <a href="#" tal:attributes="href item/absolute_url"><img src="#" alt="Page 1" class="span-4 floatBefore" 
+              <a href="#" tal:attributes="href item/absolute_url"><img src="#" alt="Page 1" class="span-4 floatBefore"
                 tal:attributes="src img_src" /></a>
               <h4>
                 <a href="#" tal:attributes="href item/absolute_url" tal:content="item/Title">Photocompetition 2011</a>
@@ -83,7 +83,7 @@
                             <a href="#" tal:attributes="href item/absolute_url" tal:content="item/Title">Title</a>
                         </h3>
                         <p class="previews">
-                            <a href="#" tal:attributes="href item/absolute_url"><img tal:repeat="image images" src="#" 
+                            <a href="#" tal:attributes="href item/absolute_url"><img tal:repeat="image images" src="#"
                                 alt="Page 1" class="page-1" tal:attributes="src image; class string:page-${repeat/image/number}"/></a>
                         </p>
                         <p>
@@ -94,61 +94,56 @@
                 </span>
             </ul>
         </div>
-	</div>
-                          <div id="portlets">
-                            <!-- InstanceBeginEditable name="Portlets" -->
-                           <div class="portlet" id="portletBanner">
-                              <p>
-                                <img src="../Media/banner-countdown.gif" width="185" height="145" alt="Banner Countdown" />
-                              </p>
-                            </div>
+    </div>
 
-                            <div class="portlet" id="portletOlderIssues">
-                              <h2 i18n:translate="label_closed_competitions">
-                                Closed competitions
-                              </h2>
-                              <h3>
-                                2010
-                              </h3>
-                              <ul class="links">
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                              </ul>
-                              <h3>
-                                2009
-                              </h3>
-                              <ul class="links">
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                                <li>
-                                  <a href="#">Lorem ipsum dolor sit</a>
-                                </li>
-                              </ul>
-                              <p>
-                                Load <a href="#">all competitions</a>.
-                              </p>
-                            </div>
-						</div>
+
+     <div id="portlets">
+       <!-- InstanceBeginEditable name="Portlets" -->
+        <div class="portlet" id="portletBanner">
+           <p>
+             <img src="../Media/banner-countdown.gif" width="185" height="145" alt="Banner Countdown" />
+           </p>
+         </div>
+
+        <div class="portlet" id="portletOlderIssues">
+            <h2 i18n:translate="label_closed_competitions">
+              Closed competitions
+            </h2>
+            <h3 tal:content="view/thisyear">
+              2010
+            </h3>
+            <ul class="links" tal:define="competitions view/getThisyearsCompetitions">
+              <li tal:repeat="competition competitions">
+                <a href="#" tal:define="data python:competition[1]" tal:attributes="href data/url"
+            tal:content="data/title">Lorem ipsum dolor sit</a>
+              </li>
+            </ul>
+            <h3 tal:content="view/lastyear">
+              2009
+            </h3>
+            <ul class="links" tal:define="competitions view/getLastyearsCompetitions">
+              <li tal:repeat="competition competitions">
+                <a href="#" tal:define="data python:competition[1]" tal:attributes="href data/url"
+            tal:content="data/title">Lorem ipsum dolor sit</a>
+              </li>
+            </ul>
+
+            <p class="fadercontrol" i18n:translate="label_load_older">
+              Load <a onclick="displaycomp()" href="javascript:return false;" i18n:name="link"><span i18n:translate="label_older_competitions">older competitions</span></a>.
+            </p>
+            <tal:repeat define="oldercomp view/getOldCompetitions" repeat="year oldercomp/keys">
+                <h3 tal:content="year" class="older-competitions">
+                    2009
+                </h3>
+                <ul class="links older-competitions" tal:define="issues python:oldercomp[year]">
+                    <li tal:repeat="issue issues">
+                        <a tal:define="data python:issue[1]"
+                        href="#" tal:attributes="href data/url" tal:content="data/title">Competition X</a>
+                    </li>
+                </ul>
+            </tal:repeat>
+        </div>
+    </div>
 
 </div>
 </body>
