@@ -5,15 +5,15 @@
 
       <metal:javascriptslot fill-slot="javascript_head_slot">
       <script type="text/javascript" language="javascript">
-      function displaynl () {
+      function displaycomp () {
           jQuery('.fadercontrol').hide();
-          jQuery('.older-newsletter').fadeIn('slow');   
+          jQuery('.older-competitions').fadeIn('slow');
       }</script>
       </metal:javascriptslot>
       <metal:css fill-slot='css_slot'>
       <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8" 
         tal:attributes="href string:$portal_url/lipstick.css"/>
-      <style type="text/css">.older-newsletter {display:none;}</style>
+      <style type="text/css">.older-competitions {display:none;}</style>
       </metal:css>
 
 <body>
@@ -24,18 +24,67 @@
           Competition Detail
         </h1>
 
-                            <div class="introduction">
-                              <p class="illustration">
-                                <img src="#" tal:attributes="src view/getTeaserImage" />
-                              </p>
-                              <p tal:content="here/Description">
-                                Description
-                              </p>
-                            </div>
+        <div class="introduction">
+          <p class="illustration">
+            <img src="#" tal:attributes="src view/getTeaserImage" />
+          </p>
+          <p tal:content="here/Description">
+            Description
+          </p>
+        </div>
 
-
+        <span tal:replace="structure provider:plone.belowcontentbody"></span>
       </div>
 
+
+    <div id="portlets">
+
+        <div class="portlet" id="portletOlderIssues">
+            <h2 i18n:translate="label_more_competitions">
+              More competitions
+            </h2>
+            <h3 tal:content="view/thisyear">
+              2010
+            </h3>
+            <ul class="links" tal:define="competitions view/getThisyearsCompetitions">
+              <li tal:repeat="competition competitions">
+                <a href="#" tal:define="data python:competition[1]" tal:attributes="href data/url"
+            tal:content="data/title">Lorem ipsum dolor sit</a>
+              </li>
+            </ul>
+            <h3 tal:content="view/lastyear">
+              2009
+            </h3>
+            <ul class="links" tal:define="competitions view/getLastyearsCompetitions">
+              <li tal:repeat="competition competitions">
+                <a href="#" tal:define="data python:competition[1]" tal:attributes="href data/url"
+            tal:content="data/title">Lorem ipsum dolor sit</a>
+              </li>
+            </ul>
+
+            <p class="fadercontrol" i18n:translate="label_load_older">
+              Load <a onclick="displaycomp()" href="javascript:return false;" i18n:name="link"><span i18n:translate="label_older_competitions">older competitions</span></a>.
+            </p>
+            <tal:repeat define="oldercomp view/getOldCompetitions" repeat="year oldercomp/keys">
+                <h3 tal:content="year" class="older-competitions">
+                    2009
+                </h3>
+                <ul class="links older-competitions" tal:define="issues python:oldercomp[year]">
+                    <li tal:repeat="issue issues">
+                        <a tal:define="data python:issue[1]"
+                        href="#" tal:attributes="href data/url" tal:content="data/title">Competition X</a>
+                    </li>
+                </ul>
+            </tal:repeat>
+        </div>
+
+        <div class="portlet portletMoreAbout" id="portletBanner" tal:condition="view/moreAboutContent">
+            <div class="portletHeader" tal:condition="view/moreAboutEditable">
+                <a tal:attributes="href view/moreAboutEditlink">[edit]</a>
+            </div>
+            <span tal:replace="structure view/moreAboutContent" />
+        </div>
+    </div>
 
 </div>
 </body>
