@@ -1,16 +1,11 @@
 osha.theme Changelog
 ====================
 
-1.3.39 (unreleased)
+1.3.39 (2010-10-22)
 -------------------
 
-- Nothing changed yet.
+- Due to botched egg release, deleted and re-added browser/behaviour again [thomasw] 
 
-
-1.3.38 (2010-10-22)
--------------------
-
-- Nothing changed yet.
 
 1.3.38 (2010-10-21)
 -------------------
