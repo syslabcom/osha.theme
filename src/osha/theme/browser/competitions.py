@@ -217,5 +217,5 @@ class CompetitionDetail(CompetitionsView):
             review_state='published', show_inactive=True)
         competitions = self._getCompetitions(query)
         competitions = [x for x in competitions
-            if '/'.join(x.getPhysicalPath()) != self.path]
+            if '/'.join(x.getPhysicalPath()) not in (self.path, self.parent)]
         return self.sortByDate(competitions)
