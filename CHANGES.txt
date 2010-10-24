@@ -2,7 +2,7 @@ osha.theme Changelog
 ====================
 
 
-1.3.40 (unreleased)
+1.3.40 (2010-10-24)
 -------------------
 
 - Competitions view: make sure not to show the section folder under "more
