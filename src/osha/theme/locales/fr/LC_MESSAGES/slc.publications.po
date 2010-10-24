@@ -19,3 +19,9 @@ msgstr ""
 
 msgid "parliament_question_author"
 msgstr "Service Public Fédéral Emploi, Travail et Concertation sociale"
+
+msgid "senate_question_author"
+msgstr "Sénat de Belgique"
+
+msgid "chamber_question_author"
+msgstr "Chambre de représentants de Belgique"

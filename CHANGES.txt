@@ -7,6 +7,9 @@ osha.theme Changelog
 
 - Competitions view: make sure not to show the section folder under "more
   competitions" [thomasw] 
+- #1908 added two new translations for publication authors for Ignace
+  [pilz]
+
 
 1.3.39 (2010-10-22)
 -------------------

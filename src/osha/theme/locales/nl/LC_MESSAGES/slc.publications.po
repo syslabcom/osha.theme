@@ -19,3 +19,9 @@ msgstr ""
 
 msgid "parliament_question_author"
 msgstr "Federale Overheidsdienst Arbeid en Sociaal Overleg"
+
+msgid "senate_question_author"
+msgstr "Belgische Senaat"
+
+msgid "chamber_question_author"
+msgstr "Belgische Kamer van Volksvertegenwoordigers"
