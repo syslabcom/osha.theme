@@ -4,6 +4,16 @@
       i18n:domain="osha">
 
       <metal:javascriptslot fill-slot="javascript_head_slot">
+          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.js" type="text/javascript" charset="utf-8">
+      </script>
+          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.minified.js" type="text/javascript" charset="utf-8">
+      </script>
+          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.jcarousel.pack.js" type="text/javascript" charset="utf-8">
+      </script>
+          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.masonry.min.js" type="text/javascript" charset="utf-8">
+      </script>
+          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/base.js" type="text/javascript" charset="utf-8">
+      </script>
       <script type="text/javascript" language="javascript">
       function displaynl () {
           jQuery('.fadercontrol').hide();
