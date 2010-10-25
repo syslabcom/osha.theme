@@ -9,6 +9,8 @@ osha.theme Changelog
   [pilz]
 - made oshnews-view more flexible by not barking on inconsistent catalog
   [pilz]
+- deactivating batch macro where no batching is intended in the first place
+  [pilz]
 
 
 1.3.40 (2010-10-24)
