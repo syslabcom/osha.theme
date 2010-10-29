@@ -9,15 +9,14 @@ class Renderer(BaseRenderer):
     """Dynamically override standard header for search portlet"""
     _template = ViewPageTemplateFile('googlesearchbox.pt')
     
-    
-    
-    def index_alphabetical(self):
-        self.language = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+    def __init__(self, context, request, view, manager, data):
+        BaseRenderer.__init__(self, context, request, view, manager, data)
         osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
         self.subsite_url = osha_view.subsiteRootUrl()
         self.subsite_path = osha_view.subsiteRootPath()
-        return '%s/%s/@@index_alphabetical' %(self.subsite_url, self.language)
 
+    def index_alphabetical(self):
+        return '%s/%s/@@index_alphabetical' %(self.subsite_url, self.language)
 
     def showAtozLink(self):
         osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
@@ -25,3 +24,6 @@ class Renderer(BaseRenderer):
         if show is None:
             show = True
         return show
+
+    def oshGlobalSearchLink(self):
+        return '%s/%s/slc_cse_search_results?&q=&cof=FORID:11&sa=Search&ie=UTF-8&cref=http://osha.europa.eu/google/international_cse.xml' %(self.subsite_url, self.language)

@@ -22,7 +22,7 @@
     <input type="hidden" name="cref" value="cref" tal:condition="cref"
         tal:attributes="value cref" />
     <input type="hidden" name="additional_params" value="additional" tal:condition="additional"
-	    tal:attributes="value additional" />
+        tal:attributes="value additional" />
     <input type="hidden" name="cof" value="FORID:11" />
     <input type="hidden" name="ie" value="UTF-8" />
     <input class="searchField inputLabel"
@@ -38,6 +38,11 @@
       <div id="additional-search-options">
         <!--span tal:omit-tag="" i18n:translate="txt_try_the">Try the:</span><br/-->
         <ul class="linkList"> 
+            <li class="tile">
+                <a href="" tal:attributes="href view/oshGlobalSearchLink" i18n:translate="label_osh_global_search">
+                    OSH Global Search
+                </a>
+            </li>
             <li tal:condition="view/showAtozLink"><a href="#"
               class="tile"
               tal:define="preflang here/portal_languages/getPreferredLanguage"
