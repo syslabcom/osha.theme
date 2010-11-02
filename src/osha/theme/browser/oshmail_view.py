@@ -77,7 +77,7 @@ class OSHmailView(BrowserView):
             col1 = latest.getObject()['1']['1']
         except KeyError:
             return ''
-        for aliasid in col1.keys()[:3]:
+        for aliasid in col1.keys()[1:4]:
             alias = col1[aliasid]
             target = alias.get_target()
             if hasattr(target.aq_explicit, 'getImage') and target.getImage().get_size()>0:
