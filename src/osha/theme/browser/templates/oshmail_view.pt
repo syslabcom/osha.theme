@@ -92,11 +92,11 @@
                tal:attributes="src view/get_image" alt="Latest OSHMail Issue"
                tal:condition="view/get_image" />
           <h4>
-              <a href="" tal:attributes="href latest/getURL" tal:content="latest/Title">title</a>
+              <a href="" tal:attributes="href string:${latest/getURL}?set_language=$currlang" tal:content="latest/Title">title</a>
           </h4>
           <ul class="links">
             <li tal:repeat="latest_teaser view/latest_teasers">
-              <a href="#" tal:attributes="href latest/getURL" tal:content="latest_teaser">Title of teaser</a>
+              <a href="#" tal:attributes="href string:${latest/getURL}?set_language=$currlang" tal:content="latest_teaser">Title of teaser</a>
             </li>
           </ul>
         </div>
@@ -110,7 +110,7 @@
           <ul class="links" tal:define="issues view/thisyears_issues">
             <li tal:repeat="issue issues">
               <a tal:define="data python:issue[1]" 
-                 href="#" tal:attributes="href data/url" tal:content="data/title">OSHmail 91 - 2009</a>
+                 href="#" tal:attributes="href string:${data/url}?set_language=$currlang" tal:content="data/title">OSHmail 91 - 2009</a>
             </li>
           </ul>
           <h3 tal:content="view/lastyear">
@@ -119,7 +119,7 @@
           <ul class="links" tal:define="issues view/lastyears_issues">
             <li tal:repeat="issue issues">
               <a tal:define="data python:issue[1]" 
-                 href="#" tal:attributes="href data/url" tal:content="data/title">OSHmail 91 - 2009</a>
+                 href="#" tal:attributes="href string:${data/url}?set_language=$currlang" tal:content="data/title">OSHmail 91 - 2009</a>
             </li>
           </ul>
           <p class="fadercontrol" i18n:translate="label_load_older">
@@ -132,7 +132,7 @@
           <ul class="links older-newsletter" tal:define="issues python:oldernl[nl]">
             <li tal:repeat="issue issues">
               <a tal:define="data python:issue[1]" 
-                 href="#" tal:attributes="href data/url" tal:content="data/title">OSHmail 91 - 2009</a>
+                 href="#" tal:attributes="href string:${data/url}?set_language=$currlang" tal:content="data/title">OSHmail 91 - 2009</a>
             </li>
           </ul>
           </tal:repeat>
