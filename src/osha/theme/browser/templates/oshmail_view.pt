@@ -92,8 +92,7 @@
                tal:attributes="src view/get_image" alt="Latest OSHMail Issue"
                tal:condition="view/get_image" />
           <h4>
-            <span tal:define="date latest/effective" 
-                  tal:replace="string:${date/Month} ${date/year}">October 2010</span>
+              <a href="" tal:attributes="href latest/getURL" tal:content="latest/Title">title</a>
           </h4>
           <ul class="links">
             <li tal:repeat="latest_teaser view/latest_teasers">
