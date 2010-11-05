@@ -18,6 +18,9 @@
                       text here/getText;">
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
+        <h1 metal:use-macro="here/kss_generic_macros/macros/generic_title_view">
+            Title or id
+        </h1>
         <p class="releaseTiming"
            id="parent-fieldname-releaseTiming"
            tal:condition="here/getReleaseTiming | nothing" 
@@ -29,12 +32,7 @@
             <span metal:define-slot="inside"
                   tal:replace="python:here.toLocalizedTime(storydate)">[FOR IMMEDIATE RELEASE]</span>
         </p>
-
-
-        <h1 metal:use-macro="here/kss_generic_macros/macros/generic_title_view">
-            Title or id
-        </h1>
-
+        
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
         <h3 class="subtitle"
