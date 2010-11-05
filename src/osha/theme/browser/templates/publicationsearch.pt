@@ -6,7 +6,7 @@
   <metal:block fill-slot="top_slot"
                tal:define="dummy python:request.set('disable_border',1)" />
 
-  <div metal:fill-slot="main" i18n:domain="osha" tal:on-error="nothing"
+  <div metal:fill-slot="main" i18n:domain="osha"
        tal:define="Subject view/get_subject;
                    SearchableText request/SearchableText|string:;
                    Batch python:modules['Products.CMFPlone'].Batch;
