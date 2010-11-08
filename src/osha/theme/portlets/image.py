@@ -6,20 +6,22 @@ from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 from zope import schema
+from zope.i18n import translate
 
 from plone.app.portlets.portlets import base
-from plone.portlets.interfaces import IPortletDataProvider
-
-from plone.memoize.instance import memoize
-from plone.memoize import ram
-from plone.memoize.compress import xhtml_compress
-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
-from Products.CMFPlone import PloneMessageFactory as _
-from Products.CMFCore.utils import getToolByName
+
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
+from plone.portlets.interfaces import IPortletDataProvider
+
 from Products.ATContentTypes.interface import IImageContent, IFileContent
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone import PloneMessageFactory as _
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.PlacelessTranslationService import translate as pts_translate
 
 log = logging.getLogger('osha.theme.portlets.image.py')
 
@@ -35,7 +37,11 @@ class IImagePortlet(IPortletDataProvider):
                         description=_(u"Locate the Image to show"),
                         required=True,
                         source=SearchableTextSourceBinder(
-                            {'object_provides' : [IImageContent.__identifier__, IFileContent.__identifier__]},
+                            {'object_provides' : [
+                                            IImageContent.__identifier__, 
+                                            IFileContent.__identifier__
+                                            ]
+                            },
                             default_query='path:')
                         )
 
@@ -57,11 +63,20 @@ class IImagePortlet(IPortletDataProvider):
                         required=False
                         )
     show_box = schema.Bool(
-                        title=_(u"Display Box?"),
+                        title=_(u"Display box?"),
                         description=_(u"Leave this unchecked if you only want "
                             "to see your banner without a title and a box "
                             "around."
                             ),
+                        )
+    i18n_domain  = schema.TextLine(
+                        title=_(u"Translation domain?"),
+                        description=_(u"Specify the tranlation domain "
+                            "that this portlet will use. This determines "
+                            "the value (if any) into which the title will "
+                            "be translated."
+                            ),
+                        required=False
                         )
 
 
@@ -74,14 +89,24 @@ class Assignment(base.Assignment):
     show_box = False
     width='200'
     height='60'
+    i18n_domain = 'plone'
 
-    def __init__(self, header=u"", image=None, url=u"", show_box=False, width='200', height='60'):
+    def __init__(self, 
+                header=u"", 
+                image=None, 
+                url=u"", 
+                show_box=False, 
+                width='200', 
+                height='60',
+                i18n_domain='plone'):
+
         self.header = header
         self.image = image
         self.url = url
         self.show_box = show_box
         self.width = width
         self.height = height
+        self.i18n_domain = i18n_domain
 
     @property
     def title(self):
@@ -98,10 +123,15 @@ class Renderer(base.Renderer):
 
 
     def _render_cachekey(method, self):
-        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        preflang = getToolByName(
+                        self.context, 
+                        'portal_languages'
+                            ).getPreferredLanguage()
+
         modified = self.get_object() and self.get_object().modified() or ''
+        header = self.title()
         path = self.data.image
-        return (modified, preflang, path)
+        return (header, modified, preflang, path)
 
     @ram.cache(_render_cachekey)
     def render(self):
@@ -113,7 +143,10 @@ class Renderer(base.Renderer):
 
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter(
+                            (self.context, self.request), 
+                            name=u'plone_portal_state'
+                            )
         self.portal = portal_state.portal()
 
     @property
@@ -122,7 +155,26 @@ class Renderer(base.Renderer):
 
     @memoize
     def title(self):
-        return self.data.header
+        lang = self.context.Language()
+        # First we try with zope.i18n 
+        header = translate(
+                    self.data.title,
+                    domain=self.data.i18n_domain,
+                    context=self.context.request,
+                    target_language=lang, 
+                    default=self.data.title,
+                    )
+
+        # If that doesn't work, then it's back to old-school PTS
+        if header == self.data.title:
+            header = pts_translate(
+                                self.data.i18n_domain,
+                                self.data.title,
+                                context=self.context,
+                                target_language=lang,
+                                default=self.data.title,
+                                )
+        return header
 
     @memoize
     def url(self):
@@ -150,7 +202,10 @@ class Renderer(base.Renderer):
         if not image_path:
             return None
 
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter(
+                        (self.context, self.request), 
+                        name=u'plone_portal_state'
+                        )
         portal = portal_state.portal()
 
         # XXX: unrestrictedTraverse cannot handle unicode :(
@@ -206,8 +261,6 @@ class Renderer(base.Renderer):
         else:
             return ''
 
-
-
     @memoize
     def _data(self):
         return True
@@ -237,7 +290,10 @@ class Renderer(base.Renderer):
 class AddForm(base.AddForm):
     form_fields = form.Fields(IImagePortlet)
     label = _(u"Add Image/Flash Portlet")
-    description = _(u"Display an Image/Flash in the appropriate language with Language Fallback")
+    description = _(
+        u"Display an Image/Flash in the appropriate language with Language " \
+        "Fallback"
+        )
     form_fields['image'].custom_widget = UberSelectionWidget
 
     def create(self, data):
