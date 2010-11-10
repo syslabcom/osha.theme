@@ -1,3 +1,1 @@
-<div tal:attributes="id view/id_attr" class="portletImage-flash">&nbsp;</div>
-<script type="text/javascript" tal:content="view/flashcode">
-</script>
+<tal:flash replace="structure view/flashcode"></tal:flash>

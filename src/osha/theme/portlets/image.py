@@ -1,4 +1,5 @@
 import logging 
+from string import Template
 
 import Acquisition
 
@@ -255,9 +256,7 @@ class Renderer(base.Renderer):
             height = self.data.height
             if height:
                 result = '%s height="%s"' % (result, height)
-
             return '%s />' % result
-
         else:
             return ''
 
@@ -265,23 +264,51 @@ class Renderer(base.Renderer):
     def _data(self):
         return True
 
-    # flash helper methods - needs the following vars: url, id_attr, width, height
-    # could be made more versatile for the rest of the vars :)
+    
     def flashcode(self):
-        flashtemplate = """var nm = new FlashObject("%s", "%s", "%s", "%s", "7", "#ffffff");
-        nm.addParam("quality", "high");
-        nm.addParam('allowfullscreen','true');
-        nm.addParam('allowscriptaccess','always');
-        nm.addParam('wmode','opaque');
-        nm.addVariable("sourceid", "banner");
-        nm.addVariable("hl", "en");
-        nm.addVariable("fs", "1");
-        nm.write("%s");"""
-
-        ob = self.get_object()
-        height = True and self.data.height or ""
-        width = True and self.data.width or "90%"
-        return flashtemplate % (ob.absolute_url(), self.id_attr(), width, height, self.id_attr())
+        """ For an explanation of swfobject.js (2.*), see:
+            http://code.google.com/p/swfobject/wiki/documentation
+        """
+        obj = self.get_object()
+        obj_id = self.id_attr()
+        flash = Template("""
+        <object 
+                id="$id"
+                classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                width="$width" 
+                height="$height"
+                altHtml="">
+            <param name="movie" value="$data" />
+            <!--[if !IE]>-->
+            <object
+                type="application/x-shockwave-flash"
+                data="$data" 
+                width="$width"
+                height="$height">
+            <!--<![endif]-->
+            <div class="portletImage-flash"
+                 i18n:translate=""
+                 i18n:domain="osha">
+                 You need the Adobe Flash Player to view this content.
+                 <a href="http://get.adobe.com/flashplayer" target="_blank">Download it from Adobe</a>
+            </div>
+            <!--[if !IE]>-->
+            </object>
+            <!--<![endif]-->
+        </object>
+        <script type="text/javascript">
+            swfobject.registerObject("$id", "7")
+        </script>
+        """)
+        tal = flash.safe_substitute({
+            'id': obj_id,
+            'classid': obj_id,
+            'width': self.data.width or "90%",
+            'height': self.data.height or "60",
+            'data': obj.absolute_url(),
+            'movie': obj.getFile().filename,
+            })
+        return tal
 
     def id_attr(self):
         ob = self.get_object()
