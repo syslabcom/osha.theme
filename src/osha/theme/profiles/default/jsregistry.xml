@@ -86,6 +86,9 @@
     inline="False"/>
  <javascript cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="True" expression=""
+    id="++resource++swfobject.js" inline="False"/>
+ <javascript cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="True" expression=""
     id="++resource++jquery.bigtarget.1.0.1.js" inline="False"/>
  <javascript cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="True" expression="" id="toc.js" inline="False"/>

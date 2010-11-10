@@ -19,6 +19,11 @@
         />
 
     <browser:resource
+        file="resources/swfobject.js"
+        name="swfobject.js"
+        />
+
+    <browser:resource
         file="resources/jquery.bigtarget.1.0.1.js"
         name="jquery.bigtarget.1.0.1.js"
         />
