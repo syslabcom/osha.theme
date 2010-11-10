@@ -422,12 +422,16 @@ dl.portletInlineNavigationTree ul {
     position:static;
     z-index:1;
 }
+
+h1 span#publication-date,
 #teaserlisting .teaserdate {
     float:right;
     padding-top: 0.05em;
     font-size: 0.9em;
     font-weight:normal;
 }
+
+
 
 /* Linklists */
 ul.linkList {
