@@ -11,10 +11,8 @@ from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 
-from plone.app.portlets.cache import render_cachekey
 from plone.app.portlets.portlets import base
 from plone.app.portlets.portlets import events
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
 
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
@@ -31,7 +29,6 @@ class IEventsPortlet(IPortletDataProvider):
             required=True,
             default=5
             )
-
     state = schema.Tuple(
             title=_(u"Workflow state"),
             description=_(u"Items in which workflow state to show."),
@@ -40,39 +37,50 @@ class IEventsPortlet(IPortletDataProvider):
             value_type=schema.Choice(
                 vocabulary="plone.app.vocabularies.WorkflowStates")
             )
-
     subject = schema.Tuple(
             title=_(u"Categories"),
-            description=_(u"Pick one or more categories for which you want to show events."),
+            description=_(
+                    u"Pick one or more categories for which you want to show "
+                    "events."),
             default=tuple(),
             required=False,
             value_type=schema.Choice(
                 vocabulary="osha.policy.vocabularies.categories")
             )
-
     calendar_path = schema.TextLine(
             title=_(u'Target calendar path'),
-            description=_(u"Enter a folder where the 'next / previous events' link will point to. This is optional"),
+            description=_(
+                    u"Enter a folder where the 'next / previous events' "
+                    "link will point to. This is optional"),
             required=False,
             )
-
     rss_path = schema.TextLine(
             title=_(u'RSS path'),
-            description=_(u'Enter a relative path to the calendar or topic that displays an RSS representation of these events. "/RSS" will automatically be appended to the URL. This setting is optional'),
+            description=_(
+                    u'Enter a relative path to the calendar or topic that '
+                    'displays an RSS representation of these events. "/RSS" '
+                    'will automatically be appended to the URL. This setting '
+                    'is optional'),
             required=False,
             )
-
     rss_explanation_path = schema.TextLine(
             title=_(u'RSS explanation path'),
-            description=_(u'Enter a relative path to a page that gives general RSS information. This setting is optional.'),
+            description=_(
+                    u'Enter a relative path to a page that gives general RSS '
+                    'information. This setting is optional.'),
             required=False,
             )
-
 
 class Assignment(base.Assignment):
     implements(IEventsPortlet)
 
-    def __init__(self, count=5, state=('published', ), subject=tuple(), calendar_path=None, rss_path='', rss_explanation_path=''):
+    def __init__(self, 
+                count=5, 
+                state=('published', ), 
+                subject=tuple(), 
+                calendar_path=None, 
+                rss_path='', 
+                rss_explanation_path=''):
         self.count = count
         self.state = state
         self.subject = subject
@@ -84,6 +92,7 @@ class Assignment(base.Assignment):
     def title(self):
         return _(u"Events")
 
+
 class Renderer(events.Renderer):
     """Dynamically override standard header for news portlet"""
 
@@ -94,7 +103,10 @@ class Renderer(events.Renderer):
         portal_languages = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_languages.getPreferredLanguage()
 
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter(
+                            (self.context, self.request), 
+                            name=u'plone_portal_state'
+                            )
         self.navigation_root_path = portal_state.navigation_root_path()
         portal = portal_state.portal()
         self.root = portal.restrictedTraverse(self.navigation_root_path)
@@ -108,7 +120,8 @@ class Renderer(events.Renderer):
             self.data.rss_explanation_path=''
 
     def _render_cachekey(method, self):
-        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        portal_languages = getToolByName(self.context, 'portal_languages')
+        preflang = portal_languages.getPreferredLanguage()
         calendar_path = self.data.calendar_path
         subject = self.data.subject
         navigation_root_path = self.navigation_root_path
@@ -118,14 +131,14 @@ class Renderer(events.Renderer):
     def render(self):
         return xhtml_compress(self._template())
 
-
     # Add respect to INavigationRoot
     @memoize
     def _data(self):
         context = Acquisition.aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
 
-        # search in the navigation root of the currently selected language and in the canonical path
+        # search in the navigation root of the currently selected 
+        # language and in the canonical path
         # with Language = preferredLanguage or neutral
         paths = list()
         paths.append(self.navigation_root_path)
@@ -187,7 +200,6 @@ class Renderer(events.Renderer):
             cal = cal and cal.getTranslation(preflang) or cal
         return cal
 
-
     @memoize
     def all_events_link(self):
         cal = self.getCalendar(self.preflang)
@@ -245,14 +257,18 @@ class AddForm(base.AddForm):
     description = _(u"This portlet lists upcoming Events.")
 
     def create(self, data):
-        return Assignment(count=data.get('count', 5), 
-            state=data.get('state', ('published',)),
-            subject=data.get('subject', tuple()),
-            calendar_path=data.get('calendar_path', None),
-            rss_path=data.get('rss_path',''),
-            rss_explanation_path=data.get('rss_explanation_path',''))
+        return Assignment(
+                    count=data.get('count', 5), 
+                    state=data.get('state', ('published',)),
+                    subject=data.get('subject', tuple()),
+                    calendar_path=data.get('calendar_path', None),
+                    rss_path=data.get('rss_path',''),
+                    rss_explanation_path=data.get('rss_explanation_path','')
+                    )
+
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IEventsPortlet)
     label = _(u"Edit Events Portlet")
     description = _(u"This portlet lists upcoming Events.")
+
