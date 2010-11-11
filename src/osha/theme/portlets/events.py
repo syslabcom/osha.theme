@@ -1,12 +1,12 @@
-from plone.app.portlets.portlets import events
-from DateTime import DateTime
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.memoize.instance import memoize
-from plone.memoize import ram
 from Acquisition import aq_inner, aq_parent
-from Products.CMFCore.utils import getToolByName
+from DateTime import DateTime
 from zope.component import getMultiAdapter
+from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
+from plone.app.portlets.portlets import events
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.CMFCore.utils import getToolByName
 
 class Renderer(events.Renderer):
     """Dynamically override standard header for news portlet"""
