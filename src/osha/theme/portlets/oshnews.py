@@ -3,7 +3,7 @@ from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 
-import Acquisition
+from Acquisition import aq_parent, aq_inner
 from DateTime import DateTime
 
 from plone.memoize import ram
@@ -12,6 +12,7 @@ from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
 
 from plone.app.portlets.portlets import base
+from plone.app.portlets.interfaces import IPortletPermissionChecker
 
 from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.CMFCore.utils import getToolByName
@@ -57,8 +58,8 @@ class INewsPortlet(IPortletDataProvider):
             title=_(u'RSS path'),
             description=_(
                     u'Enter a relative path to the folder or topic that '
-                    'displays an RSS representation of these news. '
-                    '"/RSS" will automatically be appended to the URL.
+                    'displays an RSS representation of the news. '
+                    '"/RSS" will automatically be appended to the URL.'
                     'This setting is optional'
                     ),
             required=False,
@@ -82,6 +83,7 @@ class Assignment(base.Assignment):
                 newsfolder_path='', 
                 rss_path='', 
                 rss_explanation_path=''):
+
         self.count = count
         self.state = state
         self.subject = subject
@@ -140,7 +142,7 @@ class Renderer(base.Renderer):
 
     @memoize
     def _data(self):
-        context = Acquisition.aq_inner(self.context)
+        context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
         if hasattr(catalog, 'getZCatalog'):
             catalog = catalog.getZCatalog()
@@ -155,26 +157,20 @@ class Renderer(base.Renderer):
             paths.append(canonical_path)
         except:
             pass
-
-        oshaview = getMultiAdapter(
-                    (self.context, self.request), 
-                    name=u'oshaview'
-                    )
-        mySEP = oshaview.getCurrentSingleEntryPoint()
-        kw = ''
-        if mySEP is not None:
-            kw = mySEP.getProperty('keyword', '')
-            
-        limit = self.data.count
-        state = self.data.state
         
         queryA = Eq('portal_type', 'News Item')
         queryB = Eq('isNews', True)
-        queryBoth = In('review_state', state) & In('path', paths) & In('Language', ['', self.preflang])
-        if kw !='':
-            queryBoth = queryBoth & In('Subject', kw)
+        queryAll = In('review_state', self.data.state) & \
+                    In('path', paths) & \
+                    In('Language', ['', self.preflang])
+
+        subject = list(self.data.subject)
+        queryAll = queryAll & In('Subject', subject)
         queryEffective = Le('effective', DateTime())
-        query = And(Or(queryA, queryB), queryBoth, queryEffective)
+
+        query = And(Or(queryA, queryB), queryAll, queryEffective)
+
+        limit = self.data.count
         return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
 
     def showRSS(self):
@@ -206,7 +202,7 @@ class Renderer(base.Renderer):
 
     @memoize
     def all_news_link(self):
-        context = Acquisition.aq_inner(self.context)
+        context = aq_inner(self.context)
         if getattr(self.data, 'newsfolder_path', None):
             newsfolder_path = self.data.newsfolder_path
             if newsfolder_path.startswith('/'):
@@ -224,7 +220,7 @@ class Renderer(base.Renderer):
                 return None
 
         if not context.isPrincipiaFolderish:
-            context = Acquisition.aq_parent(context)
+            context = aq_parent(context)
         
         return '%s/oshnews-view' % context.absolute_url()
 
@@ -233,6 +229,19 @@ class AddForm(base.AddForm):
     form_fields = form.Fields(INewsPortlet)
     label = _(u"Add News Portlet")
     description = _(u"This portlet displays recent News Items.")
+
+    def __call__(self):
+        context = aq_parent(aq_parent(aq_inner(self.context)))
+        oshaview = getMultiAdapter(
+                    (context, self.request), 
+                    name=u'oshaview'
+                    )
+        sep = oshaview.getCurrentSingleEntryPoint()
+        if sep is not None:
+            AddForm.form_fields.get('subject').field.default = sep.Subject()
+
+        IPortletPermissionChecker(aq_parent(aq_inner(self.context)))()
+        return super(AddForm, self).__call__()
 
     def create(self, data):
         return Assignment(
