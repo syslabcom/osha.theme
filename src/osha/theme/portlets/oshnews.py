@@ -3,58 +3,88 @@ from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 
-from plone.app.portlets.portlets import base
+import Acquisition
+from DateTime import DateTime
+
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
 from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
-from plone.app.portlets.cache import render_cachekey
 
-import Acquisition
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from plone.app.portlets.portlets import base
+
+from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
-from plone.app.vocabularies.catalog import SearchableTextSourceBinder
-from plone.app.form.widgets.uberselectionwidget import UberSelectionWidget
-from Products.AdvancedQuery import Or, Eq, And, In, Le
-from DateTime import DateTime
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from types import UnicodeType
 
 class INewsPortlet(IPortletDataProvider):
 
-    count = schema.Int(title=_(u'Number of items to display'),
-                       description=_(u'How many items to list.'),
-                       required=True,
-                       default=5)
-
-    state = schema.Tuple(title=_(u"Workflow state"),
-                         description=_(u"Items in which workflow state to show."),
-                         default=('published', ),
-                         required=True,
-                         value_type=schema.Choice(
-                             vocabulary="plone.app.vocabularies.WorkflowStates")
-                         )
-
-    newsfolder_path = schema.TextLine(title=_(u'Newsfolder path'),
-                               description=_(u"Enter a folder where the 'more news' link will point to. This is optional"),
-                               required=False,
-                               )
-
-    rss_path = schema.TextLine(title=_(u'RSS path'),
-                               description=_(u'Enter a relative path to the folder or topic that displays an RSS representation of these news. "/RSS" will automatically be appended to the URL. This setting is optional'),
-                               required=False,
-                               )
-    rss_explanation_path = schema.TextLine(title=_(u'RSS explanation path'),
-                               description=_(u'Enter a relative path to a page that gives general RSS information. This is optional.'),
-                               required=False,
-                               )
+    count = schema.Int(
+            title=_(u'Number of items to display'),
+            description=_(u'How many items to list.'),
+            required=True,
+            default=5
+            )
+    state = schema.Tuple(
+            title=_(u"Workflow state"),
+            description=_(u"Items in which workflow state to show."),
+            default=('published', ),
+            required=True,
+            value_type=schema.Choice(
+                vocabulary="plone.app.vocabularies.WorkflowStates")
+            )
+    subject = schema.Tuple(
+            title=_(u"Categories"),
+            description=_(
+                    u"Pick one or more categories for which you want to show "
+                    "events."),
+            default=tuple(),
+            required=False,
+            value_type=schema.Choice(
+                vocabulary="osha.policy.vocabularies.categories")
+            )
+    newsfolder_path = schema.TextLine(
+            title=_(u'Newsfolder path'),
+            description=_(
+                    u"Enter a folder where the 'more news' link will "
+                    "point to. This is optional"
+                    ),
+            required=False,
+            )
+    rss_path = schema.TextLine(
+            title=_(u'RSS path'),
+            description=_(
+                    u'Enter a relative path to the folder or topic that '
+                    'displays an RSS representation of these news. '
+                    '"/RSS" will automatically be appended to the URL.
+                    'This setting is optional'
+                    ),
+            required=False,
+            )
+    rss_explanation_path = schema.TextLine(
+            title=_(u'RSS explanation path'),
+            description=_(
+                    u'Enter a relative path to a page that gives '
+                    'general RSS information. This is optional.'
+                    ),
+            required=False,
+            )
 
 class Assignment(base.Assignment):
     implements(INewsPortlet)
 
-    def __init__(self, count=5, state=('published', ), newsfolder_path='', rss_path='', rss_explanation_path=''):
+    def __init__(self, 
+                count=5, 
+                state=('published', ), 
+                subject=tuple(), 
+                newsfolder_path='', 
+                rss_path='', 
+                rss_explanation_path=''):
         self.count = count
         self.state = state
+        self.subject = subject
         self.newsfolder_path = newsfolder_path
         self.rss_path = rss_path
         self.rss_explanation_path = rss_explanation_path
@@ -70,10 +100,13 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
 
-        portal_languages = getToolByName(self.context, 'portal_languages')
-        self.preflang = portal_languages.getPreferredLanguage()
+        portal_lang= getToolByName(self.context, 'portal_languages')
+        self.preflang = portal_lang.getPreferredLanguage()
 
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter(
+                        (self.context, self.request), 
+                        name=u'plone_portal_state')
+
         self.navigation_root_path = portal_state.navigation_root_path()
         portal = portal_state.portal()
         self.root = portal.restrictedTraverse(self.navigation_root_path)
@@ -93,7 +126,15 @@ class Renderer(base.Renderer):
     def published_news_items(self):
         return self._data()
 
-    @ram.cache(render_cachekey)
+    def _render_cachekey(method, self):
+        portal_languages = getToolByName(self.context, 'portal_languages')
+        preflang = portal_languages.getPreferredLanguage()
+        newsfolder_path = self.data.newsfolder_path
+        subject = self.data.subject
+        navigation_root_path = self.navigation_root_path
+        return (newsfolder_path, preflang, subject, navigation_root_path)
+
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template()) 
 
@@ -104,8 +145,8 @@ class Renderer(base.Renderer):
         if hasattr(catalog, 'getZCatalog'):
             catalog = catalog.getZCatalog()
 
-
-        # search in the navigation root of the currently selected language and in the canonical path
+        # search in the navigation root of the currently selected 
+        # language and in the canonical path
         # with Language = preferredLanguage or neutral
         paths = list()
         paths.append(self.navigation_root_path)
@@ -115,7 +156,10 @@ class Renderer(base.Renderer):
         except:
             pass
 
-        oshaview = getMultiAdapter((self.context, self.request), name=u'oshaview')
+        oshaview = getMultiAdapter(
+                    (self.context, self.request), 
+                    name=u'oshaview'
+                    )
         mySEP = oshaview.getCurrentSingleEntryPoint()
         kw = ''
         if mySEP is not None:
@@ -160,7 +204,6 @@ class Renderer(base.Renderer):
                 return target.absolute_url()
         return None
 
-
     @memoize
     def all_news_link(self):
         context = Acquisition.aq_inner(self.context)
@@ -185,19 +228,26 @@ class Renderer(base.Renderer):
         
         return '%s/oshnews-view' % context.absolute_url()
 
+
 class AddForm(base.AddForm):
     form_fields = form.Fields(INewsPortlet)
     label = _(u"Add News Portlet")
     description = _(u"This portlet displays recent News Items.")
 
     def create(self, data):
-        return Assignment(count=data.get('count', 5),
-            state=data.get('state', ('published',)),
-            newsfolder_path=data.get('newsfolder_path', ''),
-            rss_path=data.get('rss_path', ''),
-            rss_explanation_path=data.get('rss_explanation_path',''))
+        return Assignment(
+                    count=data.get('count', 5),
+                    state=data.get('state', ('published',)),
+                    subject=data.get('subject', tuple()),
+                    newsfolder_path=data.get('newsfolder_path', ''),
+                    rss_path=data.get('rss_path', ''),
+                    rss_explanation_path=data.get('rss_explanation_path','')
+                    )
+
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(INewsPortlet)
     label = _(u"Edit News Portlet")
     description = _(u"This portlet displays recent News Items.")
+
+
