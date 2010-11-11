@@ -148,10 +148,7 @@ class Renderer(events.Renderer):
         except:
             pass
 
-        oshaview = getMultiAdapter((self.context, self.request), name=u'oshaview')
-        mySEP = oshaview.getCurrentSingleEntryPoint()
         subject = list(self.data.subject)
-
         limit = self.data.count
         state = self.data.state
         query = dict(portal_type=['Event','SPSeminar'],
