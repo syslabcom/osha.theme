@@ -1,25 +1,29 @@
-import Acquisition
-from types import *
-from time import time
 import datetime
-from osha.theme.browser.interfaces import IOSHA
+from urlparse import urljoin
+from types import *
+
+import Acquisition
+
+from zope.interface import implements
+from zope.component import getMultiAdapter
+
+from plone.memoize import ram
+
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import getSiteEncoding
 from Products.Five import BrowserView
-from zope.interface import implements, alsoProvides
-from plone.memoize.instance import memoize
-from plone.memoize import ram
 from Products.PlacelessTranslationService import getTranslationService
-from osha.theme.config import *
-from osha.policy.interfaces import ISingleEntryPoint
-from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
-from urlparse import urljoin
-from zope.component import getMultiAdapter
-from slc.subsite.root import getSubsiteRoot
-from slc.subsite.interfaces import ISubsiteEnhanced
-from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
-from p4a.calendar import interfaces as p4aCalendarInterfaces
 from Products.validation import validation
+
+from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
+from p4a.calendar import interfaces as p4aCalendarInterfaces
+from slc.subsite.interfaces import ISubsiteEnhanced
+from slc.subsite.root import getSubsiteRoot
+
+from osha.policy.interfaces import ISingleEntryPoint
+from osha.theme.browser.interfaces import IOSHA
+from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
+from osha.theme.config import *
 
 class OSHA(BrowserView):
     implements(IOSHA)
@@ -32,16 +36,21 @@ class OSHA(BrowserView):
         return context.restrictedTraverse('@@plone').cropText(text, length, ellipsis)
 
     def _render_cachekey_getSEPs(method, self):
-        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        preflang = getToolByName(
+                    self.context, 'portal_languages').getPreferredLanguage()
         url = self.context.REQUEST.get('SERVER_URL')
         return (preflang, url)
 
     @ram.cache(_render_cachekey_getSEPs)
     def getSingleEntryPoints(self):
-        """ Retrieve all sections implementing ISubsite that match the local Subjects """
+        """ Retrieve all sections implementing ISingleEntryPoint that match 
+            the local Subjects 
+        """
         portal_catalog = getToolByName(self, 'portal_catalog')
-        sections = portal_catalog(object_provides='osha.policy.interfaces.ISingleEntryPoint',
-                                  review_state="published")
+        sections = portal_catalog(
+                    object_provides='osha.policy.interfaces.ISingleEntryPoint',
+                    review_state="published"
+                    )
         rs = []
         for section in sections:
             rs.append(dict(title=section.Title, url=section.getURL(), subject=section.Subject ))
@@ -64,11 +73,11 @@ class OSHA(BrowserView):
             setattr(P, name, value)
 
     def getSingleEntryPointsBySubject(self, subjects):
-        """ Retrieve all sections implementing ISubsite that match the local Subjects """
+        """ Retrieve all sections implementing ISubsite that match the 
+            local Subjects 
+        """
         seps = self.getSingleEntryPoints()
-
         seplist = []
-
         for sep in seps:
             S = sep['subject']
             for subject in S:
@@ -253,7 +262,9 @@ class OSHA(BrowserView):
 
 
     def handleOSHMailUrls(self, text, id=''):
-        """ turn relative URLs into absolute URLs based on the context's URL; append google analytics code """
+        """ turn relative URLs into absolute URLs based on the context's URL; 
+            append google analytics code 
+        """
         encoding = getSiteEncoding(self)
         if type(text)==unicode:
             text = text.encode(encoding)
@@ -274,9 +285,12 @@ class OSHA(BrowserView):
                 joinchar = link.find('?')>0 and '&' or '?'
                 newlink = "%(link)s%(joinchar)sutm_source=oshmail&utm_medium=email&utm_campaign=%(campaign)s" % dict(
                     link=urljoin(au, link), joinchar=joinchar, campaign=id!='' and id or 'oshmail')
-                # below is a fix for the problem that you have two links in text, one being a prefix of the
-                # other and appearing below it. In this case, the smaller one will be replaced with GA postfix in the longer one
-                # as fix, only replace links which terminate with a ". Of course this requires that all links are closed properly
+                # below is a fix for the problem that you have two links in 
+                # text, one being a prefix of the
+                # other and appearing below it. In this case, the smaller 
+                # one will be replaced with GA postfix in the longer one
+                # as fix, only replace links which terminate with a ". 
+                # Of course this requires that all links are closed properly
                 # if the text already is a URL however, we don't want this hack
                 if isURL(text)==1:
                     text = text.replace(link, newlink)
@@ -302,9 +316,12 @@ class OSHA(BrowserView):
                 joinchar = link.find('?')>0 and '&' or '?'
                 newlink = "%(link)s%(joinchar)sutm_source=shortmessage&utm_medium=email&utm_campaign=%(campaign)s" % dict(
                     link=urljoin(au, link), joinchar=joinchar, campaign='shortmessage')
-                # below is a fix for the problem that you have two links in text, one being a prefix of the
-                # other and appearing below it. In this case, the smaller one will be replaced with GA postfix in the longer one
-                # as fix, only replace links which terminate with a ". Of course this requires that all links are closed properly
+                # below is a fix for the problem that you have two links in 
+                # text, one being a prefix of the
+                # other and appearing below it. In this case, the smaller 
+                # one will be replaced with GA postfix in the longer one
+                # as fix, only replace links which terminate with a ". 
+                # Of course this requires that all links are closed properly
                 # if the text already is a URL however, we don't want this hack
                 text = text.replace(link+'"', newlink+'"')
         return text
@@ -357,7 +374,7 @@ class OSHA(BrowserView):
     def getLocalObject(self, name):
         """ see interface """
         return hasattr(Acquisition.aq_base(Acquisition.aq_inner(self.context)), name) and getattr(self.context, name) or None
-#translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
+        #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
 
     def getNumAlertSubscribers(self):
         """ This is the same as num_subscribers in portlets/alertservice.py
