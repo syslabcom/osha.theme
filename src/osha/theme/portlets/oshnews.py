@@ -165,7 +165,9 @@ class Renderer(base.Renderer):
                     In('Language', ['', self.preflang])
 
         subject = list(self.data.subject)
-        queryAll = queryAll & In('Subject', subject)
+        if subject:
+            queryAll = queryAll & In('Subject', subject)
+
         queryEffective = Le('effective', DateTime())
 
         query = And(Or(queryA, queryB), queryAll, queryEffective)
