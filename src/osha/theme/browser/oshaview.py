@@ -96,6 +96,14 @@ class OSHA(BrowserView):
                 return parent
         return None
 
+    def getCurrentSubsite(self):
+        """ returns the subsite in the current path if we are inside one. None otherwise """
+        PARENTS = self.request.PARENTS
+        for parent in PARENTS:
+            if ISubsiteEnhanced.providedBy(parent):
+                return parent
+        return None
+
     def listMetaTags(self, context):
         """ retrieve the metadata for the header and make osha specific additions """
         EASHW = 'European Agency for Safety and Health at Work'
@@ -349,7 +357,6 @@ class OSHA(BrowserView):
         else:
             base_url = subsite_url
         return base_url
-
 
     def getCalendarEvents(self, past=False):
         """ If called on a calendar, the list of events is returned"""
