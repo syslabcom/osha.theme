@@ -115,11 +115,13 @@ class Renderer(base.Renderer):
 
         # backwards compatibility
         if not hasattr(self.data, 'newsfolder_path'):
-            self.data.newsfolder_path=''
+            self.data.newsfolder_path = ''
         if not hasattr(self.data, 'rss_path'):
-            self.data.rss_path=''
+            self.data.rss_path = ''
         if not hasattr(self.data, 'rss_explanation_path'):
-            self.data.rss_explanation_path=''
+            self.data.rss_explanation_path = ''
+        if not hasattr(self.data, 'subject'):
+            self.data.subject = tuple()
 
     @property
     def available(self):
