@@ -1,4 +1,4 @@
-import logging 
+import logging
 from string import Template
 
 import Acquisition
@@ -39,7 +39,7 @@ class IImagePortlet(IPortletDataProvider):
                         required=True,
                         source=SearchableTextSourceBinder(
                             {'object_provides' : [
-                                            IImageContent.__identifier__, 
+                                            IImageContent.__identifier__,
                                             IFileContent.__identifier__
                                             ]
                             },
@@ -92,12 +92,12 @@ class Assignment(base.Assignment):
     height='60'
     i18n_domain = 'plone'
 
-    def __init__(self, 
-                header=u"", 
-                image=None, 
-                url=u"", 
-                show_box=False, 
-                width='200', 
+    def __init__(self,
+                header=u"",
+                image=None,
+                url=u"",
+                show_box=False,
+                width='200',
                 height='60',
                 i18n_domain='plone'):
 
@@ -125,7 +125,7 @@ class Renderer(base.Renderer):
 
     def _render_cachekey(method, self):
         preflang = getToolByName(
-                        self.context, 
+                        self.context,
                         'portal_languages'
                             ).getPreferredLanguage()
 
@@ -145,7 +145,7 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
         portal_state = getMultiAdapter(
-                            (self.context, self.request), 
+                            (self.context, self.request),
                             name=u'plone_portal_state'
                             )
         self.portal = portal_state.portal()
@@ -157,12 +157,12 @@ class Renderer(base.Renderer):
     @memoize
     def title(self):
         lang = self.context.Language()
-        # First we try with zope.i18n 
+        # First we try with zope.i18n
         header = translate(
                     self.data.title,
                     domain=self.data.i18n_domain,
                     context=self.context.request,
-                    target_language=lang, 
+                    target_language=lang,
                     default=self.data.title,
                     )
 
@@ -204,7 +204,7 @@ class Renderer(base.Renderer):
             return None
 
         portal_state = getMultiAdapter(
-                        (self.context, self.request), 
+                        (self.context, self.request),
                         name=u'plone_portal_state'
                         )
         portal = portal_state.portal()
@@ -264,7 +264,7 @@ class Renderer(base.Renderer):
     def _data(self):
         return True
 
-    
+
     def flashcode(self):
         """ For an explanation of swfobject.js (2.*), see:
             http://code.google.com/p/swfobject/wiki/documentation
@@ -272,17 +272,17 @@ class Renderer(base.Renderer):
         obj = self.get_object()
         obj_id = self.id_attr()
         flash = Template("""
-        <object 
+        <object
                 id="$id"
                 classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-                width="$width" 
+                width="$width"
                 height="$height"
                 altHtml="">
             <param name="movie" value="$data" />
             <!--[if !IE]>-->
             <object
                 type="application/x-shockwave-flash"
-                data="$data" 
+                data="$data"
                 width="$width"
                 height="$height">
             <!--<![endif]-->
