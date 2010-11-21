@@ -254,31 +254,31 @@ class Renderer(base.Renderer):
         obj = self.get_object()
         obj_id = self.id_attr()
         flash = Template("""
-        <object
-                id="$id"
-                classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
-                width="$width"
-                height="$height"
-                altHtml="">
-            <param name="movie" value="$data" />
-            <!--[if !IE]>-->
-            <object
-                type="application/x-shockwave-flash"
-                data="$data"
-                width="$width"
-                height="$height">
-            <!--<![endif]-->
-            <div class="portletImage-flash"
-                 i18n:translate=""
-                 i18n:domain="osha">
-                 You need the Adobe Flash Player to view this content.
-                 <a href="http://get.adobe.com/flashplayer" target="_blank">
-                    Download it from Adobe</a>
-            </div>
-            <!--[if !IE]>-->
+        <div class="portletImage-flash">
+            <object id="$id"
+                    classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+                    width="$width"
+                    height="$height"
+                    altHtml="">
+                <param name="movie" value="$data" />
+                <!--[if !IE]>-->
+                <object type="application/x-shockwave-flash"
+                        data="$data"
+                        width="$width"
+                        height="$height">
+                <!--<![endif]-->
+                <div class="portletImage-flash"
+                     i18n:translate=""
+                     i18n:domain="osha">
+                     You need the Adobe Flash Player to view this content.
+                     <a href="http://get.adobe.com/flashplayer"
+                        target="_blank">Download it from Adobe</a>
+                </div>
+                <!--[if !IE]>-->
+                </object>
+                <!--<![endif]-->
             </object>
-            <!--<![endif]-->
-        </object>
+        </div>
         <script type="text/javascript">
             swfobject.registerObject("$id", "7")
         </script>
