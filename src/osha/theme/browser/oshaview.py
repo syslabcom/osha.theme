@@ -22,8 +22,10 @@ from slc.subsite.root import getSubsiteRoot
 
 from osha.policy.interfaces import ISingleEntryPoint
 from osha.theme.browser.interfaces import IOSHA
-from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
+from osha.theme.browser.osha_properties_controlpanel import \
+    PropertiesControlPanelAdapter
 from osha.theme.config import *
+
 
 class OSHA(BrowserView):
     implements(IOSHA)
@@ -33,7 +35,8 @@ class OSHA(BrowserView):
         context = Acquisition.aq_inner(self.context)
         portal_transforms = getToolByName(context, 'portal_transforms')
         text = portal_transforms.convert('html_to_text', text).getData()
-        return context.restrictedTraverse('@@plone').cropText(text, length, ellipsis)
+        return context.restrictedTraverse('@@plone').cropText(text, length,
+            ellipsis)
 
     def _render_cachekey_getSEPs(method, self):
         preflang = getToolByName(
@@ -43,18 +46,18 @@ class OSHA(BrowserView):
 
     @ram.cache(_render_cachekey_getSEPs)
     def getSingleEntryPoints(self):
-        """ Retrieve all sections implementing ISingleEntryPoint that match 
-            the local Subjects 
+        """ Retrieve all sections implementing ISingleEntryPoint that match
+            the local Subjects
         """
         portal_catalog = getToolByName(self, 'portal_catalog')
         sections = portal_catalog(
                     object_provides='osha.policy.interfaces.ISingleEntryPoint',
-                    review_state="published"
-                    )
+                    review_state="published")
         rs = []
         for section in sections:
-            rs.append(dict(title=section.Title, url=section.getURL(), subject=section.Subject ))
-        rs.sort(lambda x,y: cmp(x['title'].lower(), y['title'].lower()))
+            rs.append(dict(title=section.Title, url=section.getURL(),
+                subject=section.Subject))
+        rs.sort(lambda x, y: cmp(x['title'].lower(), y['title'].lower()))
         return rs
 
     def get_subsite_property(self, name):
@@ -73,8 +76,8 @@ class OSHA(BrowserView):
             setattr(P, name, value)
 
     def getSingleEntryPointsBySubject(self, subjects):
-        """ Retrieve all sections implementing ISubsite that match the 
-            local Subjects 
+        """ Retrieve all sections implementing ISubsite that match the
+            local Subjects
         """
         seps = self.getSingleEntryPoints()
         seplist = []
@@ -85,11 +88,12 @@ class OSHA(BrowserView):
                     seplist.append(sep)
                     continue
 
-        seplist.sort(lambda x,y: cmp(x['title'].lower(), y['title'].lower()))
+        seplist.sort(lambda x, y: cmp(x['title'].lower(), y['title'].lower()))
         return seplist
 
     def getCurrentSingleEntryPoint(self):
-        """ returns the SEP in the current path if we are inside one. None otherwise """
+        """ returns the SEP in the current path if we are inside one.
+            None otherwise """
         PARENTS = self.request.PARENTS
         for parent in PARENTS:
             if ISingleEntryPoint.providedBy(parent):
@@ -97,7 +101,8 @@ class OSHA(BrowserView):
         return None
 
     def getCurrentSubsite(self):
-        """ returns the subsite in the current path if we are inside one. None otherwise """
+        """ returns the subsite in the current path if we are inside one.
+            None otherwise """
         PARENTS = self.request.PARENTS
         for parent in PARENTS:
             if ISubsiteEnhanced.providedBy(parent):
@@ -105,11 +110,13 @@ class OSHA(BrowserView):
         return None
 
     def listMetaTags(self, context):
-        """ retrieve the metadata for the header and make osha specific additions """
+        """ retrieve the metadata for the header and make osha specific
+            additions """
         EASHW = 'European Agency for Safety and Health at Work'
 
         putils = getToolByName(context, 'plone_utils')
-        portal_state = getMultiAdapter((context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter((context, self.request),
+            name=u'plone_portal_state')
         navigation_root_path = portal_state.navigation_root_path()
         navigation_root = context.restrictedTraverse(navigation_root_path)
 
@@ -118,25 +125,26 @@ class OSHA(BrowserView):
 
         meta['title'] = context.Title()
         meta['DC.title'] = context.Title()
-        meta['description'] = context.Description() or navigation_root.Description()
-        meta['DC.description'] = context.Description() or navigation_root.Description()
+        meta['description'] = context.Description() or\
+            navigation_root.Description()
+        meta['DC.description'] = context.Description() or\
+            navigation_root.Description()
 
         medium = {
                 "Image": "image",
                 "News Item": "news",
-                "Blog Entry": "blog"
+                "Blog Entry": "blog",
                 }
-        if medium.has_key(context.portal_type):
+        if context.portal_type in medium:
             meta['medium'] = medium.get(context.portal_type)
 
         Publisher = meta.get('Publisher', None)
         if not Publisher or Publisher == 'No publisher':
             meta['Publisher'] = EASHW
 
-
         # Gorka requests on 6.3.2008
-        # Just in case, I'd like to remind you the decision we took regarding the
-        # keywords for the keywords html tag.
+        # Just in case, I'd like to remind you the decision we took regarding
+        # the keywords for the keywords html tag.
         # The keywords should be added as follows
         # 1.- OSH, OSHA, EU-OSHA, Occupational safety, Occupational health,
         #     European Agency,
@@ -147,26 +155,27 @@ class OSHA(BrowserView):
                                'Occupational health',
                                'European Agency']
 
-
-        lang = getToolByName(context, 'portal_languages').getPreferredLanguage()
+        lang = getToolByName(context,
+            'portal_languages').getPreferredLanguage()
         translate = getTranslationService().translate
-        domain="osha"
-        SUBJECT = [translate(target_language=lang, msgid=s, default=s, context=context, domain=domain)
+        domain = "osha"
+        SUBJECT = [translate(target_language=lang, msgid=s, default=s,
+            context=context, domain=domain)
             for s in context.Subject()]
 
         THESAURUS = []
         if hasattr(Acquisition.aq_inner(context), 'getField'):
             field = context.getField('multilingual_thesaurus')
             if field is not None:
-                portal_vocabularies = getToolByName(context, 'portal_vocabularies')
+                pvt = getToolByName(context, 'portal_vocabularies')
                 portal_languages = getToolByName(context, 'portal_languages')
                 lang = portal_languages.getPreferredLanguage()
-                manager = portal_vocabularies.MultilingualThesaurus._getManager()
+                manager = pvt.MultilingualThesaurus._getManager()
 
                 thesitems = field.getAccessor(context)()
                 for thesitem in thesitems:
-                    THESAURUS.append(manager.getTermCaptionById(thesitem, lang))
-
+                    THESAURUS.append(manager.getTermCaptionById(thesitem,
+                        lang))
 
         keywords = PREFIX_KEYWORDS + SUBJECT + THESAURUS
         if isinstance(keywords, (list, tuple)):
@@ -174,7 +183,8 @@ class OSHA(BrowserView):
             if keywords is None:
                 keywords = ''
             else:
-                keywords = [x for x in keywords if type(x) in (StringType, UnicodeType)]
+                keywords = [x for x in keywords
+                    if type(x) in (StringType, UnicodeType)]
                 keywords = ', '.join(keywords)
 
         meta['keywords'] = keywords
@@ -203,7 +213,6 @@ class OSHA(BrowserView):
             return "%s/image" % (context.absolute_url())
         return ''
 
-
     def sendto(self, send_to_address, send_from_address, comment,
                subject='Plone', **kwargs):
         """Sends a link of a page to someone."""
@@ -230,11 +239,10 @@ class OSHA(BrowserView):
                                  subtype=subtype, charset=encoding,
                                  debug=False, From=send_from_address)
 
-
     def getTranslatedCategories(self, domain='osha'):
-        """ returns a list of tuples, that contain key and title of Categories (Subject)
-        ordered by Title """
-        IGNORE = [ 'provider' ]
+        """ returns a list of tuples, that contain key and title of
+            Categories (Subject) ordered by Title """
+        IGNORE = ['provider']
         pc = getToolByName(self.context, 'portal_catalog')
         plt = getToolByName(self.context, 'portal_languages')
         lang = plt.getPreferredLanguage()
@@ -245,12 +253,11 @@ class OSHA(BrowserView):
             if s in IGNORE:
                 continue
             subjects.append((s,
-                      translate(target_language=lang, msgid=s, default=s, context=self.context, domain=domain))
-                     )
-        subjects.sort(lambda x,y: cmp(x[1], y[1]))
+                      translate(target_language=lang, msgid=s, default=s,
+                      context=self.context, domain=domain)))
+        subjects.sort(lambda x, y: cmp(x[1], y[1]))
 
         return subjects
-
 
     def getGermanNetwork(self):
         """ returns the sites from the European Network """
@@ -268,17 +275,16 @@ class OSHA(BrowserView):
         """ returns the sites from the European Network """
         return INTERNATIONAL_NETWORK
 
-
     def handleOSHMailUrls(self, text, id=''):
-        """ turn relative URLs into absolute URLs based on the context's URL; 
-            append google analytics code 
+        """ turn relative URLs into absolute URLs based on the context's URL;
+            append google analytics code
         """
         encoding = getSiteEncoding(self)
-        if type(text)==unicode:
+        if type(text) == unicode:
             text = text.encode(encoding)
         links = []
         isURL = validation.validatorFor('isURL')
-        if isURL(text)==1:
+        if isURL(text) == 1:
             links.append(text)
         else:
             for link in retrieveSTX(text):
@@ -290,25 +296,28 @@ class OSHA(BrowserView):
         au = self.context.absolute_url()
         for link in links:
             if not link.startswith('mailto'):
-                joinchar = link.find('?')>0 and '&' or '?'
-                newlink = "%(link)s%(joinchar)sutm_source=oshmail&utm_medium=email&utm_campaign=%(campaign)s" % dict(
-                    link=urljoin(au, link), joinchar=joinchar, campaign=id!='' and id or 'oshmail')
-                # below is a fix for the problem that you have two links in 
+                joinchar = link.find('?') > 0 and '&' or '?'
+                newlink = "%(link)s%(joinchar)sutm_source=oshmail&"\
+                    "utm_medium=email&utm_campaign=%(campaign)s" % dict(
+                    link=urljoin(au, link), joinchar=joinchar,
+                    campaign=id != '' and id or 'oshmail')
+                # below is a fix for the problem that you have two links in
                 # text, one being a prefix of the
-                # other and appearing below it. In this case, the smaller 
+                # other and appearing below it. In this case, the smaller
                 # one will be replaced with GA postfix in the longer one
-                # as fix, only replace links which terminate with a ". 
+                # as fix, only replace links which terminate with a ".
                 # Of course this requires that all links are closed properly
                 # if the text already is a URL however, we don't want this hack
-                if isURL(text)==1:
+                if isURL(text) == 1:
                     text = text.replace(link, newlink)
                 else:
-                    text = text.replace(link+'"', newlink+'"')
+                    text = text.replace(link + '"', newlink + '"')
         text = text.decode(encoding)
         return text
 
     def makeAbsoluteUrls(self, text):
-        """ turn relative URLs into absolute URLs based on the context's URL """
+        """ turn relative URLs into absolute URLs
+            based on the context's URL """
         links = []
 
         for link in retrieveSTX(text):
@@ -321,17 +330,19 @@ class OSHA(BrowserView):
         for link in links:
             if not link.startswith('mailto'):
                 #text = text.replace(link, urljoin(au, link))
-                joinchar = link.find('?')>0 and '&' or '?'
-                newlink = "%(link)s%(joinchar)sutm_source=shortmessage&utm_medium=email&utm_campaign=%(campaign)s" % dict(
-                    link=urljoin(au, link), joinchar=joinchar, campaign='shortmessage')
-                # below is a fix for the problem that you have two links in 
+                joinchar = link.find('?') > 0 and '&' or '?'
+                newlink = "%(link)s%(joinchar)sutm_source=shortmessage&"\
+                    "utm_medium=email&utm_campaign=%(campaign)s" % dict(
+                    link=urljoin(au, link), joinchar=joinchar,
+                    campaign='shortmessage')
+                # below is a fix for the problem that you have two links in
                 # text, one being a prefix of the
-                # other and appearing below it. In this case, the smaller 
+                # other and appearing below it. In this case, the smaller
                 # one will be replaced with GA postfix in the longer one
-                # as fix, only replace links which terminate with a ". 
+                # as fix, only replace links which terminate with a ".
                 # Of course this requires that all links are closed properly
                 # if the text already is a URL however, we don't want this hack
-                text = text.replace(link+'"', newlink+'"')
+                text = text.replace(link + '"', newlink + '"')
         return text
 
     def subsiteRootPath(self):
@@ -347,13 +358,15 @@ class OSHA(BrowserView):
         return ISubsiteEnhanced.providedBy(site)
 
     def getBase_url(self):
-        """ Returns a (sub-) sites URL including the language folder, if present """
-        language = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        """ Returns a (sub-) sites URL including the language folder
+        if present """
+        language = getToolByName(self.context,
+            'portal_languages').getPreferredLanguage()
         subsite_url = self.subsiteRootUrl()
         subsite_path = self.subsiteRootPath()
         root = self.context.restrictedTraverse(subsite_path)
         if hasattr(Acquisition.aq_base(Acquisition.aq_inner(root)), language):
-            base_url = '%s/%s' %(subsite_url, language)
+            base_url = '%s/%s' % (subsite_url, language)
         else:
             base_url = subsite_url
         return base_url
@@ -380,8 +393,8 @@ class OSHA(BrowserView):
 
     def getLocalObject(self, name):
         """ see interface """
-        return hasattr(Acquisition.aq_base(Acquisition.aq_inner(self.context)), name) and getattr(self.context, name) or None
-        #translate(target_language='en', msgid='gender', default='wrong', context=self.context, domain='osha')
+        return hasattr(Acquisition.aq_base(Acquisition.aq_inner(self.context)),
+            name) and getattr(self.context, name) or None
 
     def getNumAlertSubscribers(self):
         """ This is the same as num_subscribers in portlets/alertservice.py
@@ -392,5 +405,5 @@ class OSHA(BrowserView):
         try:
             n = len(portal_alerts.nprofiles.objectIds())
         except:
-            n=''
+            n = ''
         return n
