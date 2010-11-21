@@ -26,80 +26,67 @@ from Products.PlacelessTranslationService import translate as pts_translate
 
 log = logging.getLogger('osha.theme.portlets.image.py')
 
+
 class IImagePortlet(IPortletDataProvider):
     header = schema.TextLine(
                         title=_(u"Portlet header"),
                         description=_(u"Title of the rendered portlet"),
-                        required=True
+                        required=True,
                         )
-
     image = schema.Choice(
                         title=_(u"Image"),
                         description=_(u"Locate the Image to show"),
                         required=True,
                         source=SearchableTextSourceBinder(
-                            {'object_provides' : [
+                            {'object_provides': [
                                             IImageContent.__identifier__,
-                                            IFileContent.__identifier__
-                                            ]
-                            },
-                            default_query='path:')
+                                            IFileContent.__identifier__,
+                                            ]},
+                            default_query='path:'),
                         )
-
     url = schema.TextLine(
                         title=_(u"URL"),
                         description=_(u"URL around the image/flash"),
-                        required=False
+                        required=False,
                         )
-
     width = schema.TextLine(
                         title=_(u"Width"),
                         description=_(u"Enter display width"),
-                        required=False
+                        required=False,
                         )
-
     height = schema.TextLine(
                         title=_(u"Height"),
                         description=_(u"Enter display height"),
-                        required=False
+                        required=False,
                         )
     show_box = schema.Bool(
                         title=_(u"Display box?"),
                         description=_(u"Leave this unchecked if you only want "
                             "to see your banner without a title and a box "
-                            "around."
-                            ),
+                            "around."),
                         )
-    i18n_domain  = schema.TextLine(
+    i18n_domain = schema.TextLine(
                         title=_(u"Translation domain?"),
                         description=_(u"Specify the tranlation domain "
                             "that this portlet will use. This determines "
                             "the value (if any) into which the title will "
-                            "be translated."
-                            ),
-                        required=False
+                            "be translated."),
+                        required=False,
                         )
-
 
 
 class Assignment(base.Assignment):
     implements(IImagePortlet)
     header = u""
-    image=None
+    image = None
     url = u""
     show_box = False
-    width='200'
-    height='60'
+    width = '200'
+    height = '60'
     i18n_domain = 'plone'
 
-    def __init__(self,
-                header=u"",
-                image=None,
-                url=u"",
-                show_box=False,
-                width='200',
-                height='60',
-                i18n_domain='plone'):
+    def __init__(self, header=u"", image=None, url=u"", show_box=False,
+                width='200', height='60', i18n_domain='plone'):
 
         self.header = header
         self.image = image
@@ -122,12 +109,9 @@ class Renderer(base.Renderer):
     _template = ViewPageTemplateFile('image.pt')
     flash_snippet = ViewPageTemplateFile('flashsnippet.pt')
 
-
     def _render_cachekey(method, self):
-        preflang = getToolByName(
-                        self.context,
-                        'portal_languages'
-                            ).getPreferredLanguage()
+        preflang = getToolByName(self.context,
+            'portal_languages').getPreferredLanguage()
 
         modified = self.get_object() and self.get_object().modified() or ''
         header = self.title()
@@ -146,8 +130,7 @@ class Renderer(base.Renderer):
         base.Renderer.__init__(self, *args)
         portal_state = getMultiAdapter(
                             (self.context, self.request),
-                            name=u'plone_portal_state'
-                            )
+                            name=u'plone_portal_state')
         self.portal = portal_state.portal()
 
     @property
@@ -180,11 +163,12 @@ class Renderer(base.Renderer):
     @memoize
     def url(self):
         if self.data.url:
-            if self.data.url.find('?')>0:
+            if self.data.url.find('?') > 0:
                 symbol = '&'
             else:
                 symbol = '?'
-            return "%s%ssourceid=banner&utm_source=home&utm_medium=banner&utm_campaign=campaign" % (self.data.url, symbol)
+            return "%s%ssourceid=banner&utm_source=home&utm_medium=banner&" \
+                "utm_campaign=campaign" % (self.data.url, symbol)
         return u''
 
     @memoize
@@ -205,8 +189,7 @@ class Renderer(base.Renderer):
 
         portal_state = getMultiAdapter(
                         (self.context, self.request),
-                        name=u'plone_portal_state'
-                        )
+                        name=u'plone_portal_state')
         portal = portal_state.portal()
 
         # XXX: unrestrictedTraverse cannot handle unicode :(
@@ -237,12 +220,12 @@ class Renderer(base.Renderer):
         try:
             major, minor = typ.split("/")
         except:
-            major=""
-            minor=""
-        if typ=='application/x-shockwave-flash':
+            major = ""
+            minor = ""
+        if typ == 'application/x-shockwave-flash':
             return self.flash_snippet()
 
-        elif major=='image':
+        elif major == 'image':
 
             result = '<img src="%s"' % ob.absolute_url()
             title = getattr(self, 'title', '')
@@ -263,7 +246,6 @@ class Renderer(base.Renderer):
     @memoize
     def _data(self):
         return True
-
 
     def flashcode(self):
         """ For an explanation of swfobject.js (2.*), see:
@@ -290,7 +272,8 @@ class Renderer(base.Renderer):
                  i18n:translate=""
                  i18n:domain="osha">
                  You need the Adobe Flash Player to view this content.
-                 <a href="http://get.adobe.com/flashplayer" target="_blank">Download it from Adobe</a>
+                 <a href="http://get.adobe.com/flashplayer" target="_blank">
+                    Download it from Adobe</a>
             </div>
             <!--[if !IE]>-->
             </object>
@@ -314,13 +297,12 @@ class Renderer(base.Renderer):
         ob = self.get_object()
         return "flashobject-%s" % ob.UID()
 
+
 class AddForm(base.AddForm):
     form_fields = form.Fields(IImagePortlet)
     label = _(u"Add Image/Flash Portlet")
-    description = _(
-        u"Display an Image/Flash in the appropriate language with Language " \
-        "Fallback"
-        )
+    description = _(u"Display an Image/Flash in the appropriate language " \
+        " with Language Fallback")
     form_fields['image'].custom_widget = UberSelectionWidget
 
     def create(self, data):
@@ -330,6 +312,7 @@ class AddForm(base.AddForm):
                           show_box=data.get('show_box', True),
                           width=data.get('width', u""),
                           height=data.get('height', u""))
+
 
 class EditForm(base.EditForm):
     """Portlet edit form.
