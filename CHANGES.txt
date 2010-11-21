@@ -2,11 +2,15 @@ osha.theme Changelog
 ====================
 
 
-1.3.45 (unreleased)
+1.3.45 (2010-11-21)
 -------------------
 
 - Adding the publication date to the heading of News Items #1825
-  (deroiste)
+  [deroiste]
+- Don't show /oshnetwork events in the main events folder. #1861 [jcbrand]
+- Added translation support to the Image/Flash portlet #1851 [jcbrand] 
+- Added Flash fallback support to the Image/Flash portlet #1550 [jcbrand] 
+- Filtered news for each old SEP not having the news portlet #1192 [jcbrand] 
 
 
 1.3.44 (2010-11-05)
@@ -19,8 +23,8 @@ osha.theme Changelog
 1.3.43 (2010-11-05)
 -------------------
 
-- changed the order of heading and PR date to get compatibility with the compaigns press section and the telescope view
-  [api]
+- changed the order of heading and PR date to get compatibility with the
+  compaigns press section and the telescope view [pilz]
 
 1.3.42 (2010-11-04)
 -------------------
