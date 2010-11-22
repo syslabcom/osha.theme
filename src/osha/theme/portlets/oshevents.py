@@ -136,6 +136,8 @@ class Renderer(events.Renderer):
     def _data(self):
         context = Acquisition.aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
+        portal_languages = getToolByName(context, 'portal_languages')
+        preflang = portal_languages.getPreferredLanguage()
 
         # search in the navigation root of the currently selected 
         # language and in the canonical path
@@ -148,10 +150,19 @@ class Renderer(events.Renderer):
         except:
             pass
 
+        oshaview = getMultiAdapter((context, self.request),
+            name=u'oshaview')
+        subsite = oshaview.getCurrentSubsite()
+        calendar = self.getCalendar(preflang)
+        # If we're in the root (i.e. no in a subiste), and a valid pointer to a
+        # calendar exists, use its path as a query parameter
+        if subsite is None and calendar:
+            paths = ['/'.join(calendar.getPhysicalPath())]
+
         subject = list(self.data.subject)
         limit = self.data.count
         state = self.data.state
-        query = dict(portal_type=['Event','SPSeminar'],
+        query = dict(portal_type=['Event'],
                        review_state=state,
                        path=paths,
                        end={'query': DateTime(),
@@ -159,14 +170,18 @@ class Renderer(events.Renderer):
                        sort_on='start',
                        Language=['', self.preflang],
                        sort_limit=limit)
-        # If a subject is selected, use that for the query and disregard the NavigationRoot
+        # If a subject is selected, use that for the query
         if len(subject):
             query.update(Subject=subject)
-            del query['path']
         return catalog(query)[:limit]
 
+    def _render_cachekey_calendar(method, self, preflang):
+        calendar_path = self.data.calendar_path
+        subject = self.data.subject
+        navigation_root_path = self.navigation_root_path
+        return (calendar_path, preflang, subject, navigation_root_path)
 
-    @memoize
+    @ram.cache(_render_cachekey_calendar)
     def getCalendar(self, preflang):
         """ get the calendar the portlet is pointing to
             fall back to the canonical if language version cannot be found
