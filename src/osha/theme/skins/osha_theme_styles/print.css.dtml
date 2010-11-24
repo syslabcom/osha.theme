@@ -101,3 +101,7 @@ div.top,
 #portal-footer-languageselector {
     display: none;
 }
+div#seminar-content div#add_to_calendar,
+div#Speech div#add_to_calendar{
+    display: none;
+}
