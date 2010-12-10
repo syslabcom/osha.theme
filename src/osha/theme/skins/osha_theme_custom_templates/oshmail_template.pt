@@ -33,7 +33,7 @@
 
     <tal:scripts define="view context/@@plone|nothing"
                 replace="structure provider:plone.resourceregistries.scripts" />
- 
+
     <link rel="stylesheet" type="text/css" media='all' href="oshmail.css" 
         tal:attributes="href string:${here/portal_url}/oshmail.css" />
 
@@ -49,9 +49,20 @@
                 url python:oshaview.handleOSHMailUrls('http://osha.europa.eu', collage_id);">
 
 <div id="visual-portal-wrapper">
+<table id="oshmail-topbanner" width="100%" cellpadding="0" cellspacing="0" border="0"
+    tal:condition="python:context.getId()=='oshmail-100'"
+    background="http://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
+    <tr>
+        <td>
+            <img src="http://osha.europa.eu/en/news/OSHmailCandlesLogo.png" alt="OSHmail jubilee logo" ></td>
+    <td background="http://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
+        <img src="http://osha.europa.eu/en/news/OSHmailCandlesMiddle.png" alt="OSHmail jubilee background"></td>
+    <td>
+        <img src="http://osha.europa.eu/en/news/OSHmailCandlesRight.png" alt="OSHmail jubilee candles" ></td>
+    </tr>
+</table>
 
-<!--img src="header.jpg" border="0" alt="" tal:attributes="alt portal/Title|string:" /-->
-<table cellpadding="0" cellspacing="0" border="0"
+<table cellpadding="0" cellspacing="0" border="0" tal:condition="python:context.getId()!='oshmail-100'"
        summary="Layout table"
        i18n:attributes="summary"  
        tal:define="topbanner string:http://osha.europa.eu/images/topbanner2.jpg; 
@@ -144,10 +155,6 @@
    <metal:bodytext metal:define-slot="main" tal:content="nothing">
       <!-- Page body text -->
    </metal:bodytext>
-
-
-
-<hr class="netscape4" />
 
 
 </div>
