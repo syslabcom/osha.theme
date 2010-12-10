@@ -30,52 +30,13 @@
                           content python:keyval[1];" />
                           
     <!-- Main style sheets for CSS2 capable browsers -->
-    <tal:styles define="view context/@@plone|nothing"
-                replace="structure provider:plone.resourceregistries.styles" />
 
-    <tal:styles define="view context/@@plone|nothing"
+    <tal:scripts define="view context/@@plone|nothing"
                 replace="structure provider:plone.resourceregistries.scripts" />
  
-    <style type="text/css">
-    div.portlet h6 {
-    padding:0em 0em 0em 0em;
-    background:transparent;
-    border-style:none;
-    font-weight:bold;
-    }
-    div.portlet div.portletBody p {
-    text-align:left;
-    }
-    div.portlet div.portletBody p.InfoLine {
-    font-style:italic;
-    text-align:left;
-    }
-    div.portlet div.portletBody p.Footer {
-    text-align:left;
-    }
+    <link rel="stylesheet" type="text/css" media='all' href="oshmail.css" 
+        tal:attributes="href string:${here/portal_url}/oshmail.css" />
 
-#portal-top-dropdowns {
-    background: #FAF881;
-    padding: 0;
-}
-#portal-top-content {
-    width: 100%;
-    position: static;
-}
-#portal-top-dropdowns {
-    vertical-align: bottom;
-}
-
-#portal-top-content .top-actions {
-    
-    padding: 0.6em 1em 1em 1em;
-    background-color: #c5cbd8;
-}
-#portal-top-content .slogan {
-    font-weight: bold;
-    padding-bottom: 0.4em;
-}
-    </style>
 </head>
 
 <body leftmargin="5" 
