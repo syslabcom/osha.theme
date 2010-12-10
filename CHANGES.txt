@@ -2,11 +2,10 @@ osha.theme Changelog
 ====================
 
 
-1.3.49 (unreleased)
+1.3.49 (2010-12-10)
 -------------------
 
-- Nothing changed yet.
-
+- OSHMail formatting: now using custom CSS file #1950 [pecek, thomasw]
 
 1.3.48 (2010-11-26)
 -------------------
