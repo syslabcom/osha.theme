@@ -1,0 +1,230 @@
+body {
+-x-system-font:none;
+background-color:White;
+color:#191919;
+font-family:Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
+font-size:70%;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+line-height:normal;
+margin:0;
+padding:0;
+}
+
+#visual-portal-wrapper {
+overflow-x:hidden;
+overflow-y:auto;
+position:relative;
+}
+
+#visual-portal-wrapper {
+margin:0 0 1em;
+padding:0;
+}
+
+table {
+font-size:100%;
+}
+
+#portal-logo {
+float:left;
+}
+
+a {
+background-color:transparent;
+color:#144989;
+text-decoration:none;
+}
+
+#portal-logo img {
+border:0 none;
+margin:0;
+padding:0;
+}
+
+img {
+border:medium none;
+vertical-align:middle;
+}
+
+#portal-top-content {
+position:static;
+width:100%;
+}
+
+#portal-top-content .top-actions {
+background-color:#C5CBD8;
+padding:0.6em 1em 1em;
+}
+
+#portal-top-content .slogan {
+font-weight:bold;
+padding-bottom:0.4em;
+}
+
+#portal-top-dropdowns {
+vertical-align:bottom;
+}
+
+#portal-top-dropdowns {
+background:#FAF881 none repeat scroll 0 0;
+padding:0;
+}
+
+.visualClear {
+clear:both;
+display:block;
+}
+
+p {
+line-height:1.5em;
+margin:0 0 0.75em;
+}
+
+.documentFirstHeading {
+background:#C5CBD8 none repeat scroll 0 0;
+margin-bottom:1em;
+margin-top:0;
+padding:0.5em 1em !important;
+}
+
+h1 {
+font-size:130%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+color:#191919;
+font-family:Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
+margin:0.75em 0 0.25em;
+}
+
+#collage .collage-row {
+clear:both;
+margin-left:auto;
+margin-right:auto;
+min-height:100%;
+position:relative;
+text-align:left;
+width:100%;
+}
+
+#collage .collage-row {
+text-align:left;
+}
+
+#collage .two-columns-largeleft .block_1 {
+border-right:1px solid black;
+margin-left:1%;
+width:68%;
+}
+
+#collage .block_1, #collage .block_2 {
+float:left;
+}
+
+#collage .collage-row .block_1 div.collage-item {
+margin-right:0.5em;
+}
+
+div.collage-item {
+margin-bottom:2em;
+}
+
+.collage-item {
+margin-bottom:0.8em;
+}
+
+h2 {
+border-bottom:1px solid gray;
+font-size:120%;
+}
+
+.newsImageContainer {
+float:left;
+margin:0 1em 0.5em 0;
+min-width:100px;
+}
+
+dt {
+font-weight:bold;
+}
+
+dd {
+line-height:1.5em;
+margin-bottom:1em;
+}
+
+#collage .two-columns-largeleft .block_2 {
+width:29%;
+}
+
+#collage .one-column .block_1 {
+width:100%;
+}
+
+.block_1 {
+margin-left:1%;
+}
+
+#collage .collage-row .block_2 div.collage-item {
+margin-left:0.5em;
+margin-right:0.5em;
+}
+
+.socialMediaOSHMAILfg {
+background:#F2F4F6 none repeat scroll 0 0;
+padding:10px 0 5px 25px;
+}
+
+.boxing_styles_inner_content {
+font-size:100%;
+}
+
+.socialMediaOSHMAIL {
+display:block;
+}
+
+.boxing_styles_inner_content {
+background-color:#F7F8F9;
+border:1px solid #C5CBD8;
+font-size:100%;
+margin:1em auto;
+padding:1em;
+width:80%;
+}
+
+/****************/
+div.portlet h6 {
+padding:0em 0em 0em 0em;
+background:transparent;
+border-style:none;
+font-weight:bold;
+}
+div.portlet div.portletBody p {
+text-align:left;
+}
+div.portlet div.portletBody p.InfoLine {
+font-style:italic;
+text-align:left;
+}
+div.portlet div.portletBody p.Footer {
+text-align:left;
+}
+
+#portal-top-dropdowns {
+background: #FAF881;
+padding: 0;
+}
+#portal-top-content {
+width: 100%;
+position: static;
+}
+#portal-top-dropdowns {
+vertical-align: bottom;
+}
+#portal-top-content .top-actions {padding: 0.6em 1em 1em 1em; background-color: #c5cbd8;}
+#portal-top-content .slogan { font-weight: bold; padding-bottom: 0.4em;}
+.block_1 { margin-left:1%}
