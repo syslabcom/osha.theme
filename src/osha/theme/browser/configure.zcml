@@ -578,12 +578,12 @@
         permission="zope2.View"
         />
 
-    <browser:page
+    <!--browser:page
         for="*"
         name="index_atoz"
         class=".index_atoz.IndexAtoZView"
         permission="zope2.View"
-        />
+        /-->
 
     <browser:page
         for="*"

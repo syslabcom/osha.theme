@@ -5,7 +5,8 @@ osha.theme Changelog
 1.3.50 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- deactivated the index_atoz browserview as it is no longer linked anyway but instead causes heavy memory problems
+  [pilz]
 
 
 1.3.49 (2010-12-10)
