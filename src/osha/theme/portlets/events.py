@@ -9,8 +9,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 class Renderer(events.Renderer):
-    """Dynamically override standard header for news portlet"""
-    
+    """ """
     _template = ViewPageTemplateFile('events.pt')
 
     def _render_cachekey(method, self):
@@ -51,7 +50,7 @@ class Renderer(events.Renderer):
 
         limit = self.data.count
         state = self.data.state
-        query = dict(portal_type=['Event','SPSeminar'],
+        query = dict(portal_type=['Event'],
                        review_state=state,
                        path=paths,
                        end={'query': DateTime(),
@@ -65,7 +64,8 @@ class Renderer(events.Renderer):
 
     @memoize
     def calendarLink(self):
-        # compute a link to the "closest" calendar
+        """ Compute a link to the "closest" calendar
+        """
         context = aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
         
