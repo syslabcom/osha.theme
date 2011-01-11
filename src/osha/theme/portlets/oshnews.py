@@ -1,3 +1,5 @@
+from types import UnicodeType
+
 from zope import schema
 from zope.component import getMultiAdapter
 from zope.formlib import form
@@ -18,7 +20,6 @@ from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from types import UnicodeType
 
 class INewsPortlet(IPortletDataProvider):
 
@@ -44,7 +45,7 @@ class INewsPortlet(IPortletDataProvider):
             default=tuple(),
             required=False,
             value_type=schema.Choice(
-                vocabulary="osha.policy.vocabularies.categories")
+                vocabulary="slc.seminarportal.vocabularies.categories")
             )
     newsfolder_path = schema.TextLine(
             title=_(u'Newsfolder path'),
