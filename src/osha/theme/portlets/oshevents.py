@@ -45,7 +45,7 @@ class IEventsPortlet(IPortletDataProvider):
             default=tuple(),
             required=False,
             value_type=schema.Choice(
-                vocabulary="osha.policy.vocabularies.categories")
+                vocabulary="slc.seminarportal.vocabularies.categories")
             )
     calendar_path = schema.TextLine(
             title=_(u'Target calendar path'),
