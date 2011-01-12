@@ -1303,6 +1303,14 @@ div#topic-view-heading-box {
     margin:1em;
 }
 
+.topic-heading-viewlet #relatedMedia {
+    position: relative;
+    height: 100%;
+    margin: 10px;
+    float: left;
+    overflow: hidden;
+}
+
 body.template-topic-view #relatedMedia {
     position: relative;
     height: 165px;
