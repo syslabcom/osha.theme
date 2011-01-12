@@ -7,7 +7,10 @@ osha.theme Changelog
 
 - deactivated the index_atoz browserview as it is no longer linked anyway but instead causes heavy memory problems
   [pilz]
-
+- Removed the seminars_view template and browserview. We now use the templates
+  in slc.seminarportal again. [jcbrand]
+- Register a viewlet for the seminar specific viewletmanager. To implement a
+  header for @@seminars-view [jcbrand]
 
 1.3.49 (2010-12-10)
 -------------------
