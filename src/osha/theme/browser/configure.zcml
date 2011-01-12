@@ -411,16 +411,6 @@
         permission="plone.app.portlets.ManagePortlets"
         />
 
-    <!-- Above content portlets -->
-    <browser:viewlet
-        name="osha.belowcontentportlets"
-        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
-        template="templates/belowcontent_portlets.pt"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-    
-    
     <browser:page
         for="plone.portlets.interfaces.ILocalPortletAssignable"
         class="plone.app.portlets.browser.manage.ManageContextualPortlets"
@@ -547,13 +537,6 @@
         for="*"
         name="topics-view"
         class=".topics_view.TopicsView"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="seminars-view"
-        class=".topics_view.SeminarsView"
         permission="zope2.View"
         />
 
@@ -748,6 +731,21 @@
         name="osha.theme.oshlink_to_provider"
         manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
         class=".viewlets.OSHLinkToProviderViewlet"
+        permission="zope2.View"
+        />
+
+    <browser:viewlet
+        name="osha.theme.topic_view_heading_viewlet"
+        manager="slc.seminarportal.browser.interfaces.IAboveSeminarListing"
+        class=".viewlets.TopicViewHeading"
+        permission="zope2.View"
+        />
+
+    <browser:viewlet
+        name="osha.belowcontentportlets"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+        template="templates/belowcontent_portlets.pt"
+        layer=".interfaces.IOSHAThemeLayer"
         permission="zope2.View"
         />
 
