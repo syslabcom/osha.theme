@@ -4,10 +4,11 @@ osha.theme Changelog
 1.3.53 (unreleased)
 -------------------
 
-- Reverting ALL CHANGES since 1.3.49 except the following:
+- Reverting ALL CHANGES since 1.3.49 except the following (thomasw):
 - deactivated the index_atoz browserview as it is no longer linked anyway but
   instead causes heavy memory problems [pilz]
 
+- in competitions view, allow reverse listing of years of older competitions [thomasw]
 
 1.3.52 (2011-01-13)
 -------------------
