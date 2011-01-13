@@ -3,6 +3,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import implements
 from osha.theme.browser.interfaces import ICompetitionsView, ICompetitionDetail
 from Products.Archetypes.interfaces._base import IBaseContent, IBaseFolder
+from Products.Archetypes.utils import OrderedDict
 from Products.ATContentTypes.interface.image import IATImage
 from Products.CMFCore.utils import getToolByName
 from DateTime import DateTime
@@ -70,13 +71,17 @@ class CompetitionsView(BrowserView):
                                 ))
             yearmap[date.year()] = yearlist
 
-        for year in yearmap.keys():
+        ordered_yearmap = OrderedDict()
+        keys = yearmap.keys()
+        keys.sort()
+        keys.reverse()
+        for year in keys:
             yearlist = yearmap[year]
             yearlist.sort()
             yearlist.reverse()
-            yearmap[year] = yearlist
+            ordered_yearmap[year] = yearlist
 
-        return yearmap
+        return ordered_yearmap
 
     def getThisyearsCompetitions(self):
         " get closed competitions from this year "
