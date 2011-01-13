@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+
+<body>
+    <div metal:fill-slot="main">
+        <div class="visualClear"></div>
+
+        <div id="topic-view-heading-box">
+            <div id="relatedMedia"
+                tal:condition="view/hasRelatedMedia">
+            <tal:related_media replace="structure python:view.getRelatedMedia('200', 'mini')" />
+            </div>
+            <div id="topic-heading-text">
+                <h1 tal:content="context/Title">Title</h1>
+                <p tal:content="context/Description">Description</p>
+            </div>
+            <div class="visualClear"></div>
+        </div>
+        <div tal:content="structure context/CookedBody"></div>
+
+        <div class="visualClear"></div>
+
+        <span id="latest-additions" i18n:domain="osha">
+            <h1 i18n:translate="heading_latest_seminars">Latest Seminars</h1>
+            <tal:get define="Batch python:modules['Products.CMFPlone'].Batch;
+                            b_size python:10;
+                            b_start request/b_start | python:0;
+                            batch python:Batch(view.seminars, b_size, int(b_start), orphan=1);">
+
+                <div metal:use-macro="context/batch_macros/macros/navigation" />
+                <dl id="db_results">
+                <tal:results repeat="result  batch">
+                    <tal:entry define="provider_helper here/@@provider_helper;
+                                        result_url result/getURL;
+                                        url result/getRemoteUrl | result_url;
+                                        title result/Title|string:;
+                                        item_cas result/getCas|string:;
+                                        item_einecs result/getEinecs|string:;
+                                        item_remoteLanguage result/getRemoteLanguage|string:;
+                                        item_subject result/Subject | python:[];
+                                        item_enddate result/end;
+                                        item_startdate result/start;
+                                        item_creator result/Creator;
+                                        gc python:here.portal_languages.getNameForLanguageCode;
+                                        ">
+
+                        <metal:macro use-macro="here/oshmacros/macros/searchresults_seminars" />
+                    </tal:entry>
+                </tal:results>
+                </dl>
+                <div metal:use-macro="context/batch_macros/macros/navigation" />
+            </tal:get>
+        </span>
+
+        <!-- this adds the slc.linkcollection -->
+        <span tal:replace="structure provider:plone.belowcontentbody"></span>
+        <div class="visualClear"></div>
+    </div>
+</body>
+</html>

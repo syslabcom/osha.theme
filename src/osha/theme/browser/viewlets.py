@@ -1,4 +1,5 @@
 from cgi import escape
+from time import time
 
 from zope.component import getMultiAdapter
 
@@ -13,8 +14,10 @@ from zope.annotation.interfaces import IAnnotations, IAnnotatable
 
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
 
 from plone.app.i18n.locales.browser.selector import LanguageSelector
+from plone.app.layout.navigation.navtree import buildFolderTree
 from plone.app.layout.viewlets import common
 from plone.app.portlets.cache import get_language
 
@@ -22,10 +25,10 @@ from slc.subsite.interfaces import ISubsiteEnhanced
 from Products.RemoteProvider.content.interfaces import IProvider
 from Products.OSHContentLink.interfaces import IOSH_Link
 
-from osha.theme import config
-from osha.theme.browser.interfaces import IInlineContentViewlet
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
-from osha.theme.browser.topics_view import TopicsBrowserView
+from osha.theme.browser.interfaces import IInlineContentViewlet
+from osha.theme.config import *
+
 
 class OSHALanguageSelector(TranslatableLanguageSelector):
     """ Override LinguaPlone's language selector to provide our own template
@@ -187,25 +190,25 @@ class OSHANetworkchooser(common.ViewletBase):
         """ returns the sites from the European Network """
         return dict(title='German Network', 
                     id='deNetwork', 
-                    sites=config.GERMAN_NETWORK)
+                    sites=GERMAN_NETWORK)
 
     def nl(self):
         """ returns the sites from the European Network """
         return dict(title='Dutch Network', 
                     id='nlNetwork', 
-                    sites=config.DUTCH_NETWORK)
+                    sites=DUTCH_NETWORK)
         
     def eu(self):
         """ returns the sites from the European Network """
         return dict(title='European Network', 
                     id='euNetwork', 
-                    sites=config.EUROPEAN_NETWORK)
+                    sites=EUROPEAN_NETWORK)
     
     def int(self):
         """ returns the sites from the European Network """
         return dict(title='International Network', 
                     id='intNetwork', 
-                    sites=config.INTERNATIONAL_NETWORK)
+                    sites=INTERNATIONAL_NETWORK)
     
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),
@@ -437,7 +440,7 @@ class OSHAContentSwitcherViewlet(common.ViewletBase):
         if not IAnnotatable.providedBy(self.context):
             return ''
         ann = IAnnotations(self.context)
-        existing_uid = ann.get(config.EXISTING_SWITCHED_CONTENT_UID, '')
+        existing_uid = ann.get(EXISTING_SWITCHED_CONTENT_UID, '')
         existing_url = ''
         if existing_uid:
             res = portal_catalog(UID=existing_uid)
@@ -489,7 +492,7 @@ class InlineContentViewlet(common.ViewletBase):
         return False
 
     def getContentObject(self):
-        return getattr(aq_parent(aq_inner(self.context)), config.INLINE_CONTENT_VIEWLET_NAME, None)
+        return getattr(aq_parent(aq_inner(self.context)), INLINE_CONTENT_VIEWLET_NAME, None)
 
     def show(self):
         if not IInlineContentViewlet.providedBy(self.context):
@@ -498,6 +501,3 @@ class InlineContentViewlet(common.ViewletBase):
             return False
         return True
 
-
-class TopicViewHeading(common.ViewletBase, TopicsBrowserView):
-    render = ViewPageTemplateFile('templates/topic_view_heading_viewlet.pt')
