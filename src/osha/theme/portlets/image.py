@@ -226,11 +226,12 @@ class Renderer(base.Renderer):
             return self.flash_snippet()
 
         elif major == 'image':
-
             result = '<img src="%s"' % ob.absolute_url()
-            title = getattr(self, 'title', '')
+            if hasattr(self, 'title'):
+                title = self.title()
+            else:
+                title = ''
             result = '%s alt="%s title=%s"' % (result, title, title)
-
             width = True and self.data.width or "90%"
             result = '%s width="%s"' % (result, width)
 
