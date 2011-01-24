@@ -721,6 +721,42 @@ padding-left:15px;
 }
 
 
+/* Old linkcollection styles copied from slc.linkcollectio, pre-revamp.
+Reproduced here so that the revamp of slc.linkcollection does not affect the
+competitions linkcollection styles (tab-lke view)
+*/
+
+.template-competition-detail #content .navigationLinkBox {
+    border: 1px solid rgb(203, 209, 216); 
+    padding: 5px; 
+    background-color: rgb(247, 248, 249); 
+    margin-bottom: 10px;
+    
+}
+
+
+.template-competition-detail #content ul.navigationLinkBox {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+
+
+.template-competition-detail #content ul.navigationLinkBox li a {
+    background: none;
+}
+
+.template-competition-detail #content ul.navigationLinkBox li.current a {
+    background: none;
+    color: #4F79A1;
+    font-weight: bold;
+}
+
+
+
 
 
 /* </dtml-with> */
