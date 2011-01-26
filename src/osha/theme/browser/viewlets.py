@@ -1,5 +1,4 @@
 from cgi import escape
-from time import time
 
 from zope.component import getMultiAdapter
 
@@ -14,10 +13,8 @@ from zope.annotation.interfaces import IAnnotations, IAnnotatable
 
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
-from plone.memoize.instance import memoize
 
 from plone.app.i18n.locales.browser.selector import LanguageSelector
-from plone.app.layout.navigation.navtree import buildFolderTree
 from plone.app.layout.viewlets import common
 from plone.app.portlets.cache import get_language
 
