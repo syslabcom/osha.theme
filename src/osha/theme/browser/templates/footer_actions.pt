@@ -6,9 +6,13 @@
         <tal:document-actions
              condition="view/document_actions"
              repeat="action view/document_actions">
-            <li tal:attributes="id string:footeraction-${action/id}"
-                tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
-                            is_last repeat/action/end">
+            <li class="breadcrumbSeparator" 
+                tal:condition="not: repeat/action/start"
+                tal:attributes="id string:footeraction-separator-${action/id};
+                               style python:action.get('id') == 'print' and 'display:None' or ''">|</li>
+            <li tal:attributes="id string:footeraction-${action/id};
+                               style python:action.get('id') == 'print' and 'display:None' or ''"
+                tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');">
 
                 <img alt="" src=""
                      tal:attributes="src string:${view/site_url}/$icon;
@@ -20,9 +24,7 @@
                    i18n:translate=""
                    tal:content="title"
                    tal:attributes="href action/url;
-                                   title title;"
-                >Footer action</a>
-                <span class="breadcrumbSeparator" tal:condition="not: is_last">|</span>
+                                   title title;">Footer action</a>
             </li>
         </tal:document-actions>
 
@@ -77,4 +79,10 @@
         </tal:site-actions>
 
     </ul>
+        <script type="text/javascript"> 
+            var el = document.getElementById("footeraction-print");
+            el.style.display = '';
+            var el = document.getElementById("footeraction-separator-print");
+            el.style.display = '';
+        </script> 
 </div>
