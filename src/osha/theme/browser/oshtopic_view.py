@@ -4,7 +4,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from osha.theme import OSHAMessageFactory as _
-from Products.PlacelessTranslationService import getTranslationService
+from zope.i18n import translate
 
 class OSHTopicView(BrowserView):
     """View for displaying the results of a topic outside the current context within the context
@@ -82,5 +82,4 @@ class OSHTopicView(BrowserView):
         return self.getTopic().getCustomViewFields()
         
     def _t(self, msgid, domain='plone'):
-        pts = getTranslationService()
-        return pts.translate(domain=domain, msgid=msgid, context=self.context)
+        return translate(domain=domain, msgid=msgid, context=self.context)

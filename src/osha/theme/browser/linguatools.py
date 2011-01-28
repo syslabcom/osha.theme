@@ -21,7 +21,7 @@ from Products.PloneLanguageTool.LanguageTool import LanguageTool
 from p4a.subtyper.interfaces import ISubtyper
 from slc.subsite.root import getSubsiteRoot
 
-from Products.PlacelessTranslationService import getTranslationService
+from zope.i18n import translate
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
@@ -342,7 +342,6 @@ class LinguaToolsView(BrowserView):
     def setTranslatedTitle(self, label, domain):
         """ sets the title based on the translation availble for title in the language """
         def _setter(ob, *args, **kw):
-            translate = getTranslationService().translate
             label = kw['label']
             domain=kw['domain']
             lang = kw['lang']
@@ -353,7 +352,6 @@ class LinguaToolsView(BrowserView):
     def setTranslatedDescription(self, label, domain):
         """ sets the description based on the translation availble for title in the language """
         def _setter(ob, *args, **kw):
-            translate = getTranslationService().translate
             label = kw['label']
             domain=kw['domain']
             lang = kw['lang']

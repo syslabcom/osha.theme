@@ -12,7 +12,7 @@ from plone.memoize import ram
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import getSiteEncoding
 from Products.Five import BrowserView
-from Products.PlacelessTranslationService import getTranslationService
+from zope.i18n import translate
 from Products.validation import validation
 
 from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
@@ -157,7 +157,6 @@ class OSHA(BrowserView):
 
         lang = getToolByName(context,
             'portal_languages').getPreferredLanguage()
-        translate = getTranslationService().translate
         domain = "osha"
         SUBJECT = [translate(target_language=lang, msgid=s, default=s,
             context=context, domain=domain)
@@ -247,7 +246,6 @@ class OSHA(BrowserView):
         plt = getToolByName(self.context, 'portal_languages')
         lang = plt.getPreferredLanguage()
         usedSubjects = pc.uniqueValuesFor('Subject')
-        translate = getTranslationService().translate
         subjects = list()
         for s in usedSubjects:
             if s in IGNORE:
