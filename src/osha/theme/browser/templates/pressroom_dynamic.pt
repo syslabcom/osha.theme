@@ -38,7 +38,7 @@
                     <td class="big-target pressbox-articles-off"
                         onmouseover='jq(this).addClass("pressbox-articles-on");jq(this).removeClass("pressbox-articles-off");'
                         onmouseout='jq(this).removeClass("pressbox-articles-on");jq(this).addClass("pressbox-articles-off");'>
-                        <a href="dynamicpressroom-articles" i18n:translate="osha_label_pressbox_articles">Articles and<br> Interviews</a>
+                        <a href="dynamicpressroom-articles" i18n:translate="osha_label_pressbox_articles">Articles and<br/> Interviews</a>
                     </td>
                     <td class="big-target pressbox-photos-off"
                         onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");'
@@ -74,7 +74,7 @@
         <tr>
         <td tal:repeat="contact view/get_press_contacts">
             <div>
-                <strong tal:content="contact/Description">International press:</strong><br>
+                <strong tal:content="contact/Description">International press:</strong><br/>
                 <span tal:content="contact/Title"/>,<br/>
                 <tal:info content="contact/getJobtitle"/><br/><br/>
                 <tal:info content="contact/getOrganization"/><br/>

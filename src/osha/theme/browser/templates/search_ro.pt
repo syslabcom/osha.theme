@@ -53,7 +53,7 @@
             </a>
 
 
-           <br>
+           <br/>
             <span tal:define="descr result/Description" 
                   tal:condition="python:result.getEROTarget_group == 'Summary' and descr!=''">
               <div tal:content="structure descr" 
@@ -65,7 +65,7 @@
         </tal:entry>
         </tal:results>
         </dl>
-        <br><br>
+        <br/><br/>
         <!-- Navigation -->
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 

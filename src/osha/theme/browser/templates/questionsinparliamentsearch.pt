@@ -35,7 +35,7 @@
           <p tal:content="structure intro"></p>
         </div>
     </span>
-        <br clear="all">
+        <br clear="all"/>
     
         <form tal:attributes="action template/id" method="get">
 
@@ -57,16 +57,16 @@
             </div>
 
 
-          <br clear="all" style="clear:both">
-          <input type="submit" value="Search" i18n:attributes="value">
+          <br clear="all" style="clear:both"/>
+          <input type="submit" value="Search" i18n:attributes="value"/>
           <input type="reset" value="Reset" i18n:attributes="value label_reset_form"
-              tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'">
+              tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'"/>
 
         </div>
         </form>
 
 
-        <br clear="all"><br>
+        <br clear="all"/><br/>
     </div>
 
 
@@ -122,7 +122,7 @@
         </tal:entry>
         </tal:results>
         </table>
-        <br><br>
+        <br/><br/>
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 
 

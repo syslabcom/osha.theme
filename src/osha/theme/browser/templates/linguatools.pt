@@ -14,8 +14,8 @@
             <dl>
                 <dt>You are currently working on: </dt>
                 <dd>
-                    Path: <span tal:replace="python:here.absolute_url(1)" /> <br>
-                    Title: <span tal:replace="here/Title" /><br>
+                    Path: <span tal:replace="python:here.absolute_url(1)" /> <br/>
+                    Title: <span tal:replace="here/Title" /><br/>
                     Language: <span tal:replace="here/Language" />
                 </dd>
                 <dt>Available Translations (those will be affected):</dt>
@@ -28,7 +28,7 @@
             <div tal:condition="view/result">
 
                 <h2>Results</h2>
-                <table id="report-table" tal:define="pl view/result" summary="Search & Replace results report">
+                <table id="report-table" tal:define="pl view/result" summary="Search &amp; Replace results report">
                     <tr>
                         <th>Message</th>
                     </tr>
@@ -56,10 +56,10 @@
                 <form method="get" 
                       tal:attributes="action string:${context/absolute_url}/${view/__name__}">
                 <legend>Delete an object from this folder</legend> 
-                <p>Delete an object from this folder. Specify the id of the object. If you want to delete an object which is called image_en.gif in the english branch and image_de.gif in the german branch, then specify image.gif and check the guess language box.
-                    <input type="text" size="60" name="id" value="id to delete"/><br>         
+                <p>Delete an object from this folder. Specify the id of the object. If you want to delete an object which is called image_en.gif in the english branch and image_de.gif in the german branch, then specify image.gif and check the guess language box.</p>
+                    <input type="text" size="60" name="id" value="id to delete"/><br/>         
                     <input type="checkbox" name="guessLanguage" value="guessLanguage"/>
-                        Guess Language (only for files/images where the translations are not linked!)<br>         
+                        Guess Language (only for files/images where the translations are not linked!)<br/>         
                     <input type="submit" class="context" name="form.button.deleter" value="delete all"/>
                 </form>
             </fieldset>
@@ -130,7 +130,7 @@
                 <form method="get" 
                       tal:attributes="action string:${context/absolute_url}/${view/__name__}">
                 <legend>Rename an object</legend> 
-                <p>Rename an object with the old id within this folder to new id.
+                <p>Rename an object with the old id within this folder to new id.</p>
                     <input type="text" size="20" name="oldid" value="Old ID"/>         
                     <input type="text" size="20" name="newid" value="New ID"/>         
                     <input type="submit" class="context" name="form.button.ChangeId" value="change Id"/>
@@ -156,7 +156,7 @@
                 <legend>Add a language Tool</legend> 
                 <p>This adds a custom language tool to the current folder. It will be a copy of the main one. 
                     Specify the languages you want to set on the new tool</p>
-                <select multiple size=5 name="languages">
+                <select multiple="multiple" size="5" name="languages">
                     <option tal:repeat="lang python:here.portal_languages.listAvailableLanguages()" 
                             tal:content="python:lang[1]" 
                             tal:attributes="value python:lang[0]" />
@@ -327,7 +327,7 @@
                 <legend>Fix Order</legend> 
                 <p>Change the order of the objects in the current container. Specify the object ids to reorder, one per line. 
                     The new order will be applied to all language versions.</p>
-                <textarea name="order" cols="20" rows="10"></textarea><br>
+                <textarea name="order" cols="20" rows="10"></textarea><br/>
                 <input type="submit" class="context" name="form.button.fixOrder" value="Fix order"/>
             </form>
             </fieldset>
@@ -338,7 +338,7 @@
                 <legend>Translate this object into the other languages</legend> 
                 <p>Translate the current object into the other languages. While translating, all specified attributes will be copied 
                     from the base object to the translations.</p>                    
-                <textarea name="attrs" cols="20" rows="5"></textarea><br>
+                <textarea name="attrs" cols="20" rows="5"></textarea><br/>
                 <input type="submit" class="context" name="form.button.translateThis" value="Translate this"/>
             </form>
             </fieldset>

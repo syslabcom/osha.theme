@@ -90,7 +90,7 @@
         </div>
     </form>
     
-    <br clear="all"><br>
+    <br clear="all"/><br/>
 
      <div tal:define="results view/results">        
         
@@ -105,6 +105,7 @@
         ><span i18n:name="number" 
         tal:omit-tag="" 
         tal:content="python:len(results)">234</span> items matching your search terms</span>
+        </span>
     </h2>
 
     <div tal:condition="not: results">

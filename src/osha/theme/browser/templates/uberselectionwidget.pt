@@ -23,8 +23,8 @@
   </fieldset>
 
  <p>The best way to find an object is by entering its relative path. This is the part of the URL between the domain name and a potentially present view name. Example: http://www.mysite.com/en/front-page/view -> relative path: /en/front-page<br/>
-    To search for objects by path, you have to use the 'path:' operator. That means you prefix the relative path with 'path:' (without the quotation marks) in the search field.<br>
-    Example: You want to link to a collection at http://www.mysite.com/en/theme/mycollection, then enter into the search field:<br>
+    To search for objects by path, you have to use the 'path:' operator. That means you prefix the relative path with 'path:' (without the quotation marks) in the search field.<br/>
+    Example: You want to link to a collection at http://www.mysite.com/en/theme/mycollection, then enter into the search field:<br/>
     "path:/en/theme/mycollection"<br/>
     A lot of pre-defined collections for all Categories can be found at <a href="http://osha.europa.eu/directory" target="_blank">http://osha.europa.eu/directory</a>. NOTE: this directory only applies to EU-OSHA; it is not applicable in FOP sites!<br/>
 Note: Searching by path works for all objects in the site, not just collections.

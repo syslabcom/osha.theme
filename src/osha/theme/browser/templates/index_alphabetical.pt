@@ -68,7 +68,7 @@
                         tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
                         <a href="" rel="nofollow"
                            tal:content="key_caption"
-                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
+                           tal:attributes="href string:${request/URL}?letter=${letter}&amp;term_id=${key_term_id};"/>
                     </li>
                     </tal:repeat>
                 </ul>                
@@ -100,7 +100,7 @@
         
 
             <div tal:condition="not:view/getTerm_id">
-                <hr>
+                <hr/>
                 <p>
                 <span i18n:translate="info_no_results">
                     Click a term to display the information.
@@ -140,7 +140,7 @@
                     <tal:block repeat="node term/childlist">
                     <li>
                        <a href="" 
-                          tal:attributes="href string:${context/absolute_url}/@@index_alphabetical?letter=${node/letter}&term_id=${node/id}">
+                          tal:attributes="href string:${context/absolute_url}/@@index_alphabetical?letter=${node/letter}&amp;term_id=${node/id}">
                           <span tal:replace="node/Title"/></a>
                          (<span tal:replace="node/numEntries"/>)
                     </li>      

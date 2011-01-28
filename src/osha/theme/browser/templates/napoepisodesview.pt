@@ -41,7 +41,7 @@
              
              <div style="float:left">
                 <h3 tal:content="episode/title" i18n:translate="" />
-                <span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br>
+                <span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br/>
                 <span i18n:translate="label_napo_download_episode_as">Download this episode as</span> 
 				<a tal:attributes="href episode/durlavi"><span i18n:translate="label_avi">AVI</span></a> 
                  <span i18n:translate="label_or">or</span> 

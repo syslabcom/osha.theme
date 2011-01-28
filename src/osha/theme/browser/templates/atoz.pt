@@ -47,7 +47,7 @@
             <span tal:repeat="alpha alphabet">
                 
                 <a href="" rel="nofollow"
-                   tal:attributes="href string:${request/URL}?Subject=${Subject}&letter=${alpha}"
+                   tal:attributes="href string:${request/URL}?Subject=${Subject}&amp;letter=${alpha}"
                    tal:condition="python:resultsByKeyword.get(alpha, None)">                
                     <strong style="font-size: larger" tal:content="alpha" />
                 </a>
@@ -79,7 +79,7 @@
                         tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
                         <a href="" rel="nofollow"
                            tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
-                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
+                           tal:attributes="href string:${request/URL}?letter=${letter}&amp;term_id=${key_term_id};"/>
                     </li>
                     </tal:repeat>
                 </ul>                
@@ -91,7 +91,7 @@
                         tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
                         <a href="" rel="nofollow"
                            tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
-                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
+                           tal:attributes="href string:${request/URL}?letter=${letter}&amp;term_id=${key_term_id};"/>
                     </li>
                     </tal:repeat>
                 </ul>                
@@ -103,7 +103,7 @@
                         tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
                         <a href="" rel="nofollow"
                            tal:content="python:'%s (%s)' %(key, len(resultsMap.get(key, [])) ) "
-                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
+                           tal:attributes="href string:${request/URL}?letter=${letter}&amp;term_id=${key_term_id};"/>
                     </li>
                     </tal:repeat>
                 </ul>                
@@ -113,7 +113,7 @@
             <div class="visualClear"></div>
 
             <div tal:condition="not:view/getTerm_id">
-                <hr>
+                <hr/>
                 <p>
                 <span i18n:translate="info_no_results">
                     Click a term to display the results.

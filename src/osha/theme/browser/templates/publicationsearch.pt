@@ -53,7 +53,7 @@
                   Select one of the following keywords to filter the publications. 
                   You can always remove the filter again by selecting the empty entry.
                 </div>
-                <select name="" multiple size="5"
+                <select name="" multiple="multiple" size="5"
                         tal:attributes="name string:Subject:list"
                         >
                   <option value=""

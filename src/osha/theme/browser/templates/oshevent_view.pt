@@ -23,7 +23,7 @@
             <div metal:define-macro="text-field-view"
                  id="parent-fieldname-text" class="stx"
                  tal:define="text view/getText|nothing"
-                 tal:condition="python:text and text.strip()!='' and not text=='<p></p>'"
+                 tal:condition="python:text and text.strip()!=''"
                  tal:attributes="class python:view.Format() in ('text/structured',
                                                        'text/x-rst', ) and 'stx' or 'plain'">
                 <div metal:define-slot="inside" tal:replace="structure text">The body</div>
