@@ -43,7 +43,7 @@
     </dd>
     <dd tal:condition="view/showRSS" class="portletItem"
         tal:define="explanation_link view/getRSSExplanationLink">
-        <a href="" tal:attributes="href view/getRSSLink"><img src="icon_rss_feed.gif"></a>
+        <a href="" tal:attributes="href view/getRSSLink"><img src="icon_rss_feed.gif"/></a>
         <span tal:condition="explanation_link">
             <a href="" tal:attributes="href explanation_link" i18n:translate="info_whatis_rss"
                 i18n:domain="osha">What is RSS?</a>

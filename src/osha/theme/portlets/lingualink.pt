@@ -41,7 +41,7 @@
                 </span>
                 <span tal:condition="not:repeat/lang/end" tal:omit-tag="">|</span>
              </span>
-             <hr>
+             <hr/>
             <p i18n:translate="portlet_create_lingualink">
                 Create 
                 <span i18n:name="createlink">

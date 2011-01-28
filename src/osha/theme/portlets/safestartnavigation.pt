@@ -5,7 +5,6 @@
             <li class="default"
 				tal:define="selectedClass view/root_item_class;
                 	rootIsPortal view/root_is_portal"
-				xtal:attributes="class selectedClass"
                 tal:condition="view/include_top">
                    <a tal:attributes="href root/absolute_url;
                                       title root/Description;
