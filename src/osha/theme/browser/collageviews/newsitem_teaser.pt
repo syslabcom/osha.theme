@@ -17,8 +17,7 @@
     </h2>
 
             <div class="newsImageContainer" style="width: 100px;"
-                 tal:condition="here/image_mini|nothing"
-                 xtal:on-error="nothing">
+                 tal:condition="here/image_mini|nothing">
                 <a href="#"
                    tal:attributes="href ga_url"
                    class="parent-fieldname-image">

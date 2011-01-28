@@ -83,9 +83,9 @@
              <div class="field">
                  <span tal:define="contact_url provider/getContact_url |nothing; email provider/getEmail | nothing" 
                        tal:condition="contact_url | email">
-                       <label i18n:translate="label_contact"> Contact:</label><br>
-                       <span tal:condition="email"><a rel="nofollow" tal:attributes="href string:mailto:${email}" tal:content="email"/><br></span>
-                       <span tal:condition="contact_url"><a rel="nofollow" tal:attributes="href string:${contact_url}" tal:content="contact_url"/><br></span>
+                       <label i18n:translate="label_contact"> Contact:</label><br/>
+                       <span tal:condition="email"><a rel="nofollow" tal:attributes="href string:mailto:${email}" tal:content="email"/><br/></span>
+                       <span tal:condition="contact_url"><a rel="nofollow" tal:attributes="href string:${contact_url}" tal:content="contact_url"/><br/></span>
                  </span>
              </div>
              
