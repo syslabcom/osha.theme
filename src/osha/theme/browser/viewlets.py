@@ -1,7 +1,7 @@
 from cgi import escape
 
 from zope.component import getMultiAdapter
-
+from zope.i18n import translate
 from Acquisition import aq_base, aq_inner, aq_parent
 
 from Products.CMFCore.utils import getToolByName
@@ -394,11 +394,10 @@ class TitleViewlet(common.TitleViewlet):
     """ overwritten from plone.app.layout """
 
     def render(self):
-        pts = getToolByName(self.context, 'translation_service')
         portal_title = self.portal_title()
-        portal_title = safe_unicode(pts.translate(portal_title, domain='osha'))
+        portal_title = safe_unicode(translate(safe_unicode(portal_title), domain='osha'))
         page_title = safe_unicode(self.page_title())
-        osha = safe_unicode(pts.translate('OSHA', domain='osha'))
+        osha = safe_unicode(translate('OSHA', domain='osha'))
         if page_title == portal_title:
             return u"<title>%s</title>" % (escape(portal_title))
         else:

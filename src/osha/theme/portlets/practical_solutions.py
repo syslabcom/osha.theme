@@ -5,7 +5,7 @@ import Acquisition
 from zope.formlib import form
 from zope import schema
 from zope.interface import implements
-
+from zope.i18n import translate
 from zope.app.form.browser import MultiCheckBoxWidget
 
 from plone.portlets.interfaces import IPortletDataProvider
@@ -215,7 +215,6 @@ class Renderer(base.Renderer):
         """
 
         context = self.context
-        trans_tool = getToolByName(context, "translation_service")
         lang_tool = getToolByName(context, "portal_languages")
         language = lang_tool.getPreferredLanguage()
         section_title_map = {}
@@ -224,12 +223,11 @@ class Renderer(base.Renderer):
             # convert "useful-links" to "heading_useful_links"
             msgid = "heading_%s" % section.replace("-", "_")
             section_title_map[section] = \
-                trans_tool.utranslate("osha",
-                                      msgid,
-                                      {},
-                                      context=context,
-                                      target_language=language,
-                                      default=section)
+                translate(domain="osha",
+                              msgid=msgid,
+                              context=context,
+                              target_language=language,
+                              default=section)
         return section_title_map
 
 def MultiCheckBoxWidgetFactory(field, request):

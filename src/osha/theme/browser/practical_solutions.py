@@ -1,4 +1,5 @@
 from Acquisition import aq_inner, aq_parent
+from zope.i18n import translate
 from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -117,17 +118,15 @@ class PracticalSolutionView(DBFilterView):
         context = self.context
         parent = aq_parent(aq_inner(context))
         section_id = parent.getId()
-        trans_tool = getToolByName(context, "translation_service")
         preflang = getToolByName(self.context,
                                  'portal_languages').getPreferredLanguage()
         # convert "useful-links" to "heading_useful_links"
         msgid = "heading_search_%s" % section_id.replace("-", "_")
-        heading  = trans_tool.utranslate("osha",
-                                         msgid,
-                                         {},
-                                         context=context,
-                                         target_language=preflang,
-                                         default=parent.Title())
+        heading  = translate(domain="osha",
+                                 msgid=msgid,
+                                 context=context,
+                                 target_language=preflang,
+                                 default=parent.Title())
         return heading
 
     def get_keyword(self):
@@ -154,14 +153,12 @@ class PracticalSolutionView(DBFilterView):
 
     def translate(self, msgid):
         context = self.context
-        trans_tool = getToolByName(context, "translation_service")
         preflang = getToolByName(self.context,
                                  'portal_languages').getPreferredLanguage()
-        return trans_tool.utranslate("osha",
-                                         msgid,
-                                         {},
-                                         context=context,
-                                         target_language=preflang)
+        return translate(domain="osha",
+                                     msgid=msgid,
+                                     context=context,
+                                     target_language=preflang)
 
     def search_types(self):
         """ Return a list of translated search types to select
