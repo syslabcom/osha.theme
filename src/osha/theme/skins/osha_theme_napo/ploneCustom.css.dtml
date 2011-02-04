@@ -99,8 +99,8 @@ z-index:5;
 
 #partners li {
 	display:inline;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left:6px;
+    margin-right:7px;
 }
 
 #bottompic {
