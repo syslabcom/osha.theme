@@ -10313,3 +10313,8 @@ msgstr "Prevention"
 
 msgid "economic_incentives"
 msgstr "Ekonomiski stimuli"
+
+####
+
+msgid "Our Events"
+msgstr "Mūsų renginiai"

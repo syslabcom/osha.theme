@@ -10331,3 +10331,7 @@ msgstr "Prevention"
 msgid "economic_incentives"
 msgstr "Majanduslikud stiimulid"
 
+####
+
+msgid "Our Events"
+msgstr "Meie üritused"

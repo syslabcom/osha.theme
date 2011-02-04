@@ -10372,3 +10372,8 @@ msgstr "Prevention"
 
 msgid "economic_incentives"
 msgstr "Ekonomiska incitament"
+
+####
+
+msgid "Our Events"
+msgstr "Våra evenemang"

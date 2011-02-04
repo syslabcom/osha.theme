@@ -10171,3 +10171,8 @@ msgstr "Invendig fare!"
 
 msgid "title_napo_episode_14_6"
 msgstr "Hvem gør hvad?"
+
+####
+
+msgid "Our Events"
+msgstr "Vores begivenheder"

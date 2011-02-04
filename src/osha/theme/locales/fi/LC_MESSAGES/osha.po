@@ -10356,3 +10356,8 @@ msgstr "Prevention"
 
 msgid "economic_incentives"
 msgstr "Taloudelliset kannustimet"
+
+####
+
+msgid "Our Events"
+msgstr "Tapahtumia"

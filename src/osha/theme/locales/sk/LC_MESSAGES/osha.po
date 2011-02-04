@@ -10324,3 +10324,8 @@ msgstr "Prevention"
 
 msgid "economic_incentives"
 msgstr "Hospodárske stimuly"
+
+####
+
+msgid "Our Events"
+msgstr "Naše podujatia"

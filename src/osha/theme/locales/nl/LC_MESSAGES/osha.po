@@ -10591,3 +10591,8 @@ msgstr "Prevention"
 
 msgid "economic_incentives"
 msgstr "Economische stimulansen"
+
+####
+
+msgid "Our Events"
+msgstr "Onze evenementen"

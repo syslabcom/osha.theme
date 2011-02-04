@@ -10311,3 +10311,8 @@ msgstr "Prevention"
 
 msgid "economic_incentives"
 msgstr "Inċentivi ekonomiċi"
+
+####
+
+msgid "Our Events"
+msgstr "L-Avvenimenti Taghna"

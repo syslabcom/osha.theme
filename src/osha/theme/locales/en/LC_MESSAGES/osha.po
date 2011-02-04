@@ -8193,3 +8193,8 @@ msgstr "Prevention"
 
 msgid "economic_incentives"
 msgstr "Economic incentives"
+
+####
+
+msgid "Our Events"
+msgstr "Our Events"

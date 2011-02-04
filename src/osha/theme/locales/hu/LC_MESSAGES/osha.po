@@ -10163,3 +10163,8 @@ msgstr "Belső veszély!"
 
 msgid "title_napo_episode_14_6"
 msgstr "Ki mit csinál?"
+
+####
+
+msgid "Our Events"
+msgstr "Eseményeink"

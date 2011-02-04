@@ -10332,3 +10332,8 @@ msgstr "Prevention"
 
 msgid "economic_incentives"
 msgstr "Οικονομικά κίνητρα"
+
+####
+
+msgid "Our Events"
+msgstr "Οι εκδηλώσεις μας"

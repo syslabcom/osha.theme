@@ -9745,3 +9745,7 @@ msgstr "Prevention"
 msgid "economic_incentives"
 msgstr "Stimulente economice"
 
+####
+
+msgid "Our Events"
+msgstr "Evenimentele noastre"
