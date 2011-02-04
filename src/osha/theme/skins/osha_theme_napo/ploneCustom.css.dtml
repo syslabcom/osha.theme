@@ -170,10 +170,6 @@ margin-left:10px;
 .documentFirstHeading {
 display:none;
 }
-/* Why is this none in the first place? Remove if clarified. (Alex)
-h3 {
-display:none;
-}
 */
 .boxfriends {
 width:100%;
