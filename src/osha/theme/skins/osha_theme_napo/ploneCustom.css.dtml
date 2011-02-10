@@ -47,7 +47,7 @@ text-decoration:underline;
 
 dl.portletNavigationTree {
   background:transparent url(/osha_theme_napo_images/menu.gif) no-repeat scroll 0 0;
-  height:500px;
+  height:600px;
   width:222px;
   border: 0px none transparent;
 }
@@ -277,6 +277,111 @@ margin:0 3em;
 	border-top:0px solid blue!important;
 	float:left;
 	width:330px;
+}
+
+
+
+
+/*** NAPO for teachers ***/
+
+.toolkit-item {
+    -moz-box-shadow: 3px 3px 4px #666;
+    -webkit-box-shadow: 3px 3px 4px #666;
+    box-shadow: 3px 3px 4px #666;
+     /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#666666')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#666666');
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background:transparent url(/osha_theme_napo_images/toolkit_background.jpg) no-repeat scroll right bottom;
+    height:130px;
+    margin:5px auto 15px;
+    width:500px;
+}
+
+.toolkit-item-innercircle {
+    background:transparent url(/osha_theme_napo_images/Arrows_gradient.gif) no-repeat scroll 10px 25px;
+    padding:5px 80px;
+}
+
+.toolkit-item-innercircle-1 {
+    padding:10px 0;
+}
+
+
+.toolkit-item-1 {
+    -moz-box-shadow: 3px 3px 4px #666;
+    -webkit-box-shadow: 3px 3px 4px #666;
+    box-shadow: 3px 3px 4px #666;
+     /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#666666')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#666666');
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background:transparent url(/osha_theme_napo_images/toolkit_background.jpg) no-repeat scroll right bottom;
+    margin:5px auto 15px;
+    width:500px;
+}
+
+.toolkit-lastitem {
+  background:transparent url(/osha_theme_napo_images/Arrow_blue.gif) no-repeat scroll 10px 25px;  
+  padding:5px 80px;
+}
+
+.toolkit-firstitem {
+  background:transparent url(/osha_theme_napo_images/Arrows_gradient.gif) no-repeat scroll 10px 25px;  
+  padding:5px 80px;
+}
+
+
+h2.liquid-item-horizontal {
+    color:white;
+    background: #1b957e url(/osha_theme_napo_images/arrowright.png) no-repeat scroll 99% 5px;
+    width:97%;
+    padding: 5px 10px 0px;
+    margin: 10px 0px;
+    height:25px;
+}
+
+h2.liquid-item-vertical {
+    color:white;
+    background: #1b957e url(/osha_theme_napo_images/arrowdown.png) no-repeat scroll 99% 5px;
+    width:97%;
+    padding: 5px 10px 0px;
+    margin: 10px 0px;
+    height:25px;
+}
+
+h2.liquid-item-horizontal a, h2.liquid-item-vertical a {
+    color:white;
+}
+
+button.pdf-download {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:transparent url(/osha_theme_napo_images/Download_button.gif) no-repeat scroll 0 0;
+    color:white;
+    font-size:14px;
+    height:39px;
+    padding-right:50px;
+    width:216px;
+}
+
+button.blue-button {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:transparent url(/osha_theme_napo_images/BlueButton.gif) no-repeat scroll 0 0;
+    color:white;
+    font-size:14px;
+    height:39px;
+    padding-right:50px;
+    width:216px;
 }
 
 
