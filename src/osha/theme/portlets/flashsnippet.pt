@@ -1,1 +1,0 @@
-<tal:flash replace="structure view/flashcode"></tal:flash>
