@@ -59,6 +59,7 @@ class IImagePortlet(IPortletDataProvider):
                                       u"you can also paste here the web address of "
                                       u"a Youtube video."),
                         required=False,
+                        default=u"",
                         )
     width = schema.TextLine(
                         title=_(u"Width"),
@@ -97,10 +98,10 @@ class Assignment(base.Assignment):
     width = '200'
     height = '60'
     i18n_domain = 'plone'
+    video_url = u""
 
     def __init__(self, 
                 header=u"", 
-                portlet_type=None,
                 video_url=u"",
                 image=None, 
                 url=u"", 
@@ -109,7 +110,6 @@ class Assignment(base.Assignment):
                 height='60', 
                 i18n_domain='plone'):
 
-        self.portlet_type = portlet_type
         self.video_url = video_url
         self.header = header
         self.image = image
@@ -372,7 +372,6 @@ class EditForm(base.EditForm):
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
     """
-
     form_fields = form.Fields(IImagePortlet)
     form_fields['image'].custom_widget = UberSelectionWidget
 
