@@ -1,13 +1,14 @@
 import logging
+from urlparse import urlparse
 from string import Template
 
 import Acquisition
 
+from zope import schema
 from zope.component import getMultiAdapter
 from zope.formlib import form
-from zope.interface import implements
-from zope import schema
 from zope.i18n import translate
+from zope.interface import implements
 
 from plone.app.portlets.portlets import base
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
@@ -34,9 +35,8 @@ class IImagePortlet(IPortletDataProvider):
                         required=True,
                         )
     image = schema.Choice(
-                        title=_(u"Image"),
-                        description=_(u"Locate the Image to show"),
-                        required=True,
+                        title=_(u"Please specify an image or flash file,"),
+                        required=False,
                         source=SearchableTextSourceBinder(
                             {'object_provides': [
                                             IImageContent.__identifier__,
@@ -45,19 +45,32 @@ class IImagePortlet(IPortletDataProvider):
                             default_query='path:'),
                         )
     url = schema.TextLine(
-                        title=_(u"URL"),
-                        description=_(u"URL around the image/flash"),
+                        title=_(u"and the web address which it should point to."),
+                        description=_(u"You can optionally, give an URL here."
+                                      u"The image will then be hyperlinked to "
+                                      u"that URL"),
+                        required=False,
+                        )
+    video_url = schema.TextLine(
+                        title=_(u"Alternatively, please give a YouTube video's web address"),
+                        description=_(u"Instead of choosing a specific Image "
+                                      u"or Flash object from the OSHA database "
+                                      u"and specifiying it above, "
+                                      u"you can also paste here the web address of "
+                                      u"a Youtube video."),
                         required=False,
                         )
     width = schema.TextLine(
                         title=_(u"Width"),
                         description=_(u"Enter display width"),
-                        required=False,
+                        default=u'250',
+                        required=True,
                         )
     height = schema.TextLine(
                         title=_(u"Height"),
                         description=_(u"Enter display height"),
-                        required=False,
+                        default=u'190',
+                        required=True,
                         )
     show_box = schema.Bool(
                         title=_(u"Display box?"),
@@ -85,9 +98,19 @@ class Assignment(base.Assignment):
     height = '60'
     i18n_domain = 'plone'
 
-    def __init__(self, header=u"", image=None, url=u"", show_box=False,
-                width='200', height='60', i18n_domain='plone'):
+    def __init__(self, 
+                header=u"", 
+                portlet_type=None,
+                video_url=u"",
+                image=None, 
+                url=u"", 
+                show_box=False,
+                width='200', 
+                height='60', 
+                i18n_domain='plone'):
 
+        self.portlet_type = portlet_type
+        self.video_url = video_url
         self.header = header
         self.image = image
         self.url = url
@@ -107,7 +130,6 @@ class Assignment(base.Assignment):
 class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('image.pt')
-    flash_snippet = ViewPageTemplateFile('flashsnippet.pt')
 
     def _render_cachekey(method, self):
         preflang = getToolByName(self.context,
@@ -116,7 +138,8 @@ class Renderer(base.Renderer):
         modified = self.get_object() and self.get_object().modified() or ''
         header = self.title()
         path = self.data.image
-        return (header, modified, preflang, path)
+        video_url = self.data.get('video_url')
+        return (header, modified, preflang, path, video_url)
 
     @ram.cache(_render_cachekey)
     def render(self):
@@ -210,9 +233,15 @@ class Renderer(base.Renderer):
                 return imgob.getCanonical()
         return imgob
 
-    @memoize
     def tag(self):
         ob = self.get_object()
+        if not ob:
+            if self.data.video_url:
+                return self.video_code()
+            else:
+                raise AttributeError(u"Image/Flash portlet doesn't have "
+                                    u"an object or video url specified")
+
         if hasattr(Acquisition.aq_base(ob), 'content_type'):
             typ = ob.content_type
         else:
@@ -223,7 +252,7 @@ class Renderer(base.Renderer):
             major = ""
             minor = ""
         if typ == 'application/x-shockwave-flash':
-            return self.flash_snippet()
+            return self.flash_code()
 
         elif major == 'image':
             result = '<img src="%s"' % ob.absolute_url()
@@ -248,7 +277,34 @@ class Renderer(base.Renderer):
     def _data(self):
         return True
 
-    def flashcode(self):
+    def video_code(self):
+        """ Return the Youtube embed code
+        """
+        url = urlparse(self.data.video_url)
+        url = [i for i in url if i != '']
+        pars = url[-1].split('&')
+        pars_dict = dict([p.split('=') for p in pars])
+        if not pars_dict.has_key('v'):
+            return "Error: could not generate video embed code"
+        
+        embed = Template("""
+            <iframe title="$header" 
+                    width="$width" 
+                    height="$height"
+                    src="http://www.youtube.com/embed/$video_id" 
+                    frameborder="0"
+                    allowfullscreen>
+            </iframe>
+        """)
+        tal = embed.safe_substitute({
+            'header': self.data.header,
+            'video_id': pars_dict['v'],
+            'width': self.data.width,
+            'height': self.data.height,
+            })
+        return tal
+
+    def flash_code(self):
         """ For an explanation of swfobject.js (2.*), see:
             http://code.google.com/p/swfobject/wiki/documentation
         """
@@ -307,14 +363,9 @@ class AddForm(base.AddForm):
     form_fields['image'].custom_widget = UberSelectionWidget
 
     def create(self, data):
-        return Assignment(header=data.get('header', u""),
-                          image=data.get('image', u""),
-                          url=data.get('url', u""),
-                          show_box=data.get('show_box', True),
-                          width=data.get('width', u""),
-                          height=data.get('height', u""))
+        return Assignment(**data)
 
-
+        
 class EditForm(base.EditForm):
     """Portlet edit form.
 
@@ -327,3 +378,4 @@ class EditForm(base.EditForm):
 
     label = _(u"Edit Image/Flash Portlet")
     description = _(u"This portlet displays an image/flash.")
+
