@@ -28,6 +28,11 @@
         name="jquery.bigtarget.1.0.1.js"
         />
 
+    <browser:resource
+        file="resources/trackingscripts.js"
+        name="trackingscripts.js"
+        />
+
     <browser:resourceDirectory
         name="osha.theme.behaviour"
         directory="behaviour"
