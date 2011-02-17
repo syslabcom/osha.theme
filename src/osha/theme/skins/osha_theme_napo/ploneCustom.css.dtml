@@ -360,6 +360,22 @@ h2.liquid-item-horizontal a, h2.liquid-item-vertical a {
     color:white;
 }
 
+div.liquid-item {
+    width:500px;
+}
+
+.liquid-item p {
+    margin:10px 0;
+    padding:5px 10px 0;
+}
+
+p.horizontal-hidden {
+    display:none;
+}
+.liquid-item-vertical p {
+    display:block;
+}
+
 button.pdf-download {
     -moz-background-clip:border;
     -moz-background-inline-policy:continuous;
