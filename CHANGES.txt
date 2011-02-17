@@ -12,6 +12,7 @@ osha.theme Changelog
 - Copied all po files from Products.OSHATranslations to locales [thomasw]
 - Replaced all calls to getTranslationService.translate with zope.i18n.translate [thomasw]
 - Chameleon preparations of templates in browser/ and portlets/ [thomasw]
+- Added a jquery script for better PDF download tracking #2665 [thomasw]
 
 
 1.3.54 (2011-01-24)
