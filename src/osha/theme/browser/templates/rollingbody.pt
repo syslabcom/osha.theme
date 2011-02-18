@@ -8,10 +8,9 @@
     </div>
 
         <span tal:content="structure ob/Description"/>   
-    <div>
+    <div tal:condition="ob/getImage|nothing">
         <center>
-   <!--     <span tal:define="I ob/image" tal:replace="python:[I.absolute_url()]"/>  -->
-                       <img tal:replace="structure ob/image"/>     
+                <img tal:replace="structure ob/image"/>     
         </center>
     </div>
     <div align="right">

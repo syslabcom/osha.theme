@@ -11,7 +11,7 @@
             <span tal:content="ob/title">bla</span>        
         </div>
         <span tal:replace="structure ob/Description"/>  
-        <div  tal:condition="python:hasattr(ob, 'getImage') and ob.getImage().get_size()!=0">
+        <div  tal:condition="ob/getImage|nothing">
         <center>
             <img tal:attributes="src string:${ob/absolute_url}/image_thumb" />    
         </center>
