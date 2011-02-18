@@ -10,7 +10,7 @@
         <span tal:content="structure ob/Description"/>   
     <div tal:condition="ob/getImage|nothing">
         <center>
-                <img tal:replace="structure ob/image"/>     
+            <img tal:replace="structure ob/tag"/>     
         </center>
     </div>
     <div align="right">
