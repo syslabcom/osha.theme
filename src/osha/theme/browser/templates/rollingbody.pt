@@ -3,20 +3,20 @@
   <!--      <a tal:condition="view/url" 
            tal:attributes="href view/url" tal:content="structure view/tag"></a>        
         <span tal:condition="not:view/url" tal:replace="structure view/tag" />    -->
-	<div style="font-size: 1.2em;font-weight:bold">
+    <div style="font-size: 1.2em;font-weight:bold">
                 <span tal:content="ob/title">bla</span>        
-	</div>
+    </div>
 
         <span tal:content="structure ob/Description"/>   
-	<div>
-		<center>
-   <!--    	<span tal:define="I ob/image" tal:replace="python:[I.absolute_url()]"/>  -->
+    <div>
+        <center>
+   <!--     <span tal:define="I ob/image" tal:replace="python:[I.absolute_url()]"/>  -->
                        <img tal:replace="structure ob/image"/>     
-		</center>
-	</div>
-	<div align="right">
-		<a tal:attributes="href view/get_url">More ...</a>
-	</div>
+        </center>
+    </div>
+    <div align="right">
+        <a tal:attributes="href view/get_url">More ...</a>
+    </div>
 
     </tal:block>     
     </dd>
