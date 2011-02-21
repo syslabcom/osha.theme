@@ -338,7 +338,26 @@ margin:0 3em;
 }
 
 
-h2.liquid-item-horizontal {
+/* +++++++ expandable content +++++++
+ */
+.expandable {
+    margin: 1em 0;
+}
+
+.expandable .expandableHeader {
+    border-style: none;
+    background: scroll no-repeat 99% center #214890;
+    color: #fff;
+    padding: 2px 0.7ex;
+    margin: 0.5em 0 0;
+}
+h2.expandableHeader {
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.closed .expandableHeader {
     color:white;
     background: #1b957e url(/osha_theme_napo_images/arrowright.png) no-repeat scroll 99% 5px;
     width:97%;
@@ -347,7 +366,7 @@ h2.liquid-item-horizontal {
     height:25px;
 }
 
-h2.liquid-item-vertical {
+.opened .expandableHeader {
     color:white;
     background: #1b957e url(/osha_theme_napo_images/arrowdown.png) no-repeat scroll 99% 5px;
     width:97%;
@@ -355,25 +374,13 @@ h2.liquid-item-vertical {
     margin: 10px 0px;
     height:25px;
 }
-
-h2.liquid-item-horizontal a, h2.liquid-item-vertical a {
-    color:white;
-}
-
-div.liquid-item {
-    width:500px;
-}
-
-.liquid-item p {
+.expandable .expandableContent {
+    display: none;
     margin:10px 0;
     padding:5px 10px 0;
 }
-
-p.horizontal-hidden {
-    display:none;
-}
-.liquid-item-vertical p {
-    display:block;
+.expandableContent tr {
+    line-height: 1.5em;
 }
 
 button.pdf-download {
