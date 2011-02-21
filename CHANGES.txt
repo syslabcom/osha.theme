@@ -1,8 +1,8 @@
 osha.theme Changelog
 ====================
 
-1.4.0 (unreleased)
--------------------
+1.4.0 (2011-02-21)
+------------------
 
 - Removed the seminars_view template and browserview. We now use the templates
   in slc.seminarportal again. [jcbrand]
