@@ -10127,22 +10127,22 @@ msgid "description_napo_film_14"
 msgstr "<p>Prasti techninės priežiūros standartai yra pagrindinė nelaimingų atsitikimų ir profesinių ligų priežastis. Daugelis nelaimingų atsitikimų įvyksta atliekant techninės priežiūros darbus arba dėl jos stokos, arba jie yra prastos techninės priežiūros rezultatas.</p><p>Šio filmo pagrindinis veikėjas Napas vaizduojamas įvairiose situacijose: kartais jis yra techninę priežiūrą atliekantis darbuotojas, o kartais – darbdavys. Matome, kaip svarbu izoliuoti ar išjungti įrengimus, kai atliekama jų techninė priežiūra, kokie lemtingi gali būti slapti pavojai, darbas uždaroje patalpoje, kokia svarbi techninę priežiūrą atliekančių darbuotojų kompetencija, ypač jiems atliekant tikrinimo ir testavimo darbus.</p><p>Šis filmas tinka visiems sektoriams ir visiems darbuotojams, jo tikslas – skatinti gerą praktiką ir atkreipti dėmesį į saugios techninės priežiūros svarbą.</p>"
 
 msgid "title_napo_episode_14_1"
-msgstr "Atslēgšana"
+msgstr "Pasitikėk tik savimi!"
 
 msgid "title_napo_episode_14_2"
-msgstr "Slēptais apdraudējums"
+msgstr "Slapti pavojai"
 
 msgid "title_napo_episode_14_3"
-msgstr "Neimprovizēsim!"
+msgstr "Laikykis taisyklių"
 
 msgid "title_napo_episode_14_4"
-msgstr "Steigā"
+msgstr "Neskubėk ir būsi pirmas!"
 
 msgid "title_napo_episode_14_5"
-msgstr "Risks slēgtā telpā"
+msgstr "Uždara patalpa: atsargiai pavojus!"
 
 msgid "title_napo_episode_14_6"
-msgstr "Kā rīkoties?"
+msgstr "Kas ką daro?"
 
 #####
 # Alertservice
