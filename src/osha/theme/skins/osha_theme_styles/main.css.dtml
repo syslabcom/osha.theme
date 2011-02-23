@@ -440,6 +440,7 @@ h1 span#publication-date,
 
 /* Changes to satisfy request #2073 */
 
+/* outcommented again by Manuelas request as they want more discussion
 #teaserlisting h2.headline {
 -moz-background-clip:border !important;
 -moz-background-inline-policy:continuous !important;
@@ -482,7 +483,7 @@ margin:0 auto !important;
 padding-top:0 !important;
 width:95% !important;
 }
-
+*/
 
 /* Linklists */
 ul.linkList {
