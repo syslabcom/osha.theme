@@ -438,6 +438,50 @@ h1 span#publication-date,
     font-weight:normal;
 }
 
+/* Changes to satisfy request #2073 */
+
+#teaserlisting h2.headline {
+-moz-background-clip:border !important;
+-moz-background-inline-policy:continuous !important;
+-moz-background-origin:padding !important;
+background:#EFEFEF none repeat scroll 0 50% !important;
+border-bottom:3px solid #CDCDCD !important;
+color:#191919 !important;
+display:block !important;
+font-size:150% !important;
+font-weight:bold !important;
+line-height:normal !important;
+margin:0 0 1em !important;
+padding:0.5em 1em !important;
+position:static !important;
+z-index:1 !important;
+height:35px !important;
+}
+
+#teaserlisting img {
+vertical-align:middle !important;
+width:200px !important;
+margin:0px 15px 0px 0px!important;
+}
+
+#teaserlisting .description {
+display:inline !important;
+position:static !important;
+}
+
+#teaserlisting .description p {
+font-size:12px !important;
+font-weight:bold !important;
+margin-top:30px !important;
+}
+#teaserlisting {
+border-color:-moz-use-text-color !important;
+border-style:none !important;
+border-width:0 medium medium !important;
+margin:0 auto !important;
+padding-top:0 !important;
+width:95% !important;
+}
 
 
 /* Linklists */
