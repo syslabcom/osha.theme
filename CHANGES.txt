@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.1 (unreleased)
+1.4.1 (2011-02-23)
 ------------------
 
 - Changes to satisfy 2073, enlargement of teaserlisting on homepage, requested by Carsa
