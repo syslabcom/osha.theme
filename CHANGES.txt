@@ -4,6 +4,8 @@ osha.theme Changelog
 1.4.1 (unreleased)
 ------------------
 
+- Changes to satisfy 2073, enlargement of teaserlisting on homepage, requested by Carsa
+  [pecek, pilz]
 - Corrected LT translation of NAPO episode 14, provided by Peter Rimmer
   [thomasw]
 
