@@ -1,10 +1,11 @@
 osha.theme Changelog
 ====================
 
-1.4.3 (unreleased)
+1.4.3 (2011-02-24)
 ------------------
 
-- Nothing changed yet.
+- moved napo english texts from osha-hwi to osha
+  [pilz]
 
 
 1.4.2 (2011-02-23)
