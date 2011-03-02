@@ -9042,10 +9042,10 @@ msgid "label_manage_events"
 msgstr " Tapahtumien hallinta"
 
 # FOP Portlets osa.fop
-# Default "Visit the main website"
+# Default "Further information"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.pt
 msgid "label_main_fop_website"
-msgstr "Vieraile pääsivustolla"
+msgstr "Asiasta tarkemmin"
 
 # Default "Belgian Focal point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py

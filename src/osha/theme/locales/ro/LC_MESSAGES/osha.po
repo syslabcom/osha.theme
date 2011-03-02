@@ -8386,8 +8386,9 @@ msgid "label_manage_events"
 msgstr " Gestionare evenimente"
 
 # FOP Portlets osa.fop
-# Default "Visit the main website"
+# Default "Further information"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.pt
+# Outdated!
 msgid "label_main_fop_website"
 msgstr "Vizitaţi situl web principal"
 

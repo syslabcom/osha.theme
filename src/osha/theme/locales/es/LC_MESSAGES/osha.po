@@ -8293,10 +8293,10 @@ msgid "heading_more_related_content"
 msgstr "Más contenidos relacionados"
 
 # FOP Portlets osa.fop
-# Default "Visit the main website"
+# Default "Further information"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.pt
 msgid "label_main_fop_website"
-msgstr "Visite el sitio web principal"
+msgstr "Información completa"
 
 # Default "Belgian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py

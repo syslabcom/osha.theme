@@ -8529,10 +8529,10 @@ msgid "label_manage_events"
 msgstr "Správa událostí"
 
 # FOP Portlets osa.fop
-# Default "Visit the main website"
+# Default "Further information"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.pt
 msgid "label_main_fop_website"
-msgstr "Navštivte hlavní internetovou stránku"
+msgstr "Další informace"
 
 # Default "Belgian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
