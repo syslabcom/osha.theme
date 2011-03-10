@@ -11,7 +11,7 @@
             tal:define="voc field/Vocabulary;
                         accessor python:field.getAccessor(here);
                         value python:voc and voc.getValue(str(accessor())) or accessor();
-                        images python:[x for x in here.objectValues() if (hasattr(x.aq_explicit, 'portal_type' and x.portal_type=='ImageAttachment'))]">
+                        images python:[x for x in here.objectValues('ImageAttachment')]">
 
     <tal:block condition="python:(test(not not accessor() and accessor() not in ('0', 'False'), 1, 0)) and images">
         <fieldset id="imagesBox">
