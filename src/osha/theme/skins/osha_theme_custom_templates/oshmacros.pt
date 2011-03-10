@@ -39,20 +39,20 @@
           <a tal:content="title"
              tal:attributes="href string:$result_url/view"
              rel="nofollow" />
-        </dt>
-        <dd>
         <span class="outdated-result" tal:condition="outdated">
-          <span tal:condition="exists:context/outdated_info">
+          <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
               <a href="." tal:attributes="href context/outdated_info/absolute_url">
                   <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
               </a>
               <span tal:replace="context/outdated_info/Title" />
           </span>
-          <span tal:condition="not:exists:context/outdated_info">
+          <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
             <img src="/++resource++outdated_mini.png" />
             Outdated
           </span>
         </span>
+        </dt>
+        <dd>
           <tal:publication_date>
             <em>
                 <span tal:condition="python: item_pubdate and item_pubdate.year() >= 1900"
