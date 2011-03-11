@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - In the javascript to track publication downloads, eliminate "http://osha.europa.eu" [thomasw]
 - FOP section: change "Visit the main website" to "Further information #2466 [thomasw]
+- Display outdated info in oshmacros and publications overview (overwritten for
+  that purpose) #1556 [thomasw]
 
 
 1.4.3 (2011-02-24)
