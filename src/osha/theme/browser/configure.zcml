@@ -532,6 +532,15 @@
         />
 
     <browser:page
+      name="publication-container.html"
+      for="slc.publications.interfaces.IPublicationContainerEnhanced"
+      permission="zope2.View"
+      template="templates/publication-container.pt"
+      class="slc.publications.browser.publication.PublicationContainerView"
+      layer=".interfaces.IThemeSpecific"
+      />
+
+    <browser:page
         for="*"
         name="questions-in-parliament-search"
         class=".publications.QuestionsInParliamentSearchView"
