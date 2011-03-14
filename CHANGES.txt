@@ -1,11 +1,10 @@
 osha.theme Changelog
 ====================
 
-1.4.5 (unreleased)
+1.4.5 (2011-03-14)
 ------------------
 
-- Nothing changed yet.
-
+- NAPO translation changes #2747 [thomasw] 
 
 1.4.4 (2011-03-14)
 ------------------
