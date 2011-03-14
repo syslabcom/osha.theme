@@ -10319,19 +10319,19 @@ msgid "description_napo_film_7"
 msgstr "Le film est destiné à sensibiliser aux problèmes rencontrés par les jeunes lorsqu’ils intègrent un nouveau poste ou un nouvel environnement de travail. Napo représente un excellent moyen d’atteindre un public jeune, notamment les jeunes en situation préprofessionnelle ou professionnelle. Le film s’adresse également à tous les nouveaux actifs qui entrent sur le marché du travail, y compris les travailleurs migrants et temporaires. Onze scènes typiques illustrent les premiers pas des jeunes dans le monde du travail."
 
 msgid "title_napo_film_8"
-msgstr "NAPO DANS... ALLÉGEZ LA CHARGE!"
+msgstr "Napo dans... Allégez la charge !"
 
 msgid "description_napo_film_8"
 msgstr "Les troubles musculo-squelettiques (TMS) représentent la maladie professionnelle la plus courante en Europe et touchent plusieurs millions de travailleurs. Pas moins de 90 % d'Européens souffriront, au moins une fois dans leur vie, de maux de dos, de douleurs au niveau des membres supérieurs et de troubles musculo-squelettiques dus à une activité répétée.<br/><br/>Le film «Allégez la charge» met en avant une démarche de gestion intégrée des TMS et insiste sur la nécessité de traiter la question de la «charge globale pesant sur le corps», qui englobe non seulement la charge portée et déplacée par un travailleur, mais aussi toutes les tensions et tous les stress subis, les facteurs environnementaux tels que le froid et le rythme imposé pour la réalisation de la tâche.<br/><br/>Le film met en scène Napo dans différentes situations de travail pouvant s’appliquer à tous, y compris aux travailleurs migrants et temporaires. Onze scènes illustrent des cas typiques rencontrés en entreprise."
 
 msgid "title_napo_film_9" 
-msgstr "Napo dans “Echec au risque”"
+msgstr "Napo dans... Echec au risque"
 
 msgid "description_napo_film_9"
 msgstr "L’évaluation des risques est le thème de la campagne européenne de 2008/09. «Échec au risque» est un film sur les dangers et les risques au travail, et porte sur la nécessité de procéder à une évaluation des risques et d’agir sur ses conclusions pour rendre les lieux de travail plus sûrs et plus sains. Il traite des dangers et de certains des risques les plus courants sur le lieu de travail, et de la nécessité qu’il y a de «s’arrêter, penser et agir» pour réduire le nombre d’accidents sur le lieu de travail et l’incidence des maladies professionnelles. Il doit servir d’outil de formation pour l’introduction à l’évaluation des risques et aux concepts de danger et de risque."
 
 msgid "title_napo_film_11"
-msgstr "Napo dans: “Sécurité sur… et en dehors du lieu de travail”"
+msgstr "Napo dans : La sécurité... pendant les loisirs, aussi !"
 
 msgid "description_napo_film_11"
 msgstr "<p>Le film raconte l'histoire de Napo, un ouvrier modèle. Cependant, après le travail, il ignore les risques et règles dans différentes situations. De ce fait, Napo évite de justesse de nombreux accidents et il est finalement victime d'une blessure sportive qui le mène à l'hôpital. Les situations de loisirs comprennent la conduite de véhicule, le foyer, le mode de vie, les activités sociales et sportives. Un petit quiz peut être téléchargé à partir du site web (également disponible en DVD) et peut être utilisé pour présenter un certain nombre de règles au public.</p><p>Ce film de Napo vise avant tout les employés d'une société. Il est censé constituer un outil pour aborder le thème de la sécurité dans le cadre des loisirs. Cependant, le film convient également à la formation de la direction à la gestion des absences.</p>"
@@ -10397,7 +10397,7 @@ msgstr "<p>Ce film attire l'attention sur les dangers qu'implique l'exposition d
 
 # ---------- New Napo Film Number 14   Safe Maintenance 
 msgid "title_napo_film_14"
-msgstr "Napo dans... La maintenance n’est pas un jeu d’enfant"
+msgstr "Napo dans... Attention Maintenance !"
 
 msgid "description_napo_film_14"
 msgstr "<p>L’absence de normes de maintenance adéquates constitue une des principales causes des accidents et maladies professionnelles. De nombreux accidents se produisent au cours des travaux de maintenance, par manque de maintenance ou encore en raison de la mauvaise qualité de la maintenance.</p><p>Ce film montre Napo dans diverses situations: quelquefois, il est chargé de la maintenance, d’autres fois, il est un employé. Nous comprenons l’importance d’isoler ou de «tout couper» pendant les travaux de maintenance sur une machine, les problèmes des «risques cachés» ou des travaux menés dans des espaces réduits, ainsi que l’importance de faire appel à des personnes compétentes pour réaliser les travaux de maintenance, en particulier les inspections et les essais.</p><p>Ce film, qui convient aux employés de tous secteurs et de tous niveaux, cherche à promouvoir les bonnes pratiques et à attirer l’attention sur l’importance d’une maintenance réalisée en toute sécurité.</p>"
