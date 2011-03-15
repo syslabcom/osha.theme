@@ -63,7 +63,9 @@ class NewsMapView(BaseView):
             catalog = catalog.getZCatalog()
         portal_url = getToolByName(self.context, 'portal_url')
             
-        query = Eq('Language', 'en') & Eq('review_state', 'published') & In('portal_type', ['News Item', 'PressRelease'])
+        query = Eq('Language', 'en') & Eq('review_state', 'published') \
+            & In('portal_type', ['News Item', 'PressRelease']) \
+            & ~Eq('outdated', True)
         paths = In('path', ['%s/en/teaser'%portal_path, '%s/en/press'%portal_path])
         query = query & paths
         
@@ -246,6 +248,8 @@ class SiteMapView(BaseView):
         for item in catalog.searchResults({'Language': 'all', 'review_state': 'published'}):
             # We only want to link them in the search form results
             if item.portal_type in ['Amendment', 'Modification', 'Note', 'Proposal', 'LinguaLink']:
+                continue
+            if item.outdated:
                 continue
             try:
                 lastmod = item.modified.ISO8601()
