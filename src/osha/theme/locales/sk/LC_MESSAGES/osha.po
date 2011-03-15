@@ -10304,6 +10304,9 @@ msgstr "Štatistiky"
 msgid "stress"
 msgstr "Stres"
 
+msgid "transport"
+msgstr "Doprava"
+
 msgid "young_people"
 msgstr "Mladí ľudia"
 

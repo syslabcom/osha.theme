@@ -10571,6 +10571,9 @@ msgstr "Statistieken"
 msgid "stress"
 msgstr "Stress"
 
+msgid "transport"
+msgstr "Vervoer"
+
 msgid "young_people"
 msgstr "Jonge mensen"
 

@@ -10323,6 +10323,9 @@ msgstr "Statistika"
 msgid "stress"
 msgstr "Stres"
 
+msgid "transport"
+msgstr "Promet"
+
 msgid "young_people"
 msgstr "Mladostniki"
 

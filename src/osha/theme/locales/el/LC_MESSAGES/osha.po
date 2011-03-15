@@ -10312,6 +10312,9 @@ msgstr "Στατιστικές"
 msgid "stress"
 msgstr "Άγχος"
 
+msgid "transport"
+msgstr "Μεταφορές"
+
 msgid "young_people"
 msgstr "Νέοι"
 

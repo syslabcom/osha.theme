@@ -10306,6 +10306,9 @@ msgstr "Statistika"
 msgid "stress"
 msgstr "Stresas"
 
+msgid "transport"
+msgstr "Transportas"
+
 msgid "young_people"
 msgstr "Jaunimas"
 

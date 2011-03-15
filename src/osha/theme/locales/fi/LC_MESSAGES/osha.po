@@ -10336,6 +10336,9 @@ msgstr "Tilastot"
 msgid "stress"
 msgstr "Stressi"
 
+msgid "transport"
+msgstr "Liikenne"
+
 msgid "young_people"
 msgstr "Nuoret"
 

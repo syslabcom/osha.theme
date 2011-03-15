@@ -10326,6 +10326,9 @@ msgstr "Statisztika"
 msgid "stress"
 msgstr "Stressz"
 
+msgid "transport"
+msgstr "Közlekedés"
+
 msgid "young_people"
 msgstr "Fiatalok"
 

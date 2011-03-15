@@ -9592,6 +9592,9 @@ msgstr "Estadísticas"
 msgid "stress"
 msgstr "Estrés"
 
+msgid "transport"
+msgstr "Transportes"
+
 msgid "young_people"
 msgstr "Jóvenes"
 

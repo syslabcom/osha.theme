@@ -10161,6 +10161,9 @@ msgstr "Dati statistici"
 msgid "stress"
 msgstr "Stress"
 
+msgid "transport"
+msgstr "Trasporti"
+
 msgid "young_people"
 msgstr "Giovani"
 

@@ -9768,6 +9768,9 @@ msgstr "Статистика"
 msgid "stress"
 msgstr "Стрес"
 
+msgid "transport"
+msgstr "Транспорт"
+
 msgid "young_people"
 msgstr "Млади хора"
 
