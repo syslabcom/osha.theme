@@ -1,6 +1,13 @@
 osha.theme Changelog
 ====================
 
+1.4.6 (2011-03-15)
+------------------
+
+- oshtopiv-view: bugfix for #2847, make sure taget_language argument is passed
+  to translate() [thomasw]
+- Added translations for "transport" #2848 [thomasw]
+
 1.4.5 (2011-03-14)
 ------------------
 
