@@ -7,6 +7,8 @@ osha.theme Changelog
 - oshtopiv-view: bugfix for #2847, make sure taget_language argument is passed
   to translate() [thomasw]
 - Added translations for "transport" #2848 [thomasw]
+- Don't show outdated (archived) content in the simepag / newsmap #1556
+  [thomasw]
 
 1.4.5 (2011-03-14)
 ------------------
