@@ -32,6 +32,7 @@ class OSHTopicView(BrowserView):
         
     def Title(self):
         topic = self.getTopic()
+        self.language = getToolByName(topic, 'portal_languages').getPreferredLanguage()
         query = topic.buildQuery()
         subject_vals = list()
         if 'Subject' in query.keys():
@@ -82,4 +83,5 @@ class OSHTopicView(BrowserView):
         return self.getTopic().getCustomViewFields()
         
     def _t(self, msgid, domain='plone'):
-        return translate(domain=domain, msgid=msgid, context=self.context)
+        return translate(domain=domain, msgid=msgid, context=self.context,
+            target_language=self.language)
