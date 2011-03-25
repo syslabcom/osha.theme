@@ -4,15 +4,16 @@ from types import *
 
 import Acquisition
 
-from zope.interface import implements
 from zope.component import getMultiAdapter
+from zope.i18n import translate
+from zope.interface import implements
 
 from plone.memoize import ram
 
+from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import getSiteEncoding
 from Products.Five import BrowserView
-from zope.i18n import translate
 from Products.validation import validation
 
 from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
@@ -125,10 +126,16 @@ class OSHA(BrowserView):
 
         meta['title'] = context.Title()
         meta['DC.title'] = context.Title()
-        meta['description'] = context.Description() or\
-            navigation_root.Description()
-        meta['DC.description'] = context.Description() or\
-            navigation_root.Description()
+
+        desc = None
+        if shasattr(context, "getField") and context.getField("seoDescription"):
+            desc = context.getField("seoDescription").get(context)
+
+        if not desc:
+            desc = context.Description() or navigation_root.Description()
+            
+        meta['description'] = desc
+        meta['DC.description'] = desc
 
         medium = {
                 "Image": "image",
