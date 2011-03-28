@@ -2104,3 +2104,9 @@ msgstr "Danger within!"
 
 msgid "title_napo_episode_14_6"
 msgstr "One, two, what to do?"
+
+
+# NB: this must be copied to osha.hw2010
+msgid "title_hw_campaign_portlet"
+msgstr "Healthy Workplaces Campaign"
+
