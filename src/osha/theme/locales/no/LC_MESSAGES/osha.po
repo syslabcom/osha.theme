@@ -823,6 +823,9 @@ msgstr "<p>This link is sent to you from ${portal_url} You are receiving this ma
 msgid "The OSH Network"
 msgstr "The OSH Network"
 
+msgid "Menu"
+msgstr "Menu"
+
 #. Added on Fri Dec 17 12:37:55 2004
 #: None
 msgid "Wealth of OSH information"
