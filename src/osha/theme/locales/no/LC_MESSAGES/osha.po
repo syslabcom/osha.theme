@@ -171,7 +171,10 @@ msgstr "Yes"
 #. tal:attributes="href string:$purl/search_form">
 #: OSHA/skins/osha/portlet_oshsearch.pt
 msgid "action_advanced_search"
-msgstr "Advanced search"
+msgstr "Avansert søk"
+
+msgid "Advanced Search"
+msgstr "Avansert søk"
 
 #. <TITLE i18n:translate="alertservice_notification_service">
 # # 1 more: ./OSHA/skins/osha/alert_notification_template.pt
@@ -938,7 +941,7 @@ msgid "txt_try_the"
 msgstr "Prøv disse:"
 
 msgid "Looking for something specific?"
-msgstr "Looking for something specific?"
+msgstr "Leter du etter noe spesielt?"
 
 #. <a href="" tal:attributes="href pub/absolute_url"
 #.    i18n:translate="download_full_publication">
@@ -1021,7 +1024,7 @@ msgid "Most visited"
 msgstr "Most visited"
 
 msgid "portlet_oshsearch_advanced"
-msgstr "Advanced Search"
+msgstr "Avansert søk"
 
 msgid "portlet_oshsearch_atoz"
 msgstr "A-Z Index"
