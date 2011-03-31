@@ -16,7 +16,6 @@
 </script>
       <script type="text/javascript" language="javascript">
       function displaycomp () {
-          jQuery('.fadercontrol').hide();
           jQuery('.older-competitions').fadeIn('slow');
       }</script>
 
@@ -32,7 +31,6 @@
       <metal:css fill-slot='css_slot'>
       <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8"
         tal:attributes="href string:$portal_url/lipstick.css"/>
-      <style type="text/css">.older-competitions {display:none;}</style>
       </metal:css>
 
 <body>
@@ -128,9 +126,6 @@
               </li>
             </ul>
 
-            <p class="fadercontrol" i18n:translate="label_load_older">
-              Load <a onclick="displaycomp()" href="javascript:return false;" i18n:name="link"><span i18n:translate="label_older_competitions">older competitions</span></a>.
-            </p>
             <tal:repeat define="oldercomp view/getOldCompetitions" repeat="year oldercomp/keys">
                 <h3 tal:content="year" class="older-competitions">
                     2009
