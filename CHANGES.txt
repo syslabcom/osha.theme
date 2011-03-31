@@ -4,7 +4,8 @@ osha.theme Changelog
 1.4.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Removed the "Load older competitions" feature on the competititons
+  overview page. Fixes #2229 (deroiste)
 
 
 1.4.7 (2011-03-31)
@@ -31,7 +32,7 @@ osha.theme Changelog
 1.4.5 (2011-03-14)
 ------------------
 
-- NAPO translation changes #2747 [thomasw] 
+- NAPO translation changes #2747 [thomasw]
 
 1.4.4 (2011-03-14)
 ------------------
@@ -101,7 +102,7 @@ osha.theme Changelog
 1.3.52 (2011-01-13)
 -------------------
 
-- Still trying to fix the 'behaviour' problem [jcbrand] 
+- Still trying to fix the 'behaviour' problem [jcbrand]
 
 
 1.3.51 (2011-01-12)
@@ -144,7 +145,7 @@ osha.theme Changelog
 
 - Portlet OSH-Events: If we're in the root (i.e. no in a subiste), and a valid
   pointer to a calendar exists, use its path as a query parameter [thomasw]
- 
+
 
 1.3.45 (2010-11-21)
 -------------------
@@ -152,9 +153,9 @@ osha.theme Changelog
 - Adding the publication date to the heading of News Items #1825
   [deroiste]
 - Don't show /oshnetwork events in the main events folder. #1861 [jcbrand]
-- Added translation support to the Image/Flash portlet #1851 [jcbrand] 
-- Added Flash fallback support to the Image/Flash portlet #1550 [jcbrand] 
-- Filtered news for each old SEP not having the news portlet #1192 [jcbrand] 
+- Added translation support to the Image/Flash portlet #1851 [jcbrand]
+- Added Flash fallback support to the Image/Flash portlet #1550 [jcbrand]
+- Filtered news for each old SEP not having the news portlet #1192 [jcbrand]
 
 
 1.3.44 (2010-11-05)
@@ -176,7 +177,7 @@ osha.theme Changelog
 - Added link to OSH Global Search into search portlet #2051 [thomasw]
 - Localised date format on seminars listing [thomasw]
 - Added language parameter to links to OSHMails on subscription
-  page [thomasw] 
+  page [thomasw]
 
 1.3.41 (2010-10-25)
 -------------------
@@ -193,7 +194,7 @@ osha.theme Changelog
 -------------------
 
 - Competitions view: make sure not to show the section folder under "more
-  competitions" [thomasw] 
+  competitions" [thomasw]
 - #1908 added two new translations for publication authors for Ignace
   [pilz]
 - re-added the missing javascripts to oshmail-view based on thomasw resource directory
@@ -210,7 +211,7 @@ osha.theme Changelog
 
 - oshtopic-view now returns a proper 400 if called without arguments
   [pilz]
-- Views and designs for the new "Competitions" section in lipstick design [thomasw] 
+- Views and designs for the new "Competitions" section in lipstick design [thomasw]
 
 1.3.37 (2010-10-17)
 -------------------
@@ -222,7 +223,7 @@ osha.theme Changelog
 1.3.36 (2010-10-17)
 -------------------
 
-- removed template compression to avoid unicode bug 
+- removed template compression to avoid unicode bug
   [pilz]
 - fixed stale batch parameter from oshtopic_view
   [pilz]
@@ -230,11 +231,11 @@ osha.theme Changelog
   [pilz]
 - added archive function to newsletter subscription view
   [pilz]
-  
+
 1.3.35 (2010-10-08)
 -------------------
 
-- Made Facebook Imagelink conditional 
+- Made Facebook Imagelink conditional
   [pilz]
 - Fixed ordering for oshmail previous issues
   [pilz]
@@ -283,7 +284,7 @@ osha.theme Changelog
 -------------------
 
 - Added i18n translation for title of publications-list #728 (thomasw)
-- added a link rel canonical to have a canonical url for GA #1194 
+- added a link rel canonical to have a canonical url for GA #1194
   [pilz]
 - fixed wrong nesting in topics-view
   [pilz]
@@ -375,7 +376,7 @@ osha.theme Changelog
 - Overriding text-only view for documents in Collage for the social media section #1063 (thomasw)
 - Re-enabled the commented batching in the teaser-view template, but only for the
   archive view #1245 (thomasw)
-- Add new macro for showing the seminars. Display start and end date instead of 
+- Add new macro for showing the seminars. Display start and end date instead of
   published and modified (jcbrand)
 - Adding two custom portlets for the new right hand column layout #1216 (deroiste)
 
@@ -449,7 +450,7 @@ osha.theme Changelog
 - Practical Solution portlet: Include Language Neutral results when
   "en" is selected. #766 (deroiste)
 - Practical solution search: ALWAYS include the neutral language! Neutral means
-  it is relevant in all languages (thomasw) 
+  it is relevant in all languages (thomasw)
 
 1.3.6 (2010-02-17)
 ------------------
@@ -597,7 +598,7 @@ osha.theme Changelog
 - Commented out FAQ from practical solutions portlet since there are
   no FAQs yet (deroiste)
 - Renamed OSHNetwork flags so that they will appear correctly
-  (deroiste) 
+  (deroiste)
 - Reverted CSS so that only images and flash in the left hand side
   which don't have a set height and width will be stretched via the
   template (deroiste)
@@ -669,7 +670,7 @@ osha.theme Changelog
 
 - Added new napo film  rels to #364 (pilz)
 - vastly extended the help text on how to search for collections by "path:", plus added a hard link to
-  http://osha.europa.eu/directory; ticket 396 (thomasw) 
+  http://osha.europa.eu/directory; ticket 396 (thomasw)
 
 1.2.42 (2009-10-25)
 -------------------
@@ -687,7 +688,7 @@ osha.theme Changelog
 1.2.40 (2009-10-25)
 -------------------
 
-- oshaview: fixed a bug introduced in revision 1835 that prevented any keyword from being 
+- oshaview: fixed a bug introduced in revision 1835 that prevented any keyword from being
   displayed in the HTML header;  Also, keywords from the Subject list are now properly translated (thomasw)
 - fixed accessibility problem where p must not appear within a span. This is due to the fact that the agency requires html rendering for descriptions. (pilz)
 - fixed additional CSS Bugs based on the Carsa report (pilz)
@@ -752,7 +753,7 @@ osha.theme Changelog
 -------------------
 
 - Added a new poperty to oshaprops-controlpanel: show_previous_events (thomasw)
-- Using new property show_previous_events in oshevents portlet to determine whether to 
+- Using new property show_previous_events in oshevents portlet to determine whether to
   display a link to previous events (thomasw)
 - Adjusted layout and added "more" link to the Practical solutions portlet: now
   feature complete (#376) (deroiste)
@@ -773,7 +774,7 @@ osha.theme Changelog
 - Added advanced search to Practical Solution (deroiste)
 - Added Publications to Practical Solutions portlet and adjusted ordering (deroiste)
 - Fixed some css issues on IE6 and IE7 Practical Solution(s) and Topic(s) (deroiste)
-- made Google search portlet smaller, ticket 387 (thomasw) 
+- made Google search portlet smaller, ticket 387 (thomasw)
 
 
 1.2.27 (2009-09-30)
@@ -813,7 +814,7 @@ osha.theme 1.2.23 (2009-09-28)
 - A weird issue with tar files and python 2.4 breaks 1.2.22 release.
   See here for more information: http://bugs.python.org/issue7011
   A workaround has been applied and a skin name has been changed.
-  Take care to rename that skin in your skin layers from 
+  Take care to rename that skin in your skin layers from
   osha_theme_custom_fckeditor to
   osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe (gerken)
 
@@ -826,7 +827,7 @@ osha.theme 1.2.21 (2009-09-15)
 ------------------------------
 
 - don't display PDF icons in the publications language box (slc.publications) (thomasw)
-- network members: Making sure the portlet handles the case when there is no 
+- network members: Making sure the portlet handles the case when there is no
   annotatedlinklist or it is empty. (deroiste)
 - Network members: Adding the National Flag to the view template (deroiste)
 
@@ -941,7 +942,7 @@ osha.theme 1.2.6 (2009-07-12)
 
   1) show for all subsites, regardless of URL / domain.
   2) possibility to add contact_intro into language root - text will be shown as intro above the form
-  3) If "Support email address" from the oshaprops of the subsite is set, it will be 
+  3) If "Support email address" from the oshaprops of the subsite is set, it will be
      used instead of the global email_from_address
 
 - also fixed workflow deleted status selection in the initial search request when opening the worklist (pilz)
@@ -963,9 +964,9 @@ osha.theme 1.2.3 (2009-06-25)
 
 - site update respects navigation root (pilz)
 - removed the alt tag from the flashsnippet to make it xhtml compliant (pilz)
-- changed newsitem_view, removed id=parent-fieldname-image as it occurred multiple times (pilz) 
+- changed newsitem_view, removed id=parent-fieldname-image as it occurred multiple times (pilz)
 - separated the footer actions in two separate uls (pilz)
-- overwriting searchbox portlet of slc.googlesearch to be able to 
+- overwriting searchbox portlet of slc.googlesearch to be able to
   use a translation in the osha domain (thomasw)
 
 osha.theme 1.2.2 (2009-06-23)
