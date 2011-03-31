@@ -1,11 +1,16 @@
 osha.theme Changelog
 ====================
 
-1.4.7 (unreleased)
+1.4.7 (2011-03-31)
 ------------------
 
-- fixed problem with attachmentmanager described in email from si fop
+- fixed problem with attachmentmanager described in email from SI FOP
   [pilz]
+- Fixed a $ / jQuery bug for behaviour [thomasw]
+- If an item has the seoDescription field, use that in the HTML metadata instead
+  of the regular Description #999 [jcbrand]
+- Preparation for translation to NO and IS: removed lots of old msgids from
+  osha.po [thomasw]
 
 
 1.4.6 (2011-03-15)
