@@ -1,4 +1,4 @@
-import Acquisition, urllib2
+import Acquisition
 from types import *
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -16,9 +16,7 @@ class OSHTopicView(BrowserView):
     def __call__(self):
         topicpath = self.request.get('tp', None)
         if topicpath is None:
-            return urllib2.HTTPError(self.request.URL, 
-                                    '400', 'Bad Request', 
-                                    {}, fp=None)
+            self.request.RESPONSE.badRequestError('tp')
         if topicpath.startswith('/') and not topicpath.startswith('/osha/portal'):
             topicpath = topicpath[1:]
         self.tp = topicpath
