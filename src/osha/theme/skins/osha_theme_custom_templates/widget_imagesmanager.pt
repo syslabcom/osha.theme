@@ -11,7 +11,8 @@
             tal:define="voc field/Vocabulary;
                         accessor python:field.getAccessor(here);
                         value python:voc and voc.getValue(str(accessor())) or accessor();
-                        images python:[x for x in here.objectValues('ImageAttachment')]">
+                        images python:[x for x in here.objectValues('ImageAttachment')];
+                        getInfoFor python:here.portal_workflow.getInfoFor;">
 
     <tal:block condition="python:(test(not not accessor() and accessor() not in ('0', 'False'), 1, 0)) and images">
         <fieldset id="imagesBox">
@@ -23,7 +24,7 @@
                                 item_type_class python:'contenttype-' + putils.normalizeString(item_type);
                                 item_wf_state item/review_state | python:getInfoFor(item, 'review_state', '');
                                 item_wf_state_class python:'state-' + putils.normalizeString(item_wf_state);
-                                item_url item/getURL;">
+                                item_url item/getURL | item/absolute_url">
                     <span tal:attributes="class item_type_class">
                         <a href="" class="visualIconPadding"
                            tal:attributes="href item_url;
