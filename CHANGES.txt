@@ -6,6 +6,10 @@ osha.theme Changelog
 
 - Removed the "Load older competitions" feature on the competititons
   overview page. Fixes #2229 (deroiste)
+- fixed problem with image-attachment manager decribed in email from SI FOP
+  and NL FOP [thomasw]
+- oshtopic-view: return a proper HTTP status 400 when required parameter
+  is missing [thomasw]
 
 
 1.4.7 (2011-03-31)
