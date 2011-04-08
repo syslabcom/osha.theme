@@ -40,7 +40,7 @@
 
               <table id="eventDetailsTable" summary="event information">
                 <tr>
-                  <th i18n:translate="label_event_location">Location</th>
+                  <td class="label" i18n:translate="label_event_location">Location</td>
                   <td>
                     <tal:cond condition="here/getLocation">
                       <metal:field use-macro="python:here.widget('location', mode='view')">
@@ -48,17 +48,20 @@
                       </metal:field>
                     </tal:cond>
                   </td>
-                  <span tal:condition="here/contact_name">
-                    <th i18n:translate="label_contact_name">Contact Name</th>
-                    <td>
-                      <metal:field use-macro="python:here.widget('contactName', mode='view')">
-                        Contact Name
-                      </metal:field>
-                    </td>
-                  </span>
+                  <tal:contact-name define="contact_name here/contact_name">
+                    <tal:has-contact-name condition="contact_name">
+                      <td class="label" i18n:translate="label_contact_name">Contact Name</td>
+                      <td>
+                        <metal:field use-macro="python:here.widget('contactName', mode='view')">
+                          Contact Name
+                        </metal:field>
+                      </td>
+                    </tal:has-contact-name>
+                    <td tal:condition="not:contact_name" colspan="2"/>
+                  </tal:contact-name>
                 </tr>
                 <tr>
-                  <th i18n:translate="heading_add_to_calendar">Add event to calendar</th>
+                  <td class="label" i18n:translate="heading_add_to_calendar">Add event to calendar</td>
                   <td>
                     <a href="#"
                        tal:attributes="href string:$here_url/vcs_view"
@@ -67,18 +70,20 @@
                       <img tal:replace="structure here/icon_export_vcal.png" src="" alt="" />
                     <span i18n:translate="label_add_to_vcal">vCal</span></a>
                   </td>
-                  <tal:block define="contact_email here/contact_email"
-                             condition="here/contact_email">
-                    <th i18n:translate="contact_email">Contact Email</th>
-                    <td class="email">
-                      <a tal:content="structure python: here.spamProtect(contact_email)"
-                         id="parent-fieldname-contactEmail"
-                         />
-                    </td>
-                  </tal:block>
+                  <tal:contact-email define="contact_email here/contact_email">
+                    <tal:has-contact-email condition="contact_email">
+                      <td class="label" i18n:translate="contact_email">Contact Email</td>
+                      <td class="email">
+                        <a tal:content="structure python: here.spamProtect(contact_email)"
+                           id="parent-fieldname-contactEmail"
+                           />
+                      </td>
+                    </tal:has-contact-email>
+                    <td tal:condition="not:contact_email" colspan="2"/>
+                  </tal:contact-email>
                 </tr>
-                <tr class="lastrow">
-                  <th></th>
+                <tr>
+                  <td></td>
                   <td>
                     <a href="#"
                        tal:attributes="href string:$here_url/ics_view"
@@ -87,17 +92,20 @@
                       <img tal:replace="structure here/icon_export_ical.png" src="" alt="" />
                     <span i18n:translate="label_add_to_ical">iCal</span></a>
                   </td>
-                  <span tal:condition="here/contact_phone">
-                    <th id="t6" i18n:translate="label_contact_phone">Contact Phone</th>
-                    <td headers="t6" class="tel">
-                      <metal:field use-macro="python:here.widget('contactPhone', mode='view')">
-                        Phone number
-                      </metal:field>
-                    </td>
-                  </span>
+                  <tal:contact-phone define="contact_phone here/contact_phone">
+                    <span tal:condition="contact_phone">
+                      <td class="label" id="t6" i18n:translate="label_contact_phone">Contact Phone</td>
+                      <td headers="t6" class="tel">
+                        <metal:field use-macro="python:here.widget('contactPhone', mode='view')">
+                          Phone number
+                        </metal:field>
+                      </td>
+                    </span>
+                    <td tal:condition="not:contact_phone" colspan="2"/>
+                  </tal:contact-phone>
                 </tr>
                 <tr>
-                  <th i18n:translate="label_start_date" i18n:domain="osha">Start Date</th>
+                  <td class="label" i18n:translate="label_start_date" i18n:domain="osha">Start Date</td>
                   <td>
                     <span metal:define-macro="startdate-field-view"
                           class="dtstart"
@@ -112,7 +120,7 @@
                                          long_format=1)">Start Date Time</span>
                     </span>
                   </td>
-                  <th i18n:translate="label_end_date" i18n:domain="osha">End Date</th>
+                  <td class="label" i18n:translate="label_end_date" i18n:domain="osha">End Date</td>
                   <td>
                     <span metal:define-macro="enddate-field-view"
                           class="dtend"
@@ -129,17 +137,23 @@
                   </td>
                 </tr>
 
+                <tr tal:condition="here/dateToBeConfirmed">
+                  <td colspan="4" i18n:translate="label_date_to_be_confirmed" i18n:domain="osha">
+                  Date to be confirmed</td>
+                </tr>
+
                 <tr>
-                  <th valign="top">Category</th>
+                  <td class="label" valign="top">Category</td>
                   <td><span tal:repeat="category here/Subject">
                     <span i18n:translate="" i18n:domain="osha"><span tal:replace="category"></span></span><span
                     tal:condition="not:repeat/category/end">, </span>
                   </span>
                   </td>
+                  <td colspan="2"/>
                 </tr>
 
                 <tr tal:condition="here/getAttendees|nothing">
-                  <th i18n:translate="contact_attendees">Attendees</th>
+                  <td class="label" i18n:translate="contact_attendees">Attendees</td>
                   <td class="attendees">
                     <metal:field use-macro="python:here.widget('attendees', mode='view')">
                       Attendees
@@ -150,8 +164,6 @@
             </div>
 
           </fieldset>
-
-
 
 
           <metal:field use-macro="python:here.widget('text', mode='view')">
