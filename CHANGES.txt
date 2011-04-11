@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.8 (unreleased)
+1.4.8 (2011-04-11)
 ------------------
 
 - Removed the "Load older competitions" feature on the competititons
@@ -10,6 +10,9 @@ osha.theme Changelog
   and NL FOP [thomasw]
 - oshtopic-view: return a proper HTTP status 400 when required parameter
   is missing [thomasw]
+- Event-view: Replacing th elements with td.label and balancing table columns, adding a row
+  for the new dateToBeConfirmed value refs #2341
+
 
 
 1.4.7 (2011-03-31)
