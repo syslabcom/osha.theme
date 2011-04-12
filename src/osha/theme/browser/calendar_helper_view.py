@@ -19,5 +19,8 @@ class CalendarHelperView(object):
 
     def getDateToBeConfirmed(self, brain_event):
         "get the schemaextended dateToBeConfirmed"
-        event = brain_event["event"]._getEvent()
+        if brain_event.has_key("event"):
+            event = brain_event["event"]._getEvent()
+        elif hasattr(brain_event, "getObject"):
+            event = brain_event.getObject()
         return getEventDateToBeConfirmed(event)

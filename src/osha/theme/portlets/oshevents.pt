@@ -19,7 +19,8 @@
         tal:define="oddrow repeat/obj/odd;
                     plone_view context/@@plone;
                     getIcon nocall:plone_view/getIcon;
-                    item_icon python:getIcon(obj);"
+                    item_icon python:getIcon(obj);
+                    calendar_helper_view context/@@calendar-helper-view;"
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <a href="#" rel="nofollow"
            class="tile"
@@ -27,15 +28,22 @@
                            title obj/Description">
             <img tal:replace="structure item_icon/html_tag" />
             <span tal:replace="obj/pretty_title_or_id">
-             Some Event 
+             Some Event
             </span>
             <span class="portletItemDetails">
                 <tal:condition condition="obj/location">
-                    <tal:location content="obj/location">Location</tal:location>, 
+                    <tal:location content="obj/location">Location</tal:location>,
                 </tal:condition>
                 <tal:date content="python:toLocalizedTime(obj.start)">
                 May 5
                 </tal:date>
+                <span class="dateToBeConfirmed"
+                      tal:condition="python:calendar_helper_view.getDateToBeConfirmed(obj)">
+                  (<abbr title="Date to be confirmed"
+                         i18n:translate="abbr_date_to_be_confirmed"
+                         i18n:domain="osha"
+                         i18n:attributes="title label_date_to_be_confirmed;">TBC</abbr>)
+                </span>
             </span>
         </a>
     </dd>
