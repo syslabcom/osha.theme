@@ -4,13 +4,14 @@ osha.theme Changelog
 1.4.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added dateToBeConfirmed field to customised p4a.calendar views #2341
+  [deroiste]
 
 
 1.4.8 (2011-04-11)
 ------------------
 
-- Removed the "Load older competitions" feature on the competititons
+- Removed the "Load older competitions" feature on the competitions
   overview page. Fixes #2229 (deroiste)
 - fixed problem with image-attachment manager decribed in email from SI FOP
   and NL FOP [thomasw]
