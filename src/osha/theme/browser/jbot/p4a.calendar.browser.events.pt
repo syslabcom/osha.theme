@@ -64,7 +64,8 @@
               <span class="dateToBeConfirmed"
                     tal:define="calendar_helper_view context/@@calendar-helper-view;"
                     tal:condition="python:calendar_helper_view.getDateToBeConfirmed(event)">
-                (<abbr i18n:translate="abbr_date_to_be_confirmed"
+                (<abbr title="Date to be confirmed"
+                       i18n:translate="abbr_date_to_be_confirmed"
                        i18n:domain="osha"
                        i18n:attributes="title label_date_to_be_confirmed;">TBC</abbr>)
               </span>

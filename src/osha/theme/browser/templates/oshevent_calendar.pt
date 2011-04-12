@@ -138,9 +138,10 @@
                                        title event/description"></a>
                     <span class="dateToBeConfirmed"
                           tal:condition="event/dateToBeConfirmed">
-                      (<abbr i18n:translate="abbr_date_to_be_confirmed"
-                      i18n:domain="osha"
-                      i18n:attributes="title label_date_to_be_confirmed;">TBC</abbr>)
+                      (<abbr title="Date to be confirmed"
+                             i18n:translate="abbr_date_to_be_confirmed"
+                             i18n:domain="osha"
+                             i18n:attributes="title label_date_to_be_confirmed;">TBC</abbr>)
                     </span>
                   </dd>
                 </tal:block>
