@@ -469,7 +469,7 @@
 
     <browser:page
         name="calendar-helper-view"
-        for="p4a.calendar.interfaces.ICalendarEnhanced"
+        for="*"
         permission="zope2.View"
         class=".calendar_helper_view.CalendarHelperView"
         layer=".interfaces.IOSHAThemeLayer"
