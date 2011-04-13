@@ -473,6 +473,7 @@
         permission="zope2.View"
         class=".calendar_helper_view.CalendarHelperView"
         layer=".interfaces.IOSHAThemeLayer"
+        allowed_attributes="getDateToBeConfirmed"
         />
 
     <browser:page
