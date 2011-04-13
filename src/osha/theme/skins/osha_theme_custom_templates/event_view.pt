@@ -137,7 +137,7 @@
                   </td>
                 </tr>
 
-                <tr tal:condition="here/dateToBeConfirmed">
+                <tr tal:condition="context/dateToBeConfirmed|nothing">
                   <td colspan="4" i18n:translate="label_date_to_be_confirmed" i18n:domain="osha">
                   Date to be confirmed</td>
                 </tr>
