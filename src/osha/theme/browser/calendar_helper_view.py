@@ -5,8 +5,7 @@ p4a.calendar code
 
 
 def getEventDateToBeConfirmed(event):
-    if event.Schema().has_key("dateToBeConfirmed") \
-            and event.dateToBeConfirmed:
+    if hasattr(event, "dateToBeConfirmed"):
         return True
     else:
         return False
