@@ -1,11 +1,11 @@
 osha.theme Changelog
 ====================
 
-1.4.9 (unreleased)
+1.4.9 (2011-04-13)
 ------------------
 
-- Added dateToBeConfirmed field to customised p4a.calendar views #2341
-  [deroiste]
+- Reverting changes to the Event-view template as they depend on other
+  code [deroiste]
 
 
 1.4.8 (2011-04-11)

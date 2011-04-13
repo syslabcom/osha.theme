@@ -681,7 +681,7 @@ table.plain th {
 #eventDetailsTable {
 	border: 0;
 }
-#eventDetailsTable td.label {
+#eventDetailsTable th {
 	width: 20%;
 	text-align:left;
 }
@@ -1024,28 +1024,28 @@ dl.portletFollowUs div.boxing_styles_inner_content dd {
 ** oshnetwork member / fop view specific styles
 */
 
-.section-da-oshnetwork #portal-breadcrumbs,
-.section-de-oshnetwork #portal-breadcrumbs,
-.section-et-oshnetwork #portal-breadcrumbs,
-.section-en-oshnetwork #portal-breadcrumbs,
-.section-es-oshnetwork #portal-breadcrumbs,
-.section-fr-oshnetwork #portal-breadcrumbs,
-.section-it-oshnetwork #portal-breadcrumbs,
-.section-lv-oshnetwork #portal-breadcrumbs,
-.section-lt-oshnetwork #portal-breadcrumbs,
-.section-hu-oshnetwork #portal-breadcrumbs,
-.section-mt-oshnetwork #portal-breadcrumbs,
-.section-nl-oshnetwork #portal-breadcrumbs,
-.section-pl-oshnetwork #portal-breadcrumbs,
-.section-pt-oshnetwork #portal-breadcrumbs,
-.section-ro-oshnetwork #portal-breadcrumbs,
-.section-sk-oshnetwork #portal-breadcrumbs,
-.section-sl-oshnetwork #portal-breadcrumbs,
-.section-fi-oshnetwork #portal-breadcrumbs,
-.section-sv-oshnetwork #portal-breadcrumbs,
-.section-cs-oshnetwork #portal-breadcrumbs,
-.section-el-oshnetwork #portal-breadcrumbs,
-.section-bg-oshnetwork #portal-breadcrumbs,
+.section-da-oshnetwork #portal-breadcrumbs, 
+.section-de-oshnetwork #portal-breadcrumbs, 
+.section-et-oshnetwork #portal-breadcrumbs, 
+.section-en-oshnetwork #portal-breadcrumbs, 
+.section-es-oshnetwork #portal-breadcrumbs, 
+.section-fr-oshnetwork #portal-breadcrumbs, 
+.section-it-oshnetwork #portal-breadcrumbs, 
+.section-lv-oshnetwork #portal-breadcrumbs, 
+.section-lt-oshnetwork #portal-breadcrumbs, 
+.section-hu-oshnetwork #portal-breadcrumbs, 
+.section-mt-oshnetwork #portal-breadcrumbs, 
+.section-nl-oshnetwork #portal-breadcrumbs, 
+.section-pl-oshnetwork #portal-breadcrumbs, 
+.section-pt-oshnetwork #portal-breadcrumbs, 
+.section-ro-oshnetwork #portal-breadcrumbs, 
+.section-sk-oshnetwork #portal-breadcrumbs, 
+.section-sl-oshnetwork #portal-breadcrumbs, 
+.section-fi-oshnetwork #portal-breadcrumbs, 
+.section-sv-oshnetwork #portal-breadcrumbs, 
+.section-cs-oshnetwork #portal-breadcrumbs, 
+.section-el-oshnetwork #portal-breadcrumbs, 
+.section-bg-oshnetwork #portal-breadcrumbs, 
 body.template-oshnetwork-member-view .managePortletsLink,
 body.template-oshnetwork-member-view div#slc-linkcollection-linkbox,
 body.template-oshnetwork-member-view #portal-breadcrumbs span,

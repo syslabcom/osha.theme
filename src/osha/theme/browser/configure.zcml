@@ -120,7 +120,7 @@
         class=".pressroom.DynamicPressRoomConfigurationForm"
         permission="cmf.ModifyPortalContent"
         />
-
+    
     <!-- OSHA NapoFilmView-->
     <browser:page
         for="*"
@@ -277,7 +277,7 @@
         manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
         class=".viewlets.AddThisButtonViewlet"
         layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
+        permission="zope2.View" 
         />
 
     <!-- The portal header -->
@@ -465,14 +465,6 @@
         name="oshevent-view"
         class=".oshevent_view.OSHEventView"
         permission="zope2.View"
-        />
-
-    <browser:page
-        name="calendar-helper-view"
-        for="*"
-        permission="zope2.View"
-        class=".calendar_helper_view.CalendarHelperView"
-        layer=".interfaces.IOSHAThemeLayer"
         />
 
     <browser:page
@@ -807,13 +799,5 @@
         class=".viewlets.InlineContentViewlet"
         permission="zope2.View"
         />
-
-    <include package="z3c.jbot" file="meta.zcml" />
-
-    <browser:jbot
-        directory="jbot"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
-
 
 </configure>
