@@ -5,10 +5,7 @@ p4a.calendar code
 
 
 def getEventDateToBeConfirmed(event):
-    if hasattr(event, "dateToBeConfirmed"):
-        return True
-    else:
-        return False
+    return hasattr(event, "dateToBeConfirmed") and event.dateToBeConfirmed
 
 
 class CalendarHelperView(object):
