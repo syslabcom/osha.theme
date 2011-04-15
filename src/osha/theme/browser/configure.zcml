@@ -121,6 +121,14 @@
         permission="cmf.ModifyPortalContent"
         />
 
+    <!-- OSHA Custom Help Center / FAQ views -->
+    <browser:page
+        for="Products.PloneHelpCenter.interfaces.IHelpCenterContent"
+        name="osha_help_center_view"
+        class=".oshahelpcenter.OSHAHelpCenterView"
+        permission="zope2.View"
+        />
+
     <!-- OSHA NapoFilmView-->
     <browser:page
         for="*"

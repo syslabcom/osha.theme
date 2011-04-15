@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+  <body>
+
+    <div metal:fill-slot="main" i18n:domain="osha">
+
+      <a name="top"></a>
+      <h1 i18n:translate="headingfaq" class="documentFirstHeading"
+          i18n:domain="osha">FAQ</h1>
+
+      <a tal:repeat="subject view/get_subject_list"
+         tal:content="string:${subject/title} (${subject/count})"
+         tal:attributes="href string:${context/absolute_url}/${template/getId}?subcategory=${subject/key}">
+        Accident Prevention (64)
+      </a>
+
+
+    </div>
+
+  </body>
+
+</html>
+
