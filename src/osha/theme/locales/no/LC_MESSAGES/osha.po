@@ -1,5 +1,5 @@
 # Gettext Message File for osha
-# European Agency for Safety and Health at Work <webmaster@osha.europa.eu>, 2004-2008
+# European Agency for Safety and Health at Work <webmaster@osha.europa.eu>, 2004-2011
 msgid ""
 msgstr ""
 "Project-Id-Version: osha 3.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Preferred-Encodings: UTF-8\n"
 "X-Is-Fallback-For: \n"
-"Language-Name: Norks\n"
+"Language-Name: Norsk\n"
 
 msgid "title_agency"
 msgstr "Det europeiske<br />arbeidsmiljøorganet"
@@ -53,13 +53,13 @@ msgstr "Hold deg oppdatert med våre siste pressemeldinger og sjekk ut våre mul
 
 
 msgid "heading_ew2005_stopthatnoise"
-msgstr "STOP THAT NOISE!"
+msgstr "STOPP DET BRÅKET!"
 
 msgid "title_campaign_beinformed"
-msgstr "Be informed"
+msgstr "Hold deg informert"
 
 msgid "Calendar week view"
-msgstr "Calendar week view"
+msgstr "Kalenderuke-visning"
 
 #. <input class="standalone" i18n:attributes="value" name="form.button.Cancel"
 #. tabindex="" tal:attributes="tabindex tabindex/next;" type="submit"
@@ -75,20 +75,20 @@ msgstr "Calendar week view"
 #: elevateIT/skins/eIT_content/file_edit_form.cpt
 #: eITAlertService/skins/eITAlertService/alert_addform.cpt
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Avbryt"
 
 #. <input class="searchButton" i18n:attributes="value" id="searchButton"
 #. type="submit" value="Change"/>
 #: OSHA/skins/osha/global_languagebox.pt
 msgid "Change"
-msgstr "Change"
+msgstr "Endre"
 
 #. <input class="context" i18n:attributes="value" name="check" tabindex=""
 #. tal:attributes="tabindex tabindex/next;" type="submit" value="Check
 #. entry"/>
 #: elevateIT/skins/eIT_forms/mail_password_form.pt
 msgid "Check entry"
-msgstr "Check entry"
+msgstr "Kontroller inntastingen"
 
 #. <a href="" i18n:attributes="title" onclick="handleClick(event, 'show it');
 #. return false" onkeypress="handleClick(event, 'show it'); return true"
@@ -96,14 +96,14 @@ msgstr "Check entry"
 #. title="Click here to view our partner websites [opens popup window]">
 #: OSHA/skins/osha/portlet_oshnetwork.pt
 msgid "Click here to view our partner websites [opens popup window]"
-msgstr "Click here to view our partner websites [opens popup window]"
+msgstr "Klikk her for å se våre partneres nettsider [åpnes i eget vindu]"
 
 #. <input class="context" i18n:attributes="value" name="form.button.Complete"
 #. tal:condition="isActor" type="submit" value="Complete"/>
 #: elevateIT/skins/eIT_workflow/activity_view.cpt
 #: elevateIT/skins/eIT_workflow/simple_process_decide_form.cpt
 msgid "Complete"
-msgstr "Complete"
+msgstr "Fullført"
 
 #. <input class="context" i18n:attributes="value"
 #. name="object_delete_lang:method" tabindex="" tal:attributes="tabindex
@@ -112,24 +112,24 @@ msgstr "Complete"
 #: elevateIT/skins/eIT_content/topicdocument_criteria_form.cpt
 #: elevateIT/skins/eIT_topic/topic_subtopics_form.cpt
 msgid "Delete"
-msgstr "Delete"
+msgstr "Slett"
 
 #. <img alt="Agency logo" border="0" i18n:attributes="alt title"
 #. src="agency_portlet.gif" tal:attributes="src
 #. string:${here/portal_url}/img/agency_portlet.gif" title="European Agency
 #. for Safety and Health at Work"/>
 #: OSHA/skins/osha/portlet_oshainfo.pt
-msgid "European Agency for Safety and Health at Work"
-msgstr "European Agency for Safety and Health at Work"
+msgid "Det europeiske arbeidsmiljøorganet"
+msgstr "Det europeiske arbeidsmiljøorganet"
 
 msgid "Required"
-msgstr "Required"
+msgstr "Obligatorisk"
 
 msgid "Reset"
-msgstr "Reset"
+msgstr "Tilbakestill"
 
 msgid "Save"
-msgstr "Save"
+msgstr "Lagre"
 
 
 #. <input class="context" i18n:attributes="value" name="submit" tabindex=""
@@ -138,13 +138,13 @@ msgstr "Save"
 #: elevateIT/skins/eIT_forms/user_quicksearch_form.cpt
 #: eITDynoContent/skins/eIT_dynocontent/dynocontainer_search_form.cpt
 msgid "Search"
-msgstr "Search"
+msgstr "Søk"
 
 #. <link href="" i18n:attributes="title" rel="search" tal:attributes="href
 #. string:$portal_url/search_form" title="Search this site"/>
 #: eITNewsletterManager/skins/newsletter/newsletter_header.pt
 msgid "Search this site"
-msgstr "Search this site"
+msgstr "Søk på dette nettstedet"
 
 #. <span class="hiddenLabel" i18n:translate="Select">
 # # 5 more: ./elevateIT/skins/eIT_content/metadataelement_contents.pt,
@@ -156,16 +156,16 @@ msgstr "Search this site"
 #: elevateIT/skins/eIT_forms/user_quicksearch_form.cpt
 #: OSHA/skins/osha/keywordListing.pt
 msgid "Select"
-msgstr "Select"
+msgstr "Velg"
 
 msgid "Visit our OSH Network"
-msgstr "Visit our OSH Network"
+msgstr "Besøk vårt HMS-nettverk"
 
 msgid "Discover our European &amp; International Partners"
-msgstr "Discover our European &amp; International Partners"
+msgstr "Lær mer om våre europeiske og internasjonale partnere"
 
 msgid "Yes"
-msgstr "Yes"
+msgstr "Ja"
 
 #. <a href=" " i18n:domain="elevateIT" i18n:translate="action_advanced_search"
 #. tal:attributes="href string:$purl/search_form">
@@ -181,53 +181,53 @@ msgstr "Avansert søk"
 #: eITAlertService/skins/eITAlertService/alert_notification_template.pt
 #: OSHA/skins/osha/alert_notification_template.pt
 msgid "alertservice_notification_service"
-msgstr "Notification service"
+msgstr "Varslingstjeneste"
 
 #. <span i18n:translate="alertservice_onlyfirst_shown">
 # # 1 more: ./OSHA/skins/osha/alert_notification_template.pt
 #: eITAlertService/skins/eITAlertService/alert_notification_template.pt
 msgid "alertservice_onlyfirst_shown"
-msgstr "only the first ${number} are shown"
+msgstr "bare de første ${number} er vist"
 
 #. <span i18n:translate="alertservice_requested_info">
 #: eITAlertService/skins/eITAlertService/alert_notification_template.pt
 #: OSHA/skins/osha/alert_notification_template.pt
 msgid "alertservice_requested_info"
-msgstr "You have requested info by the following parameters"
+msgstr "Du har bedt om informasjon etter følgende parametre"
 
 #. <span i18n:translate="alertservice_results_found">
 # # 1 more: ./OSHA/skins/osha/alert_notification_template.pt
 #: eITAlertService/skins/eITAlertService/alert_notification_template.pt
 msgid "alertservice_results_found"
-msgstr "Results have been found"
+msgstr "Resultater er funnet"
 
 #. <h1 class="heading_alphabetical_index" i18n:translate="alphabetical_index">
 #: OSHA/skins/osha/index_alphabetical.pt
 msgid "alphabetical_index"
-msgstr "Alphabetical index"
+msgstr "Alfabetisk liste"
 
 #. <span i18n:translate="batch_x_items_matching_your_criteria">
 # # 1 more: ./plone_forms/search.pt
 #: elevateIT/skins/eIT_forms/search.pt OSHA/skins/osha/search.pt
 #: OSHA/skins/osha/search_members.cpt
 msgid "batch_x_items_matching_your_criteria"
-msgstr "${number} items match your criteria"
+msgstr "${number} treff oppfyller dine kriterier"
 
 
 #. <legend i18n:translate="box_about">
 #: elevateIT/skins/eIT_content/show_history.pt
 msgid "box_about"
-msgstr "About"
+msgstr "Om"
 
 #. <span i18n:translate="box_agency_fullname">
 #: OSHA/skins/osha/footer.pt
 msgid "box_agency_fullname"
-msgstr "European Agency for Safety and Health at Work"
+msgstr "Det europeiske arbeidsmiljøorganet"
 
 #. <label for="creator" i18n:translate="box_created_by">
 #: elevateIT/skins/eIT_content/show_history.pt
 msgid "box_created_by"
-msgstr "Created by"
+msgstr "Opprettet av"
 
 #. <label for="modification_date" i18n:translate="box_last_modified">
 #: elevateIT/skins/eIT_content/show_history.pt OSHA/skins/osha/footer.pt
@@ -237,7 +237,7 @@ msgstr "Sist endret"
 #. <span i18n:translate="box_oshmail_subscribe">
 #: OSHA/skins/osha/portlet_oshmail.pt
 msgid "box_oshmail_subscribe"
-msgstr "Abonnere på vårt <a href=\"http://osha.eu.int/oshmail/\">${newsletter}</a>"
+msgstr "Abonnere på vårt <a href=\"http://osha.europa.eu/en/news/oshmail/\">${newsletter}</a>"
 
 #. <span i18n:translate="box_oshmail_subscribers">
 #: OSHA/skins/osha/portlet_oshmail.pt
@@ -260,72 +260,69 @@ msgstr "Dette dokumentets URL"
 #. tabindex tabindex/next">
 #: eITAlertService/skins/eITAlertService/prefs_alert_member_form.cpt
 msgid "button_alert_addsearchquery"
-msgstr "Add new search query"
+msgstr "Legg til ny søketekst"
 
 #. <table cellpadding="0" cellspacing="0" class="calendarView"
 #. i18n:attributes="summary" summary="calendar day view" width="100%">
 #: eITCalendar/skins/eIT_calendar/calendar_day_view.pt
 msgid "calendar day view"
-msgstr "calendar day view"
+msgstr "kalenderdag-visning"
 
 #. <div i18n:translate="calender_hopefully" metal:use-
 #. macro="here/calendar_slot/macros/calendarDatePickerBox">
 #: eITNews/skins/eIT_news/newsarticle_edit_form.cpt
 msgid "calender_hopefully"
-msgstr "calendar date picker box"
+msgstr "boks for valg av kalenderdato"
 
 #. <span i18n:domain="elevateIT" i18n:translate="copyright">
 #: OSHA/skins/osha/footer.pt
 msgid "copyright"
-msgstr "Copyright 1998-${thisyear} European Agency for Safety and Health at Work"
+msgstr "Copyright 1998-${thisyear} Det europeiske arbeidsmiljøorganet"
 
 #. <span class="hiddenFloatLabel" i18n:domain="elevateIT"
 #. i18n:translate="day">
 # # 1 more: ./elevateIT/skins/eIT_prefs/slc_personalize_user_form.cpt
 #: elevateIT/skins/eIT_3rdParty/calendar/calendar_slot.pt
 msgid "day"
-msgstr "Day"
+msgstr "Dag"
 
 #. <span i18n:translate="days">
 #: eITAlertService/skins/eITAlertService/prefs_alert_member_form.cpt
 msgid "days"
-msgstr "days"
+msgstr "dager"
 
 #. <a href="" i18n:translate="delete" tal:attributes="href
 #. python:here.absolute_url()+'/manage_deleteMessages'+chr(38)+'IMAPName='+imapname+chr(38)+'IMAPIds='+IMAPId">
 #: eITWebMail/skins/eIT_webmail/message_view.pt
 msgid "delete"
-msgstr "delete"
+msgstr "slett"
 
 #. <p i18n:translate="description_advanced_search">
 #: elevateIT/skins/eIT_forms/advanced_search_form.pt
 msgid "description_advanced_search"
-msgstr "This search form enables you to find content on the site by specifying one or more search terms. <br/> Remember that you can use the quick search anytime, it's normally good enough, this search form is just if you want to be more specific."
+msgstr "Med dette søkeskjemaet kan du finne innhold på nettstedet ved å angi ett eller flere søkeord. <br/> Husk at du alltid kan bruke hurtigsøkfunksjonen. Den er vanligvis god nok, dette søkeskjemaet brukes kun om du ønsker å gjøre et avansert søk."
 
-#. <strong i18n:translate="description_no_results_found">
-# # 1 more: ./plone_forms/search.pt
-#: elevateIT/skins/eIT_forms/search.pt
 msgid "description_no_results_found"
-msgstr "No results were found."
+msgstr "Ingen resultater funnet."
 
 #. <tal:block i18n:translate="description_view_viewlet">
 #: Viewlet/skins/viewlets/viewlet_view.pt
 msgid "description_view_viewlet"
-msgstr "Click here to view the viewlet"
+msgstr "Klikk her for å se skjermvideo"
 
 #. <img alt="deselect" border="0" height="13" i18n:attributes="alt"
 #. src="minus_icon.gif" tal:attributes="src
 #. string:${here/portal_url}/minus_icon.gif" width="13"/>
 #: OSHA/skins/osha/portlet_refine_search.pt
 msgid "deselect"
-msgstr "deselect"
+msgstr "fjern"
 
 #. <a href="" i18n:attributes="title" tal:attributes="href
 #. python:path+'?'+utiltool.stripQueryString(qs, [index[0]])" title="deselect
 #. this search parameter">
 #: OSHA/skins/osha/portlet_refine_search.pt
 msgid "deselect this search parameter"
-msgstr "deselect this search parameter"
+msgstr "fjern denne søkeparameteren"
 
 #. <a href="" i18n:translate="feature_back_to_mainpage" tal:attributes="href
 #. here/absolute_url">
@@ -333,208 +330,208 @@ msgstr "deselect this search parameter"
 # ./OSHA/skins/osha/index_sme.pt, ./OSHA/skins/osha/index_topic.pt
 #: OSHA/skins/osha/index_nace.pt OSHA/skins/osha/index_providers.pt
 msgid "feature_back_to_mainpage"
-msgstr "Back to ${title} main page"
+msgstr "Tilbake til ${title} hovedsiden"
 
 #. <span i18n:translate="feedback_comment" tal:omit-tag="">
 # # 1 more: ./OSHA/skins/osha/feedback_template.pt
 #: elevateIT/skins/eIT_templates/feedback_template.pt
 msgid "feedback_comment"
-msgstr "Comment"
+msgstr "Kommentar"
 
 #. <span i18n:translate="feedback_country" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template.pt
 msgid "feedback_country"
-msgstr "From country:"
+msgstr "Fra land:"
 
 #. <span i18n:translate="feedback_from_name" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template.pt
 msgid "feedback_from_name"
-msgstr "Name:"
+msgstr "Navn:"
 
 #. <span i18n:translate="feedback_link" tal:omit-tag="">
 # # 1 more: ./OSHA/skins/osha/feedback_template.pt
 #: elevateIT/skins/eIT_templates/feedback_template.pt
 msgid "feedback_link"
-msgstr "Link"
+msgstr "Lenke"
 
 #. <div i18n:translate="feedback_mailtemplate_body" tal:omit-tag="">
 #: elevateIT/skins/eIT_templates/feedback_template.pt
 msgid "feedback_mailtemplate_body"
-msgstr "This feedback is sent by:"
+msgstr "Denne tilbakemeldingen er sendt av:"
 
 #. <span i18n:translate="feedback_organization_size" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template.pt
 msgid "feedback_organization_size"
-msgstr "Organization size:"
+msgstr "Størrelse på organisasjonen:"
 
 #. <span i18n:translate="feedback_sender" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template.pt
 msgid "feedback_sender"
-msgstr "Type of sender:"
+msgstr "Type avsender:"
 
 #. <div i18n:translate="feedback_sender_mssg_1" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template_sender.pt
 msgid "feedback_sender_mssg_1"
-msgstr "Dear Sir / Madam,"
+msgstr "Kjære"
 
 #. <div i18n:translate="feedback_sender_mssg_2" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template_sender.pt
 msgid "feedback_sender_mssg_2"
-msgstr "Thank you for your feedback. We appreciate your comments about the European Agency for Safety and Health at Work and we try, wherever possible, to answer your emails. Unfortunately, due to the large volume of correspondence we receive, we are unable to offer a personal reply in each case. However, we read all your comments, and we use your feedback to improve our websites and services."
+msgstr "Takk for tilbakemeldingen. Vi setter stor pris på dine kommentarer om Det europeiske arbeidsmiljøorganet, og vi prøver så godt vi kan å besvare e-posten din. Men på grunn av de store mengdene korrespondanse vi mottar, har vi dessverre ikke mulighet til å besvare alle henvendelser personlig. Alle kommentarer blir imidlertid lest, og vi benytter dine tilbakemeldinger til å forbedre vårt nettsted og våre tjenester."
 
 #. <div i18n:translate="feedback_sender_mssg_3" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template_sender.pt
 msgid "feedback_sender_mssg_3"
-msgstr "You can stay up to date with new developments to our website by visiting our “What’s New” pages [http://osha.eu.int/whats_new/index_en.htm] and subscribing to our electronic newsletter OSHmail [http://osha.eu.int/oshmail]. "
+msgstr "Du kan holde deg oppdatert om nyheter på vårt nettsted ved å gå til “Nyheter” [http://osha.europa.eu/en/site_update] og abonnere på vårt elektroniske nyhetsbrev OSHmail [http://osha.europa.eu/en/news/oshmail/]. "
 
 #. <div i18n:translate="feedback_sender_mssg_from" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template_sender.pt
 msgid "feedback_sender_mssg_from"
-msgstr "European Agency for Safety and Health at Work"
+msgstr "Det europeiske arbeidsmiljøorganet"
 
 #. <div i18n:translate="feedback_sender_mssg_thankyou" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template_sender.pt
 msgid "feedback_sender_mssg_thankyou"
-msgstr "Yours sincerely,"
+msgstr "Med vennlig hilsen,"
 
 #. <div i18n:translate="feedback_sent_by" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template.pt
 msgid "feedback_sent_by"
-msgstr "This feedback is sent by:"
+msgstr "Denne tilbakemeldingen er sendt av:"
 
 
 #. <h1 class="documentFirstHeading"
 #. i18n:translate="heading_feedback_comments">
 #: OSHA/skins/osha/feedback_message_form.cpt
 msgid "heading_feedback_comments"
-msgstr "Comments"
+msgstr "Kommentarer"
 
 #. <h1 i18n:translate="heading_hierarchical_index">
 #: OSHA/skins/osha/index_hierarchical.pt
 msgid "heading_hierarchical_index"
-msgstr "Hierarchical index"
+msgstr "Hierarkisk indeks"
 
 #. <h1 i18n:translate="heading_search_results">
 # # 3 more: ./plone_forms/folder_localrole_form.pt,
 # ./plone_forms/member_search_results.pt, ./plone_forms/search.pt
 #: elevateIT/skins/eIT_forms/folder_localrole_form.pt
 msgid "heading_search_results"
-msgstr "Search results"
+msgstr "Søkeresultater"
 
 #. <h1 i18n:translate="heading_send_page_to">
 #: elevateIT/skins/eIT_forms/sendto_form.cpt
 msgid "heading_send_page_to"
-msgstr "Send this page to somebody"
+msgstr "Send denne siden til en venn"
 
 #. <h1 i18n:translate="heading_simple_search">
 # # 1 more: ./OSHA/skins/osha/search_form.pt
 #: elevateIT/skins/eIT_forms/search_form.pt
 #: elevateIT/skins/eIT_forms/translation_search_form.pt
 msgid "heading_simple_search"
-msgstr "Search for content"
+msgstr "Søk etter innhold"
 
 #. <h1 i18n:translate="heading_site_error">
 #: OSHA/skins/osha/default_error_message.pt
 msgid "heading_site_error"
-msgstr "Site error"
+msgstr "Feil på nettstedet"
 
 #. <h1 class="documentFirstHeading" i18n:domain="elevateIT"
 #. i18n:translate="heading_siteupdate">
 #: OSHA/skins/osha/site_update.pt
 msgid "heading_siteupdate"
-msgstr "Site update"
+msgstr "Oppdatering av nettstedet"
 
 msgid "help_external_url"
-msgstr "You can enter an additional external URL here."
+msgstr "Her kan du legge inn ytterligere en ekstern URL."
 
 #. <p i18n:translate="info_feedback_message_checkbefore">
 #: OSHA/skins/osha/feedback_message_form.cpt
 msgid "info_feedback_message_checkbefore"
-msgstr "Before you send a question, please check our ${link1} and ${link2} pages."
+msgstr "Før du sender spørsmål, vennligst besøk våre ${link1} og ${link2}-sider."
 
 #. <p i18n:translate="info_feedback_message_publications">
 #: OSHA/skins/osha/feedback_message_form.cpt
 msgid "info_feedback_message_publications"
-msgstr "All the Agency's publications are ${link} . We have no additional information apart from that which is on our network of websites."
+msgstr "Alle Arbeidsmiljøorganets publikasjoner er tilgjengelige på ${link} . Vi har ingen ytterligere informasjon utenom den som finnes på vårt nettverk av nettsider."
 
 #. <p i18n:translate="info_feedback_message_writemessage">
 #: OSHA/skins/osha/feedback_message_form.cpt
 msgid "info_feedback_message_writemessage"
-msgstr "You can write to us in any of the 20 official EU languages, but please bear in mind that there may be some delay while we translate your message and our reply. Messages in English are likely to be answered more quickly because it is spoken by all Agency staff. We aim to answer questions as soon as possible."
+msgstr "Du kan skrive til oss på et av EUs 20 offisielle språk, men vennligst husk at det kan ta litt tid før vi får oversatt meldingen din og svaret vårt. Meldinger på engelsk vil kunne besvares raskere ettersom alle Arbeidsmiljøorganets ansatte kan engelsk. Vi har som mål å besvare alle henvendelser så raskt som mulig."
 
 #. <label for="address" i18n:translate="label_address">
 #: OSHA/skins/osha/join_form.cpt
 msgid "label_address"
-msgstr "Address"
+msgstr "Adresse"
 
 #. <label for="Creator" i18n:translate="label_author">
 #: elevateIT/skins/eIT_templates/search_macros.pt
 msgid "label_author"
-msgstr "Author"
+msgstr "Forfatter"
 
 #. <label for="AvailableLanguages" i18n:translate="label_available_languages">
 # # 1 more: ./OSHA/skins/osha/search_macros.pt
 #: elevateIT/skins/eIT_templates/search_macros.pt
 msgid "label_available_languages"
-msgstr "Available languages"
+msgstr "Tilgjengelige språk"
 
 #. <label for="city" i18n:translate="label_city">
 #: OSHA/skins/osha/join_form.cpt
 msgid "label_city"
-msgstr "City"
+msgstr "By"
 
 #. <span class="expired" i18n:translate="label_closed"
 #. tal:condition="not:here/isOpen">
 #: eITForum/skins/eIT_forum/discussionboard_contents.pt
 msgid "label_closed"
-msgstr "closed"
+msgstr "lukket"
 
 #. <label for="comment" i18n:translate="label_comment">
 #: elevateIT/skins/eIT_forms/sendto_form.cpt
 msgid "label_comment"
-msgstr "Comment"
+msgstr "Kommentar"
 
 #. <label for="comment" i18n:translate="label_comments">
 #: elevateIT/skins/eIT_forms/content_status_history.cpt
 msgid "label_comments"
-msgstr "Comments"
+msgstr "Kommentarer"
 
 #. <label for="contact" i18n:domain="elevateIT"
 #. i18n:translate="label_contact">
 #: eITNews/skins/eIT_news/newsarticle_edit_form.cpt
 msgid "label_contact"
-msgstr "Contact"
+msgstr "Kontakt"
 
 #. <label for="osha_Country" i18n:translate="label_countries">
 #: OSHA/skins/osha/search_macros.pt
 msgid "label_countries"
-msgstr "Countries"
+msgstr "Land"
 
 #. <label for="country" i18n:translate="label_country">
 # # 1 more: ./OSHA/skins/osha/join_form.cpt
 #: OSHA/skins/osha/feedback_message_form.cpt
 msgid "label_country"
-msgstr "Country"
+msgstr "Land"
 
 #. <label i18n:translate="label_creator">
 #: elevateIT/skins/eIT_workflow/start_simple_process_form.cpt
 msgid "label_creator"
-msgstr "Creator"
+msgstr "Opprettet av"
 
 #. <span i18n:translate="label_date">
 #: elevateIT/skins/eIT_content/syndocument_view.pt
 msgid "label_date"
-msgstr "Date"
+msgstr "Dato"
 
 #. <label for="discussion_off" i18n:translate="label_discussion_disabled">
 #: elevateIT/skins/eIT_content/metadata_edit_form.cpt
 msgid "label_discussion_disabled"
-msgstr "Disabled"
+msgstr "Deaktivert"
 
 #. <label for="discussion_on" i18n:translate="label_discussion_enabled">
 #: elevateIT/skins/eIT_content/metadata_edit_form.cpt
 msgid "label_discussion_enabled"
-msgstr "Enabled"
+msgstr "Aktivert"
 
 #. <label i18n:translate="label_email">
 # # 2 more: ./plone_prefs/personalize_form.cpt,
@@ -542,22 +539,22 @@ msgstr "Enabled"
 #: elevateIT/skins/eIT_forms/configure_user_form.cpt
 #: elevateIT/skins/eIT_forms/join_form.cpt
 msgid "label_email"
-msgstr "E-mail"
+msgstr "E-post"
 
 #. <th i18n:translate="label_email_address">
 #: elevateIT/skins/eIT_forms/folder_localrole_form.pt
 msgid "label_email_address"
-msgstr "E-mail address"
+msgstr "E-postadresse"
 
 #. <label for="error" i18n:translate="label_error">
 #: elevateIT/skins/eIT_forms/configure_user_form.cpt
 msgid "label_error"
-msgstr "Error"
+msgstr "Feil"
 
 #. <dt i18n:translate="label_error_message">
 #: OSHA/skins/osha/default_error_message.pt
 msgid "label_error_message"
-msgstr "Error message"
+msgstr "Feilmelding"
 
 
 
@@ -565,133 +562,133 @@ msgstr "Error message"
 # # 1 more: ./OSHA/skins/osha/join_form.cpt
 #: elevateIT/skins/eIT_forms/join_form.cpt
 msgid "label_first_name"
-msgstr "First name"
+msgstr "Fornavn"
 
 #. <label for="ldapattr_slcFirstName" i18n:translate="label_firstname">
 #: elevateIT/skins/eIT_prefs/prefs_user_details.cpt
 #: OSHA/skins/osha/search_members_form.cpt
 msgid "label_firstname"
-msgstr "First name"
+msgstr "Fornavn"
 
 #. <label for="fullname" i18n:translate="label_full_name">
 #: elevateIT/skins/eIT_forms/join_form.cpt
 msgid "label_full_name"
-msgstr "Full name"
+msgstr "Fullt navn"
 
 #. <label for="fullname" i18n:translate="label_fullname">
 #: OSHA/skins/osha/feedback_message_form.cpt
 msgid "label_fullname"
-msgstr "Full name"
+msgstr "Fullt navn"
 
 #. <label i18n:translate="label_keywords">
 #: elevateIT/skins/eIT_content/metadata_edit_form.cpt
 #: elevateIT/skins/eIT_templates/search_macros.pt
 #: OSHA/skins/osha/search_macros.pt
 msgid "label_keywords"
-msgstr "Keywords"
+msgstr "Nøkkelord"
 
 #. <label class="hiddenFloatLabel" for="source_language"
 #. i18n:translate="label_language">
 #: elevateIT/skins/eIT_content/manage_languages_form.cpt
 msgid "label_language"
-msgstr "Language"
+msgstr "Språk"
 
 #. <label for="slcLastName" i18n:translate="label_last_name">
 # # 1 more: ./OSHA/skins/osha/join_form.cpt
 #: elevateIT/skins/eIT_forms/join_form.cpt
 msgid "label_last_name"
-msgstr "Last name"
+msgstr "Etternavn"
 
 #. <label for="lastname" i18n:domain="elevateIT"
 #. i18n:translate="label_lastname">
 #: OSHA/skins/osha/search_members_form.cpt
 msgid "label_lastname"
-msgstr "Last name"
+msgstr "Etternavn"
 
 #. <label for="link" i18n:translate="label_link">
 #: OSHA/skins/osha/feedback_message_form.cpt
 msgid "label_link"
-msgstr "Link"
+msgstr "Lenke"
 
 #. <label for="ldapattr_tumGeschlecht_m" i18n:translate="label_male">
 #: elevateIT/skins/eIT_forms/configure_user_form.cpt
 #: elevateIT/skins/eIT_prefs/slc_personalize_user_form.cpt
 msgid "label_male"
-msgstr "male"
+msgstr "mann"
 
 #. <span class="bold" i18n:translate="label_more_information">
 #: OSHA_ContentTypes/skins/osha_contenttypes/oshcontent_view.pt
 msgid "label_more_information"
-msgstr "More information"
+msgstr "Mer informasjon"
 
 #. Original text
 #. More...
 msgid "label_more"
-msgstr "More..."
+msgstr "Mer..."
 
 #. <label for="title" i18n:translate="label_name">
 # # 1 more: ./plone_prefs/prefs_group_details.pt
 #: elevateIT/skins/eIT_content/cmpgroup_add_form.cpt
 msgid "label_name"
-msgstr "Name"
+msgstr "Navn"
 
 msgid "label_required"
-msgstr "(Required)"
+msgstr "(Obligatorisk)"
 
 #. <label for="search_term" i18n:translate="label_search_term">
 #: elevateIT/skins/eIT_forms/folder_localrole_form.pt
 msgid "label_search_term"
-msgstr "Search term"
+msgstr "Søkeord"
 
 #. <label for="SearchableText" i18n:translate="label_search_text">
 #: elevateIT/skins/eIT_templates/search_macros.pt
 msgid "label_search_text"
-msgstr "Search text"
+msgstr "Søketekst"
 
 #. <span class="hiddenLabel" i18n:translate="label_searchtext">
 #: OSHA/skins/osha/default_error_message.pt
 msgid "label_searchtext"
-msgstr "Search text"
+msgstr "Søketekst"
 
 #. <label for="sector" i18n:translate="label_sector">
 #: OSHA/skins/osha/join_form.cpt
 msgid "label_sector"
-msgstr "Sector"
+msgstr "Bransje"
 
 #. <option i18n:translate="label_select" value="Select">
 # # 1 more: ./plone_templates/folder_contents.pt
 #: elevateIT/skins/eIT_content/metadataelement_contents.pt
 msgid "label_select"
-msgstr "Select"
+msgstr "Velg"
 
 #. <span i18n:translate="label_size">
 # # 1 more: ./plone_content/image_view.pt
 #: elevateIT/skins/eIT_content/file_view.pt
 msgid "label_size"
-msgstr "Size"
+msgstr "Størrelse"
 
 #. <a class="hiddenStructure" href="#documentContent"
 #. i18n:translate="label_skiptocontent">
 #: eITNewsletterManager/skins/newsletter/newsletter_template.pt
 #: OSHA/skins/osha/main_template.pt
 msgid "label_skiptocontent"
-msgstr "Skip to content."
+msgstr "Gå til innhold."
 
 #. <label for="subject" i18n:domain="elevateIT"
 #. i18n:translate="label_subject">
 #: OSHA/skins/osha/search_members_form.cpt
 msgid "label_subject"
-msgstr "Subject"
+msgstr "Emne"
 
 #. <label for="ldapattr_slcLastName" i18n:translate="label_surname">
 #: elevateIT/skins/eIT_prefs/prefs_user_details.cpt
 msgid "label_surname"
-msgstr "Last name"
+msgstr "Etternavn"
 
 #. <label for="sender" i18n:translate="label_type_of_sender">
 #: OSHA/skins/osha/feedback_message_form.cpt
 msgid "label_type_of_sender"
-msgstr "I am ..."
+msgstr "Jeg er ..."
 
 #. <label for="uri" i18n:translate="label_url">
 #: elevateIT/skins/eIT_content/link_edit_form.cpt
@@ -702,56 +699,56 @@ msgstr "URL"
 # # 1 more: ./OSHA/skins/osha/search_macros.pt
 #: elevateIT/skins/eIT_templates/search_macros.pt
 msgid "legend_search_global"
-msgstr "Global search"
+msgstr "Globalt søk"
 
 #. <legend i18n:translate="legend_search_standard_terms">
 #: elevateIT/skins/eIT_forms/advanced_search_form.pt
 msgid "legend_search_standard_terms"
-msgstr "Standard search terms"
+msgstr "Standard søkeord"
 
 #. <legend i18n:translate="legend_search_terms">
 # # 1 more: ./plone_forms/search_form.pt
 #: elevateIT/skins/eIT_forms/folder_localrole_form.pt
 msgid "legend_search_terms"
-msgstr "Search terms"
+msgstr "Søkeord"
 
 #. <a i18n:translate="link_breadcrumbs_home" tal:attributes="href portal_url">
 # # 1 more: ./OSHA/skins/osha/global_pathbar.pt
 #: OSHA/skins/osha/default_error_message.pt
 msgid "link_breadcrumbs_home"
-msgstr "Home"
+msgstr "Hjem"
 
 #. <span i18n:translate="link_news_exturl">
 #: eITNews/skins/eIT_news/newsboard_view.pt
 msgid "link_news_exturl"
-msgstr "Further details"
+msgstr "Nærmere opplysninger"
 
 #. <span i18n:translate="link_news_readmore">
 # # 2 more: ./eITNews/skins/eIT_news/newsboard_view.pt,
 # ./eITNews/skins/eIT_news/newsboard_view_archive.pt
 #: eITNews/skins/eIT_news/news.pt
 msgid "link_news_readmore"
-msgstr "Read more"
+msgstr "Les mer"
 
 #. <a href="" i18n:translate="link_newsboard_previousnews"
 #. tal:attributes="href string:${here/absolute_url}/newsboard_view_archive"
 #. xclass="link-parent">
 #: eITNews/skins/eIT_news/newsboard_view.pt
 msgid "link_newsboard_previousnews"
-msgstr "Show previous news"
+msgstr "Vis eldre nyheter"
 
 #. <a class="link-parent" href="" i18n:translate="link_newsboard_recentnews"
 #. tal:attributes="href string:${here/absolute_url}/newsboard_view">
 #: eITNews/skins/eIT_news/newsboard_view_archive.pt
 msgid "link_newsboard_recentnews"
-msgstr "Back to recent news"
+msgstr "Tilbake til nyere nyheter"
 
 #. <a href="#top" i18n:translate="link_page_top">
 # # 1 more:
 # ./OSHA_ContentTypes/skins/osha_contenttypes/oshcategories_listing.pt
 #: OSHA_ContentTypes/skins/osha_contenttypes/oshcategories_listing.pt
 msgid "link_page_top"
-msgstr "Top of the page"
+msgstr "Til toppen av siden"
 
 #. <a class="bold" href="" i18n:translate="link_report_link"
 #. tal:attributes="href
@@ -759,30 +756,30 @@ msgstr "Top of the page"
 #. broken link'">
 #: OSHA/skins/osha/default_error_message.pt
 msgid "link_report_link"
-msgstr "report a broken link to the Portal team"
+msgstr "rapporter en ødelagt lenke til portalteamet"
 
 #. <span class="hiddenFloatLabel" i18n:domain="elevateIT"
 #. i18n:translate="month">
 # # 1 more: ./elevateIT/skins/eIT_prefs/slc_personalize_user_form.cpt
 #: elevateIT/skins/eIT_3rdParty/calendar/calendar_slot.pt
 msgid "month"
-msgstr "Month"
+msgstr "Måned"
 
 #. <option i18n:translate="option_please_choose" value="">
 # # 1 more: ./OSHA/skins/osha/search_members_form.cpt
 #: OSHA/skins/osha/search_members_form.cpt
 msgid "option_please_choose"
-msgstr "Please choose"
+msgstr "Velg"
 
-#. <a href="http://osha.eu.int" i18n:translate="osha_informationportlet_link">
+#. <a href="http://osha.europa.eu" i18n:translate="osha_informationportlet_link">
 #: OSHA/skins/osha/portlet_oshainfo.pt
 msgid "osha_informationportlet_link"
-msgstr "Your link to Safety and Health at Work"
+msgstr "Lenke til Sikkerhet og helse på arbeidsplassen"
 
 #. <span i18n:translate="osha_networkportlet_info" style="font-size:80%">
 #: OSHA/skins/osha/portlet_oshnetwork.pt
 msgid "osha_networkportlet_info"
-msgstr "Our network contains websites worldwide providing national and institutional information on OSH"
+msgstr "Nettverket vårt består av nettsteder fra hele verden som gir informasjon om HMS fra nasjonale og institusjonelle kilder"
 
 #. <a href="" i18n:translate="osha_networkportlet_link"
 #. onclick="handleClick(event, 'show it'); return false"
@@ -790,149 +787,149 @@ msgstr "Our network contains websites worldwide providing national and instituti
 #. tal:attributes="href string:${here/portal_url}/network_overview">
 #: OSHA/skins/osha/portlet_oshnetwork.pt
 msgid "osha_networkportlet_link"
-msgstr "Show partner websites"
+msgstr "Vis partneres nettsteder"
 
 #. <label class="hiddenStructure" for="emailaddress"
 #. i18n:translate="portlet_oshmail_email">
 #: OSHA/skins/osha/portlet_oshmail.pt
 msgid "portlet_oshmail_email"
-msgstr "email address"
+msgstr "e-postadresse"
 
 #. <img alt="previous" height="11" i18n:attributes="alt"
 #. src="arrorLeftAlternative.gif" tal:attributes="src
 #. string:${portal_url}/arrowLeftAlternative.gif" width="7"/>
 #: eITWebMail/skins/eIT_webmail/message_view.pt
 msgid "previous"
-msgstr "previous"
+msgstr "forrige"
 
 #. <label for="search_line" i18n:translate="search_term">
 #: eITWebMail/skins/eIT_webmail/webmail_search_form2.cpt
 msgid "search_term"
-msgstr "Search term"
+msgstr "Søkeord"
 
 #. <span i18n:translate="searchresults">
 #: eITWebMail/skins/eIT_webmail/webmail_view.pt
 msgid "searchresults"
-msgstr "Search results"
+msgstr "Søkeresultater"
 
 #. <div i18n:domain="elevateIT" i18n:translate="sendto_mailtemplate_body" tal
 #. :omit-tag="">
 #: elevateIT/skins/eIT_forms/send_mail_to_author.pt
 msgid "sendto_mailtemplate_body"
-msgstr "<p>This link is sent to you from ${portal_url} You are receiving this mail because someone read a page at ${portal_title} and thought it might interest you.</p> <p>It is sent by ${from_address} with the following comment:</p> <p>&quot; ${comment} &quot;</p> ${document_title}<br />  ${document_description}<br />  ${document_url}"
+msgstr "<p>Denne lenken er sendt fra ${portal_url} Du mottar denne e-posten fordi noen har lest en side på ${portal_title} og mente den kunne interessere deg.</p> <p>Den er sendt via ${from_address} med følgende kommentar:</p> <p>&quot; ${comment} &quot;</p> ${document_title}<br />  ${document_description}<br />  ${document_url}"
 
 #. Added on Fri Dec 17 12:37:55 2004
 #: None
 msgid "The OSH Network"
-msgstr "The OSH Network"
+msgstr "HMS-nettverket"
 
 msgid "Menu"
-msgstr "Menu"
+msgstr "Meny"
 
 #. Added on Fri Dec 17 12:37:55 2004
 #: None
 msgid "Wealth of OSH information"
-msgstr "Wealth of OSH information"
+msgstr "Detaljert HMS-informasjon"
 
 #. Added on Fri Dec 17 12:37:55 2004
 #: None
 msgid "Agency Information"
-msgstr "Agency Information"
+msgstr "Informasjon fra Arbeidsmiljøorganet"
 
 #. Added on Fri Dec 17 12:38:29 2004
 #: None
 msgid "date_yesterday"
-msgstr "yesterday"
+msgstr "i går"
 
 #. Added on Fri Dec 17 12:38:29 2004
 #: None
 msgid "date_last_week"
-msgstr "last week"
+msgstr "forrige uke"
 
 #. Added on Fri Dec 17 12:38:29 2004
 #: None
 msgid "date_last_month"
-msgstr "last month"
+msgstr "forrige måned"
 
 #. Added on Fri Dec 17 12:38:29 2004
 #: None
 msgid "date_ever"
-msgstr "ever"
+msgstr "noen gang"
 
 #. Added on Fri Dec 17 12:38:47 2004
 #: None
 msgid "Close window"
-msgstr "Close window"
+msgstr "Lukk vindu"
 
 #. Added on Fri Dec 17 12:39:06 2004
 #: None
 msgid "Refine Search"
-msgstr "Refine search"
+msgstr "Avgrens søket"
 
 #. Added on Fri Dec 17 12:48:31 2004
 #: None
 msgid "label_position"
-msgstr "Position"
+msgstr "Stilling"
 
 #. Added on Fri Dec 17 12:48:31 2004
 #: None
 msgid "label_focalpoint"
-msgstr "Focal point"
+msgstr "Kontaktpunkt"
 
 #. Added on Fri Dec 17 12:48:35 2004
 #: None
 msgid "legend_education"
-msgstr "Education"
+msgstr "Utdanning"
 
 #. Added on Fri Dec 17 12:48:35 2004
 #: None
 msgid "legend_memberships"
-msgstr "Memberships"
+msgstr "Medlemskap"
 
 #. Added on Fri Dec 17 12:48:35 2004
 #: None
 msgid "legend_rewards"
-msgstr "Rewards"
+msgstr "Priser"
 
 #. Added on Fri Dec 17 12:48:35 2004
 #: None
 msgid "label_rewards"
-msgstr "Rewards"
+msgstr "Priser"
 
 #. Added on Fri Dec 17 12:48:35 2004
 #: None
 msgid "legend_projects"
-msgstr "Projects"
+msgstr "Prosjekter"
 
 #. Added on Fri Dec 17 12:48:35 2004
 #: None
 msgid "label_projects"
-msgstr "Projects"
+msgstr "Prosjekter"
 
 #. Added on Fri Dec 17 12:48:35 2004
 #: None
 msgid "legend_publications"
-msgstr "Publications"
+msgstr "Publikasjoner"
 
 #. Added on Fri Dec 17 12:48:35 2004
 #: None
 msgid "label_publications"
-msgstr "Publications"
+msgstr "Publikasjoner"
 
 msgid "Your network to a safer and healthier working environment"
-msgstr "Your network to a safer and healthier working environment"
+msgstr "Ditt nettverk for et sikrere og sunnere arbeidsmiljø"
 
 msgid "Send to somebody"
-msgstr "Send to somebody"
+msgstr "Send til noen"
 
 msgid "Link to our site"
-msgstr "Link to our site"
+msgstr "Lenke til vårt nettsted"
 
 msgid "Suggest interesting link"
-msgstr "Suggest interesting link"
+msgstr "Foreslå interessant lenke"
 
 msgid "Report broken link"
-msgstr "Report broken link"
+msgstr "Rapporter ødelagt lenke"
 
 msgid "Subscribe To Alert"
 msgstr "Abonner på advarsler"
@@ -947,7 +944,7 @@ msgstr "Leter du etter noe spesielt?"
 #.    i18n:translate="download_full_publication">
 #: None
 msgid "download_full_publication"
-msgstr "Download the full publication in PDF format"
+msgstr "Last ned hele publikasjonen i PDF-format"
 
 ##. <p class="header_link" 
 #.     i18n:translate="publication_read_our">Read our 
@@ -956,26 +953,26 @@ msgstr "Download the full publication in PDF format"
 #.     tal:content="sub/Title" /></p>
 #: @@publications-list
 msgid "publication_read_our"
-msgstr "Read our ${pubtype}"
+msgstr "Les vår ${pubtype}"
 
 #. <div class="pullquote" 
 #.     i18n:translate="all_agency_publications">
 #: @@publications-list
 msgid "all_agency_publications"
-msgstr "All of the Agency&acute;s publications can be downloaded free of charge."
+msgstr "Alle Arbeidsmiljøorganets publikasjoner kan lastes ned gratis."
 
 #: @@publications-list
 msgid "download_adobe_reader"
-msgstr "To be able to see our most recent PDF publications, you will need to have installed the latest version of the Adobe Acrobat Reader, available at ${reader_download}."
+msgstr "For å lese våre nyeste publikasjoner i PDF-format må du ha installert siste versjon av Adobe Acrobat Reader, tilgjengelig på  ${reader_download}."
 
 #: @@publications-list
 msgid "label_eu_bookshop"
-msgstr "Access all the EU publications on the ${link_eu_bookshop}"
+msgstr "Få tilgang til alle EU-publikasjoner på ${link_eu_bookshop}"
 
 #. <label for="path" i18n:translate="">Search only in this folder</label>
 #: Products/OSHA/skins/osha2/portlet_oshsearch.pt
 msgid "Search only in this folder"
-msgstr "Search only this folder"
+msgstr "Søk bare i denne mappen"
 
 msgid "label_free_newsletter"
 msgstr "gratis nyhetsbrev"
@@ -990,248 +987,248 @@ msgstr "Gjør til din startside"
 #. detailed search try the <a href="advanced_search_form">
 #: osha/skins/osha2/search_form
 msgid "info_extended_searchform"
-msgstr "To perform a more detailled search try the ${url}"
+msgstr "For å foreta et nærmere avgrenset søk, prøv ${url}"
 
 msgid "contact_us_personal"
-msgstr "If your question has not been answered with this standard reply, you may send us a personal message. Please proceed to the ${contact_form_name}."
+msgstr "Hvis dette standardsvaret ikke besvarer ditt spørsmål, kan du sende oss en personlig melding. Gå videre til ${contact_form_name}."
 
 msgid "contact_form"
-msgstr "contact form"
+msgstr "kontaktskjema"
 
 #. PDA version
 msgid "PDA version"
-msgstr "PDA version"
+msgstr "PDA-versjon"
 
 msgid "label_archive"
-msgstr "Archive"
+msgstr "Arkiv"
 
 msgid "portlet_campaign_ew2007_title"
-msgstr "European campaign 2007"
+msgstr "Europeisk kampanje 2007"
 
 msgid "portlet_campaign_ew2007_text"
-msgstr "Lighten the load!"
+msgstr "Lett byrden!"
 
 # ERO
 msgid "European Risk Observatory"
-msgstr "European Risk Observatory"
+msgstr "Det europeiske risikoobservatoriet"
 
 # Anticipating Change
 msgid "portlet_riskob_text"
-msgstr "Anticipating change!"
+msgstr "Foregripe endringer"
 
 # Most visited
 msgid "Most visited"
-msgstr "Most visited"
+msgstr "Mest besøkt"
 
 msgid "portlet_oshsearch_advanced"
 msgstr "Avansert søk"
 
 msgid "portlet_oshsearch_atoz"
-msgstr "A-Z Index"
+msgstr "Innholdsfortegnelse A-Å"
 
 msgid "Free Newsletter"
-msgstr "Free Newsletter"
+msgstr "Gratis nyhetsbrev"
 
 msgid "portlet_oshmail_text"
-msgstr "Monthly review of strategic news<br/> - Subscribe -"
+msgstr "Månedlig gjennomgang av strategiske nyheter<br/> - Abonner -"
 
 msgid "Alert Service"
-msgstr "Alert Service"
+msgstr "Varslingstjeneste"
 
 # updated on topics ... subscribe
 msgid "portlet_alertservice_text"
-msgstr "Updates on topics of your choice<br/>- Subscribe -"
+msgstr "Oppdateringer om egenvalgte emner<br/>- Abonner -"
 
 msgid "Campaigns"
-msgstr "Campaigns"
+msgstr "Kampanjer"
 
 msgid "portlet_campaign_hwi_title"
-msgstr "Healthy Workplace Initiative"
+msgstr "Initiativet Et sikkert og godt arbeidsmiljø"
 
 msgid "portlet_campaign_hwi_text"
-msgstr "Good for you - Good for business"
+msgstr "Bra for både deg og din arbeidsplass"
 
 msgid "RSS"
 msgstr "RSS"
 
 msgid "Print"
-msgstr "Print"
+msgstr "Skriv ut"
 
 msgid "Send"
 msgstr "Send"
 
 msgid "Broken Link"
-msgstr "Broken Link"
+msgstr "Ødelagt lenke"
 
 msgid "Disclaimer"
-msgstr "Disclaimer"
+msgstr "Ansvarsfraskrivelse"
 
 msgid "Copyright"
 msgstr "Copyright"
 
 msgid "Site&nbsp;Update"
-msgstr "Site Update"
+msgstr "Oppdatering av nettstedet"
 
 msgid "Site&nbsp;Map"
-msgstr "Site Map"
+msgstr "Nettstedkart"
 
 msgid "Comments"
-msgstr "Comments"
+msgstr "Kommentarer"
 
 msgid "FAQ"
-msgstr "FAQ"
+msgstr "Ofte stilte spørsmål"
 
 msgid "Help"
-msgstr "Help"
+msgstr "Hjelp"
 
 msgid "Translation&nbsp;Help"
-msgstr "Translation Help"
+msgstr "Hjelp til oversettelse"
 
 msgid "Accessibility"
-msgstr "Accessibility"
+msgstr "Tilgang"
 
 msgid "box_firsttime"
-msgstr "First time here?"
+msgstr "Førstegangsbesøkende?"
 
 msgid "header_oshtopic_dynamic"
-msgstr "All ${portal_type} items on ${subject}"
+msgstr "Alle treff i ${portal_type} om ${subject}"
 
 msgid "oshmail_header_subscribe"
-msgstr "Subscribe OSHMail"
+msgstr "Abonner på OSHMail"
 
 msgid "oshmail_header_unsubscribe"
-msgstr "Unsubscribe OSHMail"
+msgstr "Avbestill OSHMail"
 
 msgid "oshmail_label_enter_emaiL"
-msgstr "enter e-mail here"
+msgstr "skriv inn e-postadresse her"
 
 #. Default: "Agency's resources"
 msgid "heading_agencys_resources"
-msgstr "Agency's resources"
+msgstr "Arbeidsmiljøorganets ressurser"
 
 #. Default: "Search in the USEFUL LINKS DATABASE"
 msgid "heading_search_useful_links"
-msgstr "Search in the USEFUL LINKS DATABASE"
+msgstr "Søk i databasen NYTTIGE LENKER"
 
 #. Default: "Search in the RISK ASSESSMENT TOOLS DATABASE"
 msgid "heading_search_risk_assessment_tools"
-msgstr "Search in the RISK ASSESSMENT TOOLS DATABASE"
+msgstr "Søk i databasen RISIKOVURDERINGSVERKTØY"
 
 #. Default: "Search in the CASE STUDIES DATABASE"
 msgid "heading_search_case_studies"
-msgstr "Search in the CASE STUDIES DATABASE"
+msgstr "Søk i databasen CASE-STUDIER"
 
 #. Default: "Search in the PROVIDERS DATABASE"
 msgid "heading_search_providers"
-msgstr "Search in the PROVIDERS DATABASE"
+msgstr "Søk i databasen LEVERANDØRER"
 
 #. Default: "Filter your search by selecting one or more of the filters. You
 #. can always remove any filter again by selecting the empty entry or by
 #. clicking the Reset button."
 msgid "help_advanced_search"
-msgstr "Filter your search by selecting one or more of the filters. You can always remove any filter again by selecting the empty entry or by clicking the Reset button."
+msgstr "Avgrens søket ved å bruke ett eller flere av filtrene. Du kan alltid deaktivere et filter ved å la feltet stå tomt eller ved å klikke på Tilbakestill-knappen."
 
 #. Default: "Select the database types you want to search."
 msgid "help_advanced_search_database"
-msgstr "Select the database types you want to search."
+msgstr "Velg hvilke databasetyper du ønsker å søke i."
 
 #. Default: "Category"
 msgid "label_category"
-msgstr "Category"
+msgstr "Kategori"
 
 #. Default: "Subcategory"
 msgid "label_subcategory"
-msgstr "Subcategory"
+msgstr "Underkategori"
 
 #. Default: "Practical solutions"
 msgid "heading_practical_solutions"
-msgstr "Practical solutions"
+msgstr "Praktiske løsninger"
 
 #. Default: "Publications"
 msgid "heading_publications"
-msgstr "Publications"
+msgstr "Publikasjoner"
 
 #. Default: "Useful links"
 msgid "label_useful_links"
-msgstr "Useful links"
+msgstr "Nyttige lenker"
 
 #. Default: "Risk assessment tools"
 msgid "label_risk_assessment_tools"
-msgstr "Risk assessment tools"
+msgstr "Risikovurderingsverktøy"
 
 #. Default: "Case studies"
 msgid "label_case_studies"
-msgstr "Case studies"
+msgstr "Case-studier"
 
 #. Default: "Providers"
 msgid "label_providers"
-msgstr "Providers"
+msgstr "Leverandører"
 
 #. Default: "Topics"
 msgid "heading_topics"
-msgstr "Topics"
+msgstr "Emner"
 
 #. Default: "Latest additions"
 msgid "heading_latest_additions"
-msgstr "Latest additions"
+msgstr "Nytt innhold"
 
 #. Default: "Languages"
 msgid "label_languages"
-msgstr "Languages"
+msgstr "Språk"
 
 #. Default: "See also"
 msgid "label_see_also"
-msgstr "See also"
+msgstr "Se også"
 
 #. Default: "Authorities"
 msgid "heading_authorities"
-msgstr "Authorities"
+msgstr "Myndigheter"
 
 #. Default: "Social Partners"
 msgid "heading_social_partners"
-msgstr "Social Partners"
+msgstr "Arbeidslivsparter"
 
 #. Default: "Research organisations"
 msgid "heading_research_organisations"
-msgstr "Research organisations"
+msgstr "Forskningsorganisasjoner"
 
 #. Default: "Other national sites"
 msgid "heading_other_national_sites"
-msgstr "Other national sites"
+msgstr "Andre nasjonale nettsteder"
 
 #. Default: "More related content"
 msgid "heading_more_related_content"
-msgstr "More related content"
+msgstr "Mer relatert innhold"
 
 #. Default: "Upcoming Events"
 #: CMFPlone/skins/plone_deprecated/portlet_events.pt:16
 msgid "box_events"
-msgstr "Upcoming Events"
+msgstr "Kommende arrangementer"
 
 # Press Room
 msgid "osha_label_pressbox_pressreleases"
-msgstr "Press Releases"
+msgstr "Pressemeldinger"
 
 msgid "osha_description_pressbox_pressreleases"
-msgstr "These are our press releases:"
+msgstr "Her er våre pressemeldinger:"
 
 msgid "osha_label_pressbox_campaigns"
-msgstr "Campaigns"
+msgstr "Kampanjer"
 
 msgid "osha_label_pressbox_photos"
-msgstr "Images and Audiovisual"
+msgstr "Bilder og audiovisuelt materiale"
 
 msgid "osha_label_pressbox_articles"
-msgstr "Articles and Interviews"
+msgstr "Artikler og intervjuer"
 
 msgid "osha_label_pressbox_aboutus"
-msgstr "About Us"
+msgstr "Om oss"
 
 msgid "osha_label_pressbox_publications"
-msgstr "Publications"
+msgstr "Publikasjoner"
 
 msgid "label_pressroom_link"
-msgstr "Back to the press room"
+msgstr "Tilbake til presserommet"
 
 # FOP
 
@@ -1240,259 +1237,259 @@ msgstr "Back to the press room"
 # Default "Further information"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.pt
 msgid "label_main_fop_website"
-msgstr "Further information"
+msgstr "Ytterligere informasjon"
         
 # Default "Belgian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_belgium"
-msgstr "Belgian Focal Point"
+msgstr "Belgisk kontaktpunkt"
 
 # Default "Bulgarian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_bulgaria"
-msgstr "Bulgarian Focal Point"
+msgstr "Bulgarsk kontaktpunkt"
 
 # Default "Czech Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_czech-republic"
-msgstr "Czech Focal Point"
+msgstr "Tsjekkisk kontaktpunkt"
 
 # Default "Danish Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_denmark"
-msgstr "Danish Focal Point"
+msgstr "Dansk kontaktpunkt"
 
 # Default "German Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_germany"
-msgstr "German Focal Point"
+msgstr "Tysk kontaktpunkt"
 
 # Default "Estonian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_estonia"
-msgstr "Estonian Focal Point"
+msgstr "Estisk kontaktpunkt"
 
 # Default "Irish Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_ireland"
-msgstr "Irish Focal Point"
+msgstr "Irsk kontaktpunkt"
 
 # Default "Greek Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_greece"
-msgstr "Greek Focal Point"
+msgstr "Gresk kontaktpunkt"
 
 # Default "Spanish Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_spain"
-msgstr "Spanish Focal Point"
+msgstr "Spansk kontaktpunkt"
 
 # Default "French Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_france"
-msgstr "French Focal Point"
+msgstr "Fransk kontaktpunkt"
 
 # Default "Italian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_italy"
-msgstr "Italian Focal Point"
+msgstr "Italiensk kontaktpunkt"
 
 # Default "Cypriot Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_cyprus"
-msgstr "Cypriot Focal Point"
+msgstr "Kypriotisk kontaktpunkt"
 
 # Default "Latvian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_latvia"
-msgstr "Latvian Focal Point"
+msgstr "Latvisk kontaktpunkt"
 
 # Default "Lithuanian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_lithuania"
-msgstr "Lithuanian Focal Point"
+msgstr "Litauisk kontaktpunkt"
 
 # Default "Luxembourgish Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_luxembourg"
-msgstr "Luxembourgish Focal Point"
+msgstr "Luxembourgsk kontaktpunkt"
 
 # Default "Hungarian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_hungary"
-msgstr "Hungarian Focal Point"
+msgstr "Ungarsk kontaktpunkt"
 
 # Default "Maltese Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_malta"
-msgstr "Maltese Focal Point"
+msgstr "Maltesisk kontaktpunkt"
 
 # Default "Dutch Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_netherlands"
-msgstr "Dutch Focal Point"
+msgstr "Nederlandsk kontaktpunkt"
 
 # Default "Austrian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_austria"
-msgstr "Austrian Focal Point"
+msgstr "Østerriksk kontaktpunkt"
 
 # Default "Polish Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_poland"
-msgstr "Polish Focal Point"
+msgstr "Polsk kontaktpunkt"
 
 # Default "Portuguese Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_portugal"
-msgstr "Portuguese Focal Point"
+msgstr "Portugisisk kontaktpunkt"
 
 # Default "Romanian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_romania"
-msgstr "Romanian Focal Point"
+msgstr "Rumensk kontaktpunkt"
 
 # Default "Slovenian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_slovenia"
-msgstr "Slovenian Focal Point"
+msgstr "Slovensk kontaktpunkt"
 
 # Default "Slovakian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_slovakia"
-msgstr "Slovakian Focal Point"
+msgstr "Slovakisk kontaktpunkt"
 
 # Default "Finnish Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_finland"
-msgstr "Finnish Focal Point"
+msgstr "Finsk kontaktpunkt"
 
 # Default "Swedish Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_sweden"
-msgstr "Swedish Focal Point"
+msgstr "Svensk kontaktpunkt"
 
 # Default "British Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_united-kingdom"
-msgstr "British Focal Point"
+msgstr "Britisk kontaktpunkt"
 
 # Default "Icelandic Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_iceland"
-msgstr "Icelandic Focal Point"
+msgstr "Islandsk kontaktpunkt"
 
 # Default "Liechtenstein Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_liechtenstein"
-msgstr "Liechtenstein Focal Point"
+msgstr "Liechtensteinsk kontaktpunkt"
 
 # Default "Norwegian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_norway"
-msgstr "Norwegian Focal Point"
+msgstr "Norsk kontaktpunkt"
 
 # Default "Swiss Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_switzerland"
-msgstr "Swiss Focal Point"
+msgstr "Sveitsisk kontaktpunkt"
 
 # Default "Croatian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_croatia"
-msgstr "Croatian Focal Point"
+msgstr "Kroatisk kontaktpunkt"
 
 # Default "Macedonian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_the-former-yugoslav-republic-of-macedonia"
-msgstr "Macedonian Focal Point"
+msgstr "Makedonsk kontaktpunkt"
 
 # Default "Turkish Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_turkey"
-msgstr "Turkish Focal Point"
+msgstr "Tyrkisk kontaktpunkt"
 
 # Default "Albanian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_albania"
-msgstr "Albanian Focal Point"
+msgstr "Albansk kontaktpunkt"
 
 # Default "Bosnian, Herzegovinian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_bosnia-and-herzegovina"
-msgstr "Bosnian, Herzegovinian Focal Point"
+msgstr "Bosnisk-hercegovinsk kontaktpunkt"
 
 # Default "Kosovar Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_kosovo-under-unscr-1244-99"
-msgstr "Kosovar Focal Point"
+msgstr "Kosovisk kontaktpunkt"
 
 # Default "Montenegrin Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_montenegro"
-msgstr "Montenegrin Focal Point"
+msgstr "Montenegrisk kontaktpunkt"
 
 # Default "Serbian Focal Point"
 # osha.fop/src/osha/fop/portlets/fop_main_promotion.py
 msgid "heading_main_fop_portlet_serbia"
-msgstr "Serbian Focal Point"
+msgstr "Serbisk kontaktpunkt"
 
 # Default "Check for more results in EN"
 # osha/theme/browser/templates/publicationsearch.pt
 # osha/theme/browser/templates/practical_solution.pt
 msgid "label_more_results_in_en"
-msgstr "Check for more results in EN"      
+msgstr "Se flere resultater på EN"      
 
 
 # Default "Back to the Focal Points overview"
 msgid "label_back_to_fop_overview"
-msgstr "Back to the Focal Points overview"
+msgstr "Tilbake til oversikt over kontaktpunkter"
 
 msgid "label_publications_by_type"
-msgstr "Publications – sorted by type of publication"
+msgstr "Publikasjoner – ordnet etter publikasjonstype"
 
 # oshmail
 
 
 msgid "osha_label_eu_media_coverage"
-msgstr "EU media coverage"
+msgstr "Mediedekning i EU"
 
 msgid "oshmail_intro_welcome"
-msgstr "Welcome to ${oshmail}, the electronic newsletter issued by the European Agency for Safety and Health at Work."
+msgstr "Velkommen til  ${oshmail}, et elektronisk nyhetsbrev utgitt av Det europeiske arbeidsmiljøorganet."
 
 msgid "oshmail_intro_every_month"
-msgstr "Every month, ${oshmail} informs you of the latest developments in occupational safety and health:"
+msgstr "I ${oshmail} får du hver måned informasjon om det nyeste innen helse og sikkerhet på arbeidsplassen:"
 
 msgid "oshmail_list_1"
-msgstr "the latest safety and health news from around the world;"
+msgstr "siste nytt innen helse og sikkerhet fra hele verden,"
 
 msgid "oshmail_list_3"
-msgstr "updates on campaigns and activities organised by the Agency;"
+msgstr "oppdateringer om kampanjer og aktiviteter som organiseres av Arbeidsmiljøorganet,"
 
 msgid "oshmail_list_4"
-msgstr "forthcoming events;"
+msgstr "kommende arrangementer,"
 
 msgid "oshmail_list_5"
-msgstr "the latest Agency publications;"
+msgstr "Arbeidsmiljøorganets nyeste publikasjoner,"
 
 msgid "oshmail_list_6"
-msgstr "updates on EU legislation;"
+msgstr "oppdateringer om EUs regelverk,"
 
 msgid "oshmail_list_7"
-msgstr "in 22 languages..."
+msgstr "på 22 språk..."
 
 msgid "label_latest_issue"
-msgstr "Latest issue"
+msgstr "Siste utgave"
 
 msgid "label_previous_issues"
-msgstr "previous issues"
+msgstr "tidligere utgaver"
 
 # Load older newsletters.
 msgid "label_load_older"
-msgstr "Load ${link}."
+msgstr "Last ${link}."
 
 msgid "label_older_newsletters"
-msgstr "older newsletters"
+msgstr "eldre nyhetsbrev"
 
 # Competitions
 msgid "label_competitions"
@@ -1516,70 +1513,70 @@ msgstr "Kommende konkurranser"
 
 
 msgid "label_subjects_of_interest"
-msgstr "Subjects of interest"
+msgstr "Temaer av interesse"
 
 msgid "label_item_type"
-msgstr "Item type"
+msgstr "Type"
 
 msgid "daily"
-msgstr "daily"
+msgstr "daglig"
 
 msgid "weekly"
-msgstr "weekly"
+msgstr "ukentlig"
 
 msgid "monthly"
-msgstr "monthly"
+msgstr "månedlig"
 
 msgid "OSH Link"
-msgstr "OSH Link"
+msgstr "HMS-lenke"
 
 msgid "Publication"
-msgstr "Publication"
+msgstr "Publikasjon"
 
 msgid "Case Study"
-msgstr "Case Study"
+msgstr "Case-studie"
 
 msgid "label_additional_languages"
-msgstr "Additional languages"
+msgstr "Flere språk"
 
 msgid "select_multiple_help"
-msgstr "In order to choose more than one item from the list, press the key 'control' on your keyboard, and select the item with your mouse."
+msgstr "For å velge mer enn ett treff i listen, hold nede \"Ctrl\"-knappen på tastaturet og klikk for å velge."
 
 msgid "description_alertservice_languageselector"
-msgstr "Alerts are sent in English. If the content is translated, you can choose to receive it in additional languages."
+msgstr "Varsler sendes ut på engelsk. Dersom innholdet er oversatt, kan du velge å få det på flere språk."
 
 msgid "description_subscribe_oshmail"
-msgstr "I also want to receive OSHmail, the free monthly newsletter"
+msgstr "Jeg ønsker også å motta det gratis månedlige nyhetsbrevet OSHmail"
 
 msgid "oshmail_learn_more"
-msgstr "learn more..."
+msgstr "lær mer..."
 
 msgid "alertservice_notification_report"
-msgstr "OSHA Notification Report"
+msgstr "OSHA varslingsrapport"
 
 msgid "alert_label_more"
-msgstr "More"
+msgstr "Mer"
 
 msgid "alertservice_alert_request"
-msgstr "EU-OSHA received a request to start sending alerts to"
+msgstr "EU-OSHA har mottatt en forespørsel om å sende varsler til"
 
 msgid "alertservice_verify_request"
-msgstr "Verify this EU-OSHA alert request:"
+msgstr "Bekreft forespørselen om å få tilsendt varsler fra EU-OSHA:"
 
 msgid "alertservice_cancel_request"
-msgstr "Cancel this EU-OSHA alert request:"
+msgstr "Avkreft forespørselen om å få tilsendt varsler fra EU-OSHA:"
 
 msgid "alertservice_alternative_verification"
-msgstr "If you are not able to click on the link, you can cut and paste it into your browser's address bar."
+msgstr "Om du ikke kan klikke på lenken, kan du kopiere og lime den inn i adresselinjen i nettleseren din."
 
 msgid "alertservice_ignore"
-msgstr "If you did not initiate this request or believe it was sent in error you can safely ignore this message."
+msgstr "Om du ikke har bedt om varsling eller tror forespørselen er sendt ved en feiltakelse, kan du se bort fra denne meldingen."
 
 msgid "alertservice_email_footer1"
-msgstr "Thanks,"
+msgstr "Takk,"
 
 msgid "alertservice_email_footer2"
-msgstr "The EU-OSHA Alerts Team"
+msgstr "EU-OSHAs varslingsteam"
 
 
 #############################################
@@ -1587,88 +1584,88 @@ msgstr "The EU-OSHA Alerts Team"
 #############################################
 
 msgid "accident_prevention"
-msgstr "Accident Prevention"
+msgstr "Forebygging av ulykker"
 
 msgid "ageing"
-msgstr "Ageing workers"
+msgstr "Aldrende arbeidstakere"
 
 msgid "agriculture"
-msgstr "Agriculture"
+msgstr "Landbruk"
 
 msgid "businessOSH"
-msgstr "Business aspects of OSH"
+msgstr "Forretningsmessige sider ved HMS"
 
 msgid "cleaners"
-msgstr "Cleaning workers"
+msgstr "Renholdsarbeidere"
 
 msgid "construction"
-msgstr "Construction"
+msgstr "Bygg og anlegg"
 
 msgid "csr"
-msgstr "Corporate Social Responsibility"
+msgstr "Næringslivets samfunnsansvar"
 
 msgid "cww"
-msgstr "Changing world of work"
+msgstr "En endret arbeidshverdag"
 
 msgid "dangerous_substances"
-msgstr "Dangerous substances"
+msgstr "Farlige stoffer"
 
 msgid "disability"
-msgstr "Disabled people"
+msgstr "Funksjonshemmede"
 
 msgid "education"
-msgstr "Education"
+msgstr "Utdanning"
 
 msgid "emerging_risks"
-msgstr "Emerging risks"
+msgstr "Nye risikoer"
 
 msgid "fisheries"
-msgstr "Fisheries"
+msgstr "Fiskeri"
 
 msgid "gender"
-msgstr "Gender"
+msgstr "Likestilling"
 
 msgid "healthcare"
-msgstr "Health care"
+msgstr "Helse og omsorg"
 
 msgid "horeca"
-msgstr "Horeca"
+msgstr "Hotell og restaurant"
 
 msgid "hwi"
-msgstr "Healthy workplaces"
+msgstr "Sunne arbeidsplasser"
 
 msgid "legislation"
-msgstr "Legislation"
+msgstr "Regelverk"
 
 msgid "msd"
-msgstr "Musculoskeletal Disorders"
+msgstr "Muskel- og skjelettplager"
 
 msgid "noise"
-msgstr "Noise"
+msgstr "Støy"
 
 msgid "organisation"
-msgstr "Organisation and strategies"
+msgstr "Organisasjon og strategier"
 
 msgid "osheducation"
-msgstr "Mainstreaming OSH into Education"
+msgstr "HMS inn i undervisningen"
 
 msgid "research"
-msgstr "Research"
+msgstr "Forsking"
 
 msgid "risks"
-msgstr "Emerging Risks"
+msgstr "Framvoksende risikoer"
 
 msgid "risk_assessment"
-msgstr "Risk assessment"
+msgstr "Risikovurdering"
 
 msgid "risk_observatory"
-msgstr "Risk observatory"
+msgstr "Risikoobservatorium"
 
 msgid "road_transport"
-msgstr "Road Transport"
+msgstr "Veitransport"
 
 msgid "statistics"
-msgstr "Statistics"
+msgstr "Statistikk"
 
 msgid "stress"
 msgstr "Stress"
@@ -1677,30 +1674,30 @@ msgid "transport"
 msgstr "Transport"
 
 msgid "young_people"
-msgstr "Young people"
+msgstr "Ungdom"
 
 msgid "whp"
-msgstr "Workplace Health Promotion"
+msgstr "Bedre helse på arbeidsplassen"
 
 msgid "maintenance"
-msgstr "Maintenance"
+msgstr "Vedlikehold"
 
 msgid "migrant_workers"
-msgstr "Migrant Workers"
+msgstr "Migrerende arbeidskraft"
 
 msgid "nanotechnology"
-msgstr "Nanotechnology"
+msgstr "Nanoteknologi"
 
 msgid "prevention"
-msgstr "Prevention"
+msgstr "Forebyggende arbeid"
 
 msgid "economic_incentives"
-msgstr "Economic incentives"
+msgstr "Økonomiske insentiver"
 
 ####
 
 msgid "Our Events"
-msgstr "Our Events"
+msgstr "Våre arrangementer"
 
 
 ####
@@ -1708,349 +1705,349 @@ msgstr "Our Events"
 
 
 msgid "title_napo_episode_1_0"
-msgstr "Best signs story"
+msgstr "De beste skiltene"
 
 msgid "title_napo_episode_1_1"
-msgstr "Danger"
+msgstr "Fare"
 
 msgid "title_napo_episode_1_2"
-msgstr "Danger - suspended load  "
+msgstr "Fare – hengende last "
 
 msgid "title_napo_episode_1_3"
-msgstr "Danger - fork-lift trucks  "
+msgstr "Fare – gaffeltruck"
 
 msgid "title_napo_episode_1_4"
-msgstr "Prohibition signs"
+msgstr "Forbudsskilt"
 
 msgid "title_napo_episode_1_5"
-msgstr "No smoking"
+msgstr "Røyking forbudt"
 
 msgid "title_napo_episode_1_6"
-msgstr "No fork-lift trucks  "
+msgstr "Gaffeltruck forbudt"
 
 msgid "title_napo_episode_1_7"
-msgstr "Mandantory signs"
+msgstr "Påbudsskilt"
 
 msgid "title_napo_episode_1_8"
-msgstr "Safety goggles must be worn  "
+msgstr "Bruk av vernebriller påbudt"
 
 msgid "title_napo_episode_1_9"
-msgstr "Hearing protection must be worn  "
+msgstr "Bruk av hørselsvern påbudt"
 
 msgid "title_napo_episode_1_10"
-msgstr "Safety helmet must be worn  "
+msgstr "Bruk av hjelm påbudt"
 
 msgid "title_napo_episode_1_11"
-msgstr "Rescue signs"
+msgstr "Nødutgang"
 
 msgid "title_napo_episode_1_12"
-msgstr "Rescue route  "
+msgstr "Rømningsvei"
 
 msgid "title_napo_episode_1_13"
-msgstr "First aid  "
+msgstr "Førstehjelp"
 
 msgid "title_napo_episode_1_14"
-msgstr "Fire protection signs"
+msgstr "Brannvern"
 
 msgid "title_napo_episode_1_15"
-msgstr "Fire-extinguishing equipment  "
+msgstr "Brannslokkingsutstyr"
 
 msgid "title_napo_episode_1_16"
-msgstr "Fire alarm system  "
+msgstr "Brannvarslingssystem"
 
 msgid "title_napo_episode_1_17"
-msgstr "The end"
+msgstr "Slutt"
 
 msgid "title_napo_episode_2_0"
-msgstr "The adventures of NAPO  "
+msgstr "NAPOs eventyr"
 
 msgid "title_napo_episode_2_1"
-msgstr "The importance of signposting"
+msgstr "Viktigheten av skilting"
 
 msgid "title_napo_episode_2_2"
-msgstr "Signposting is not sufficient"
+msgstr "Skilting er ikke nok"
 
 msgid "title_napo_episode_2_3"
-msgstr "Labels should be read"
+msgstr "Merkingen må leses"
 
 msgid "title_napo_episode_2_4"
-msgstr "Choose public transports"
+msgstr "Velg offentlig transport"
 
 msgid "title_napo_episode_2_5"
-msgstr "The right protection at the right time"
+msgstr "Riktig verneutstyr til rett bruk"
 
 msgid "title_napo_episode_2_6"
-msgstr "Improvising means risk taking"
+msgstr "Improvisasjon innebærer risiko"
 
 msgid "title_napo_episode_2_7"
-msgstr "Each product has its own packaging"
+msgstr "Hvert produkt har sin egen emballasje"
 
 msgid "title_napo_episode_2_8"
-msgstr "Too much pressure is likely to be harmful"
+msgstr "For stort press kan være skadelig"
 
 msgid "title_napo_episode_2_9"
-msgstr "Unsuitable material + incompetence = accident"
+msgstr "Uegnet utstyr + inkompetanse = ulykke"
 
 msgid "title_napo_episode_3_0"
-msgstr "Scratch and sniff - chemical risks at work"
+msgstr "Skrap og lukt – kjemiske risikoer på arbeidsplassen"
 
 msgid "title_napo_episode_3_1"
-msgstr "Harmful"
+msgstr "Skadelig"
 
 msgid "title_napo_episode_3_2"
-msgstr "Irritant"
+msgstr "Irriterende"
 
 msgid "title_napo_episode_3_3"
-msgstr "Flammable"
+msgstr "Brannfarlig"
 
 msgid "title_napo_episode_3_4"
-msgstr "Corrosive"
+msgstr "Etsende"
 
 msgid "title_napo_episode_3_5"
-msgstr "Toxic"
+msgstr "Giftig"
 
 msgid "title_napo_episode_3_6"
-msgstr "Dangerous for the environment"
+msgstr "Farlig for miljøet"
 
 msgid "title_napo_episode_3_7"
-msgstr "The end"
+msgstr "Slutt"
 
 msgid "title_napo_episode_4_0"
-msgstr "Clean Sweep"
+msgstr "Gjør rent bord"
 
 msgid "title_napo_episode_4_1"
-msgstr "Change of plan"
+msgstr "Forandring i planene"
 
 msgid "title_napo_episode_4_2"
-msgstr "Work at height"
+msgstr "Arbeid i høyden"
 
 msgid "title_napo_episode_4_3"
-msgstr "Enough is enough"
+msgstr "Nok er nok"
 
 msgid "title_napo_episode_4_4"
-msgstr "Safety plan"
+msgstr "Sikkerhetsplan"
 
 msgid "title_napo_episode_4_5"
-msgstr "Yellow card"
+msgstr "Gult kort"
 
 msgid "title_napo_episode_4_6"
 msgstr "Bodybuilding"
 
 msgid "title_napo_episode_4_7"
-msgstr "Safety angels"
+msgstr "Skytsengler"
 
 msgid "title_napo_episode_4_8"
-msgstr "The end"
+msgstr "Slutt"
 
 
 msgid "title_napo_episode_5_0"
-msgstr "Napo - safe on site"
+msgstr "Napo – sikkerhet på byggeplassen"
 
 msgid "title_napo_episode_5_1"
-msgstr "Building in safety"
+msgstr "Bygg på sikkerhet"
 
 msgid "title_napo_episode_5_2"
-msgstr "Don't fall for it"
+msgstr "Ikke fall for fristelsen"
 
 msgid "title_napo_episode_5_3"
-msgstr "Heading for a fall"
+msgstr "Fare for fall"
 
 msgid "title_napo_episode_5_4"
-msgstr "Champions of the world"
+msgstr "Verdensmestre"
 
 msgid "title_napo_episode_5_5"
-msgstr "Lightning strike"
+msgstr "Lynet slår ned"
 
 msgid "title_napo_episode_5_6"
-msgstr "Keep them apart"
+msgstr "Hold dem atskilt"
 
 msgid "title_napo_episode_5_7"
-msgstr "Five star treatment"
+msgstr "Femstjerners behandling"
 
 msgid "title_napo_episode_5_8"
-msgstr "Bad dream"
+msgstr "Mareritt"
 
 msgid "title_napo_episode_5_9"
-msgstr "Safe landing"
+msgstr "Trygg landing"
 
 msgid "title_napo_episode_6_0"
-msgstr "Napo in stop that noise !"
+msgstr "Napo i Stopp det bråket!"
 
 msgid "title_napo_episode_6_1"
-msgstr "Irreparable"
+msgstr "Skaden er skjedd"
 
 msgid "title_napo_episode_6_2"
-msgstr "Didn't hear it coming "
+msgstr "Hørte du ikke? "
 
 msgid "title_napo_episode_6_3"
-msgstr "Noise in the office"
+msgstr "Støy på kontoret"
 
 msgid "title_napo_episode_6_4"
-msgstr "Problem pregnancy"
+msgstr "Graviditet og støy"
 
 msgid "title_napo_episode_6_5"
-msgstr "Out in the cold"
+msgstr "Ute i kulden"
 
 msgid "title_napo_episode_6_6"
-msgstr "Don't make things worse"
+msgstr "Ikke gjør ting verre"
 
 msgid "title_napo_episode_6_7"
-msgstr "The end"
+msgstr "Slutt"
 
 msgid "title_napo_episode_7_0"
-msgstr "Safe start"
+msgstr "Trygg start"
 
 msgid "title_napo_episode_7_1"
-msgstr "Don't hesitate to ask questions"
+msgstr "Tør å spørre"
 
 msgid "title_napo_episode_7_2"
-msgstr "Attention listen up"
+msgstr "Hør etter!"
 
 msgid "title_napo_episode_7_3"
-msgstr "Information overload"
+msgstr "For mye informasjon"
 
 msgid "title_napo_episode_7_4"
-msgstr "Watch out for others too"
+msgstr "Pass også på andre"
 
 msgid "title_napo_episode_7_5"
-msgstr "Overconfidence is dangerous"
+msgstr "Overmot er farlig"
 
 msgid "title_napo_episode_7_6"
-msgstr "The end"
+msgstr "Slutt"
 
 msgid "title_napo_episode_8_0"
 msgstr "Start"
 
 msgid "title_napo_episode_8_1"
-msgstr "Modern stressful times"
+msgstr "Moderne tider"
 
 msgid "title_napo_episode_8_2"
-msgstr "Divide and rule"
+msgstr "Splitt og hersk"
 
 msgid "title_napo_episode_8_3"
-msgstr "Radical ergonomics"
+msgstr "Radikal ergonomi"
 
 msgid "title_napo_episode_8_4"
 msgstr "Twist and shout"
 
 msgid "title_napo_episode_8_5"
-msgstr "No grip"
+msgstr "Dårlig grep"
 
 msgid "title_napo_episode_8_6"
-msgstr "Working height"
+msgstr "Arbeidshøyde"
 
 msgid "title_napo_episode_8_7"
-msgstr "Bad vibrations"
+msgstr "Dårlige vibrasjoner"
 
 msgid "title_napo_episode_8_8"
-msgstr "The duel"
+msgstr "Duellen"
 
 msgid "title_napo_episode_8_9"
-msgstr "Think to move"
+msgstr "Tenk på bevegelse"
 
 msgid "title_napo_episode_8_10"
-msgstr "Hold me tight"
+msgstr "Hold meg fast"
 
 msgid "title_napo_episode_8_11"
-msgstr "The end"
+msgstr "Slutt"
 
 msgid "title_napo_episode_9_0"
-msgstr "Introduction"
+msgstr "Innledning"
 
 msgid "title_napo_episode_9_1"
-msgstr "Assess the risk"
+msgstr "Vurder risikoen"
 
 msgid "title_napo_episode_9_2"
-msgstr "Identify the unknown"
+msgstr "Identifiser det ukjente"
 
 msgid "title_napo_episode_9_3"
-msgstr "Act on risks"
+msgstr "Grip inn ved risiko"
 
 msgid "title_napo_episode_9_4"
-msgstr "Risky combination"
+msgstr "Risikable kombinasjoner"
 
 msgid "title_napo_episode_9_5"
-msgstr "Eliminate the hazard"
+msgstr "Eliminer faren"
 
 msgid "title_napo_episode_9_6"
-msgstr "Safety pays"
+msgstr "Sikkerhet lønner seg"
 
 msgid "title_napo_episode_9_7"
-msgstr "The end"
+msgstr "Slutt"
 
 msgid "title_napo_film_1"
-msgstr "Best Signs Story"
+msgstr "De beste skiltene"
 
 msgid "description_napo_film_1"
-msgstr "The first film in the Napo series provides a basic introduction to health and safety signs and symbols found in the workplace. It provides a useful guide for new employees and a valuable refresher for other workers. Different workplace situations are shown where safety signs are important. This film is suitable for all sectors and all levels of employees but especially for young people in training or work experience.<br/><br/>It is designed to inform the audience about safety signs at work, to promote the importance of respecting the signs, and to learn and identify the meaning of the signs through their form and the colour. There are thirteen sketches. Each sketch concerns a working situation where Napo is confronted by the signs that come to life to teach him their meaning and the importance of safety. The sequences show what happens if the signs are not obeyed, and the technical and organisational obstacles against the efficient working of the signs."
+msgstr "Den første filmen i Napo-serien er en grunnleggende innføring i HMS-skilter og  symboler som finnes på arbeidsplassen. Den er en nyttig veiledning for nyansatte og en verdifull oppfriskning for andre medarbeidere. Filmen viser forskjellige situasjoner på arbeidsplassen der sikkerhetsskilter spiller en viktig rolle. Den egner seg for alle bransjer og stillingsnivåer, men kanskje særlig for unge som er under opplæring eller i jobbtrening.<br/><br/>Filmen er laget for å informere om sikkerhetsskilter på arbeidsplassen, om viktigheten av å respektere skiltene og for at tilskueren skal lære om betydningen av skiltene gjennom deres form og farge. Filmen består av tretten sketsjer. Hver sketsj handler om en arbeidssituasjon der Napo møter \"levende\" skilt som lærer ham om hva de betyr og om viktigheten av sikkerhet. Filmsekvensene viser hva som skjer dersom skiltene ikke respekteres, samt tekniske og organisatoriske hindringer for at skiltene kan fungere effektivt."
 
 msgid "title_napo_film_2"
-msgstr "The Adventures of Napo"
+msgstr "Napos eventyr"
 
 msgid "description_napo_film_2"
-msgstr "The film looks at common risks in the workplace and is ideal for young people who have little or no experience of work. It highlights risk awareness, the need to work safely and the importance or training.This film is suitable for all sectors and for all levels of employees but especially for young people in training or work experience.The objectives are to raise awareness of basic risks and to invite the audience to reflect about accidents and discuss how they can be prevented.There are nine misadventures and each is typical of an individual or collective risk in an enterprise. The film highlights the importance of accurately signposting risks, understanding warning labels, safety when traveling to and from work, the use of appropriate personal protective equipment, not taking risks, using the correct and most appropriate packaging, the importance of not taking short cuts and the importance of work equipment being operated by trained workers."
+msgstr "Filmen tar for seg vanlige risikoer på arbeidsplassen og er ideell for unge mennesker som har liten eller ingen arbeidserfaring. Den setter søkelys på risikobevissthet, behovet for sikkerhet på arbeidsplassen og viktigheten av opplæring. Filmen egner seg for alle bransjer og stillingsnivåer, men kanskje særlig for unge mennesker som er under opplæring eller i jobbtrening. Målet er å øke bevisstheten om grunnleggende risikoer og få seerne til å tenke over ulykker og diskutere hvordan de kan forebygges. Sekvensene viser ni uhell som alle er typiske for individuelle eller kollektive risikoer på en arbeidsplass. Filmen understreker viktigheten av å advare om risikoer med riktig skilt, forstå varselsskilt, sikkerhet når man reiser til og fra jobb, bruk av riktig verneutstyr, unngå å ta risikoer, bruke rett og hensiktsmessig emballasje, ikke ta snarveier og hvor viktig det er at arbeidsutstyr betjenes av kvalifisert personell."
 
 msgid "title_napo_film_3"
-msgstr "Scratch and Sniff - Chemical Risks at Work"
+msgstr "Skrap og lukt – kjemiske risikoer på arbeidsplassen"
 
 msgid "description_napo_film_3"
-msgstr "Napo is involved in a series of short sketches working with chemicals, including those that are irritants, flammable, corrosive, toxic or a danger to the environment. Each sketch is followed by a brief sequence showing how to prevent accidents by safe working practices.This film is suitable for all sectors and all levels of employees but especially for young people in training and work experience.The objective is to draw attention to the importance of labeling chemical products. Napo is confronted with using chemical substances. Six sequences show first the wrong way with the serious consequences then the right way by respecting the safety instructions. The film covers six of the nine safety symbols, and covers briefly the risk of explosives."
+msgstr "Her møter vi Napo i en rekke korte sketsjer hvor han arbeider med kjemikalier, blant annet irriterende, brannfarlige, etsende, giftige og miljøfarlige stoffer. Etter hver sketsj følger en kort sekvens som viser hvordan ulykker kan forhindres med sikre arbeidsrutiner. Filmen egner seg for alle bransjer og stillingsnivåer, men kanskje særlig for unge mennesker som er under opplæring eller i jobbtrening. Målet med filmen er å rette oppmerksomheten mot viktigheten av merking av kjemiske produkter. Napo skal her bruke kjemiske stoffer. I de seks sekvensene vises først feil måte med de alvorlige konsekvensene det medfører, deretter vises riktig måte hvor sikkerhetsinstruksene overholdes. Filmen dekker seks av de ni sikkerhetssymbolene og tar kort for seg risikoen ved eksplosiver."
 
 msgid "title_napo_film_4"
-msgstr "Napo in Safe on Site"
+msgstr "Napo i Sikkerhet på byggeplassen"
 
 msgid "description_napo_film_4"
-msgstr "Napo is working on a construction site and the film shows some of the common hazards and risks on site. As an employee, Napo is faced with many hazardous situations but manages to survive his ordeal.The film is produced for building and construction workers but is suitable for all sectors and all levels of employees, especially young people in training and work experience.The objectives are to raise awareness of the most frequent risks found on a building site and to give the opportunity to reflect on prevention measures adapted to the situation. The introduction shows different characters, Napo as a building worker, a colleague, the boss and the architect. Different risk situations are shown in seven short stories. Anti chute, falls from height, obstacle course, back pain, organisation of transport routes, hygiene and security of the site."
+msgstr "Napo arbeider på en byggeplass, og filmen viser noen av de vanligste farene og risikoene på en byggeplass. Som arbeidstaker kommer Napo opp i mange farlige situasjoner, men klarer seg gjennom vanskene. Filmen er laget for bygg- og anleggsarbeidere, men egner seg for alle bransjer og stillingsnivåer, særlig for unge mennesker som er under opplæring eller i jobbtrening. Målet med filmen er å øke bevisstheten om de vanligste risikoene på byggeplasser og å gi seerne mulighet til å tenke over forebyggende tiltak som kan tilpasses situasjonen. I innledningen blir vi kjent med forskjellige figurer, Napo som bygningsarbeider, en kollega, sjefen og arkitekten. Sju korte sekvenser viser ulike risikosituasjoner. Sikring mot fall, fall fra høyde, hinderløype, ryggsmerter, organisering av transportveier, hygiene og sikkerhet på byggeplassen."
 
 msgid "title_napo_film_5"
-msgstr "Napo in Clean Sweep"
+msgstr "Napo i Gjør rent bord"
 
 msgid "description_napo_film_5"
-msgstr "This film shows the health and safety risks faced by workers in the cleaning and contracting industry including slips and trips, falls, manual handling and working alone.The target audience is cleaning contractors and enterprises but the film is suitable for all sectors and all levels of employees, especially young people in training and work experience.The objectives are to make people aware of the common risks in cleaning, and the opportunity to indicate prevention measures.Sometimes Napo takes care and at other times he takes risks. With Nanette, his colleague, his boss and the clients, he faces different levels of risk. The situations give the opportunity to speak about the organisation and planning of the work, safety signs, using ladders and steps, manual handling problems, working together, and circulation of information."
+msgstr "Denne filmen viser hvilke helse- og sikkerhetsrisikoer renholdsarbeidere står overfor, blant annet fare for å skli, snuble og falle samt farer ved manuelle løft og det å arbeide alene. Målgruppen er renholdere, men filmen egner seg for alle bransjer og stillingsnivåer, særlig unge mennesker som er under opplæring eller i jobbtrening. Målet med filmen er å rette oppmerksomheten mot vanlige risikoer innen renholdsyrket og vise forebyggende tiltak. Noen ganger er Napo forsiktig, andre ganger tar han en risiko. Sammen med kollegaen Nanette, sjefen og kundene møter han ulike nivåer av risiko. Situasjonene gir et utgangspunkt for å diskutere organisering og planlegging av arbeidet, sikkerhetskilter, bruk av stiger og trapper, problemer ved manuelle løft, samarbeid og informasjonsformidling."
 
 msgid "title_napo_film_6"
-msgstr "Napo in Stop that Noise"
+msgstr "Napo i Stopp det bråket!"
 
 msgid "description_napo_film_6"
-msgstr "Noise at work affects thousands of workers. The film is designed to illustrate some of the main causes of hearing loss and to emphasise the need to control noise at source, to take preventive measures and to wear appropriate hearing protection when necessary.This film is suitable for all sectors and all levels of employees but especially for young people in training and work experience."
+msgstr "Støy på arbeidsplassen påvirker tusenvis av arbeidstakere. Filmen viser noen av de viktigste årsakene til hørselstap og understreker behovet for å kontrollere støykilder, iverksette forebyggende tiltak og bruke egnet hørselsvern når det er nødvendig. Filmen egner seg for alle bransjer og stillingsnivåer, særlig unge mennesker som er under opplæring eller i jobbtrening."
 
 
 msgid "title_napo_film_7"
-msgstr "Napo in Safe Start"
+msgstr "Napo i Trygg start"
 
 msgid "description_napo_film_7"
-msgstr "The film is designed to raise awareness of the issues faced by young people starting a new job or starting in a new work place. Napo is an ideal way to reach a young audience, especially young people in training or work experience. The film is also suitable for all new entrants to the labour market, including migrant and temporary workers.There are seven scenes showing typical situations faced by a new entrant to the workplace."
+msgstr "Filmen skal bidra til økt bevissthet om de problemstillinger unge mennesker møter i en ny jobb eller på en ny arbeidsplass. Napo-filmen er en ideell måte å nå ut til et ungt publikum på, særlig til unge mennesker som er under opplæring eller i jobbtrening. Filmen egner seg også for andre som er nye på arbeidsmarkedet, f.eks. migrerende arbeidstakere og vikarer. Filmens syv scener viser typiske situasjoner en nyansatt kan komme opp i."
 
 msgid "title_napo_film_8"
-msgstr "Napo in Lighten the Load"
+msgstr "Napo i Lett byrden!"
 
 msgid "description_napo_film_8"
-msgstr "Musculoskeletal disorders (MSDs) are the most common work-related health problem in Europe, affecting millions of workers - at some point in their life as many as 90 percent of people will suffer from back pain, upper limb disorders, and repetitive strain injuries.<br/><br/> 'Lighten the load' supports an integrated management approach to tackling MSDs, and the need to address the 'whole load on the body', which covers all the stresses and strains, environmental factors such as cold working conditions, the pace at which the work is being carried out, and the load being moved.<br/> The film shows Napo confronting different work situations and is suitable for all workers, including migrant and temporary workers. There are eleven scenes showing typical situations faced in the workplace."
+msgstr "Muskel- og skjelettplager er de vanligste yrkesrelaterte helseproblemene i Europa og rammer millioner av arbeidstakere. En eller annen gang i livet vil inntil 90 prosent av oss rammes av ryggsmerter, plager i muskler og ledd eller skader som følge av ensidig og gjentakende arbeid.<br/><br/> 'Lett byrden' skal støtte bedriftens arbeid med å forebygge og håndtere slike lidelser, og tar for seg behovet for å sette fokus på hele belastningen på kroppen, dvs. alle påvirkninger og belastninger, miljøfaktorer som arbeid i kulde, farten arbeidet utføres i og byrdene som flyttes.<br/> Filmen viser Napo i ulike arbeidssituasjoner og egner seg for alle arbeidstakere, også migrerende arbeidstakere og vikarer. Filmen inneholder elleve scener som viser typiske situasjoner som kan oppstå på en arbeidsplass."
 
 msgid "title_napo_film_9"
-msgstr "Napo in Risky Business"
+msgstr "Napo i Risky Business"
 
 msgid "description_napo_film_9"
-msgstr "Risk assessment is the theme of the European campaign in 2008/09. Risky business is a about hazards and risks at work, and the need to assess risks and act on the findings to make workplaces safer and healthier. The film looks at hazards and some of the most common workplace risks, and the need to: ‘Stop, Think and Act’ to reduce the number of workplace accidents and the incidence of occupational ill health. The film is designed for use as a training aid to introduce risk assessment and the concepts of hazard and risk."
+msgstr "Risikovurdering var temaet for den europeiske kampanjen i 2008/2009. Risky business handler om farer og risikoer på arbeidsplassen og behovet for å vurdere risiko og bruke resultatene til å gjøre arbeidsplassen tryggere og bedre for helsen. Filmen tar for seg farer og noen av de vanligste risikoene på arbeidsplassen og behovet for å \"stoppe opp, tenke og handle\" for å redusere antallet ulykker på arbeidsplassen og forekomsten av arbeidsrelaterte helseplager. Filmen er ment brukt som opplæringsmateriell når begrepene risikovurdering, fare og risiko presenteres for arbeidstakerne."
 
 msgid "title_napo_film_11"
-msgstr "Napo in: \"Safety in… and outside of work\""
+msgstr "Napo i \"Sikkerhet på … og utenfor arbeidsplassen\""
 
 msgid "description_napo_film_11"
-msgstr "<p>The film tells the story of Napo, a model workman. After work, however, he ignores the risks and rules in different situations. This leads to many near-accidents and finally to a sports injury that lands Napo in hospital. The leisure time situations cover driving, home, lifestyle, social and sport. A short quiz is available to download from the website (or DVD), and can be used to go over some of the rules with the audience.</p><p>The primary target audience for this Napo film is the employees in a firm. It is intended as a tool to deal with the subject of leisure time safety. But the film is also suited for management training in connection with absence management.</p>"
+msgstr "<p>Filmen forteller historien om Napo, en pliktoppfyllende arbeidskar. Etter endt arbeidstid tar han imidlertid lett på risiko og regler i ulike situasjoner. Dette fører til mange nestenulykker og ender til slutt med en idrettsskade som sender Napo på sykehus. Fritidssituasjonene omfatter bilkjøring, hjemmemiljøet, livsstil, sosialt samvær og idrett. En kort quiz kan lastes ned fra nettstedet (eller DVD). Den kan brukes til å repetere noen av reglene.</p><p>Hovedmålgruppen for denne Napo-filmen er ansatte i en bedrift. Filmen er ment som et hjelpemiddel når temaet sikkerhet på fritiden diskuteres. Filmen kan også brukes til opplæring på ledernivå i forbindelse med fraværsforebyggende arbeid.</p>"
 
 
 msgid "label_napo_view_episodes"
-msgstr "View episodes"
+msgstr "Se episodeoversikt"
 
 msgid "label_napo_click_to_see_film"
-msgstr "Click the image to see the film..."
+msgstr "Klikk på bildet for å se filmen..."
 
 msgid "label_napo_download_film_as"
-msgstr "Download this film as"
+msgstr "Last ned filmen som"
 
 msgid "label_napo_download_episode_as"
-msgstr "Download this film as"
+msgstr "Last ned filmen som"
 
 msgid "label_avi"
 msgstr "AVI"
@@ -2059,76 +2056,71 @@ msgid "label_wmv"
 msgstr "WMV"
 
 msgid "label_or"
-msgstr "or"
+msgstr "eller"
 
 
 
 # ---------- New Napo Film Number 12    Danger: Chemicals
 msgid "title_napo_film_12"
-msgstr "Napo in... Danger: chemicals!"
+msgstr "Napo i... Fare: kjemikalier!"
 
 msgid "description_napo_film_12"
-msgstr "<p>This film is a revised version of ‘Scratch and Sniff – chemical risks at work’ produced in 2003. It introduces changes to harmonise the signs (pictograms) used in the transport of dangerous goods and the signs used in product classification, labelling and packaging (CLP) of chemicals. The existing seven pictograms are to be replaced with nine.</p><p>The key dates are: 1 December 2010, when substances must be reclassified and labelled in line with the new global system (GHS); and 1 June 2015, when the same process will be applied to mixtures (formerly called preparations).</p><p>Napo is involved in a series of short sketches working with chemicals, including those that are irritants, flammable, corrosive, toxic or a danger to the environment. Each sketch is followed by a brief sequence showing how to prevent accidents by safe working practices. This film is suitable for all sectors and all levels of employees. The objective is to draw attention to the importance of labelling chemical products. After an explosive opening scene, six sequences show first the wrong way with the serious consequences then the right way by respecting the safety instructions. </p>"
+msgstr "<p>Denne filmen er en revidert utgave av ‘Skrap og lukt – kjemiske risikoer på arbeidsplassen’ fra 2003. Den presenterer endringer som er gjort for å harmonisere symbolene (piktogrammer) som brukes ved transport av farlig gods, og symbolene som brukes ved produktklassifisering, merking og pakking av kjemikalier. Dagens sju piktogrammer skal erstattes av ni.</p><p>Viktige datoer er: 1. desember 2010, når stoffer må reklassifiseres og merkes i henhold til et nytt globalt harmonisert system (GHS); og 1. juni 2015, når samme prosess gjennomføres for stoffblandinger (tidligere kalt preparater).</p><p>Vi møter Napo i en rekke korte sketsjer hvor han arbeider med kjemikalier, blant annet stoffer som er irriterende, brannfarlige, etsende, giftige og farlige for miljøet. Etter hver av sketsjene kommer en kort sekvens som viser hvordan ulykker kan forebygges gjennom sikre arbeidsrutiner. Filmen egner seg for alle bransjer og stillingsnivåer. Målet er å sette fokus på viktigheten av å merke kjemiske produkter. Etter en eksplosiv åpning viser de seks sekvensene først den gale måten med de alvorlige konsekvenser det medfører, deretter vises riktig måte hvor sikkerhetsinstruksene overholdes. </p>"
 
 msgid "title_napo_episode_12_1"
-msgstr "Chemical risks at work"
+msgstr "Kjemiske risikoer på arbeidsplassen"
 
 msgid "title_napo_episode_12_2"
-msgstr "Harmful"
+msgstr "Skadelig"
 
 msgid "title_napo_episode_12_3"
-msgstr "Irritant"
+msgstr "Irriterende"
 
 msgid "title_napo_episode_12_4"
-msgstr "Flammable"
+msgstr "Brannfarlig"
 
 msgid "title_napo_episode_12_5"
-msgstr "Corrosive"
+msgstr "Etsende"
 
 msgid "title_napo_episode_12_6"
-msgstr "Toxic"
+msgstr "Giftig"
 
 msgid "title_napo_episode_12_7"
-msgstr "Dangerous for the environment"
+msgstr "Farlig for miljøet"
 
 msgid "title_napo_episode_12_8"
-msgstr "The end"
+msgstr "Slutt"
 
 
 # ---------- New Napo Film Number 13    Protect your Skin
 msgid "title_napo_film_13"
-msgstr "Napo in... Protect your skin!"
+msgstr "Napo i... Beskytt huden!"
 
 msgid "description_napo_film_13"
-msgstr "<p>The film raises awareness of the dangers of exposing the skin to harmful (and sometimes not so harmful) substances, the situations where exposures occur, and what can be done to avoid risks, protect the skin and prevent damage. Napo discovers many different situations where exposure to chemicals and other substances can cause skin problems. He learns about the amazing qualities of the skin, and strips naked to show the audience: ‘Everything you always wanted to know about... your skin’. He identifies measures to prevent problems and has three important messages: Avoid – Protect – Check.</p><p>Avoiding or minimising contact with chemicals is achieved through elimination - using a mechanical method instead of a chemical one; by substitution - using a safer alternative; and by employing a safe working distance - using tools rather than handling directly. Personal protective equipment (PPE) is designed to protect the skin but Napo reminds us of the importance of taking care of the skin by showing prompt removal of contamination, washing skin properly, drying skin thoroughly and applying skin creams regularly.Finally Napo recommends regular checks for early signs of skin problems. </p>"
+msgstr "<p>Filmen retter søkelyset mot farene ved å utsette huden for skadelige (og noen ganger ikke så skadelige) stoffer, situasjoner hvor eksponering kan oppstå og hva som kan gjøres for å unngå risiko, beskytte huden og forhindre skade. Napo oppdager mange ulike situasjoner hvor eksponering for kjemikalier og andre stoffer kan forårsake hudproblemer. Han lærer om hudens fantastiske egenskaper og kler seg naken for å vise seerne \"Alt du noen gang ville vite om ... huden\". Han finner tiltak som forebygger problemer og har tre viktige budskap: Unngå – Beskytt – Sjekk.</p><p>Kontakt med kjemikalier kan unngås eller reduseres til et minimum gjennom eliminering – bruk en mekanisk metode i stedet for en kjemisk; gjennom substitusjon – velg et sikrere alternativ; og ved å holde trygg avstand under arbeidet – bruk redskaper i stedet for å håndtere stoffene direkte. Personlig verneutstyr er utformet for å beskytte huden, men Napo minner oss på hvor viktig det er å ta vare på huden ved å vise hvordan forurensende stoffer skal fjernes: vask huden skikkelig, tørk grundig og påfør hudkrem jevnlig. Til slutt anbefaler Napo at vi regelmessig sjekker om vi har tidlige tegn på hudproblemer. </p>"
 
 
 # ---------- New Napo Film Number 14   Safe Maintenance 
 msgid "title_napo_film_14"
-msgstr "Napo in... Safe maintenance"
+msgstr "Napo i... Sikkert vedlikehold"
 
 msgid "description_napo_film_14"
-msgstr "<p>Poor standards of maintenance are a major cause of accidents and occupational diseases. Many accidents happen during maintenance work, or because of lack of maintenance or as a result of poor quality maintenance.</p><p>This film shows Napo in a variety of situations; sometimes he is the maintenance worker, at other times he is an employee. We see the importance of isolating or ‘lock-off’ when maintenance is being carried out on machinery, the problems of ‘hidden hazards’, work in confined spaces, and the importance of competent persons carrying out maintenance work, particularly inspection and testing.</p> <p>This film, which is suitable for all sectors and all levels of employees, seeks to promote good practice and draws attention to the importance of safe maintenance. </p>"
+msgstr "<p>Dårlig vedlikehold er en viktig årsak til ulykker og yrkesrelaterte sykdommer. Mange ulykker skjer under vedlikeholdsarbeid, på grunn av manglende vedlikehold eller som følge av dårlig utført vedlikehold.</p><p>Denne filmen viser Napo i en rekke situasjoner – noen ganger som vedlikeholdsarbeider, andre ganger som ansatt. Vi får se hvor viktig det er å isolere eller \"stenge av\" maskiner når vedlikehold utføres, problemene med \"skjulte farer\", arbeid i innelukkede områder og hvor viktig det er at vedlikeholdsarbeidet utføres av kvalifisert personell, særlig inspeksjon og testing.</p> <p>Filmen, som egner seg for alle bransjer og stillingsnivåer, fremmer god praksis og setter fokus på sikkert vedlikehold. </p>"
 
 msgid "title_napo_episode_14_1"
-msgstr "Lock out"
+msgstr "Avstenging"
 
 msgid "title_napo_episode_14_2"
-msgstr "Hidden hazards"
+msgstr "Skjulte farer"
 
 msgid "title_napo_episode_14_3"
-msgstr "Don’t improvise!"
+msgstr "Ikke improviser!"
 
 msgid "title_napo_episode_14_4"
-msgstr "In a rush"
+msgstr "Når det haster"
 
 msgid "title_napo_episode_14_5"
-msgstr "Danger within!"
+msgstr "Fare innendørs!"
 
 msgid "title_napo_episode_14_6"
-msgstr "One, two, what to do?"
-
-# NB: this must be copied to osha.hw2010
-msgid "title_hw_campaign_portlet"
-msgstr "Healthy Workplaces Campaign"
-
+msgstr "Hva gjør vi nå?"
