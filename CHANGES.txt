@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - Added dateToBeConfirmed field to customised p4a.calendar views #2341
   [deroiste]
+- removed load older competitions js from detail template on Manuelas request in #3178
+  [pilz]
 
 
 1.4.9 (2011-04-13)
