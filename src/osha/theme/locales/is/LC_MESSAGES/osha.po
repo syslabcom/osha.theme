@@ -375,7 +375,7 @@ msgstr "Þakka þér fyrir athugasemd þína.  Við kunnum að meta athugasemdir
 #. <div i18n:translate="feedback_sender_mssg_3" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template_sender.pt
 msgid "feedback_sender_mssg_3"
-msgstr "Þú getur fylgst með því nýjasta á heimasíðu okkar með því að heimsækja  \"Hvað er nýtt\"[http://osha.europa.eu/en/site_update] og gerst áskrifandi að rafræna fréttabréfinu okkar OSH póstinum.[osha.europa.eu/en/news/oshmail/]. "
+msgstr "Þú getur fylgst með því nýjasta á heimasíðu okkar með því að heimsækja  „Hvað er nýtt“ [http://osha.europa.eu/en/site_update] og gerst áskrifandi að rafræna fréttabréfinu okkar OSH póstinum. [osha.europa.eu/en/news/oshmail/]. "
 
 #. <div i18n:translate="feedback_sender_mssg_from" tal:omit-tag="">
 #: OSHA/skins/osha/feedback_template_sender.pt
@@ -617,7 +617,7 @@ msgstr "Nánari upplýsingar"
 #. Original text
 #. More...
 msgid "label_more"
-msgstr "Meira..."
+msgstr "Meira…"
 
 #. <label for="title" i18n:translate="label_name">
 # # 1 more: ./plone_prefs/prefs_group_details.pt
@@ -1030,7 +1030,7 @@ msgid "portlet_campaign_hwi_title"
 msgstr "Frumkvæði í vinnuvernd"
 
 msgid "portlet_campaign_hwi_text"
-msgstr "Gott fyrir þig - Gott fyrir viðskiptin"
+msgstr "Gott fyrir þig – Gott fyrir viðskiptin"
 
 msgid "RSS"
 msgstr "RSS"
@@ -1523,7 +1523,7 @@ msgid "label_additional_languages"
 msgstr "Önnur tungumál"
 
 msgid "select_multiple_help"
-msgstr "Til að velja fleiri en eitt atriði úr listanum, ýttu á \"control\" takkann á lyklaborðinu, og veldu atriðið með músinni."
+msgstr "Til að velja fleiri en eitt atriði úr listanum, ýttu á „control“ takkann á lyklaborðinu, og veldu atriðið með músinni."
 
 msgid "description_alertservice_languageselector"
 msgstr "Tilkynningar eru sendar á ensku. Ef innihaldið er þýtt, getur þú valið um að fá það sent á öðrum tungumálum."
@@ -1532,7 +1532,7 @@ msgid "description_subscribe_oshmail"
 msgstr "Ég vil líka fá OSH póstinn, mánaðarlega fréttabréfið endurgjaldslaust"
 
 msgid "oshmail_learn_more"
-msgstr "lærðu meira..."
+msgstr "lærðu meira…"
 
 msgid "alertservice_notification_report"
 msgstr "Skýrsla OSHA yfir tilkynningar "
@@ -1772,7 +1772,7 @@ msgid "title_napo_episode_2_9"
 msgstr "Óhentugt efni + vanhæfni = slys"
 
 msgid "title_napo_episode_3_0"
-msgstr "Klór og þef - efnahættur á vinnustað"
+msgstr "Klór og þef – efnahættur á vinnustað"
 
 msgid "title_napo_episode_3_1"
 msgstr "Hættulegt"
@@ -1824,7 +1824,7 @@ msgstr "Endir"
 
 
 msgid "title_napo_episode_5_0"
-msgstr "Napo - öryggi á vettvangi"
+msgstr "Napo – öryggi á vettvangi"
 
 msgid "title_napo_episode_5_1"
 msgstr "Að byggja í öryggi"
@@ -1972,7 +1972,7 @@ msgid "description_napo_film_2"
 msgstr "Kvikmyndin tekur á algengum hættum á vinnustað og hentar ungu fólki sem hefur litla eða enga starfsreynslu.  Hún leggur áherslu á að vera meðvitaður um hættur, nauðsyn þess að starfa á öruggan hátt og mikilvægi þjálfunar.  Myndin hentar öllum sviðum og starfsfólki á öllum stigum en einkum ungu fólki í þjálfun eða að öðlast starfsreynslu.  Markmiðið er að vekja athygli á grundvallar hættum og gefa áheyrendum tækifæri til að velta fyrir sér slysum og ræða hvernig hægt sé að koma í veg fyrir þau.  Um er að ræða níu ævintýri og hvert og eitt er dæmigert fyrir einstaklingsbundnar eða sameiginlegar hættur innan fyrirtækis.  Kvikmyndin leggur áherslu á mikilvægi þess að merkja hættur með fullnægjandi hætti, að skilja aðvörunarmerki, öryggi þegar ferðast er til og frá vinnu, notkun viðeigandi hlífðarbúnaðar, að taka ekki áhættur, að nota réttar og hentugar pakkningar, mikilvægi þess að stytta sér ekki leið og mikilvægi þess að aðeins þjálfað starfsfólk noti vinnutæki." 
 
 msgid "title_napo_film_3"
-msgstr "Klór og þef - efnahættur á vinnustað"
+msgstr "Klór og þef – efnahættur á vinnustað"
 
 msgid "description_napo_film_3"
 msgstr "Napo er í stuttum þáttum þar sem hann vinnur með efni, þar á meðal þau sem eru ertandi, eldfim, eyðandi, eitruð eða hættuleg umhverfinu.  Í kjölfar hvers þáttar kemur stutt yfirlit þar sem sýnt er hvernig eigi að koma í veg fyrir slys með öruggum verklagsreglum.  Þessi mynd hentar öllum sviðum og starfsfólki á öllum stigum en einkum ungu fólki í þjálfun eða að öðlast starfsreynslu.  Markmiðið er að draga athygli að mikilvægi þess að merkja efnavörur.  Napo tekst á við að nota efni.  Sex atriði sýna fyrst ranga aðferð með alvarlegum afleiðingum og svo er rétt aðferð sýnd með því að virða öryggisleiðbeiningar. Myndin tekur á sex af níu öryggismerkjum, og tekur stuttlega á hættunni sem fylgir sprengiefnum."
@@ -2006,16 +2006,16 @@ msgid "title_napo_film_8"
 msgstr "Napo í léttu byrgðinni"
 
 msgid "description_napo_film_8"
-msgstr "Vöðva- og beinasjúkdómar (MSDs) eru algengustu vinnutengdu sjúkdómarnir í Evrópu, herja á milljónir starfsmanna - einhvern tímann á ævinni munu allt að 90 prósent fólks þjást af bakverkjum, verkjum í efri limum, og endurteknum álagsverkjum.<br/><br/>  \"Minnkaðu byrgðina\" styður við samþætta stjórnunaraðferð til að takast á við MSDs, og þörfina á að leggja áhersluna á \"allt álagið á líkamann\", sem tekur til alls álagsins og spennunnar, umhverfisþátta á borð við kaldar vinnuaðstæður, vinnuhraðann, og þyngslin sem þarf að færa.<br/> Kvikmyndin sýnir Napo takast á við ólíkar vinnuaðstæður og hentar öllu starfsfólki, þar á meðal farands- og tímabundnu starfsfólki.  Ellefu þættir sýna dæmigerðar aðstæður á vinnustað."
+msgstr "Vöðva- og beinasjúkdómar (MSDs) eru algengustu vinnutengdu sjúkdómarnir í Evrópu, herja á milljónir starfsmanna - einhvern tímann á ævinni munu allt að 90 prósent fólks þjást af bakverkjum, verkjum í efri limum, og endurteknum álagsverkjum.<br/><br/>  „Minnkaðu byrgðina“ styður við samþætta stjórnunaraðferð til að takast á við MSDs, og þörfina á að leggja áhersluna á „allt álagið á líkamann“, sem tekur til alls álagsins og spennunnar, umhverfisþátta á borð við kaldar vinnuaðstæður, vinnuhraðann, og þyngslin sem þarf að færa.<br/> Kvikmyndin sýnir Napo takast á við ólíkar vinnuaðstæður og hentar öllu starfsfólki, þar á meðal farands- og tímabundnu starfsfólki.  Ellefu þættir sýna dæmigerðar aðstæður á vinnustað."
 
 msgid "title_napo_film_9"
 msgstr "Napo í hættulegum viðskiptum"
 
 msgid "description_napo_film_9"
-msgstr "Áhættumat er þema evrópsku herferðarinnar 2008/09.  Hættuleg viðskipti er um hættur og áhættur á vinnustað og þörfina á að meta hættur og bregðast við niðurstöðunum til að gera vinnustaðinn öruggari og heilsusamlegri.  Kvikmyndin lítur á hættur og helstu áhættur á vinnustöðum, og þörfina á að: \"Stöðva, hugsa og framkvæma\" til að draga úr fjölda slysa á vinnustað og tíðni atvinnusjúkdóma.  Kvikmyndin er ætluð til nota sem hluti að kynningu á áhættumati og hugtökunum hætta og áhætta." 
+msgstr "Áhættumat er þema evrópsku herferðarinnar 2008/09.  Hættuleg viðskipti er um hættur og áhættur á vinnustað og þörfina á að meta hættur og bregðast við niðurstöðunum til að gera vinnustaðinn öruggari og heilsusamlegri.  Kvikmyndin lítur á hættur og helstu áhættur á vinnustöðum, og þörfina á að: „Stöðva, hugsa og framkvæma“ til að draga úr fjölda slysa á vinnustað og tíðni atvinnusjúkdóma.  Kvikmyndin er ætluð til nota sem hluti að kynningu á áhættumati og hugtökunum hætta og áhætta." 
 
 msgid "title_napo_film_11"
-msgstr "Napo í: \" Öryggi á... og utan vinnu  \""
+msgstr "Napo í: \ Öryggi á… og utan vinnu  \""
 
 msgid "description_napo_film_11"
 msgstr "<p>Þessi kvikmynd fjallar um Napo þar sem hann er fyrirmyndar starfsmaður.  Eftir vinnu hundsar hann hins vegar hættur og reglur, í ólíkum aðstæðum.  Þetta leiðir til margra tilfella þar sem litlu munar að slys verði og loks verður hann fyrir íþróttameiðslum og Napo endar á sjúkrahúsi.  Þessar aðstæður í frítíma ná yfir akstur, heimilið, lífsstíl, félagslíf og íþróttir.  Hægt er að niðurhala stuttu skyndiprófi á heimasíðunni (eða DVD), og er hægt að nota til að fara yfir nokkrar af reglunum með áheyrendum.</p><p>Helsti markhópur þessarar Napo myndar er starfsfólk fyrirtækis.  Ætlunin er að nota hana til umfjöllunar um að nýta frítíma sinn á öruggan hátt.  Kvikmyndin er einnig góð fyrir stjórnunarþjálfun í sambandi við viðveru- og fjarverustjórnun.</p>"
@@ -2025,7 +2025,7 @@ msgid "label_napo_view_episodes"
 msgstr "Skoða þætti"
 
 msgid "label_napo_click_to_see_film"
-msgstr "Smelltu á mynd til að sjá kvikmynd..."
+msgstr "Smelltu á mynd til að sjá kvikmynd…"
 
 msgid "label_napo_download_film_as"
 msgstr "Niðurhala þessari kvikmynd sem"
@@ -2046,10 +2046,10 @@ msgstr "eða"
 
 # ---------- New Napo Film Number 12    Danger: Chemicals
 msgid "title_napo_film_12"
-msgstr "Napo í....Hætta: efni!" 
+msgstr "Napo í….Hætta: efni!" 
 
 msgid "description_napo_film_12"
-msgstr "<p>Þessi kvikmynd er endurgerð á þættinum um \"Klór og þef - efnahættur á vinnustað\" sem framleidd var 2003.  Hún kynnir breytingar til að samræma skiltin (myndtákn) sem notuð eru í flutningum með hættulegan varning og skiltin sem notuð eru í vöruflokkun, merkingu og pakkningu (CLP) efna.  Þau sjö myndtákn sem til eru munu vera endurnýjuð og verða níu.</p><p>  Helstu dagsetningarnar eru:  1. desember 2010, þegar efni verða að vera endurflokkuð og merkt í samræmi við nýja alheimskerfið (GHS); og 1. júní 2015, þegar sami ferill verður notaður um blöndun (áður kallað undirbúningur). </p><p>  Napo tekur þátt í nokkrum stuttum atriðum þar sem hann vinnur með efni, þar á meðal þau sem eru ertandi, eldfim, eyðandi, eitruð eða hættuleg umhverfinu.  Hverju atriði fylgir stuttur þáttur þar sem sýnt er hvernig koma skuli í veg fyrir slys með öruggu vinnuverklagi.  Þessi kvikmynd hentar öllum sviðum og starfsmönnum á öllum stigum.  Markmiðið er að draga athyglina að mikilvægi þess að merkja efnavörur.  Eftir sprengingu í byrjun, koma sex þættir sem sýna rangar aðferðir með alvarlegum afleiðingum og svo réttar aðferðir þar sem öryggisleiðbeiningum er fylgt.</p>"  
+msgstr "<p>Þessi kvikmynd er endurgerð á þættinum um „Klór og þef – efnahættur á vinnustað“ sem framleidd var 2003.  Hún kynnir breytingar til að samræma skiltin (myndtákn) sem notuð eru í flutningum með hættulegan varning og skiltin sem notuð eru í vöruflokkun, merkingu og pakkningu (CLP) efna.  Þau sjö myndtákn sem til eru munu vera endurnýjuð og verða níu.</p><p>  Helstu dagsetningarnar eru:  1. desember 2010, þegar efni verða að vera endurflokkuð og merkt í samræmi við nýja alheimskerfið (GHS); og 1. júní 2015, þegar sami ferill verður notaður um blöndun (áður kallað undirbúningur). </p><p>  Napo tekur þátt í nokkrum stuttum atriðum þar sem hann vinnur með efni, þar á meðal þau sem eru ertandi, eldfim, eyðandi, eitruð eða hættuleg umhverfinu.  Hverju atriði fylgir stuttur þáttur þar sem sýnt er hvernig koma skuli í veg fyrir slys með öruggu vinnuverklagi.  Þessi kvikmynd hentar öllum sviðum og starfsmönnum á öllum stigum.  Markmiðið er að draga athyglina að mikilvægi þess að merkja efnavörur.  Eftir sprengingu í byrjun, koma sex þættir sem sýna rangar aðferðir með alvarlegum afleiðingum og svo réttar aðferðir þar sem öryggisleiðbeiningum er fylgt.</p>"  
 
 msgid "title_napo_episode_12_1"
 msgstr "Efnahættur á vinnustað"
@@ -2081,15 +2081,15 @@ msgid "title_napo_film_13"
 msgstr "Verndaðu húðina þína!"
 
 msgid "description_napo_film_13"
-msgstr "<p>Kvikmyndin vekur athygli á hversu hættulegt það getur verið að ber húð komist í snertingu við skaðleg (og stundum ekki mjög skaðleg) efni,  þær aðstæður sem húðin verður fyrir áhrifum, og hvað sé hægt að gera til að forðast hættur, vernda húðina og koma í veg fyrir skaða.  Napo lendir í ýmsum aðstæðum þar sem áhrif vegna efna geta valdið húðvandamálum.  Hann lærir um ótrúlega eiginlega húðarinnar, og er nakinn til að sýna áheyrendum: \"Allt sem þú vildir alltaf vita um....húðina þína\".  Hann finnur lausnir til að koma í veg fyrir vandamál og er með þrenn mikilvæg skilaboð: Forðast - Vernda—Athuga.</p><p>Að forðast eða takmarka snertingu við efni við eyðingu - notaðu vélræna aðferð í stað efnaaðferðar; með því að nota eitthvað í staðinn - nota öruggari kostinn; og að vinna í öruggri fjarlægð - með tækjum í stað beinnar snertingar.  Hlífðarbúnaður (PPE) er gerður til að vernda húðina en Napo minnir okkur á mikilvægi þess að vernda húðina með því fjarlæga hættulegu efnin með skjótum hætti, að þvo húðina vel, þurrka vel og bera húðkrem á reglulega.  Loks mælir Napo með reglulegum skoðunum til að finna tímanlega vísbendingar um húðvandamál . </p>" 
+msgstr "<p>Kvikmyndin vekur athygli á hversu hættulegt það getur verið að ber húð komist í snertingu við skaðleg (og stundum ekki mjög skaðleg) efni,  þær aðstæður sem húðin verður fyrir áhrifum, og hvað sé hægt að gera til að forðast hættur, vernda húðina og koma í veg fyrir skaða.  Napo lendir í ýmsum aðstæðum þar sem áhrif vegna efna geta valdið húðvandamálum.  Hann lærir um ótrúlega eiginlega húðarinnar, og er nakinn til að sýna áheyrendum: „Allt sem þú vildir alltaf vita um….húðina þína“.  Hann finnur lausnir til að koma í veg fyrir vandamál og er með þrenn mikilvæg skilaboð: Forðast – Vernda—Athuga.</p><p>Að forðast eða takmarka snertingu við efni við eyðingu - notaðu vélræna aðferð í stað efnaaðferðar; með því að nota eitthvað í staðinn - nota öruggari kostinn; og að vinna í öruggri fjarlægð - með tækjum í stað beinnar snertingar.  Hlífðarbúnaður (PPE) er gerður til að vernda húðina en Napo minnir okkur á mikilvægi þess að vernda húðina með því fjarlæga hættulegu efnin með skjótum hætti, að þvo húðina vel, þurrka vel og bera húðkrem á reglulega.  Loks mælir Napo með reglulegum skoðunum til að finna tímanlega vísbendingar um húðvandamál . </p>" 
 
 
 # ---------- New Napo Film Number 14   Safe Maintenance 
 msgid "title_napo_film_14"
-msgstr "Napo í ... Öruggt viðhald"
+msgstr "Napo í …. Öruggt viðhald"
 
 msgid "description_napo_film_14"
-msgstr "<p>Lélegir viðhaldsstaðlar eru afar algeng orsök slysa og vinnutengdra sjúkdóma.  Mörg slys verða við viðhaldsvinnu, eða vegna skorts á viðhaldi eða vegna lélegs viðhalds.</p><p>  Þessi kvikmynd sýnir Napo í ýmsum aðstæðum; stundum er hann starfsmaður sem sinnir viðhaldsvinnu, í annan tíma er hann hefðbundin starfsmaður.  Við sjáum hversu mikilvægt það er að einangra eða \"útskrá\" þegar viðhald á tækjum fer fram, vandamálin sem fylgja \"földum hættum\", að vinna í lokuðu rými, og mikilvægi þess að hæfur aðili sjái um viðhaldsvinnuna, einkum athugun og prófun.</p> <p>Þessi kvikmynd, sem hentar öllum sviðum og starfsmönnum á öllum stigum, leitast við að efla góðar venjur og dregur athygli að því hversu öruggt viðhald er mikilvægt.</p>"  
+msgstr "<p>Lélegir viðhaldsstaðlar eru afar algeng orsök slysa og vinnutengdra sjúkdóma.  Mörg slys verða við viðhaldsvinnu, eða vegna skorts á viðhaldi eða vegna lélegs viðhalds.</p><p>  Þessi kvikmynd sýnir Napo í ýmsum aðstæðum; stundum er hann starfsmaður sem sinnir viðhaldsvinnu, í annan tíma er hann hefðbundin starfsmaður.  Við sjáum hversu mikilvægt það er að einangra eða „útskrá“ þegar viðhald á tækjum fer fram, vandamálin sem fylgja „földum hættum“, að vinna í lokuðu rými, og mikilvægi þess að hæfur aðili sjái um viðhaldsvinnuna, einkum athugun og prófun.</p> <p>Þessi kvikmynd, sem hentar öllum sviðum og starfsmönnum á öllum stigum, leitast við að efla góðar venjur og dregur athygli að því hversu öruggt viðhald er mikilvægt.</p>"  
 
 msgid "title_napo_episode_14_1"
 msgstr "Útskrá"
