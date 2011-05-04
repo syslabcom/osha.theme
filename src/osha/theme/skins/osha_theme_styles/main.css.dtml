@@ -770,6 +770,7 @@ padding-left:15px;
 
 .boxing_styles_content li {
     margin-bottom:0.5em;
+ 	margin-left: 1.5em;
 }
 
 /* Old linkcollection styles copied from slc.linkcollectio, pre-revamp.
