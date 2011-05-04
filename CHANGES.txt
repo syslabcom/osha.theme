@@ -4,8 +4,7 @@ osha.theme Changelog
 1.4.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Added missing dependency z3c.jbot [thomasw]
 
 1.4.10 (2011-05-04)
 -------------------
