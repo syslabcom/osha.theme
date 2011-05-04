@@ -1,13 +1,17 @@
 osha.theme Changelog
 ====================
 
-1.4.10 (unreleased)
+1.4.10 (2011-05-04)
 -------------------
 
 - Added dateToBeConfirmed field to customised p4a.calendar views #2341
   [deroiste]
 - removed load older competitions js from detail template on Manuelas request in #3178
   [pilz]
+- Event-view: Replacing th elements with td.label and balancing table columns,
+  adding a row for the new dateToBeConfirmed value refs #2341 [deroiste]
+- Added NO and IS po files #2982 [thomasw]
+- Re-added Russian translations for NAPO #3182 [thomasw]
 
 
 1.4.9 (2011-04-13)
