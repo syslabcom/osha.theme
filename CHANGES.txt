@@ -7,6 +7,7 @@ osha.theme Changelog
 - Added missing dependency z3c.jbot [thomasw]
 - fixed margin-left for list in boxing_style_content style to fix #2888 comment 6
   [pilz]
+- fixed js syntax to avoid IE to choke, fixes #2240 [pilz]
 
 1.4.10 (2011-05-04)
 -------------------
