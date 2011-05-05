@@ -1,12 +1,11 @@
 osha.theme Changelog
 ====================
 
-1.4.11 (unreleased)
+1.4.11 (2011-05-05)
 -------------------
 
 - Added missing dependency z3c.jbot [thomasw]
-
-- fixed margin-left for lis in boxing_style_content style to fix #2888 comment 6
+- fixed margin-left for list in boxing_style_content style to fix #2888 comment 6
   [pilz]
 
 1.4.10 (2011-05-04)
