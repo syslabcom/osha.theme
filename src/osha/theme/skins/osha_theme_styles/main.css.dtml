@@ -63,8 +63,8 @@ dl.portlet #osha-topactions {
 }
 
 select[multiple] {
-    background: white;  
-    /* Fixes a problem on Chrome where the background of the multiselect 
+    background: white;
+    /* Fixes a problem on Chrome where the background of the multiselect
      * widget in a portlet was grey, making it difficult to see selected items.
      */
 }
@@ -125,7 +125,7 @@ ul#portal-footeractions li a,
 ul#portal-footeractions2 li a {
     text-decoration: none;
 }
-ul#portal-footeractions .breadcrumbSeparator 
+ul#portal-footeractions .breadcrumbSeparator
 ul#portal-footeractions2 .breadcrumbSeparator{
     color: #808080;
 }
@@ -705,11 +705,11 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 }
 
 .boxing_styles_inner_content tbody {
-    
+
 }
 
 .boxing_styles_inner_content tr {
-    
+
 }
 
 .boxing_styles_inner_content td {
@@ -744,11 +744,11 @@ padding-left:15px;
 }
 
 .boxing_styles_content tbody {
-    
+
 }
 
 .boxing_styles_content tr {
-    
+
 }
 
 .boxing_styles_content td {
@@ -779,11 +779,11 @@ competitions linkcollection styles (tab-lke view)
 */
 
 .template-competition-detail #content .navigationLinkBox {
-    border: 1px solid rgb(203, 209, 216); 
-    padding: 5px; 
-    background-color: rgb(247, 248, 249); 
+    border: 1px solid rgb(203, 209, 216);
+    padding: 5px;
+    background-color: rgb(247, 248, 249);
     margin-bottom: 10px;
-    
+
 }
 
 .template-competition-detail #content ul.navigationLinkBox {
@@ -826,7 +826,7 @@ text-transform:uppercase;
 font-family:Georgia,"Times New Roman",Times,serif;
 color:#515151;
 margin:0.2em 0 0.75em;
-} 
+}
 
 div.searchresult-outdated {
 border:1px solid red;
@@ -866,6 +866,28 @@ margin:0px 20px;
 
 span.outdated-result img {
 margin-bottom:3px;
+}
+
+/* osha_help_center_view */
+body.template-osha_help_center_view ul#faq_subcategories {
+    margin:0;
+}
+
+body.template-osha_help_center_view ul#faq_subcategories li {
+    float: left;
+    list-style: none inside none;
+    width: 32%;
+    min-width: 17em;
+    padding-right: 5px;
+}
+
+body.template-osha_help_center_view div#content {
+/* This overrides lipstick.css to allow the category list to wrap */
+    width: auto;
+}
+
+body.template-osha_help_center_view div.faq_answer {
+    display: none;
 }
 
 /* </dtml-with> */

@@ -4,7 +4,7 @@ osha.theme Changelog
 1.4.12 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Adding a custom view for the FAQ section #2385 [deroiste]
 
 
 1.4.11 (2011-05-05)
