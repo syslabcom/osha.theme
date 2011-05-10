@@ -33,6 +33,11 @@
         name="trackingscripts.js"
         />
 
+    <browser:resource
+        file="resources/jquery.js"
+        name="jquery.js"
+        />
+
     <browser:resourceDirectory
         name="osha.theme.behaviour"
         directory="behaviour"
