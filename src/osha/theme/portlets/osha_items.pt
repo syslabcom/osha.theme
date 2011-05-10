@@ -1,0 +1,46 @@
+<dl class="portlet osha_types_portlet"
+    i18n:domain="osha.theme"
+    tal:define="portlet_link view/portlet_link">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <a href=""
+           tal:condition="portlet_link"
+           tal:attributes="href portlet_link"
+           class="tile"
+           tal:content="view/title">
+        </a>
+        <span class="title"
+           tal:condition="not: portlet_link"
+           tal:content="view/title" />
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:items tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime"
+                tal:repeat="obj view/items">
+    <dd class="portletItem"
+        tal:define="oddrow repeat/obj/odd;
+                    plone_view context/@@plone;
+                    getIcon nocall:plone_view/getIcon;
+                    item_icon python:getIcon(obj);"
+        tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+        <a href="#" rel="nofollow"
+           class="tile"
+           tal:attributes="href obj/getURL;
+                           title obj/Description">
+            <img tal:replace="structure item_icon/html_tag" />
+            <span tal:replace="obj/pretty_title_or_id">
+             Some Seminar
+            </span>
+            <span class="portletItemDetails">
+                <tal:condition condition="obj/location">
+                    <tal:location content="obj/location">Location</tal:location>, 
+                </tal:condition>
+                <tal:date content="python:toLocalizedTime(obj.start)">
+                May 5
+                </tal:date>
+            </span>
+        </a>
+    </dd>
+    </tal:items>
+</dl>

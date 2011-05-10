@@ -16,8 +16,18 @@
    <include file="profiles.zcml" />
 
     <utility
+        component=".vocabulary.FriendlyTypesVocabulary"
+        name="osha.theme.FriendlyTypesVocabulary"
+        /> 
+
+    <utility
         component=".vocabulary.SubjectValuesVocabulary"
         name="osha.theme.SubjectValuesVocabulary"
+        /> 
+
+    <utility
+        component=".vocabulary.SortableIndexesVocabulary"
+        name="osha.theme.SortableIndexesVocabulary"
         /> 
 
     <utility

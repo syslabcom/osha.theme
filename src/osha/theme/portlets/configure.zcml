@@ -146,6 +146,15 @@
      />
 
  <plone:portlet
+     name="osha.OSHAItems"
+     interface=".osha_items.IOSHAItemsPortlet"
+     assignment=".osha_items.Assignment"
+     renderer=".osha_items.Renderer"
+     addview=".osha_items.AddForm"
+     editview=".osha_items.EditForm"
+     />
+
+ <plone:portlet
      name="osha.Publications"
      interface=".publications.IPublicationsPortlet"
      assignment=".publications.Assignment"
