@@ -5,6 +5,9 @@ osha.theme Changelog
 -------------------
 
 - Adding a custom view for the FAQ section #2385 [deroiste]
+- Main template: added actual URL to body in a hidden div; needed e.g. for anchor
+  links [thomasw]
+- Added jquery 1.4.4 as browser resource [thomasw]
 
 
 1.4.11 (2011-05-05)
