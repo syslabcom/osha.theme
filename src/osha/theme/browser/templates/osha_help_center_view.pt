@@ -10,11 +10,11 @@
   <metal:javascript fill-slot="javascript_head_slot">
     <script type="text/javascript" language="javascript">
       jQuery(document).ready(function(){
-      jQuery('a.faq_toggle').click(function() {
-      jQuery(this).next().toggle();
-      return false;
-      })
-      })
+        jQuery('a.faq_toggle').click(function() {
+          jQuery(this).next().slideToggle();
+          return false;
+        })
+      });
     </script>
   </metal:javascript>
 
@@ -22,7 +22,7 @@
 
     <div id="content" metal:fill-slot="main" i18n:domain="osha"
          tal:define="selected_category request/form/category | nothing;
-                     categories view/get_vocab_dict;
+                     categories view/get_categories;
                      SearchableText request/form/SearchableText | string:;
                      current_url string:${context/absolute_url}/${template/getId}?SearchableText=${SearchableText}">
 
@@ -33,58 +33,60 @@
         <p i18n:translate="text_help_center_intro">
         Search the <strong i18n:name="text_frequently_asked_questions">Frequently Asked Questions</strong> or browse by category.</p>
       </div>
-      <form method="GET">
-        <input type="text" name="SearchableText"
-               tal:attributes="value request/form/SearchableText | nothing"/>
-        <input type="hidden" name="category"
-               tal:attributes="value request/form/category | nothing" />
-        <input type="hidden" name="subcategory"
-               tal:attributes="value request/form/subcategory | nothing" />
-        <input type="submit"/>
-      </form>
-      <hr class="clear"/>
-      <ul id="faq_subcategories"
-          tal:condition="not:selected_category">
-        <li tal:repeat="category categories">
-          <a tal:content="python:categories[category][0]"
-             tal:attributes="href string:${current_url}&category=${category}">
-            Accident Prevention
-          </a>
-        </li>
-      </ul>
+      <div class="categorySearchBox">
+        <form method="GET">
+          <input type="text" name="SearchableText"
+                 tal:attributes="value request/form/SearchableText | nothing"/>
+          <input type="hidden" name="category"
+                 tal:attributes="value request/form/category | nothing" />
+          <input type="hidden" name="subcategory"
+                 tal:attributes="value request/form/subcategory | nothing" />
+          <input type="submit"/>
+        </form>
+        <hr class="clear"/>
 
-
-      <span tal:condition="selected_category"
-            tal:define="selected_subcategory request/form/subcategory | nothing">
-        <a tal:attributes="href string:${current_url}"
-           i18n:translate="label_faqs">
-          FAQs
-        </a>
-        <strong tal:content="python:'→ '+categories[selected_category][0]">
-          → Accident Prevention
-        </strong>
         <ul id="faq_subcategories"
-            tal:define="subcategories python:categories[selected_category][1]">
-          <hr class="clear"
-              tal:condition="subcategories"/>
-          <li tal:repeat="subcategory subcategories">
-            <a tal:condition="python:subcategory != selected_subcategory"
-               tal:content="python:subcategories[subcategory][0]"
-               tal:attributes="href string:${current_url}&category=${selected_category}&subcategory=${subcategory}">
-              Accident costs and statistics
+            tal:condition="not:selected_category">
+          <li tal:repeat="category categories">
+            <a tal:content="python:categories[category][0]"
+               tal:attributes="href string:${current_url}&category=${category}">
+              Accident Prevention
             </a>
-            <strong class="selectedSubcategory"
-                    tal:condition="python:subcategory == selected_subcategory"
-                    tal:content="python:subcategories[subcategory][0]">
-              Accident costs and statistics
-            </strong>
           </li>
         </ul>
-      </span>
+
+
+        <span tal:condition="selected_category"
+              tal:define="selected_subcategory request/form/subcategory | nothing">
+          <a tal:attributes="href string:${current_url}"
+             i18n:translate="label_faqs">
+            FAQs
+          </a>
+          <strong tal:content="python:'→ '+view.vocab_dict[selected_category][0]">
+            → Accident Prevention
+          </strong>
+          <ul id="faq_subcategories"
+              tal:define="subcategories python:view.get_subcategories(selected_category)">
+            <li tal:repeat="subcategory subcategories">
+              <a tal:condition="python:subcategory != selected_subcategory"
+                 tal:content="python:subcategories[subcategory][0]"
+                 tal:attributes="href string:${current_url}&category=${selected_category}&subcategory=${subcategory}">
+                Accident costs and statistics
+              </a>
+              <strong class="selectedSubcategory"
+                      tal:condition="python:subcategory == selected_subcategory"
+                      tal:content="python:subcategories[subcategory][0]">
+                Accident costs and statistics
+              </strong>
+            </li>
+          </ul>
+        </span>
+        <hr class="clear"/>
+      </div>
 
       <hr class="clear"/>
       <div id="faq_results"
-           tal:define="faqs view/get_faqs_in_selected_category">
+           tal:define="faqs view/faqs">
         <p id="no_faqs"
            tal:condition="not:faqs"
            i18n:translate="text_no_faq_results">
@@ -94,13 +96,19 @@
              tal:repeat="faq faqs">
           <a class="faq_toggle"
              tal:content="faq/Title"
-             tal:attributes="href faq/getURL"/>
+             tal:attributes="href python:faq.absolute_url()"/>
           <div class="faq_answer"
-               tal:content="structure python:faq.getObject().getAnswer()"/>
+               tal:content="structure python:faq.getAnswer()"/>
         </div>
 
       </div>
 
+      <hr class="clear"/>
+      <p>
+        <strong>If you cannot find the answer to your query, please,
+        <a tal:attributes="href context/getContactFormUrl">contact us</a>.
+        </strong>
+      </p>
     </div>
 
   </body>

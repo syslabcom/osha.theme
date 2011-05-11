@@ -881,13 +881,39 @@ body.template-osha_help_center_view ul#faq_subcategories li {
     padding-right: 5px;
 }
 
+body.template-osha_help_center_view ul#faq_subcategories li a {
+    padding: 2px;
+    display: block;
+}
+
+body.template-osha_help_center_view ul#faq_subcategories li a:hover {
+    background-color: rgba(255,255,255,0.5);
+    text-decoration: none;
+}
+
 body.template-osha_help_center_view div#content {
 /* This overrides lipstick.css to allow the category list to wrap */
     width: auto;
+    float: none;
+    margin: 0;
+    padding: 10px 20px 0;
 }
 
 body.template-osha_help_center_view div.faq_answer {
     display: none;
+}
+
+body.template-osha_help_center_view div.categorySearchBox {
+	-webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
+	-moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
+	box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
+	background-color: #eceef0;
+    padding: 1em;
+}
+
+a.faq_toggle {
+    font-weight: bold;
+    font-size: 13px;
 }
 
 /* </dtml-with> */
