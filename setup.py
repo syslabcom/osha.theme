@@ -27,9 +27,9 @@ long_description = (
     '************\n'
     + '\n' +
     read('CONTRIBUTORS.txt')
-    + '\n' 
+    + '\n'
     )
-    
+
 tests_require=['zope.testing']
 
 setup(name='osha.theme',
@@ -78,6 +78,7 @@ setup(name='osha.theme',
           'collective.captcha',
           'collective.lead',
           'dateable.chronos',
+          'ordereddict',
           'osha.adaptation',
           'osha.policy',
           'osha.whoswho',
@@ -107,5 +108,5 @@ setup(name='osha.theme',
       [z3c.autoinclude.plugin]
       target = plone
       """,
-      )      
-      
+      )
+
