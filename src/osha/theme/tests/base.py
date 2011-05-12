@@ -8,14 +8,24 @@ from Testing import ZopeTestCase as ztc
 
 from Products.PloneTestCase import layer
 from Products.PloneTestCase.layer import onsetup, PloneSite
+
+# importing LinguaPlone to avoid a problem with circular imports
+# See http://do3cc.blogspot.com/2010/08/dont-catch-import-errors-use.html
+# The problem begins here:
+# Products/PloneTestCase/setup.py:
+# ZopeTestCase.installProduct('CMFPlone', quiet=1)
+import Products.LinguaPlone
 from Products.PloneTestCase.PloneTestCase import FunctionalTestCase
+
 from Products.PloneTestCase.PloneTestCase import PloneTestCase
 from Products.PloneTestCase.PloneTestCase import setupPloneSite
+
 
 from plone.browserlayer import utils as browserlayerutils
 from osha.policy.interfaces import IOSHACommentsLayer
 
 from osha.theme.config import product_globals
+
 
 SiteLayer = layer.PloneSite
 
