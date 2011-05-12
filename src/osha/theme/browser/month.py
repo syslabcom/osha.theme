@@ -1,13 +1,9 @@
 import datetime
 
-from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_base
-try:
-    from Products.LinguaPlone.interfaces import ITranslatable
-except ImportError:
-    HAS_LINGUAPLONE = False
-else:
-    HAS_LINGUAPLONE = True
+
+from Products.CMFCore.utils import getToolByName
+from Products.Archetypes.utils import shasattr
 
 from p4a.calendar.browser.month import MonthView as p4aMonthView
 from p4a.calendar.browser.month import hour_time_formatter
@@ -49,18 +45,23 @@ class MonthView(p4aMonthView):
     def getIntroductionContent(self):
         """ Look for Document called introduction and return ists BodyText if present.
         """
-        if HAS_LINGUAPLONE:
+        if shasattr(self.context, 'getCanonical'):
             base = self.context.getCanonical()
         else:
             base = self.context
+
         if hasattr(aq_base(base), 'introduction'):
             intro = getattr(base, 'introduction', None)
-            if HAS_LINGUAPLONE:
-                language_tool = getToolByName(self.context, 'portal_languages')
+            if intro == None:
+                return ''
+
+            language_tool = getToolByName(self.context, 'portal_languages', None)
+            if language_tool is not None:
                 lang = language_tool.getPreferredLanguage()
                 intro = intro.getTranslation(lang) or intro
             if intro:
                 return intro.getText()
+
         return ''
 
     def _fill_events(self, days, description_length=250, ellipsis='...'):
