@@ -4,6 +4,8 @@ osha.theme Changelog
 1.4.12 (unreleased)
 -------------------
 
+- added base.js to detail page to allow shrinking the right slot
+  [pilz]
 - Adding a custom view for the FAQ section #2385 [deroiste]
 - Main template: added actual URL to body in a hidden div; needed e.g. for anchor
   links [thomasw]
