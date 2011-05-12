@@ -8,15 +8,8 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.memoize.instance import memoize
 from plone.app.portlets.portlets import base
 
-try:
-    from osha.adaptation.subtyper import IAnnotatedLinkList
-except ImportError:
-    from osha.policy.adapter.subtyper import IAnnotatedLinkList
-
-try:
-    from osha.adaptation.vocabulary import AnnotatableLinkListVocabulary
-except ImportError:
-    from osha.theme.vocabulary import AnnotatableLinkListVocabulary
+from osha.adaptation.subtyper import IAnnotatedLinkList
+from osha.adaptation.vocabulary import AnnotatableLinkListVocabulary
 
 class IOSHNetworkMemberLinksPortlet(IPortletDataProvider):
     pass
