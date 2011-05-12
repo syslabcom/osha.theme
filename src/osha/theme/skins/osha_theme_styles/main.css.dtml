@@ -911,9 +911,19 @@ body.template-osha_help_center_view div.categorySearchBox {
     padding: 1em;
 }
 
-a.faq_toggle {
+div#faq_results a.faq_toggle {
     font-weight: bold;
     font-size: 13px;
+}
+
+div#faq_results li.faq_result {
+    list-style-type: none;
+    list-style-image: url("treeCollapsed.gif");
+}
+
+div#faq_results li.expanded {
+    list-style-type: none;
+    list-style-image: url("treeExpanded.gif");
 }
 
 /* </dtml-with> */

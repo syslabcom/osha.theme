@@ -12,6 +12,7 @@
       jQuery(document).ready(function(){
         jQuery('a.faq_toggle').click(function() {
           jQuery(this).next().slideToggle();
+          jQuery(this).parent().toggleClass('expanded');
           return false;
         })
       });
@@ -20,15 +21,14 @@
 
   <body>
 
-    <div id="content" metal:fill-slot="main" i18n:domain="osha"
+    <div id="content" metal:fill-slot="main"
          tal:define="selected_category request/form/category | nothing;
                      categories view/get_categories;
                      SearchableText request/form/SearchableText | string:;
                      current_url string:${context/absolute_url}/${template/getId}?SearchableText=${SearchableText}">
 
       <a name="top"></a>
-      <h1 i18n:translate="FAQ"
-          i18n:domain="osha">FAQ</h1>
+      <h1 i18n:translate="FAQ">FAQ</h1>
       <div class="introduction">
         <p i18n:translate="text_help_center_intro">
         Search the <strong i18n:name="text_frequently_asked_questions">Frequently Asked Questions</strong> or browse by category.</p>
@@ -41,7 +41,9 @@
                  tal:attributes="value request/form/category | nothing" />
           <input type="hidden" name="subcategory"
                  tal:attributes="value request/form/subcategory | nothing" />
-          <input type="submit"/>
+          <input type="submit"
+                 i18n:domain="osha"
+                 i18n:attributes="value Search"/>
         </form>
         <hr class="clear"/>
 
@@ -92,15 +94,16 @@
            i18n:translate="text_no_faq_results">
           There are no FAQs in this category.
         </p>
-        <div class="faq_result"
+        <ul>
+        <li class="faq_result"
              tal:repeat="faq faqs">
           <a class="faq_toggle"
              tal:content="faq/Title"
              tal:attributes="href python:faq.absolute_url()"/>
           <div class="faq_answer"
                tal:content="structure python:faq.getAnswer()"/>
-        </div>
-
+        </li>
+        </ul>
       </div>
 
       <hr class="clear"/>
