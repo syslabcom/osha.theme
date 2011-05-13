@@ -6,14 +6,13 @@ from Testing import ZopeTestCase as ztc
 from plone.browserlayer import utils as browserlayerutils
 
 from Products.PloneTestCase import layer
-from Products.PloneTestCase import PloneTestCase as ptc
-
+import Products.LinguaPlone
 # # importing LinguaPlone to avoid a problem with circular imports
 # # See http://do3cc.blogspot.com/2010/08/dont-catch-import-errors-use.html
 # # The problem begins here:
 # # Products/PloneTestCase/setup.py:
 # # ZopeTestCase.installProduct('CMFPlone', quiet=1)
-# import Products.LinguaPlone
+from Products.PloneTestCase import PloneTestCase as ptc
 
 from osha.policy.interfaces import IOSHACommentsLayer
 from osha.theme.config import product_globals
@@ -35,7 +34,7 @@ class OshaThemeLayer(SiteLayer):
         ztc.installProduct('ProxyIndex')
         ztc.installProduct('Relations')
         ztc.installProduct('TextIndexNG3')
-        
+
         ztc.installPackage('osha.legislation')
 
         PRODUCTS = [
