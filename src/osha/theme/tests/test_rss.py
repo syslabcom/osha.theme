@@ -1,15 +1,11 @@
-from five.localsitemanager import make_objectmanager_site
-from Products.Five.testbrowser import Browser
 import unittest
-from zope.app.component.hooks import setSite as setActiveSite
-from zope.component import getMultiAdapter
-from zope.interface import Interface
-from zope.publisher.browser import TestRequest
-from osha.policy.tests.base import OSHAPolicyFunctionalTestCase
-from osha.theme.tests.base import OshaThemeTestCase, OshaThemeFunctionalTestCase
-from osha.theme.browser.rssfeeds import RSSFeedsView
 from Testing.ZopeTestCase import utils
+
+from Products.Five.testbrowser import Browser
 from Products.PloneTestCase.setup import portal_owner, default_password
+
+from osha.theme.tests.base import OshaThemeFunctionalTestCase
+from osha.theme.browser.rssfeeds import RSSFeedsView
 
 def startZServer(browser=None):
     host, port = utils.startZServer()
@@ -25,6 +21,7 @@ def getBrowser(url):
     return browser
 
 class TestRSS(unittest.TestCase):
+
     def test_feedContainsTitle(self):
         view = RSSFeedsView(None, None)
         view._getTranslatedCategories = lambda: [('1', 'one'), ('2', 'two'), ('3', u'dreiö')]
@@ -35,12 +32,13 @@ class TestRSS(unittest.TestCase):
                                            'icon' : 'nice icon.png',
                                            'base_url' : '/search_rss?RSSTitle=nice%%20title&%(lang)s/%(sorter)s'}]
 
-        should_be = [{'url': 'portal_path/search_rss?Subject=1&RSSTitle=EU-OSHA%20one&Language=en&review_state=published&sort_on=effective', 
-                      'icon': 'topic_icon.gif', 'id': '1', 'title': 'EU-OSHA one'}, 
-                     {'url': 'portal_path/search_rss?Subject=2&RSSTitle=EU-OSHA%20two&Language=en&review_state=published&sort_on=effective', 
-                      'icon': 'topic_icon.gif', 'id': '2', 'title': 'EU-OSHA two'},  
-                     {'url': 'portal_path/search_rss?Subject=3&RSSTitle=EU-OSHA%20drei%C3%83%C2%B6&Language=en&review_state=published&sort_on=effective', 
-                      'icon': 'topic_icon.gif', 'id': '3', 'title': u'EU-OSHA drei\xc3\xb6'}]
+        should_be = [
+        {   'url': 'portal_path/search_rss?Subject=1&RSSTitle=EU-OSHA%20one&Language=en&review_state=published&sort_on=effective', 
+            'icon': 'topic_icon.gif', 'id': '1', 'title': 'EU-OSHA one'}, 
+        {    'url': 'portal_path/search_rss?Subject=2&RSSTitle=EU-OSHA%20two&Language=en&review_state=published&sort_on=effective', 
+            'icon': 'topic_icon.gif', 'id': '2', 'title': 'EU-OSHA two'},  
+        {    'url': 'portal_path/search_rss?Subject=3&RSSTitle=EU-OSHA%20drei%C3%83%C2%B6&Language=en&review_state=published&sort_on=effective', 
+            'icon': 'topic_icon.gif', 'id': '3', 'title': u'EU-OSHA drei\xc3\xb6'}]
         and_is = view.subject_feeds()
         self.assertEquals(should_be, and_is)
         
@@ -50,6 +48,7 @@ class TestRSS(unittest.TestCase):
         self.assertEquals(should_be, and_is)
 
 class TestOshaRSS(OshaThemeFunctionalTestCase):
+
     def setUp(self):
         super(TestOshaRSS, self).setUp()
         self.browser = getBrowser(self.portal.absolute_url())
@@ -65,7 +64,9 @@ class TestOshaRSS(OshaThemeFunctionalTestCase):
         self.assertTrue('RSSTitle=EU-OSHA%20Publications' in self.browser.contents)
         self.assertTrue('EU-OSHA Blog' in self.browser.contents)
         self.assertTrue('RSSTitle=EU-OSHA%20Blog' in self.browser.contents)
-        self.assertEquals(3, self.browser.contents.count('Latest'))
+        self.assertTrue('EU-OSHA Press Releases' in self.browser.contents)
+        self.assertTrue('RSSTitle=EU-OSHA%20Press%20Releases' in self.browser.contents)
+        self.assertEquals(4, self.browser.contents.count('Latest'))
 
         
 def test_suite():

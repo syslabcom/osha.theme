@@ -29,9 +29,15 @@ class OshaThemeLayer(SiteLayer):
         """ The osha.theme package depends on osha.policy so the packages imported
             by the osha.policy tests base.py are also imported and configured here.
         """
+        PRODUCTS = [
+                'osha.policy',
+                ]
+        ptc.setupPloneSite(products=PRODUCTS)
+
         ztc.installProduct('ATCountryWidget')
         ztc.installProduct('ATVocabularyManager')
         ztc.installProduct('LinguaPlone')
+        ztc.installProduct('PressRoom')
         ztc.installProduct('PlacelessTranslationService')
         ztc.installProduct('PloneLanguageTool')
         ztc.installProduct('ProxyIndex')
@@ -39,18 +45,14 @@ class OshaThemeLayer(SiteLayer):
         ztc.installProduct('RichDocument')
         ztc.installProduct('SimpleAttachment')
         ztc.installProduct('TextIndexNG3')
+        ztc.installProduct('GroupUserFolder')
 
-        ztc.installPackage('Products.PlacelessTranslationService', quiet=True)
+        ztc.installPackage('Products.PlacelessTranslationService')
         ztc.installPackage('osha.legislation')
         ztc.installPackage('osha.policy')
         ztc.installPackage('osha.theme')
         ztc.installPackage('slc.seminarportal')
         ztc.installPackage('slc.shoppinglist')
-
-        PRODUCTS = [
-                'osha.policy',
-                ]
-        ptc.setupPloneSite(products=PRODUCTS)
 
         fiveconfigure.debug_mode = True
         import p4a.subtyper

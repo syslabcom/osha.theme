@@ -1,5 +1,7 @@
 import logging
+import random
 from zope import component
+from zope import event
 
 from plone.portlets.interfaces import IPortletAssignment
 from plone.portlets.interfaces import IPortletDataProvider
@@ -8,6 +10,9 @@ from plone.portlets.interfaces import IPortletType
 from plone.portlets.interfaces import IPortletRenderer
 
 from plone.app.portlets.storage import PortletAssignmentMapping
+
+from Products.Archetypes.event import ObjectInitializedEvent
+from Products.CMFCore.utils import getToolByName
 
 from osha.theme.portlets import osha_items
 from osha.theme.tests.base import OshaThemeTestCase
@@ -99,80 +104,148 @@ class TestRenderer(OshaThemeTestCase):
                                 (context, request, view, manager, assignment), 
                                 IPortletRenderer)
 
-    # def test_portlet(self):
-    #     """ """
-    #     total_seminars = 10
-    #     seminars = self.portal.objectValues('SPSeminar')
-    #     seminars_urls = ['/'.join(s.getPhysicalPath()) for s in seminars]
+    def create_test_objects(self, type_name, subject='random', start=0, total=10, publish=True):
+        objs = []
+        object_ids = \
+            ['%s-%s' % (type_name, number) for number in range(start, total+start)]
+        parent = self.portal
+        for object_id  in object_ids:
+            parent.invokeFactory(type_name, 
+                                object_id, 
+                                title="Title for %s" % type_name, 
+                                description="Description for %s" % type_name, 
+                                )
+            obj = getattr(parent, object_id)
+            obj._renameAfterCreation(check_auto_id=True)
+            if subject == 'random':
+                obj.setSubject(random.sample(['cat1', 'cat2', 'cat3'], 1)[0])
+            else:
+                obj.setSubject(subject)
+            obj.reindexObject()
+            event.notify(ObjectInitializedEvent(obj))
+            if publish:
+                wftool = getToolByName(self.portal, 'portal_workflow')
+                wftool.doActionFor(obj, 'publish')
+            objs.append(obj)
+        return objs
+        
 
-    #     assignment = osha_items.Assignment(**{
-    #                                 'count':5, 
-    #                                 'state':('published', ), 
-    #                                 'header':'Testing Seminars Portlet',
-    #                                 })
+    def test_portal_types(self):
+        """ Test that only objects of a certain types is returned"""
 
-    #     r = self.renderer(
-    #                 context=self.portal, 
-    #                 assignment=assignment,
-    #                 )
+        for portal_type in ['PressRelease', 'Folder', 'Document']:
+            assignment = osha_items.Assignment(**{
+                                        'count':5, 
+                                        'header':'Testing PressReleases Portlet',
+                                        'portletlink':None,
+                                        'sort':'effective',
+                                        'state':('published',), 
+                                        'subject':tuple(), 
+                                        'types': (portal_type),
+                                        })
 
-    #     # Test that no seminars exist yet and that the portlet will not be
-    #     # available because of it.
-    #     seminars = r._data()
-    #     self.assertEquals(len(seminars), 0)
-    #     self.assertEquals(r.available, False)
+            r = self.renderer(
+                        context=self.portal, 
+                        assignment=assignment,
+                        )
 
-    #     # Create test data.
-    #     create_test_seminars(self.portal, total_seminars, False, False)
+            # Create test data.
+            total_objects = 5
+            self.create_test_objects(portal_type, total=total_objects)
 
-    #     # Test that the portlet returns the correct amount of seminars
-    #     seminars = r._data()
-    #     self.assertEquals(len(seminars), 5)
+            # Test that the portlet returns the correct amount of objects
+            objects = r._data()
+            self.assertEquals(len(objects), 5)
 
-    #     # Test that it's actually Seminars being returned.
-    #     for seminar in seminars:
-    #         self.assertEquals(seminar.portal_type, 'SPSeminar')
+            # Test that it's actually objects being returned.
+            for seminar in objects:
+                self.assertEquals(seminar.portal_type, portal_type)
 
-    #     # Test with diffferent count values:
-    #     for count in range(0, 12):
-    #         assignment = osha_items.Assignment(**{
-    #                                         'count': count, 
-    #                                         'state':('published', ), 
-    #                                         'subject':(), 
-    #                                         'header':'Testing Seminars Portlet',
-    #                                         })
-    #         r = self.renderer(
-    #                     context=self.portal, 
-    #                     assignment=assignment,
-    #                     )
-    #         seminars = r._data()
-    #         self.assertEquals(len(seminars), count > total_seminars and total_seminars or count)
 
-    #         if count == 0:
-    #             self.assertEquals(r.available, False)
-    #         else:
-    #             self.assertEquals(r.available, True)
 
-    #     # Test that subject filtering works:
-    #     for cat in ['cat1', 'cat2', 'cat3',]:
-    #         assignment = osha_items.Assignment(**{
-    #                                         'count':count, 
-    #                                         'state':('published', ), 
-    #                                         'subject':(cat,), 
-    #                                         'header':'Testing Seminars Portlet',
-    #                                         })
-    #         r = self.renderer(
-    #                     context=self.portal, 
-    #                     assignment=assignment,
-    #                     )
-    #         seminars = r._data()
-    #         for seminar in seminars:
-    #             self.assertEquals(seminar.Subject, (cat,))
+    def test_count(self):
+        """ Test with diffferent count values """
+        total_objects = 10
+        self.create_test_objects("PressRelease", total=total_objects)
+        for count in range(0, 12):
+            assignment = osha_items.Assignment(**{
+                                            'count':count, 
+                                            'header':'Testing PressReleases Portlet',
+                                            'portletlink':None,
+                                            'sort':'effective',
+                                            'state':('published',), 
+                                            'subject':tuple(), 
+                                            'types': ('PressRelease'),
+                                            })
+            r = self.renderer(
+                        context=self.portal, 
+                        assignment=assignment,
+                        )
+            objects = r._data()
+            self.assertEquals(len(objects), count > total_objects and total_objects or count)
+
+            if count == 0:
+                self.assertEquals(r.available, False)
+            else:
+                self.assertEquals(r.available, True)
+
+
+    def test_categories(self):
+        """ """
+        total_objects = 5
+        # test that subject filtering works:
+        i = 0
+        for cat in ['cat1', 'cat2', 'cat3',]:
+            self.create_test_objects("PressRelease", subject=cat, start=i*total_objects, total=total_objects)
+            i += 1
+            assignment = osha_items.Assignment(**{
+                                        'count':total_objects, 
+                                        'state':('published', ), 
+                                        'subject':(cat,), 
+                                        'header':'Testing objects portlet',
+                                        'types': ('PressRelease'),
+                                        })
+            r = self.renderer(
+                        context=self.portal, 
+                        assignment=assignment,
+                        )
+            objects = r._data()
+            self.assertEquals(len(objects), total_objects)
+            for ob in objects:
+                self.assertEquals(ob.Subject, (cat,))
+
+
+    def test_sorting_criteria(self):
+        """ """
+        total_objects = 5
+        self.create_test_objects("PressRelease", total=total_objects)
+        assignment = osha_items.Assignment(**{
+                                        'count':5, 
+                                        'header':'Testing PressReleases portlet',
+                                        'portletlink':None,
+                                        'sort':'sortable_title',
+                                        'state':('published',), 
+                                        'subject':tuple(), 
+                                        'types': ('PressRelease'),
+                                        })
+
+        r = self.renderer(
+                    context=self.portal, 
+                    assignment=assignment,
+                    )
+        objects = r._data()
+        self.assertEquals(len(objects), total_objects)
+
+        titles = [seminar.Title for seminar in objects]
+        sorted_titles = titles
+        sorted_titles.sort()
+        self.assertEquals(titles, sorted_titles)
+
 
 
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
     suite.addTest(makeSuite(TestPortlet))
-    # suite.addTest(makeSuite(TestRenderer))
+    suite.addTest(makeSuite(TestRenderer))
     return suite

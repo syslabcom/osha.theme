@@ -147,7 +147,7 @@ class Renderer(BaseRenderer):
                     review_state=self.data.state,
                     sort_limit=self.data.count,
                     limit=self.data.count,
-                    sort_on=self.data.sort,
+                    sort_on=self.data.sort or 'created',
                     sort_order='reverse',
                     )
 
@@ -158,7 +158,7 @@ class Renderer(BaseRenderer):
                 query.update(Subject=self.data.subject)
 
         catalog = getToolByName(context, 'portal_catalog')
-        return catalog(query)
+        return catalog.searchResults(**query)
 
 
 class Assignment(base.Assignment):
