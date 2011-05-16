@@ -9620,3 +9620,17 @@ msgstr "Incentivos económicos"
 
 msgid "Our Events"
 msgstr "Nuestros eventos"
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Fecha pendiente de confirmación"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "Por confirmar"
+
+
+
+

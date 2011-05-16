@@ -2124,3 +2124,20 @@ msgstr "Fare innendørs!"
 
 msgid "title_napo_episode_14_6"
 msgstr "Hva gjør vi nå?"
+
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Datoen vil bli bekreftet på et senere tidspunkt"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "
+Vil bli bekreftet på et senere tidspunkt"
+
+
+
+
+

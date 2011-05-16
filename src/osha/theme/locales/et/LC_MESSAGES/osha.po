@@ -10338,3 +10338,21 @@ msgstr "Majanduslikud stiimulid"
 
 msgid "Our Events"
 msgstr "Meie üritused"
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Kuupäev kinnitamata"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "Kinnitamisel"
+
+
+
+
+
+
+
+

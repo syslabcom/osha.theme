@@ -10,6 +10,8 @@ osha.theme Changelog
 - Main template: added actual URL to body in a hidden div; needed e.g. for anchor
   links [thomasw]
 - Added jquery 1.4.4 as browser resource [thomasw]
+- Added translations for Events - Date to be confirmed #2341
+  [deroiste]
 
 
 1.4.11 (2011-05-05)

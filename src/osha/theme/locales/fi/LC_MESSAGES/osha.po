@@ -10364,3 +10364,19 @@ msgstr "Taloudelliset kannustimet"
 
 msgid "Our Events"
 msgstr "Tapahtumia"
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Päivämäärä vahvistetaan myöhemmin"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "Vahvistetaan myöhemmin"
+
+
+
+
+
+

@@ -10321,3 +10321,20 @@ msgstr "Ekonomiski stimuli"
 
 msgid "Our Events"
 msgstr "Mūsų renginiai"
+
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Apstiprināmais datums"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "TBC [tiks apstiprināts]"
+
+
+
+
+
+

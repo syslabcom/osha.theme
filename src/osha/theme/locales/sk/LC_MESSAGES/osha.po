@@ -10332,3 +10332,18 @@ msgstr "Hospodárske stimuly"
 
 msgid "Our Events"
 msgstr "Naše podujatia"
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Dátum bude potvrdený neskôr"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "Potvrdí sa neskôr"
+
+
+
+
+

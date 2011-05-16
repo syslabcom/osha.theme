@@ -10351,3 +10351,19 @@ msgstr "Gospodarske spodbude"
 
 msgid "Our Events"
 msgstr "Naši dogodki"
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Datum je treba še potrditi"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "Za potrditev"
+
+
+
+
+
+

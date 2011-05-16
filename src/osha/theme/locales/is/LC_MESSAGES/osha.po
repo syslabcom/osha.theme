@@ -2108,3 +2108,20 @@ msgstr "Hætta að innan!"
 
 msgid "title_napo_episode_14_6"
 msgstr "Einn, tveir, hvað skal gera?"
+
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Dagsetning staðfest síðar"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "á eftir að staðfesta"
+
+
+
+
+
+

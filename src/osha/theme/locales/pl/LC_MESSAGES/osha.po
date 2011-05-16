@@ -10340,3 +10340,19 @@ msgstr "Zachęty gospodarcze"
 
 msgid "Our Events"
 msgstr "Nasze wydarzenia"
+
+#. Default: Date to be confirmed
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "label_date_to_be_confirmed" 
+msgstr "Data do potwierdzenia"
+
+#. Default: TBC
+#: src/osha/theme/browser/jbot/p4a.calendar.browser.events.pt
+msgid "abbr_date_to_be_confirmed" 
+msgstr "Do potwierdzenia"
+
+
+
+
+
+
