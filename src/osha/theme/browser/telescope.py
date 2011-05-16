@@ -56,7 +56,12 @@ class TelescopeView(BrowserView):
                     proxy_url = context.absolute_url() + "/" +\
                                  target_obj.getId()
                     target_url = target_obj.absolute_url()
-                    return view.replace(proxy_url, target_url)
+                    proxy_urls_repaired = view.replace(proxy_url, target_url)
+
+                    # Also adding the rel="canonical" link entity in this way
+                    return proxy_urls_repaired.replace(
+                        '<head>',
+                        '<head><link rel="canonical" href="%s"/>' % target_url)
 
         else:
             logger.log(logging.INFO, "No path specified")
