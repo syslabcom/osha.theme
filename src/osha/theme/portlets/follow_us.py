@@ -37,7 +37,7 @@ class Renderer(base.Renderer):
     def _render_cachekey(method, self):
         return (self.preflang())
 
-#    @ram.cache(_render_cachekey)
+    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
