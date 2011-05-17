@@ -198,9 +198,9 @@
 .sprite-youtube{ background-position: -1214px -790px; width: 30px; height: 30px; } 
 .sprite-zip_icon{ background-position: -1214px -950px; width: 16px; height: 16px; } 
 
-.sprite-oshablog{ background-position: -1214px -950px; width: 16px; height: 16px; } 
-.sprite-oshmail{ background-position: -1214px -950px; width: 16px; height: 16px; } 
-.sprite-oshalert{ background-position: -1214px -950px; width: 16px; height: 16px; } 
+.sprite-oshablog{ background-position: -1214px -1039px; width: 30px; height: 30px; } 
+.sprite-oshmail{ background-position: -1214px -1152px; width: 30px; height: 30px;  } 
+.sprite-oshalert{ background-position: -1214px -1272px; width: 30px; height: 30px;  } 
 
 /* Footer sprites */
 #footeraction-sendto a, #footeraction-print a, #footeraction-contact a, #footeraction-osha_help a, #footeraction-rssfeeds a,
