@@ -2,7 +2,6 @@
 
     <ul id="portal-footeractions"
         i18n:domain="osha">
-
         <tal:document-actions
              condition="view/document_actions"
              repeat="action view/document_actions">
@@ -12,11 +11,7 @@
                                style python:action.get('id') == 'print' and 'display:None' or ''">|</li>
             <li tal:attributes="id string:footeraction-${action/id};
                                style python:action.get('id') == 'print' and 'display:None' or ''"
-                tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');">
-
-                <img alt="" src=""
-                     tal:attributes="src string:${view/site_url}/$icon;
-                                     alt action/title" />
+                >
                 <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
@@ -36,9 +31,6 @@
                  tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
                              is_last repeat/action/end">
 
-                 <img alt="" src=""
-                      tal:attributes="src string:${view/site_url}/$icon;
-                                      alt action/title" />
                  <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
@@ -58,14 +50,11 @@
        <tal:site-actions
              condition="view/site_actions"
              repeat="action view/site_actions">
-            <li class="breadcrumbSeparator">|</li>
+            <li tal:condition="not: repeat/action/start" class="breadcrumbSeparator">|</li>
             <li tal:attributes="id string:footeraction-${action/id}"
                  tal:define="icon python:view.getIconFor('plone', action['id'], 'site_icon.gif');
                              is_last repeat/action/end">
 
-                <img alt="" src=""
-                     tal:attributes="src string:${view/site_url}/$icon;
-                                     alt action/title" />
                 <a href="" rel="nofollow"
                    tal:define="title action/title;
                                id action/id;"
