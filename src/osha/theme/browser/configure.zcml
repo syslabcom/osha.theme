@@ -799,20 +799,29 @@
         permission="zope2.View"
         />
 
-  <browser:page
-      for="*"
-      name="switch_osh_content"
-      class=".oshcontent_switcher.SwitchOSHContent"
-      permission="zope2.View"
-      />
+    <browser:page
+        for="*"
+        name="switch_osh_content"
+        class=".oshcontent_switcher.SwitchOSHContent"
+        permission="zope2.View"
+        />
 
-  <!-- Renders an object in a different location of the site when passed the path to it #1150 -->
-  <browser:page
-      for="*"
-      name="slc.telescope"
-      class=".telescope.TelescopeView"
-      permission="zope2.View"
-      />
+    <browser:page
+        for="*"
+        name="pressrelease_listing"
+        template="templates/pressrelease_listing.pt"
+        class=".item_listing.ItemListingView"
+        permission="zope2.View"
+        layer=".interfaces.IOSHAThemeLayer"
+        />
+
+    <!-- Renders an object in a different location of the site when passed the path to it #1150 -->
+    <browser:page
+        for="*"
+        name="slc.telescope"
+        class=".telescope.TelescopeView"
+        permission="zope2.View"
+        />
 
     <!-- Inline content viewlet -->
     <browser:viewlet

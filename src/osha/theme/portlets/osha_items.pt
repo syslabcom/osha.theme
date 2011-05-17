@@ -43,4 +43,12 @@
         </a>
     </dd>
     </tal:items>
+    <dd class="portletFooter"
+         tal:condition="view/portlet_link">
+        <a href=""
+           tal:attributes="href view/portlet_link"
+           i18n:translate="portlet_more_link">
+                More&hellip;
+        </a>
+    </dd>
 </dl>

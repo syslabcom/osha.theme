@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha.theme">
+
+<metal:block tal:define="dummy python:request.RESPONSE.setHeader('Cache-control', 'max-age=0,s-maxage=3600')" />
+
+<body>
+<div metal:fill-slot="main">
+    <h1 i18n:translate="heading_latest_press_releases">Latest Press Releases</h1>
+    <tal:get define="Batch python:modules['Products.CMFPlone'].Batch;
+                    b_size python:10;
+                    b_start request/b_start | python:0;
+                    batch python:Batch(view.items(portal_type='PressRelease'), b_size, int(b_start), orphan=1);">
+
+        <tal:if condition="batch">
+            <div metal:use-macro="context/batch_macros/macros/navigation" />
+                <dl id="db_results">
+                    <tal:results repeat="result batch">
+                        <tal:get define=" result_url result/getURL;
+                                url result/getRemoteUrl | result_url;
+                                item_creator result/Creator;
+                                obj result/getObject;
+                                item_startdate obj/getReleaseDate;">
+                            <div tal:condition="obj/getImage|nothing" class="seminars-preview-img">
+                                <img tal:attributes="src string:${result/getURL}/image" width="60" />
+                            </div>
+                            <dd>
+                            <p>
+                                <span tal:condition="result/location">
+                                <em tal:content="result/location">location</em>
+                                <br />
+                                </span>
+                                <em>
+                                    <span tal:condition="python: item_startdate and item_startdate.year() >= 1900"
+                                        tal:replace="python:toLocalizedTime(item_startdate, long_format=0)"
+                                        tal:on-error="nothing">
+                                        August 16, 2001 at 23:35:59
+                                    </span>
+                                </em>
+                            </p> 
+                            <div>
+                                <a href="#" tal:attributes="href result/getURL">
+                                    <strong tal:content="result/Title">title</strong></a>
+                                </div>
+
+                                <p tal:define="descr result/Description"
+                                    tal:content="python:view.cropHtmlText(descr, 200)" />
+
+                                <tal:url condition="url">
+                                <a tal:attributes="href string:$url"
+                                    rel="nofollow" tal:content="url">Remote URL</a>
+                                </tal:url>
+                                <span:notanon tal:condition="not:view/isAnonymous">
+                                <div class="documentByLine" style="border-top: 1px dashed gray;margin-top:0.5em;">
+                                    <tal:creator define="author python:mtool.getMemberInfo(item_creator)" >
+                                    <span tal:replace="python:author and author['fullname'] or item_creator">
+                                        Creator
+                                    </span>
+                                    </tal:creator>
+                                    <tal:review_state define="state result/review_state">
+                                    | <span tal:attributes="class string:state-$state" tal:content="state">
+                                        review state
+                                    </span>
+                                    </tal:review_state>
+                                    | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/content_status_history">Modify workflow</a>
+                                    | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/edit">Edit</a>
+                                <span tal:define="item_is_versionable item_is_versionable|nothing" tal:condition="item_is_versionable">
+                                    | <a rel="nofollow" href="#" tal:attributes="href string:${result_url}/versions_history_form">History</a>
+                                </span>
+                            </div>
+                            </span:notanon>
+                                <div class="visualClear" ></div>
+                            </dd>
+                        </tal:get>
+                    </tal:results>
+                </dl>
+            <div metal:use-macro="context/batch_macros/macros/navigation" />
+        </tal:if>
+
+        <div tal:condition="not: batch"
+                i18n:translate="label_no_press_releases_found">
+            <br clear="all"/>
+            No press releases matching your criteria were found
+        </div>
+    </tal:get>
+    <!-- this adds the slc.linkcollection -->
+    <span tal:replace="structure provider:plone.belowcontentbody"></span>
+    <div class="visualClear"></div>
+</div>
+
+</body>
+</html>

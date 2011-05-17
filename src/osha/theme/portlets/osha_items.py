@@ -4,6 +4,7 @@ from zope import schema
 from zope.interface import implements
 from zope.formlib import form
 from zope.i18n import translate
+from zope.app.component.hooks import getSite
 
 from plone.app.portlets.portlets import base
 from plone.app.vocabularies.catalog import SearchableTextSourceBinder
@@ -110,6 +111,13 @@ class Renderer(BaseRenderer):
                     target_language=preflang, 
                     context=self.context
                     ) 
+
+    @property
+    def portlet_link(self):
+        """ The portlet will not appear if there aren't any items to display.
+        """
+        portal = getSite()
+        return "%s/%s"  % (getSite().absolute_url(), self.data.portletlink)
 
     @property
     def available(self):
