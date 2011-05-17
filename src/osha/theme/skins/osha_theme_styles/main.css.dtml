@@ -333,6 +333,7 @@ dl.portletInlineNavigationTree ul {
 
 
 
+
 #belowcontent-portlets {
     margin: 1em 0 ;
 }
@@ -497,8 +498,9 @@ ul.linkList {
 ul.linkList li {
     background-color:transparent;
     background-image:url(&dtml-portal_url;/link.gif);
-    background-position:0em 0.5em;
-    background-repeat:no-repeat;
+
+    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -134px transparent; 
+    
     display:block;
     line-height:normal;
     list-style-image:none;

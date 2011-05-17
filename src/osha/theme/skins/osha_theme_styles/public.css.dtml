@@ -960,18 +960,47 @@ dl.portletSubscribe #alerts a {
    background-color: #99EE22;
 }
 
-dl.portletFollowUs div.boxing_styles_inner_content {
+dl.portletFollowUs  {
    width: auto;
    margin: 0;
    border-bottom: none;
+   background-color:#F7F8F9;
+   border:1px solid #C5CBD8;
+   font-size:100%;
+   margin:1em auto;
+   padding:1em;
 }
 
-dl.portletFollowUs div.boxing_styles_inner_content dt {
-   padding-bottom: 1em;
+dl.portletFollowUs dt {
+    padding-bottom: 1em;
 }
-
-dl.portletFollowUs div.boxing_styles_inner_content dd {
-   margin: 0;
+dl.portletFollowUs dd {
+    margin-left: 0;
+    margin-bottom:0;
+}
+dl.portletFollowUs ul {
+    list-style-type: none;   
+}
+dl.portletFollowUs ul li {
+    list-style-type: none;   
+    margin:0;
+}
+dl.portletFollowUs .twitter-logo,
+dl.portletFollowUs .youtube-logo,
+dl.portletFollowUs .linkedin-logo {
+    width: 30px;
+    padding: 7px 0 7px 35px;
+    display:block;    
+    margin-bottom: 0;
+}
+dl.portletFollowUs .twitter-logo {
+    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -1214px -418px transparent; 
+}
+dl.portletFollowUs .youtube-logo {
+    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -1214px -790px transparent; 
+}
+dl.portletFollowUs .linkedin-logo {
+    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll  -716px -474px transparent; 
 }
 
 #dashboard-portlets1 div.managedPortlet a,

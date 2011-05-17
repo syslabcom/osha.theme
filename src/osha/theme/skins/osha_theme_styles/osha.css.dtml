@@ -159,7 +159,7 @@
 .sprite-link{ background-position: -714px -138px; width: 9px; height: 9px; } 
 .sprite-link_external{ background-position: -714px -247px; width: 11px; height: 11px; } 
 .sprite-link_icon{ background-position: -714px -358px; width: 16px; height: 16px; } 
-.sprite-linkedin-logo{ background-position: -714px -474px; width: 40px; height: 40px; } 
+.sprite-linkedin-logo{ background-position: -714px -474px; width: 30px; height: 30px; } 
 .sprite-lock_icon{ background-position: -714px -614px; width: 10px; height: 13px; } 
 .sprite-mail_icon{ background-position: -714px -727px; width: 16px; height: 16px; } 
 .sprite-minus_icon{ background-position: -714px -843px; width: 16px; height: 16px; } 
@@ -192,11 +192,15 @@
 .sprite-submenu{ background-position: -1214px 0; width: 9px; height: 10px; } 
 .sprite-topbanner2{ background-position: -1214px -110px; width: 104px; height: 92px; } 
 .sprite-topic_icon{ background-position: -1214px -302px; width: 16px; height: 16px; } 
-.sprite-twitter-logo{ background-position: -1214px -418px; width: 40px; height: 40px; } 
+.sprite-twitter-logo{ background-position: -1214px -418px; width: 30px; height: 30px; } 
 .sprite-user{ background-position: -1214px -558px; width: 16px; height: 16px; } 
 .sprite-xls_icon{ background-position: -1214px -674px; width: 16px; height: 16px; } 
-.sprite-youtube{ background-position: -1214px -790px; width: 60px; height: 60px; } 
+.sprite-youtube{ background-position: -1214px -790px; width: 30px; height: 30px; } 
 .sprite-zip_icon{ background-position: -1214px -950px; width: 16px; height: 16px; } 
+
+.sprite-oshablog{ background-position: -1214px -950px; width: 16px; height: 16px; } 
+.sprite-oshmail{ background-position: -1214px -950px; width: 16px; height: 16px; } 
+.sprite-oshalert{ background-position: -1214px -950px; width: 16px; height: 16px; } 
 
 /* Footer sprites */
 #footeraction-sendto a, #footeraction-print a, #footeraction-contact a, #footeraction-osha_help a, #footeraction-rssfeeds a,

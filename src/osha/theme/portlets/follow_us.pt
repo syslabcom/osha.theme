@@ -1,16 +1,13 @@
 <dl class="portlet portletFollowUs"
     i18n:domain="osha">
+    <dt>Follow us</dt>
+ 
+    <dd>
 
-  <div class="boxing_styles_inner_content">
-    <div class="socialMediaOSHMAILfg">
-
-      <dt>Follow us</dt>
-
-      <dd><a href="http://twitter.com/eu_osha" target="_blank"><img width="30" height="30" src="http://osha.europa.eu/en/news/oshmail/twitter-logo.jpg" alt="twitter-logo.jpg"/></a> <span class="link-external"><a href="http://twitter.com/eu_osha" target="_blank">Twitter</a></span></dd>
-      <dd><a href="http://www.youtube.com/EUOSHA" target="_blank"><img width="30" height="30" src="http://osha.europa.eu/en/news/oshmail/youtube.gif" alt="youtube.gif"/></a> <span class="link-external"><a href="http://www.youtube.com/EUOSHA" target="_blank">YouTube</a></span></dd>
-      <dd><a href="http://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank"> <img width="30" height="30" src="http://osha.europa.eu/en/news/oshmail/linkedin-logo.jpg" alt="linkedin-logo.jpg"/></a> <span class="link-external"><a href="http://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work " target="_blank">Linked-In</a></span></dd>
-
-    </div>
-  </div>
-
+      <ul>
+      	<li><a class="twitter-logo" title="Twitter Logo" href="http://twitter.com/eu_osha" target="_blank">Twitter</a></li>
+      	<li><a class="youtube-logo" title="Youtube logo" href="http://www.youtube.com/EUOSHA" target="_blank">YouTube</a></li>
+      	<li><a class="linkedin-logo" title="LinkedIn Logo" href="http://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank">Linked-In</a></li>
+      </ul>
+    </dd>
 </dl>
