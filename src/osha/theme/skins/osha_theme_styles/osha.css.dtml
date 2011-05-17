@@ -7,6 +7,8 @@
 */
 .link-external-js {
     background: transparent url(&dtml-portal_url;/link_external.gif) 0px 3px no-repeat;
+    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -247px transparent; 
+    width: 11px; height: 11px; 
     padding: 1px 0px 1px 10px;
 }
 .link-https-js {
