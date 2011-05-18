@@ -10,8 +10,9 @@
 <body>
 
 <metal:macro define-macro="searchresults">
-    <tal:defines define="oshaview python:context.restrictedTraverse('@@oshaview');
-        outdated result/outdated|python:0">
+    <tal:defines define="
+                    oshaview python:context.restrictedTraverse('@@oshaview');
+                    outdated result/outdated|python:0">
       <div class="searchresult" tal:attributes="class python:outdated and 'searchresult-outdated' or 'searchresult'">
         <dt>
           <metal:macro define-macro="provider">
@@ -80,6 +81,12 @@
             <p tal:define="descr result/Description"
                tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
           </tal:notfaq>
+
+          <tal:get condition="python:result.portal_type == 'CaseStudy'">
+            <tal:def define="here result/getObject">
+                <metal:macro use-macro="context/widget_casestudy_attachmentmanager/macros/attachments_box" />
+            </tal:def>
+          </tal:get>
 
           <tal:url condition="url">
             <a tal:attributes="href string:$url"
