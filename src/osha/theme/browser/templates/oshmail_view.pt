@@ -3,30 +3,39 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="osha">
 
-      <metal:javascriptslot fill-slot="javascript_head_slot">
-          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.js" type="text/javascript" charset="utf-8">
-      </script>
-          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.minified.js" type="text/javascript" charset="utf-8">
-      </script>
-          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.jcarousel.pack.js" type="text/javascript" charset="utf-8">
-      </script>
-          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.masonry.min.js" type="text/javascript" charset="utf-8">
-      </script>
-          <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/base.js" type="text/javascript" charset="utf-8">
-      </script>
-      <script type="text/javascript" language="javascript">
-      function displaynl () {
-          jQuery('.fadercontrol').hide();
-          jQuery('.older-newsletter').fadeIn('slow');   
-      }</script>
-      </metal:javascriptslot>
-      <metal:css fill-slot='css_slot'>
-      <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-      <style type="text/css">.older-newsletter {display:none;}</style>
-      </metal:css>
+    <metal:javascriptslot fill-slot="javascript_head_slot">
+        <script src="#" 
+                tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.js" 
+                type="text/javascript" charset="utf-8">
+        </script>
+        <script src="#" 
+                tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.minified.js" 
+                type="text/javascript" charset="utf-8">
+        </script>
+        <script src="#" 
+                tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.jcarousel.pack.js" 
+                type="text/javascript" charset="utf-8">
+        </script>
+        <script src="#" 
+                tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.masonry.min.js" 
+                type="text/javascript" charset="utf-8">
+        </script>
+        <script src="#" 
+                tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/base.js" 
+                type="text/javascript" charset="utf-8">
+    </script>
+    <script type="text/javascript" language="javascript">
+        function displaynl () {
+            jQuery('.fadercontrol').hide();
+            jQuery('.older-newsletter').fadeIn('slow');   
+    }</script>
+    </metal:javascriptslot>
+    <metal:css fill-slot='css_slot'>
+        <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+        <style type="text/css">.older-newsletter {display:none;}</style>
+    </metal:css>
 
 <body>
-
 <div metal:fill-slot="main" 
      tal:define="templateId template/getId; currlang here/portal_languages/getPreferredLanguage">
 
