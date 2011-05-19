@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.12 (unreleased)
+1.4.12 (2011-05-19)
 -------------------
 
 - added sprites to replace footer icons 
@@ -14,6 +14,7 @@ osha.theme Changelog
 - Added jquery 1.4.4 as browser resource [thomasw]
 - Added translations for Events - Date to be confirmed #2341
   [deroiste]
+- Built OSHA Items portlet, #2242 [jcbrand]
 
 
 1.4.11 (2011-05-05)
