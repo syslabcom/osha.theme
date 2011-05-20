@@ -4,7 +4,8 @@ osha.theme Changelog
 1.4.13 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Adding hw2010-campaign-like views for image galleries #1555
+  [deroiste]
 
 
 1.4.12 (2011-05-19)

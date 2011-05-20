@@ -933,6 +933,459 @@ div#faq_results li.expanded {
     list-style-image: url("treeExpanded.gif");
 }
 
+/* multimedia views */
+body.template-multimedia-image-details-view #content {
+    width: auto;
+}
+
+.ellipsis {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+body.template-multimedia-image-details-view a[rel="contactSheet"] {
+    position: relative;
+}
+
+/* @group Gallery */
+
+body.template-multimedia-image-details-view .mainImage {
+	float: left;
+	margin-bottom: 20px;
+}
+
+body.template-multimedia-image-details-view #content .mainImage img {
+	width: 630px;
+	max-width: 630px;
+	margin: 0;
+	float: left;
+	outline: silver 1px solid;
+}
+
+body.template-multimedia-image-details-view .mainImage a {
+	position: relative;
+	float: left;
+	margin-bottom: 10px;
+}
+
+body.template-multimedia-image-details-view .mainImage a:before {
+	content: " ";
+	display: block;
+	-webkit-box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
+	-moz-box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
+	-o-box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
+	box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+
+body.template-multimedia-image-details-view ul.thumbnails {
+	width: 240px;
+	float: right;
+	margin-right: -290px;
+}
+
+body.template-multimedia-image-details-view ul.thumbnails li {
+	float: left;
+	width: 70px;
+	overflow: hidden;
+	height: 70px;
+	margin-left: 0 !important;
+	margin-right: 10px !important;
+	margin-bottom: 10px !important;
+	padding: 0 !important;
+	position: static !important;
+	-webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	-o-box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+	outline: silver 1px solid;
+}
+
+body.template-multimedia-image-details-view ul.thumbnails li.current {
+	margin: -4px 6px 6px -4px !important;
+	border: 4px solid #2c6c85;
+}
+
+body.template-multimedia-image-details-view ul.thumbnails li:before {
+	display: none;
+	margin: 0;
+	padding: 0;
+}
+
+body.template-multimedia-image-details-view ul.thumbnails li a {
+	width: 120px;
+	margin-left: -25px;
+	text-align: center;
+	height: 70px;
+	float: left;
+}
+
+body.template-multimedia-image-details-view ul.thumbnails li:hover {
+	margin: -4px 6px 6px -4px !important;
+	border: 4px solid white;
+}
+
+body.template-multimedia-image-details-view ul.thumbnails li a img {
+	min-height: 70px;
+	min-width: 70px;
+	height: 70px;
+}
+
+body.template-multimedia-image-details-view ul.thumbnails li.portrait a img {
+	height: auto;
+	width: 70px;
+}
+
+body.template-multimedia-image-details-view .noScript {
+    display: none;
+}
+
+/* @end */
+
+
+/* @group Fancy box */
+
+#fancybox-loading {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	height: 40px;
+	width: 40px;
+	margin-top: -20px;
+	margin-left: -20px;
+	cursor: pointer;
+	overflow: hidden;
+	z-index: 1104;
+	display: none;
+}
+
+* html #fancybox-loading {
+
+
+/* IE6 */
+	position: absolute;
+	margin-top: 0;
+}
+
+#fancybox-loading div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 40px;
+	height: 480px;
+	background-image: url('fancybox/fancybox.png');
+}
+
+#fancybox-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: #000;
+	z-index: 1100;
+	display: none;
+}
+
+* html #fancybox-overlay {
+
+
+/* IE6 */
+	position: absolute;
+	width: 100%;
+}
+
+#fancybox-tmp {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	overflow: auto;
+	display: none;
+}
+
+#fancybox-wrap {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 20px;
+	z-index: 1101;
+	display: none;
+}
+
+#fancybox-outer {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: #FFF;
+}
+
+#fancybox-inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: 0;
+	outline: none;
+	overflow: hidden;
+}
+
+#fancybox-hide-sel-frame {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: transparent;
+}
+
+#fancybox-close {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	width: 30px;
+	height: 30px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px 0px;
+	cursor: pointer;
+	z-index: 1103;
+	display: none;
+}
+
+#fancybox_error {
+	color: #444;
+	font: normal 12px/20px Arial;
+	padding: 7px;
+	margin: 0;
+}
+
+#fancybox-content {
+	height: auto;
+	width: auto;
+	padding: 0;
+	margin: 0;
+}
+
+#fancybox-img {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	border: none;
+	outline: none;
+	line-height: 0;
+	vertical-align: top;
+	max-width: 100%;
+	-ms-interpolation-mode: bicubic;
+}
+
+#fancybox-frame {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: none;
+	display: block;
+}
+
+#fancybox-title {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	font-family: Arial;
+	font-size: 12px;
+	z-index: 1102;
+}
+
+.fancybox-title-inside {
+	padding: 10px 0;
+	text-align: center;
+	color: #333;
+}
+
+.fancybox-title-outside {
+	padding-top: 5px;
+	color: #FFF;
+	text-align: center;
+	font-weight: bold;
+}
+
+.fancybox-title-over {
+	color: #FFF;
+	text-align: left;
+}
+
+#fancybox-title-over {
+	padding: 10px;
+	background-image: url('fancybox/fancy_title_over.png');
+	display: block;
+}
+
+#fancybox-title-wrap {
+	display: inline-block;
+}
+
+#fancybox-title-wrap span {
+	height: 32px;
+	float: left;
+}
+
+#fancybox-title-left {
+	padding-left: 15px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -90px;
+	background-repeat: no-repeat;
+}
+
+#fancybox-title-main {
+	font-weight: bold;
+	line-height: 29px;
+	color: #FFF;
+	background: url('fancybox/fancybox-x.png') 0px -40px;
+}
+
+#fancybox-title-right {
+	padding-left: 15px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -55px -90px;
+	background-repeat: no-repeat;
+}
+
+#fancybox-left, #fancybox-right {
+	position: absolute;
+	bottom: 0px;
+	height: 100%;
+	width: 35%;
+	cursor: pointer;
+	outline: none;
+	background-image: url('fancybox/blank.gif');
+	z-index: 1102;
+	display: none;
+}
+
+#fancybox-left {
+	left: 0px;
+}
+
+#fancybox-right {
+	right: 0px;
+}
+
+#fancybox-left-ico, #fancybox-right-ico {
+	position: absolute;
+	top: 50%;
+	left: -9999px;
+	width: 30px;
+	height: 30px;
+	margin-top: -15px;
+	cursor: pointer;
+	z-index: 1102;
+	display: block;
+}
+
+#fancybox-left-ico {
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -30px;
+}
+
+#fancybox-right-ico {
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -60px;
+}
+
+#fancybox-left:hover, #fancybox-right:hover {
+	visibility: visible;
+/*
+
+IE6 */
+}
+
+#fancybox-left:hover span {
+	left: 20px;
+}
+
+#fancybox-right:hover span {
+	left: auto;
+	right: 20px;
+}
+
+.fancy-bg {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	width: 20px;
+	height: 20px;
+	z-index: 1001;
+}
+
+#fancy-bg-n {
+	top: -20px;
+	left: 0;
+	width: 100%;
+	background-image: url('fancybox/fancybox-x.png');
+}
+
+#fancy-bg-ne {
+	top: -20px;
+	right: -20px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -162px;
+}
+
+#fancy-bg-e {
+	top: 0;
+	right: -20px;
+	height: 100%;
+	background-image: url('fancybox/fancybox-y.png');
+	background-position: -20px 0px;
+}
+
+#fancy-bg-se {
+	bottom: -20px;
+	right: -20px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -182px;
+}
+
+#fancy-bg-s {
+	bottom: -20px;
+	left: 0;
+	width: 100%;
+	background-image: url('fancybox/fancybox-x.png');
+	background-position: 0px -20px;
+}
+
+#fancy-bg-sw {
+	bottom: -20px;
+	left: -20px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -142px;
+}
+
+#fancy-bg-w {
+	top: 0;
+	left: -20px;
+	height: 100%;
+	background-image: url('fancybox/fancybox-y.png');
+}
+
+#fancy-bg-nw {
+	top: -20px;
+	left: -20px;
+	background-image: url('fancybox/fancybox.png');
+	background-position: -40px -122px;
+}
+
+/* @end */
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone

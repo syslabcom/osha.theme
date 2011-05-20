@@ -134,6 +134,21 @@
         permission="zope2.View"
         />
 
+    <!-- OSHA Multimedia views -->
+    <browser:page
+        for="Products.ATContentTypes.interface.folder.IATFolder"
+        name="multimedia-image-folders-view"
+        class=".multimedia_view.MultimediaImageFoldersView"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.image.IATImage"
+        name="multimedia-image-details-view"
+        class=".multimedia_view.MultimediaImageDetailsView"
+        permission="zope.Public"
+        />
+
     <!-- OSHA NapoFilmView-->
     <browser:page
         for="*"
