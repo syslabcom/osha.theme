@@ -85,7 +85,7 @@ body.fullscreen #portal-column-content {
 #visual-portal-wrapper {
     position:relative;
     overflow-x: hidden;
-    overflow-y:auto;
+    overflow-y:hidden;
 }
 #portal-columns {
     background:#F2F4F7;
