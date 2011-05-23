@@ -12,7 +12,7 @@
 
   <metal:javascript fill-slot="javascript_head_slot">
     <script type="text/javascript" src="http://osha.europa.eu/_theme/Behaviour/jquery.text-overflow.js"  language="javascript"></script>
-    
+
     <script type="text/javascript" language="javascript">
     jQuery(document).ready(function() {
         jQuery('.ellipsis').ellipsis();
@@ -42,8 +42,9 @@
                   tal:content="image_folder/title">
                 Timeless Luxury (6 photos)
                 </h4><tal:image_id repeat="image_id python:image_folder['images']"
-                     ><tal:image define="image python:image_folder['images'][image_id]"
-                     ><a tal:attributes="href folder_url;
+                     ><tal:image define="image python:image_folder['images'][image_id];
+                                         image_url string:${folder_url}/${image_id}"
+                     ><a tal:attributes="href string:${image_url}/multimedia-image-details-view;
                                          class python:repeat['image_id'].index == 0 and 'default' or ''"
                         ><img alt="Calabria"
                               tal:attributes="src string:${folder_url}/${image_id}/image_preview"/><br />
