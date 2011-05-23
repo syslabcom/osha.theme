@@ -1,11 +1,12 @@
 osha.theme Changelog
 ====================
 
-1.4.13 (unreleased)
+1.4.13 (2011-05-23)
 -------------------
 
 - Adding hw2010-campaign-like views for image galleries #1555
   [deroiste]
+- Moved locales dir to new egg osha.translations [thomasw]
 
 
 1.4.12 (2011-05-19)
