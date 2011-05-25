@@ -47,9 +47,9 @@
                   tal:replace="here/getSubhead">[Subtitle]</span>
         </h3>
 
-        <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
-            News summary
-        </p>
+        <div class="documentDescription">
+            <span tal:replace="structure here/Description"></span>
+        </div>
 
         <div class="newsImageContainer"
              tal:condition="here/image_mini|nothing">
