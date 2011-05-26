@@ -72,6 +72,7 @@
 .sprite-topic_icon{ background-position: 0 -1486px; width: 16px; height: 16px; } 
 .sprite-xls_icon{ background-position: 0 -1652px; width: 16px; height: 16px; } 
 .sprite-zip_icon{ background-position: 0 -1818px; width: 16px; height: 16px; } 
+.sprite-link_icon{ background-position: 0 -1948px; width: 16px; height: 16px; } 
 
 
 
@@ -169,8 +170,6 @@
 .sprite-job_icon{ background-position: -464px -1743px; width: 16px; height: 16px; } 
 .sprite-large_arrow_left{ background-position: -464px -1859px; width: 50px; height: 38px; } 
 .sprite-large_arrow_right{ background-position: -714px 0; width: 50px; height: 38px; } 
-.sprite-link{ background-position: -714px -138px; width: 9px; height: 9px; } 
-.sprite-link_icon{ background-position: -714px -358px; width: 16px; height: 16px; } 
 .sprite-linkedin-logo{ background-position: -714px -474px; width: 30px; height: 30px; } 
 .sprite-minus_icon{ background-position: -714px -843px; width: 16px; height: 16px; } 
 .sprite-msaccess_icon{ background-position: -714px -959px; width: 16px; height: 16px; } 

@@ -503,7 +503,7 @@ ul.linkList {
 ul.linkList li {
     background-color:transparent;
     /*background-image:url(&dtml-portal_url;/link.gif);*/
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1995px transparent;     
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1948px transparent;     
     display:block;
     line-height:normal;
     list-style-image:none;
