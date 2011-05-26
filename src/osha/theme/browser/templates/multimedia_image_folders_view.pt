@@ -40,7 +40,7 @@
             <li tal:attributes="class string:count-${image_count}">
               <h4 class="ellipsis"
                   tal:content="image_folder/title">
-                Timeless Luxury (6 photos)
+                Timeless Luxury
                 </h4><tal:image_id repeat="image_id python:image_folder['images']"
                      ><tal:image define="image python:image_folder['images'][image_id];
                                          image_url string:${folder_url}/${image_id}"

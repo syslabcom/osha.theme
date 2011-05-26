@@ -1058,9 +1058,13 @@ body.template-multimedia-film-episodes-listing-view div#video_container {
     display: none;
 }
 
-body.template-multimedia-film-episodes-listing-view img.video-thumbnail,
-body.template-multimedia-film-listing-view img.video-thumbnail {
+body.template-multimedia-film-episodes-listing-view img.video-thumbnail {
     width: 100px;
+    float: left;
+}
+
+body.template-multimedia-film-episodes-listing-view div.episode {
+    float: left;
 }
 /* @end */
 

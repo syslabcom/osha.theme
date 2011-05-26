@@ -47,6 +47,7 @@ class MultimediaImageFoldersView(BrowserView):
                     max_image_folders = max_image_folders - 1
         return image_folders
 
+
 class MultimediaImageDetailsView(BrowserView):
     template = ViewPageTemplateFile(
         'templates/multimedia_image_details_view.pt')
@@ -145,6 +146,17 @@ class MultimediaFilmListingView(BrowserView, FilmsDataMixin):
 
     def __call__(self):
         return self.template()
+
+    def get_video_details(self, film_id):
+        for film in self.films_data:
+            if film["id"] == film_id:
+                film_details = self.set_movie_defaults([film])
+                if film.has_key("episodes"):
+                    episode_details = self.set_movie_defaults(film["episodes"])
+                else:
+                    episode_details = {}
+                return OrderedDict(
+                    film_details.items() + episode_details.items())
 
 
 class MultimediaFilmEpisodeListingView(BrowserView, FilmsDataMixin):

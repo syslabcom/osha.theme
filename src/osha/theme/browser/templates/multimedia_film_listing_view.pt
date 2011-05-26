@@ -20,23 +20,33 @@
           <p tal:content="context/Description" />
         </div>
 
-        <tal:films define="films view/films">
-          <div class="film"
-               tal:repeat="film_id films">
-            <tal:film define="film python:films[film_id]">
+        <ul class="scrubber"
+            tal:define="films view/films">
+          <tal:films tal:repeat="film_id films">
+            <tal:film define="film python:films[film_id];
+                              video_details python:view.get_video_details(film_id);">
 
-              <h2 tal:content="film/title" i18n:translate=""></h2>
-              <p tal:content="film/description" i18n:translate=""></p>
-              <img class="video-thumbnail"
-                   tal:attributes="src film/image" />
-              <a tal:attributes="href string:${context/absolute_url}/multimedia-film-episodes-listing-view?film=${film_id}">View episodes</a>
+              <li tal:attributes="class python:'count-%s' % len(video_details.keys())">
+
+                <h4 class="ellipsis"
+                    tal:content="film/title" i18n:translate=""></h4>
+                <a tal:attributes="href string:${context/absolute_url}/multimedia-film-episodes-listing-view?film=${film_id};
+                                   title film/description;
+                                   class python:repeat['video'].index == 0 and 'default' or ''"
+                   i18n:attributes="title"
+                   tal:repeat="video video_details">
+                  <img tal:attributes="src python:video_details[video]['image']" />
+                  <strong tal:content="python:video_details[video]['title']"></strong>
+                </a>
+
+              </li>
 
             </tal:film>
-          </div>
-        </tal:films>
-
-      </div>
+          </tal:films>
+        </ul>
 
     </div>
-  </body>
+
+  </div>
+</body>
 </html>
