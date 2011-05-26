@@ -4,7 +4,8 @@ osha.theme Changelog
 1.4.14 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Fixed spriting problem on the beswic site where duplicated sprites were shown, re-fixes #3204
+  [pilz]
 
 
 1.4.13 (2011-05-23)
