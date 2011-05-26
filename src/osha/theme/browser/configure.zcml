@@ -38,6 +38,17 @@
         name="jquery.js"
         />
 
+    <!-- multimedia_film_listing_view -->
+    <browser:resource
+        file="resources/jwplayer.swf"
+        name="jwplayer.swf"
+        />
+
+    <browser:resource
+        file="resources/jwplayer.js"
+        name="jwplayer.js"
+        />
+
     <browser:resourceDirectory
         name="osha.theme.behaviour"
         directory="behaviour"
@@ -146,6 +157,20 @@
         for="Products.ATContentTypes.interface.image.IATImage"
         name="multimedia-image-details-view"
         class=".multimedia_view.MultimediaImageDetailsView"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.folder.IATFolder"
+        name="multimedia-film-listing-view"
+        class=".multimedia_view.MultimediaFilmListingView"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.folder.IATFolder"
+        name="multimedia-film-episodes-listing-view"
+        class=".multimedia_view.MultimediaFilmEpisodeListingView"
         permission="zope.Public"
         />
 

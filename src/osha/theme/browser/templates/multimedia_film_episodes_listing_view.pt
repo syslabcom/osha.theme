@@ -1,0 +1,78 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="osha" >
+
+  <metal:css fill-slot='css_slot'>
+    <link rel="stylesheet" href="lipstick.css" type="text/css"
+          media="screen" title="no title" charset="utf-8" />
+  </metal:css>
+
+  <metal:javascript fill-slot="javascript_head_slot">
+    <script charset="utf-8" type="text/javascript" src="http://osha.europa.eu/_theme/Behaviour/fancybox/jquery.easing-1.3.pack.js"></script>
+    <script charset="utf-8" type="text/javascript" src="http://osha.europa.eu/_theme/Behaviour/fancybox/jquery.fancybox-1.3.1.js"></script>
+    <script type="text/javascript" src="/++resource++jwplayer.js"></script>
+    <script type="text/javascript"
+            tal:content="structure view/video_fancybox">
+      The javascript is read from
+      multimedia_film_episodes_listing_view.js.tpl substituting the
+      value for view/media_url
+    </script>
+  </metal:javascript>
+
+  <body>
+    <div metal:fill-slot="main">
+      <div id="content" class="wide"
+           tal:define="film view/film;
+                       film_details python:view.film_details[film['id']]">
+
+        <h1 tal:content="context/Title" />
+
+        <div class="introduction">
+          <p tal:content="context/Description"></p>
+        </div>
+
+        <div id="film">
+          <h1 tal:content="film_details/title"></h1>
+          <a class="video"
+             href="#video_container"
+             tal:attributes="id film/id;
+                             title film_details/title"
+             i18n:attributes="title">
+            <img class="video-thumbnail"
+                 tal:attributes="src film_details/image" />
+          </a>
+          <p tal:content="film_details/description"></p>
+        </div>
+
+        <div id="episodes"
+             tal:define="episodes view/episodes">
+          <tal:episode tal:repeat="episode episodes">
+
+            <div class="episode"
+                 tal:define="episode_details python:episodes[episode]">
+              <h2 tal:content="episode_details/title" i18n:translate=""></h2>
+              <a class="video"
+                 href="#video_container"
+                 tal:attributes="id episode;
+                                 title episode_details/title"
+                 i18n:attributes="title">
+                <img class="video-thumbnail"
+                     tal:attributes="src episode_details/image" />
+              </a>
+            </div>
+
+          </tal:episode>
+        </div>
+
+        <div id="hide_video_container">
+          <div id="video_container"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+</html>
