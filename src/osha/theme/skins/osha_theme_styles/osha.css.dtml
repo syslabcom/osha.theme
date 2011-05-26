@@ -6,28 +6,28 @@
 ** link classes for js usage
 */
 .link-external-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -247px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -332px transparent; 
     width: 11px; height: 11px; 
     padding: 1px 0px 1px 10px;
 }
 .link-https-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -613px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -493px transparent; 
     padding: 1px 0px 1px 10px;
 }
 .link-mailto-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -726px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -656px transparent; 
     padding: 1px 0px 1px 12px;
 }
 .link-news-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -1214px -301px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1486px transparent; 
     padding: 1px 0px 1px 16px;
 }
 .link-ftp-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -216px -1418px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -166px transparent; 
     padding: 1px 0px 1px 16px;
 }
 .link-pdf-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -1771px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1154px transparent; 
     padding: 0px 2px 1px 16px;
 }
 /*
@@ -35,29 +35,43 @@
 */
 
 .link-doc-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -1306px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -988px transparent; 
     padding: 0px 2px 1px 16px;
 }
 .link-xls-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -1214px -673px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1652px transparent; 
     padding: 0px 2px 1px 16px;
 }
 .link-ppt-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -1190px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -822px transparent; 
     padding: 0px 2px 1px 16px;
 }
 .link-zip-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -1214px -950px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1818px transparent; 
     padding: 0px 2px 1px 16px;
 }
 .link-irc-js {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -216px -842px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 0 transparent; 
     padding: 1px 0px 1px 16px;
 }
 .link-callto-js {
-    background: transparent url(&dtml-portal_url;/phone_icon.gif) 0px 1px no-repeat;
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) 0 -1320px no-repeat transparent;
     padding: 1px 0px 1px 16px;
 }
+
+/* Sprites for content types */
+.sprite-discussionitem_icon{ background-position: 0 0; width: 16px; height: 16px; } 
+.sprite-file_icon{ background-position: 0 -166px; width: 16px; height: 16px; } 
+.sprite-link_external{ background-position: 0 -332px; width: 11px; height: 11px; } 
+.sprite-lock_icon{ background-position: 0 -493px; width: 10px; height: 13px; } 
+.sprite-mail_icon{ background-position: 0 -656px; width: 16px; height: 16px; } 
+.sprite-msppt_icon{ background-position: 0 -822px; width: 16px; height: 16px; } 
+.sprite-msword_icon{ background-position: 0 -988px; width: 16px; height: 16px; } 
+.sprite-pdf_icon{ background-position: 0 -1154px; width: 16px; height: 16px; } 
+.sprite-phone_icon{ background-position: 0 -1320px; width: 16px; height: 16px; } 
+.sprite-topic_icon{ background-position: 0 -1486px; width: 16px; height: 16px; } 
+.sprite-xls_icon{ background-position: 0 -1652px; width: 16px; height: 16px; } 
+.sprite-zip_icon{ background-position: 0 -1818px; width: 16px; height: 16px; } 
 
 
 
@@ -129,12 +143,10 @@
 .sprite-dbtableedit_icon{ background-position: -216px -497px; width: 16px; height: 13px; } 
 .sprite-delete_icon{ background-position: -216px -610px; width: 17px; height: 16px; } 
 .sprite-directive_icon{ background-position: -216px -726px; width: 16px; height: 16px; } 
-.sprite-discussionitem_icon{ background-position: -216px -842px; width: 16px; height: 16px; } 
 .sprite-document_icon{ background-position: -216px -958px; width: 16px; height: 16px; } 
 .sprite-edit_box{ background-position: -216px -1074px; width: 13px; height: 13px; } 
 .sprite-event_icon{ background-position: -216px -1187px; width: 16px; height: 16px; } 
 .sprite-faq_icon{ background-position: -216px -1303px; width: 16px; height: 16px; } 
-.sprite-file_icon{ background-position: -216px -1419px; width: 16px; height: 16px; } 
 .sprite-flag-plone{ background-position: -216px -1535px; width: 14px; height: 11px; } 
 .sprite-folder_icon{ background-position: -216px -1646px; width: 16px; height: 16px; } 
 .sprite-helpcenter_icon{ background-position: -216px -1762px; width: 16px; height: 16px; } 
@@ -158,20 +170,14 @@
 .sprite-large_arrow_left{ background-position: -464px -1859px; width: 50px; height: 38px; } 
 .sprite-large_arrow_right{ background-position: -714px 0; width: 50px; height: 38px; } 
 .sprite-link{ background-position: -714px -138px; width: 9px; height: 9px; } 
-.sprite-link_external{ background-position: -714px -247px; width: 11px; height: 11px; } 
 .sprite-link_icon{ background-position: -714px -358px; width: 16px; height: 16px; } 
 .sprite-linkedin-logo{ background-position: -714px -474px; width: 30px; height: 30px; } 
-.sprite-lock_icon{ background-position: -714px -614px; width: 10px; height: 13px; } 
-.sprite-mail_icon{ background-position: -714px -727px; width: 16px; height: 16px; } 
 .sprite-minus_icon{ background-position: -714px -843px; width: 16px; height: 16px; } 
 .sprite-msaccess_icon{ background-position: -714px -959px; width: 16px; height: 16px; } 
 .sprite-msexcel_icon{ background-position: -714px -1075px; width: 16px; height: 16px; } 
-.sprite-msppt_icon{ background-position: -714px -1191px; width: 16px; height: 16px; } 
-.sprite-msword_icon{ background-position: -714px -1307px; width: 16px; height: 16px; } 
 .sprite-newsitem_icon{ background-position: -714px -1423px; width: 16px; height: 16px; } 
 .sprite-oshlink_icon{ background-position: -714px -1539px; width: 16px; height: 16px; } 
 .sprite-pdf{ background-position: -714px -1655px; width: 16px; height: 16px; } 
-.sprite-pdf_icon{ background-position: -714px -1771px; width: 16px; height: 16px; } 
 .sprite-ploneboard_icon{ background-position: -714px -1887px; width: 16px; height: 16px; } 
 .sprite-plus_icon{ background-position: -964px 0; width: 16px; height: 16px; } 
 .sprite-pressclip_icon{ background-position: -964px -116px; width: 16px; height: 16px; } 
@@ -192,16 +198,16 @@
 .sprite-square_empty{ background-position: -964px -1839px; width: 9px; height: 9px; } 
 .sprite-submenu{ background-position: -1214px 0; width: 9px; height: 10px; } 
 .sprite-topbanner2{ background-position: -1214px -110px; width: 104px; height: 92px; } 
-.sprite-topic_icon{ background-position: -1214px -302px; width: 16px; height: 16px; } 
 .sprite-twitter-logo{ background-position: -1214px -418px; width: 30px; height: 30px; } 
 .sprite-user{ background-position: -1214px -558px; width: 16px; height: 16px; } 
-.sprite-xls_icon{ background-position: -1214px -674px; width: 16px; height: 16px; } 
 .sprite-youtube{ background-position: -1214px -790px; width: 30px; height: 30px; } 
-.sprite-zip_icon{ background-position: -1214px -950px; width: 16px; height: 16px; } 
 
 .sprite-oshablog{ background-position: -1214px -1039px; width: 30px; height: 30px; } 
 .sprite-oshmail{ background-position: -1214px -1152px; width: 30px; height: 30px;  } 
 .sprite-oshalert{ background-position: -1214px -1272px; width: 30px; height: 30px;  } 
+
+
+
 
 /* Footer sprites */
 #footeraction-sendto a, #footeraction-print a, #footeraction-contact a, #footeraction-osha_help a, #footeraction-rssfeeds a,

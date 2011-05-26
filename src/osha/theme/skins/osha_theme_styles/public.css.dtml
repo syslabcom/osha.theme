@@ -817,12 +817,12 @@ a.link-parent {
    remove it from the ones that are local - for both http and https */
 #content a[href ^="http:"],
 #content a.link-external {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -245px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -332px transparent; 
     padding: 1px 0px 1px 16px;
 }
 #content a[href ^="https:"],
 #content a.link-https {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -613px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -493px transparent;
     padding: 1px 0px 1px 16px;
 }
 #content a[href ^="&dtml-portal_url;"] {
@@ -834,7 +834,7 @@ a.link-parent {
 /* Protocol-specific links */
 #content a[href ^="mailto:"],
 #content a.link-mailto  {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -714px -726px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -656px transparent; 
     padding: 1px 0px 1px 16px;
 }
 #content a[href ^="feed:"],
