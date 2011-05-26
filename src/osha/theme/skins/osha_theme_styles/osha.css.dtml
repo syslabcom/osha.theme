@@ -6,28 +6,28 @@
 ** link classes for js usage
 */
 .link-external-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -332px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -332px transparent; 
     width: 11px; height: 11px; 
     padding: 1px 0px 1px 10px;
 }
 .link-https-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -493px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -493px transparent; 
     padding: 1px 0px 1px 10px;
 }
 .link-mailto-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -656px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -656px transparent; 
     padding: 1px 0px 1px 12px;
 }
 .link-news-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1486px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1486px transparent; 
     padding: 1px 0px 1px 16px;
 }
 .link-ftp-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -166px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -166px transparent; 
     padding: 1px 0px 1px 16px;
 }
 .link-pdf-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1154px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1154px transparent; 
     padding: 0px 2px 1px 16px;
 }
 /*
@@ -35,23 +35,23 @@
 */
 
 .link-doc-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -988px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -988px transparent; 
     padding: 0px 2px 1px 16px;
 }
 .link-xls-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1652px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1652px transparent; 
     padding: 0px 2px 1px 16px;
 }
 .link-ppt-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -822px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -822px transparent; 
     padding: 0px 2px 1px 16px;
 }
 .link-zip-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -1818px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1818px transparent; 
     padding: 0px 2px 1px 16px;
 }
 .link-irc-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 0 transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 0 transparent; 
     padding: 1px 0px 1px 16px;
 }
 .link-callto-js {
@@ -213,7 +213,7 @@
 #footeraction-sitemap a, #footeraction-accessibility a,#footeraction-plone_setup a, #footeraction-osha_update a, #footeraction-osha_faq a,
 #footeraction-osha_translations a, #footeraction-worklist a, #footeraction-privacypolicy a, #footeraction-disclaimer a, 
 #footeraction-copyright a{
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll 0 0 transparent; 
+    background: url(&dtml-portal_url;/sprites-icons.png) no-repeat scroll 0 0 transparent; 
     width: 16px; height: 16px;
     padding-left: 20px;
     padding-bottom:2px;

@@ -792,11 +792,11 @@ a.link-parent {
     color: #74ae0b !important;
 }
 #content .link-user {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -1214px -557px transparent; 
+    background: url(&dtml-portal_url;/sprites-icons.png) no-repeat scroll -1214px -557px transparent; 
     padding: 1px 0px 1px 16px;
 }
 #content .link-comment {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -216px -841px transparent; 
+    background: url(&dtml-portal_url;/sprites-icons.png) no-repeat scroll -216px -841px transparent; 
     padding: 1px 0px 1px 16px !important; /* value:  */
 }
 #content .link-anchor {
@@ -817,12 +817,12 @@ a.link-parent {
    remove it from the ones that are local - for both http and https */
 #content a[href ^="http:"],
 #content a.link-external {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -332px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -332px transparent; 
     padding: 1px 0px 1px 16px;
 }
 #content a[href ^="https:"],
 #content a.link-https {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll  0 -493px transparent;
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -493px transparent;
     padding: 1px 0px 1px 16px;
 }
 #content a[href ^="&dtml-portal_url;"] {
@@ -834,12 +834,12 @@ a.link-parent {
 /* Protocol-specific links */
 #content a[href ^="mailto:"],
 #content a.link-mailto  {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) repeat-x scroll 0 -656px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -656px transparent; 
     padding: 1px 0px 1px 16px;
 }
 #content a[href ^="feed:"],
 #content a.link-feed {    
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -464px -923px transparent; 
+    background: url(&dtml-portal_url;/sprites-icons.png) no-repeat scroll -464px -923px transparent; 
     padding: 1px 0px 1px 18px;
 }
 
