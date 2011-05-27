@@ -37,9 +37,9 @@
         <div id="film">
 
           <div class="film_details">
-            <h1 tal:content="film_details/title"></h1>
-            <p class="video-description"
-               tal:content="film_details/description"></p>
+            <h1 i18n:translate="" tal:content="film_details/title"></h1>
+            <p class="video-description" i18n:translate=""
+               tal:content="structure film_details/description"></p>
             <tal:download i18n:translate="label_napo_download_film_as">
             </tal:download>
             <a tal:attributes="href film_details/video_webm">WebM</a>,
