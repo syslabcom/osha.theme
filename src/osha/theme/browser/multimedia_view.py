@@ -105,9 +105,9 @@ class FilmsDataMixin(object):
         """This data structure can be overridden by a Script (Python)
         in the current directory called "films_data"
         """
-        if hasattr(self.context, "films_data"):
+        if hasattr(self.context, "multimedia_film_structure"):
             # a Script (Python) in the current folder
-            return self.context.films_data()
+            return self.context.multimedia_film_structure()
         return [
             { "id"          : "napo-015-safe-moves",
               "title"       : "heading_introduction",
