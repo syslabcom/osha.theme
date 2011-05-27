@@ -36,7 +36,7 @@
                    i18n:attributes="title"
                    tal:repeat="video video_details">
                   <img tal:attributes="src python:video_details[video]['image']" />
-                  <strong tal:content="python:video_details[video]['title']"></strong>
+                  <strong tal:content="python:video_details[video]['title']" i18n:translate=""></strong>
                 </a>
 
               </li>
