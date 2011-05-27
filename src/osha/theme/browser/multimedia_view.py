@@ -6,6 +6,7 @@ from copy import copy
 
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from osha.policy.data.multimedia import napofilm
 
 class MultimediaImageFoldersView(BrowserView):
     """
@@ -108,29 +109,30 @@ class FilmsDataMixin(object):
         if hasattr(self.context, "multimedia_film_structure"):
             # a Script (Python) in the current folder
             return self.context.multimedia_film_structure()
-        return [
-            { "id"          : "napo-015-safe-moves",
-              "title"       : "heading_introduction",
-              "description" : "description_introduction",
-              "image"       : "Custom image.jpg",
-              "video_mp4"   : "Safe moves.mp4",
-              "video_ogg"   : "Safe moves.ogg",
-              "video_webm"  : "Safe moves.webm",
-              "episodes"    : [
-                    { "id"         :
-                          "napo-015-safe-moves-episode-002-danger-unloading",
-                      "title"      : "hai",
-                      "image"      : "Heavy Lifting2.jpg",
-                      "video_mp4"  : "Heavy Lifting2.mp4",
-                      "video_ogg"  : "Heavy Lifing2.ogg",
-                      "video_webm" : "Heavy Liftin2g.webm",
-                      },
-                    { "id"         :
-                          "napo-015-safe-moves-episode-001-planning-for-safety",
-                      }
-                    ]
-              }
-            ]
+        return napofilm.filmstructure
+        # return [
+        #     { "id"          : "napo-015-safe-moves",
+        #       "title"       : "heading_introduction",
+        #       "description" : "description_introduction",
+        #       "image"       : "Custom image.jpg",
+        #       "video_mp4"   : "Safe moves.mp4",
+        #       "video_ogg"   : "Safe moves.ogg",
+        #       "video_webm"  : "Safe moves.webm",
+        #       "episodes"    : [
+        #             { "id"         :
+        #                   "napo-015-safe-moves-episode-002-danger-unloading",
+        #               "title"      : "hai",
+        #               "image"      : "Heavy Lifting2.jpg",
+        #               "video_mp4"  : "Heavy Lifting2.mp4",
+        #               "video_ogg"  : "Heavy Lifing2.ogg",
+        #               "video_webm" : "Heavy Liftin2g.webm",
+        #               },
+        #             { "id"         :
+        #                   "napo-015-safe-moves-episode-001-planning-for-safety",
+        #               }
+        #             ]
+        #       }
+        #     ]
 
 class MultimediaFilmListingView(BrowserView, FilmsDataMixin):
     """ List the Films and link to the episode listing view for each
