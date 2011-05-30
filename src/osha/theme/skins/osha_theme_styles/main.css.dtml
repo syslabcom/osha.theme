@@ -1048,28 +1048,32 @@ body.template-multimedia-image-details-view .noScript {
 
 
 /* @group multimedia film listing */
-body.template-multimedia-film-episodes-listing-view div#hide_video_container {
-    position: absolute;
-    height: 0;
-    width: 0;
-}
-
 body.template-multimedia-film-episodes-listing-view div#video_container {
     display: none;
 }
 
-body.template-multimedia-film-episodes-listing-view div#film img.video-thumbnail {
-    width: 300px;
+body.template-multimedia-film-episodes-listing-view div#film,
+body.template-multimedia-film-episodes-listing-view div.episode {
+    position: relative;
+    border-bottom: 1px dashed black;
+    width: 100%;
+    padding: 0 0px 10px 0;
 }
 
-body.template-multimedia-film-episodes-listing-view div#film div.video_link a:hover,
-body.template-multimedia-film-episodes-listing-view div.video_link a:hover {
-    background: url("video_play.png") no-repeat scroll 25px 4px transparent;
-    opacity: 0.9;
+body.template-multimedia-film-episodes-listing-view div.episode {
+    padding-top: 10px;
 }
 
-body.template-multimedia-film-episodes-listing-view div#film  div.video_link a:hover {
-    background-position: 125px 60px;
+body.template-multimedia-film-episodes-listing-view div.video_link {
+    float: left;
+    overflow: hidden;
+    margin: 0 10px 10px 0;
+}
+
+body.template-multimedia-film-episodes-listing-view div.episode div.video_link {
+    position: relative;
+    width: 100px;
+    height: 56px;
 }
 
 body.template-multimedia-film-episodes-listing-view div.video_link a {
@@ -1077,37 +1081,32 @@ body.template-multimedia-film-episodes-listing-view div.video_link a {
     z-index: 10;
 }
 
-body.template-multimedia-film-episodes-listing-view div.episode div.video_link {
-    position: relative;
-    width: 100px;
-    height: 56px;
-    overflow: hidden;
+body.template-multimedia-film-episodes-listing-view div#film div.video_link a:hover,
+body.template-multimedia-film-episodes-listing-view div.video_link a:hover {
+    background: url("video_play.png") no-repeat scroll 125px 60px transparent;
+    opacity: 0.9;
 }
 
-body.template-multimedia-film-episodes-listing-view div#film div.film_details {
-    position: absolute;
-    left: 320px;
+body.template-multimedia-film-episodes-listing-view div.episode div.video_link a:hover {
+    background-position: 25px 4px;
 }
 
-body.template-multimedia-film-episodes-listing-view div.episode div.episode_details {
-    position: absolute;
-    left: 120px;
-}
-
-body.template-multimedia-film-episodes-listing-view div.episode img.video-thumbnail,
-body.template-multimedia-film-episodes-listing-view div.episode a.video {
+body.template-multimedia-film-episodes-listing-view div.episode a.video,
+body.template-multimedia-film-episodes-listing-view div.episode img.video-thumbnail {
     position: absolute;
     top: 0;
     left: 0;
     width: 100px;
     height: 56px;
+    margin-bottom: 0;
 }
 
-body.template-multimedia-film-episodes-listing-view div#film div.video_link {
-    position: relative;
+body.template-multimedia-film-episodes-listing-view #content img.video-thumbnail {
+    margin-bottom: 0;
+}
+
+body.template-multimedia-film-episodes-listing-view div#film img.video-thumbnail {
     width: 300px;
-    height: 169px;
-    overflow: hidden;
 }
 
 body.template-multimedia-film-episodes-listing-view div#film a.video {
@@ -1123,19 +1122,6 @@ body.template-multimedia-film-episodes-listing-view img.video-thumbnail,
 body.template-multimedia-film-episodes-listing-view div.episode {
     float: left;
     clear: left;
-}
-
-body.template-multimedia-film-episodes-listing-view div#film,
-body.template-multimedia-film-episodes-listing-view div.episode {
-    position: relative;
-    border-bottom: 1px dashed black;
-    width: 100%;
-    padding: 10px 10px 10px 0;
-    margin: 0 10px;
-}
-
-body.template-multimedia-film-episodes-listing-view div#film {
-    position: relative;
 }
 /* @end */
 
