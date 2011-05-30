@@ -38,8 +38,7 @@
                                 image_count python:len(image_folder['images']);
                                 folder_url string:${context/absolute_url}/${folder}">
             <li tal:attributes="class string:count-${image_count}">
-              <h4 class="ellipsis"
-                  tal:content="image_folder/title">
+              <h4 class="ellipsis" tal:content="image_folder/title">
                 Timeless Luxury
                 </h4><tal:image_id repeat="image_id python:image_folder['images']"
                      ><tal:image define="image python:image_folder['images'][image_id];
@@ -47,7 +46,7 @@
                      ><a tal:attributes="href string:${image_url}/multimedia-image-details-view;
                                          class python:repeat['image_id'].index == 0 and 'default' or ''"
                         ><img alt="Calabria"
-                              tal:attributes="src string:${folder_url}/${image_id}/image_preview"/><br />
+                              tal:attributes="src string:${folder_url}/${image_id}/image_gallerythumb"/><br />
                          <strong class="ellipsis"
                                  tal:content="image/title">
                          </strong></a></tal:image></tal:image_id>
