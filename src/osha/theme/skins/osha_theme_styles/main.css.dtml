@@ -1057,7 +1057,7 @@ body.template-multimedia-film-episodes-listing-view div.episode {
     position: relative;
     border-bottom: 1px dashed black;
     width: 100%;
-    padding: 0 0px 10px 0;
+    padding: 0 0 10px 0;
 }
 
 body.template-multimedia-film-episodes-listing-view div.episode {
@@ -1074,6 +1074,12 @@ body.template-multimedia-film-episodes-listing-view div.episode div.video_link {
     position: relative;
     width: 100px;
     height: 56px;
+}
+
+body.template-multimedia-film-episodes-listing-view div#film a.video,
+body.template-multimedia-film-episodes-listing-view div#film div.video_link {
+    width: 300px;
+    height: 169px;
 }
 
 body.template-multimedia-film-episodes-listing-view div.video_link a {
@@ -1113,8 +1119,6 @@ body.template-multimedia-film-episodes-listing-view div#film a.video {
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
-    height: 169px;
 }
 
 body.template-multimedia-film-episodes-listing-view div#film,

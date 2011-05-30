@@ -1,7 +1,9 @@
+import Products.LinguaPlone
 import os
 from Globals import package_home
 from StringIO import StringIO
 from Testing import ZopeTestCase as ztc
+from Testing.ZopeTestCase import utils
 
 from plone.browserlayer import utils as browserlayerutils
 
@@ -10,15 +12,24 @@ from plone.browserlayer import utils as browserlayerutils
 # # The problem begins here:
 # # Products/PloneTestCase/setup.py:
 # # ZopeTestCase.installProduct('CMFPlone', quiet=1)
-import Products.LinguaPlone
 
-from Products.Five import zcml
 from Products.Five import fiveconfigure
-from Products.PloneTestCase import layer
+from Products.Five import zcml
+from Products.Five.testbrowser import Browser
 from Products.PloneTestCase import PloneTestCase as ptc
+from Products.PloneTestCase import layer
+from Products.PloneTestCase.setup import portal_owner, default_password
 
 from osha.policy.interfaces import IOSHACommentsLayer
 from osha.theme.config import product_globals
+
+def startZServer(browser=None):
+    """Use this to start the temporary instance being used for
+    testing, very useful for debugging tests"""
+    host, port = utils.startZServer()
+    if browser:
+        print browser.url.replace('nohost', '%s:%s' % (host, port))
+
 
 SiteLayer = layer.PloneSite
 
@@ -79,6 +90,14 @@ class OshaThemeFunctionalTestCase(ptc.FunctionalTestCase):
     """Base class for functional integration tests for the 'OshaTheme' product.
     """
     layer = OshaThemeLayer
+
+    def getBrowser(self, url):
+        browser = Browser()
+        browser.open(url)
+        browser.getControl(name='__ac_name').value = portal_owner
+        browser.getControl(name='__ac_password').value = default_password
+        browser.getControl(name='submit').click()
+        return browser
 
     def loadfile(self, rel_filename):
         home = package_home(product_globals)

@@ -8,6 +8,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from osha.policy.data.multimedia import napofilm
 
+
 class MultimediaImageFoldersView(BrowserView):
     """
     Photo gallery style folder listing
@@ -68,6 +69,7 @@ class MultimediaImageDetailsView(BrowserView):
                 images[image.id] = image.title
         return images
 
+
 class FilmsDataMixin(object):
     @property
     def media_url(self):
@@ -76,9 +78,7 @@ class FilmsDataMixin(object):
 
     def set_movie_defaults(self, movies):
         """Returns an ordered dictionary containing the details for
-        the current film and all the episodes belonging to it
-        populated with default values unless they have been overridden
-        in films_data
+        a list of movies [{"id":"movie1", "title":"Custom title"}]
 
         Description, video_width and video_height are only used by the
         main Film (not the episodes)"""
@@ -107,32 +107,10 @@ class FilmsDataMixin(object):
         in the current directory called "films_data"
         """
         if hasattr(self.context, "multimedia_film_structure"):
-            # a Script (Python) in the current folder
+            # a Script (Python) which can override napofilm.filmstructure
             return self.context.multimedia_film_structure()
         return napofilm.filmstructure
-        # return [
-        #     { "id"          : "napo-015-safe-moves",
-        #       "title"       : "heading_introduction",
-        #       "description" : "description_introduction",
-        #       "image"       : "Custom image.jpg",
-        #       "video_mp4"   : "Safe moves.mp4",
-        #       "video_ogg"   : "Safe moves.ogg",
-        #       "video_webm"  : "Safe moves.webm",
-        #       "episodes"    : [
-        #             { "id"         :
-        #                   "napo-015-safe-moves-episode-002-danger-unloading",
-        #               "title"      : "hai",
-        #               "image"      : "Heavy Lifting2.jpg",
-        #               "video_mp4"  : "Heavy Lifting2.mp4",
-        #               "video_ogg"  : "Heavy Lifing2.ogg",
-        #               "video_webm" : "Heavy Liftin2g.webm",
-        #               },
-        #             { "id"         :
-        #                   "napo-015-safe-moves-episode-001-planning-for-safety",
-        #               }
-        #             ]
-        #       }
-        #     ]
+
 
 class MultimediaFilmListingView(BrowserView, FilmsDataMixin):
     """ List the Films and link to the episode listing view for each
@@ -176,6 +154,8 @@ class MultimediaFilmEpisodeListingView(BrowserView, FilmsDataMixin):
         """ Using a template to pass in the value for media_url and
         the data structure for the episode details since this doesn't
         seem to be possible in the zpt page template."""
+        if self.film == None:
+            return
         template_path = os.path.join(
             os.path.dirname(__file__),
             "templates/multimedia_film_episodes_listing_view.js.tpl")
@@ -201,6 +181,8 @@ class MultimediaFilmEpisodeListingView(BrowserView, FilmsDataMixin):
 
     @property
     def film_details(self):
+        if self.film == None:
+            return None
         return self.set_movie_defaults([self.film])
 
     @property
