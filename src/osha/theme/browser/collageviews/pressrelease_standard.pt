@@ -13,6 +13,6 @@
                     <span tal:content="title_or_id">Title</span>
                  </a>
         </dt>
-        <dd tal:content="obj_description">Description
+        <dd tal:content="structure obj_description">Description
         </dd>
     </dl>
