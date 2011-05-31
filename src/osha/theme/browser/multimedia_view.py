@@ -33,20 +33,21 @@ class MultimediaImageFoldersView(BrowserView):
                 }
             )
         """
-        max_image_folders = 6
         image_folders = OrderedDict()
+        max_images_per_folder = 20
         for folder in self.context.objectValues():
-            if max_image_folders < 1:
-                return image_folders
             if folder.portal_type == "Folder":
                 images = OrderedDict()
+                image_count = 0
                 for image in folder.objectValues():
+                    if image_count >= max_images_per_folder:
+                        break
                     if image.portal_type == "Image":
                         images[image.id] = {"title" : image.title}
+                        image_count += 1
                 if images:
                     image_folders[folder.id] = {"title" : folder.title,
                                            "images" : images}
-                    max_image_folders = max_image_folders - 1
         return image_folders
 
 
