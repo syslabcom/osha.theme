@@ -34,7 +34,7 @@ class MultimediaImageFoldersView(BrowserView):
             )
         """
         image_folders = OrderedDict()
-        max_images_per_folder = 20
+        max_images_per_folder = 10
         for folder in self.context.objectValues():
             if folder.portal_type == "Folder":
                 images = OrderedDict()

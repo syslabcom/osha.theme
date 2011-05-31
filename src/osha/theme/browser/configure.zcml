@@ -57,6 +57,14 @@
     <!-- Include Collage views -->
     <include file="collage.zcml" />
 
+    <!-- Include lipstick.css -->
+    <browser:page
+        for="*"
+        name="lipstick-document-view"
+        template="templates/lipstick_document_view.pt"
+        permission="zope.Public"
+        />
+
     <!-- OSHA Properties panel -->
     <utility
         component=".osha_properties_controlpanel.AvailableLanguagesVocabularyFactory"

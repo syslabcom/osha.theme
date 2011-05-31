@@ -1,0 +1,25 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="osha">
+
+  <metal:css fill-slot='css_slot'>
+    <link rel="stylesheet" href="lipstick.css" type="text/css"
+          media="screen" charset="utf-8" />
+  </metal:css>
+
+  <body>
+    <div metal:fill-slot="main">
+      <div id="content">
+        <h1 tal:content="context/Title"></h1>
+        <div class="introduction">
+          <p tal:content="context/Description"></p>
+        </div>
+        <div id="mainContent" class="wide"
+             tal:content="structure context/getText"></div>
+      </div>
+    </div>
+  </body>
+</html>
