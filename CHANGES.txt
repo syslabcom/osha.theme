@@ -4,9 +4,10 @@ osha.theme Changelog
 1.4.14 (unreleased)
 -------------------
 
-- Fixed spriting problem on the beswic site where duplicated sprites were shown, re-fixes #3204
-  [pilz]
-
+- Fixed spriting problem on the beswic site where duplicated sprites were shown,
+  re-fixes #3204 [pilz]
+- The Description field of Press Releases is now formatted in HTML and needs to
+  be rendered as such #3273, also in OSHMail [thomaw]
 
 1.4.13 (2011-05-23)
 -------------------
