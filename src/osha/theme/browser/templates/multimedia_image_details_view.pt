@@ -79,6 +79,8 @@
             </p>
 
           </tal:folder_images>
+          <div class="visualClear"></div>
+
         </div>
       </div>
     </body>

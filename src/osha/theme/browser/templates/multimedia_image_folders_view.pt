@@ -55,6 +55,7 @@
           </tal:folder>
         </ul>
         <a href="conditions-of-use">Conditions of use</a>
+        <div class="visualClear"></div>
       </div>
     </div>
   </body>
