@@ -19,9 +19,7 @@ class LipstickView(BrowserView):
         self.request = request
 
     def __call__(self, *args, **kw):
-        view = aq_acquire(self.context, self.context.getLayout())
-        import sys
-        sys.stdout = file("/dev/stdout", "w")
+        view = aq_acquire(self.context, self.context.getDefaultLayout())
         self.main_macro = view.macros["main"]
         return self.template()
 
