@@ -1485,7 +1485,7 @@ body.template-lipstick-view #content h1 {
 }
 
 body.template-lipstick-view #content div#parent-fieldname-description,
-body.template-lipstick-view #content p.documentDescription {
+body.template-lipstick-view #content .documentDescription {
 	color: gray;
 	font-family: Georgia, "Times New Roman", Times, serif;
 	font-style: italic;
