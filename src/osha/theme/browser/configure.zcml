@@ -57,12 +57,13 @@
     <!-- Include Collage views -->
     <include file="collage.zcml" />
 
-    <!-- Include lipstick.css -->
+    <!-- Include lipstick.css, re-uses the main content macro but adds
+         the template id so that the lipstick.css can be applied -->
     <browser:page
         for="*"
-        name="lipstick-document-view"
-        template="templates/lipstick_document_view.pt"
+        name="lipstick-view"
         permission="zope.Public"
+        class=".multimedia_view.LipstickView"
         />
 
     <!-- OSHA Properties panel -->

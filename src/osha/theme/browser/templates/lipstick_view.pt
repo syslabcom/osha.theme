@@ -13,12 +13,7 @@
   <body>
     <div metal:fill-slot="main">
       <div id="content">
-        <h1 tal:content="context/Title"></h1>
-        <div class="introduction">
-          <p tal:content="context/Description"></p>
-        </div>
-        <div id="mainContent" class="wide"
-             tal:content="structure context/getText"></div>
+        <div metal:use-macro="view/main_macro"></div>
       </div>
     </div>
   </body>

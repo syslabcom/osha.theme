@@ -4,9 +4,26 @@ import os
 from urlparse import urljoin
 from copy import copy
 
+from Acquisition import aq_acquire
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from osha.policy.data.multimedia import napofilm
+
+class LipstickView(BrowserView):
+    template = ViewPageTemplateFile(
+        'templates/lipstick_view.pt')
+    template.id = "lipstick-view"
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+
+    def __call__(self, *args, **kw):
+        view = aq_acquire(self.context, self.context.getLayout())
+        import sys
+        sys.stdout = file("/dev/stdout", "w")
+        self.main_macro = view.macros["main"]
+        return self.template()
 
 
 class MultimediaFolderListingView(BrowserView):
@@ -35,10 +52,10 @@ class MultimediaFolderListingView(BrowserView):
                          "description": item.Description(),
                          "item_url": item.absolute_url(),
                          "image_url": "" ,
-                         "portal_type": item.Type()}
+                         "portal_type": item.portal_type}
             if item_dict["portal_type"] in ["Folder",]:
                 folders[item_id] = item_dict
-                for folder_item in item.objectValues():
+                for folder_item in item.listFolderContents():
                     if folder_item.portal_type == "Image":
                         folders[item_id]["image_url"] = \
                             folder_item.absolute_url()
@@ -77,11 +94,11 @@ class MultimediaImageFoldersView(BrowserView):
         """
         image_folders = OrderedDict()
         max_images_per_folder = 10
-        for folder in self.context.objectValues():
+        for folder in self.context.listFolderContents():
             if folder.portal_type == "Folder":
                 images = OrderedDict()
                 image_count = 0
-                for image in folder.objectValues():
+                for image in folder.listFolderContents():
                     if image_count >= max_images_per_folder:
                         break
                     if image.portal_type == "Image":
@@ -89,7 +106,7 @@ class MultimediaImageFoldersView(BrowserView):
                         image_count += 1
                 if images:
                     image_folders[folder.id] = {"title" : folder.title,
-                                           "images" : images}
+                                                "images" : images}
         return image_folders
 
 
@@ -107,7 +124,7 @@ class MultimediaImageDetailsView(BrowserView):
         OrderedDict("image_1": "Image 1",)
         """
         images = OrderedDict()
-        for image in folder.objectValues():
+        for image in folder.listFolderContents():
             if image.portal_type == "Image":
                 images[image.id] = image.title
         return images

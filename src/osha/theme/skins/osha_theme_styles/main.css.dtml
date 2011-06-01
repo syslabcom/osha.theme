@@ -1478,6 +1478,21 @@ IE6 */
 
 /* @end */
 
+/* @group lipstick-view */
+body.template-lipstick-view #content h1 {
+    background: none;
+    padding: 0 !important;
+}
+
+body.template-lipstick-view #content div#parent-fieldname-description,
+body.template-lipstick-view #content p.documentDescription {
+	color: gray;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+}
+
+/* @end */
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone

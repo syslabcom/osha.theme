@@ -23,12 +23,13 @@
              tal:define="items view/items">
 
           <div class="folder_item" tal:repeat="item_id items">
-            <tal:folder define="item python:items[item_id]">
+            <tal:folder define="item python:items[item_id];
+                                item_url string:${item/item_url}/lipstick-view">
               <h3><a tal:content="python: item['title']"
-                     tal:attributes="href python:item['item_url']"></a></h3>
+                     tal:attributes="href item_url"></a></h3>
               <tal:image define="image_url python:item['image_url']"
                          condition="image_url">
-                <a tal:attributes="href python:item['item_url']">
+                <a tal:attributes="href item_url">
                   <img tal:attributes="src string:${image_url}/image_thumb"/>
                 </a>
               </tal:image>
