@@ -9,6 +9,42 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from osha.policy.data.multimedia import napofilm
 
 
+class MultimediaFolderListingView(BrowserView):
+    """List folder contents using lipstick.css and for folders display
+    the first image in the folder beside the description.
+    """
+    template = ViewPageTemplateFile(
+        'templates/multimedia_folder_listing_view.pt')
+    template.id = "multimedia-folder-listing-view"
+
+    def __init__(self, context, request):
+        self.context = context
+        self.request = request
+        self.items = self.get_folder_items()
+
+    def __call__(self):
+        return self.template()
+
+    def get_folder_items(self):
+        folders = OrderedDict()
+        items = OrderedDict()
+        for item_id, item in self.context.objectItems():
+            item_dict = {"title": item.Title(),
+                         "description": item.Description(),
+                         "item_url": item.absolute_url(),
+                         "image_url": "" }
+            if item.portal_type in ["Folder",]:
+                folders[item_id] = item_dict
+                for folder_item in item.objectValues():
+                    if folder_item.portal_type == "Image":
+                        folders[item_id]["image_url"] = \
+                            folder_item.absolute_url()
+                        break
+            else:
+                items[item_id] = item_dict
+        return OrderedDict(folders.items() + items.items())
+
+
 class MultimediaImageFoldersView(BrowserView):
     """
     Photo gallery style folder listing

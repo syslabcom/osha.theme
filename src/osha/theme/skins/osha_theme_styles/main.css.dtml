@@ -936,6 +936,17 @@ body.template-multimedia-image-details-view #content {
     width: auto;
 }
 
+body.template-multimedia-folder-listing-view div.folder_item {
+    clear: left;
+    border-bottom: 1px dashed black;
+    margin-bottom: 10px;
+}
+
+body.template-multimedia-folder-listing-view div.folder_item img {
+    float: left;
+    padding: 0 10px 10px 0;
+}
+
 .ellipsis {
     display: block;
     overflow: hidden;

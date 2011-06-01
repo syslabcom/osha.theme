@@ -156,6 +156,13 @@
     <!-- OSHA Multimedia views -->
     <browser:page
         for="Products.ATContentTypes.interface.folder.IATFolder"
+        name="multimedia-folder-listing-view"
+        class=".multimedia_view.MultimediaFolderListingView"
+        permission="zope.Public"
+        />
+
+    <browser:page
+        for="Products.ATContentTypes.interface.folder.IATFolder"
         name="multimedia-image-folders-view"
         class=".multimedia_view.MultimediaImageFoldersView"
         permission="zope.Public"
