@@ -31,7 +31,7 @@
                 <h4 class="ellipsis"
                     tal:content="film/title" i18n:translate=""></h4>
                 <a tal:attributes="href string:${context/absolute_url}/multimedia-film-episodes-listing-view?film=${film_id};
-                                   title film/description;
+                                   title film/title;
                                    class python:repeat['video'].index == 0 and 'default' or ''"
                    i18n:attributes="title"
                    tal:repeat="video video_details">
