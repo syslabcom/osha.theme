@@ -1491,6 +1491,10 @@ body.template-lipstick-view #content .documentDescription {
 	font-style: italic;
 }
 
+body.template-lipstick-view #content dt {
+    /* For the folder listing view */
+    display: block;
+}
 /* @end */
 
 /* </dtml-with> */
