@@ -28,18 +28,24 @@ class MultimediaFolderListingView(BrowserView):
     def get_folder_items(self):
         folders = OrderedDict()
         items = OrderedDict()
-        for item_id, item in self.context.objectItems():
-            item_dict = {"title": item.Title(),
+        for item in self.context.listFolderContents():
+            item_id = item.getId()
+            item_dict = {"id" : item_id,
+                         "title": item.Title(),
                          "description": item.Description(),
                          "item_url": item.absolute_url(),
-                         "image_url": "" }
-            if item.portal_type in ["Folder",]:
+                         "image_url": "" ,
+                         "portal_type": item.Type()}
+            if item_dict["portal_type"] in ["Folder",]:
                 folders[item_id] = item_dict
                 for folder_item in item.objectValues():
                     if folder_item.portal_type == "Image":
                         folders[item_id]["image_url"] = \
                             folder_item.absolute_url()
                         break
+            elif item_dict["portal_type"] in ["Image"]:
+                item_dict["image_url"] = item.absolute_url()
+                items[item_id] = item_dict
             else:
                 items[item_id] = item_dict
         return OrderedDict(folders.items() + items.items())
