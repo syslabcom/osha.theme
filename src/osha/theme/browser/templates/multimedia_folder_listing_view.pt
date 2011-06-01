@@ -24,7 +24,7 @@
 
           <div class="folder_item" tal:repeat="item_id items">
             <tal:folder define="item python:items[item_id];
-                                item_url string:${item/item_url}/lipstick-view">
+                                item_url string:${item/item_url}">
               <h3><a tal:content="python: item['title']"
                      tal:attributes="href item_url"></a></h3>
               <tal:image define="image_url python:item['image_url']"
