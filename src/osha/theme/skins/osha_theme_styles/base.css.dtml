@@ -4,7 +4,9 @@
   <dtml-with base_properties> (do not remove this)
   <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
 */
-
+#visual-portal-wrapper {
+    overflow-y:hidden !important;
+}
 body {
     font: &dtml-fontBaseSize; <dtml-var fontFamily>;
     background-color: &dtml-backgroundColor;;
