@@ -8,6 +8,8 @@ osha.theme Changelog
   re-fixes #3204 [pilz]
 - The Description field of Press Releases is now formatted in HTML and needs to
   be rendered as such #3273, also in OSHMail [thomaw]
+- In base.css: added overflow-y:hidden !important to prevent double vertical
+  scrollbar [pilz]
 
 1.4.13 (2011-05-23)
 -------------------
