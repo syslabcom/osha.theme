@@ -23,7 +23,6 @@ from Products.ATContentTypes.interface import IImageContent, IFileContent
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.PlacelessTranslationService import translate as pts_translate
 
 log = logging.getLogger('osha.theme.portlets.image.py')
 
@@ -172,15 +171,6 @@ class Renderer(base.Renderer):
                     default=self.data.title,
                     )
 
-        # If that doesn't work, then it's back to old-school PTS
-        if header == self.data.title:
-            header = pts_translate(
-                                self.data.i18n_domain,
-                                self.data.title,
-                                context=self.context,
-                                target_language=lang,
-                                default=self.data.title,
-                                )
         return header
 
     @memoize
