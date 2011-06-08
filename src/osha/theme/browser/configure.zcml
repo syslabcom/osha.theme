@@ -72,6 +72,11 @@
         directory="resources/fancybox"
         />
 
+    <browser:resourceDirectory
+        name="osha.theme.browser.resources.multimedia"
+        directory="resources/multimedia"
+        />
+
     <!-- OSHA Properties panel -->
     <utility
         component=".osha_properties_controlpanel.AvailableLanguagesVocabularyFactory"
