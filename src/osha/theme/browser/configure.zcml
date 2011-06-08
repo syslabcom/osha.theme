@@ -66,6 +66,12 @@
         class=".multimedia_view.LipstickView"
         />
 
+    <!-- fancybox resources -->
+    <browser:resourceDirectory
+        name="osha.theme.browser.resources.fancybox"
+        directory="resources/fancybox"
+        />
+
     <!-- OSHA Properties panel -->
     <utility
         component=".osha_properties_controlpanel.AvailableLanguagesVocabularyFactory"

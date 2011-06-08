@@ -11,9 +11,6 @@
   </metal:css>
 
   <metal:javascript fill-slot="javascript_head_slot">
-    <script charset="utf-8" type="text/javascript" src="http://osha.europa.eu/_theme/Behaviour/fancybox/jquery.easing-1.3.pack.js"></script>
-    <script charset="utf-8" type="text/javascript" src="http://osha.europa.eu/_theme/Behaviour/fancybox/jquery.fancybox-1.3.1.js"></script>
-    <script charset="utf-8" type="text/javascript" src="http://osha.europa.eu/_theme/Behaviour/fancybox/jquery.mousewheel-3.0.2.pack.js"></script>
     <script  type="text/javascript">
     jQuery(document).ready(function() {
         if (jQuery("a[rel=contactSheet]").length>0) {
