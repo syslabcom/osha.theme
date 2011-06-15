@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.14 (unreleased)
+1.4.14 (2011-06-15)
 -------------------
 
 - Fixed spriting problem on the beswic site where duplicated sprites were shown,
