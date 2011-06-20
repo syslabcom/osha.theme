@@ -133,7 +133,7 @@
                             &nbsp; 
                         </span>                        
                         <span tal:omit-tag="" 
-                              tal:content="item_description"
+                              tal:content="structure item_description"
                               tal:condition="not:item_subhead"> 
                             description 
                         </span>
