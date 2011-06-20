@@ -98,10 +98,15 @@ class OSHAHelpCenterView(BrowserView):
         return self._get_categories(faq_brains, self.vocab_dict)
 
     def get_subcategories(self, category):
-        """ We already have self.faqs for the selected category so we
-        get a list of "subcategory" values directly from these faq
-        objects. """
+        """ Get a list of "subcategory" values from FAQ objects with
+        the selected category
+        """
         subcat_vocab_dict = self.vocab_dict[category][1]
         if not subcat_vocab_dict:
             return []
-        return self._get_categories(self.faqs, subcat_vocab_dict)
+
+        faq_brains = self.pc.searchResults({"portal_type":"HelpCenterFAQ",
+                                            "Subject":category})
+        faqs = [i.getObject() for i in faq_brains]
+
+        return self._get_categories(faqs, subcat_vocab_dict)
