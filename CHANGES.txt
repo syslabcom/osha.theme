@@ -4,7 +4,7 @@ osha.theme Changelog
 1.4.15 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Bugfix for FAQ view #2385 [deroiste]
 
 
 1.4.14 (2011-06-15)
@@ -28,7 +28,7 @@ osha.theme Changelog
 1.4.12 (2011-05-19)
 -------------------
 
-- added sprites to replace footer icons 
+- added sprites to replace footer icons
   [pecek, pilz]
 - added base.js to detail page to allow shrinking the right slot
   [pilz]
