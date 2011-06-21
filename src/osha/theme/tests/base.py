@@ -36,11 +36,13 @@ class OshaThemeLayer(SiteLayer):
 
     @classmethod
     def setUp(cls):
-        """ The osha.theme package depends on osha.policy so the packages imported
-            by the osha.policy tests base.py are also imported and configured here.
+        """ The osha.theme package depends on osha.policy so the
+            packages imported by the osha.policy tests base.py are
+            also imported and configured here.
         """
         PRODUCTS = [
                 'osha.policy',
+                'PloneHelpCenter'
                 ]
         ptc.setupPloneSite(products=PRODUCTS)
 
@@ -48,6 +50,7 @@ class OshaThemeLayer(SiteLayer):
         ztc.installProduct('ATVocabularyManager')
         ztc.installProduct('GroupUserFolder')
         ztc.installProduct('LinguaPlone')
+        ztc.installProduct('PloneHelpCenter')
         ztc.installProduct('PlacelessTranslationService')
         ztc.installProduct('PloneLanguageTool')
         ztc.installProduct('PressRoom')
