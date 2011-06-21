@@ -1,4 +1,10 @@
+# # importing LinguaPlone to avoid a problem with circular imports
+# # See http://do3cc.blogspot.com/2010/08/dont-catch-import-errors-use.html
+# # The problem begins here:
+# # Products/PloneTestCase/setup.py:
+# # ZopeTestCase.installProduct('CMFPlone', quiet=1)
 import Products.LinguaPlone
+
 import os
 from Globals import package_home
 from StringIO import StringIO
@@ -6,12 +12,6 @@ from Testing import ZopeTestCase as ztc
 from Testing.ZopeTestCase import utils
 
 from plone.browserlayer import utils as browserlayerutils
-
-# # importing LinguaPlone to avoid a problem with circular imports
-# # See http://do3cc.blogspot.com/2010/08/dont-catch-import-errors-use.html
-# # The problem begins here:
-# # Products/PloneTestCase/setup.py:
-# # ZopeTestCase.installProduct('CMFPlone', quiet=1)
 
 from Products.Five import fiveconfigure
 from Products.Five import zcml
@@ -30,7 +30,6 @@ def startZServer(browser=None):
     if browser:
         print browser.url.replace('nohost', '%s:%s' % (host, port))
 
-
 SiteLayer = layer.PloneSite
 
 class OshaThemeLayer(SiteLayer):
@@ -47,18 +46,18 @@ class OshaThemeLayer(SiteLayer):
 
         ztc.installProduct('ATCountryWidget')
         ztc.installProduct('ATVocabularyManager')
+        ztc.installProduct('GroupUserFolder')
         ztc.installProduct('LinguaPlone')
-        ztc.installProduct('PressRoom')
         ztc.installProduct('PlacelessTranslationService')
         ztc.installProduct('PloneLanguageTool')
+        ztc.installProduct('PressRoom')
         ztc.installProduct('ProxyIndex')
         ztc.installProduct('Relations')
         ztc.installProduct('RichDocument')
         ztc.installProduct('SimpleAttachment')
         ztc.installProduct('TextIndexNG3')
-        ztc.installProduct('GroupUserFolder')
-
         ztc.installPackage('Products.PlacelessTranslationService')
+
         ztc.installPackage('osha.legislation')
         ztc.installPackage('osha.policy')
         ztc.installPackage('osha.theme')
