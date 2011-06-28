@@ -67,7 +67,7 @@
             tal:define="document_actions actions/document_actions|nothing;
             document_actions python:[x for x in document_actions if x['id'] =='sendto']"
             tal:condition="python:document_actions"
-            i18n:domain="elevateIT">
+            i18n:domain="osha">
             <tal:actions repeat="daction document_actions"><a
             href=""
             tal:attributes="href daction/url"
