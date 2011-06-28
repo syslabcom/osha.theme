@@ -5,7 +5,8 @@ osha.theme Changelog
 -------------------
 
 - Bugfix for FAQ view #2385 [deroiste]
-
+- Change the order of the languages in the short messages #3228
+  [deroiste]
 
 1.4.14 (2011-06-15)
 -------------------

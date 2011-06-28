@@ -5,93 +5,96 @@
       xml:lang="en"
       lang="en"
       >
-    <div tal:replace="structure provider:plone.htmlhead" />
+  <div tal:replace="structure provider:plone.htmlhead" />
 
 
-<body tal:define="bgcol python:context.getProperty('color', '#C5CBD8');
-                  ltool nocall:here/portal_languages;
-                  prefLang ltool/getPreferredLanguage"
-      tal:attributes="style string:background-color: ${bgcol}">
+  <body tal:define="bgcol python:context.getProperty('color', '#C5CBD8');
+                    ltool nocall:here/portal_languages;
+                    prefLang ltool/getPreferredLanguage"
+        tal:attributes="style string:background-color: ${bgcol}">
 
-<div id="shortmessage-body">
-<style type="text/css" tal:content="structure here/shortmessage_preview_style.css"></style>
-    <div id="portal-logo">
-    <a href="/"
-       tal:attributes="href string:http://osha.europa.eu">
-       <span tal:omit-tag="" tal:on-error="nothing" >
-         <img alt="" title="" tal:define="logo python: prefLang=='en' and 'logo.gif' or 'logo_'+prefLang+'.gif'"
-            tal:attributes="src string:http://osha.europa.eu/${logo};
-                            title portal_title;
-                            alt portal_title"
-            i18n:attributes="title"/>
-       </span>
-    </a>
-    </div>
+    <div id="shortmessage-body">
+      <style type="text/css" tal:content="structure here/shortmessage_preview_style.css"></style>
+      <div id="portal-logo">
+        <a href="/"
+           tal:attributes="href string:http://osha.europa.eu">
+          <span tal:omit-tag="" tal:on-error="nothing" >
+            <img alt="" title="" tal:define="logo python: prefLang=='en' and 'logo.gif' or 'logo_'+prefLang+'.gif'"
+                 tal:attributes="src string:http://osha.europa.eu/${logo};
+                                 title portal_title;
+                                 alt portal_title"
+                 i18n:attributes="title"/>
+          </span>
+        </a>
+      </div>
 
-    
-    <div id="distance-keeper"></div>
-    
-    <div id="language-bar">
+
+      <div id="distance-keeper"></div>
+
+      <div id="language-bar">
         <tal:block define="langs ltool/listSupportedLanguages;
-                  my_languages python:here.getTranslations();"
-                  condition="python:len(langs)>1">
-            <div i18n:domain="osha" style="text-align: center"
-                tal:define="thisurl string:${here/absolute_url}/${template/id}">
-              
-              <span tal:repeat="lang my_languages">
-                <a tal:omit-tag="python:prefLang == lang"
-                   tal:define="ppath python:list(here.getPhysicalPath());
-                               plen python:len(here.portal_url.getPortalObject().getPhysicalPath());
-                               langurlx python:'/'.join(['']+[lang]+ppath[plen+1:]);
-                               langurl python:context.getTranslation(lang).absolute_url();
-                               "
-                   tal:attributes="href python:langurl+'?set_language='+lang"
-                   tal:content="python:ltool.getNameForLanguageCode(lang)">lang</a><span
-                   tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span>
-              </span>
-            </div>
+                           helper_view context/@@helper-view;
+                           my_languages_keys python:here.getTranslations().keys();
+                           my_languages python:helper_view.get_sorted(my_languages_keys);"
+                   condition="python:len(langs)>1">
+          <div i18n:domain="osha" style="text-align: center"
+               tal:define="thisurl string:${here/absolute_url}/${template/id}">
+
+            <span tal:repeat="lang my_languages">
+              <a tal:omit-tag="python:prefLang == lang"
+                 tal:define="ppath python:list(here.getPhysicalPath());
+                             plen python:len(here.portal_url.getPortalObject().getPhysicalPath());
+                             langurlx python:'/'.join(['']+[lang]+ppath[plen+1:]);
+                             langurl python:context.getTranslation(lang).absolute_url();
+                             "
+                 tal:attributes="href python:langurl+'?set_language='+lang"
+                 tal:content="python:helper_view.get_native_language_by_code(lang)">lang</a><span
+                 tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span>
+            </span>
+          </div>
+
         </tal:block>
-    
-    </div>
-    
-    <metal:bodytext metal:define-slot="main" tal:content="nothing">
+
+      </div>
+
+      <metal:bodytext metal:define-slot="main" tal:content="nothing">
         <!-- Page body text -->
-    </metal:bodytext>
-    
-    <div class="footer" i18n:domain="osha"
-         tal:define="portal_url here/portal_url">
+      </metal:bodytext>
+
+      <div class="footer" i18n:domain="osha"
+           tal:define="portal_url here/portal_url">
         <!--div style="float: right; width: 200px; text-align: right"
-         tal:define="document_actions actions/document_actions|nothing;
-         document_actions python:[x for x in document_actions if x['id'] =='sendto']"
-         tal:condition="python:document_actions"
-         i18n:domain="elevateIT">
-        <tal:actions repeat="daction document_actions"><a
-                href=""
-                tal:attributes="href daction/url"
-                i18n:translate=""
-                tal:content="daction/name" /> | </tal:actions>
-         <a href="" i18n:translate="">Unsubscribe</a>
-        
-        </div-->
+            tal:define="document_actions actions/document_actions|nothing;
+            document_actions python:[x for x in document_actions if x['id'] =='sendto']"
+            tal:condition="python:document_actions"
+            i18n:domain="elevateIT">
+            <tal:actions repeat="daction document_actions"><a
+            href=""
+            tal:attributes="href daction/url"
+            i18n:translate=""
+            tal:content="daction/name" /> | </tal:actions>
+            <a href="" i18n:translate="">Unsubscribe</a>
+
+</div-->
         <div style="float:left; position:relative">
-            <a title="European Agency for Safety and Health at Work" href="http://osha.europa.eu/"
-            i18n:attributes="title"><img tal:attributes="src string:${portal_url}/logo_small.gif" width="28px" height="38px"
-            i18n:attributes="alt"
-            alt="European Agency for Safety and Health at Work" /></a>
+          <a title="European Agency for Safety and Health at Work" href="http://osha.europa.eu/"
+             i18n:attributes="title"><img tal:attributes="src string:${portal_url}/logo_small.gif" width="28px" height="38px"
+             i18n:attributes="alt"
+             alt="European Agency for Safety and Health at Work" /></a>
         </div>
-        
+
         <div class="powered_py">
-            <div><span i18n:domain="osha" tal:define="DateTime python:modules['DateTime'].DateTime"
-                      i18n:translate="copyright">&copy; Copyright 1998-<span i18n:name="thisyear"><span
-                      tal:replace="python:DateTime().year()" /></span> European Agency for Safety and Health at Work -</span> <br/>
-                      <a href="http://osha.europa.eu/disclaimer.stm" i18n:translate="">Disclaimer</a> - <a href="http://osha.europa.eu">http://osha.europa.eu</a>
-            </div>
+          <div><span i18n:domain="osha" tal:define="DateTime python:modules['DateTime'].DateTime"
+                     i18n:translate="copyright">&copy; Copyright 1998-<span i18n:name="thisyear"><span
+                     tal:replace="python:DateTime().year()" /></span> European Agency for Safety and Health at Work -</span> <br/>
+          <a href="http://osha.europa.eu/disclaimer.stm" i18n:translate="">Disclaimer</a> - <a href="http://osha.europa.eu">http://osha.europa.eu</a>
+          </div>
         </div>
         <br style="clear:both" />
+      </div>
+
     </div>
 
-</div>
-
-</body>
+  </body>
 </html>
 </metal:page>

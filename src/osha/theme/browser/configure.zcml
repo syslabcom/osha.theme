@@ -122,6 +122,18 @@
         allowed_interface=".interfaces.IOSHA"
         />
 
+    <!-- helper view, to make generally useful methods available -->
+    <browser:page
+        name="helper-view"
+        for="*"
+        permission="zope2.View"
+        class=".helper_view.HelperView"
+        layer=".interfaces.IOSHAThemeLayer"
+        allowed_attributes="get_native_language_by_code
+                            get_sorted "
+        />
+
+
     <!-- OSHA RollingQuotes -->
     <browser:page
         for="*"
