@@ -33,7 +33,7 @@
                 <div metal:define-slot="inside" tal:replace="structure text">The body</div>
             </div>
 
-                <table summary="News listing" border="0"
+                <table summary="News listing" id="newslisting" border="0"
                        cellpadding="0" cellspacing="0" width="100%"
                        tal:define="showLinkToNewsItem view/showLinkToNewsItem;"
                        i18n:attributes="summary summary_content_listing;">
@@ -51,10 +51,11 @@
                                                 obj_wf_state obj/review_state|python: wtool.getInfoFor(obj, 'review_state', '');
                                                 obj_wf_state_class python:'state-' + normalizeString(obj_wf_state);
                                                 title_or_id obj/pretty_title_or_id;
+                                                obj_outdated obj/outdated|python:0;
                                                 ">
                             <tal:block define="value python: getattr(obj, 'Title', None)">
    
-                                <td>
+                                <td tal:attributes="class python:obj_outdated and 'outdated' or ''">
 
                                     <h2>
                                     
@@ -67,6 +68,16 @@
                                         tal:content="title_or_id" />
                                     (<span class="teaserdate" tal:content="python:toLocalizedTime(obj['EffectiveDate'])"/>)                                                  
                                     </h2>
+                                    <span class="outdated-result" tal:condition="obj_outdated">
+                                        <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
+                                            <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
+                                            <span tal:replace="context/outdated_info/Title" />
+                                        </span>
+                                        <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
+                                            <img src="/++resource++outdated_mini.png" />
+                                            Outdated
+                                        </span>
+                                    </span>
                                     <tal:block define="newsItem obj/getObject; 
                                                        news_type newsItem/portal_type;
                                                        hasImage python:news_type=='News Item' and newsItem.getField('image').getAccessor(newsItem)()" 
