@@ -873,7 +873,6 @@ body.fullscreen #portal-searchbox {
    float: left;
    clear: both;
    margin: 0.5em 1em 0.5em 0;
-   border: 1px solid Black;
 }
 .image-inline {
    float: none;
@@ -882,7 +881,6 @@ body.fullscreen #portal-searchbox {
    float: right;
    clear: both;
    margin: 0.5em;
-   border: 1px solid Black;
 }
 dd.image-caption {
    text-align:left;
