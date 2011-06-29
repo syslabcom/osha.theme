@@ -833,7 +833,8 @@ color:#515151;
 margin:0.2em 0 0.75em;
 }
 
-div.searchresult-outdated {
+#teaserlisting td.outdated,
+.searchresult-outdated {
 border:1px solid red;
 padding:5px 5px 0px;
 margin-bottom:10px;
@@ -848,18 +849,19 @@ font-weight:normal;
 letter-spacing:1px;
 }
 
-div.searchresult-outdated a {
+.searchresult-outdated a {
 color:#515151;
 }
 
-div.searchresult-outdated .documentByLine {
+.searchresult-outdated .documentByLine {
 border:none;
 }
 
-div.searchresult-outdated dd {
+.searchresult-outdated dd {
 border:none;
 margin-bottom:0px;
 }
+
 
 span.outdated-result {
 font-family:Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
