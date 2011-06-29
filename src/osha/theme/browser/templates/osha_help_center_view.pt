@@ -28,10 +28,13 @@
                      current_url string:${context/absolute_url}/${template/getId}?SearchableText=${SearchableText}">
 
       <a name="top"></a>
-      <h1 i18n:translate="FAQ">FAQ</h1>
+      <h1 i18n:translate="FAQs">FAQ</h1>
       <div class="introduction">
         <p i18n:translate="text_help_center_intro">
-        Search the <strong i18n:name="text_frequently_asked_questions">Frequently Asked Questions</strong> or browse by category.</p>
+        Search the
+        <strong i18n:name="text_frequently_asked_questions"
+                i18n:translate="text_frequently_asked_questions">Frequently Asked Questions</strong>
+        or browse by category.</p>
       </div>
       <div class="categorySearchBox">
         <form method="GET">
@@ -108,8 +111,11 @@
 
       <hr class="clear"/>
       <p>
-        <strong>If you cannot find the answer to your query, please,
-        <a tal:attributes="href context/getContactFormUrl">contact us</a>.
+        <strong i18n:translate="text_if_no_answer_contact_us">
+          If you cannot find the answer to your query, please,
+          <a tal:attributes="href context/getContactFormUrl"
+             i18n:name="label_contact_us"
+             i18n:translate="label_contact_us">contact us</a>.
         </strong>
       </p>
     </div>
