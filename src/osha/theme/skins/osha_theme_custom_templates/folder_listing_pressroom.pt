@@ -43,7 +43,7 @@
                             show_about python:not isAnon or site_properties.allowAnonymousViewAbout">
         <tal:listing condition="folderContents">
 
-            <dl>
+            <dl id="presslisting">
                 <tal:entry tal:repeat="item folderContents">
                 <tal:block tal:define="item_url item/getURL|item/absolute_url;
                                        item_id item/getId|item/id;
@@ -67,8 +67,10 @@
                                        item_email item/getEmail|nothing;
                                        item_phone item/getPhone|nothing;
                                        item_cellphone item/getCellphone|nothing;
+                                       item_outdated item/outdated|python:0
                                    ">
 
+                <div tal:attributes="class python:item_outdated and 'outdated' or ''">
                     <dt metal:define-macro="listitem">
 
                         <span tal:attributes="class item_type_class">
@@ -102,6 +104,16 @@
 
                         </span>
 
+                        <span class="outdated-result" tal:condition="item_outdated">
+                            <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
+                                <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
+                                <span tal:replace="context/outdated_info/Title" />
+                            </span>
+                            <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
+                                <img src="/++resource++outdated_mini.png" />
+                                Outdated
+                            </span>
+                        </span>
                     </dt>
 
                     <dd>
@@ -143,6 +155,7 @@
                             item_subhead
                         </span>
                     </dd>
+                  </div>
                 </tal:block>
                 </tal:entry>
             </dl>
