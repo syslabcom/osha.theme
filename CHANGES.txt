@@ -7,6 +7,8 @@ osha.theme Changelog
 - Bugfix for FAQ view #2385 [deroiste]
 - Change the order of the languages in the short messages #3228
   [deroiste]
+- Teaser view, oshnews view, press releases view and event view now respect the
+  archive flag #1556 [thomasw]
 
 1.4.14 (2011-06-15)
 -------------------
