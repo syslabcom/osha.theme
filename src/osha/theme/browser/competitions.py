@@ -103,6 +103,9 @@ class CompetitionsView(BrowserView):
         return yearmap
 
     def _getCompetitions(self, query):
+        """
+        Competitions are Folder objects in the current dir
+        """
         catalog = getToolByName(self.context, 'portal_catalog')
         competitions = list()
         res = catalog(**query)
@@ -114,6 +117,10 @@ class CompetitionsView(BrowserView):
         return competitions
 
     def _getCompetitionsWithImages(self, query):
+        """
+        Get competitions (subfolders) with a default view object which
+        has a related image
+        """
         result = list()
         competitions = self._getCompetitions(query)
         for competition in competitions:
