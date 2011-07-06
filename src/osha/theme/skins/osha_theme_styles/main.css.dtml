@@ -186,8 +186,8 @@ dl.portletSearch {
 }
 input.searchButton {
     background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -964px -1388px white;
-    padding-left: 20px;
-    padding-bottom:2px;
+    height: 17px;
+    width: 22px;
 }
 dl.portletSearch dt.portletHeader{
     line-height: 1.5em;
