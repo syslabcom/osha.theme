@@ -940,6 +940,16 @@ div#faq_results li.expanded {
     list-style-image: url("treeExpanded.gif");
 }
 
+/* #3209 on't activate the carousel if there is only one item
+   lipstick.css: .jcarousel-clip width: 548px; padding-left: 31px
+   and #competitionSchwusch li: padding-left: 180px; padding-right 90px
+   the carousel is activated as soon as there is anything hidden
+   548px + 31px - 180px - 90px = 309px
+ */
+body.template-competitions-view #competitionSchwusch li {
+    width: 309px;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone

@@ -9,6 +9,8 @@ osha.theme Changelog
   [deroiste]
 - Teaser view, oshnews view, press releases view and event view now respect the
   archive flag #1556 [thomasw]
+- Competitions carousel remove arrows when only one comp is shown
+  #3209 [deroiste]
 
 1.4.14 (2011-06-15)
 -------------------
