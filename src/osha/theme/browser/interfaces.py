@@ -184,7 +184,14 @@ class IOSHA(Interface):
 
     def getLocalObject(name):
         """returns object with given name from local context or None. No Acquisition"""
-    
+
+    def get_sorted(collection, key=None, reverse=False):
+        """Allows sorted() to be used from any page template"""
+
+    def get_native_language_by_code(lang_code):
+        """Returns the localized name of a language for a given language code"""
+
+
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions
     """    

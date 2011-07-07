@@ -33,9 +33,9 @@
 
       <div id="language-bar">
         <tal:block define="langs ltool/listSupportedLanguages;
-                           helper_view context/@@helper-view;
+                           oshaview context/@@oshaview;
                            my_languages_keys python:here.getTranslations().keys();
-                           my_languages python:helper_view.get_sorted(my_languages_keys);"
+                           my_languages python:oshaview.get_sorted(my_languages_keys);"
                    condition="python:len(langs)>1">
           <div i18n:domain="osha" style="text-align: center"
                tal:define="thisurl string:${here/absolute_url}/${template/id}">
@@ -48,7 +48,7 @@
                              langurl python:context.getTranslation(lang).absolute_url();
                              "
                  tal:attributes="href python:langurl+'?set_language='+lang"
-                 tal:content="python:helper_view.get_native_language_by_code(lang)">lang</a><span
+                 tal:content="python:oshaview.get_native_language_by_code(lang)">lang</a><span
                  tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span>
             </span>
           </div>
