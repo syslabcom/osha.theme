@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.15 (unreleased)
+1.4.15 (2011-07-07)
 -------------------
 
 - Bugfix for FAQ view #2385 [deroiste]
@@ -11,6 +11,7 @@ osha.theme Changelog
   archive flag #1556 [thomasw]
 - Competitions carousel remove arrows when only one comp is shown
   #3209 [deroiste]
+- Apllied language sorting to OSHMail as well [thomasw]
 
 1.4.14 (2011-06-15)
 -------------------
