@@ -134,16 +134,17 @@
             tal:define="lang_info ltool/getAvailableLanguageInformation;">
         <tal:block define="supported_languages ltool/listSupportedLanguages|python:[];
                            languages_on_main_site site_props/languages_on_main_site|python:[];
-                           served_languages python:[x for x in supported_languages if x[0] in languages_on_main_site]"
+                           served_language_keys python:[x[0] for x in supported_languages if x[0] in languages_on_main_site];
+                           served_languages python:oshaview.get_sorted(served_language_keys);"
             condition="python:len(served_languages)>1">
             <div i18n:domain="osha" style="text-align: center"
                 tal:define="thisurl string:${here/absolute_url}/${template/id}">
 
-              <span tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang[0]"
-                        tal:define="lang_url python:thisurl+'?set_language='+lang[0];
+              <span tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang"
+                        tal:define="lang_url python:thisurl+'?set_language='+lang;
                             url python:oshaview.handleOSHMailUrls(lang_url, collage_id);"
                         href="" tal:attributes="href url"
-                        tal:content="python:lang_info.has_key(lang[0]) and lang_info[lang[0]]['native'] or lang[1]">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
+                        tal:content="python:oshaview.get_native_language_by_code(lang)">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
             </div>
         </tal:block>
       </td>
