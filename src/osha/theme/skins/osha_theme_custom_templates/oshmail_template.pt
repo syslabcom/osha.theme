@@ -10,7 +10,7 @@
       tal:attributes="lang site_properties/default_language|default;
                       xml:lang site_properties/default_language|default;">
 
-<head> 
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
           tal:define="charset site_properties/default_charset|string:utf-8"
           tal:attributes="content string:text/html;;charset=${charset}" />
@@ -23,23 +23,23 @@
                                                template_title )"
            tal:content="structure string:$portal_title - $here_title">Title of page</title>
 
-    
+
     <meta tal:condition="here/listMetaTags|nothing"
           tal:repeat="keyval here/listMetaTags"
           tal:attributes="name python:keyval[0];
                           content python:keyval[1];" />
-                          
+
     <!-- Main style sheets for CSS2 capable browsers -->
 
     <tal:scripts define="view context/@@plone|nothing"
                 replace="structure provider:plone.resourceregistries.scripts" />
 
-    <link rel="stylesheet" type="text/css" media='all' href="oshmail.css" 
+    <link rel="stylesheet" type="text/css" media='all' href="oshmail.css"
         tal:attributes="href string:${here/portal_url}/oshmail.css" />
 
 </head>
 
-<body leftmargin="5" 
+<body leftmargin="5"
     tal:define="ltool nocall:here/portal_languages;
                 propstool nocall:here/portal_properties;
                 site_props nocall:propstool/site_properties;
@@ -64,8 +64,8 @@
 
 <table cellpadding="0" cellspacing="0" border="0" tal:condition="python:context.getId()!='oshmail-100'"
        summary="Layout table"
-       i18n:attributes="summary"  
-       tal:define="topbanner string:http://osha.europa.eu/images/topbanner2.jpg; 
+       i18n:attributes="summary"
+       tal:define="topbanner string:http://osha.europa.eu/images/topbanner2.jpg;
        dbo python:0;
        portal_title here/portal_properties/title;">
     <tr>
@@ -87,13 +87,13 @@
         <td id="portal-top-content">
             <div class="top-actions">
                 <div class="slogan" i18n:translate="" i18n:domain="osha"
-                     tal:content="site_properties/osha_properties/site_slogan|string:European Agency for Safety and Health at Work"> 
+                     tal:content="site_properties/osha_properties/site_slogan|string:European Agency for Safety and Health at Work">
                     European Network
                 </div>
             </div>
          </td>
          <td id="portal-top-banner" rowspan="2" tal:condition="nocall:topbanner">
-             <img alt="European flag" title="European flag" 
+             <img alt="European flag" title="European flag"
              tal:attributes="src topbanner" />
          </td>
          </tal:block>
@@ -136,15 +136,15 @@
                            languages_on_main_site site_props/languages_on_main_site|python:[];
                            served_languages python:[x for x in supported_languages if x[0] in languages_on_main_site]"
             condition="python:len(served_languages)>1">
-            <div i18n:domain="osha" style="text-align: center" 
-                tal:define="thisurl string:${here/absolute_url}/${template/id}">    
+            <div i18n:domain="osha" style="text-align: center"
+                tal:define="thisurl string:${here/absolute_url}/${template/id}">
 
-              <span tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang[0]" 
+              <span tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang[0]"
                         tal:define="lang_url python:thisurl+'?set_language='+lang[0];
                             url python:oshaview.handleOSHMailUrls(lang_url, collage_id);"
-                        href="" tal:attributes="href url" 
+                        href="" tal:attributes="href url"
                         tal:content="python:lang_info.has_key(lang[0]) and lang_info[lang[0]]['native'] or lang[1]">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
-            </div>   
+            </div>
         </tal:block>
       </td>
     </tr>
@@ -162,4 +162,4 @@
 </body>
 </html>
 </metal:page>
- 
+
