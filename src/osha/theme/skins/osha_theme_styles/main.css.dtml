@@ -838,18 +838,23 @@ margin:0.2em 0 0.75em;
 .eventlist div.outdated,
 #presslisting div.outdated,
 .searchresult-outdated {
-border:1px solid red;
+border:1px dotted red;
 padding:5px 5px 0px;
 margin-bottom:10px;
 color:#515151;
 font-family:Abadi;
-font-size:13px;
+font-size:100%;
 font-size-adjust:none;
 font-stretch:normal;
 font-style:normal;
 font-variant:normal;
 font-weight:normal;
 letter-spacing:1px;
+}
+
+.outdated h2,
+.outdated h3 {
+font-family: Abadi;
 }
 
 .p4acalendar .eventlist .event.outdated .event_title {
@@ -873,7 +878,7 @@ margin-bottom:0px;
 span.outdated-result {
 font-family:Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
 font-weight:bold;
-font-size:14px;
+font-size:110%;
 color:red;
 margin:0px 20px;
 }
