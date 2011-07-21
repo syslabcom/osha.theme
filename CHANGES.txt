@@ -1,10 +1,12 @@
 osha.theme Changelog
 ====================
 
-1.4.16 (unreleased)
+1.4.16 (2011-07-21)
 -------------------
 
-- Nothing changed yet.
+- Bugfix in osha items portlet. Don't return a link when the portletlink hasn't
+  been set. [jcbrand]
+- Leaner display of outdated items in listings [thomasw]
 
 
 1.4.15 (2011-07-07)
