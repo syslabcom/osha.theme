@@ -813,7 +813,7 @@ competitions linkcollection styles (tab-lke view)
 background:transparent url('&dtml-portal_url;/++resource++outdated.png') no-repeat scroll 8px 0;
 border:1px solid red;
 padding:2px 10px 2px 60px;
-font-family:Abadi;
+/* font-family:Abadi; */
 letter-spacing:1px;
 color:#515151;
 margin-bottom:5px;
@@ -842,7 +842,7 @@ border:1px dotted red;
 padding:5px 5px 0px;
 margin-bottom:10px;
 color:#515151;
-font-family:Abadi;
+/*font-family:Abadi;*/
 font-size:100%;
 font-size-adjust:none;
 font-stretch:normal;
@@ -852,10 +852,10 @@ font-weight:normal;
 letter-spacing:1px;
 }
 
-.outdated h2,
+/* .outdated h2,
 .outdated h3 {
 font-family: Abadi;
-}
+} */
 
 .p4acalendar .eventlist .event.outdated .event_title {
     display: inline;
