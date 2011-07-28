@@ -4,7 +4,8 @@ osha.theme Changelog
 1.4.17 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Bugfix, adding social buttons to the shortmessage template #3228
+  [deroiste]
 
 
 1.4.16 (2011-07-21)
