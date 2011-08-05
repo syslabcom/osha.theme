@@ -205,3 +205,6 @@ body.template-multimedia-film-episodes-listing-view div.episode {
     clear: left;
 }
 
+body.template-multimedia-image-folders-view .scrubber li a strong {
+    font: 15px/30px Abadi;
+}
