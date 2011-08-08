@@ -212,5 +212,5 @@ body.template-multimedia-image-folders-view .scrubber li {
 
 body.template-multimedia-film-listing-view .scrubber li a strong,
 body.template-multimedia-image-folders-view .scrubber li a strong {
-    font: 15px/30px Abadi;
+   font: 15px/30px Abadi,Verdana;
 }
