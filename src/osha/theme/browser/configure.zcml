@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
@@ -64,6 +65,7 @@
         name="lipstick-view"
         permission="zope.Public"
         class=".multimedia_view.LipstickView"
+        layer=".interfaces.IOSHAThemeLayer"
         />
 
     <!-- fancybox resources -->
@@ -75,6 +77,7 @@
     <browser:resourceDirectory
         name="osha.theme.browser.resources.multimedia"
         directory="resources/multimedia"
+        layer=".interfaces.IOSHAThemeLayer"
         />
 
     <!-- OSHA Properties panel -->

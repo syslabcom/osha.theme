@@ -11,7 +11,9 @@
   </metal:css>
 
   <metal:javascript fill-slot="javascript_head_slot">
-    <script type="text/javascript" src="++resource++osha.theme.browser.resources.multimedia/jquery.text-overflow.js"  language="javascript"></script>
+    <script type="text/javascript"
+            src="++resource++osha.theme.browser.resources.multimedia/jquery.text-overflow.js"
+            language="javascript"></script>
   </metal:javascript>
 
   <body>
@@ -25,22 +27,25 @@
         </div>
 
         <ul class="scrubber"
-            tal:define="films view/films">
-          <tal:films tal:repeat="film_id films">
+            tal:define="films view/films" >
+          <tal:films repeat="film_id films">
             <tal:film define="film python:films[film_id];
                               video_details python:view.get_video_details(film_id);">
 
               <li tal:attributes="class python:'count-%s' % len(video_details.keys())">
 
                 <h4 class="ellipsis"
-                    tal:content="film/title" i18n:translate=""></h4>
+                    tal:content="film/title"
+                    i18n:translate=""></h4>
                 <a tal:attributes="href string:${context/absolute_url}/multimedia-film-episodes-listing-view?film=${film_id};
                                    title film/title;
                                    class python:repeat['video'].index == 0 and 'default' or ''"
                    i18n:attributes="title"
                    tal:repeat="video video_details">
                   <img tal:attributes="src python:video_details[video]['image']" />
-                  <strong tal:content="python:video_details[video]['title']" i18n:translate=""></strong>
+                  <strong class="ellipsis"
+                          tal:content="python:video_details[video]['title']"
+                          i18n:translate=""></strong>
                 </a>
 
               </li>
@@ -49,8 +54,8 @@
           </tal:films>
         </ul>
 
-    </div>
+      </div>
 
-  </div>
-</body>
+    </div>
+  </body>
 </html>
