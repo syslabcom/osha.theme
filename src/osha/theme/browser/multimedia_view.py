@@ -162,7 +162,7 @@ class FilmsDataMixin(object):
     @property
     def films_data(self):
         """This data structure can be overridden by a Script (Python)
-        in the current directory called "films_data"
+        called "multimedia_film_structure"
         """
         if hasattr(self.context, "multimedia_film_structure"):
             # a Script (Python) which can override napofilm.filmstructure
