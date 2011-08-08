@@ -81,5 +81,5 @@ class OSHTopicView(BrowserView):
         return self.getTopic().getCustomViewFields()
         
     def _t(self, msgid, domain='plone'):
-        return translate(domain=domain, msgid=msgid, context=self.context,
+        return translate(domain=domain, msgid=msgid, context=self.request,
             target_language=self.language)
