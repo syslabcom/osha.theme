@@ -210,7 +210,14 @@ body.template-multimedia-image-folders-view .scrubber li {
     float:none;
 }
 
+body.template-multimedia-film-listing-view .scrubber li h4,
+body.template-multimedia-image-folders-view .scrubber li h4 {
+   text-shadow: none;
+}
+
 body.template-multimedia-film-listing-view .scrubber li a strong,
 body.template-multimedia-image-folders-view .scrubber li a strong {
    font: bold 13px/30px Abadi,Verdana,sans-serif;
+   text-shadow: none;
 }
+
