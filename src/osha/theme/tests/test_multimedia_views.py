@@ -45,9 +45,11 @@ class TestFilmViewsUnitTests(OshaThemeTestCase):
                'image': 'http://media.osha.europa.eu/napofilm/movie1.jpg',
                'video_height': 352,
                'video_width': 640,
-               'video_ogv': 'http://media.osha.europa.eu/napofilm/movie1.ogv',
+               'video_avi': 'http://media.osha.europa.eu/napofilm/movie1.avi',
                'video_mp4': 'http://media.osha.europa.eu/napofilm/movie1.mp4',
-               'video_webm': 'http://media.osha.europa.eu/napofilm/movie1.webm'
+               'video_ogv': 'http://media.osha.europa.eu/napofilm/movie1.ogv',
+               'video_webm': 'http://media.osha.europa.eu/napofilm/movie1.webm',
+               'video_wmv': 'http://media.osha.europa.eu/napofilm/movie1.wmv',
                })])
         self.assertEquals(defaults, expected_defaults)
 
