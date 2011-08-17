@@ -155,6 +155,10 @@ class FilmsDataMixin(object):
                 "video_ogv", urljoin(self.media_url, movie_id+".ogv"))
             mov["video_webm"] = movie.setdefault(
                 "video_webm",  urljoin(self.media_url, movie_id+".webm"))
+            mov["video_avi"] = movie.setdefault(
+                "video_avi",  urljoin(self.media_url, movie_id+".avi"))
+            mov["video_wmv"] = movie.setdefault(
+                "video_wmv",  urljoin(self.media_url, movie_id+".wmv"))
             mov["video_width"] = movie.setdefault("video_width", 640)
             mov["video_height"] = movie.setdefault("video_height", 352)
         return movie_defaults
@@ -231,7 +235,7 @@ class MultimediaFilmEpisodeListingView(BrowserView, FilmsDataMixin):
     @property
     def film(self):
         """Get the film data for the selected film"""
-        selected_film = self.request.form.get("film", None)
+        selected_film = self.request.form.get("filmid", None)
         for film in self.films_data:
             if film["id"] == selected_film:
                 return film

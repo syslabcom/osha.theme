@@ -328,12 +328,12 @@ margin:0 3em;
 }
 
 .toolkit-lastitem {
-  background:transparent url(/osha_theme_napo_images/Arrow_blue.gif) no-repeat scroll 10px 25px;  
+  background:transparent url(/osha_theme_napo_images/Arrow_blue.gif) no-repeat scroll 10px 25px;
   padding:5px 80px;
 }
 
 .toolkit-firstitem {
-  background:transparent url(/osha_theme_napo_images/Arrows_gradient.gif) no-repeat scroll 10px 25px;  
+  background:transparent url(/osha_theme_napo_images/Arrows_gradient.gif) no-repeat scroll 10px 25px;
   padding:5px 80px;
 }
 
@@ -446,6 +446,10 @@ button.blue-button {
 	bottom:20px;
 }
 
+body.template-napoepisode-view img.video-thumbnail,
+body.template-napofilmlisting-view  img.video-thumbnail {
+   width: 100px;
+}
 
 /***************IE Fixes for the Napo Makeover for IE7**************/
 
