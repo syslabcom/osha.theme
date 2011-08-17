@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - Bugfix, adding social buttons to the shortmessage template #3228
   [deroiste]
+- Adding the new multimedia views and sharing the structure for the
+  napofilms listing between both portals #1555 [deroiste]
 
 
 1.4.16 (2011-07-21)
