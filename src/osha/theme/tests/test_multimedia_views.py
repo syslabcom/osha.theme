@@ -57,8 +57,8 @@ class TestFilmViewsUnitTests(OshaThemeTestCase):
         films_data = view.set_movie_defaults(view.films_data)
 
         resource_keys = [
-            "image", "video_mp4", "video_ogv", "video_webm",
-            "video_avi", "video_wmv"]
+            "image", "video_avi", "video_mp4", "video_ogv",
+            "video_webm", "video_wmv" ]
 
         for film_id in films_data:
             film_details = films_data[film_id]
