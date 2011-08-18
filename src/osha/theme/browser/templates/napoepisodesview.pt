@@ -49,9 +49,9 @@
 
             <div style="float:left">
 
-              <h2 tal:content="episode_details/title" i18n:translate=""></h2>
-              <tal:download i18n:translate="label_napo_download_episode_as">
-              </tal:download>
+              <h3 tal:content="episode_details/title" i18n:translate=""></h3>
+              <span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br/>
+              <span i18n:translate="label_napo_download_episode_as">Download this episode as</span>
               <a tal:attributes="href episode_details/video_avi">Avi</a>,
               <a tal:attributes="href episode_details/video_mp4">Mp4</a>,
               <a tal:attributes="href episode_details/video_ogv">Ogv</a>,
