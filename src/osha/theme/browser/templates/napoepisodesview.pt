@@ -10,16 +10,16 @@
       <style type="text/css" media="all">@import "http://osha.europa.eu/++resource++vPIP/vPIPBox.css";</style>
       <script src="http://osha.europa.eu/++resource++vPIP/jquery.js" type="text/javascript"></script>
 
-      <div tal:replace="structure provider:plone.abovecontenttitle" />
-      <h1 tal:content="here/title"></h1>
-      <div tal:replace="structure provider:plone.belowcontenttitle" />
-      <p tal:content="structure here/Description"></p>
-      <div tal:replace="structure provider:plone.abovecontentbody" />
-
       <tal:block define="film view/film;
                          film_details python:view.film_details[film['id']]">
 
-        <h2 tal:content="film_details/title" i18n:translate=""> </h2>
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+      <h1 tal:content="film/title" i18n:translate=""></h1>
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+      <p tal:content="structure film/description" i18n:translate=""></p>
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
+
         <!--span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br-->
         <span i18n:translate="label_napo_download_film_as">Download this film as</span>
         <a tal:attributes="href film_details/video_avi">Avi</a>,
