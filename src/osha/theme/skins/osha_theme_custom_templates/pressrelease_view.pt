@@ -29,6 +29,7 @@
                                                     templateId=templateId,
                                                     macro='releaseTiming-field-view');"
            tal:attributes="class string:releaseTiming summary$kss_class;">
+            <span i18n:translate="label_newsrelease">News release</span> -
             <span metal:define-slot="inside"
                   tal:replace="python:here.toLocalizedTime(storydate)">[FOR IMMEDIATE RELEASE]</span>
         </p>
