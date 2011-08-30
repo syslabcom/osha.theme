@@ -17,7 +17,16 @@
 
     <h1 tal:content="here/title_or_id" />
 
-    
+        <p class="releaseTiming"
+           id="parent-fieldname-releaseTiming"
+           tal:define="storydate here/getStorydate|nothing;"
+           tal:condition="python:here.portal_type=='PressRelease'" 
+           metal:define-macro="releaseTiming-field-view">
+            <span i18n:translate="label_newsrelease">News release</span> -
+            <span metal:define-slot="inside"
+                  tal:replace="python:here.toLocalizedTime(storydate)">[FOR IMMEDIATE RELEASE]</span>
+        </p>
+
     <div class="floatSurrounding">
         <div class="floatingLeft" tal:condition="nocall:defimage">
             <tal:block define="imgtitle defimage/Title">

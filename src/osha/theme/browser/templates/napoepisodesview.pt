@@ -1,60 +1,73 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-    lang="en"
-    metal:use-macro="here/main_template/macros/master"
-    i18n:domain="osha">
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
 
-<body>
+  <body>
     <div metal:fill-slot="main">
-			
-    <script src="http://osha.europa.eu/++resource++vPIP/vpip.js" type="text/javascript"></script>
-	<style type="text/css" media="all">@import "http://osha.europa.eu/++resource++vPIP/vPIPBox.css";</style>
-    <script src="http://osha.europa.eu/++resource++vPIP/jquery.js" type="text/javascript"></script>
 
-    <div tal:replace="structure provider:plone.abovecontenttitle" />
-    <h1 tal:content="here/title"></h1>
-    <div tal:replace="structure provider:plone.belowcontenttitle" />
-    <p tal:content="structure here/Description"></p>  
-    <div tal:replace="structure provider:plone.abovecontentbody" />
+      <script src="http://osha.europa.eu/++resource++vPIP/vpip.js" type="text/javascript"></script>
+      <style type="text/css" media="all">@import "http://osha.europa.eu/++resource++vPIP/vPIPBox.css";</style>
+      <script src="http://osha.europa.eu/++resource++vPIP/jquery.js" type="text/javascript"></script>
 
-    <tal:block define="film python:view.getFilm(request.get('filmid'))">
+      <tal:block define="film view/film;
+                         film_details python:view.film_details[film['id']]">
 
-        <h2 tal:content="film/title" i18n:translate=""> </h2>
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+      <h1 tal:content="film/title" i18n:translate=""></h1>
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
+      <p tal:content="structure film/description" i18n:translate=""></p>
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+
+
         <!--span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br-->
-        <span i18n:translate="label_napo_download_film_as">Download this film as</span> 
-		<a tal:attributes="href film/durlavi"><span i18n:translate="label_avi">AVI</span></a> <span i18n:translate="label_or">or</span>
-		 <a tal:attributes="href film/durlwmv"><span i18n:translate="label_wmv">WMV</span></a>
+        <span i18n:translate="label_napo_download_film_as">Download this film as</span>
+        <a tal:attributes="href film_details/video_avi">Avi</a>,
+        <a tal:attributes="href film_details/video_mp4">Mp4</a>,
+        <a tal:attributes="href film_details/video_ogv">Ogv</a>,
+        <a tal:attributes="href film_details/video_webm">WebM</a>
+        <tal:or i18n:translate="label_or"></tal:or>
+        <a tal:attributes="href film_details/video_wmv">Wmv</a>.
 
-        <tal:block repeat="episode film/episodes">
-           <div class="hvlog" 
-                style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;">
-                  
-             <div style="margin:10px; float: left;">
-               
-                <a tal:attributes="href episode/durlwmv; title episode/title" 
-                   rel="enclosure"           
-                   class="hVlogTarget" 
-                   type="video/x-ms-wmv"
-                   onclick="vPIPPlay(this, 'width=320, height=260, autostart=true, controller=true, name=NapoMovie, revert=true'); return false;">
-                   <img tal:attributes="src episode/image_url" />
-                </a>
-             </div>
-             
-             <div style="float:left">
-                <h3 tal:content="episode/title" i18n:translate="" />
-                <span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br/>
-                <span i18n:translate="label_napo_download_episode_as">Download this episode as</span> 
-				<a tal:attributes="href episode/durlavi"><span i18n:translate="label_avi">AVI</span></a> 
-                 <span i18n:translate="label_or">or</span> 
-				<a tal:attributes="href episode/durlwmv"><span i18n:translate="label_wmv">WMV</span></a>
-             </div>
-             
-             <div class="visualClear"></div>
-           </div>
+        <tal:block repeat="episode view/episodes">
+          <div class="hvlog"
+               style="padding: 10px 0 10px 0; border-bottom: 1px dashed gray;"
+               tal:define="episode_details python:view.episodes[episode]">
 
-        </tal:block> 
-    </tal:block> 
+            <div style="margin:10px; float: left;">
+
+              <a tal:attributes="href episode_details/video_wmv;
+                                 title episode_details/title"
+                 rel="enclosure"
+                 class="hVlogTarget"
+                 type="video/x-ms-wmv"
+                 onclick="vPIPPlay(this, 'width=320, height=260, autostart=true, controller=true, name=NapoMovie, revert=true'); return false;">
+                <img class="video-thumbnail"
+                     tal:attributes="src episode_details/image" />
+              </a>
+            </div>
+
+            <div style="float:left">
+
+              <h3 tal:content="episode_details/title" i18n:translate=""></h3>
+              <span i18n:translate="label_napo_click_to_see_film">Click the image to see the film...</span><br/>
+              <span i18n:translate="label_napo_download_episode_as">Download this episode as</span>
+              <a tal:attributes="href episode_details/video_avi">Avi</a>,
+              <a tal:attributes="href episode_details/video_mp4">Mp4</a>,
+              <a tal:attributes="href episode_details/video_ogv">Ogv</a>,
+              <a tal:attributes="href episode_details/video_webm">WebM</a>,
+              <tal:or i18n:translate="label_or"></tal:or>
+              <a tal:attributes="href episode_details/video_wmv">Wmv</a>.
+
+            </div>
+
+            <div class="visualClear"></div>
+          </div>
+
+        </tal:block>
+      </tal:block>
 
     </div>
-</body>
+  </body>
 </html>
 

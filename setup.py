@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-version = '4.0dev'
+version = '1.4.17dev'
 
 long_description = (
     read('README.txt')
@@ -63,7 +63,7 @@ setup(name='osha.theme',
           'Products.CaseStudy',
           'Products.DataGridField',
           'Products.FCKeditor',
-          'Products.LinguaPlone',
+          'Products.LinguaPlone<2.3',
           'Products.OSHContentLink',
           'Products.PressRoom',
           'Products.PublicJobVacancy',
