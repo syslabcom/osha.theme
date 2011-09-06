@@ -19,7 +19,7 @@ from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from types import UnicodeType
-from p4a.calendar.interfaces import ICalendarEnhanced
+# from p4a.calendar.interfaces import ICalendarEnhanced
 
 
 class IEventsPortlet(IPortletDataProvider):
@@ -200,8 +200,8 @@ class Renderer(events.Renderer):
             calendar_path = calendar_path.encode('utf-8')
 
         cal = self.root.restrictedTraverse(calendar_path, default=None)
-        if not ICalendarEnhanced.providedBy(cal):
-            cal = None
+        # if not ICalendarEnhanced.providedBy(cal):
+        #     cal = None
         # if the calendar is not found, and we are in a translated language tree:
         if cal is None and hasattr(self.root, 'isCanonical') \
                 and not self.root.isCanonical():
