@@ -25,7 +25,7 @@
          tal:define="selected_category request/form/category | nothing;
                      categories view/get_categories;
                      SearchableText request/form/SearchableText | string:;
-                     current_url string:${context/absolute_url}/${template/getId}?SearchableText=${SearchableText}">
+                     current_url string:${context/absolute_url}/${view/getName}?SearchableText=${SearchableText}">
 
       <a name="top"></a>
       <h1 i18n:translate="FAQs">FAQ</h1>

@@ -14,7 +14,6 @@ class DBFilterView(BrowserView):
 
     """
     template = ViewPageTemplateFile('templates/dbfilter.pt')
-    template.id = "db_filter"
 
     def __call__(self):
         #self.request.set('disable_border', True)
@@ -128,7 +127,6 @@ class ProviderDBFilterView(DBFilterView):
     """View for displaying the GP content filter page for Providers
     """
     template = ViewPageTemplateFile('templates/index_provider.pt')
-    template.id = "index_provider"
 
     def search_types(self):
         """ returns a list of translated search types to select from """
@@ -139,7 +137,6 @@ class OSHLinkDBFilterView(DBFilterView):
     """View for displaying the GP content filter page for OSHLinks
     """
     template = ViewPageTemplateFile('templates/index_oshlink.pt')
-    template.id = "index_oshlink"
 
     def search_types(self):
         """ returns a list of translated search types to select from """
@@ -150,7 +147,6 @@ class RALinkDBFilterView(DBFilterView):
     """View for displaying the GP content filter page for RALinks
     """
     template = ViewPageTemplateFile('templates/index_ralink.pt')
-    template.id = "index_ralink"
 
     def search_types(self):
         """ returns a list of translated search types to select from """
@@ -160,7 +156,6 @@ class CaseStudyDBFilterView(DBFilterView):
     """View for displaying the GP content filter page for CaseStudies
     """
     template = ViewPageTemplateFile('templates/index_casestudy.pt')
-    template.id = "index_casestudy"
 
     def search_types(self):
         """ returns a list of translated search types to select from """
@@ -170,7 +165,6 @@ class DirectiveDBFilterView(DBFilterView):
     """View for displaying the GP content filter page for Directives
     """
     template = ViewPageTemplateFile('templates/index_directive.pt')
-    template.id = "index_directive"
 
     def search_types(self):
         """ returns a list of translated search types to select from """

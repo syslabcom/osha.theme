@@ -166,6 +166,7 @@
         for="Products.PloneHelpCenter.interfaces.IHelpCenterContent"
         name="osha_help_center_view"
         class=".oshahelpcenter.OSHAHelpCenterView"
+        template="templates/osha_help_center_view.pt"
         permission="zope2.View"
         />
 
@@ -215,6 +216,7 @@
         for="*"
         name="napofilm"
         class=".napofilm.NapoFilmView"
+        template="templates/napofilmview.pt"
         permission="zope.Public"
         allowed_interface=".interfaces.INapoFilmView"
         />
@@ -233,6 +235,7 @@
         for="Products.ATContentTypes.interface.folder.IATFolder"
         name="practical-solutions"
         class=".practical_solutions.PracticalSolutionsView"
+        template="templates/practical_solutions.pt"
         permission="zope.Public"
         />
 
@@ -240,6 +243,7 @@
         for="*"
         name="practical-solution"
         class=".practical_solutions.PracticalSolutionView"
+        template="templates/practical_solution.pt"
         permission="zope.Public"
         />
 
@@ -249,6 +253,7 @@
         for="*"
         name="napoepisode"
         class=".napoepisode.NapoEpisodeView"
+        template="templates/napoepisodesview.pt"
         permission="zope.Public"
         allowed_interface=".interfaces.INapoEpisodeView"
         />
@@ -524,6 +529,7 @@
         for="*"
         name="oshtopic-view"
         class=".oshtopic_view.OSHTopicView"
+        template="templates/oshtopic_view.pt"
         permission="zope2.View"
         />
 
@@ -531,6 +537,7 @@
         for="*"
         name="oshnews-view"
         class=".oshnews_view.OSHNewsView"
+        template="templates/oshnews_view.pt"
         permission="zope2.View"
         />
 
@@ -538,6 +545,7 @@
         for="*"
         name="oshmail-view"
         class=".oshmail_view.OSHmailView"
+        template="templates/oshmail_view.pt"
         allowed_interface=".interfaces.IOSHmailView"
         permission="zope2.View"
         />
@@ -569,6 +577,7 @@
         for="Products.Archetypes.interfaces.IBaseContent"
         name="competitions-view"
         class=".competitions.CompetitionsView"
+        template="templates/competitions_view.pt"
         allowed_interface=".interfaces.ICompetitionsView"
         permission="zope2.View"
         />
@@ -577,6 +586,7 @@
         for="Products.Archetypes.interfaces.IBaseContent"
         name="competition-detail"
         class=".competitions.CompetitionDetail"
+        template="templates/competition_detail.pt"
         allowed_interface=".interfaces.ICompetitionDetail"
         permission="zope2.View"
         />
@@ -619,6 +629,7 @@
         for="*"
         name="publications-overview"
         class=".publications.PublicationsSearchView"
+        template="templates/publicationsearch.pt"
         permission="zope2.View"
         />
 
@@ -626,6 +637,7 @@
         for="*"
         name="publications-list"
         class=".publications.PublicationsListView"
+        template="templates/publicationlist.pt"
         permission="zope2.View"
         />
 
@@ -642,6 +654,7 @@
         for="*"
         name="questions-in-parliament-search"
         class=".publications.QuestionsInParliamentSearchView"
+        template="templates/questionsinparliamentsearch.pt"
         permission="zope2.View"
         />
 
@@ -686,6 +699,7 @@
         for="*"
         name="site_update"
         class=".site_update.SiteUpdateView"
+        template="templates/site_update.pt"
         permission="zope2.View"
         />
 
@@ -749,6 +763,7 @@
         for="*"
         name="index_ro_metadata"
         class=".index_ro_metadata.IndexROMetadataView"
+        template="templates/index_ro_metadata.pt"
         permission="zope2.View"
         />
 
@@ -763,6 +778,7 @@
         for="*"
         name="worklist"
         class=".worklist.WorklistView"
+        template="templates/worklist.pt"
         permission="zope2.View"
         />
 
@@ -809,6 +825,7 @@
         name="faq_view"
         for="Products.ATContentTypes.interface.folder.IATFolder"
         class=".faq_view.FAQView"
+        template="templates/faq_view.pt"
         permission="zope2.View"
         />
 
@@ -816,6 +833,7 @@
         name="teaser-view"
         for="*"
         class=".teaserview.TeaserView"
+        template="templates/teaser_view.pt"
         permission="zope2.View"
         />
 
@@ -823,6 +841,7 @@
         name="teaser-archive-view"
         for="*"
         class=".teaserview.TeaserArchiveView"
+        template="templates/teaser_view.pt"
         permission="zope2.View"
         />
 
@@ -830,6 +849,7 @@
         name="resource_listing"
         for="*"
         class=".resource_listing.ResourceListingView"
+        template="templates/resource_listing.pt"
         permission="zope2.View"
         />
 
@@ -866,6 +886,7 @@
     <browser:page
         for="Products.RemoteProvider.content.interfaces.IProvider"
         name="oshcontent_switch_form"
+        template="templates/oshcontent_switch_form.pt"
         class=".oshcontent_switcher.OSHContentSwitcher"
         permission="zope2.View"
         />

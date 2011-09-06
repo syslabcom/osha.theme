@@ -9,7 +9,6 @@ from Products.ATContentTypes.interface import IATTopic
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from slc.alertservice import AlertMessageFactory as _
 
 from osha.theme import OSHAMessageFactory as _
@@ -17,11 +16,12 @@ from osha.theme import OSHAMessageFactory as _
 class OSHmailView(BrowserView):
     """View for displaying oshmail 
     """
-    template = ViewPageTemplateFile('templates/oshmail_view.pt')
-    template.id = "oshmail-view"
-    
+
     def __call__(self):
-        return self.template() 
+        return self.index()
+
+    def getName(self):
+        return self.__name__
         
     @memoize
     def getLatestIssue(self):

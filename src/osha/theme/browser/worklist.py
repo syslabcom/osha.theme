@@ -1,6 +1,5 @@
 import Acquisition
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic, Between
 from DateTime import DateTime
@@ -10,13 +9,14 @@ from osha.theme.browser.dbfilter import DBFilterView
 class WorklistView(DBFilterView):
     """View for displaying the worklist (filter plus result list)
     """
-    template = ViewPageTemplateFile('templates/worklist.pt')
-    template.id = "worklist"
 
     def __call__(self):
         self.request.set('disable_border', True)
 
-        return self.template()
+        return self.index()
+
+    def getName(self):
+        return self.__name__
 
     def search_types(self):
         """ Returns a list of translated search types to select from.

@@ -28,7 +28,7 @@
             <ol>
               <tal:block repeat="item items">
               <li>  <a href="." tal:attributes="href
-                    string:${here/absolute_url}/${template/getId}#${repeat/item/index}"> <span tal:replace="item/title" /></a>
+                    string:${here/absolute_url}/${view/getName}#${repeat/item/index}"> <span tal:replace="item/title" /></a>
                </li>
               </tal:block>
             </ol>
@@ -39,7 +39,7 @@
                     item/link"> <span tal:replace="item/title" /></a>
                </dt>
                <dd><span tal:content="structure item/text" /><br/>
-                    [<a href="." tal:attributes="href string:${here/absolute_url}/${template/getId}#top">Top</a>]
+                    [<a href="." tal:attributes="href string:${here/absolute_url}/${view/getName}#top">Top</a>]
                 </dd>
               </tal:block>
             </dl>

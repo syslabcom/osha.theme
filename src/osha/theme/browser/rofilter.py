@@ -7,7 +7,6 @@ class ROFilterView(BrowserView):
     """View for displaying the ro content filter page 
     """
     template = ViewPageTemplateFile('templates/rofilter.pt')
-    template.id = "ro_filter"
 
     def __call__(self):
         self.request.set('disable_border', True)

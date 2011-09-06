@@ -1,7 +1,6 @@
 import Acquisition
 from types import *
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from osha.theme import OSHAMessageFactory as _
 from zope.i18n import translate
@@ -9,10 +8,7 @@ from zope.i18n import translate
 class OSHTopicView(BrowserView):
     """View for displaying the results of a topic outside the current context within the context
     """
-    template = ViewPageTemplateFile('templates/oshtopic_view.pt')
-    template.id = 'oshtopic-view'
-    
-    
+
     def __call__(self):
         topicpath = self.request.get('tp', None)
         if topicpath is None:
@@ -20,8 +16,11 @@ class OSHTopicView(BrowserView):
         if topicpath.startswith('/') and not topicpath.startswith('/osha/portal'):
             topicpath = topicpath[1:]
         self.tp = topicpath
-        return self.template() 
-        
+        return self.index()
+
+    def getName(self):
+        return self.__name__
+
     def getTopic(self):
         context = Acquisition.aq_inner(self.context)
         portal = getToolByName(context, 'portal_url').getPortalObject()

@@ -59,7 +59,7 @@
         <br clear="all"/>
 
         <form id="database_search"
-              tal:attributes="action template/id" method="get">
+              tal:attributes="action view/getName" method="get">
 
           <div id="filter_searchfields">
 
@@ -207,7 +207,7 @@
                       value="Reset"
                       i18n:domain="osha"
                       i18n:attributes="value Reset"
-                      tal:attributes="onclick string:window.location='${context/absolute_url}/${template/getId}'" />
+                      tal:attributes="onclick string:window.location='${context/absolute_url}/${view/getName}'" />
 
             </div>
           </div>

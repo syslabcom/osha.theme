@@ -1,14 +1,10 @@
 from zope.app.component.hooks import getSite
 from ordereddict import OrderedDict
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 class OSHAHelpCenterView(BrowserView):
     """ support for HelpCenter templates """
-
-    template = ViewPageTemplateFile('templates/osha_help_center_view.pt')
-    template.id = "osha_help_center_view"
 
     def __init__(self, context, request):
         self.context = context
@@ -23,7 +19,10 @@ class OSHAHelpCenterView(BrowserView):
         self.vocab_dict = subcategory_vocab.getVocabularyDict(self.context)
 
     def __call__(self):
-        return self.template()
+        return self.index()
+
+    def getName(self):
+        return self.__name__
 
     def get_faqs(self):
         """ Return a list of FAQ objects. """

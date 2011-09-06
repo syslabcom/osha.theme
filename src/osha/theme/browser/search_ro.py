@@ -11,7 +11,6 @@ class SearchROView(BrowserView):
     """View for displaying the ro filter results
     """
     template = ViewPageTemplateFile('templates/search_ro.pt')
-    template.id = "search_ro"
     
     mdelems = ['ero_topic', 'country', 'ero_target_group']
     

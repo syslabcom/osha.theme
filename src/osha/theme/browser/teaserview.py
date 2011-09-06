@@ -1,5 +1,4 @@
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_inner, aq_parent, aq_base
 from zope.component import getMultiAdapter
@@ -8,9 +7,6 @@ from DateTime import DateTime
 
 class TeaserView(BrowserView):
     """ used for displaying teasers"""
-    
-    template = ViewPageTemplateFile('templates/teaser_view.pt')
-    template.id = "teaser-view"
 
     def __call__(self):
         context = aq_inner(self.context)
@@ -52,7 +48,10 @@ class TeaserView(BrowserView):
                            Language=['', preflang])
 
         self.items = catalog(query)
-        return self.template()
+        return self.index()
+
+    def getName(self):
+        return self.__name__
 
 
     def getBodyText(self):
@@ -67,9 +66,6 @@ class TeaserView(BrowserView):
 
 class TeaserArchiveView(TeaserView):
     """ used for displaying archived  teasers"""
-    
-    template = ViewPageTemplateFile('templates/teaser_view.pt')
-    template.id = "teaser-archive-view"
 
     def __call__(self):
         context = aq_inner(self.context)
@@ -108,5 +104,5 @@ class TeaserArchiveView(TeaserView):
                        Language=['', preflang])
                        
         self.items = catalog(query)
-        return self.template()
+        return self.index()
 

@@ -37,7 +37,7 @@
 
 <body>
 <div metal:fill-slot="main" 
-     tal:define="templateId template/getId; currlang here/portal_languages/getPreferredLanguage">
+     tal:define="templateId view/getName; currlang here/portal_languages/getPreferredLanguage">
 
     <div id="content">
         <div class="message warning" 

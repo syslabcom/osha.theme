@@ -1,16 +1,13 @@
 import Acquisition, time
 from plone.memoize import ram
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 
 class SiteUpdateView(BrowserView):
     """View for displaying the latest update on the site
     """
-    template = ViewPageTemplateFile('templates/site_update.pt')
-    template.id = 'site_update'
-    
+
     def __call__(self):
         self.request.set('disable_border', True)
         context = Acquisition.aq_inner(self.context)        
@@ -19,8 +16,11 @@ class SiteUpdateView(BrowserView):
         portal_languages = getToolByName(context, 'portal_languages')
         self.lang = portal_languages.getPreferredLanguage()
         self.items = self._searchCatalog()
-        return self.template() 
-        
+        return self.index()
+
+    def getName(self):
+        return self.__name__
+
     def results(self):
         context = Acquisition.aq_inner(self.context)        
         toLocalizedTime = context.restrictedTraverse('@@plone').toLocalizedTime

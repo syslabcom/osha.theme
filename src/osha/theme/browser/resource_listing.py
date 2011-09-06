@@ -1,14 +1,11 @@
 from Acquisition import aq_base
 #from plone.memoize import ram
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 class ResourceListingView(BrowserView):
     """View for displaying resources such as campaign materials
     """
-    template = ViewPageTemplateFile('templates/resource_listing.pt')
-    template.id = "resource_listing"
     
     def __call__(self):
         self.request.set('disable_border', True)
@@ -19,7 +16,7 @@ class ResourceListingView(BrowserView):
             content = getattr(self.context, 'content')
             if hasattr(content, 'getText') and callable(content.getText):
                 self.description = content.getText()
-        return self.template()
+        return self.index()
 
     def _getItems(self):
         pwt = getToolByName(self.context, 'portal_workflow')

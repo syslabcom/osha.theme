@@ -1,5 +1,4 @@
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from zope.interface import implements
 from osha.theme.browser.interfaces import ICompetitionsView, ICompetitionDetail
 from Products.Archetypes.interfaces._base import IBaseContent, IBaseFolder
@@ -14,11 +13,8 @@ from plone.memoize.instance import memoize
 class CompetitionsView(BrowserView):
     implements(ICompetitionsView)
 
-    template = ViewPageTemplateFile('templates/competitions_view.pt')
-    template.id = "competitions-view"
-
     def __call__(self):
-        return self.template()
+        return self.index()
 
     def __init__(self, context, request):
         self.context = context
@@ -205,9 +201,6 @@ class CompetitionsView(BrowserView):
 class CompetitionDetail(CompetitionsView):
     implements(ICompetitionDetail)
 
-    template = ViewPageTemplateFile('templates/competition_detail.pt')
-    template.id = "competition-detail"
-
     def __init__(self, context, request):
         super(CompetitionDetail, self).__init__(context, request)
         if IBaseFolder.providedBy(context):
@@ -217,7 +210,7 @@ class CompetitionDetail(CompetitionsView):
         self.parent = '/'.join(self.parent.getPhysicalPath())
 
     def __call__(self):
-        return self.template()
+        return self.index()
 
     def getTeaserImage(self):
         images = self.getRelatedImages(self.context, 'mini')

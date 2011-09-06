@@ -35,7 +35,7 @@
 		        <p><label>ID (you can usually leave it as it is)</label><br/>
 		            <input type="text" size="60" name="id" value="" tal:attributes="value id" /></p>
 		        <input type="hidden" name="uid" value="uid" tal:attributes="value uid" />
-		        <input type="hidden" name="template_id" tal:attributes="value template/getId" />
+		        <input type="hidden" name="template_id" tal:attributes="value view/getName" />
 		        <p><input type="submit" value="Go! Do the switch."/></p>
 		    </form>
 	    </span>

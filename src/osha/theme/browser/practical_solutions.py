@@ -2,7 +2,6 @@ from Acquisition import aq_inner, aq_parent
 from zope.i18n import translate
 from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
 from Products.CMFCore.utils import getToolByName
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from osha.theme.browser.dbfilter import DBFilterView
 
@@ -14,8 +13,6 @@ class PracticalSolutionsView(DBFilterView):
         If there is an image called "section-image.png" in the folder
         it will be used too.
         """
-    template = ViewPageTemplateFile('templates/practical_solutions.pt')
-    template.id = "practical-solutions"
 
     gpawards = ''
     intro = ''
@@ -41,7 +38,7 @@ class PracticalSolutionsView(DBFilterView):
         else:
             self.gpaward = gpaward.CookedBody()
 
-        return self.template()
+        return self.index()
 
 
     def search_portal_types(self):
@@ -89,9 +86,6 @@ class PracticalSolutionView(DBFilterView):
     folder.
     """
 
-    template = ViewPageTemplateFile('templates/practical_solution.pt')
-    template.id = "practical-solution"
-
     portal_types_map = {
             "useful-links":"OSH_Link",
             "risk-assessment-tools":"RALink",
@@ -103,7 +97,7 @@ class PracticalSolutionView(DBFilterView):
 
     def __call__(self):
         self.request.set('disable_border', True)
-        return self.template()
+        return self.index()
 
     def has_section_image(self):
         """ Check if an image called section-image.png exists in the folder """

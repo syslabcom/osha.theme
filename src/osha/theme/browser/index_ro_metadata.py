@@ -1,14 +1,11 @@
 import Acquisition
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
 
 class IndexROMetadataView(BrowserView):
     """View for displaying the ro content filter page 
     """
-    template = ViewPageTemplateFile('templates/index_ro_metadata.pt')
-    template.id = "index_ro_metadata"
     
     mdelems = ['ero_topic', 'country', 'ero_target_group']
     
@@ -19,7 +16,7 @@ class IndexROMetadataView(BrowserView):
         portal_catalog = getToolByName(self.context, 'portal_catalog')
             
         self.remaining = [x for x in self.mdelems if x!=self.act_md]  # former subsel
-        return self.template()
+        return self.index()
 
     def pretty(self, text):
         """ makes a metadatum pretty """

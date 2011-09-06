@@ -46,7 +46,7 @@
         <p>Please use these fields to select workitems.</p>
     </div>
 
-    <form tal:attributes="action template/id" method="get">
+    <form tal:attributes="action view/getName" method="get">
     
       <div id="filter_searchfields">
       
@@ -134,7 +134,7 @@
             <div style="float:right; font-weight:bold;"><a href="http://osha.europa.eu/reporting/linkstate">[ Link State Reporting ]</a></div>
           <input class="context" type="submit" value="Search" />
           <input  class="context" type="reset" value="Reset" 
-                    tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />
+                    tal:attributes="onclick string:window.location='${here/absolute_url}/${view/getName}'" />
         </div>
         
     </form>

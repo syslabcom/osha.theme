@@ -2,7 +2,6 @@ from zope.interface import implements
 from Acquisition import aq_base, aq_inner
 from Products.Five import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from osha.theme.browser.interfaces import IOSHContentSwitcher, ISwitchOSHContent
 from zope.component import getUtility
 from Products.OSHContentLink.interfaces import IOSH_Link
@@ -17,12 +16,12 @@ COMMON_FIELDS = ['title',  'remoteUrl', 'remoteLanguage', 'country', 'subcategor
 class OSHContentSwitcher(BrowserView):
     implements(IOSHContentSwitcher)
 
-    template = ViewPageTemplateFile('templates/oshcontent_switch_form.pt')
-    template.id = "oshcontent_switch_form"
-
     def __call__(self):
         self.uid = self.request.get('uid', '')
-        return self.template()
+        return self.index()
+
+    def getName(self):
+        return self.__name__
 
     def getContentInfo(self):
         portal_catalog = getToolByName(self.context, 'portal_catalog')

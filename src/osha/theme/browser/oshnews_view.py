@@ -10,19 +10,19 @@ from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from osha.theme import OSHAMessageFactory as _
 
 class OSHNewsView(BrowserView):
     """View for displaying news outside the current context within the context
     """
-    template = ViewPageTemplateFile('templates/oshnews_view.pt')
-    template.id = "oshnews-view"
-    
+
     def __call__(self):
-        return self.template() 
-        
+        return self.index()
+
+    def getName(self):
+        return self.__name__
+
     def Title(self):
         context = Acquisition.aq_inner(self.context)
         if IATTopic.providedBy(context):

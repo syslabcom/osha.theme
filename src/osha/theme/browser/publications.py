@@ -1,5 +1,4 @@
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 import Acquisition
 from zope.component import getMultiAdapter
@@ -8,13 +7,13 @@ from DateTime import DateTime
 class PublicationsSearchView(BrowserView):
     """View for displaying the publications overview page at /xx/publications
     """
-    template = ViewPageTemplateFile('templates/publicationsearch.pt')
-    template.id = "publications-overview"
 
     def __call__(self):
         self.request.set('disable_border', True)
+        return self.index()
 
-        return self.template()
+    def getName(self):
+        return self.__name__
 
     def get_subject(self):
         subject = self.request.get('Subject', '')
@@ -59,8 +58,6 @@ class PublicationsSearchView(BrowserView):
 class PublicationsListView(BrowserView):
     """ View for displaying publications by subfolder. Replaces index_html
     """
-    template = ViewPageTemplateFile('templates/publicationlist.pt')
-    template.id = "publications-list"
 
     def getContents(self):
         """ CMFCore's ContentFilter class (from PortalFolder.py ignores review_state as a
@@ -74,19 +71,23 @@ class PublicationsListView(BrowserView):
 
     def __call__(self):
         self.request.set('disable_border', True)
-        return self.template()
+        return self.index()
+
+    def getName(self):
+        return self.__name__
 
 
 class QuestionsInParliamentSearchView(BrowserView):
     """ View for displaying the publications search page for Questions In Parliament on BeSWIC.be
     """
-    template = ViewPageTemplateFile('templates/questionsinparliamentsearch.pt')
-    template.id = "questions-in-parliament-search"
 
     def __call__(self):
         self.request.set('disable_border', True)
+        return self.index()
 
-        return self.template()
+    def getName(self):
+        return self.__name__
+
 
     def getImageSrc(self):
         # look for a local image
@@ -132,7 +133,4 @@ class QuestionsInParliamentSearchView(BrowserView):
             elif effective_mode=='range':
                 query.update(dict(effective=dict(query=(searchdate-edr, searchdate+edr), range='min:max')))
 
-
         return query
-
-

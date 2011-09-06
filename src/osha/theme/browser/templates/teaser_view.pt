@@ -8,7 +8,7 @@
 <div metal:fill-slot="main">
 <metal:main_macro define-macro="main">
     <metal:body define-macro="body_macro"
-                tal:define="templateId template/getId">
+                tal:define="templateId view/getName">
 
 
         <h1 tal:condition="python:here.getId()!='front-page'" class="documentFirstHeading">
@@ -109,7 +109,7 @@
                 </p>
 
             <!-- Navigation -->
-            <span tal:condition="python:template.getId()=='teaser-archive-view'">
+            <span tal:condition="python:templateId=='teaser-archive-view'">
                 <div metal:use-macro="here/batch_macros/macros/navigation" />
             </span>
 

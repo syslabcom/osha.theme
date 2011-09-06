@@ -1,14 +1,11 @@
 #import Acquisition, time
 #from plone.memoize import ram
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
 class FAQView(BrowserView):
     """View for displaying documents in FAQ style
     """
-    template = ViewPageTemplateFile('templates/faq_view.pt')
-    template.id = "faq_view"
     
     def __call__(self):
         self.request.set('disable_border', True)
@@ -18,7 +15,10 @@ class FAQView(BrowserView):
 #        portal_languages = getToolByName(context, 'portal_languages')
 #        self.lang = portal_languages.getPreferredLanguage()
         self.items = self._getItems()
-        return self.template()
+        return self.index()
+
+    def getName(self):
+        return self.__name__
 
     def _getItems(self):
         pwt = getToolByName(self.context, 'portal_workflow')

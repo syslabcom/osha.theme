@@ -39,7 +39,7 @@
 
       <br clear="all" />
       
-      <form tal:attributes="action template/id" method="get">
+      <form tal:attributes="action view/getName" method="get">
 
         <h2>Search publications:</h2>
         <div id="searchfields" tal:define="values python:here.restrictedTraverse('@@oshaview').getTranslatedCategories()">
