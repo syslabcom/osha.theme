@@ -6,13 +6,9 @@ from copy import copy
 
 from Acquisition import aq_acquire
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from osha.policy.data.multimedia import napofilm
 
 class LipstickView(BrowserView):
-    template = ViewPageTemplateFile(
-        'templates/lipstick_view.pt')
-    template.id = "lipstick-view"
 
     def __init__(self, context, request):
         self.context = context
@@ -21,16 +17,13 @@ class LipstickView(BrowserView):
     def __call__(self, *args, **kw):
         view = aq_acquire(self.context, self.context.getDefaultLayout())
         self.main_macro = view.macros["main"]
-        return self.template()
+        return self.index()
 
 
 class MultimediaFolderListingView(BrowserView):
     """List folder contents using lipstick.css and for folders display
     the first image in the folder beside the description.
     """
-    template = ViewPageTemplateFile(
-        'templates/multimedia_folder_listing_view.pt')
-    template.id = "multimedia-folder-listing-view"
 
     def __init__(self, context, request):
         self.context = context
@@ -38,7 +31,7 @@ class MultimediaFolderListingView(BrowserView):
         self.items = self.get_folder_items()
 
     def __call__(self):
-        return self.template()
+        return self.index()
 
     def get_folder_items(self):
         folders = OrderedDict()
@@ -70,12 +63,9 @@ class MultimediaImageFoldersView(BrowserView):
     """
     Photo gallery style folder listing
     """
-    template = ViewPageTemplateFile(
-        'templates/multimedia_image_folders_view.pt')
-    template.id = "multimedia-image-folders-view"
 
     def __call__(self):
-        return self.template()
+        return self.index()
 
     def get_image_folders(self):
         """Get an ordered dict of folders and details of their images
@@ -109,12 +99,9 @@ class MultimediaImageFoldersView(BrowserView):
 
 
 class MultimediaImageDetailsView(BrowserView):
-    template = ViewPageTemplateFile(
-        'templates/multimedia_image_details_view.pt')
-    template.id = "multimedia-image-details-view"
 
     def __call__(self):
-        return self.template()
+        return self.index()
 
     def get_images_in_folder(self):
         """Get an ordered dict of images and titles
@@ -177,9 +164,6 @@ class FilmsDataMixin(object):
 class MultimediaFilmListingView(BrowserView, FilmsDataMixin):
     """ List the Films and link to the episode listing view for each
     """
-    template = ViewPageTemplateFile(
-        'templates/multimedia_film_listing_view.pt')
-    template.id = "multimedia-film-listing-view"
 
     def __init__(self, context, request):
         self.context = context
@@ -187,7 +171,7 @@ class MultimediaFilmListingView(BrowserView, FilmsDataMixin):
         self.films = self.set_movie_defaults(self.films_data)
 
     def __call__(self):
-        return self.template()
+        return self.index()
 
     def get_video_details(self, film_id):
         for film in self.films_data:
@@ -205,12 +189,9 @@ class MultimediaFilmEpisodeListingView(BrowserView, FilmsDataMixin):
     """ Display the entire Film and each individual episode belonging
     to that film
     """
-    template = ViewPageTemplateFile(
-        'templates/multimedia_film_episodes_listing_view.pt')
-    template.id = "multimedia-film-episodes-listing-view"
 
     def __call__(self):
-        return self.template()
+        return self.index()
 
     def video_fancybox(self):
         """ Using a template to pass in the value for media_url and
