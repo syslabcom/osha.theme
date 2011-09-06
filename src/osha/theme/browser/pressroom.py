@@ -14,7 +14,7 @@ from Products.ATContentTypes.interface.document import IATDocument
 from Products.CMFCore.utils import getToolByName
 from Products.Five import BrowserView
 from Products.Five.browser import pagetemplatefile 
-from Products.Five.formlib import formbase
+from five.formlib import formbase
 
 from osha.theme.browser.interfaces import IPressRoomConfiguration
 from osha.theme.browser.interfaces import IPressRoomView
