@@ -642,6 +642,7 @@
     <browser:page
         for="*"
         name="topics-view"
+        template="templates/topics_view.pt"
         class=".topics_view.TopicsView"
         permission="zope2.View"
         />
@@ -649,6 +650,7 @@
     <browser:page
         for="*"
         name="topic-view"
+        template="templates/topic_view.pt"
         class=".topics_view.TopicView"
         permission="zope2.View"
         />

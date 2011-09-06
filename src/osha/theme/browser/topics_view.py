@@ -17,7 +17,10 @@ class TopicsBrowserView(BrowserView):
     image_scale = "mini"
 
     def __call__(self):
-        return self.template()
+        return self.index()
+
+    def getName(self):
+        return self.__name__
 
     def hasRelatedMedia(self):
         """
@@ -59,8 +62,6 @@ class TopicsBrowserView(BrowserView):
 class TopicsView(TopicsBrowserView):
     """ View class for /topics
     """
-    template = ViewPageTemplateFile('templates/topics_view.pt')
-    template.id = "topics-view"
 
     def __call__(self):
         """
@@ -74,12 +75,11 @@ class TopicsView(TopicsBrowserView):
         middle_index = len(folders) - len(folders) / 2
         self.left_folders = folders[:middle_index]
         self.right_folders = folders[middle_index:]
-        return self.template()
+        return self.index()
 
 
 class TopicView(TopicsBrowserView):
     """ View class for /topics/topic
     """
-    template = ViewPageTemplateFile('templates/topic_view.pt')
-    template.id = "topic-view"
+    pass
 
