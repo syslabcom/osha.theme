@@ -1,7 +1,7 @@
 from Products.Five.browser import BrowserView
 from zope.interface import implements
 from osha.theme.browser.interfaces import ICompetitionsView, ICompetitionDetail
-from Products.Archetypes.interfaces._base import IBaseContent, IBaseFolder
+from Products.Archetypes.interfaces.base import IBaseContent, IBaseFolder
 from Products.Archetypes.utils import OrderedDict
 from Products.ATContentTypes.interface.image import IATImage
 from Products.CMFCore.utils import getToolByName
