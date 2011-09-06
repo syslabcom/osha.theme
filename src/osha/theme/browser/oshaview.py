@@ -17,7 +17,7 @@ from Products.Five import BrowserView
 from Products.validation import validation
 
 from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
-from p4a.calendar import interfaces as p4aCalendarInterfaces
+# from p4a.calendar import interfaces as p4aCalendarInterfaces
 from slc.subsite.interfaces import ISubsiteEnhanced
 from slc.subsite.root import getSubsiteRoot
 
@@ -379,21 +379,22 @@ class OSHA(BrowserView):
     def getCalendarEvents(self, past=False):
         """ If called on a calendar, the list of events is returned"""
         context = self.context
-        if p4aCalendarInterfaces.ICalendarEnhanced.providedBy(context):
-            now = datetime.datetime.now()
-            if past:
-                stop = now
-                start = None
-            else:
-                start = now
-                stop = None
-            provider = p4aCalendarInterfaces.IEventProvider(self.context)
-            events = list(provider.gather_events(start=start, stop=stop))
-            events.sort()
-            if past:
-                events.reverse()
-            events = [brain._getEvent() for brain in events]
-            return events
+        # XXX Fixme: replacement for p4a.calendar
+        # if p4aCalendarInterfaces.ICalendarEnhanced.providedBy(context):
+        #     now = datetime.datetime.now()
+        #     if past:
+        #         stop = now
+        #         start = None
+        #     else:
+        #         start = now
+        #         stop = None
+        #     provider = p4aCalendarInterfaces.IEventProvider(self.context)
+        #     events = list(provider.gather_events(start=start, stop=stop))
+        #     events.sort()
+        #     if past:
+        #         events.reverse()
+        #     events = [brain._getEvent() for brain in events]
+        #     return events
         return list()
 
     def getLocalObject(self, name):
