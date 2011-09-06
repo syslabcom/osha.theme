@@ -1,4 +1,6 @@
-# Several configuration parameters
+# -*- coding: utf-8 -*-
+
+# # Several configuration parameters
 PROJECTNAME = "osha.theme"
 product_globals = globals()
 
