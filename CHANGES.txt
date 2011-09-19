@@ -8,7 +8,10 @@ osha.theme Changelog
   [deroiste]
 - Adding the new multimedia views and sharing the structure for the
   napofilms listing between both portals #1555 [deroiste]
-- On Press Releases, display "News Release" #3482 [thomasw]
+- Changed episode view on napofilm so that the film's title and description are
+  displayed [thomasw]
+- On Press Releases, display "News Release" #3482; special handling also for
+  short messages [thomasw]
 
 
 1.4.16 (2011-07-21)
