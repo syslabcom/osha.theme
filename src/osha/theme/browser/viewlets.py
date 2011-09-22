@@ -394,9 +394,14 @@ class TitleViewlet(common.TitleViewlet):
     """ overwritten from plone.app.layout """
 
     def render(self):
-        portal_title = self.portal_title()
-        portal_title = safe_unicode(translate(safe_unicode(portal_title), domain='osha'))
-        page_title = safe_unicode(self.page_title())
+        portal_state = getMultiAdapter((self.context, self.request),
+            name=u'plone_portal_state')
+        context_state = getMultiAdapter((self.context, self.request),
+            name=u'plone_context_state')
+        page_title = escape(safe_unicode(context_state.object_title()))
+        portal_title = escape(safe_unicode(portal_state.navigation_root_title()))
+        portal_title = safe_unicode(translate(portal_title, domain='osha'))
+        page_title = safe_unicode(page_title)
         osha = safe_unicode(translate('OSHA', domain='osha'))
         if page_title == portal_title:
             return u"<title>%s</title>" % (escape(portal_title))
