@@ -1,5 +1,10 @@
-<metal:page define-macro="master"><metal:doctype define-slot="doctype"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></metal:doctype>
+<metal:page define-macro="master">
 <metal:block define-slot="top_slot" />
+
+<tal:doctype tal:replace="structure string:&lt;!DOCTYPE html PUBLIC
+  &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
+  &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" />
+
 <metal:block use-macro="here/global_defines/macros/defines" />
 
 <html xmlns="http://www.w3.org/1999/xhtml"
@@ -17,30 +22,39 @@
                   isAnon portal_state/anonymous;
                   checkPermission nocall:context/portal_membership/checkPermission;
                   kss_inline_editable python:False;
+                  site_properties context/portal_properties/site_properties;
+                  ajax_load request/ajax_load | nothing;
+                  ajax_include_head request/ajax_include_head | nothing;
+                  charset site_properties/default_charset|string:utf-8;
                   oshaview python:here.restrictedTraverse('@@oshaview')"
       tal:attributes="lang lang;
                       xml:lang lang">
 
-  <tal:cache tal:define="charset site_properties/default_charset|string:utf-8">
     <metal:cache use-macro="here/global_cache_settings/macros/cacheheaders">
       Get the global cache headers located in global_cache_settings.
     </metal:cache>
-  </tal:cache>
 
   <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
-          tal:define="charset site_properties/default_charset|string:utf-8"
           tal:attributes="content string:text/html;;charset=${charset}" />
+
+    <meta name="generator" content="Plone - http://plone.org" />
+
+    <tal:comment tal:condition="nothing">
+      Internet Explorer fix, forces IE8 into newest possible rendering
+      engine even if it's on an intranet. This has to be defined before any
+      script/style tags.
+    </tal:comment>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <metal:baseslot define-slot="base">
       <base tal:attributes="href here/renderBase" /><!--[if lt IE 7]></base><![endif]-->
       <link rel="canonical" tal:attributes="href here/absolute_url" />
     </metal:baseslot>
 
-    <meta name="generator" content="Plone - http://plone.org" />
 
-    <div tal:replace="structure provider:plone.htmlhead" />
+
 
     <meta tal:define="metatags python:oshaview.listMetaTags(here).items()"
           tal:condition="metatags"
@@ -66,26 +80,29 @@
     </tal:subsite>
 
 
-    <link tal:replace="structure provider:plone.htmlhead.links" />
+    <tal:notajax tal:condition="python:not ajax_load or ajax_include_head">
+        <div tal:replace="structure provider:plone.htmlhead" />
+        <link tal:replace="structure provider:plone.htmlhead.links" />
 
-    <link rel="alternate" href="" title="RSS 1.0" type="application/rss+xml"
-          tal:condition="python: syntool.isSyndicationAllowed(here)"
-          tal:attributes="href string:$here_url/RSS" />
+        <link rel="alternate" href="" title="RSS 1.0" type="application/rss+xml"
+              tal:condition="python: syntool.isSyndicationAllowed(here)"
+              tal:attributes="href string:$here_url/RSS" />
 
-    <!-- Disable IE6 image toolbar -->
-    <meta http-equiv="imagetoolbar" content="no" />
+        <!-- Disable IE6 image toolbar -->
+        <meta http-equiv="imagetoolbar" content="no" />
     
-    <tal:comment replace="nothing"> A slot where you can insert elements in the header from a template </tal:comment>
-    <metal:headslot define-slot="head_slot" />
+        <tal:comment replace="nothing"> A slot where you can insert elements in the header from a template </tal:comment>
+        <metal:headslot define-slot="head_slot" />
 
-    <tal:comment replace="nothing"> A slot where you can insert CSS in the header from a template </tal:comment>
-    <metal:styleslot define-slot="style_slot" />
+        <tal:comment replace="nothing"> A slot where you can insert CSS in the header from a template </tal:comment>
+        <metal:styleslot define-slot="style_slot" />
 
-    <tal:comment replace="nothing"> This is deprecated, please use style_slot instead. </tal:comment>
-    <metal:cssslot define-slot="css_slot" />
+        <tal:comment replace="nothing"> This is deprecated, please use style_slot instead. </tal:comment>
+        <metal:cssslot define-slot="css_slot" />
 
-    <tal:comment replace="nothing"> A slot where you can insert javascript in the header from a template </tal:comment>
-    <metal:javascriptslot define-slot="javascript_head_slot" />
+        <tal:comment replace="nothing"> A slot where you can insert javascript in the header from a template </tal:comment>
+        <metal:javascriptslot define-slot="javascript_head_slot" />
+    </tal:notajax>
 
   </head>
 
