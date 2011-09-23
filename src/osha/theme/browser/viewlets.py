@@ -373,7 +373,7 @@ class OSHALogoViewlet(common.LogoViewlet):
         self.navigation_root_url = portal_state.navigation_root_url()
 
         portal = portal_state.portal()
-        osha_view = getMultiAdapter((self.context, self.context.request), name=u'oshaview')
+        osha_view = getMultiAdapter((self.context, self.context.REQUEST), name=u'oshaview')
         subsite = portal.restrictedTraverse(osha_view.subsiteRootPath())
         logoName = subsite.restrictedTraverse('base_properties').logoName
 
