@@ -14,7 +14,6 @@
                   portal portal_state/portal;
                   portal_url portal_state/portal_url;
                   syntool context/portal_syndication;
-                  isRTL portal_state/is_rtl;
                   isAnon portal_state/anonymous;
                   checkPermission nocall:context/portal_membership/checkPermission;
                   kss_inline_editable python:False;
@@ -90,7 +89,11 @@
 
   </head>
 
-  <body tal:attributes="class string:${here/getSectionFromURL} template-${template/id};
+  <body tal:define="isRTL portal_state/is_rtl;
+                    sl python:plone_view.have_portlets('plone.leftcolumn', view);
+                    sr python:plone_view.have_portlets('plone.rightcolumn', view);
+                    body_class python:plone_view.bodyClass(template, view);"
+    tal:attributes="class body_class;
                         dir python:test(isRTL, 'rtl', 'ltr')">
    <div id="border-wrapper">
    	<script type="text/javascript" tal:condition="not: isAnon">
@@ -202,7 +205,8 @@
       
               <tal:comment replace="nothing"> Start of the left column </tal:comment>
               <div id="portal-column-one"
-                  metal:define-slot="column_one_slot">
+                  metal:define-slot="column_one_slot"
+                  tal:condition="sl">
                 <div class="visualPadding">
                   <metal:portlets define-slot="portlets_one_slot">
                     <tal:block replace="structure provider:plone.leftcolumn" />
@@ -214,7 +218,8 @@
       
               <tal:comment replace="nothing"> Start of right column </tal:comment>
               <div id="portal-column-two"
-                  metal:define-slot="column_two_slot">
+                  metal:define-slot="column_two_slot"
+                  tal:condition="sr">
                 <div class="visualPadding">
                   <metal:portlets define-slot="portlets_two_slot">
                     <tal:block replace="structure provider:plone.rightcolumn" />
@@ -236,7 +241,7 @@
 
       <div class="visualClear" id="clear-space-before-footer"><!-- --></div>
       
-      <div tal:define="context_state context/@@plone_context_state;
+      <!-- <div tal:define="context_state context/@@plone_context_state;
                         portlet_assignable context_state/portlet_assignable"
             tal:condition="python:portlet_assignable and checkPermission('Portlets: Manage portlets', context)">
           <a class="managePortletsFallback"
@@ -244,7 +249,7 @@
              i18n:translate="manage_portlets_fallback">
              Manage portlets
           </a>
-      </div>
+      </div> -->
 
       <metal:block i18n:domain="plone">
 
