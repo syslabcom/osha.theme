@@ -35,6 +35,9 @@ h3 { border-bottom: 1px solid lightgrey;}
      tal:define="results options/results;
                  ttool nocall:here/portal_types;
                  atool nocall:here/portal_alertservice;
+                 plone_view context/@@plone;
+                 normalizeString nocall:plone_view/normalizeString;
+                 toLocalizedTime nocall:plone_view/toLocalizedTime;
                  ordered_results python:atool.notification_order_results(results);">
 
     <h2 i18n:domain="osha" i18n:translate="alert_osha_notification_report">OSHA Notification Report</h2>

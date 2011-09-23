@@ -17,6 +17,9 @@
 
    <div tal:define="links python:list(links);
                     batch python:Batch(links, b_size, int(b_start), orphan=1);
+                    plone_view context/@@plone;
+                    normalizeString nocall:plone_view/normalizeString;
+                    toLocalizedTime nocall:plone_view/toLocalizedTime;
                     lc here/portal_linkchecker">
     <p tal:condition="path_filter">Number of links found with current filter: <span tal:replace="python:len(links)"/></p>
 

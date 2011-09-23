@@ -12,6 +12,9 @@
 <metal:macro define-macro="searchresults">
     <tal:defines define="
                     oshaview python:context.restrictedTraverse('@@oshaview');
+                    plone_view context/@@plone;
+                    normalizeString nocall:plone_view/normalizeString;
+                    toLocalizedTime nocall:plone_view/toLocalizedTime;
                     outdated result/outdated|python:0">
       <div class="searchresult" tal:attributes="class python:outdated and 'searchresult-outdated' or 'searchresult'">
         <dt>
