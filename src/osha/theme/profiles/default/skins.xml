@@ -80,7 +80,7 @@
 
 
 
- <skin-path name="OSHA Plone Theme" based-on="Plone Default">
+ <skin-path name="OSHA Plone Theme" based-on="Plone Classic Theme">
   <layer name="osha_theme_custom_fckeditor99charsfixdeadbeefdeadbe"
      insert-after="custom"/>
   <layer name="osha_theme_custom_images"
@@ -179,7 +179,7 @@
      insert-after="custom"/>
  </skin-path>
 
- <skin-path name="NAPO" based-on="Plone Default">
+ <skin-path name="NAPO" based-on="Plone Classic Theme">
 	 <layer name="osha_theme_napo"
      insert-after="custom"/>
 	 <layer name="osha_theme_scripts"
