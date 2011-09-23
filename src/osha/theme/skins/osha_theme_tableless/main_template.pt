@@ -20,6 +20,7 @@
                   portal_url portal_state/portal_url;
                   syntool context/portal_syndication;
                   isAnon portal_state/anonymous;
+                  here_url context_state/object_url;
                   checkPermission nocall:context/portal_membership/checkPermission;
                   kss_inline_editable python:False;
                   site_properties context/portal_properties/site_properties;
