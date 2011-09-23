@@ -5,7 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
       lang="en"
-      tal:define="lang language; 
+      tal:define="lang context/@@plone_portal_state/language;
+                  portal context/@@plone_portal_state/portal;
+                  portal_url context/@@plone_portal_state/portal_url;
+                  syntool context/portal_syndication;
                   kss_inline_editable python:False;
                   oshaview python:here.restrictedTraverse('@@oshaview')"
       tal:attributes="lang lang;
@@ -30,7 +33,7 @@
 
     <meta name="generator" content="Plone - http://plone.org" />
 
-    <div tal:replace="structure provider:plone.htmlhead" />
+    <!-- <div tal:replace="structure provider:plone.htmlhead" /> -->
 
     <meta tal:define="metatags python:oshaview.listMetaTags(here).items()"
           tal:condition="metatags"
@@ -56,7 +59,7 @@
     </tal:subsite>
 
 
-    <link tal:replace="structure provider:plone.htmlhead.links" />
+    <!-- <link tal:replace="structure provider:plone.htmlhead.links" /> -->
 
     <link rel="alternate" href="" title="RSS 1.0" type="application/rss+xml"
           tal:condition="python: syntool.isSyndicationAllowed(here)"
