@@ -8,7 +8,8 @@
 <div metal:fill-slot="main">
 <metal:main_macro define-macro="main">
     <metal:body define-macro="body_macro"
-                tal:define="templateId view/getName">
+                tal:define="templateId view/getName;
+                    normalizeString nocall:context/@@plone/normalizeString">
 
 
         <h1 class="documentFirstHeading" tal:content="view/Title"> 

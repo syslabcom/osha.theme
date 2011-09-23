@@ -40,6 +40,7 @@
                             use_view_action site_properties/typesUseViewActionInListings|python:();
                             over_limit python: limit_display and len(folderContents) > limit_display;
                             folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
+                            normalizeString nocall:context/@@plone/normalizeString;
                             show_about python:not isAnon or site_properties.allowAnonymousViewAbout">
         <tal:listing condition="folderContents">
 

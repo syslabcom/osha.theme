@@ -20,7 +20,8 @@
     <metal:main-macro define-macro="main"
                       tal:define="kssClassesView context/@@kss_field_decorator_view;
                                   getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
-                                  templateId view/getName">
+                                  templateId view/getName;
+                                  normalizeString nocall:context/@@plone/normalizeString">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 

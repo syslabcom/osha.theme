@@ -28,6 +28,7 @@
                  desc_length site_properties/search_results_description_length;
                  desc_ellipsis site_properties/ellipsis;
                  searchterm request/SearchableText|nothing;
+                 normalizeString nocall:context/@@plone/normalizeString;
                  use_view_action site_properties/typesUseViewActionInListings|python:();">
 
     <form name="searchform" 
