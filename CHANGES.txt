@@ -4,8 +4,8 @@ osha.theme Changelog
 1.4.18 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- If no or incorrect film id is passed to the NAPO episose view, issue a warning
+  and redirect to the film overview #3799 [thomasw]
 
 1.4.17 (2011-09-21)
 -------------------
