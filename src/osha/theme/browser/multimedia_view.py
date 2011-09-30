@@ -7,6 +7,7 @@ from copy import copy
 from Acquisition import aq_acquire
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.statusmessages.interfaces import IStatusMessage
 from osha.policy.data.multimedia import napofilm
 
 class LipstickView(BrowserView):
@@ -210,6 +211,13 @@ class MultimediaFilmEpisodeListingView(BrowserView, FilmsDataMixin):
     template.id = "multimedia-film-episodes-listing-view"
 
     def __call__(self):
+        if self.film == None:
+            status = IStatusMessage(self.request)
+            status.addStatusMessage(u'Redirecting in 10 seconds to the film '\
+            u'overview, since no or incorrect film id was passed. Please '\
+            u're-check the URL and the page where this link came from.',
+            type='error')
+            self.request.RESPONSE.setHeader('Refresh', '10;URL=%s' % self.context.absolute_url())
         return self.template()
 
     def video_fancybox(self):
