@@ -16,11 +16,12 @@
 <h1 i18n:translate="heading_agency_rss">Agency RSS Feeds</h1>
 
 <p i18n:translate="description_agency_rss">
-    This page contains an overview over the RSS (<a target="wikipedia" href="http://en.wikipedia.org/wiki/RSS">What is RSS?</a>) feeds currently available at osha.europa.eu. Subscribe to our RSS (Really Simple Syndication) feeds to get information delivered directly to your desktop!
+    This page contains an overview over the RSS (<a i18n:name="link" target="wikipedia" href="http://en.wikipedia.org/wiki/RSS"><span i18n:translate="info_whatis_rss">What is RSS?</span></a>) feeds currently available at osha.europa.eu. Subscribe to our RSS (Really Simple Syndication) feeds to get information delivered directly to your desktop!
 </p>
 
-<p i18n:translate="help_use_aggregator">
-    <b>To view one of the feeds in your RSS Aggregator</b> (<a href="http://en.wikipedia.org/wiki/Aggregators" target="wikipedia">What is an Aggregator?</a>):
+<p>
+    <b i18n:translate="help_use_aggregator">To view one of the feeds in your RSS Aggregator</b> 
+    (<a href="http://en.wikipedia.org/wiki/Aggregators" target="wikipedia" i18n:translate="info_whatis_aggregator">What is an Aggregator?</a>):
 </p>    
 <ol>
     <li i18n:translate="help_use_aggregator_step1">
@@ -29,8 +30,8 @@
         Paste the URL into your reader.</li>
 </ol>
 
-<p i18n:translate="help_use_online_service">
-    <b>If you use an online RSS service, use a shortcut:</b>
+<p>
+    <b i18n:translate="help_use_online_service">If you use an online RSS service, use a shortcut:</b>
 </p>
 <ol>
     <li i18n:translate="help_use_online_service_step1">
@@ -44,7 +45,7 @@
 <dl class="portalMessage">
     <dt i18n:translate="label_note">Note</dt>
     <dd i18n:translate="note_language">
-        The current language is <span tal:replace="view/currlang"/>. If you want to subscribe to feeds in another language, change the language of this page first.
+        The current language is <span i18n:name="language" tal:replace="view/currlang"/>. If you want to subscribe to feeds in another language, change the language of this page first.
     </dd>
 </dl>
 
