@@ -28,8 +28,9 @@ body.template-multimedia-image-details-view a[rel="contactSheet"] {
 /* @group Gallery */
 
 body.template-multimedia-image-details-view .mainImage {
-	float: left;
-	margin-bottom: 20px;
+   float: left;
+   margin-bottom: 20px;
+   width: 630px;
 }
 
 body.template-multimedia-image-details-view #content .mainImage img {
