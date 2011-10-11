@@ -4,8 +4,8 @@ osha.theme Changelog
 1.4.19 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Bugfix for layout of the multimedia-image-details-view when images
+  have very long titles refs #1555 [deroiste]
 
 1.4.18 (2011-10-04)
 -------------------
