@@ -211,11 +211,6 @@ body.template-multimedia-film-episodes-listing-view div.episode {
     clear: left;
 }
 
-body.template-multimedia-image-folders-view .scrubber li {
-    display: list-item;
-    float: none;
-}
-
 body.template-multimedia-film-listing-view #content .scrubber li h4,
 body.template-multimedia-image-folders-view #content .scrubber li h4,
 body.template-multimedia-film-listing-view .scrubber li a strong,
