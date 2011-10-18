@@ -133,7 +133,7 @@ class OSHA(BrowserView):
 
         if not desc:
             desc = context.Description() or navigation_root.Description()
-            
+
         meta['description'] = desc
         meta['DC.description'] = desc
 
@@ -425,3 +425,15 @@ class OSHA(BrowserView):
             return lang_info.get(u"native", None)
         return None
 
+    def get_orientation(self, image):
+        width_str = image.getWidth()
+        height_str = image.getHeight()
+        try:
+            width = int(width_str)
+            height = int(height_str)
+        except (ValueError, TypeError):
+            return ""
+        if width / height < 1:
+            return "landscape"
+        else:
+            return "portrait"

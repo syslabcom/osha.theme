@@ -149,14 +149,14 @@ class FilmsDataMixin(object):
                                                   "description_"+movie_id)
             mov["image"] = movie.setdefault(
                 "image", urljoin(self.media_url, movie_id+".jpg"))
+            mov["video_avi"] = movie.setdefault(
+                "video_avi",  urljoin(self.media_url, movie_id+".avi"))
             mov["video_mp4"] = movie.setdefault(
                 "video_mp4", urljoin(self.media_url, movie_id+".mp4"))
             mov["video_ogv"] = movie.setdefault(
                 "video_ogv", urljoin(self.media_url, movie_id+".ogv"))
             mov["video_webm"] = movie.setdefault(
                 "video_webm",  urljoin(self.media_url, movie_id+".webm"))
-            mov["video_avi"] = movie.setdefault(
-                "video_avi",  urljoin(self.media_url, movie_id+".avi"))
             mov["video_wmv"] = movie.setdefault(
                 "video_wmv",  urljoin(self.media_url, movie_id+".wmv"))
             mov["video_width"] = movie.setdefault("video_width", 640)
