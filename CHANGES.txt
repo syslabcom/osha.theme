@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - Bugfix for layout of the multimedia-image-details-view when images
   have very long titles refs #1555 [deroiste]
+- multimedia-image-details-view don't squash portrait thumbnails #3846
+  [deroiste]
 
 1.4.18 (2011-10-04)
 -------------------
