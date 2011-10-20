@@ -1,13 +1,14 @@
 osha.theme Changelog
 ====================
 
-1.4.19 (unreleased)
+1.4.19 (2011-10-20)
 -------------------
 
 - Bugfix for layout of the multimedia-image-details-view when images
   have very long titles refs #1555 [deroiste]
 - multimedia-image-details-view don't squash portrait thumbnails #3846
   [deroiste]
+- i18n fixes on the RSS feeds view #2081 [thomasw]
 
 1.4.18 (2011-10-04)
 -------------------
