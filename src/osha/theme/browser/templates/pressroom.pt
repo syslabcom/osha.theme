@@ -9,9 +9,8 @@
 
 
       <h1 class="header"
-          i18n:domain="osha-navigation"
-          i18n:translate="osha_nav_title_press_room">
-          Press Room
+          i18n:translate="osha_label_press_and_multimedia">
+          Press and Multimedia
       </h1>
 
       <div id="pressroom-boxes">
