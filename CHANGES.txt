@@ -5,6 +5,8 @@ osha.theme Changelog
 -------------------
 
 - Change the title of the pressroom view, css fixes #3846 [deroiste]
+- Changed ram-caching in image and events portlets, to allow for parallel
+  use under http and https #3872 [thomasw]
 
 
 1.4.19 (2011-10-20)
