@@ -138,7 +138,9 @@ class Renderer(base.Renderer):
         header = self.title()
         path = self.data.image
         video_url = self.data.get('video_url')
-        return (header, modified, preflang, path, video_url)
+        # http or https?
+        protocol = self.request.get('SERVER_URL', '').split("://")[0]
+        return (header, modified, preflang, path, video_url, protocol)
 
     @ram.cache(_render_cachekey)
     def render(self):
