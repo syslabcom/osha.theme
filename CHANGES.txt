@@ -4,7 +4,7 @@ osha.theme Changelog
 1.4.20 (unreleased)
 -------------------
 
-- Change the title of the pressroom view #3846 [deroiste]
+- Change the title of the pressroom view, css fixes #3846 [deroiste]
 
 
 1.4.19 (2011-10-20)

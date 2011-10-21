@@ -113,14 +113,9 @@ body.template-multimedia-image-details-view ul.thumbnails li a img {
 	height: 70px;
 }
 
-body.template-multimedia-image-details-view ul.thumbnails li a img.landscape {
+body.template-multimedia-image-details-view  ul.thumbnails li a img.multimedia-thumb-landscape {
    height: auto;
    width: 70px;
-}
-
-body.template-multimedia-image-details-view ul.thumbnails li.portrait a img {
-	height: auto;
-	width: 70px;
 }
 
 body.template-multimedia-image-details-view .noScript {

@@ -57,7 +57,7 @@
                   <li tal:attributes="class python:image_url == context.absolute_url() and 'current' or ''">
                     <a tal:attributes="href string:${image_url}/multimedia-image-details-view">
                       <img tal:attributes="src string:${image_url}/image_preview;
-                                           class orientation"/>
+                                           class string:multimedia-thumb-${orientation}"/>
                     </a>
                   </li>
                 </tal:image>
