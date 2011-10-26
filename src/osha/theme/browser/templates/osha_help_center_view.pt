@@ -67,9 +67,10 @@
              i18n:translate="label_faqs">
             FAQs
           </a>→
-          <strong tal:content="python:view.vocab_dict[selected_category][0]">
+          <a tal:content="python:view.vocab_dict[selected_category][0]"
+             tal:attributes="href string:${current_url}&category=${selected_category}">
             Accident Prevention
-          </strong>
+          </a>
           <ul id="faq_subcategories"
               tal:define="subcategories python:view.get_subcategories(selected_category)">
             <li tal:repeat="subcategory subcategories">
