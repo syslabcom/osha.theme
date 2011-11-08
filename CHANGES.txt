@@ -9,6 +9,8 @@ osha.theme Changelog
   use under http and https #3872 [thomasw]
 - Change the osha_help_center_view to make the category title a link
   #2385 [deroiste]
+- Change the oshnews-view to take filter by SEP Subject #3806
+  [deroiste]
 
 1.4.19 (2011-10-20)
 -------------------
