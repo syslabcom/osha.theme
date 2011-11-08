@@ -70,7 +70,10 @@ class DBFilterView(BrowserView):
         #          'sort_order':'reverse',
         #          'Language': ''}
 
+        # It is likely that this should be replaced by context.Subject()
+        # this was the case with #3806
         local_keyword = context.getProperty('keyword', '')
+
         keywords = self.request.get('keywords', local_keyword)
         if keywords:
             query = query & In('Subject', keywords)
