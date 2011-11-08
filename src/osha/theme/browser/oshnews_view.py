@@ -19,10 +19,10 @@ class OSHNewsView(BrowserView):
     """
     template = ViewPageTemplateFile('templates/oshnews_view.pt')
     template.id = "oshnews-view"
-    
+
     def __call__(self):
-        return self.template() 
-        
+        return self.template()
+
     def Title(self):
         context = Acquisition.aq_inner(self.context)
         if IATTopic.providedBy(context):
@@ -38,24 +38,28 @@ class OSHNewsView(BrowserView):
 
         # try to get query parameters from Topic (if present)
         query = getattr(context, 'buildQuery', None) and context.buildQuery()
+        import pdb; pdb.set_trace()
 
         if not query:
-            portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+            portal_state = getMultiAdapter(
+                (self.context, self.request), name=u'plone_portal_state')
             navigation_root_path = portal_state.navigation_root_path()
-    
-            oshaview = getMultiAdapter((self.context, self.request), name=u'oshaview')
+
+            oshaview = getMultiAdapter(
+                (self.context, self.request), name=u'oshaview')
             mySEP = oshaview.getCurrentSingleEntryPoint()
             kw = ''
             if mySEP is not None:
-                kw = mySEP.getProperty('keyword', '')
-                
+                kw = mySEP.Subject()
+
             queryA = Eq('portal_type', 'News Item')
             queryB = Eq('isNews', True)
-            queryBoth = In('review_state', 'published') & Eq('path', navigation_root_path) 
+            queryBoth = (In('review_state', 'published')
+                         & Eq('path', navigation_root_path))
             if kw !='':
                 queryBoth = queryBoth & In('Subject', kw)
             query = And(Or(queryA, queryB), queryBoth)
-            results = catalog.evalAdvancedQuery(query, (('Date', 'desc'),) ) 
+            results = catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )
         else:
             results = catalog(query)
         return results
@@ -79,14 +83,14 @@ class OSHNewsView(BrowserView):
 
 class OSHNewsLocalView(OSHNewsView):
     """Dislplay OSH news only from the local folder"""
-    
+
     @instance.memoize
     def getResults(self):
         context = Acquisition.aq_inner(self.context)
         catalog = getToolByName(context, 'portal_catalog')
         if hasattr(catalog, 'getZCatalog'):
             catalog = catalog.getZCatalog()
-            
+
         now = DateTime()
         queryA = Eq('portal_type', 'News Item')
         queryB = Eq('isNews', True)
@@ -94,7 +98,7 @@ class OSHNewsLocalView(OSHNewsView):
             & Le('effective', now)
 
         query = And(Or(queryA, queryB), queryBoth)
-        results = catalog.evalAdvancedQuery(query, (('Date', 'desc'),) ) 
+        results = catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )
 
         return results
 
