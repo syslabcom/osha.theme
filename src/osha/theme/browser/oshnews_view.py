@@ -38,7 +38,6 @@ class OSHNewsView(BrowserView):
 
         # try to get query parameters from Topic (if present)
         query = getattr(context, 'buildQuery', None) and context.buildQuery()
-        import pdb; pdb.set_trace()
 
         if not query:
             portal_state = getMultiAdapter(
