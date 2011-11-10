@@ -434,6 +434,6 @@ class OSHA(BrowserView):
         except (ValueError, TypeError):
             return ""
         if width / height < 1:
-            return "landscape"
-        else:
             return "portrait"
+        else:
+            return "landscape"
