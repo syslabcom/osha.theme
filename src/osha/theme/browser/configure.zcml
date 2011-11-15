@@ -378,6 +378,7 @@
         manager=".interfaces.IOSHAHeaderTopactions"
         class="plone.app.layout.viewlets.common.PersonalBarViewlet"
         layer=".interfaces.IOSHAThemeLayer"
+        template="templates/osha_personal_bar.pt"
         permission="zope2.View"
         />
 
