@@ -5,6 +5,7 @@ osha.theme Changelog
 -------------------
 
 - Display the publication date to everyone [deroiste] #3759
+- Anchoring user.gif to the portal root [deroiste] #3937
 
 
 1.4.20 (2011-11-09)
