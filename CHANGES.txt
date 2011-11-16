@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - Display the publication date to everyone [deroiste] #3759
 - Anchoring user.gif to the portal root [deroiste] #3937
+- Do not link the breadcrumb to Home when on the language root page
+  [deroiste] #3756
 
 
 1.4.20 (2011-11-09)
