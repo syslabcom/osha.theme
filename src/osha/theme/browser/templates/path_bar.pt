@@ -6,13 +6,14 @@
   are here:</span>
 
   <tal:home define="root_url view/navigation_root_url;
-                    current_url context/absolute_url">
+                    current_url context/absolute_url;
+                    is_lang_root view/is_lang_root">
     <a i18n:translate="tabs_home"
        tal:attributes="href root_url"
-       tal:condition="not:view/is_lang_root">Home</a>
+       tal:condition="not:is_lang_root">Home</a>
     <span tal:attributes="dir direction">
       <span i18n:translate="tabs_home"
-            tal:condition="view/is_lang_root">Home</span>
+            tal:condition="is_lang_root">Home</span>
     </span>
   </tal:home>
   <span tal:condition="view/breadcrumbs" class="breadcrumbSeparator">|</span>

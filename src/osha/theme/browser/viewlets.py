@@ -221,14 +221,20 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
 
     render =  ViewPageTemplateFile('templates/path_bar.pt')
 
+    @property
     def is_lang_root(self):
         portal = getSite()
         lang = getToolByName(
             self.context, 'portal_languages').getPreferredLanguage()
         portal_lang = portal.get(lang)
         default_site_root_page = portal_lang.getDefaultPage()
-        portal_lang_page_obj = portal_lang.get(default_site_root_page, None)
-        return self.context == portal_lang or self.context == portal_lang_page
+        if default_site_root_page is None:
+            if self.context == portal_lang:
+                return True
+        elif self.context == portal_lang.get(default_site_root_page, None):
+            return True
+        else:
+            return False
 
     def update(self):
         super(common.PathBarViewlet, self).update()
