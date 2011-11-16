@@ -5,20 +5,23 @@
   <span id="breadcrumbs-you-are-here" i18n:translate="you_are_here">You
   are here:</span>
 
-  <tal:home define="root_url view/navigation_root_url;
-                    current_url context/absolute_url;
-                    is_lang_root view/is_lang_root">
+  <tal:home define="is_lang_root view/is_lang_root">
     <a i18n:translate="tabs_home"
-       tal:attributes="href root_url"
+       tal:attributes="href view/navigation_root_url"
        tal:condition="not:is_lang_root">Home</a>
     <span tal:attributes="dir direction">
       <span i18n:translate="tabs_home"
             tal:condition="is_lang_root">Home</span>
     </span>
   </tal:home>
-  <span tal:condition="view/breadcrumbs" class="breadcrumbSeparator">|</span>
+
+  <span tal:condition="view/breadcrumbs" class="breadcrumbSeparator">
+    <tal:ltr condition="not: view/is_rtl">&rarr;</tal:ltr>
+    <tal:rtl condition="view/is_rtl">&raquo;</tal:rtl>
+  </span>
+
   <span tal:repeat="crumb view/breadcrumbs"
-        tal:attributes="dir direction">
+        tal:attributes="dir python:view.is_rtl and 'rtl' or 'ltr'">
     <tal:last tal:define="is_last repeat/crumb/end">
       <a href="#"
          tal:omit-tag="not: crumb/absolute_url"
@@ -27,7 +30,10 @@
          tal:content="crumb/Title">
         crumb
       </a>
-      <span class="breadcrumbSeparator" tal:condition="not: is_last">|</span>
+      <span class="breadcrumbSeparator" tal:condition="not: is_last">
+        <tal:ltr condition="not: view/is_rtl">&rarr;</tal:ltr>
+        <tal:rtl condition="view/is_rtl">&raquo;</tal:rtl>
+      </span>
       <span tal:condition="is_last"
             tal:content="crumb/Title">crumb</span>
     </tal:last>
