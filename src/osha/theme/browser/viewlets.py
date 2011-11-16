@@ -221,11 +221,14 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
 
     render =  ViewPageTemplateFile('templates/path_bar.pt')
 
-    def is_site_root(self):
-        portal_obj = getSite()
-        default_site_root_page = portal_obj.getDefaultPage()
-        portal_page_obj = portal_obj.get(default_site_root_page, None)
-        return self.context == portal_obj or self.context == portal_page_obj
+    def is_lang_root(self):
+        portal = getSite()
+        lang = getToolByName(
+            self.context, 'portal_languages').getPreferredLanguage()
+        portal_lang = portal.get(lang)
+        default_site_root_page = portal_lang.getDefaultPage()
+        portal_lang_page_obj = portal_lang.get(default_site_root_page, None)
+        return self.context == portal_lang or self.context == portal_lang_page
 
     def update(self):
         super(common.PathBarViewlet, self).update()
@@ -237,7 +240,6 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
         breadcrumbs_view = getMultiAdapter((self.context, self.request),
                                            name='breadcrumbs_view')
         self.breadcrumbs = breadcrumbs_view.breadcrumbs()
-
 
 
 class OSHACampaignAreaViewlet(common.ViewletBase):
