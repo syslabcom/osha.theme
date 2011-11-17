@@ -3,13 +3,15 @@ function displaynl () {
     jQuery('.older-newsletter').fadeIn('slow');
 }
 
-function loadOshmailContent() {
+var OSHMAIL = {}
+
+OSHMAIL.loadOshmailContent = function () {
     jQuery.ajax({
         async: false,
         type: 'GET',
         url: this.href,
         success: function(data) {
-            jQuery("#oshmail-overlay *")
+            jQuery("#oshmail-overlay #collage")
                 .replaceWith(jQuery(data)
                              .find("#collage"));
         }
@@ -24,7 +26,7 @@ jQuery(document).ready(function() {
             'titlePosition' : 'over',
             'overlayOpacity' : 0.7,
             'overlayColor' : '#000',
-            'onStart' : loadOshmailContent,
+            'onStart' : OSHMAIL.loadOshmailContent,
             'content' : jQuery('#oshmail-overlay'),
         });
     }
