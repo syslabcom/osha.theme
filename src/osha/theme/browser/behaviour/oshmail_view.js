@@ -6,6 +6,7 @@ function displaynl () {
 var OSHMAIL = {}
 
 OSHMAIL.loadOshmailContent = function () {
+    jQuery.fancybox.showActivity();
     jQuery.ajax({
         async: false,
         type: 'GET',
