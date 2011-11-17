@@ -227,6 +227,9 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
         lang = getToolByName(
             self.context, 'portal_languages').getPreferredLanguage()
         portal_lang = portal.get(lang)
+        if portal_lang is None:
+            # This can only happen for a bare test instance
+            return False
         default_site_root_page = portal_lang.getDefaultPage()
         if default_site_root_page is None:
             if self.context == portal_lang:
