@@ -26,7 +26,7 @@ jQuery(document).ready(function() {
             'transitionOut'  : 'elastic',
             'titlePosition'  : 'over',
             'overlayOpacity' : 0.7,
-            'overlayColor'   : '#000',
+            'overlayColor'   : '#FFF',
             'showNavArrows'  : false,
             'onStart'        : OSHMAIL.loadOshmailContent,
             'content'        : jQuery('#oshmail-overlay'),
