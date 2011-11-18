@@ -25,12 +25,15 @@
             type="text/javascript" charset="utf-8">
     </script>
     <script src="#"
-            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/oshmail_view.js"
+            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/oshmail_view.js?v=3"
             type="text/javascript" charset="utf-8">
     </script>
   </metal:javascriptslot>
   <metal:css fill-slot='css_slot'>
-    <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+    <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
+          tal:attributes="href string:${portal_url}/lipstick.css" />
+    <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
+          tal:attributes="href string:${portal_url}/collage.css"/>
     <style type="text/css">.older-newsletter {display:none;}</style>
   </metal:css>
 
@@ -98,15 +101,20 @@
               Latest issue
             </h2>
             <img src="http://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini"
-                 tal:attributes="src view/get_image" alt="Latest OSHMail Issue"
+                 alt="Latest OSHMail Issue"
+                 tal:attributes="src view/get_image"
                  tal:condition="view/get_image" />
             <h4>
-              <a tal:attributes="href string:${latest/getURL}?set_language=$currlang" tal:content="latest/Title" rel="oshmail-fancybox">title</a>
+              <a rel="oshmail-fancybox"
+                 tal:attributes="href string:${latest/getURL}?set_language=$currlang"
+                 tal:content="latest/Title" >title</a>
 
             </h4>
             <ul class="links">
               <li tal:repeat="latest_teaser view/latest_teasers">
-                <a href="#" tal:attributes="href string:${latest/getURL}?set_language=$currlang" tal:content="latest_teaser">Title of teaser</a>
+                <a rel="oshmail-fancybox"
+                   tal:attributes="href string:${latest/getURL}?set_language=$currlang"
+                   tal:content="latest_teaser">Title of teaser</a>
               </li>
             </ul>
           </div>

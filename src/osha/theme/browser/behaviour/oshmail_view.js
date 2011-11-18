@@ -22,13 +22,14 @@ OSHMAIL.loadOshmailContent = function () {
 jQuery(document).ready(function() {
     if (jQuery("a[rel=oshmail-fancybox]").length>0) {
         jQuery("a[rel=oshmail-fancybox]").fancybox({
-            'transitionIn' : 'elastic',
-            'transitionOut' : 'elastic',
-            'titlePosition' : 'over',
+            'transitionIn'   : 'elastic',
+            'transitionOut'  : 'elastic',
+            'titlePosition'  : 'over',
             'overlayOpacity' : 0.7,
-            'overlayColor' : '#000',
-            'onStart' : OSHMAIL.loadOshmailContent,
-            'content' : jQuery('#oshmail-overlay'),
+            'overlayColor'   : '#000',
+            'showNavArrows'  : false,
+            'onStart'        : OSHMAIL.loadOshmailContent,
+            'content'        : jQuery('#oshmail-overlay'),
         });
     }
 })
