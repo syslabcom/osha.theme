@@ -617,7 +617,7 @@ table.plain th {
 }
 /* Batch selector */
 .listingBar {
-    background-color: &dtml-globalBackgroundColor;;
+    background-color: #F2F4F7;
     border-color: &dtml-globalBorderColor;;
     border-style: &dtml-borderStyle;;
     border-width: &dtml-borderWidth;;
