@@ -705,7 +705,7 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
     font-size:100%;
 }
 
-#collage .collage-row .block_2 div.collage-item
+#collage .collage-row .block_2 div.collage-item {
     width:80%;
     margin:1em auto;
     padding:1em;
