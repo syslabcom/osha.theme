@@ -699,11 +699,13 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 
 /****************styles for the new class requested by Manuela in ticket #855*****************/
 
-
 .boxing_styles_inner_content {
     background-color:#F7F8F9;
     border:1px solid #C5CBD8;
     font-size:100%;
+}
+
+#collage .collage-row .block_2 div.collage-item
     width:80%;
     margin:1em auto;
     padding:1em;
