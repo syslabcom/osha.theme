@@ -959,6 +959,18 @@ body.template-competitions-view #competitionSchwusch li {
     width: 309px;
 }
 
+/* oshmail overlay */
+#oshmail-overlay h1.documentFirstHeading {
+   background: none;
+   font-size: 300%;
+   padding: 0 !important;
+}
+
+#oshmail-overlay h1.documentFirstHeading,
+#oshmail-overlay #plone-document-byline {
+    margin-left: 1%;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
