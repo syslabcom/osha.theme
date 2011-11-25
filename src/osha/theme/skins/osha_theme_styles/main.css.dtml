@@ -703,12 +703,13 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
     background-color:#F7F8F9;
     border:1px solid #C5CBD8;
     font-size:100%;
+    padding:1em;
 }
 
 #collage .collage-row .block_2 div.collage-item {
-    width:80%;
-    margin:1em auto !important;
-    padding:1em;
+   width:80%;
+   margin-left: auto !important;
+   margin-right: auto !important;
 }
 
 .boxing_styles_inner_content tbody {
