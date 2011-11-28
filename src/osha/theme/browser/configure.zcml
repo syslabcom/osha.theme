@@ -161,8 +161,8 @@
         />
 
     <!-- OSHA Custom Help Center / FAQ views -->
-    <browser:page
-        for="Products.PloneHelpCenter.interfaces.IHelpCenterContent"
+   <browser:page
+        for="*"
         name="osha_help_center_view"
         class=".oshahelpcenter.OSHAHelpCenterView"
         permission="zope2.View"

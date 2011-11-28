@@ -9,6 +9,8 @@ osha.theme Changelog
 - Do not link the breadcrumb to Home when on the language root page
   [deroiste] #3756
 - Display oshmail newsletters in a fancybox overlay [deroiste] #3762
+- Allow the osha_help_center_view to be used in the practical
+  solutions FAQ section [deroiste] #2385
 
 
 1.4.20 (2011-11-09)

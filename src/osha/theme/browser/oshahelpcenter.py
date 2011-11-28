@@ -1,8 +1,13 @@
-from zope.app.component.hooks import getSite
 from ordereddict import OrderedDict
+
+from zope.app.component.hooks import getSite
+from zope.interface import providedBy
+
+from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFCore.utils import getToolByName
+from Products.PloneHelpCenter.interfaces import IHelpCenterContent
+
 
 class OSHAHelpCenterView(BrowserView):
     """ support for HelpCenter templates """
@@ -38,7 +43,8 @@ class OSHAHelpCenterView(BrowserView):
         if subcategory:
             query["subcategory"] = subcategory
 
-        if searchable_text == subcategory == "":
+        if (searchable_text == subcategory == ""
+            and IHelpCenterContent in providedBy(self.context)):
             path = "/".join(self.context.getPhysicalPath())
             query["path"] = path+"/general-information"
 
