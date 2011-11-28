@@ -10,7 +10,8 @@ osha.theme Changelog
   [deroiste] #3756
 - Display oshmail newsletters in a fancybox overlay [deroiste] #3762
 - Allow the osha_help_center_view to be used in the practical
-  solutions FAQ section [deroiste] #2385
+  solutions FAQ section, also link the practical solutions portlet to
+  the main FAQ section [deroiste] #2385
 
 
 1.4.20 (2011-11-09)
