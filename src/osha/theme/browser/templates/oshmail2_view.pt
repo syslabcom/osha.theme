@@ -92,8 +92,8 @@
 
 
           <div id="blockLatestIssue" tal:define="latest view/getLatestIssue">
-            <h2 i18n:translate="label_latest_issue">
-              Latest issue
+            <h2 i18n:translate="label_latest_newsletter">
+              Latest newsletter 
             </h2>
             <img src="http://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini"
                  alt="Latest OSHMail Issue"
@@ -122,7 +122,7 @@
 
           <div id="blockOlderIssues" class="older-newsletter">
             <h2 i18n:translate="xlabel_previous_issues" i18n:domain="osha">
-              Older issues
+              Older Newsletters
             </h2>
             <h3 tal:content="view/thisyear">
               2010
