@@ -531,6 +531,14 @@
 
     <browser:page
         for="*"
+        name="oshmail2-view"
+        class=".oshmail2_view.OSHmailView"
+        allowed_interface=".interfaces.IOSHmailView"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
         name="oshmail-view"
         class=".oshmail_view.OSHmailView"
         allowed_interface=".interfaces.IOSHmailView"

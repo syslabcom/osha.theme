@@ -1,0 +1,288 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+  <metal:javascriptslot fill-slot="javascript_head_slot">
+    <script src="#"
+            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/oshmail_view.js?v=3"
+            type="text/javascript" charset="utf-8">
+    </script>
+  </metal:javascriptslot>
+  <metal:css fill-slot='css_slot'>
+    <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
+          tal:attributes="href string:${portal_url}/collage.css"/>
+    <style type="text/css">.older-newsletter {display:none;}
+      #subscriptionBox { background-color: #F2F4F7; width:250px; border:1px solid #E6E8ED; float:right; } 
+      #unsubscriptionBox { display:block;width: 20em;} 
+      #unsubscriptionBox dd { display:block;margin-left: 0; text-align:right;} 
+      .rounded-corners {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -khtml-border-radius: 10px;
+        behavior: url(/border-radius.htc);
+        border-radius: 10px;
+      }
+      #subscriptionBox h4 {background-color: transparent; font-weight:bold; font-size:110%;  margin:6px;}
+      #subscriptionBox dl {background-color: white;}
+      #subscriptionBox dl dt {padding: 2px 2px 2px 10px; background-color: transparent; border:0px solid white;}
+      #subscriptionBox dd {margin:0;background:white; padding: 0.5em 2em; text-align:right;}
+      #blockLatestIssue img {float:left; margin-right: 1em;}
+      #blockLatestIssue ul {margin-left: 140px;}
+      .fadercontrol {margin-top:1em;}
+      h2 { margin-bottom: 1em;}
+
+    </style>
+  </metal:css>
+
+  <body>
+    <div metal:fill-slot="main"
+         tal:define="templateId template/getId; currlang here/portal_languages/getPreferredLanguage">
+
+      <div id="content">
+        <div class="message warning"
+             tal:condition="request/portal_status_message | nothing"
+             tal:content="request/portal_status_message | nothing" />
+        <div id="mainContent">
+          <h1 class="documentFirstHeading">
+            OSHmail newsletter
+          </h1>
+
+          <dl id="subscriptionBox" class="portlet rounded-corners">
+            <form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
+            <dt>
+              <h4 i18n:translate="oshmail2_header_subscribe">Subscription</h4> 
+            </dt>
+            <dd>
+              <label><span i18n:translate="portlet_oshmail2_email" tal:omit-tag="">E-mail</span>* <input type="text" name="emailaddress" class="span-4" /></label>
+            </dd>
+            <dd>
+              <button type="submit" name="subscribe" i18n:translate="Subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button>
+            </dd>
+            <dd class="discreet rounded-corners">
+              Not interested any more? <a href="oshmail2-view#unsubscribe">Unsubscribe</a>
+            </dd>
+          </form> 
+          </dl>
+
+          <p>Once a month, OSHmail keeps you updated on occupational safety and health:</p>
+
+          <ul>
+            <li>Latest news from around the world.</li>
+            <li>Forthcoming events.</li>
+            <li>Latest Agency publications.</li>
+            <li>Updates on EU legislation.</li>
+            <li>In 22 languages.</li>
+            <li>Free subscription.</li>
+          </ul>
+          <p>
+            Easy one-click unsubscription, if you are not interested anymore.
+          </p>
+
+          <!--form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
+            <fieldset class="concise">
+              <legend i18n:translate="oshmail_header_subscribe">Subscribe to OSHmail</legend> <label><span i18n:translate="label_name" tal:omit-tag="">Name</span> <input type="text" name="name" class="span-6" /></label> <label><span i18n:translate="portlet_oshmail_email" tal:omit-tag="">E-mail address</span>* <input type="text" name="emailaddress" class="span-6" /></label>
+            </fieldset>
+
+            <fieldset class="buttonBar">
+              <button type="submit" name="subscribe" i18n:translate="Subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button>
+              <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
+            </fieldset>
+          </form-->
+
+
+          <div id="blockLatestIssue" tal:define="latest view/getLatestIssue">
+            <h2 i18n:translate="label_latest_issue">
+              Latest issue
+            </h2>
+            <img src="http://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini"
+                 alt="Latest OSHMail Issue"
+                 tal:attributes="src view/get_image"
+                 tal:condition="view/get_image" />
+            <h4>
+              <a rel="oshmail-fancybox"
+                 tal:attributes="href string:${latest/getURL}?set_language=$currlang"
+                 tal:content="latest/Title" >title</a>
+
+            </h4>
+            <ul class="links">
+              <li tal:repeat="latest_teaser view/latest_teasers">
+                <a rel="oshmail-fancybox"
+                   tal:attributes="href string:${latest/getURL}?set_language=$currlang"
+                   tal:content="latest_teaser">Title of teaser</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="visualClear"><!-- --> </div>
+
+          <p class="fadercontrol">
+              <a onclick="displaynl()" href="javascript:return false;"><span i18n:translate="xlabel_older_newsletters">older newsletters</span></a>
+          </p>
+
+          <div id="blockOlderIssues" class="older-newsletter">
+            <h2 i18n:translate="xlabel_previous_issues" i18n:domain="osha">
+              Older issues
+            </h2>
+            <h3 tal:content="view/thisyear">
+              2010
+            </h3>
+            <ul class="links" tal:define="issues view/thisyears_issues">
+              <li tal:repeat="issue issues">
+                <a rel="oshmail-fancybox"
+                   tal:define="data python:issue[1]"
+                   tal:attributes="href string:${data/url}?set_language=$currlang"
+                   tal:content="data/title">OSHmail 91 - 2009</a>
+              </li>
+            </ul>
+            <h3 tal:content="view/lastyear">
+              2009
+            </h3>
+            <ul class="links" tal:define="issues view/lastyears_issues">
+              <li tal:repeat="issue issues">
+                <a rel="oshmail-fancybox"
+                   tal:define="data python:issue[1]"
+                   tal:attributes="href string:${data/url}?set_language=$currlang"
+                   tal:content="data/title">OSHmail 91 - 2009</a>
+              </li>
+            </ul>
+            <p class="fadercontrol" i18n:translate="label_load_older">
+              Load <a onclick="displaynl()" href="javascript:return false;" i18n:name="link"><span i18n:translate="label_older_newsletters">older newsletters</span></a>.
+            </p>
+            <tal:repeat define="oldernl view/oldernewsletters" repeat="nl oldernl/keys">
+              <h3 tal:content="nl">
+                2009
+              </h3>
+              <ul class="links older-newsletter" tal:define="issues python:oldernl[nl]">
+                <li tal:repeat="issue issues">
+                  <a rel="oshmail-fancybox"
+                     tal:define="data python:issue[1]"
+                     tal:attributes="href string:${data/url}?set_language=$currlang"
+                     tal:content="data/title">OSHmail 91 - 2009</a>
+                </li>
+              </ul>
+            </tal:repeat>
+          </div>
+
+
+          <div class="visualClear"><!-- --> </div>
+
+          <h2 id="unsubscribe">Unsubscribe</h2>
+          <dl id="unsubscriptionBox">
+          <form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
+          <dd>
+              <label><span i18n:translate="xportlet_oshmail_email" tal:omit-tag="">Your e-mail</span> <input type="text" name="emailaddress" class="span-6" /></label>
+          </dd>
+          <dd>
+              <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
+          </dd>
+          </form>
+          </dl>
+
+          <!--p i18n:translate="oshmail_intro_every_month">
+            Every month, <strong i18n:name="oshmail">OSHmail</strong> informs you of the latest developments in occupational safety and health:
+          </p>
+          <ul>
+            <li i18n:translate="oshmail_list_1">the latest safety and health news from around the world;
+            </li>
+            <li i18n:translate="oshmail_list_3">updates on campaigns and activities organised by the Agency;
+            </li>
+            <li i18n:translate="oshmail_list_4">forthcoming events;
+            </li>
+            <li i18n:translate="oshmail_list_5">the latest Agency publications;
+            </li>
+            <li i18n:translate="oshmail_list_6">updates on EU legislation;
+            </li>
+            <li i18n:translate="oshmail_list_7">in 22 languages…
+            </li>
+          </ul>
+        </div>
+        <div id="xportlets" class="floatAfter">
+
+          <div class="portlet" id="portletSubscribe">
+            <form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
+            <fieldset>
+              <h2 i18n:translate="oshmail_header_subscribe">Subscription</h2> 
+              <label><span i18n:translate="portlet_oshmail2_email" tal:omit-tag="">E-mail</span>* <input type="text" name="emailaddress" class="span-4" /></label>
+            </fieldset>
+
+            <fieldset class="buttonBar">
+              <button type="submit" name="subscribe" i18n:translate="Subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button>
+            </fieldset>
+          </form> 
+          </div>
+
+          <div class="portlet" id="portletLatestIssue" tal:define="latest view/getLatestIssue">
+            <h2 i18n:translate="label_latest_issue">
+              Latest issue
+            </h2>
+            <img src="http://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini"
+                 alt="Latest OSHMail Issue"
+                 tal:attributes="src view/get_image"
+                 tal:condition="view/get_image" />
+            <h4>
+              <a rel="oshmail-fancybox"
+                 tal:attributes="href string:${latest/getURL}?set_language=$currlang"
+                 tal:content="latest/Title" >title</a>
+
+            </h4>
+            <ul class="links">
+              <li tal:repeat="latest_teaser view/latest_teasers">
+                <a rel="oshmail-fancybox"
+                   tal:attributes="href string:${latest/getURL}?set_language=$currlang"
+                   tal:content="latest_teaser">Title of teaser</a>
+              </li>
+            </ul>
+          </div>
+          <div class="portlet" id="portletOlderIssues">
+            <h2 i18n:translate="label_previous_issues" i18n:domain="osha">
+              Previous issues
+            </h2>
+            <h3 tal:content="view/thisyear">
+              2010
+            </h3>
+            <ul class="links" tal:define="issues view/thisyears_issues">
+              <li tal:repeat="issue issues">
+                <a rel="oshmail-fancybox"
+                   tal:define="data python:issue[1]"
+                   tal:attributes="href string:${data/url}?set_language=$currlang"
+                   tal:content="data/title">OSHmail 91 - 2009</a>
+              </li>
+            </ul>
+            <h3 tal:content="view/lastyear">
+              2009
+            </h3>
+            <ul class="links" tal:define="issues view/lastyears_issues">
+              <li tal:repeat="issue issues">
+                <a rel="oshmail-fancybox"
+                   tal:define="data python:issue[1]"
+                   tal:attributes="href string:${data/url}?set_language=$currlang"
+                   tal:content="data/title">OSHmail 91 - 2009</a>
+              </li>
+            </ul>
+            <p class="fadercontrol" i18n:translate="label_load_older">
+              Load <a onclick="displaynl()" href="javascript:return false;" i18n:name="link"><span i18n:translate="label_older_newsletters">older newsletters</span></a>.
+            </p>
+            <tal:repeat define="oldernl view/oldernewsletters" repeat="nl oldernl/keys">
+              <h3 tal:content="nl" class="older-newsletter">
+                2009
+              </h3>
+              <ul class="links older-newsletter" tal:define="issues python:oldernl[nl]">
+                <li tal:repeat="issue issues">
+                  <a rel="oshmail-fancybox"
+                     tal:define="data python:issue[1]"
+                     tal:attributes="href string:${data/url}?set_language=$currlang"
+                     tal:content="data/title">OSHmail 91 - 2009</a>
+                </li>
+              </ul>
+            </tal:repeat>
+          </div-->
+      </div>
+    </div>
+    <div id="oshmail-overlay"><span id="collage"/></div>
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+
+</body>
+</html>
