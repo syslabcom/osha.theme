@@ -12,6 +12,9 @@ osha.theme Changelog
 - Allow the osha_help_center_view to be used in the practical
   solutions FAQ section, also link the practical solutions portlet to
   the main FAQ section [deroiste] #2385
+- Implemented the CodeSyntax version of the Newsletter subscription form 
+  #3283
+  [pilz] 
 
 
 1.4.20 (2011-11-09)
