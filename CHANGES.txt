@@ -13,8 +13,8 @@ osha.theme Changelog
   solutions FAQ section, also link the practical solutions portlet to
   the main FAQ section [deroiste] #2385
 - Implemented the CodeSyntax version of the Newsletter subscription form 
-  #3283
-  [pilz] 
+  #3283 [pilz] 
+- Exchanged OSHA logos with new versions #3820 [thomasw]
 
 
 1.4.20 (2011-11-09)
