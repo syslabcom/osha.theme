@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.21 (unreleased)
+1.4.21 (2011-12-05)
 -------------------
 
 - Display the publication date to everyone [deroiste] #3759
