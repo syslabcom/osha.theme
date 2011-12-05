@@ -79,6 +79,9 @@ class OSHNewsView(BrowserView):
         return self.context.getProperty('show_link_to_news_item', True)
 
 
+class OSHNewsSimpleView(OSHNewsView):
+    template = ViewPageTemplateFile('templates/oshnews_view_simple.pt')
+    template.id = "oshnews-view-simple"
 
 class OSHNewsLocalView(OSHNewsView):
     """Dislplay OSH news only from the local folder"""

@@ -15,6 +15,8 @@ osha.theme Changelog
 - Implemented the CodeSyntax version of the Newsletter subscription form 
   #3283 [pilz] 
 - Exchanged OSHA logos with new versions #3820 [thomasw]
+- Added oshnews-view-simple to dislay a News Item's date at the bottom
+  instead of in the title (BE request) #3994 [thomasw]
 
 
 1.4.20 (2011-11-09)

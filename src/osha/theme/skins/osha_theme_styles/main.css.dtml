@@ -971,6 +971,12 @@ body.template-competitions-view #competitionSchwusch li {
     margin-left: 1%;
 }
 
+/* Simple news view for Belgian sites */
+div.teaserdate {
+    font-family: Courier;
+    padding-bottom: 1em;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
