@@ -178,8 +178,9 @@ class Renderer(base.Renderer):
             context, 'portal_languages').getPreferredLanguage()
         keyword_query = ["keywords:list="+i for i in subjects][0]
         if practical_solution == "faqs":
+            subject = subjects and subjects[0] or ""
             url = ("%s/%s/faq/osha_help_center_view?SearchableText="
-                   "&category=%s" %(portal_url, preflang, keyword_query))
+                   "&category=%s" %(portal_url, preflang, subject))
         else:
             url = ("%s/%s/practical-solutions/%s?%s#database_search" %(
                     portal_url, preflang, practical_solution, keyword_query))
