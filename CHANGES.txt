@@ -1,11 +1,11 @@
 osha.theme Changelog
 ====================
 
-1.4.22 (unreleased)
+1.4.22 (2011-12-07)
 -------------------
 
-- Nothing changed yet.
-
+- Bugfix for the practical solutions portlet: the osha_help_center_view can only
+  be passed one value for Subject refs #2385 [deroiste]
 
 1.4.21 (2011-12-05)
 -------------------
