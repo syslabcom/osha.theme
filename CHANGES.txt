@@ -4,8 +4,7 @@ osha.theme Changelog
 1.4.24 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Update the German network dropdown - again [thomasw]
 
 1.4.23 (2012-02-02)
 -------------------
