@@ -164,7 +164,7 @@ class OSHANetworkchooser(common.ViewletBase):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
         subsite_path = oshaview.subsiteRootPath()
-        return (preflang, subsite_path)
+        return (subsite_path, preflang)
 
     @ram.cache(_render_cachekey)
     def render(self):
