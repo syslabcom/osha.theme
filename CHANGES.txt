@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.24 (unreleased)
+1.4.24 (2012-02-02)
 -------------------
 
 - Update the German network dropdown - again [thomasw]
