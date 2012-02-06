@@ -38,13 +38,13 @@ class PressRoomView(BrowserView):
         self.result = []
     
     def _render_cachekey(method, self):
-        return ('meltwater')
+        return ('MemoNews')
     
     @ram.cache(_render_cachekey)
     def getFeed(self):
         context = Acquisition.aq_inner(self.context)
         sin = getToolByName(context, 'sin_tool')
-        map = "meltwater"
+        map = "MemoNews"
         rows = sin.sin(map, max_size=2)
         return rows
 
@@ -77,7 +77,7 @@ class DynamicPressRoomView(BrowserView):
         self.result = []
     
     def _render_cachekey(method, self):
-        return ('meltwater')
+        return ('MemoNews')
 
     def getContext(self):
         context = Acquisition.aq_inner(self.context)

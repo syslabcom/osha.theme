@@ -80,7 +80,7 @@
           </p>
         </tal:block>
           <div id="more-syndicated-news">
-              <a href="sinList?synmap=meltwater" i18n:translate="box_more" i18n:domain="plone">More...</a>
+              <a href="sinList?synmap=MemoNews" i18n:translate="box_more" i18n:domain="plone">More...</a>
           </div>
       </div>
 
