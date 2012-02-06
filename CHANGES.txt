@@ -4,7 +4,7 @@ osha.theme Changelog
 1.4.25 (unreleased)
 -------------------
 
-- In the Press Room, renamed "meltwater" to "MemoNews" [thomasw]
+- In the Press Room, renamed "meltwater" to "MemoNews" #4207 [thomasw]
 
 
 1.4.24 (2012-02-02)
