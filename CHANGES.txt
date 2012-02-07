@@ -5,6 +5,8 @@ osha.theme Changelog
 -------------------
 
 - In the Press Room, renamed "meltwater" to "MemoNews" #4207 [thomasw]
+- Customised the syndication list template to hard-code the
+  title to EU-OSHA in the media #4222 [thomasw]
 
 
 1.4.24 (2012-02-02)
