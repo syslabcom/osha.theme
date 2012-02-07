@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="osha">
+      i18n:domain="plone">
 
 <metal:block fill-slot="top_slot"
              tal:define="dummy python:request.set('disable_border',1)" />
@@ -19,7 +19,7 @@
                  b_start request/b_start | b_start;
                  batch python:Batch(results, b_size, int(b_start), orphan=1);">
 
-    <h1 i18n:translate="eu_osha_in_the_media">EU-OSHA in the media</h1>
+    <h1 i18n:domain="osha" i18n:translate="eu_osha_in_the_media">EU-OSHA in the media</h1>
 
     <div metal:use-macro="here/batch_macros/macros/navigation" />
 
