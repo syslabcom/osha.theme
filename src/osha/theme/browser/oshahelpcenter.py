@@ -14,6 +14,7 @@ class OSHAHelpCenterView(BrowserView):
 
     template = ViewPageTemplateFile('templates/osha_help_center_view.pt')
     template.id = "osha_help_center_view"
+    is_entry_point = False
 
     def __init__(self, context, request):
         self.context = context
@@ -45,8 +46,14 @@ class OSHAHelpCenterView(BrowserView):
 
         if (searchable_text == subcategory == ""
             and IHelpCenterContent in providedBy(self.context)):
+            # /en/faq should show general-information FAQs
             path = "/".join(self.context.getPhysicalPath())
             query["path"] = path+"/general-information"
+
+        elif searchable_text == subcategory == "":
+            # practical-solutions/faqs should be empty #2385
+            self.is_entry_point = True
+            return False
 
         faq_brains = self.pc.searchResults(query)
         faqs = [i.getObject() for i in faq_brains]

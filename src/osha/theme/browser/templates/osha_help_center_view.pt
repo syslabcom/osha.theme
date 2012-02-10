@@ -94,7 +94,7 @@
       <div id="faq_results"
            tal:define="faqs view/faqs">
         <p id="no_faqs"
-           tal:condition="not:faqs"
+           tal:condition="python:not faqs and not view.is_entry_point"
            i18n:translate="text_no_faq_results">
           There are no FAQs in this category.
         </p>
