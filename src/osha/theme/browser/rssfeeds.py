@@ -4,6 +4,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from types import UnicodeType
 from Products.PythonScripts.standard import url_quote
+from osha.theme import OSHAMessageFactory as _
 
 class IRSSFeedsView(Interface):
 
@@ -70,7 +71,20 @@ class RSSFeedsView(BrowserView):
                     url=url
                     ))
         return retval
-        
+
+    def get_extra_feeds(self):
+        """Return extra feeds such as Blog and OSHA in the media"""
+        portal_path = self._getPortalPath()
+        media_title=_(u'eu_osha_in_the_media', default=u'EU-OSHA in the media')
+        blog_title=_(u'eu_osha_blog', default=u'The EU-OSHA Blog')
+        feeds = [dict(title=media_title,
+            icon="newsitem_icon.gif",
+            url=portal_path + '/en/press/sinList?synmap=MemoNews&RSSTitle=' + media_title),
+            dict(title=blog_title,
+            icon="newsitem_icon.gif",
+            url=portal_path + '/en/blog/front-page/RSS?RSSTitle=' + blog_title))]
+        return feeds
+
     def _getTranslatedCategories(self):
         """
         Return list of tuples, tuple 1 is the category id, tuple 2 the title

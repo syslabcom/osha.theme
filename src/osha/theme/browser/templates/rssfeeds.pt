@@ -77,21 +77,22 @@
     
     </tal:feeds>   
 
-    <!-- Blog -->
+    <!-- Blog / EU-OSHA in the media -->
 
+    <tal:extra_feeds repeat="feed view/get_extra_feeds">
     <dt>
-        <img src="newsitem_icon.gif" alt="Blog Item Icon" /> 
-        <a href="http://osha.europa.eu/en/blog/front-page/RSS?RSSTitle=EU-OSHA%20Blog">
-            The EU-OSHA Blog
+        <img tal:attributes="src feed/icon; alt feed/title" />
+        <a tal:attributes="href feed/url" i18n:translate="" tal:content="feed/title">
+            The EU-OSHA Blog / EU-OSHA in the media
         </a>
     </dt>
     <dd>
         <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
-        <a href="http://osha.europa.eu/en/blog/front-page/RSS">     
+        <a tal:attributes="href feed/url" tal:content="python:crop(feed['url'], 60)">
             http://osha.europa.eu/en/blog/front-page/RSS
         </a> <br/>
         <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
-        <span tal:replace="structure python:view.quick_buttons(url='http://osha.europa.eu/en/blog/front-page/RSS', title='The OSH Blog')" />
+        <span tal:replace="structure python:view.quick_buttons(url=feed['url'], title=feed['title'])" />
     </dd>
 
 
