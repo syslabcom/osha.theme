@@ -82,7 +82,7 @@ class RSSFeedsView(BrowserView):
             url=portal_path + '/en/press/sinList?synmap=MemoNews&RSSTitle=' + media_title),
             dict(title=blog_title,
             icon="newsitem_icon.gif",
-            url=portal_path + '/en/blog/front-page/RSS?RSSTitle=' + blog_title))]
+            url=portal_path + '/en/blog/front-page/RSS?RSSTitle=' + blog_title)]
         return feeds
 
     def _getTranslatedCategories(self):
