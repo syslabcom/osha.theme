@@ -5,6 +5,7 @@ from Products.CMFCore.utils import getToolByName
 from types import UnicodeType
 from Products.PythonScripts.standard import url_quote
 from osha.theme import OSHAMessageFactory as _
+from zope.i18n import translate
 
 class IRSSFeedsView(Interface):
 
@@ -75,12 +76,13 @@ class RSSFeedsView(BrowserView):
     def get_extra_feeds(self):
         """Return extra feeds such as Blog and OSHA in the media"""
         portal_path = self._getPortalPath()
+        lang = self._getPreferedLanguage()
         media_title=_(u'eu_osha_in_the_media', default=u'EU-OSHA in the media')
         blog_title=_(u'eu_osha_blog', default=u'The EU-OSHA Blog')
-        feeds = [dict(title=media_title,
+        feeds = [dict(title=translate(msgid=media_title, target_language=lang, context=self.context),
             icon="newsitem_icon.gif",
             url=portal_path + '/en/press/sinRSS?synmap=MemoNews&RSSTitle=' + media_title),
-            dict(title=blog_title,
+            dict(title=translate(msgid=blog_title, target_language=lang, context=self.context),
             icon="newsitem_icon.gif",
             url=portal_path + '/en/blog/front-page/RSS?RSSTitle=' + blog_title)]
         return feeds
