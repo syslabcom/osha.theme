@@ -79,7 +79,7 @@ class RSSFeedsView(BrowserView):
         blog_title=_(u'eu_osha_blog', default=u'The EU-OSHA Blog')
         feeds = [dict(title=media_title,
             icon="newsitem_icon.gif",
-            url=portal_path + '/en/press/sinList?synmap=MemoNews&RSSTitle=' + media_title),
+            url=portal_path + '/en/press/sinRSS?synmap=MemoNews&RSSTitle=' + media_title),
             dict(title=blog_title,
             icon="newsitem_icon.gif",
             url=portal_path + '/en/blog/front-page/RSS?RSSTitle=' + blog_title)]
