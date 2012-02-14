@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+  xmlns="http://purl.org/rss/1.0/"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal">
+
+<metal:block 
+    tal:define="sin here/sin_tool;
+                 map request/synmap;
+                 results python:sin.sin(map)">
+
+<metal:block tal:define="dummy python:request.RESPONSE.setHeader('Content-Type', 'text/xml;;charset='+context.plone_utils.getSiteEncoding())" />
+
+<channel rdf:about="" tal:attributes="rdf:about request/URL" >
+  <title tal:content="request/form/RSSTitle | context/pretty_title_or_id">The title</title>
+  <link tal:content="context/absolute_url">http://url.to.context</link>
+
+
+  <image
+    rdf:resource=""
+    tal:attributes="rdf:resource string:${context/portal_url}/${context/base_properties/logoName}" />
+
+  <items>
+    <rdf:Seq>
+        <tal:block repeat="result results">
+            <rdf:li rdf:resource="" tal:define="objurl result/link"
+                tal:attributes="rdf:resource string:${objurl}?sourceid=rss&amp;utm_source=home&amp;utm_medium=rss&amp;utm_campaign=rssfeeds" />
+        </tal:block>
+    </rdf:Seq>
+  </items>
+</channel>
+
+<tal:block repeat="result results">
+  <item rdf:about="" tal:attributes="rdf:about string:${objurl}?sourceid=rss&amp;utm_source=home&amp;utm_medium=rss&amp;utm_campaign=rssfeeds" tal:define="objurl result/link">
+    <title tal:content="result/title">Title</title>
+    <link tal:content="objurl">Identifier</link>
+    <description tal:content="result/summary">Description</description>
+    <dc:publisher>European Agency for Safety and Health at Work</dc:publisher>
+    <dc:date tal:content="result/updated">Effective date</dc:date>
+  </item>
+</tal:block>
+
+</metal:block>
+</rdf:RDF>
