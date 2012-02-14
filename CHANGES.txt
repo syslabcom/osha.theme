@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.26 (unreleased)
+1.4.26 (2012-02-14)
 -------------------
 
 - Added missing separator line on the RSS feeds page [thomasw]
