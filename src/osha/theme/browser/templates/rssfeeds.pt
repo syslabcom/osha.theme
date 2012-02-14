@@ -94,6 +94,7 @@
         <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
         <span tal:replace="structure python:view.quick_buttons(url=feed['url'], title=feed['title'])" />
     </dd>
+    </tal:extra_feeds>
 
 
 </dl>
