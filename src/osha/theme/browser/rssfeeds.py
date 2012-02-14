@@ -77,12 +77,14 @@ class RSSFeedsView(BrowserView):
         """Return extra feeds such as Blog and OSHA in the media"""
         portal_path = self._getPortalPath()
         lang = self._getPreferedLanguage()
-        media_title=_(u'eu_osha_in_the_media', default=u'EU-OSHA in the media')
-        blog_title=_(u'eu_osha_blog', default=u'The EU-OSHA Blog')
-        feeds = [dict(title=translate(msgid=media_title, target_language=lang, context=self.context),
+        media_title=translate(msgid=_(u'eu_osha_in_the_media', default=u'EU-OSHA in the media'),
+            target_language=lang, context=self.context)
+        blog_title=translate(msgid=_(u'eu_osha_blog', default=u'The EU-OSHA Blog'),
+            target_language=lang, context=self.context)
+        feeds = [dict(title=media_title,
             icon="newsitem_icon.gif",
             url=portal_path + '/en/press/sinRSS?synmap=MemoNews&RSSTitle=' + media_title),
-            dict(title=translate(msgid=blog_title, target_language=lang, context=self.context),
+            dict(title=blog_title,
             icon="newsitem_icon.gif",
             url=portal_path + '/en/blog/front-page/RSS?RSSTitle=' + blog_title)]
         return feeds
