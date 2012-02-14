@@ -9,6 +9,9 @@ osha.theme Changelog
   title to EU-OSHA in the media #4222 [thomasw]
 - Changed the osha_help_center_view so that it doesn't list any FAQs
   for the practical solutions entry point #2385 [deroiste]
+- fetch google script via https [pilz]
+- Added new template to display the contents of a sin map as RSS feed [thomasw]
+- Added the MemoNews feed (EU OSHA in the media) to the RSS overview [thomasw]
 
 
 1.4.24 (2012-02-02)
