@@ -16,12 +16,12 @@
 <h1 i18n:translate="heading_agency_rss">Agency RSS Feeds</h1>
 
 <p i18n:translate="description_agency_rss">
-    This page contains an overview over the RSS (<a i18n:name="link" target="wikipedia" href="http://en.wikipedia.org/wiki/RSS"><span i18n:translate="info_whatis_rss">What is RSS?</span></a>) feeds currently available at osha.europa.eu. Subscribe to our RSS (Really Simple Syndication) feeds to get information delivered directly to your desktop!
+    This page contains an overview over the RSS (<a i18n:name="link" target="wikipedia" href="https://en.wikipedia.org/wiki/RSS"><span i18n:translate="info_whatis_rss">What is RSS?</span></a>) feeds currently available at osha.europa.eu. Subscribe to our RSS (Really Simple Syndication) feeds to get information delivered directly to your desktop!
 </p>
 
 <p>
     <b i18n:translate="help_use_aggregator">To view one of the feeds in your RSS Aggregator</b> 
-    (<a href="http://en.wikipedia.org/wiki/Aggregators" target="wikipedia" i18n:translate="info_whatis_aggregator">What is an Aggregator?</a>):
+    (<a href="https://en.wikipedia.org/wiki/Aggregators" target="wikipedia" i18n:translate="info_whatis_aggregator">What is an Aggregator?</a>):
 </p>    
 <ol>
     <li i18n:translate="help_use_aggregator_step1">
