@@ -100,7 +100,7 @@
             <h2 i18n:translate="label_latest_issue">
               Latest issue
             </h2>
-            <img src="http://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini"
+            <img src="https://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini"
                  alt="Latest OSHMail Issue"
                  tal:attributes="src view/get_image"
                  tal:condition="view/get_image" />

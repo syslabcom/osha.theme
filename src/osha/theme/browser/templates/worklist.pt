@@ -131,7 +131,7 @@
         <br clear="all"/>
         
         <div class="formControls">
-            <div style="float:right; font-weight:bold;"><a href="http://osha.europa.eu/reporting/linkstate">[ Link State Reporting ]</a></div>
+            <div style="float:right; font-weight:bold;"><a href="https://osha.europa.eu/reporting/linkstate">[ Link State Reporting ]</a></div>
           <input class="context" type="submit" value="Search" />
           <input  class="context" type="reset" value="Reset" 
                     tal:attributes="onclick string:window.location='${here/absolute_url}/${template/getId}'" />

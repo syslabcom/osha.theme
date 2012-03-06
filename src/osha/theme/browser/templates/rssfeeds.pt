@@ -67,7 +67,7 @@
     <dd>
         <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
         <a tal:attributes="href feed/url" tal:content="python:crop(feed['url'], 60)">     
-            http://osha.europa.eu/rssfeeds/news/RSS
+            https://osha.europa.eu/rssfeeds/news/RSS
         </a> <br/>
         <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
         <span tal:replace="structure python:view.quick_buttons(url=feed['url'], title=feed['title'])" />
@@ -89,7 +89,7 @@
     <dd>
         <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
         <a tal:attributes="href feed/url" tal:content="python:crop(feed['url'], 60)">
-            http://osha.europa.eu/en/blog/front-page/RSS
+            https://osha.europa.eu/en/blog/front-page/RSS
         </a> <br/>
         <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
         <span tal:replace="structure python:view.quick_buttons(url=feed['url'], title=feed['title'])" />
@@ -118,7 +118,7 @@
     <dd>
         <span tal:omit-tag="" i18n:translate="label_url">URL</span>: 
         <a tal:attributes="href feed/url" tal:content="python:crop(feed['url'], 60)">     
-            http://osha.europa.eu/rssfeeds/news/RSS
+            https://osha.europa.eu/rssfeeds/news/RSS
         </a> <br/>
         <span tal:omit-tag="" i18n:translate="label_shortcut">Shortcut</span>: 
         <span tal:replace="structure python:view.quick_buttons(url=feed['url'], title=feed['title'])" />
