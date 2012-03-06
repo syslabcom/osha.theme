@@ -46,26 +46,26 @@
                 prefLang ltool/getPreferredLanguage;
                 oshaview here/@@oshaview;
                 collage_id here/getId;
-                url python:oshaview.handleOSHMailUrls('http://osha.europa.eu', collage_id);">
+                url python:oshaview.handleOSHMailUrls('https://osha.europa.eu', collage_id);">
 
 <div id="visual-portal-wrapper">
 <table id="oshmail-topbanner" width="100%" cellpadding="0" cellspacing="0" border="0"
     tal:condition="python:context.getId()=='oshmail-100'"
-    background="http://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
+    background="https://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
     <tr>
         <td>
-            <img src="http://osha.europa.eu/en/news/OSHmailCandlesLogo.png" alt="OSHmail jubilee logo" ></td>
-    <td background="http://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
-        <img src="http://osha.europa.eu/en/news/OSHmailCandlesMiddle.png" alt="OSHmail jubilee background"></td>
+            <img src="https://osha.europa.eu/en/news/OSHmailCandlesLogo.png" alt="OSHmail jubilee logo" ></td>
+    <td background="https://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
+        <img src="https://osha.europa.eu/en/news/OSHmailCandlesMiddle.png" alt="OSHmail jubilee background"></td>
     <td>
-        <img src="http://osha.europa.eu/en/news/OSHmailCandlesRight.png" alt="OSHmail jubilee candles" ></td>
+        <img src="https://osha.europa.eu/en/news/OSHmailCandlesRight.png" alt="OSHmail jubilee candles" ></td>
     </tr>
 </table>
 
 <table cellpadding="0" cellspacing="0" border="0" tal:condition="python:context.getId()!='oshmail-100'"
        summary="Layout table"
        i18n:attributes="summary"
-       tal:define="topbanner string:http://osha.europa.eu/images/topbanner2.jpg;
+       tal:define="topbanner string:https://osha.europa.eu/images/topbanner2.jpg;
        dbo python:0;
        portal_title here/portal_properties/title;">
     <tr>
@@ -75,7 +75,7 @@
        tal:attributes="href url">
        <span tal:omit-tag="" tal:on-error="nothing" >
          <img alt="" title="" tal:define="logo python: prefLang=='en' and 'logo.gif' or 'logo_'+prefLang+'.gif'"
-            tal:attributes="src string:http://osha.europa.eu/${logo};
+            tal:attributes="src string:https://osha.europa.eu/${logo};
                             title portal_title;
                             alt portal_title"
             i18n:attributes="title"/>
@@ -100,7 +100,7 @@
      </tr>
      <tr tal:condition="not:dbo">
          <td id="portal-top-dropdowns" align="right">
-<img src="http://osha.europa.eu/images/oshmail_banner.jpg" border="0" title="OSHMail" alt="OSHMail">
+<img src="https://osha.europa.eu/images/oshmail_banner.jpg" border="0" title="OSHMail" alt="OSHMail">
          </td>
      </tr>
      <tr tal:condition="not:dbo">

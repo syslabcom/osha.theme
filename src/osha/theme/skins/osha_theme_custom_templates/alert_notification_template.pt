@@ -147,7 +147,7 @@ h3 { border-bottom: 1px solid lightgrey;}
                 i18n:translate="label_remove_alert">Remove this alert</a><br>
             <a href="" tal:attributes="href options/edit_url"
                 i18n:translate="label_edit_alert">Edit this alert</a><br>
-            <a href="" tal:attributes="href string:http://osha.europa.eu/comments"
+            <a href="" tal:attributes="href string:https://osha.europa.eu/comments"
                 i18n:translate="Comments">Comments</a><br>
 
             </tal:remove>

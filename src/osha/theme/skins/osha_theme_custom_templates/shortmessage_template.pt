@@ -17,10 +17,10 @@
       <style type="text/css" tal:content="structure here/shortmessage_preview_style.css"></style>
       <div id="portal-logo">
         <a href="/"
-           tal:attributes="href string:http://osha.europa.eu">
+           tal:attributes="href string:https://osha.europa.eu">
           <span tal:omit-tag="" tal:on-error="nothing" >
             <img alt="" title="" tal:define="logo python: prefLang=='en' and 'logo.gif' or 'logo_'+prefLang+'.gif'"
-                 tal:attributes="src string:http://osha.europa.eu/${logo};
+                 tal:attributes="src string:https://osha.europa.eu/${logo};
                                  title portal_title;
                                  alt portal_title"
                  i18n:attributes="title"/>
@@ -77,7 +77,7 @@
 
 </div-->
         <div style="float:left; position:relative">
-          <a title="European Agency for Safety and Health at Work" href="http://osha.europa.eu/"
+          <a title="European Agency for Safety and Health at Work" href="https://osha.europa.eu/"
              i18n:attributes="title"><img tal:attributes="src string:${portal_url}/logo_small.gif" width="28px" height="38px"
              i18n:attributes="alt"
              alt="European Agency for Safety and Health at Work" /></a>
@@ -85,17 +85,17 @@
 
         <div class="powered_py">
           <div style="float:right">
-            <a tal:attributes="href string:http://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Twitter" src="http://osha.europa.eu/en/news/oshmail/twitter-logo.jpg"></a>
-            <a tal:attributes="href string:http://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Youtube" src="http://osha.europa.eu/en/news/oshmail/youtube.gif"></a>
-            <a tal:attributes="href string:http://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OSHA Blog" src="http://osha.europa.eu/en/news/oshmail/oshablog-logo.jpg"></a>
-            <a tal:attributes="href string:http://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img width="30" height="30" alt="Linkedin" src="http://osha.europa.eu/en/news/oshmail/linkedin-logo.jpg"></a>
-            <a tal:attributes="href string:http://osha.europa.eu/en/news/oshmail/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OSHmail" src="http://osha.europa.eu/en/news/oshmail/oshmail.gif"></a>
-            <a tal:attributes="href string:http://osha.europa.eu/en/alertservice/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" src="http://osha.europa.eu/en/news/oshmail/oshalert.gif" alt="OSHAlert"></a>
+            <a tal:attributes="href string:https://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Twitter" src="https://osha.europa.eu/en/news/oshmail/twitter-logo.jpg"></a>
+            <a tal:attributes="href string:https://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Youtube" src="https://osha.europa.eu/en/news/oshmail/youtube.gif"></a>
+            <a tal:attributes="href string:https://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OSHA Blog" src="https://osha.europa.eu/en/news/oshmail/oshablog-logo.jpg"></a>
+            <a tal:attributes="href string:https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img width="30" height="30" alt="Linkedin" src="https://osha.europa.eu/en/news/oshmail/linkedin-logo.jpg"></a>
+            <a tal:attributes="href string:https://osha.europa.eu/en/news/oshmail/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OSHmail" src="https://osha.europa.eu/en/news/oshmail/oshmail.gif"></a>
+            <a tal:attributes="href string:https://osha.europa.eu/en/alertservice/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" src="https://osha.europa.eu/en/news/oshmail/oshalert.gif" alt="OSHAlert"></a>
           </div>
           <div><span i18n:domain="osha" tal:define="DateTime python:modules['DateTime'].DateTime"
                      i18n:translate="copyright">&copy; Copyright 1998-<span i18n:name="thisyear"><span
                      tal:replace="python:DateTime().year()" /></span> European Agency for Safety and Health at Work -</span> <br/>
-          <a href="http://osha.europa.eu/disclaimer.stm" i18n:translate="">Disclaimer</a> - <a href="http://osha.europa.eu">http://osha.europa.eu</a>
+          <a href="https://osha.europa.eu/disclaimer.stm" i18n:translate="">Disclaimer</a> - <a href="https://osha.europa.eu">https://osha.europa.eu</a>
           </div>
         </div>
         <br style="clear:both" />
