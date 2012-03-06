@@ -13,10 +13,10 @@
 
     <dd class="portletItem">
         <span class="image-right">
-            <img src="http://osha.europa.eu/portlet_alertservice_icon.gif" alt="Alert Service logo" title="Alert Service logo" />
+            <img src="https://osha.europa.eu/portlet_alertservice_icon.gif" alt="Alert Service logo" title="Alert Service logo" />
         </span>
-        <a rel="nofollow" href="http://osha.europa.eu/en/alertservice"
-			tal:attributes="href string:http://osha.europa.eu/${view/preflang}/alertservice">
+        <a rel="nofollow" href="https://osha.europa.eu/en/alertservice"
+			tal:attributes="href string:https://osha.europa.eu/${view/preflang}/alertservice">
         <span tal:omit-tag="" i18n:translate="portlet_alertservice_text">Updates on topics of your choice</span>
         </a>
     </dd>

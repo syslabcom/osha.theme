@@ -14,7 +14,7 @@
             tal:define="livesearch view/enable_livesearch;"
              tal:attributes="action string:${view/portal_url}/google_search_results"> 
         <div class="LSBox">
-       <input type="hidden" name="cref" value="http://mig.osha.europa.eu/google_test_cse2"
+       <input type="hidden" name="cref" value="https://osha.europa.eu/google_test_cse2"
               tal:attributes="value string:${here/portal_url}/cref_cse" />
        <input type="hidden" value="google-coop-np" name="client"/>
        <input type="hidden" name="cof" value="FORID:9" />

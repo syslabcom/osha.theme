@@ -12,9 +12,9 @@
 
     <dd class="portletItem">
         <span class="image-right">
-            <img src="http://osha.europa.eu/portlet_newsletter_icon.png" alt="OSHMail Logo" title="OSHMail Logo"/>
+            <img src="https://osha.europa.eu/portlet_newsletter_icon.png" alt="OSHMail Logo" title="OSHMail Logo"/>
         </span>
-        <a rel="nofollow" href="http://osha.europa.eu/en/news/oshmail/"> 
+        <a rel="nofollow" href="https://osha.europa.eu/en/news/oshmail/"> 
             <span tal:omit-tag="" i18n:translate="portlet_oshmail_text">Monthly review of strategic news</span>
         </a>
     </dd>
