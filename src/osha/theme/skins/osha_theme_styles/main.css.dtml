@@ -731,7 +731,7 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 
 .boxing_styles_inner_content ul {
 line-height:1.5em;
-list-style-image:url(http://osha.europa.eu/bullet.gif);
+list-style-image:url(https://osha.europa.eu/bullet.gif);
 list-style-type:square;
 margin:0.5em 0 0 0;
 padding-left:15px;
@@ -770,7 +770,7 @@ padding-left:15px;
 
 .boxing_styles_content ul {
 line-height:1.5em;
-list-style-image:url(http://osha.europa.eu/bullet.gif);
+list-style-image:url(https://osha.europa.eu/bullet.gif);
 list-style-type:square;
 margin:0.5em 0 0 0;
 padding-left:15px;
