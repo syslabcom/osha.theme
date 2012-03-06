@@ -42,14 +42,14 @@ class TestFilmViewsUnitTests(OshaThemeTestCase):
             [('movie1',
               {'description': 'description_movie1',
                'title': 'heading_movie1',
-               'image': 'http://media.osha.europa.eu/napofilm/movie1.jpg',
+               'image': 'https://media.osha.europa.eu/napofilm/movie1.jpg',
                'video_height': 352,
                'video_width': 640,
-               'video_avi': 'http://media.osha.europa.eu/napofilm/movie1.avi',
-               'video_mp4': 'http://media.osha.europa.eu/napofilm/movie1.mp4',
-               'video_ogv': 'http://media.osha.europa.eu/napofilm/movie1.ogv',
-               'video_webm': 'http://media.osha.europa.eu/napofilm/movie1.webm',
-               'video_wmv': 'http://media.osha.europa.eu/napofilm/movie1.wmv',
+               'video_avi': 'https://media.osha.europa.eu/napofilm/movie1.avi',
+               'video_mp4': 'https://media.osha.europa.eu/napofilm/movie1.mp4',
+               'video_ogv': 'https://media.osha.europa.eu/napofilm/movie1.ogv',
+               'video_webm': 'https://media.osha.europa.eu/napofilm/movie1.webm',
+               'video_wmv': 'https://media.osha.europa.eu/napofilm/movie1.wmv',
                })])
         self.assertEquals(defaults, expected_defaults)
 
