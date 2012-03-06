@@ -132,7 +132,7 @@ class FilmsDataMixin(object):
     @property
     def media_url(self):
         return self.context.getProperty(
-            "media_url", "http://media.osha.europa.eu/napofilm/")
+            "media_url", "https://media.osha.europa.eu/napofilm/")
 
     def set_movie_defaults(self, movies):
         """Returns an ordered dictionary containing the details for
