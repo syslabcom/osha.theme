@@ -4,7 +4,8 @@ osha.theme Changelog
 1.4.27 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Various templates, views, portles and viewlets updated to change http to https
+  #3772 [thomasw]
 
 
 1.4.26 (2012-02-14)
