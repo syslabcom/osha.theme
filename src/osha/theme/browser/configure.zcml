@@ -658,21 +658,23 @@
         permission="zope2.View"
         />
 
-    <browser:page
-        for="*"
-        name="topics-view"
-        template="templates/topics_view.pt"
-        class=".topics_view.TopicsView"
-        permission="zope2.View"
-        />
+    <!-- TODO: fix topics-view and topic-view, they depend on
+         p4a.plonevideo which in turn depends on an outdated hachoir -->
+    <!-- <browser:page -->
+    <!--     for="*" -->
+    <!--     name="topics-view" -->
+    <!--     template="templates/topics_view.pt" -->
+    <!--     class=".topics_view.TopicsView" -->
+    <!--     permission="zope2.View" -->
+    <!--     /> -->
 
-    <browser:page
-        for="*"
-        name="topic-view"
-        template="templates/topic_view.pt"
-        class=".topics_view.TopicView"
-        permission="zope2.View"
-        />
+    <!-- <browser:page -->
+    <!--     for="*" -->
+    <!--     name="topic-view" -->
+    <!--     template="templates/topic_view.pt" -->
+    <!--     class=".topics_view.TopicView" -->
+    <!--     permission="zope2.View" -->
+    <!--     /> -->
 
     <browser:page
         for="*"
@@ -868,12 +870,15 @@
         permission="zope2.View"
         />
 
-    <browser:viewlet
-        name="osha.theme.topic_view_heading_viewlet"
-        manager="slc.seminarportal.browser.interfaces.IAboveSeminarListing"
-        class=".viewlets.TopicViewHeading"
-        permission="zope2.View"
-        />
+
+    <!-- TODO: fix, it depends on
+         p4a.plonevideo which in turn depends on an outdated hachoir -->
+    <!-- <browser:viewlet -->
+    <!--     name="osha.theme.topic_view_heading_viewlet" -->
+    <!--     manager="slc.seminarportal.browser.interfaces.IAboveSeminarListing" -->
+    <!--     class=".viewlets.TopicViewHeading" -->
+    <!--     permission="zope2.View" -->
+    <!--     /> -->
 
     <browser:viewlet
         name="osha.belowcontentportlets"

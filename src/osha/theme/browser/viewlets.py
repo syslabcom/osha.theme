@@ -25,7 +25,9 @@ from Products.OSHContentLink.interfaces import IOSH_Link
 from osha.theme import config
 from osha.theme.browser.interfaces import IInlineContentViewlet
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
-from osha.theme.browser.topics_view import TopicsBrowserView
+
+# TODO: Remove the dependency on p4a.plonevideoembed #4413
+# from osha.theme.browser.topics_view import TopicsBrowserView
 
 class OSHALanguageSelector(TranslatableLanguageSelector):
     """ Override LinguaPlone's language selector to provide our own template
@@ -502,6 +504,6 @@ class InlineContentViewlet(common.ViewletBase):
             return False
         return True
 
-
-class TopicViewHeading(common.ViewletBase, TopicsBrowserView):
-    render = ViewPageTemplateFile('templates/topic_view_heading_viewlet.pt')
+# TODO: Remove the dependency on p4a.plonevideoembed #4413
+# class TopicViewHeading(common.ViewletBase, TopicsBrowserView):
+#     render = ViewPageTemplateFile('templates/topic_view_heading_viewlet.pt')
