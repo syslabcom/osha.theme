@@ -658,7 +658,7 @@
         permission="zope2.View"
         />
 
-    <!-- TODO: fix topics-view and topic-view, they depend on
+    <!-- TODO: #4414 fix topics-view and topic-view, they depend on
          p4a.plonevideo which in turn depends on an outdated hachoir -->
     <!-- <browser:page -->
     <!--     for="*" -->
@@ -871,7 +871,7 @@
         />
 
 
-    <!-- TODO: fix, it depends on
+    <!-- TODO: #4414 fix, it depends on
          p4a.plonevideo which in turn depends on an outdated hachoir -->
     <!-- <browser:viewlet -->
     <!--     name="osha.theme.topic_view_heading_viewlet" -->
