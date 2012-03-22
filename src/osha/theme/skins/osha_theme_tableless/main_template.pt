@@ -114,38 +114,6 @@
     tal:attributes="class body_class;
                         dir python:test(isRTL, 'rtl', 'ltr')">
    <div id="border-wrapper">
-   	<script type="text/javascript" tal:condition="not: isAnon">
-   		// This piece of code solves some problems due to some clever tricks
-		// of this no table layout and the clever tricks of fckEditors
-		// Full screen mode. 
-		// The fullscreen mode sets the html body to a width of zero, and when
-		// lets its own window pop out of the border. This layout also does some
-		// tricks that result in lots of empty space to the right that would
-		// result in a scroll bar. So it defines a overflow: none. That breaks
-		// fckEditor. Unable to modify the fckEditor in a way that still allows
-		// later upgrade, I created this function. It is here and not in a 
-		// javascript class, because nobody would scan js files to find
-		// presentation problems.
-		
-		// We call the method only after the page got loaded
-   		jq(function(){
-			// The fckEditor Window is not there yet. so we call 3 seconds
-			// later
-			function wait(){
-				var all_buttons = jq('div.fckContainer iframe').contents().find('.TB_Button_Off');
-			 	// The buttons can only be distinguished by title. Title
-				// is translatable, so we just take the second last button
-				jq(all_buttons[all_buttons.size()-2]).click(function(){
-					// We set the overflow back. As soon as you save, you leave
-					// Fullscreen mode and the page gets reloaded, thus our
-					// css change does NOT mess up the page. Otherwise it would.
-					jq('#visual-portal-wrapper').css({'overflow-x' : 'visible', 'overflow-y' : 'visible'})
-				})
-			}
-			window.setTimeout(wait, 3000)
-		})
-	</script>
-			
 	<div id="visual-portal-wrapper">
 
       <div id="portal-top" i18n:domain="plone">
