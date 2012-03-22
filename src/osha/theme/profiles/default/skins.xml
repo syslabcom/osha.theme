@@ -78,6 +78,8 @@
 
 
  <skin-path name="OSHA Plone Theme" based-on="Plone Classic Theme">
+  <layer name="osha_theme_custom_images"
+     insert-after="custom"/>
   <layer name="osha_theme_custom_templates"
      insert-after="osha_theme_custom_images"/>
   <layer name="osha_theme_styles"
