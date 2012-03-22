@@ -180,9 +180,7 @@
               <input type="submit" class="inline"
                      name="form.button.NewCaptcha"
                      value="New Image"
-                     tabindex=""
-                     i18n:attributes="value"
-                     tal:attributes="tabindex tabindex/next;" />
+                     i18n:attributes="value" />
                      if you cannot read the word properly.
             </div>
 
@@ -193,8 +191,6 @@
                    name="captcha_text"
                    size="20"
                    value=""
-                   tabindex=""
-                   tal:attributes="tabindex tabindex/next;"
                    />
                    
           </div>

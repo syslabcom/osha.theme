@@ -43,31 +43,26 @@
                    name="color"
                    value=""
                    size="40"
-                   tabindex=""
-                   tal:attributes="value Color;
-                                   tabindex tabindex/next;"
+                   tal:attributes="value Color"
                    />
 
           </div>
 
           <div class="formControls">
             <input class="context"
-                   tabindex=""
                    type="submit"
                    name="form.button.Config"
                    value="Save"
                    i18n:attributes="value"
-                   tal:attributes="tabindex tabindex/next;" />
+                   />
 
             <input class="standalone"
-                   tabindex=""
                    type="submit"
                    name="form.button.Cancel"
                    value="Cancel"
                    i18n:domain="plone"
                    i18n:attributes="value"
-                   tal:attributes="tabindex tabindex/next;" />
-
+                   />
           </div>
 
         </fieldset>
@@ -79,12 +74,11 @@
 
           <div class="formControls">
             <input class="context"
-                   tabindex=""
                    type="submit"
                    name="form.button.Preview"
                    value="Preview"
                    i18n:attributes="value"
-                   tal:attributes="tabindex tabindex/next;" />
+                   />
 
 
           </fieldset>
@@ -107,9 +101,7 @@
                      name="email"
                      value=""
                      size="40"
-                     tabindex=""
-                     tal:attributes="value EMail;
-                                     tabindex tabindex/next;"
+                     tal:attributes="value EMail"
                      />
 
 
@@ -136,21 +128,19 @@
 
             <div class="formControls">
               <input class="context"
-                     tabindex=""
                      type="submit"
                      name="form.button.Send"
                      value="Send"
                      i18n:attributes="value"
-                     tal:attributes="tabindex tabindex/next;" />
+                     />
 
               <input class="standalone"
-                     tabindex=""
                      type="submit"
                      name="form.button.Cancel"
                      value="Cancel"
                      i18n:domain="plone"
                      i18n:attributes="value"
-                     tal:attributes="tabindex tabindex/next;" />
+                     />
 
             </div>
           </fieldset>

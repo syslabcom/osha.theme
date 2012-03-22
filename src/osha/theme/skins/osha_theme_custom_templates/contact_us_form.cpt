@@ -78,10 +78,7 @@
                           
                           <div i18n:translate="" tal:content="error">Validation error output</div>
                     
-                    <select name="sender"
-                            tabindex=""
-                            id="sender"
-                            tal:attributes="tabindex tabindex/next">
+                    <select name="sender" id="sender">
                          <option value="" i18n:translate="Please select one">Please select one</option>
                         <tal:block repeat="n names">
                             <option tal:attributes="value n;
@@ -108,11 +105,7 @@
                           
                     <div i18n:translate="" tal:content="error">Validation error output</div>
             
-                    <select name="subject"
-                            tabindex=""
-                            id="subject"
-                            tal:attributes="tabindex tabindex/next">
-                        
+                    <select name="subject" id="subject">
                         <option value="" i18n:translate="Please select one">Please select one</option>
                         <tal:block repeat="s subjects">
                             <option tal:attributes="value s/id;
@@ -124,18 +117,14 @@
             
                 <div class="formControls" i18n:domain="plone">
                     <input class="context"
-                           tabindex=""
                            type="submit"
                            name="form.button.SenderSubject"
                            value="Next"  i18n:attributes="value"
-                           tal:attributes="tabindex tabindex/next;"
                            />
                     <input class="context"
-                           tabindex=""
                            type="reset"
                            name="reset"
                            value="Reset" i18n:attributes="value"
-                           tal:attributes="tabindex tabindex/next;"
                            />
                 </div>
                 
@@ -201,9 +190,7 @@
                        id="fullname"
                        name="fullname"
                        size="60"
-                       tabindex=""
-                       tal:attributes="value request/fullname | nothing;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value request/fullname | nothing;"
                        />
             </div>
         
@@ -228,9 +215,7 @@
                        id="email"
                        name="email"     
                        size="60"
-                       tabindex=""
-                       tal:attributes="value python: request.get('email', member.getProperty('email',''));
-                                       tabindex tabindex/next;"
+                       tal:attributes="value python: request.get('email', member.getProperty('email',''));"
                        />
             </div>
             
@@ -278,10 +263,7 @@
                  
                 <label for="country" i18n:translate="label_country">Country</label><br/>
                 
-                <select name="country"
-                        tabindex=""
-                        id="country"
-                        tal:attributes="tabindex tabindex/next">
+                <select name="country" id="country">
                         <option i18n:translate="Please select one">Please select one</option>
                     <tal:block repeat="n names">
                         <option tal:attributes="value n;
@@ -302,10 +284,7 @@
                  
                 <label for="size_org" i18n:translate="label_organization_size">Size of organization</label><br/>
                 
-                <select name="size_org"
-                        tabindex=""
-                        id="size_org"
-                        tal:attributes="tabindex tabindex/next">
+                <select name="size_org" id="size_org">
                         <option i18n:translate="Please select one">Please select one</option>
                         <tal:block repeat="n names">
                         <option tal:attributes="value n;
@@ -330,9 +309,7 @@
                        id="name_org"
                        name="name_org"
                        size="60"
-                       tabindex=""
-                       tal:attributes="value request/name_org | nothing;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value request/name_org | nothing;"
                        />
             </div>            
             
@@ -349,10 +326,8 @@
                        id="url_comment"
                        name="url_comment"
                        size="60"
-                       tabindex=""
                        tal:define="url_comment python:request.get('url_comment', request.get('referer', ''))"
-                       tal:attributes="value url_comment;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value url_comment"
                        />
             </div>       
             
@@ -374,10 +349,8 @@
                        id="url_broken"
                        name="url_broken"
                        size="60"
-                       tabindex=""
                        tal:define="url_broken python:request.get('url_broken', '')"
-                       tal:attributes="value url_broken;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value url_broken"
                        />
             </div>   
             
@@ -399,10 +372,8 @@
                        id="url_broken_location"
                        name="url_broken_location"
                        size="60"
-                       tabindex=""
                        tal:define="url_broken_location python:request.get('url_broken_location', request.get('referer', ''))"
-                       tal:attributes="value url_broken_location;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value url_broken_location;"
                        />
             </div> 
             
@@ -419,10 +390,8 @@
                        id="url_new"
                        name="url_new"
                        size="60"
-                       tabindex=""
                        tal:define="url_new python:request.get('url_new', '')"
-                       tal:attributes="value url_new;
-                                       tabindex tabindex/next;"
+                       tal:attributes="value url_new"
                        />
             </div>             
             
@@ -441,12 +410,10 @@
     
                 <textarea cols="80"
                           rows="5"
-                          tabindex=""
                           name="message"
                           id="message"
                           wrap="hard"
                           tal:content="request/message | nothing"
-                          tal:attributes="tabindex tabindex/next;"
                           >
                 Comment
                 </textarea>
@@ -455,18 +422,14 @@
             
                 <div class="formControls" i18n:domain="plone">
                     <input class="context"
-                           tabindex=""
                            type="submit"
                            name="form.button.Send"
                            value="Submit"  i18n:attributes="value"
-                           tal:attributes="tabindex tabindex/next;"
                            />
                     <input class="context"
-                           tabindex=""
                            type="reset"
                            name="reset"
                            value="Reset" i18n:attributes="value"
-                           tal:attributes="tabindex tabindex/next;"
                            />
                 </div>
                 
