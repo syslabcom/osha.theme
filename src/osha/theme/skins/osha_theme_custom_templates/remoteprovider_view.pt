@@ -11,7 +11,7 @@
     <tal:main-macro metal:define-macro="main"
            tal:define="kssClassesView context/@@kss_field_decorator_view;
                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
-                       isMember python:str(member)!='Anonymous User';
+                       isMember not:here/@@plone_portal_state/anonymous;
                        templateId template/getId;">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
