@@ -812,6 +812,27 @@ competitions linkcollection styles (tab-lke view)
     font-weight: bold;
 }
 
+
+
+.outdated_accordion_toggle {
+}
+.outdated_toogle_button {
+    background: url('&dtml-portal_url;/archivedbutton.png') no-repeat scroll right -2px transparent;
+    cursor: pointer;
+    display: block;
+    float: right;
+    height: 25px;
+    width: 91px;
+}
+.outdated_accordion_toggle_active {
+}
+.outdated_text {
+    color: grey;
+    margin: 2px 18px;
+}
+
+
+
 #slc-outdated {
 background:transparent url('&dtml-portal_url;/++resource++outdated.png') no-repeat scroll 8px 0;
 border:1px solid red;
@@ -860,6 +881,10 @@ letter-spacing:1px;
 .outdated h3 {
 font-family: Abadi;
 } */
+
+.searchresult .result_title {
+    font-weight: bold;
+}
 
 .p4acalendar .eventlist .event.outdated .event_title {
     display: inline;
