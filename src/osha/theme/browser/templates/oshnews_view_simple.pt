@@ -55,8 +55,10 @@
                                                 ">
                             <tal:block define="value python: getattr(obj, 'Title', None)">
    
-                                <td tal:attributes="class python:obj_outdated and 'outdated' or ''">
-
+                                <td tal:attributes="class python:obj_outdated and 'searchresult outdated' or 'searchresult'">
+                                    <div class="outdated_toggle_button" tal:condition="obj_outdated">
+                                        <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                                    </div>
                                     <h2>
                                     
                                     <a href="#" tal:attributes="href url;
@@ -67,33 +69,25 @@
                                         tal:attributes="class obj_wf_state_class"
                                         tal:content="title_or_id" />
                                     </h2>
-                                    <span class="outdated-result" tal:condition="obj_outdated">
-                                        <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-                                            <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-                                            <span tal:replace="context/outdated_info/Title" />
-                                        </span>
-                                        <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-                                            <img src="/++resource++outdated_mini.png" />
-                                            Outdated
-                                        </span>
-                                    </span>
+
+                                  <div tal:attributes="class python:obj_outdated and 'outdated_accordion_content' or ''">
                                     <tal:block define="newsItem obj/getObject; 
                                                        news_type newsItem/portal_type;
                                                        hasImage python:news_type=='News Item' and newsItem.getField('image').getAccessor(newsItem)()" 
                                                condition="hasImage" on-error="nothing">
-                                    <div class="newsImageContainer" style="width: 100px;"
-                                         tal:condition="python: obj.portal_type in ['News Item']">
-                                        <a href="#"
-                                           tal:attributes="href url"
-                                           tal:condition="showLinkToNewsItem"
-                                           class="parent-fieldname-image">
-                                           <img tal:attributes="src string:${url}/image_thumb; alt title_or_id;" width="80"/>
-                                        </a>
-                                    <span tal:condition="not:showLinkToNewsItem"
-                                        class="parent-fieldname-image">
-                                        <img tal:attributes="src string:${url}/image_thumb; alt title_or_id;" width="80"/>
-                                        </span>
-                                    </div>                                     
+                                            <div class="newsImageContainer" style="width: 100px;"
+                                            tal:condition="python: obj.portal_type in ['News Item']">
+                                                <a href="#"
+                                                tal:attributes="href url"
+                                                tal:condition="showLinkToNewsItem"
+                                                class="parent-fieldname-image">
+                                                    <img tal:attributes="src string:${url}/image_thumb; alt title_or_id;" width="80"/>
+                                                </a>
+                                                <span tal:condition="not:showLinkToNewsItem"
+                                                class="parent-fieldname-image">
+                                                    <img tal:attributes="src string:${url}/image_thumb; alt title_or_id;" width="80"/>
+                                                </span>
+                                            </div>                                     
                                     </tal:block>
                                     
                                     <span tal:omit-tag="" tal:condition="not:obj_description"> 
@@ -102,9 +96,10 @@
                                     <span class="description" tal:content="structure obj_description">
                                         description
                                     </span>
-									<div class="teaserdate">
-										[<span tal:content="python:toLocalizedTime(obj['EffectiveDate'])" />]
-									</div>
+                                    <div class="teaserdate">
+                                        [<span tal:content="python:toLocalizedTime(obj['EffectiveDate'])" />]
+                                    </div>
+                                  </div>
                                 </td>
                             </tal:block>
                             </tal:fields>

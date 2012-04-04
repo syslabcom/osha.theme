@@ -214,8 +214,8 @@ jq(document).ready(function(){
         jq('.outdated_separator').show();
         jq('.searchresult.outdated').toggleClass('collapsed', 1)
         jq('.outdated_toggle_button').click(function(){
-            jq(this).next('.outdated_accordion_content').toggle();
-            jq(this).next('.outdated_accordion_content').next('.outdated_separator').toggle();
+            jq(this).parent().children('.outdated_accordion_content').toggle();
+            jq(this).parent().children('.outdated_accordion_content').next('.outdated_separator').toggle();
             jq(this).parent().toggleClass('collapsed');
             return false;
         });

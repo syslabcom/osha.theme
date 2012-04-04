@@ -850,8 +850,6 @@ competitions linkcollection styles (tab-lke view)
     margin: 2px 18px;
 }
 
-
-
 #slc-outdated {
 background:transparent url('&dtml-portal_url;/++resource++outdated.png') no-repeat scroll 8px 0;
 border:1px solid red;
@@ -876,6 +874,7 @@ color:#515151;
 margin:0.2em 0 0.75em;
 }
 
+/*
 #teaserlisting td.outdated,
 #newslisting td.outdated,
 .eventlist div.outdated,
@@ -886,7 +885,6 @@ border:1px dotted red;
 padding:5px 5px 0px;
 margin-bottom:10px;
 color:#515151;
-/*font-family:Abadi;*/
 font-size:100%;
 font-size-adjust:none;
 font-stretch:normal;
@@ -894,14 +892,14 @@ font-style:normal;
 font-variant:normal;
 font-weight:normal;
 letter-spacing:1px;
-}
+} */
 
 /* .outdated h2,
 .outdated h3 {
 font-family: Abadi;
 } */
 
-.searchresult .result_title {
+.searchresult a.result_title {
     font-weight: bold;
 }
 
@@ -909,8 +907,9 @@ font-family: Abadi;
     display: inline;
 }
 
-.outdated.collapsed a{
-color: #666666;
+.outdated.collapsed a,
+.outdated.collapsed h2{
+color: #666666 !important;
 }
 
 .searchresult-outdated .documentByLine {
