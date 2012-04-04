@@ -170,6 +170,10 @@ class IOSHA(Interface):
     def subsiteRootPath():
         """ return path of subsite """
 
+    def getBase_url():
+        """ Returns a (sub-) sites URL including the language folder
+        if present """
+
     def isSubsite(site):
         """is the site a subsite?"""
 
