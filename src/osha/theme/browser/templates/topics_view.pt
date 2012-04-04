@@ -33,20 +33,12 @@
             <ul>
                 <span tal:repeat="folder view/left_folders" tal:omit-tag="">
                   <li tal:define="item_outdated folder/outdated|python:0"
-                    tal:attributes="class python:item_outdated and 'outdated' or ''">
+                    tal:attributes="class python:item_outdated and 'outdated collapsed' or ''">
                         <a href=""
                            tal:attributes="href string:${folder/getURL}"
                            tal:content="folder/Title" />
-                          <span class="outdated-result" tal:condition="item_outdated">
-                            <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-                              <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-                              <span tal:replace="context/outdated_info/Title" />
-                            </span>
-                            <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-                              <img src="/++resource++outdated_mini.png" />
-                              Outdated
-                            </span>
-                          </span>
+                        <p tal:condition="item_outdated" class="outdated_info" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                        <div class="visualClear"></div>
                   </li>
                 </span>
             </ul>
@@ -56,20 +48,12 @@
             <ul>
                 <span tal:repeat="folder view/right_folders" tal:omit-tag="">
                   <li tal:define="item_outdated folder/outdated|python:0"
-                    tal:attributes="class python:item_outdated and 'outdated' or ''">
+                    tal:attributes="class python:item_outdated and 'outdated collapsed' or ''">
                         <a href=""
                             tal:attributes="href string:${folder/getURL}"
                             tal:content="folder/Title" />
-                          <span class="outdated-result" tal:condition="item_outdated">
-                            <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-                              <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-                              <span tal:replace="context/outdated_info/Title" />
-                            </span>
-                            <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-                              <img src="/++resource++outdated_mini.png" />
-                              Outdated
-                            </span>
-                          </span>
+                        <p tal:condition="item_outdated" class="outdated_info" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                        <div class="visualClear"></div>
                   </li>
                 </span>
             </ul>

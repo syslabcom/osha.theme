@@ -848,6 +848,9 @@ competitions linkcollection styles (tab-lke view)
 .outdated_text {
     margin: 2px 18px;
 }
+.outdated_info{
+    float:right;
+}
 
 #slc-outdated {
 background:transparent url('&dtml-portal_url;/++resource++outdated.png') no-repeat scroll 8px 0;
