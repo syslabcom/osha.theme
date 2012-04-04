@@ -21,7 +21,7 @@
           <a tal:content="title" class="result_title"
              tal:attributes="href string:$result_url/view"
              rel="nofollow" />
-        <div class="outdated_toogle_button outdated_accordion_toggle" tal:condition="outdated">
+        <div class="outdated_toggle_button" tal:condition="outdated">
             <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
         </div>
         <div tal:attributes="class python:outdated and 'outdated_accordion_content' or ''">

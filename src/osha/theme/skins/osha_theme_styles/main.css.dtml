@@ -812,22 +812,41 @@ competitions linkcollection styles (tab-lke view)
     font-weight: bold;
 }
 
-
-
-.outdated_accordion_toggle {
+.outdated_toggle_button {
+   cursor: pointer;
+   float: right;
+   border-top: 1px solid #deecf7;
+   background: #a7b7d4;
+   background: -webkit-gradient(linear, left top, left bottom, from(#dee7f8), to(#a7b7d4));
+   background: -webkit-linear-gradient(top, #dee7f8, #a7b7d4);
+   background: -moz-linear-gradient(top, #dee7f8, #a7b7d4);
+   background: -ms-linear-gradient(top, #dee7f8, #a7b7d4);
+   background: -o-linear-gradient(top, #dee7f8, #a7b7d4);
+   padding: 2px 4px;
+   -webkit-border-radius: 7px;
+   -moz-border-radius: 7px;
+   border-radius: 7px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #666666;
+   /*font-size: 14px;
+   font-family: Georgia, serif; */
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.outdated_toggle_button:hover{
+   border-top-color: #6a86b5;
+   background: #6a86b5;
+   color: #ffffff;
 }
-.outdated_toogle_button {
-    background: url('&dtml-portal_url;/archivedbutton.png') no-repeat scroll right -2px transparent;
-    cursor: pointer;
-    display: block;
-    float: right;
-    height: 25px;
-    width: 91px;
-}
-.outdated_accordion_toggle_active {
-}
+.outdated_toggle_button:active {
+   border-top-color: #6a86b5;
+   background: #6a86b5;
+   color: #ffffff;
+   }
 .outdated_text {
-    color: grey;
     margin: 2px 18px;
 }
 
