@@ -208,6 +208,20 @@ OSHA.toggleHiddenField = function(id) {
     else {hidden_field.val('True');}
 };
 
+jq(document).ready(function(){
+        // Toggles an 'Archived' search result
+        jq('.outdated_accordion_content').hide();
+        jq('.outdated_separator').show();
+        jq('.searchresult.outdated').toggleClass('collapsed', 1)
+        jq('.outdated_toogle_button').click(function(){
+            jq(this).next('.outdated_accordion_content').toggle();
+            jq(this).next('.outdated_accordion_content').next('.outdated_separator').toggle();
+            jq(this).parent().toggleClass('collapsed');
+            return false;
+        });
+      }
+    );
+
 /* NOTE: these need to be at the end otherwise there is a problem when
 the js files are merged in portal_javascripts */
 function registerPloneFunction(func){
@@ -224,15 +238,3 @@ function unRegisterPloneFunction(func){
     if (window.removeEventListener) {window.removeEventListener("load",func,false);}
     else if (window.detachEvent) {window.detachEvent("onload",func);}   
 }
-
-jq(document).ready(function(){
-        // Toggles an 'Archived' search result
-        jq('.outdated_accordion_content').hide();
-        jq('.outdated_separator').show();
-        jq('.outdated_toogle_button').click(function(){
-            jq(this).next('.outdated_accordion_content').toggle();
-            jq(this).next('.outdated_accordion_content').next('.outdated_separator').toggle();
-            return false;
-        });
-      }
-    );

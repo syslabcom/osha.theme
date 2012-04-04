@@ -890,8 +890,8 @@ font-family: Abadi;
     display: inline;
 }
 
-.searchresult-outdated a {
-color:#515151;
+.outdated.collapsed a{
+color: #666666;
 }
 
 .searchresult-outdated .documentByLine {
