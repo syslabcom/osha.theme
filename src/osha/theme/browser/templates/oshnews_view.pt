@@ -55,8 +55,10 @@
                                                 ">
                             <tal:block define="value python: getattr(obj, 'Title', None)">
    
-                                <td tal:attributes="class python:obj_outdated and 'outdated' or ''">
-
+                                <td tal:attributes="class python:obj_outdated and 'searchresult outdated' or 'searchresult'">
+                                    <div class="outdated_toggle_button" tal:condition="obj_outdated">
+                                        <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                                    </div>
                                     <h2>
                                     
                                     <a href="#" tal:attributes="href url;
@@ -68,16 +70,8 @@
                                         tal:content="title_or_id" />
                                     (<span class="teaserdate" tal:content="python:toLocalizedTime(obj['EffectiveDate'])"/>)                                                  
                                     </h2>
-                                    <span class="outdated-result" tal:condition="obj_outdated">
-                                        <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-                                            <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-                                            <span tal:replace="context/outdated_info/Title" />
-                                        </span>
-                                        <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-                                            <img src="/++resource++outdated_mini.png" />
-                                            Outdated
-                                        </span>
-                                    </span>
+                                  <div tal:attributes="class python:obj_outdated and 'outdated_accordion_content' or ''">
+
                                     <tal:block define="newsItem obj/getObject; 
                                                        news_type newsItem/portal_type;
                                                        hasImage python:news_type=='News Item' and newsItem.getField('image').getAccessor(newsItem)()" 
@@ -102,7 +96,8 @@
                                     </span> 
                                     <span class="description" tal:content="structure obj_description">
                                         description 
-                                    </span>                     
+                                    </span>   
+                                  </div>
                                 </td>
                             </tal:block>
                             </tal:fields>
