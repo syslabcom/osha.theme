@@ -831,8 +831,7 @@ competitions linkcollection styles (tab-lke view)
    box-shadow: rgba(0,0,0,1) 0 1px 0;
    text-shadow: rgba(0,0,0,.4) 0 1px 0;
    color: #666666;
-   /*font-size: 14px;
-   font-family: Georgia, serif; */
+   margin-left: 10px;
    text-decoration: none;
    vertical-align: middle;
    }
@@ -910,6 +909,10 @@ font-family: Abadi;
 .outdated.collapsed a,
 .outdated.collapsed h2{
 color: #666666 !important;
+}
+#teaserlisting .outdated h2{
+    border-bottom: 1px solid gray;
+    background: none;
 }
 
 .searchresult-outdated .documentByLine {

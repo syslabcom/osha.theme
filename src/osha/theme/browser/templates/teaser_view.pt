@@ -47,7 +47,10 @@
                                         show_about python:not isAnon or site_properties.allowAnonymousViewAbout">
                                 <tr tal:define="oddrow repeat/obj/odd;"
                                     tal:attributes="class python:oddrow and 'even' or 'odd'">
-                                <td tal:attributes="class python:obj_outdated and 'outdated' or ''">
+                                <td tal:attributes="class python:obj_outdated and 'searchresult outdated' or 'searchresult'">
+                                    <div class="outdated_toggle_button" tal:condition="obj_outdated">
+                                        <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                                    </div>
                                     <h2 class="headline">
                                     <span class="teaserdate" tal:content="python:toLocalizedTime(obj['EffectiveDate'])"/>
                                     <a href="#" tal:attributes="href url;
@@ -58,39 +61,31 @@
                                             tal:condition="not:showLinkToNewsItem"
                                             tal:content="title_or_id" />
                                     </h2>
-                                    <span class="outdated-result" tal:condition="obj_outdated">
-                                        <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-                                            <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-                                            <span tal:replace="context/outdated_info/Title" />
-                                        </span>
-                                        <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-                                            <img src="/++resource++outdated_mini.png" />
-                                            Outdated
-                                        </span>
-                                    </span>
+									<div tal:attributes="class python:obj_outdated and 'outdated_accordion_content' or ''">
 
-                                    <div class="newsImageContainer"
-                                        tal:condition="python: obj.portal_type in ['News Item']"
-                                        tal:on-error="nothing">
-                                        <a href="#"
-                                            tal:condition="showLinkToNewsItem"
-                                            tal:attributes="href string:$url"
-                                            class="parent-fieldname-image">
-                                            <img width="80" tal:attributes="src string:${url}/image; alt title_or_id;" />
-                                        </a>
-                                        <div class="parent-fieldname-image"
-                                            tal:condition="not:showLinkToNewsItem">
-                                            <img width="80" tal:attributes="src string:${url}/image; alt title_or_id;" />
-                                        </div>
-                                    </div>
 
-                                    <span tal:omit-tag="" tal:condition="not:obj_description">
-                                        &nbsp;
-                                    </span>
-                                    <div class="description" tal:content="structure obj_description">
-                                        description
-                                    </div>
+	                                    <div class="newsImageContainer"
+	                                        tal:condition="python: obj.portal_type in ['News Item']"
+	                                        tal:on-error="nothing">
+	                                        <a href="#"
+	                                            tal:condition="showLinkToNewsItem"
+	                                            tal:attributes="href string:$url"
+	                                            class="parent-fieldname-image">
+	                                            <img width="80" tal:attributes="src string:${url}/image; alt title_or_id;" />
+	                                        </a>
+	                                        <div class="parent-fieldname-image"
+	                                            tal:condition="not:showLinkToNewsItem">
+	                                            <img width="80" tal:attributes="src string:${url}/image; alt title_or_id;" />
+	                                        </div>
+	                                    </div>
 
+	                                    <span tal:omit-tag="" tal:condition="not:obj_description">
+	                                        &nbsp;
+	                                    </span>
+	                                    <div class="description" tal:content="structure obj_description">
+	                                        description
+	                                    </div>
+									</div>
                                 </td>
                             </tr>
                             <tr tal:condition="obj_outdated">
