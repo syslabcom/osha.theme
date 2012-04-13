@@ -585,11 +585,11 @@
  <order manager="plone.contentviews" skinname="HealthyWorkplaces">
   <viewlet name="osha.abovecontentportlets"/>
  </order>
- <order manager="plone.abovecontentbody" skinname="Plone Default">
+ <order manager="plone.abovecontentbody" skinname="Plone Classic Theme">
   <viewlet name="slc.linkcollection.linkbox"/>
   <viewlet name="osha.searchurls.status"/>
  </order>
- <order manager="plone.portaltop" skinname="Plone Default">
+ <order manager="plone.portaltop" skinname="Plone Classic Theme">
   <viewlet name="plone.header"/>
   <viewlet name="osha.campaignarea"/>
   <viewlet name="plone.path_bar"/>
@@ -597,23 +597,23 @@
   <viewlet name="plone.personal_bar"/>
   <viewlet name="plone.app.i18n.locales.languageselector"/>
  </order>
- <order manager="plone.htmlhead" skinname="Plone Default">
+ <order manager="plone.htmlhead" skinname="Plone Classic Theme">
   <viewlet name="osha.htmlhead.title"/>
  </order>
- <order manager="osha.header.dropdowns" skinname="Plone Default">
+ <order manager="osha.header.dropdowns" skinname="Plone Classic Theme">
   <viewlet name="osha.languageselector"/>
   <viewlet name="osha.networkchooser"/>
  </order>
- <order manager="plone.belowcontent" skinname="Plone Default">
+ <order manager="plone.belowcontent" skinname="Plone Classic Theme">
   <viewlet name="osha.belowcontentportlets"/>
  </order>
- <order manager="plone.portalfooter" skinname="Plone Default">
+ <order manager="plone.portalfooter" skinname="Plone Classic Theme">
   <viewlet name="osha.footer.actions"/>
   <viewlet name="osha.footer.languageselector"/>
   <viewlet name="plone.footer"/>
   <viewlet name="plone.colophon"/>
  </order>
- <order manager="plone.portalheader" skinname="Plone Default">
+ <order manager="plone.portalheader" skinname="Plone Classic Theme">
   <viewlet name="plone.searchbox"/>
   <viewlet name="plone.skip_links"/>
   <viewlet name="osha.logo"/>
@@ -625,11 +625,11 @@
   <viewlet name="osha.topdropdowns"/>
   <viewlet name="plone.global_sections"/>
  </order>
- <order manager="osha.header.topactions" skinname="Plone Default">
+ <order manager="osha.header.topactions" skinname="Plone Classic Theme">
   <viewlet name="plone.personal_bar"/>
   <viewlet name="osha.languageselector"/>
  </order>
- <order manager="plone.contentviews" skinname="Plone Default">
+ <order manager="plone.contentviews" skinname="Plone Classic Theme">
   <viewlet name="osha.abovecontentportlets"/>
   <viewlet name="plone.contentviews"/>
   <viewlet name="plone.contentactions"/>
@@ -1126,24 +1126,24 @@
   <viewlet name="osha.path_bar"/>
   <viewlet name="plone.app.i18n.locales.languageselector"/>
  </hidden>
- <hidden manager="plone.htmlhead" skinname="Plone Default">
+ <hidden manager="plone.htmlhead" skinname="Plone Classic Theme">
   <viewlet name="plone.htmlhead.title"/>
  </hidden>
- <hidden manager="plone.belowcontentbody" skinname="Plone Default">
+ <hidden manager="plone.belowcontentbody" skinname="Plone Classic Theme">
   <viewlet name="plone.abovecontenttitle.documentactions"/>
   <viewlet name="osha.theme.addthisbutton"/>
  </hidden>
- <hidden manager="plone.portalfooter" skinname="Plone Default">
+ <hidden manager="plone.portalfooter" skinname="Plone Classic Theme">
   <viewlet name="plone.footer"/>
   <viewlet name="plone.colophon"/>
  </hidden>
- <hidden manager="plone.portalheader" skinname="Plone Default">
+ <hidden manager="plone.portalheader" skinname="Plone Classic Theme">
   <viewlet name="plone.logo"/>
   <viewlet name="plone.searchbox"/>
   <viewlet name="plone.global_sections"/>
   <viewlet name="plone.site_actions"/>
  </hidden>
- <hidden manager="plone.portaltop" skinname="Plone Default">
+ <hidden manager="plone.portaltop" skinname="Plone Classic Theme">
   <viewlet name="plone.personal_bar"/>
   <viewlet name="osha.path_bar"/>
   <viewlet name="plone.app.i18n.locales.languageselector"/>
