@@ -1,5 +1,6 @@
 <div id="abovecontent-portlets">
-<tal:block replace="structure provider:osha.abovecontent.portlets" />
+<!-- <tal:block replace="structure provider:osha.abovecontent.portlets" /> -->
 
 <span class="visualClear"><!-- --></span>
 </div>
+

@@ -69,18 +69,19 @@ class Renderer(news.Renderer):
         state = self.data.state
         
         queryA = Eq('portal_type', 'News Item')
-        queryB = Eq('isNews', True)
-        queryBoth = In('review_state', state) & In('path', paths) & In('Language', ['', preflang])
-        if kw !='':
-            queryBoth = queryBoth & In('Subject', kw)
-        queryEffective = Le('effective', DateTime())
-        query = And(Or(queryA, queryB), queryBoth, queryEffective)
-        try:
-            return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
-        except KeyError, e:
-            log.error('KeyError: %s' %  e.__str__())
-            return []
+        # queryB = Eq('isNews', True)
+        # queryBoth = In('review_state', state) & In('path', paths) & In('Language', ['', preflang])
+        # if kw !='':
+        #     queryBoth = queryBoth & In('Subject', kw)
+        # queryEffective = Le('effective', DateTime())
+        # query = And(Or(queryA, queryB), queryBoth, queryEffective)
+        # try:
+        #     return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
+        # except KeyError, e:
+        #     log.error('KeyError: %s' %  e.__str__())
+        #     return []
 
+        return []
 
     @memoize
     def all_news_link(self):
