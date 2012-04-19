@@ -16,6 +16,8 @@ from Products.Five import BrowserView
 from Products.Five.browser import pagetemplatefile 
 from five.formlib import formbase
 
+from plone.app.portlets.portlets.rss import Assignment as RSSAssignment, Renderer as RSSRenderer
+
 from osha.theme.browser.interfaces import IPressRoomConfiguration
 from osha.theme.browser.interfaces import IPressRoomView
 from osha.theme.config import FEED_KEY
@@ -47,6 +49,14 @@ class PressRoomView(BrowserView):
         map = "meltwater"
         rows = sin.sin(map, max_size=2)
         return rows
+
+    def getRSSFeed(self):
+        ass = RSSAssignment(
+            portlet_title="", count=2,
+            url="http://my.memonews.com/archive/feed/atom/5465/newsfeed_homepage")
+        renderer = RSSRenderer(self.context, self.request, self, None, ass)
+        renderer.update()
+        return renderer
 
     @ram.cache(_render_cachekey)
     def getPresscontacts(self):

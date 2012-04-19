@@ -72,16 +72,17 @@
           <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
       </div>
 
-      <div id="boxBody">
-        <tal:block repeat="row view/getFeed">
-          <h3><a tal:attributes="href row/link" tal:content="structure row/title">Hallo</a></h3>
+      <div id="boxBody"
+           tal:define="renderer view/getRSSFeed">
+        <tal:block repeat="row renderer/items">
+          <h3><a tal:attributes="href row/url" tal:content="structure row/title">Hallo</a></h3>
           <p>
-              <span tal:condition="python:row.get('date') or nothing" tal:omit-tag=""><i tal:content="structure python: here.toLocalizedTime(row['date'])"/></span>
-              <span tal:replace="structure row/description">Welt</span>
+              <span tal:condition="python:row.get('updated') or nothing" tal:omit-tag=""><i tal:content="structure python: here.toLocalizedTime(row['updated'])"/></span>
+              <span tal:replace="structure row/summary">Welt</span>
           </p>
         </tal:block>
           <div id="more-syndicated-news">
-              <a href="sinList?synmap=meltwater" i18n:translate="box_more" i18n:domain="plone">More...</a>
+              <a tal:attributes="href renderer/feedlink" i18n:translate="box_more" i18n:domain="plone">More...</a>
           </div>
       </div>
 
