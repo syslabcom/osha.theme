@@ -15,6 +15,7 @@
                       getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
                       templateId template/getId;
                       storydate here/getStorydate|nothing;
+                      wtool context/portal_workflow;
                       text here/getText;">
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 

@@ -8,9 +8,9 @@
     <div metal:fill-slot="main">
     <metal:main-macro define-macro="main">
 
-        <div metal:use-macro="here/document_actions/macros/document_actions">
+<!--        <div metal:use-macro="here/document_actions/macros/document_actions">
             Document actions (print, sendto etc)
-        </div>
+        </div>-->
 
         <h1 tal:content="object_title" class="documentFirstHeading">
             Title or id

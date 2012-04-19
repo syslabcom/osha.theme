@@ -64,6 +64,9 @@
         <dl>
             <tal:entry tal:repeat="item folderContents">
             <tal:block tal:define="item_url item/getURL|item/absolute_url;
+				    normalizeString nocall:context/@@plone/normalizeString;
+                                    toLocalizedTime nocall:plone_view/toLocalizedTime;
+                                    mtool nocall:context/portal_membership;
                                     item_id item/getId|item/id;
                                     item_title_or_id item/pretty_title_or_id;
                                     item_description item/Description;
