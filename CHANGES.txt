@@ -1,10 +1,11 @@
 osha.theme Changelog
 ====================
 
-1.4.29 (unreleased)
+1.4.29 (2012-04-19)
 -------------------
 
-- Nothing changed yet.
+- everting my change to use https for media.osha.europa.eu, since that domain
+  is an alias for amazon, so the certificate does not match [thomasw] #4526
 
 
 1.4.28 (2012-04-04)
