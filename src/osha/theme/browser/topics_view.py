@@ -4,7 +4,7 @@ from Products.ATContentTypes.interface.image import IATImage
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-from p4a.plonevideoembed.interfaces import IVideoLinkEnhanced
+# TODO #4414 from p4a.plonevideoembed.interfaces import IVideoLinkEnhanced
 
 class TopicsBrowserView(BrowserView):
     """
@@ -29,9 +29,7 @@ class TopicsBrowserView(BrowserView):
         """
         context = self.context.getCanonical()
         related_items = context.getRelatedItems()
-        media = [i for i in related_items if
-                 IVideoLinkEnhanced.providedBy(i)
-                 or IATImage.providedBy(i)]
+        media = [i for i in related_items if IATImage.providedBy(i)]
         return media and True or False
 
     def getRelatedMedia(self, video_width, image_scale):
@@ -41,8 +39,9 @@ class TopicsBrowserView(BrowserView):
         """
         context = self.context.getCanonical()
         related_items = context.getRelatedItems()
-        videos = [i for i in related_items if
-                  IVideoLinkEnhanced.providedBy(i)]
+        videos = []
+
+        # TODO [i for i in related_items if IVideoLinkEnhanced.providedBy(i)]
         self.image_scale = image_scale
         video_width = int(video_width)
         if videos:

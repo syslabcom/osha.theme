@@ -658,23 +658,23 @@
         permission="zope2.View"
         />
 
-    <!-- TODO: #4414 fix topics-view and topic-view, they depend on
-         p4a.plonevideo which in turn depends on an outdated hachoir -->
-    <!-- <browser:page -->
-    <!--     for="*" -->
-    <!--     name="topics-view" -->
-    <!--     template="templates/topics_view.pt" -->
-    <!--     class=".topics_view.TopicsView" -->
-    <!--     permission="zope2.View" -->
-    <!--     /> -->
+    <!-- TODO: #4414 fix topic-view depends on p4a.plonevideo which in
+         turn depends on an outdated hachoir -->
+    <browser:page
+        for="*"
+        name="topics-view"
+        template="templates/topics_view.pt"
+        class=".topics_view.TopicsView"
+        permission="zope2.View"
+        />
 
-    <!-- <browser:page -->
-    <!--     for="*" -->
-    <!--     name="topic-view" -->
-    <!--     template="templates/topic_view.pt" -->
-    <!--     class=".topics_view.TopicView" -->
-    <!--     permission="zope2.View" -->
-    <!--     /> -->
+    <browser:page
+        for="*"
+        name="topic-view"
+        template="templates/topic_view.pt"
+        class=".topics_view.TopicView"
+        permission="zope2.View"
+        />
 
     <browser:page
         for="*"
