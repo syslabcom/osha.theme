@@ -133,7 +133,7 @@ class OSHA(BrowserView):
 
         if not desc:
             desc = context.Description() or navigation_root.Description()
-            
+
         meta['description'] = desc
         meta['DC.description'] = desc
 
@@ -231,19 +231,18 @@ class OSHA(BrowserView):
 
         portal = getToolByName(context, 'portal_url').getPortalObject()
         encoding = portal.getProperty('email_charset')
-        subtype = kwargs.get('subtype', 'plain')
+        msg_type = kwargs.get('msg_type', 'text/plain')
         if 'envelope_from' in kwargs:
             envelope_from = kwargs['envelope_from']
         else:
             envelope_from = send_from_address
         # Cook from template
         message = template(context, send_to_address=send_to_address,
-                           send_from_address=send_from_address,
-                           comment=comment, subject=subject, **kwargs)
-        result = host.secureSend(message, send_to_address,
-                                 envelope_from, subject=subject,
-                                 subtype=subtype, charset=encoding,
-                                 debug=False, From=send_from_address)
+            send_from_address=send_from_address, comment=comment,
+            subject=subject, **kwargs)
+
+        result = host.send(message, mto=send_to_address, mfrom=envelope_from,
+            subject=subject, msg_type=msg_type, charset=encoding)
 
     def getTranslatedCategories(self, domain='osha'):
         """ returns a list of tuples, that contain key and title of

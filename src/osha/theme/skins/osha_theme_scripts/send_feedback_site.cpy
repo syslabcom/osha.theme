@@ -13,7 +13,7 @@
 #    We need to take the email_from_address from the REQUEST, because the contact-info
 #    form reads the local (subsite) property if present.
 
-REQUEST=context.REQUEST
+REQUEST = context.REQUEST
 
 from Products.CMFPlone.utils import transaction_note
 from Products.CMFCore.utils import getToolByName
@@ -37,8 +37,8 @@ sender_from_address = REQUEST.get('sender_from_address', '')
 sender_fullname = REQUEST.get('sender_fullname', '')
 
 # HERE BE CHANGE
-send_to_address = REQUEST.get('email_from_address', portal.getProperty('email_from_address') )
-envelope_from = REQUEST.get('email_from_address', portal.getProperty('email_from_address') )
+send_to_address = REQUEST.get('email_from_address', portal.getProperty('email_from_address'))
+envelope_from = REQUEST.get('email_from_address', portal.getProperty('email_from_address'))
 # /HERE BE CHANGE
 
 state.set(status=state_success) ## until proven otherwise
@@ -47,7 +47,7 @@ host = context.MailHost # plone_utils.getMailHost() (is private)
 encoding = portal.getProperty('email_charset')
 
 variables = {'sender_from_address' : sender_from_address,
-             'sender_fullname'     : sender_fullname,             
+             'sender_fullname'     : sender_fullname,
              'url'                 : url,
              'subject'             : subject,
              'message'             : message
@@ -55,7 +55,9 @@ variables = {'sender_from_address' : sender_from_address,
 
 try:
     message = context.site_feedback_template(context, **variables)
-    result = host.secureSend(message, send_to_address, envelope_from, subject=subject, subtype='plain', charset=encoding, debug=False, From=sender_from_address)
+    message = message.encode(encoding)
+    result = host.send(message, send_to_address, envelope_from,
+                       subject=subject, msg_type='html/plain', charset=encoding)
 except ConflictError:
     raise
 except: # TODO Too many things could possibly go wrong. So we catch all.

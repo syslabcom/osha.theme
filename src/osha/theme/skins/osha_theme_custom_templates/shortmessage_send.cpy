@@ -37,8 +37,8 @@ email_subject = context.title_or_id()
 email_body = context.shortmessage_preview_view()
 
 try:
-   host.secureSend(message=email_body, mto=email_to, mfrom=email_from,
-                   subject=email_subject, subtype="html", charset="utf-8")
+   host.send(email_body, mto=email_to, mfrom=email_from, subject=email_subject,
+             msg_type='text/html', charset="utf-8")
 except Exception, msg:
    state.setError("email",
                   'There was a problem sending the Shortmessage: %s' % msg,

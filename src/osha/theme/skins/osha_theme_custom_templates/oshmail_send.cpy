@@ -17,7 +17,8 @@ host = context.MailHost
 email_subject = "%s\n" % (context.title_or_id())
 email_body = context.oshmail_view()
 
-err = host.secureSend(message=email_body, mto=email_to, mfrom=email_from, subject=email_subject, subtype="html", charset="utf-8")
+err = host.send(email_body, mto=email_to, mfrom=email_from,
+    subject=email_subject, msg_type='text/html', charset="utf-8")
 
 if not err:
     return state.set(status='success', portal_status_message='The OSH Mail has been sent to the List Manager.')

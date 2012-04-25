@@ -13,11 +13,13 @@
 
 <body>
 <div metal:fill-slot="main"
-     tal:define="email_from_address portal/email_from_address;
+     tal:define="template_id template/getId;
+       member context/@@plone_portal_state/member;
+       email_from_address portal/email_from_address;
        oshaview python:here.restrictedTraverse('@@oshaview');
        intro python:oshaview.getLocalObject('contact_intro');
-	   subsite_email_from_address python:oshaview.get_subsite_property('support_email');
-	   email_from_address python: subsite_email_from_address!='' and subsite_email_from_address or email_from_address;
+       subsite_email_from_address python:oshaview.get_subsite_property('support_email');
+       email_from_address python: subsite_email_from_address!='' and subsite_email_from_address or email_from_address;
     ">
 
     <h1 class="documentFirstHeading"
