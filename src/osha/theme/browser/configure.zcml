@@ -163,7 +163,7 @@
 
     <!-- OSHA Custom Help Center / FAQ views -->
     <browser:page
-        for="Products.PloneHelpCenter.interfaces.IHelpCenterContent"
+        for="Products.PloneHelpCenter.interfaces.IHelpCenter"
         name="osha_help_center_view"
         class=".oshahelpcenter.OSHAHelpCenterView"
         template="templates/osha_help_center_view.pt"
