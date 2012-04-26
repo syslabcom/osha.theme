@@ -30,8 +30,6 @@ long_description = (
     + '\n'
     )
 
-tests_require=['zope.testing']
-
 setup(name='osha.theme',
       version=version,
       description="Plone theme for OSHA web site",
@@ -92,9 +90,6 @@ setup(name='osha.theme',
           'slc.xliff',
           'z3c.jbot',
       ],
-      tests_require=tests_require,
-      extras_require=dict(tests=tests_require),
-      test_suite = 'osha.theme.tests.test_docs.test_suite',
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
