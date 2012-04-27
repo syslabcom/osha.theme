@@ -47,6 +47,7 @@ dd.portletItem .navTreeItem a {
     padding: 0.3em 1em 0.4em;
     line-height: normal;
     color: &dtml-globalFontColor;;
+    border-bottom: 1px solid #fff;
 }
 .navTreeItem a:hover,
 dd.portletItem .navTreeItem a:hover {
