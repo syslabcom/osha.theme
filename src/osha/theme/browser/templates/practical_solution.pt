@@ -57,9 +57,8 @@
         </metal:field>
 
         <br clear="all"/>
-
         <form id="database_search"
-              tal:attributes="action view/getName" method="get">
+              tal:attributes="action string:${request/URL}"  method="get">
 
           <div id="filter_searchfields">
 
