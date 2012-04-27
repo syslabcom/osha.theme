@@ -909,6 +909,15 @@
         permission="zope2.View"
         />
 
+    <!-- New view for the home page -->
+    <browser:page
+        for="*"
+        name="osha_homepage"
+        class=".homepage.HomepageView"
+        template="templates/homepage.pt"
+        permission="zope.Public"
+        />
+
     <!-- Inline content viewlet -->
     <browser:viewlet
         name="osha.theme.inline_content_viewlet"
