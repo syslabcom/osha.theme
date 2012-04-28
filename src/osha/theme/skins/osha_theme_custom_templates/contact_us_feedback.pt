@@ -12,7 +12,11 @@
 <div metal:fill-slot="main" i18n:domain="osha"
    tal:define="student request/student|python:0">
 
-  <div tal:condition="not:student"
+  <div tal:define="feedback python: here.contact_data.misc.ack_standard.getText()">
+    <span tal:replace="structure feedback" /> 
+  </div>
+
+  <!--div tal:condition="not:student"
     tal:define="long_feedback request/long_feedback |python:0;
                 feedback python:test(long_feedback, here.contact_data.misc.web_ack_info.getText(), here.contact_data.misc.web_ack_comment.getText())">
 
@@ -28,7 +32,7 @@
                 feedback string:$intro $extraText $subjText $closing"
         >
     <span tal:replace="structure feedback" />
-  </div>
+  </div-->
 
     
 </div>
