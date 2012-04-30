@@ -17,6 +17,7 @@ pp = getToolByName(portal, 'portal_properties')
 op = getattr(pp, 'osha_properties', None)
 siteadmin = getattr(portal, 'email_from_address')
 reg_tool = getToolByName(context, 'portal_registration')
+host = getToolByName(context, 'MailHost')
 
 REQUEST = context.REQUEST
 if not emailaddress:
@@ -52,12 +53,12 @@ sender = emailaddress
 
 subject = ''
 try:
-    context.MailHost.send(mesg , mto=recipient, mfrom=sender, subject=subject)
+    host.send(mesg, mto=recipient, mfrom=sender, subject=subject)
 except Exception, e:
     mssg = "Your subscription could not be sent. Please try again."
 
 if not noredirect:
-    from slc.alertservice.utils import encodeEmail
+    from slc.alertservice import utils
     # this feedbackpage has been added to contain a specific tracking code for an external company
     #feedbackpage = "http://osha.europa.eu/news/oshmail/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender))
-    return REQUEST.RESPONSE.redirect(refererstem + "/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender)))
+    return REQUEST.RESPONSE.redirect(refererstem + "/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, utils.encodeEmail(sender)))

@@ -1,4 +1,3 @@
-import datetime
 from urlparse import urljoin
 from types import *
 
@@ -214,7 +213,6 @@ class OSHA(BrowserView):
             button.
         """
         context = Acquisition.aq_inner(self.context)
-        portal_url = getToolByName(context, 'portal_url')
         if hasattr(context.aq_explicit, 'getImage'):
             return "%s/image" % (context.absolute_url())
         return ''
@@ -223,7 +221,7 @@ class OSHA(BrowserView):
                subject='Plone', **kwargs):
         """Sends a link of a page to someone."""
         context = self.context
-        host = getattr(context, 'MailHost')
+        host = getToolByName(context, 'MailHost')
         if 'template' in kwargs:
             template = getattr(context, kwargs['template'])
         else:
@@ -240,8 +238,7 @@ class OSHA(BrowserView):
         message = template(context, send_to_address=send_to_address,
             send_from_address=send_from_address, comment=comment,
             subject=subject, **kwargs)
-
-        result = host.send(message, mto=send_to_address, mfrom=envelope_from,
+        host.send(message, mto=send_to_address, mfrom=envelope_from,
             subject=subject, msg_type=msg_type, charset=encoding)
 
     def getTranslatedCategories(self, domain='osha'):
@@ -377,7 +374,7 @@ class OSHA(BrowserView):
 
     def getCalendarEvents(self, past=False):
         """ If called on a calendar, the list of events is returned"""
-        context = self.context
+        # context = self.context
         # XXX Fixme: replacement for p4a.calendar
         # if p4aCalendarInterfaces.ICalendarEnhanced.providedBy(context):
         #     now = datetime.datetime.now()
@@ -420,8 +417,8 @@ class OSHA(BrowserView):
     def get_native_language_by_code(self, lang_code):
         context = self.context
         ltool = context.portal_languages
-        lang_info = ltool.getAvailableLanguageInformation().get(lang_code, None)
+        lang_info = ltool.getAvailableLanguageInformation().get(
+            lang_code, None)
         if lang_info is not None:
             return lang_info.get(u"native", None)
         return None
-

@@ -14,7 +14,6 @@ request=context.REQUEST
 portal_url = getToolByName(context, 'portal_url')
 plone_utils = getToolByName(context, 'plone_utils')
 ts = getToolByName(context, 'translation_service')
-login_failed
 portal = portal_url.getPortalObject()
 
 subject = request.get('subject', '')

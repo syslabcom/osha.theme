@@ -13,7 +13,8 @@ request = context.REQUEST
 
 email_to = email
 email_from = context.portal_properties.site_properties.email_from_address
-host = context.MailHost
+from Products.CMFPlone.utils import getToolByName
+host = getToolByName(context, 'MailHost')
 email_subject = "%s\n" % (context.title_or_id())
 email_body = context.oshmail_view()
 

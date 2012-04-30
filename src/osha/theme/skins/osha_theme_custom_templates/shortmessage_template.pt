@@ -4,6 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
       lang="en"
+      tal:define="plone_view context/@@plone;
+      	          view nocall:view | nocall: plone_view;"
       >
   <div tal:replace="structure provider:plone.htmlhead" />
 

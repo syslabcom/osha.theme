@@ -43,7 +43,8 @@ envelope_from = REQUEST.get('email_from_address', portal.getProperty('email_from
 
 state.set(status=state_success) ## until proven otherwise
 
-host = context.MailHost # plone_utils.getMailHost() (is private)
+from Products.CMFPlone.utils import getToolByName
+host = getToolByName(context, 'MailHost')
 encoding = portal.getProperty('email_charset')
 
 variables = {'sender_from_address' : sender_from_address,

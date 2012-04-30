@@ -32,7 +32,8 @@ if not email_to:
    return state
 
 email_from = context.portal_properties.site_properties.email_from_address
-host = context.MailHost
+from Products.CMFPlone.utils import getToolByName
+host = getToolByName(context, 'MailHost')
 email_subject = context.title_or_id()
 email_body = context.shortmessage_preview_view()
 

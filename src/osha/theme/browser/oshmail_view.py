@@ -132,6 +132,7 @@ class OSHmailView(BrowserView):
         op = getattr(pp, 'osha_properties', None)
         siteadmin = getattr(portal, 'email_from_address')
         reg_tool = getToolByName(self.context, 'portal_registration')
+        host = getToolByName(self.context, 'MailHost')
 
         REQUEST = self.request
         if not emailaddress:
@@ -142,15 +143,14 @@ class OSHmailView(BrowserView):
         if qs:
             referer += '?' + qs + '&'
 
-        if reg_tool.isValidEmail(emailaddress):
-            pass
-        else:
+        if not reg_tool.isValidEmail(emailaddress):
             msg = _(u'You did not enter a valid email address.')
             try:
                 msg = unicode(msg, 'iso8859-1').encode('utf-8')
             except:
                 pass
-            return REQUEST.RESPONSE.redirect(referer + "portal_status_message=" + msg)
+            return REQUEST.RESPONSE.redirect(
+                referer + "portal_status_message=" + msg)
 
         if REQUEST.has_key('unsubscribe'):
             mesg = "UNSUBSCRIBE OSHMAIL\n"
@@ -168,7 +168,7 @@ class OSHmailView(BrowserView):
 
         subject = ''
         try:
-            self.context.MailHost.send(mesg , mto=recipient, mfrom=sender, subject=subject)
+            host.send(mesg, mto=recipient, mfrom=sender, subject=subject)
         except Exception, e:
             mssg = "Your subscription could not be sent. Please try again. " + str(e)
 
