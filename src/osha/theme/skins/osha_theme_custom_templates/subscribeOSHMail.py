@@ -58,7 +58,7 @@ except Exception, e:
     mssg = "Your subscription could not be sent. Please try again."
 
 if not noredirect:
-    from slc.alertservice import utils
+    from slc.alertservice.utils import encodeEmail
     # this feedbackpage has been added to contain a specific tracking code for an external company
     #feedbackpage = "http://osha.europa.eu/news/oshmail/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender))
-    return REQUEST.RESPONSE.redirect(refererstem + "/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, utils.encodeEmail(sender)))
+    return REQUEST.RESPONSE.redirect(refererstem + "/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender)))
