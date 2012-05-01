@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 """
 This module contains the osha.theme package
@@ -68,7 +69,7 @@ setup(name='osha.theme',
           'Products.RemoteProvider',
           'Products.RichDocument',
           'Products.TextIndexNG3',
-          'Products.collage',
+          'Products.Collage',
           'collective.captcha',
           'dateable.chronos',
           'ordereddict',
