@@ -15,7 +15,8 @@
                     plone_view context/@@plone;
                     normalizeString nocall:plone_view/normalizeString;
                     toLocalizedTime nocall:plone_view/toLocalizedTime;
-                    outdated result/outdated|python:0">
+                    outdated result/outdated|python:0;
+                    mtool context/portal_membership;">
       <div class="searchresult" tal:attributes="class python:outdated and 'searchresult-outdated' or 'searchresult'">
         <dt>
           <metal:macro define-macro="provider">
@@ -76,7 +77,7 @@
           </tal:publication_date>
 
           <tal:faq condition="python: result['portal_type'] == 'HelpCenterFAQ'">
-            <p tal:define="descr python:result.getObject().getAnswer()"
+            <p tal:define="descr python:result.getObject().getText()"
                tal:content="python:here.restrictedTraverse('@@oshaview').cropHtmlText(descr, 200)" />
           </tal:faq>
 
