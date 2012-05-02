@@ -183,9 +183,11 @@ input.searchButton {
 }
 #portal-header {
     float: none;
+    
 }
 * html #portal-header {
     float: left;
+    
 }
 .navTreeItem a, 
 dd.portletItem .navTreeItem a {

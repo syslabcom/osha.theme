@@ -61,7 +61,7 @@ body.kssActive h1.inlineEditable:hover {
     background:&dtml-globalBackgroundColor;;
     padding:0 0 0 !important;
     margin-bottom: 1em;
-    font-size: 150%
+	font-size: 150%
 }
 
 .documentContent {
@@ -680,14 +680,14 @@ table.plain th {
 }
 
 #eventDetailsTable {
-    border: 0;
+	border: 0;
 }
 #eventDetailsTable td.label {
-    width: 20%;
-    text-align:left;
+	width: 20%;
+	text-align:left;
 }
 #eventDetailsTable td {
-    width: 30%;
+	width: 30%;
 }
 /* List classes without markers */
 ul.visualNoMarker,
@@ -967,22 +967,24 @@ dl.portletFollowUs  {
    border:1px solid #C5CBD8;
    font-size:100%;
    margin:1em auto;
+   
 }
 
 dl.portletFollowUs dt {
     padding:0.5em;
-    background: #C5CBD8;
+	background: #C5CBD8;
 }
 dl.portletFollowUs dd {
     margin:0;
-    padding:0.5em;
+	padding:0.5em;
 }
 dl.portletFollowUs ul {
-    list-style-type: none;
-    margin:0;
+    list-style-type: none;  
+	margin:0;
+	
 }
 dl.portletFollowUs ul li {
-    list-style-type: none;
+    list-style-type: none;   
     margin:0;
 }
 dl.portletFollowUs .twitter-logo,
@@ -1120,7 +1122,7 @@ div#available-translations .selected {
     margin-bottom:0.5em;
 }
 #oshnetwork_editors_box ul {
-    display:inline;
+	display:inline;
 }
 #oshnetwork_editors_box ul li {
     display: block;
