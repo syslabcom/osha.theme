@@ -104,7 +104,7 @@
              tal:content="faq/Title"
              tal:attributes="href python:faq.absolute_url()"/>
           <div class="faq_answer"
-               tal:content="structure python:faq.getAnswer()"/>
+               tal:content="structure python:faq.getText()"/>
         </li>
         </ul>
       </div>
