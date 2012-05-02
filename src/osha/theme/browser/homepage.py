@@ -50,8 +50,9 @@ class HomepageView(BrowserView):
             res = res[:limit]
         if len(res) == 0:
             now = DateTime()
-            yield dict(link='', description='No highlights were found',
-                        title='No Highlights', img_url='', date=DateTime())
+            return [dict(link='', description='No highlights were found',
+                        title='No Highlights', img_url='', date=DateTime())]
+        ret = list()
         for r in res:
             obj = r.getObject()
             link = obj.absolute_url()
@@ -62,8 +63,9 @@ class HomepageView(BrowserView):
             if not isinstance(description, unicode):
                 description = description.decode('utf-8')
             date = obj.effective()
-            yield dict(link=link, img_url=img_url, description=description,
-                title=obj.Title(), date=date)
+            ret.append(dict(link=link, img_url=img_url, description=description,
+                title=obj.Title(), date=date))
+        return ret
 
     @property
     def in_focus(self, limit=4):
