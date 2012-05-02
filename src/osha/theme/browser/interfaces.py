@@ -9,6 +9,12 @@ from plone.portlets.interfaces import IPortletManager
 
 _ = MessageFactory('osha.theme')
 
+class IMaintenanceView(Interface):
+    "Maintenance Plone4"
+    
+    def convertLPFolders():
+        """ convert Large Plone Folders to Folders """
+        
 class IOSHmailView(Interface):
     """ oshmail overview including subscription """
 

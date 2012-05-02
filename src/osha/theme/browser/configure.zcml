@@ -7,6 +7,14 @@
     <include package="plone.app.portlets" />
     <include package="p4a.subtyper" />
 
+    <browser:page
+        for="*"
+        name="plone4-maintenance"
+        class=".maintenance.MaintenanceView"
+        permission="cmf.ManagePortal"
+		allowed_interface=".interfaces.IMaintenanceView"
+        />
+
     <!-- OSHA RollingQuotes Tool -->
     <browser:resource
         name="rollingquote.kss"
