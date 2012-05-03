@@ -26,8 +26,7 @@
 }
 #portal-logo {
     float:left;
-     background: url('&dtml-portal_url;/logoinner2.gif') no-repeat scroll right bottom #FFFFFF;
-    float: left;
+	 background: url('&dtml-portal_url;/logoinner2.gif') no-repeat scroll right bottom #FFFFFF;
     padding: 18px 30px 10px 10px;
 }
 
@@ -54,10 +53,10 @@ dl.portlet #osha-topactions {
     margin:0;
     padding: 0 1em;
     border-bottom: none;
-    display: none;
+	display: none;
 }
 #osha-topdropdowns {
-    margin:0px 80px 0 201px;
+    margin:10px 80px 0 201px;
     position:relative;
 }
 #portal-network {
@@ -126,8 +125,8 @@ select[multiple] {
     text-align: center;
     font-size: 80%;
     margin-top:1em;
-    border-top: 1px solid #083e8a;
-    padding-top: 1em;
+	border-top: 1px solid #083e8a;
+	padding-top: 1em;
 }
 ul#portal-footeractions,
 ul#portal-footeractions2 {
@@ -166,6 +165,7 @@ h2.headline {
 
 /***************portlet CS*************/
 
+
 .portletEvents{
     
 }
@@ -185,7 +185,6 @@ h2.headline {
     line-height:2em;
     font-weight: bold;
     margin-bottom:-1px;
-    font-size: 90%;
 }
 .portletItem {
     padding: 0.5em;
@@ -194,7 +193,7 @@ h2.headline {
 .portletFooter {
     padding: 0.25em 0.5em;
     border-style:solid solid none;
-    font-size: 90%;
+	font-size: 90%;
 }
 .portletItemDetails {
     text-align:left;
@@ -210,10 +209,20 @@ h2.headline {
 #belowcontent-portlets dl.portlet {
     background: transparent none repeat scroll 0% 0%;
 }
+
+
+
 /* special portlets' styles */
+
+.portletNavigationTree {
+    font-size: 110%;
+}
+
+
 
 dl.portletSearch {
     background-color: &dtml-contentViewBackgroundColor;;
+
 }
 input.searchButton {
     background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -964px -1388px white;
@@ -224,7 +233,35 @@ dl.portletSearch dt.portletHeader{
     line-height: 1.5em;
     padding-top:0.25em;
     padding-bottom:0.25em;
+	display: none;
 }
+
+dl.portletSearch .portletItem {
+    border: 0 none;
+    padding: 0;
+}
+
+.LSBox {
+    clear: left;
+    display: block;
+    float: left;
+    padding-right: 1px;
+    text-align: right;
+	border: 1px solid #c5cbd8;
+	padding: 5px;
+	
+}
+
+.LSBox input{
+    border: 0 !important;
+	background: #fff;
+}
+
+input.searchButton {
+    background: url("search_icon2.gif") no-repeat scroll 2px 1px White;
+    border: 0;
+}
+
 dl.portletSearch #additional-search-options {
     margin-top: 0.5em;
     font-size: 0.9em;
@@ -380,6 +417,7 @@ dl.portletInlineNavigationTree ul {
     margin: 0 2% 1% 1%;
 }
 
+
 /* Styles for SEP markup images */
 .figure-box {
     float: left;
@@ -441,6 +479,158 @@ dl.portletInlineNavigationTree ul {
 
 #db_results dd { background-color: transparent; margin-left: 0; padding-left: 2em !important; border-bottom: 1px dotted gray; padding: 2px; }
 
+
+/* styles new header 2012/05/01***********************/
+
+
+#content{
+   
+	padding: 0 1em;
+	
+}
+#intro{
+    border: 1px solid #003399;
+    border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	padding: 1em;
+	margin-bottom: 2em;
+	height: 140px;
+	background: url(intro01.jpg) no-repeat top right;
+}
+
+#intro a{
+   font-size: 80%;
+}
+
+#intro h1{
+    font-family: Georgia, "Times New Roman", Times, serif;
+	color: #7f98ca;
+	font-style: italic;
+	font-size: 1.8em;
+	padding: 0 260px 0 0;
+	font-weight: normal;
+	margin: 0 0 10px 0;
+}
+
+#agency_fullname{
+    text-transform: uppercase;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 80%;
+}
+
+#highlights{
+    border: 1px solid #c5cbd8;
+	padding-bottom: 2.5em;
+	
+}
+
+#highlightsContainer{
+   padding-bottom: 20px;
+   background: url(highlights.gif) no-repeat bottom center;
+   margin-bottom: 2em;
+   
+}
+
+#highlights h2, #in-focus-container h2{
+    background: #c5cbd8;
+	font-size: 0.85em;
+	border-bottom: 0;
+	padding: 0.5em 1em;
+	margin:0;
+}
+
+#highlights h3{
+    font-size: 1.4em;
+	color: #003399;
+	margin: 0;
+}
+#highlights-1, #highlights-2, #highlights-3, #highlights-4 {
+    padding: 1em;
+}
+
+#highlights-tabs {
+    list-style: none;
+	float: right;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0 0.3em 0.5em 0;
+}
+
+#highlights-tabs li{
+    float: left;
+}
+
+#highlights-tabs li a, .ui-state-default{
+    float: left;
+	background:#c5cbd8;
+	color: #fff;	
+	padding: 0.1em 0.4em;
+	margin: 0 0.5em 0 0;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-shadow:2px 2px 2px #999;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+
+
+#highlights-tabs li a:hover{
+  
+	background:#98a2b7;
+	
+}
+
+.teaserdate{
+    background: #e6e8ed;
+	padding: 0.2em 1em;
+	font-size: 0.8em;
+	color: #666;
+	display: inline-block;
+	margin: 1em 0;
+	
+}
+
+
+#highlights img{
+    float: right;
+	margin: 1em 0 1em 1em;
+}
+
+#in-focus-container ul{
+    margin:0;
+	list-style: none;
+}
+
+#in-focus img{
+   float: right;
+   margin: 0 0 0.5em 0.5em;
+}
+
+#in-focus  {
+   font-size: 85%;
+   line-height: 160%;
+}
+
+#in-focus  h3{
+   margin: 0 0 0.5em 0;
+   color:#003399;
+}
+#highlight-1, #highlight-2, #highlight-3, #highlight-4{
+    width: 48%;
+	margin: 2em 0 1em;
+}
+
+#highlight-1, #highlight-3{
+    float: left;
+	padding-right: 2%;
+}
+
+#highlight-2, #highlight-4{
+    float: right;
+	padding-left: 2%;
+}
+
 /* styles for the teaser frontpage */
 #teaserlisting {
     border: none;
@@ -450,7 +640,7 @@ dl.portletInlineNavigationTree ul {
 }
 #teaserlisting td {
     border-right: none;
-    line-height: 1.5em;
+	line-height: 1.5em;
     padding:0 1em 3em 1em;
 }
 #teaserlisting h2.headline {
@@ -469,11 +659,11 @@ dl.portletInlineNavigationTree ul {
 
 #teaserlisting h2.headline a {
     display:block;
-    padding: 5px 0 0;
+	padding: 5px 0 0;
 }
 h1 span#publication-date,
 #teaserlisting .teaserdate {
-    background: none repeat scroll 0 0 #EFEFEF;
+      background: none repeat scroll 0 0 #EFEFEF;
     display: inline-block;
     font-size: 0.6em;
     font-weight: normal;
@@ -594,25 +784,25 @@ ul.linkList li {
 }
 
 .image-presentation-box {
-        border: none;
-        background-color: &dtml-contentViewBackgroundColor;;
-        padding: 1em;
+		border: none;
+		background-color: &dtml-contentViewBackgroundColor;;
+		padding: 1em;
 }
 .image-presentation-box img {
-    float:left;
-    margin-right: 1em;
+	float:left;
+	margin-right: 1em;
 }
 #linguaToolForms fieldset:hover {
-    background-color:#eeeedd;
+	background-color:#eeeedd;
 }
 
 #linguaToolForms fieldset:hover input{
-    background-color:#ffffff;
+	background-color:#ffffff;
 }
 
 #addresses table{
-    width:100%;
-    margin:0px;
+	width:100%;
+	      margin:0px;
 }
 #PressRoom h1.header {
     font-size:120%;
@@ -625,24 +815,24 @@ ul.linkList li {
 }
 #PressRoom #addresses div
 {
-    clear:right;
+	clear:right;
     background-color:#c5cbd8;
     margin:30px 3% 0px 3%;
     padding: 5px;
 }
 * html #PressRoom #addresses div {
-    margin-left:0px;
+	margin-left:0px;
 }
 #PressRoom #addresses #firstAdress {
-    margin-left:0px;
+	margin-left:0px;
 }
 #PressRoom #addresses #lastAdress {
-    margin-right:0px;
-    clear:both;
+	margin-right:0px;
+	clear:both;
 }
 
 #pressroom-boxes  {
-    width:570px;
+		width:570px;
     margin:auto;
 }
 #pressroom-boxes a {
@@ -694,26 +884,26 @@ ul.linkList li {
 .pressbox-publications-on div {position:relative;right: 0px;bottom: 0px;}
 
 #EuMediaCoverage {
-    clear:both;
-    border: 1px solid #000000;
-    background-color:#c0c0c0;
+	clear:both;
+	border: 1px solid #000000;
+	background-color:#c0c0c0;
 }
 
 #EuMediaCoverage {
-    padding-left:11px;
+	padding-left:11px;
 }
 #boxBody {
-    border: 1px solid #000000;
+	border: 1px solid #000000;
     padding:5px 10px;
 }
 #boxBody h3 {
-    color:#295994;
-    font-size:10px;
-    padding-top:0.5em;
+	color:#295994;
+	font-size:10px;
+	padding-top:0.5em;
 }
 #boxBody p {
-    border-bottom: 1px dashed gray;
-    padding-bottom: 0.5em;
+	border-bottom: 1px dashed gray;
+	padding-bottom: 0.5em;
 }
 #more-syndicated-news{ text-align:right; margin-right:10px;}
 
@@ -746,12 +936,6 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
     padding:1em;
 }
 
-#collage .collage-row .block_2 div.collage-item {
-   width:80%;
-   margin-left: auto !important;
-   margin-right: auto !important;
-}
-
 .boxing_styles_inner_content tbody {
 
 }
@@ -771,7 +955,7 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 
 .boxing_styles_inner_content ul {
 line-height:1.5em;
-list-style-image:url(https://osha.europa.eu/bullet.gif);
+list-style-image:url(http://osha.europa.eu/bullet.gif);
 list-style-type:square;
 margin:0.5em 0 0 0;
 padding-left:15px;
@@ -810,7 +994,7 @@ padding-left:15px;
 
 .boxing_styles_content ul {
 line-height:1.5em;
-list-style-image:url(https://osha.europa.eu/bullet.gif);
+list-style-image:url(http://osha.europa.eu/bullet.gif);
 list-style-type:square;
 margin:0.5em 0 0 0;
 padding-left:15px;
@@ -818,7 +1002,7 @@ padding-left:15px;
 
 .boxing_styles_content li {
     margin-bottom:0.5em;
-    margin-left: 1.5em;
+ 	margin-left: 1.5em;
 }
 
 /* Old linkcollection styles copied from slc.linkcollectio, pre-revamp.
@@ -916,17 +1100,16 @@ color:#515151;
 margin:0.2em 0 0.75em;
 }
 
-/*
 #teaserlisting td.outdated,
 #newslisting td.outdated,
 .eventlist div.outdated,
 #presslisting div.outdated,
-.topicslisting li.outdated,
 .searchresult-outdated {
 border:1px dotted red;
 padding:5px 5px 0px;
 margin-bottom:10px;
 color:#515151;
+/*font-family:Abadi;*/
 font-size:100%;
 font-size-adjust:none;
 font-stretch:normal;
@@ -934,29 +1117,19 @@ font-style:normal;
 font-variant:normal;
 font-weight:normal;
 letter-spacing:1px;
-} */
+}
 
 /* .outdated h2,
 .outdated h3 {
 font-family: Abadi;
 } */
 
-.searchresult a.result_title {
-    font-weight: bold;
-}
-
 .p4acalendar .eventlist .event.outdated .event_title {
     display: inline;
 }
 
-.outdated.collapsed a,
-.outdated.collapsed h2{
-color: #666666 !important;
-}
-
-#teaserlisting .outdated h2{
-    border-bottom: 1px solid gray;
-    background: none;
+.searchresult-outdated a {
+color:#515151;
 }
 
 .searchresult-outdated .documentByLine {
@@ -1017,10 +1190,10 @@ body.template-osha_help_center_view div.faq_answer {
 }
 
 body.template-osha_help_center_view div.categorySearchBox {
-    -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
-    -moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
-    background-color: #eceef0;
+	-webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
+	-moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
+	box-shadow: inset 0 2px 10px rgba(0,0,0,0.15);
+	background-color: #eceef0;
     padding: 1em;
 }
 
@@ -1047,24 +1220,6 @@ div#faq_results li.expanded {
  */
 body.template-competitions-view #competitionSchwusch li {
     width: 309px;
-}
-
-/* oshmail overlay */
-#oshmail-overlay h1.documentFirstHeading {
-   background: none;
-   font-size: 300%;
-   padding: 0 !important;
-}
-
-#oshmail-overlay h1.documentFirstHeading,
-#oshmail-overlay #plone-document-byline {
-    margin-left: 1%;
-}
-
-/* Simple news view for Belgian sites */
-div.teaserdate {
-    font-family: Courier;
-    padding-bottom: 1em;
 }
 
 /* </dtml-with> */
