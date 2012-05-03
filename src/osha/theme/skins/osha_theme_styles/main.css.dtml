@@ -158,6 +158,10 @@ h2.headline {
     padding-top: 1em !important;
 }
 
+body.template-osha_homepage #portal-breadcrumbs {
+    display: none;
+}
+
 /*
 ** PORTLETS STYLES
 */
