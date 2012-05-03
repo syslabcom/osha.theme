@@ -11,6 +11,7 @@ from Products.CMFCore.utils import getToolByName
 
 from Products.ATContentTypes.content.folder import ATFolder
 
+log_file = open("converted_large_plone_folders.log", "a")
 
 def convertLPFolder(parent, folder):
     """ convert Large Plone Folders to Folders """
@@ -39,12 +40,14 @@ def convertLPFolder(parent, folder):
     parent._setOb(id, aq_base(newfolder))
 
     #transaction.abort()
-    return "converted %s" % id
+    return "%s, %s" % (id, folder.absolute_url(1))
 
 def findLPFolder(context):
     for id, item in context.ZopeFind(context, search_sub=0):
         if item.meta_type == 'ATBTreeFolder':
-            print convertLPFolder(context, item)
+            msg = convertLPFolder(context, item)
+            print msg
+            log_file.write(msg + "\n")
         if item.isPrincipiaFolderish:
             findLPFolder(item)
 
