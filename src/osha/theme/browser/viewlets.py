@@ -2,6 +2,7 @@ from cgi import escape
 
 from zope.app.component.hooks import getSite
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.i18n import translate
 from Acquisition import aq_base, aq_inner, aq_parent
 
@@ -22,6 +23,7 @@ from plone.app.portlets.cache import get_language
 from slc.subsite.interfaces import ISubsiteEnhanced
 from Products.RemoteProvider.content.interfaces import IProvider
 from Products.OSHContentLink.interfaces import IOSH_Link
+from slc.googlesearch.interfaces import IGoogleSearchSettings
 
 from osha.theme import config
 from osha.theme.browser.interfaces import IInlineContentViewlet
@@ -518,3 +520,76 @@ class InlineContentViewlet(common.ViewletBase):
 
 class TopicViewHeading(common.ViewletBase, TopicsBrowserView):
     render = ViewPageTemplateFile('templates/topic_view_heading_viewlet.pt')
+
+
+class GoogleSearchViewlet(common.ViewletBase):
+    render = ViewPageTemplateFile('templates/googlesearch_viewlet.pt')
+
+    def update(self):
+        self.language = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+
+        purl = getToolByName(self.context, 'portal_url')
+        portal = purl.getPortalObject()
+        self.portal_path = '/'.join(portal.getPhysicalPath())
+        osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
+        self.subsite_url = osha_view.subsiteRootUrl()
+        self.subsite_path = osha_view.subsiteRootPath()
+
+    def index_alphabetical(self):
+        return '%s/%s/@@index_alphabetical' %(self.subsite_url, self.language)
+
+    def showAtozLink(self):
+        osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
+        show = osha_view.get_subsite_property('show_atoz_link')
+        if show is None:
+            show = True
+        return show
+
+    def oshGlobalSearchLink(self):
+        return '%s/%s/slc_cse_search_results?&q=&cof=FORID:11&sa=Search&ie=UTF-8&cref=https://osha.europa.eu/google/international_cse.xml' %(self.subsite_url, self.language)
+
+    def enable_livesearch(self):
+        return False
+        
+    def getCSE(self):
+        GSS = getUtility(IGoogleSearchSettings)
+        # just pick the first setting...
+        for setting in GSS.stored_settings:
+            value = "cx::%s" %(setting.cx)
+            return value
+        return "::"
+
+    def getCx(self):
+        try:
+            typus, value = self.getCSE().split('::')
+            if typus=='cx':
+                return value
+        except ValueError:
+            pass
+        return ''
+
+    def getCref(self):
+        try:
+            typus, value = self.getCSE().split('::')
+            if typus=='cref':
+                return value
+        except ValueError:
+            pass
+        return ''
+
+    def getAdditional(self):
+        return ""
+
+    #@memoize
+    def _get_base_url(self):
+        root = self.context.restrictedTraverse(self.portal_path)
+        if hasattr(aq_base(aq_inner(root)), self.language):
+            return '%s/%s' %(root.absolute_url(), self.language)
+        else:
+            return root.absolute_url()
+
+    def search_action(self):
+        base_url = self._get_base_url()
+        return '%s/slc_cse_search_results' % base_url
+
+    

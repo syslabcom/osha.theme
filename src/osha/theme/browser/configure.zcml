@@ -926,6 +926,14 @@
         permission="zope2.View"
         />
 
+    <!-- GoogleSearch viewlet, replacing the GoogleSearch portlet -->
+    <browser:viewlet
+        name="osha.theme.googlesearch_viewlet"
+        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+        class=".viewlets.GoogleSearchViewlet"
+        permission="zope2.View"
+        />
+
     <include package="z3c.jbot" file="meta.zcml" />
 
     <browser:jbot

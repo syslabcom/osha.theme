@@ -1024,11 +1024,11 @@
     <viewlet name="plone.colophon"/>
   </hidden>
   <hidden manager="plone.portalheader" skinname="OSHA Plone Theme">
-    <viewlet name="GoogleSearch.Form"/>
     <viewlet name="plone.logo"/>
     <viewlet name="plone.searchbox"/>
     <viewlet name="plone.global_sections"/>
     <viewlet name="plone.site_actions"/>
+    <viewlet name="osha.theme.googlesearch_viewlet"/>
   </hidden>
   <hidden manager="plone.portaltop" skinname="OSHA Plone Theme">
     <viewlet name="plone.personal_bar"/>
