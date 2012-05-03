@@ -27,10 +27,10 @@
                 <div tal:define="no repeat/news/number"
                     tal:attributes="id string:highlights-$no">
                   <tal:news_item>
+                      <h3><a tal:attributes="href news/link" tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</a></h3>
                       <a tal:attributes="href news/link">
-                        <img tal:attributes="src news/img_url" width="85" tal:on-error="string:no image" />
+                        <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
                       </a>
-                      <h3 tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</h3>
                       <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
                       <span tal:replace="structure news/description"></span>
 
@@ -55,9 +55,9 @@
                         tal:attributes="id string:highlight-$no">
                       <tal:news_item>
                           <a tal:attributes="href news/link">
-                            <img tal:attributes="src news/img_url" width="85" tal:on-error="string:no image" />
+                            <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
                           </a>
-                          <h3 tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</h3>
+                          <h3><a tal:attributes="href news/link" tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</a></h3>
                           <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
                           <span tal:replace="structure news/description"></span>
 
