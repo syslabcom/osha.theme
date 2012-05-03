@@ -4,7 +4,8 @@
                 dummy python:languages.sort(lambda x,y: cmp(x['native'], y['native']));
                 showFlags view/showFlags;
                 preflang  python:here.portal_languages.getPreferredLanguage()">
-    <form action="">
+    <form action="" id="select_language_form">
+        <p><span tal:omit-tag="" i18n:translate="label_select_language" i18n:domain="osha">Select your language</span>:</p>
         <ul id="portal-languageselector" accesskey="8"
             tal:condition="python:available and len(languages)>=2">
     
