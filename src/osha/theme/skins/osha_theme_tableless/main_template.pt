@@ -1,61 +1,36 @@
-<metal:page define-macro="master">
+<metal:page define-macro="master"><metal:doctype define-slot="doctype"><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"></metal:doctype>
 <metal:block define-slot="top_slot" />
-
-<tal:doctype tal:replace="structure string:&lt;!DOCTYPE html PUBLIC
-  &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;
-  &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;" />
-
 <metal:block use-macro="here/global_defines/macros/defines" />
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
       lang="en"
-      tal:define="portal_state context/@@plone_portal_state;
-                  context_state context/@@plone_context_state;
-                  plone_view context/@@plone;
-                  lang portal_state/language;
-                  view nocall:view | nocall: plone_view;
-                  dummy python: plone_view.mark_view(view);
-                  portal portal_state/portal;
-                  portal_url portal_state/portal_url;
-                  syntool context/portal_syndication;
-                  isAnon portal_state/anonymous;
-                  here_url context_state/object_url;
-                  checkPermission nocall:context/portal_membership/checkPermission;
+      tal:define="lang language; 
                   kss_inline_editable python:False;
-                  site_properties context/portal_properties/site_properties;
-                  ajax_load request/ajax_load | nothing;
-                  ajax_include_head request/ajax_include_head | nothing;
-                  charset site_properties/default_charset|string:utf-8;
                   oshaview python:here.restrictedTraverse('@@oshaview')"
       tal:attributes="lang lang;
                       xml:lang lang">
 
+  <tal:cache tal:define="charset site_properties/default_charset|string:utf-8">
     <metal:cache use-macro="here/global_cache_settings/macros/cacheheaders">
       Get the global cache headers located in global_cache_settings.
     </metal:cache>
+  </tal:cache>
 
   <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+          tal:define="charset site_properties/default_charset|string:utf-8"
           tal:attributes="content string:text/html;;charset=${charset}" />
-
-    <meta name="generator" content="Plone - http://plone.org" />
-
-    <tal:comment tal:condition="nothing">
-      Internet Explorer fix, forces IE8 into newest possible rendering
-      engine even if it's on an intranet. This has to be defined before any
-      script/style tags.
-    </tal:comment>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <metal:baseslot define-slot="base">
       <base tal:attributes="href here/renderBase" /><!--[if lt IE 7]></base><![endif]-->
       <link rel="canonical" tal:attributes="href here/absolute_url" />
     </metal:baseslot>
 
+    <meta name="generator" content="Plone - http://plone.org" />
 
-
+    <div tal:replace="structure provider:plone.htmlhead" />
 
     <meta tal:define="metatags python:oshaview.listMetaTags(here).items()"
           tal:condition="metatags"
@@ -81,49 +56,75 @@
     </tal:subsite>
 
 
-    <tal:notajax tal:condition="python:not ajax_load or ajax_include_head">
-        <div tal:replace="structure provider:plone.htmlhead" />
-        <link tal:replace="structure provider:plone.htmlhead.links" />
+    <link tal:replace="structure provider:plone.htmlhead.links" />
 
-        <link rel="alternate" href="" title="RSS 1.0" type="application/rss+xml"
-              tal:condition="python: syntool.isSyndicationAllowed(here)"
-              tal:attributes="href string:$here_url/RSS" />
+    <link rel="alternate" href="" title="RSS 1.0" type="application/rss+xml"
+          tal:condition="python: syntool.isSyndicationAllowed(here)"
+          tal:attributes="href string:$here_url/RSS" />
 
-        <!-- Disable IE6 image toolbar -->
-        <meta http-equiv="imagetoolbar" content="no" />
+    <!-- Disable IE6 image toolbar -->
+    <meta http-equiv="imagetoolbar" content="no" />
     
-        <tal:comment replace="nothing"> A slot where you can insert elements in the header from a template </tal:comment>
-        <metal:headslot define-slot="head_slot" />
+    <tal:comment replace="nothing"> A slot where you can insert elements in the header from a template </tal:comment>
+    <metal:headslot define-slot="head_slot" />
 
-        <tal:comment replace="nothing"> A slot where you can insert CSS in the header from a template </tal:comment>
-        <metal:styleslot define-slot="style_slot" />
+    <tal:comment replace="nothing"> A slot where you can insert CSS in the header from a template </tal:comment>
+    <metal:styleslot define-slot="style_slot" />
 
-        <tal:comment replace="nothing"> This is deprecated, please use style_slot instead. </tal:comment>
-        <metal:cssslot define-slot="css_slot" />
+    <tal:comment replace="nothing"> This is deprecated, please use style_slot instead. </tal:comment>
+    <metal:cssslot define-slot="css_slot" />
 
-        <tal:comment replace="nothing"> A slot where you can insert javascript in the header from a template </tal:comment>
-        <metal:javascriptslot define-slot="javascript_head_slot" />
-    </tal:notajax>
+    <tal:comment replace="nothing"> A slot where you can insert javascript in the header from a template </tal:comment>
+    <metal:javascriptslot define-slot="javascript_head_slot" />
 
   </head>
 
-  <body tal:define="isRTL portal_state/is_rtl;
-                    sl python:plone_view.have_portlets('plone.leftcolumn', view);
-                    sr python:plone_view.have_portlets('plone.rightcolumn', view);
-                    body_class python:plone_view.bodyClass(template, view);"
-    tal:attributes="class body_class;
+  <body tal:attributes="class string:${here/getSectionFromURL} template-${template/id};
                         dir python:test(isRTL, 'rtl', 'ltr')">
    <div id="border-wrapper">
+   	<script type="text/javascript" tal:condition="not: isAnon">
+   		// This piece of code solves some problems due to some clever tricks
+		// of this no table layout and the clever tricks of fckEditors
+		// Full screen mode. 
+		// The fullscreen mode sets the html body to a width of zero, and when
+		// lets its own window pop out of the border. This layout also does some
+		// tricks that result in lots of empty space to the right that would
+		// result in a scroll bar. So it defines a overflow: none. That breaks
+		// fckEditor. Unable to modify the fckEditor in a way that still allows
+		// later upgrade, I created this function. It is here and not in a 
+		// javascript class, because nobody would scan js files to find
+		// presentation problems.
+		
+		// We call the method only after the page got loaded
+   		jq(function(){
+			// The fckEditor Window is not there yet. so we call 3 seconds
+			// later
+			function wait(){
+				var all_buttons = jq('div.fckContainer iframe').contents().find('.TB_Button_Off');
+			 	// The buttons can only be distinguished by title. Title
+				// is translatable, so we just take the second last button
+				jq(all_buttons[all_buttons.size()-2]).click(function(){
+					// We set the overflow back. As soon as you save, you leave
+					// Fullscreen mode and the page gets reloaded, thus our
+					// css change does NOT mess up the page. Otherwise it would.
+					jq('#visual-portal-wrapper').css({'overflow-x' : 'visible', 'overflow-y' : 'visible'})
+				})
+			}
+			window.setTimeout(wait, 3000)
+		})
+	</script>
+			
 	<div id="visual-portal-wrapper">
 
       <div id="portal-top" i18n:domain="plone">
-        <div tal:replace="structure provider:plone.portaltop" tal:condition="not:ajax_load" />
+        <div tal:replace="structure provider:plone.portaltop" />
       </div>
 
       <div class="visualClear" id="clear-space-before-wrapper-table"><!-- --></div>
       
       <metal:block define-slot="columns_wrapper">
-      <div id="portal-columns">
+      <div id="portal-columns" 
+           tal:attributes="class string:${hidecolumns}">          
       
       <div id="content-column-background">     
           <div id="reset-column">
@@ -132,84 +133,61 @@
               <div class="content-column clearfix">
  
               <tal:comment replace="nothing"> Start of main content block </tal:comment>
-              <div id="portal-column-content">
+              <div id="portal-column-content"
+                  tal:define="tabindex python:Iterator(mainSlot=False)">
 
                 <metal:block define-slot="content">
                   <div metal:define-macro="content"
                        tal:define="show_border context/@@plone/showEditableBorder"
-                       tal:attributes="class python:show_border and 'documentEditable' or ''">
+                       tal:attributes="class python:test(show_border,'documentEditable','')">
 
-                    <div id="edit-bar"
-                        tal:condition="show_border"
-                        tal:content="structure provider:plone.contentviews" />
+                    <div tal:replace="structure provider:plone.contentviews" />
 
                     <div id="region-content"
                          class="documentContent">
+
                       <span id="contentTopLeft"></span>
                       <span id="contentTopRight"></span>
-
+              
                       <a name="documentContent"></a>
 
-                      <div metal:use-macro="context/global_statusmessage/macros/portal_message">
+                      <div metal:use-macro="here/global_statusmessage/macros/portal_message">
                         Portal status message
                       </div>
+              
+                      <div id="viewlet-above-content" tal:content="structure provider:plone.abovecontent" />
 
-                      <metal:slot define-slot="body">
-                      <div id="content">
-                        <metal:header define-slot="header" tal:content="nothing">
+                      <metal:slot metal:define-slot="body">
+                      <tal:comment replace="nothing">
+                          The div with ID #content will only show up if we're actually on a content
+                          view, never on edit forms, control panels etc. It's meant to only wrap the
+                          actual content that gets rendered on a page, not the other UI elements.
+                      </tal:comment>
+                      <div id="content"
+                           tal:omit-tag="not:context/@@plone_context_state/is_view_template">
+                        <metal:header metal:define-slot="header" tal:content="nothing">
                           Visual Header
                         </metal:header>
-                        <metal:bodytext define-slot="main">
-
-                          <metal:main define-macro="main">
-                              <div tal:replace="structure provider:plone.abovecontenttitle" />
-                              <metal:title define-slot="content-title">
-                                  <metal:comment tal:content="nothing">
-                                      If you write a custom title always use
-                                      <h1 class="documentFirstHeading"></h1> for it.
-                                  </metal:comment>
-                                  <h1 metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
-                                      Generic KSS Title. Is rendered with class="documentFirstHeading".
-                                  </h1>
-                              </metal:title>
-                              <div tal:replace="structure provider:plone.belowcontenttitle" />
-
-                              <metal:description define-slot="content-description">
-                                  <metal:comment tal:content="nothing">
-                                      If you write a custom description always use
-                                      <div class="documentDescription"></div> for it.
-                                  </metal:comment>
-                                  <div metal:use-macro="context/kss_generic_macros/macros/generic_description_view">
-                                      Generic KSS Description. Is rendered with class="documentDescription".
-                                  </div>
-                              </metal:description>
-
-                              <div tal:replace="structure provider:plone.abovecontentbody" />
-                              <div id="content-core">
-                                  <metal:text define-slot="content-core" tal:content="nothing">
-                                      Page body text
-                                  </metal:text>
-                              </div>
-                              <div tal:replace="structure provider:plone.belowcontentbody" />
-                          </metal:main>
-
+                        <metal:bodytext metal:define-slot="main" tal:content="nothing">
+                          Page body text
                         </metal:bodytext>
                       </div>
                       </metal:slot>
-                    </div>
-                    <metal:sub define-slot="sub" tal:content="nothing">
-                        This slot is here for backwards-compatibility only.
-                        Don't copy it in custom templates.
-                    </metal:sub>
+
+                      <metal:sub metal:define-slot="sub">
+              
+                        <div tal:replace="structure provider:plone.belowcontent" />
+              
+                      </metal:sub>
 
                       <span id="contentBottomLeft"></span>
                       <span id="contentBottomRight"></span>
 
                     </div>
-              </metal:block>
 
-              <div id="viewlet-below-content" tal:content="structure provider:plone.belowcontent" />
+                  </div>
 
+                </metal:block>
               </div>
               <tal:comment replace="nothing"> End of main content block </tal:comment>
       
@@ -261,7 +239,7 @@
           </a>
       </div>
 
-      <metal:block i18n:domain="plone" tal:condition="not:ajax_load">
+      <metal:block i18n:domain="plone">
 
         <div tal:replace="structure provider:plone.portalfooter" />
 

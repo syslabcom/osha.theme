@@ -26,7 +26,8 @@
               <div class="content-column clearfix">
  
               <tal:comment replace="nothing"> Start of main content block </tal:comment>
-              <div id="portal-column-content">
+              <div id="portal-column-content"
+                  tal:define="tabindex python:Iterator(mainSlot=False)">
 
                   <metal:slot define-slot="prefs_configlet_content">
                     <metal:block metal:use-macro="here/main_template/macros/content">

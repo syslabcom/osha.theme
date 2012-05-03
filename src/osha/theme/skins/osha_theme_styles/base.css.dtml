@@ -13,7 +13,7 @@ body {
     color: &dtml-fontColor;;
     margin: 0;
     padding: 0;
-	 background: transparent url('&dtml-portal_url;/top.gif') repeat-x top left;
+    background: transparent url('&dtml-portal_url;/top.gif') repeat-x top left;
 }
 table {
     font-size: 100%;
