@@ -914,7 +914,6 @@
         for="*"
         name="osha_homepage"
         class=".homepage.HomepageView"
-        template="templates/homepage.pt"
         permission="zope.Public"
         />
 

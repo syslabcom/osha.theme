@@ -2,7 +2,7 @@ from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
 
 import Acquisition
-
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone.memoize import ram
 from DateTime import DateTime
 from Products.ATContentTypes.interface.document import IATDocument
@@ -13,6 +13,11 @@ _ = MessageFactory('osha.theme')
 
 
 class HomepageView(BrowserView):
+
+    # Remove this for Plone 4
+    template = ViewPageTemplateFile('templates/osha_homepage.pt')
+    template.id = "osha_homepage"
+    # and move it to the template= statement in configure.zcml
 
     def __init__(self, context, request=None):
         self.context = context
@@ -25,7 +30,11 @@ class HomepageView(BrowserView):
             getattr(self.portal, 'en'))
 
     def __call__(self):
-        return self.index()
+        return self.template()
+
+    # For Plone 4
+    # def __call__(self):
+    #     return self.index()
 
     @property
     def intro(self):
