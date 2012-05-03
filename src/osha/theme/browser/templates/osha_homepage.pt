@@ -58,7 +58,7 @@
                             <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
                           </a>
                           <h3><a tal:attributes="href news/link" tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</a></h3>
-                          <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
+                          <!--p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/-->
                           <span tal:replace="structure news/description"></span>
 
                       </tal:news_item>
