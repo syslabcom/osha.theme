@@ -6,10 +6,8 @@
 <body>
   <div metal:fill-slot="main">
 
-    <div metal:use-macro="here/document_actions/macros/document_actions">
-      Document actions (print, sendto etc)
-    </div>
-    
+    <div tal:replace="structure provider:plone.documentactions" />
+
     <h1 tal:content="here/Title" class="documentFirstHeading">
       Folder Title
     </h1>
@@ -46,7 +44,7 @@
     <span i18n:translate="phc_full_question">Full Question</span>
     </p>
 
-    <div tal:content="structure here/getAnswer"/>
+    <div tal:content="structure here/getText"/>
 
     <div metal:use-macro="here/helpcenter_references/macros/view_referenced_items">
       see also - shows the references if this feature is switched on
