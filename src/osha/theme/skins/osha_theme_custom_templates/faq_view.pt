@@ -1,58 +1,58 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-  lang="en"
-  metal:use-macro="here/main_template/macros/master"
-  i18n:domain="plonehelpcenter">
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plonehelpcenter">
 
-<body>
-  <div metal:fill-slot="main">
+  <body>
+    <div metal:fill-slot="main">
 
-    <div tal:replace="structure provider:plone.documentactions" />
+      <div tal:replace="structure provider:plone.documentactions" />
 
-    <h1 tal:content="here/Title" class="documentFirstHeading">
-      Folder Title
-    </h1>
+      <h1 tal:content="here/Title" class="documentFirstHeading">
+        Folder Title
+      </h1>
 
-    <div tal:replace="structure provider:plone.belowcontenttitle" />
+      <div tal:replace="structure provider:plone.belowcontenttitle" />
 
-    <a href=""
-      class="link-parent visualNoPrint"
-      tal:condition="not: request/full|nothing"
-      tal:define="parent_url python:here.navigationParent(here, template.getId())"
-      tal:attributes="href parent_url">
-      <span i18n:translate="phc_up_to_toc">Up to Table of Contents</span>
-    </a>
-    
-    <div tal:condition="here/isOutdated" i18n:translate="phc_warning_outdated" class="portalMessage">
-           Warning: This item is marked as outdated.
-        </div>
-    <p class="discreet">
-       <span tal:condition="here/getVersionsVocab" tal:define="versions here/Versions">
-    <span i18n:translate="phc_faq_applies_to">This FAQ applies to:</span>         
-    <span tal:condition="versions" tal:replace="versions">1.0, 2.0</span>
-    <span tal:condition="not: versions">
-      <span i18n:translate="phc_any_version">
-      Any version.
-      </span>
-    </span>
- </span>
-    </p>
-    
-    
-    <p class="documentDescription"
-      tal:condition="here/Description"
-      tal:content="structure here/Description">
-    <span i18n:translate="phc_full_question">Full Question</span>
-    </p>
+      <a href=""
+         class="link-parent visualNoPrint"
+         tal:condition="not: request/full|nothing"
+         tal:define="parent_url python:here.navigationParent(here, template.getId())"
+         tal:attributes="href parent_url">
+        <span i18n:translate="phc_up_to_toc">Up to Table of Contents</span>
+      </a>
+      
+      <div tal:condition="here/isOutdated" i18n:translate="phc_warning_outdated" class="portalMessage">
+        Warning: This item is marked as outdated.
+      </div>
+      <p class="discreet">
+        <span tal:condition="here/getVersionsVocab" tal:define="versions here/Versions">
+          <span i18n:translate="phc_faq_applies_to">This FAQ applies to:</span>         
+          <span tal:condition="versions" tal:replace="versions">1.0, 2.0</span>
+          <span tal:condition="not: versions">
+            <span i18n:translate="phc_any_version">
+              Any version.
+            </span>
+          </span>
+        </span>
+      </p>
+      
+      
+      <p class="documentDescription"
+         tal:condition="here/Description"
+         tal:content="structure here/Description">
+        <span i18n:translate="phc_full_question">Full Question</span>
+      </p>
 
-    <div tal:content="structure here/getText"/>
+      <div tal:content="structure here/getText"/>
 
-    <div metal:use-macro="here/helpcenter_references/macros/view_referenced_items">
-      see also - shows the references if this feature is switched on
+      <div metal:use-macro="here/helpcenter_references/macros/view_referenced_items">
+        see also - shows the references if this feature is switched on
+      </div>
+
+
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+
     </div>
-
-
-    <div tal:replace="structure provider:plone.belowcontentbody" />
-
-  </div>
-</body>
+  </body>
 </html>
