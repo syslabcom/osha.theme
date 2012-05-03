@@ -17,8 +17,8 @@
     </form>
 
     <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
-    <ul class="linkList"> 
-        <li class="tile">
+    <ul class="linkList">
+        <li>
             <a href="" tal:attributes="href view/oshGlobalSearchLink" i18n:translate="label_osh_global_search">
                 OSH Global Search
             </a>
