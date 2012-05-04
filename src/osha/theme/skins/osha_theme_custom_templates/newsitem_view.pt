@@ -16,6 +16,7 @@
                                   normalizeString nocall:plone_view/normalizeString;
                                   toLocalizedTime nocall:plone_view/toLocalizedTime;
                                   text python:here.CookedBody(stx_level=2);
+                                  is_editable context/@@plone_context_state/is_editable;
                                   len_text python:len(text.strip())">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
