@@ -578,7 +578,11 @@ dl.portletInlineNavigationTree ul {
     text-shadow:2px 2px 2px #999;
 }
 
-#highlights-tabs li:hover, #highlights-tabs li.ui-state-active {
+#highlights-tabs li:hover a{
+    color: #003399;
+}
+
+#highlights-tabs li.ui-state-active {
     background:#98a2b7;
 }
 
