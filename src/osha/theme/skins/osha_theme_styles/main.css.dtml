@@ -560,29 +560,26 @@ dl.portletInlineNavigationTree ul {
     margin: 0 0.3em 0.5em 0;
 }
 
-#highlights-tabs li{
-    float: left;
-}
-
-#highlights-tabs li a, .ui-state-default{
+ #highlights-tabs li.ui-corner-top {
     float: left;
     background:#c5cbd8;
-    color: #fff;    
     padding: 0.1em 0.4em;
     margin: 0 0.5em 0 0;
-    font-weight: bold;
-    font-size: 1.2em;
-    text-shadow:2px 2px 2px #999;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
 
+#highlights-tabs li a {
+    color: #fff;
+    padding: 0.1em 0.4em;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-shadow:2px 2px 2px #999;
+}
 
-#highlights-tabs li a:hover{
-  
+#highlights-tabs li:hover, #highlights-tabs li.ui-state-active {
     background:#98a2b7;
-    
 }
 
 .teaserdate{
