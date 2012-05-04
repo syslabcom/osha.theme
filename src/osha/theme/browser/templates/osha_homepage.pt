@@ -20,30 +20,32 @@
             <a href="" tal:attributes="href intro/link" i18n:translate="portlet_more_link">More&hellip;</a>
         </div>
 
-        <div class="carouselContainer" id="highlights"
-            tal:define="items view/highlights">
-            <h2 i18n:translate="label_highlights">Highlights</h2>
-            <tal:rep repeat="news items">
-                <div tal:define="no repeat/news/number"
-                    tal:attributes="id string:highlights-$no">
-                  <tal:news_item>
-                      <h3><a tal:attributes="href news/link" tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</a></h3>
-                      <a tal:attributes="href news/link">
-                        <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
-                      </a>
-                      <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
-                      <span tal:replace="structure news/description"></span>
-
-                  </tal:news_item>
-                </div>
-            </tal:rep>
-            <ul id="highlights-tabs">
+        <div id="highlightsContainer">
+            <div class="carouselContainer" id="highlights"
+                tal:define="items view/highlights">
+                <h2 i18n:translate="label_highlights">Highlights</h2>
                 <tal:rep repeat="news items">
-                    <li tal:define="no repeat/news/number">
-                        <a href="#highlights-1" tal:attributes="href string:#highlights-$no" tal:content="no">1</a>
-                    </li>
+                    <div tal:define="no repeat/news/number"
+                        tal:attributes="id string:highlights-$no">
+                      <tal:news_item>
+                          <h3><a tal:attributes="href news/link" tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</a></h3>
+                          <a tal:attributes="href news/link">
+                            <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
+                          </a>
+                          <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
+                          <span tal:replace="structure news/description"></span>
+
+                      </tal:news_item>
+                    </div>
                 </tal:rep>
-            </ul>
+                <ul id="highlights-tabs">
+                    <tal:rep repeat="news items">
+                        <li tal:define="no repeat/news/number">
+                            <a href="#highlights-1" tal:attributes="href string:#highlights-$no" tal:content="no">1</a>
+                        </li>
+                    </tal:rep>
+                </ul>
+            </div>
         </div>
 
         <div id="in-focus-container">
