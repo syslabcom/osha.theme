@@ -119,7 +119,7 @@ class SimpleContainerRenderer(BrowserView):
     def getCollageContext(self, context):
        # import pdb; pdb.set_trace()
         if ICollageRow.providedBy(context) or ICollageColumn.providedBy(context):
-            return self.getCollageContext(context.context)
+            return self.getCollageContext(context.aq_parent)
         if ICollage.providedBy(context):
             return context
         else:
