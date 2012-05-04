@@ -940,25 +940,6 @@ div.managedPortlet.portlet {
     margin-top:1.5em;
 }
 
-dl.portletSubscribe dd a {
-   padding: 5px;
-}
-
-dl.portletSubscribe a {
-   color: black !important;
-   font-weight: bold;
-}
-
-dl.portletSubscribe #newsletter a {
-   display: block;
-   background-color: #FFEE22;
-}
-
-dl.portletSubscribe #alerts a {
-   display: block;
-   background-color: #99EE22;
-}
-
 dl.portletFollowUs  {
    width: auto;
    margin: 0;
