@@ -36,7 +36,8 @@
                                 <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
                               </a>
                               <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
-                              <span tal:replace="structure news/description"></span>
+                              <p class="teaser_content" tal:content="news/description"></p>
+                              <p class="teaser_more"><a class="more" tal:attributes="href news/link" i18n:translate="label_more">More...</a></p>
                           </tal:news_item>
                         </div>
                     </tal:rep>

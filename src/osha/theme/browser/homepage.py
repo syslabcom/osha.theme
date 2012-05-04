@@ -49,6 +49,8 @@ class HomepageView(BrowserView):
         """Fetch the latest X teasers"""
         portal_path = self.ptool.getPortalPath()
         pc = getToolByName(self.context, 'portal_catalog')
+        portal_transforms = getToolByName(self.context, 'portal_transforms')
+        ploneview = self.context.restrictedTraverse('@@plone')
         end = {'query': DateTime(), 'range': 'min'}
         res = pc(portal_type='News Item',
             Language=[self.pref_lang, ''],
@@ -67,12 +69,15 @@ class HomepageView(BrowserView):
             link = obj.absolute_url()
             img_url = obj.getImage() and \
                 '/'.join(obj.getImage().getPhysicalPath()) or ''
-            # use 'mini' scale
-            img_url = img_url.replace('/image', '/image_mini')
+            # use 'preview' scale
+            img_url = img_url.replace('/image', '/image_preview')
             description = obj.Description().strip() != '' and \
                 obj.Description() or obj.getText()
             if not isinstance(description, unicode):
                 description = description.decode('utf-8')
+            description = portal_transforms.convert('html_to_text', description).getData()
+            description = ploneview.cropText(description, length=400,
+            ellipsis="...")
             date = obj.effective()
             ret.append(dict(link=link, img_url=img_url, description=description,
                 title=obj.Title(), date=date))
