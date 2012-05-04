@@ -526,14 +526,19 @@ dl.portletInlineNavigationTree ul {
 #highlights{
     border: 1px solid #c5cbd8;
     padding-bottom: 2.5em;
-    
+    height: 350px;
 }
 
 #highlightsContainer{
    padding-bottom: 20px;
    background: url(highlights.gif) no-repeat bottom center;
    margin-bottom: 2em;
-   
+}
+
+#highlights-content {
+    height: 305px;
+    overflow: auto;
+    margin-bottom: 20px;
 }
 
 #highlights h2, #in-focus-container h2{
