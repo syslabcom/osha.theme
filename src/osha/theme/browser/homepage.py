@@ -38,11 +38,11 @@ class HomepageView(BrowserView):
 
     @property
     def intro(self):
-        intro = getattr(self.langroot, 'intro-page', None)
+        intro = getattr(self.langroot, 'help', None)
         if intro is None:
             return dict(title='No introduction found', link='#')
         else:
-            return dict(title=intro.Title(), link=intro.absolute_url())
+            return dict(link=intro.absolute_url())
 
     @property
     def highlights(self, limit=4):
