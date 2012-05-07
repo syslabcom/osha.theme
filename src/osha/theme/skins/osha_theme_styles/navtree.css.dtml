@@ -94,6 +94,7 @@ li.navTreeItemInPath a.navTreeItemInPath:hover {
     background: #F7F8F9;
     padding-bottom: 1px; 
     margin: 0;   
+	font-size: 85%;
 }
 .navTreeLevel0 * ul .navTreeCurrentItem,
 .navTreeLevel0 * ul .navTreeItemInPath {

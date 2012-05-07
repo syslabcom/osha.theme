@@ -338,6 +338,7 @@ form.searchPage input.searchButton {
     padding: 0em 1em;
     line-height: 2.5em;
     clear:both;
+	
 }
 #portal-breadcrumbs a {
     text-decoration: none;

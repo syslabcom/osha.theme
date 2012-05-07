@@ -20,11 +20,20 @@
     border-bottom:0;
     background:transparent url('&dtml-portal_url;/headereurope.gif') no-repeat top right;
     float:left;
-    height:173px;
+    height: 160px;
     width:100%;
     margin-top:-1px; /* compensate 1px height hidden DIV with Skip-to-... links */
     position:relative;
 }
+.template-teaser-view #portal-header {
+    height:173px;  
+}
+
+#portal-breadcrumbs {
+  margin-bottom: 1em;
+    font-size: 85%;
+}
+
 #portal-logo {
     float:left;
      background: url('&dtml-portal_url;/logoinner2.gif') no-repeat scroll right bottom #FFFFFF;
@@ -465,6 +474,14 @@ dl.portletInlineNavigationTree ul {
     margin: 0 2% 1% 1%;
 }
 
+dl.portletFollowUs {
+    margin: 1em auto 2em;
+}
+
+
+.navTreeLevel0 * ul {
+    font-size: 85%;
+}
 
 /* Styles for SEP markup images */
 .figure-box {
