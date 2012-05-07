@@ -570,7 +570,7 @@ dl.portletInlineNavigationTree ul {
 #highlights{
     border: 1px solid #c5cbd8;
     padding-bottom: 2.5em;
-    height: 350px;
+    height: 320px;
 }
 
 #highlightsContainer{
@@ -580,7 +580,7 @@ dl.portletInlineNavigationTree ul {
 }
 
 #highlights-content {
-    height: 305px;
+    height: 270px;
     overflow: auto;
     margin-bottom: 20px;
 }
@@ -606,7 +606,7 @@ dl.portletInlineNavigationTree ul {
     list-style: none;
     float: right;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0 0.3em 0.5em 0;
+    margin: 0 0.5em 0.5em 0;
 }
 
  #highlights-tabs li.ui-corner-top {
@@ -649,7 +649,6 @@ dl.portletInlineNavigationTree ul {
 #highlights img{
     float: right;
     margin: 1em 0 1em 1em;
-    width: 250px;
 }
 
 #in-focus-container ul{
@@ -806,16 +805,28 @@ ul.linkList li {
 }
 
 .portletSubscribe p a.button{
-   text-align: center;
-   border: 1px solid #C5CBD8;
-   padding: 2px 15px;
-   text-transform: uppercase;
-   background: url(buttonbg.gif) repeat-x bottom left;
-    text-shadow: -1px 0 0 #FFFFFF;
-	color: #333;
-	margin: 0 0 0 1em;
-   
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
+background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+    border: 1px solid #B6B6B6;
+    color: #393939;
+    cursor: default;
+    font-size: 11px;
+    line-height: 17px;
+    padding: 2px 15px;
+    text-shadow: 0 1px 0 rgba(255, 254, 255, 0.57);
+    text-transform: uppercase;
+	margin-left: 1em;
 }
+
+
+
 
 .portletSubscribe p a.button:hover{
     background: #C5CBD8;
