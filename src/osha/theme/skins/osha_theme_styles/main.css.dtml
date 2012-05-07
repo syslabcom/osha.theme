@@ -1,11 +1,9 @@
 
-/* - main.css - */
-@media screen {
 /*
   This file is based on the ploneCustom.css.dtml file shipped with Plone.
 
-   (do not remove this)
-   (not this either)
+  <dtml-with base_properties> (do not remove this)
+  <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
 */
 
 .visualClearRight {
@@ -13,14 +11,14 @@
 }
 
 #border-wrapper {
-    background: url('http://www.test.osha.syslab.com/logoinner.gif') no-repeat scroll left top transparent;
+    background: url('&dtml-portal_url;/logoinner.gif') no-repeat scroll left top transparent;
     margin: 0 auto;
     width: 990px;
 }
 
 #portal-header {
     border-bottom:0;
-    background:transparent url('http://www.test.osha.syslab.com/headereurope.gif') no-repeat top right;
+    background:transparent url('&dtml-portal_url;/headereurope.gif') no-repeat top right;
     float:left;
     height:173px;
     width:100%;
@@ -29,7 +27,7 @@
 }
 #portal-logo {
     float:left;
-     background: url('http://www.test.osha.syslab.com/logoinner2.gif') no-repeat scroll right bottom #FFFFFF;
+     background: url('&dtml-portal_url;/logoinner2.gif') no-repeat scroll right bottom #FFFFFF;
     padding: 18px 30px 10px 10px;
 }
 
@@ -80,7 +78,7 @@ dl.portlet #portal-personaltools {
 	
 	
 #osha-topactions {
-    background: #fff;
+    background: &dtml-globalBackgroundColor;;
     margin:0 80px 0 201px;
     padding:0.6em 0em;
 }
@@ -88,7 +86,7 @@ dl.portlet #osha-topactions {
     margin-left: 0;
 }
 #siteactions-wrapper h2 {
-    color: #003399;
+    color: &dtml-linkColor;;
     font-size:1em;
     margin:0;
     padding: 0 1em;
@@ -107,7 +105,7 @@ dl.portlet #osha-topactions {
 }
 
 .dropdown {
-    background: transparent url('http://www.test.osha.syslab.com/select.gif') 0% 50% no-repeat;
+    background: transparent url('&dtml-portal_url;/select.gif') 0% 50% no-repeat;
     padding-left: 1.5em;
     float: left;
     margin-right: 1em;
@@ -144,12 +142,12 @@ select[multiple] {
 }
 
 #portal-footer-languageselector {
-    border-top: 1px solid #fff;
+    border-top: 1px solid &dtml-globalBackgroundColor;;
     text-align: center;
     color: #808080;
     padding-top:5px;
     margin-top:3px;
-    font-size: 95%;
+    font-size: &dtml-fontSmallSize;;
 }
 #portal-footer-languageselector li {
     display: inline;
@@ -187,7 +185,7 @@ ul#portal-footeractions2 .breadcrumbSeparator{
 }
 h2.headline {
     margin-top: 0;
-    background:#fff;
+    background:&dtml-globalBackgroundColor;;
     padding:0.3em 0.5em !important;
     margin-bottom: 1em;
 }
@@ -267,11 +265,11 @@ body.template-osha_homepage #portal-breadcrumbs {
 
 
 dl.portletSearch {
-    background-color: #ffffff;
+    background-color: &dtml-contentViewBackgroundColor;;
 
 }
 input.searchButton {
-    background: url(http://www.test.osha.syslab.com/sprites-icons.png) repeat-x scroll -964px -1388px white;
+    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -964px -1388px white;
     height: 17px;
     width: 22px;
 }
@@ -404,7 +402,7 @@ dl.portletMoreAbout .portletItem ul {
     line-height: 1.2em;
 }
 dl.portletMoreAbout .portletItem {
-    background-color: #ffffff
+    background-color: &dtml-contentViewBackgroundColor;;
 }
 
 dl.portletImage {
@@ -786,8 +784,8 @@ ul.linkList {
 }
 ul.linkList li {
     background-color:transparent;
-    /*background-image:url(http://www.test.osha.syslab.com/link.gif);*/
-    background: url(http://www.test.osha.syslab.com/sprites-contenttypes.png) no-repeat scroll 0 -1948px transparent;
+    /*background-image:url(&dtml-portal_url;/link.gif);*/
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1948px transparent;
     display:block;
     line-height:normal;
     list-style-image:none;
@@ -859,8 +857,8 @@ ul.linkList li {
 }
 
 .dashed-feature-box {
-    border: 1px dashed #AAB1C5;
-    background-color: #ffffff;
+    border: 1px dashed &dtml-globalBorderColor;;
+    background-color: &dtml-contentViewBackgroundColor;;
     margin:auto;
     width: 400px;
     padding:2em;
@@ -868,7 +866,7 @@ ul.linkList li {
 
 .image-presentation-box {
         border: none;
-        background-color: #ffffff;
+        background-color: &dtml-contentViewBackgroundColor;;
         padding: 1em;
 }
 .image-presentation-box img {
@@ -1166,7 +1164,7 @@ competitions linkcollection styles (tab-lke view)
 }
 
 #slc-outdated {
-background:transparent url('http://www.test.osha.syslab.com/++resource++outdated.png') no-repeat scroll 8px 0;
+background:transparent url('&dtml-portal_url;/++resource++outdated.png') no-repeat scroll 8px 0;
 border:1px solid red;
 padding:2px 10px 2px 60px;
 /* font-family:Abadi; */
@@ -1340,14 +1338,7 @@ div.teaserdate {
     padding-bottom: 1em;
 }
 
-
-
-
-/*  */
+/* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
    can be found in CMFPlone/skins/plone_styles/ploneCustom.css.dtml */
-
-
-}
-
