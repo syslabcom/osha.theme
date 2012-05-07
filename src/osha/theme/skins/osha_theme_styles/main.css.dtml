@@ -475,13 +475,11 @@ dl.portletInlineNavigationTree ul {
 }
 
 dl.portletFollowUs {
-    margin: 1em auto 2em;
+    margin: 1em auto 2em !important;
 }
 
 
-.navTreeLevel0 * ul {
-    font-size: 85%;
-}
+
 
 /* Styles for SEP markup images */
 .figure-box {
