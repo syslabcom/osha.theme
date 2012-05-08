@@ -228,4 +228,16 @@ dd.portletItem .navTreeItem a {
 }
 
 
+/***********Redesign 2012***************/
+
+#select_language_form p{
+	position: absolute;
+	right: 130px;
+	top: 2px;
+}
+
+#osha-topdropdowns {
+    margin: 0px 80px 0 201px;
+}
+
 /* </dtml-with> */
