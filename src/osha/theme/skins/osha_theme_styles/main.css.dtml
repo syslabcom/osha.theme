@@ -25,7 +25,8 @@
     margin-top:-1px; /* compensate 1px height hidden DIV with Skip-to-... links */
     position:relative;
 }
-.template-teaser-view #portal-header {
+
+.template-teaser-view #portal-header, .template-osha_homepage #portal-header{
     height:173px;  
 }
 
@@ -42,6 +43,7 @@
 
 #select_language_form{
     float:right;
+	display: block;
     
 }
 #select_language_form p{
