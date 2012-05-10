@@ -43,19 +43,19 @@
 
 #select_language_form{
     float:right;
-	display: block;
-    
+	display: block; 
 }
+
 #select_language_form p{
     float:left;
     font-size: 80%;
     line-height: 170%;
 }
 
-
 #portal-languageselector{
     background: #fff;
 }
+
 dl.portlet #portal-logo,
 dl.portlet #portal-header,
 dl.portlet #portal-personaltools {
@@ -598,7 +598,6 @@ dl.portletFollowUs {
 
 #highlights-content {
     height: 270px;
-    overflow: auto;
     margin-bottom: 20px;
 }
 
