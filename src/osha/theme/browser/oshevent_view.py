@@ -4,7 +4,6 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from osha.theme import OSHAMessageFactory as _
 from zope.component import getMultiAdapter
-from Products.AdvancedQuery import Or, Eq, And, In
 from plone.memoize.instance import memoize
 from Products.CMFPlone.PloneBatch import Batch
 from DateTime import DateTime
