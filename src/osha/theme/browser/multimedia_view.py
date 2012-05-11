@@ -16,10 +16,10 @@ class LipstickView(BrowserView):
 
     def __call__(self, *args, **kw):
         view = aq_acquire(self.context, self.context.getDefaultLayout())
-        if "main" not in view.macros.keys():
-            self.main_macro = view.macros["content-core"]
-        else:
+        if "main" in view.macros.keys():
             self.main_macro = view.macros["main"]
+        else:
+            self.main_macro = view.macros["content-core"]
         return self.index()
 
 
