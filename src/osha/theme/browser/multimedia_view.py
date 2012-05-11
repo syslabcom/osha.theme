@@ -16,7 +16,7 @@ class LipstickView(BrowserView):
 
     def __call__(self, *args, **kw):
         view = aq_acquire(self.context, self.context.getDefaultLayout())
-        self.main_macro = view.macros["main"]
+        self.main_macro = view.macros["content-core"]
         return self.index()
 
 
