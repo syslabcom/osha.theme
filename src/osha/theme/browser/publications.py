@@ -65,7 +65,7 @@ class PublicationsListView(BrowserView):
         listFolderContents."""
         pc = getToolByName(self.context, 'portal_catalog')
         path = '/'.join(self.context.getPhysicalPath())
-        query = {'portal_type': ['Folder', 'Large Plone Folder'], 'review_state': ['published'],
+        query = {'portal_type': 'Folder', 'review_state': ['published'],
                 'path': {'query': path, 'depth': 1}, 'sort_on': 'getObjPositionInParent' }
         return pc(query)
 
