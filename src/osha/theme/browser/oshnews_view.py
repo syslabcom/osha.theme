@@ -56,20 +56,13 @@ class OSHNewsView(BrowserView):
         if mySEP:
             kw = mySEP.getProperty('keyword', '')
 
-        query = {
-            'portal_type': 'News Item',
-            'review_state': 'published',
-            'path': navigation_root_path,
-        }
-
-        if kw:
-            query['Subject'] = kw
-
-        return catalog(query, sort_on='Date', sort_order='descending')
-
-        # tuki lahko sicer dodam se en search za vsebine ki imajo isNews,
-        # ampak bo prvic koda grda in drugic, sorting ne bo delal oz. bo treba
-        # na roke sorting delat -> buu
+        queryA = Eq('portal_type', 'News Item')
+        queryB = Eq('isNews', True)
+        queryBoth = In('review_state', 'published') & Eq('path', navigation_root_path)
+        if kw != '':
+            queryBoth = queryBoth & In('Subject', kw)
+        query = And(Or(queryA, queryB), queryBoth)
+        return catalog.evalAdvancedQuery(query, (('Date', 'desc'),))
 
     def queryCatalog(self, b_size=20):
         results = self.getResults()
