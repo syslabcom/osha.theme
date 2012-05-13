@@ -1,6 +1,6 @@
 from Acquisition import aq_inner, aq_parent
 from zope.i18n import translate
-from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
+from Products.AdvancedQuery import In, Eq, Or, Generic
 from Products.CMFCore.utils import getToolByName
 
 from osha.theme.browser.dbfilter import DBFilterView

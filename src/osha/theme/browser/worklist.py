@@ -1,7 +1,7 @@
 import Acquisition
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic, Between
+from Products.AdvancedQuery import In, Eq, Ge, Le, Or, Generic, Between
 from DateTime import DateTime
 
 from osha.theme.browser.dbfilter import DBFilterView
@@ -142,7 +142,7 @@ class WorklistView(DBFilterView):
         modified_mode = self.request.get('modified_mode', '')
         mdr = self.request.get('modified_days_range', 0)
 
-        if modified_year and modified_month: 
+        if modified_year and modified_month:
             if not modified_day:
                 modified_day = 1
             searchdate = DateTime('%d/%d/%d' % (modified_year, modified_month, modified_day))
