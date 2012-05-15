@@ -125,7 +125,9 @@ class Renderer(events.Renderer):
         calendar_path = self.data.calendar_path
         subject = self.data.subject
         navigation_root_path = self.navigation_root_path
-        return (calendar_path, preflang, subject, navigation_root_path)
+        # http or https?
+        protocol = self.request.get('SERVER_URL', '').split("://")[0]
+        return (calendar_path, preflang, subject, navigation_root_path, protocol)
 
     @ram.cache(_render_cachekey)
     def render(self):

@@ -35,6 +35,8 @@ email_from = context.portal_properties.site_properties.email_from_address
 from Products.CMFPlone.utils import getToolByName
 host = getToolByName(context, 'MailHost')
 email_subject = context.title_or_id()
+if context.portal_type == 'PressRelease':
+    email_subject = "News release - %s" % email_subject
 email_body = context.shortmessage_preview_view()
 
 try:

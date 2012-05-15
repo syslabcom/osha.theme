@@ -699,14 +699,17 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 
 /****************styles for the new class requested by Manuela in ticket #855*****************/
 
-
 .boxing_styles_inner_content {
     background-color:#F7F8F9;
     border:1px solid #C5CBD8;
     font-size:100%;
-    width:80%;
-    margin:1em auto;
     padding:1em;
+}
+
+#collage .collage-row .block_2 div.collage-item {
+   width:80%;
+   margin-left: auto !important;
+   margin-right: auto !important;
 }
 
 .boxing_styles_inner_content tbody {
@@ -728,7 +731,7 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 
 .boxing_styles_inner_content ul {
 line-height:1.5em;
-list-style-image:url(http://osha.europa.eu/bullet.gif);
+list-style-image:url(https://osha.europa.eu/bullet.gif);
 list-style-type:square;
 margin:0.5em 0 0 0;
 padding-left:15px;
@@ -767,7 +770,7 @@ padding-left:15px;
 
 .boxing_styles_content ul {
 line-height:1.5em;
-list-style-image:url(http://osha.europa.eu/bullet.gif);
+list-style-image:url(https://osha.europa.eu/bullet.gif);
 list-style-type:square;
 margin:0.5em 0 0 0;
 padding-left:15px;
@@ -809,6 +812,46 @@ competitions linkcollection styles (tab-lke view)
     font-weight: bold;
 }
 
+.outdated_toggle_button {
+   cursor: pointer;
+   float: right;
+   border-top: 1px solid #deecf7;
+   background: #a7b7d4;
+   background: -webkit-gradient(linear, left top, left bottom, from(#dee7f8), to(#a7b7d4));
+   background: -webkit-linear-gradient(top, #dee7f8, #a7b7d4);
+   background: -moz-linear-gradient(top, #dee7f8, #a7b7d4);
+   background: -ms-linear-gradient(top, #dee7f8, #a7b7d4);
+   background: -o-linear-gradient(top, #dee7f8, #a7b7d4);
+   padding: 2px 4px;
+   -webkit-border-radius: 7px;
+   -moz-border-radius: 7px;
+   border-radius: 7px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #666666;
+   margin-left: 10px;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.outdated_toggle_button:hover{
+   border-top-color: #6a86b5;
+   background: #6a86b5;
+   color: #ffffff;
+}
+.outdated_toggle_button:active {
+   border-top-color: #6a86b5;
+   background: #6a86b5;
+   color: #ffffff;
+   }
+.outdated_text {
+    margin: 2px 18px;
+}
+.outdated_info{
+    float:right;
+}
+
 #slc-outdated {
 background:transparent url('&dtml-portal_url;/++resource++outdated.png') no-repeat scroll 8px 0;
 border:1px solid red;
@@ -833,16 +876,17 @@ color:#515151;
 margin:0.2em 0 0.75em;
 }
 
+/*
 #teaserlisting td.outdated,
 #newslisting td.outdated,
 .eventlist div.outdated,
 #presslisting div.outdated,
+.topicslisting li.outdated,
 .searchresult-outdated {
 border:1px dotted red;
 padding:5px 5px 0px;
 margin-bottom:10px;
 color:#515151;
-/*font-family:Abadi;*/
 font-size:100%;
 font-size-adjust:none;
 font-stretch:normal;
@@ -850,19 +894,28 @@ font-style:normal;
 font-variant:normal;
 font-weight:normal;
 letter-spacing:1px;
-}
+} */
 
 /* .outdated h2,
 .outdated h3 {
 font-family: Abadi;
 } */
 
+.searchresult a.result_title {
+    font-weight: bold;
+}
+
 .p4acalendar .eventlist .event.outdated .event_title {
     display: inline;
 }
 
-.searchresult-outdated a {
-color:#515151;
+.outdated.collapsed a,
+.outdated.collapsed h2{
+color: #666666 !important;
+}
+#teaserlisting .outdated h2{
+    border-bottom: 1px solid gray;
+    background: none;
 }
 
 .searchresult-outdated .documentByLine {
@@ -953,6 +1006,24 @@ div#faq_results li.expanded {
  */
 body.template-competitions-view #competitionSchwusch li {
     width: 309px;
+}
+
+/* oshmail overlay */
+#oshmail-overlay h1.documentFirstHeading {
+   background: none;
+   font-size: 300%;
+   padding: 0 !important;
+}
+
+#oshmail-overlay h1.documentFirstHeading,
+#oshmail-overlay #plone-document-byline {
+    margin-left: 1%;
+}
+
+/* Simple news view for Belgian sites */
+div.teaserdate {
+    font-family: Courier;
+    padding-bottom: 1em;
 }
 
 /* </dtml-with> */

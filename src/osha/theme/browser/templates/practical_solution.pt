@@ -95,10 +95,10 @@
 
                   <div class="field">
 
-                    <!-- 
+                    <!--
                        Disabling the "database" selector, as it leads to a logical problem.
                       -->
-                    <!--   
+                    <!--
                        <label i18n:translate="label_database"> Database </label>
                        <br />
 
@@ -114,7 +114,7 @@
                                                 checked python: 'checked' and T[2] or ''" />
                          <span tal:content="python:T[0]" ></span>
                        </div>
-                       <input type="hidden" name="search_portal_types:list" 
+                       <input type="hidden" name="search_portal_types:list"
                               tal:attributes="value get_search_portal_type" />
                        -->
 
@@ -201,8 +201,8 @@
                      i18n:domain="plone"
                      i18n:attributes="value label_search;"
                      />
-              <input  class="context" 
-                      type="reset" 
+              <input  class="context"
+                      type="reset"
                       value="Reset"
                       i18n:domain="osha"
                       i18n:attributes="value Reset"
@@ -278,7 +278,7 @@
             <div metal:use-macro="context/batch_macros/macros/navigation" />
 
             <!-- Snapshot code -->
-            <script type="text/javascript" src="http://shots.snap.com/ss/8c2016f0b237f14c8e18548d26c3d103/snap_shots.js"></script>
+            <script type="text/javascript" src="https://www.previewshots.com/ss/8c2016f0b237f14c8e18548d26c3d103/snap_shots.js"></script>
           </div>
 
         </div>

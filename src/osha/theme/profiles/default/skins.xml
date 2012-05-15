@@ -13,68 +13,70 @@
     directory="osha.theme:skins/osha_theme_styles"/>
  <object name="osha_theme_tableless"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_tableless"/>    
+    directory="osha.theme:skins/osha_theme_tableless"/>
  <object name="osha_theme_scripts"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_scripts"/>   
-    
+    directory="osha.theme:skins/osha_theme_scripts"/>
+
  <object name="osha_theme_ew2000"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2000"/>    
+    directory="osha.theme:skins/osha_theme_ew2000"/>
  <object name="osha_theme_ew2001"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2001"/>    
+    directory="osha.theme:skins/osha_theme_ew2001"/>
  <object name="osha_theme_ew2002"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2002"/>    
+    directory="osha.theme:skins/osha_theme_ew2002"/>
  <object name="osha_theme_ew2003"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2003"/>    
+    directory="osha.theme:skins/osha_theme_ew2003"/>
  <object name="osha_theme_ew2004"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2004"/>    
+    directory="osha.theme:skins/osha_theme_ew2004"/>
  <object name="osha_theme_ew2005"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2005"/>    
+    directory="osha.theme:skins/osha_theme_ew2005"/>
  <object name="osha_theme_ew2006"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2006"/>    
+    directory="osha.theme:skins/osha_theme_ew2006"/>
  <object name="osha_theme_ew2006_risq"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_ew2006_risq"/>
  <object name="osha_theme_beswic_safestart"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_beswic_safestart"/>  
+    directory="osha.theme:skins/osha_theme_beswic_safestart"/>
  <object name="osha_theme_ew2007"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_ew2007"/>     
-    
+    directory="osha.theme:skins/osha_theme_ew2007"/>
+
  <object name="osha_theme_hwi"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_hwi"/>     
+    directory="osha.theme:skins/osha_theme_hwi"/>
  <object name="osha_theme_newoshera"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_newoshera"/>     
+    directory="osha.theme:skins/osha_theme_newoshera"/>
  <object name="osha_theme_riskobservatory"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_riskobservatory"/>     
+    directory="osha.theme:skins/osha_theme_riskobservatory"/>
  <object name="osha_theme_healthyworkplaces"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_healthyworkplaces"/>     
+    directory="osha.theme:skins/osha_theme_healthyworkplaces"/>
  <object name="osha_theme_sme"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_sme"/>     
+    directory="osha.theme:skins/osha_theme_sme"/>
  <object name="osha_theme_wos"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_wos"/>  
+    directory="osha.theme:skins/osha_theme_wos"/>
  <object name="osha_theme_napo"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_napo"/>  
+    directory="osha.theme:skins/osha_theme_napo"/>
 
  <object name="osha_theme_germany"
     meta_type="Filesystem Directory View"
-    directory="osha.theme:skins/osha_theme_germany"/>  
+    directory="osha.theme:skins/osha_theme_germany"/>
 
+ <object name="osha_theme_hybrid" meta_type="Filesystem Directory View"
+         directory="osha.theme:skins/osha_theme_hybrid"/>
 
 
  <skin-path name="OSHA Plone Theme" based-on="Plone Classic Theme">
@@ -85,9 +87,10 @@
   <layer name="osha_theme_styles"
      insert-after="osha_theme_custom_templates"/>
   <layer name="osha_theme_tableless"
-     insert-after="osha_theme_styles"/>    
+     insert-after="osha_theme_styles"/>
   <layer name="osha_theme_scripts"
-     insert-after="osha_theme_tableless"/>      
+     insert-after="osha_theme_tableless"/>
+    <layer name="osha_theme_hybrid" insert-after="custom"/>
  </skin-path>
 
  <skin-path name="HealthyWorkplaces" based-on="OSHA Plone Theme">
@@ -104,7 +107,7 @@
   <layer name="osha_theme_ew2007"
      insert-after="custom"/>
  </skin-path>
- 
+
  <skin-path name="RISQ" based-on="OSHA Plone Theme">
   <layer name="osha_theme_ew2006_risq"
      insert-after="custom"/>

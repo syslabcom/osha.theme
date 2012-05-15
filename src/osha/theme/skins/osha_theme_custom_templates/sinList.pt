@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<metal:block fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<body>
+
+<div metal:fill-slot="main"
+     tal:define="verbose python:request.get('verbose', 1);
+                 sin here/sin_tool;
+                 map request/synmap;
+                 results python:sin.sin(map);
+                 Batch python:modules['Products.CMFPlone'].Batch;
+                 b_size python:15;
+                 b_start python:0;
+                 b_start request/b_start | b_start;
+                 batch python:Batch(results, b_size, int(b_start), orphan=1);">
+
+    <h1 i18n:domain="osha" i18n:translate="eu_osha_in_the_media">EU-OSHA in the media</h1>
+
+    <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+    <dl>
+    <tal:block repeat="obj batch">
+      <span tal:define="description obj/description|nothing;
+          date obj/date|nothing">
+		<dt>
+            <span class="contenttype-link">
+                <a href="#"
+                   tal:attributes="href obj/link"
+                   tal:content="structure obj/title">title</a>
+            </span>
+            <span class="discreet"
+                  tal:condition="date"
+                  i18n:translate="results_by_author">
+                by <span tal:replace="obj/author|string:" i18n:name="author">author</span>,
+                <span tal:replace="python:here.toLocalizedTime(date, long_format=1)" i18n:name="date">date</span>
+            </span>
+        </dt>
+		<dd tal:condition="python:verbose and description"
+            tal:content="structure obj/description">description</dd>
+      </span>
+    </tal:block>
+	</dl>
+
+    <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+    <p tal:condition="not:results"
+       i18n:translate="description_no_items_in_feed">
+       There are currently no items in this feed.
+    </p>
+
+</div>
+
+</body>
+</html>

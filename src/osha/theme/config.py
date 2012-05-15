@@ -78,7 +78,7 @@ GERMAN_NETWORK = (
     ('Meckl.-Vorp.', 'mv.de.osha.europa.eu/'),
     ('Niedersachsen', 'www.mfas.niedersachsen.de/live/live.php?navigation_id=4984&_psmand=17'),
     ('NRW', 'www.arbeitsschutz.nrw.de/bp/index.html'),
-    ('Rhld.-Pfalz', 'www.msagd.rlp.de/arbeit/arbeitsschutz/'),
+    ('Rhld.-Pfalz', 'msagd.rlp.de/arbeit/arbeitsschutz/'),
     ('Saarland', 'sl.osha.de'),
     ('Sachsen', 'sn.osha.de'),
     ('Sachsen-Anh.', 'st.de.osha.europa.eu'),

@@ -1,3 +1,4 @@
+import datetime
 from urlparse import urljoin
 from types import *
 
@@ -16,7 +17,7 @@ from Products.Five import BrowserView
 from Products.validation import validation
 
 from gocept.linkchecker.utils import retrieveHTML, retrieveSTX
-# from p4a.calendar import interfaces as p4aCalendarInterfaces
+from p4a.calendar import interfaces as p4aCalendarInterfaces
 from slc.subsite.interfaces import ISubsiteEnhanced
 from slc.subsite.root import getSubsiteRoot
 
@@ -213,6 +214,7 @@ class OSHA(BrowserView):
             button.
         """
         context = Acquisition.aq_inner(self.context)
+        portal_url = getToolByName(context, 'portal_url')
         if hasattr(context.aq_explicit, 'getImage'):
             return "%s/image" % (context.absolute_url())
         return ''
@@ -221,7 +223,7 @@ class OSHA(BrowserView):
                subject='Plone', **kwargs):
         """Sends a link of a page to someone."""
         context = self.context
-        host = getToolByName(context, 'MailHost')
+        host = getattr(context, 'MailHost')
         if 'template' in kwargs:
             template = getattr(context, kwargs['template'])
         else:
@@ -229,17 +231,19 @@ class OSHA(BrowserView):
 
         portal = getToolByName(context, 'portal_url').getPortalObject()
         encoding = portal.getProperty('email_charset')
-        msg_type = kwargs.get('msg_type', 'text/plain')
+        subtype = kwargs.get('subtype', 'plain')
         if 'envelope_from' in kwargs:
             envelope_from = kwargs['envelope_from']
         else:
             envelope_from = send_from_address
         # Cook from template
         message = template(context, send_to_address=send_to_address,
-            send_from_address=send_from_address, comment=comment,
-            subject=subject, **kwargs)
-        host.send(message, mto=send_to_address, mfrom=envelope_from,
-            subject=subject, msg_type=msg_type, charset=encoding)
+                           send_from_address=send_from_address,
+                           comment=comment, subject=subject, **kwargs)
+        result = host.secureSend(message, send_to_address,
+                                 envelope_from, subject=subject,
+                                 subtype=subtype, charset=encoding,
+                                 debug=False, From=send_from_address)
 
     def getTranslatedCategories(self, domain='osha'):
         """ returns a list of tuples, that contain key and title of
@@ -374,23 +378,22 @@ class OSHA(BrowserView):
 
     def getCalendarEvents(self, past=False):
         """ If called on a calendar, the list of events is returned"""
-        # context = self.context
-        # XXX Fixme: replacement for p4a.calendar
-        # if p4aCalendarInterfaces.ICalendarEnhanced.providedBy(context):
-        #     now = datetime.datetime.now()
-        #     if past:
-        #         stop = now
-        #         start = None
-        #     else:
-        #         start = now
-        #         stop = None
-        #     provider = p4aCalendarInterfaces.IEventProvider(self.context)
-        #     events = list(provider.gather_events(start=start, stop=stop))
-        #     events.sort()
-        #     if past:
-        #         events.reverse()
-        #     events = [brain._getEvent() for brain in events]
-        #     return events
+        context = self.context
+        if p4aCalendarInterfaces.ICalendarEnhanced.providedBy(context):
+            now = datetime.datetime.now()
+            if past:
+                stop = now
+                start = None
+            else:
+                start = now
+                stop = None
+            provider = p4aCalendarInterfaces.IEventProvider(self.context)
+            events = list(provider.gather_events(start=start, stop=stop))
+            events.sort()
+            if past:
+                events.reverse()
+            events = [brain._getEvent() for brain in events]
+            return events
         return list()
 
     def getLocalObject(self, name):
@@ -417,8 +420,20 @@ class OSHA(BrowserView):
     def get_native_language_by_code(self, lang_code):
         context = self.context
         ltool = context.portal_languages
-        lang_info = ltool.getAvailableLanguageInformation().get(
-            lang_code, None)
+        lang_info = ltool.getAvailableLanguageInformation().get(lang_code, None)
         if lang_info is not None:
             return lang_info.get(u"native", None)
         return None
+
+    def get_orientation(self, image):
+        width_str = image.getWidth()
+        height_str = image.getHeight()
+        try:
+            width = int(width_str)
+            height = int(height_str)
+        except (ValueError, TypeError):
+            return ""
+        if width / height < 1:
+            return "portrait"
+        else:
+            return "landscape"

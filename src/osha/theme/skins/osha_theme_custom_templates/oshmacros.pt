@@ -17,7 +17,19 @@
                     toLocalizedTime nocall:plone_view/toLocalizedTime;
                     outdated result/outdated|python:0;
                     mtool context/portal_membership;">
-      <div class="searchresult" tal:attributes="class python:outdated and 'searchresult-outdated' or 'searchresult'">
+      <div class="searchresult" tal:attributes="class python:outdated and 'searchresult outdated' or 'searchresult'">
+
+
+          <img tal:attributes="src string:${result/getIcon};
+                               alt string:Link icon" />
+          <a tal:content="title" class="result_title"
+             tal:attributes="href string:$result_url/view"
+             rel="nofollow" />
+        <div class="outdated_toggle_button" tal:condition="outdated">
+            <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+        </div>
+        <div tal:attributes="class python:outdated and 'outdated_accordion_content' or ''">
+        <div class="visualClear"></div>
         <dt>
           <metal:macro define-macro="provider">
             <div tal:define="provuid python: getattr(result, 'getRemoteProviderUID' , [])"
@@ -39,21 +51,6 @@
               </fieldset>
             </div>
           </metal:macro>
-          <img tal:attributes="src string:${result/getIcon};
-                               alt string:Link icon" />
-          <a tal:content="title"
-             tal:attributes="href string:$result_url/view"
-             rel="nofollow" />
-        <span class="outdated-result" tal:condition="outdated">
-          <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-              <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-          <span tal:replace="context/outdated_info/Title" />
-          </span>
-          <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-            <img src="/++resource++outdated_mini.png" />
-            Outdated
-          </span>
-        </span>
         </dt>
         <dd>
           <tal:publication_date>
@@ -140,6 +137,8 @@
           </div>
           <div class="visualClear" ></div>
         </dd>
+        </div>
+        <dd class="outdated_separator" tal:condition="outdated">&nbsp;</dd>
       </div>
     </tal:defines>
 </metal:macro>

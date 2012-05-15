@@ -6,13 +6,15 @@
   <body>
     <div metal:fill-slot="main">
 
-      <script src="http://osha.europa.eu/++resource++vPIP/vpip.js" type="text/javascript"></script>
-      <style type="text/css" media="all">@import "http://osha.europa.eu/++resource++vPIP/vPIPBox.css";</style>
-      <script src="http://osha.europa.eu/++resource++vPIP/jquery.js" type="text/javascript"></script>
+      <script src="https://osha.europa.eu/++resource++vPIP/vpip.js" type="text/javascript"></script>
+      <style type="text/css" media="all">@import "https://osha.europa.eu/++resource++vPIP/vPIPBox.css";</style>
+      <script src="https://osha.europa.eu/++resource++vPIP/jquery.js" type="text/javascript"></script>
 
       <tal:block define="film view/film;
-                         film_details python:view.film_details[film['id']]">
+                         film_details_data python:view.film_details;
+                         film_details python:film_details_data is not None and film_details_data[film['id']] or None">
 
+      <span tal:condition="film_details">
       <div tal:replace="structure provider:plone.abovecontenttitle" />
       <h1 tal:content="film/title" i18n:translate=""></h1>
       <div tal:replace="structure provider:plone.belowcontenttitle" />
@@ -65,6 +67,7 @@
           </div>
 
         </tal:block>
+      </span>
       </tal:block>
 
     </div>

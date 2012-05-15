@@ -48,13 +48,16 @@
             <br />
             <strong tal:content="context/Title" />
           </p>
-          <tal:folder_images define="images python:context.listFolderContents(contentFilter={'portal_type' : 'Image'})">
+          <tal:folder_images define="images python:context.listFolderContents(contentFilter={'portal_type' : 'Image'});
+                                     oshaview here/@@oshaview">
             <ul class="thumbnails">
               <tal:images repeat="image images">
-                <tal:image define="image_url image/absolute_url">
+                <tal:image define="image_url image/absolute_url;
+                                   orientation python:oshaview.get_orientation(image)">
                   <li tal:attributes="class python:image_url == context.absolute_url() and 'current' or ''">
                     <a tal:attributes="href string:${image_url}/multimedia-image-details-view">
-                      <img tal:attributes="src string:${image_url}/image_preview"/>
+                      <img tal:attributes="src string:${image_url}/image_preview;
+                                           class string:multimedia-thumb-${orientation}"/>
                     </a>
                   </li>
                 </tal:image>

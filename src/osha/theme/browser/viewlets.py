@@ -1,5 +1,6 @@
 from cgi import escape
 
+from zope.app.component.hooks import getSite
 from zope.component import getMultiAdapter
 from zope.i18n import translate
 from Acquisition import aq_base, aq_inner, aq_parent
@@ -47,7 +48,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
 
     def languages(self):
         results = LanguageSelector.languages(self)
-        
+
         # On the main portal, we want to be able to filter out unwanted
         # languages needes for subsites
         oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
@@ -64,7 +65,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
             languages_on_main_site = getattr(site_properties, 'languages_on_main_site', None)
             if languages_on_main_site:
                 results = [x for x in results if x['code'] in languages_on_main_site]
-            
+
         # for non-translatable content, use standard Plone way of switching language
         if not ITranslatable.providedBy(self.context):
             # special handling for LinguaLinks
@@ -147,7 +148,7 @@ class OSHASiteActionsViewlet(common.SiteActionsViewlet):
         """ return the site or subsite slogan """
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         defaultlang = getToolByName(self.context, 'portal_languages').getDefaultLanguage()
-        
+
         oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
         subsite_path = oshaview.subsiteRootPath()
         subsite = self.context.restrictedTraverse(subsite_path)
@@ -165,8 +166,8 @@ class OSHANetworkchooser(common.ViewletBase):
         preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
         oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
         subsite_path = oshaview.subsiteRootPath()
-        return (preflang, subsite_path)
-    
+        return (subsite_path, preflang)
+
     @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
@@ -187,28 +188,28 @@ class OSHANetworkchooser(common.ViewletBase):
 
     def de(self):
         """ returns the sites from the European Network """
-        return dict(title='German Network', 
-                    id='deNetwork', 
+        return dict(title='German Network',
+                    id='deNetwork',
                     sites=config.GERMAN_NETWORK)
 
     def nl(self):
         """ returns the sites from the European Network """
-        return dict(title='Dutch Network', 
-                    id='nlNetwork', 
+        return dict(title='Dutch Network',
+                    id='nlNetwork',
                     sites=config.DUTCH_NETWORK)
-        
+
     def eu(self):
         """ returns the sites from the European Network """
-        return dict(title='European Network', 
-                    id='euNetwork', 
+        return dict(title='European Network',
+                    id='euNetwork',
                     sites=config.EUROPEAN_NETWORK)
-    
+
     def int(self):
         """ returns the sites from the European Network """
-        return dict(title='International Network', 
-                    id='intNetwork', 
+        return dict(title='International Network',
+                    id='intNetwork',
                     sites=config.INTERNATIONAL_NETWORK)
-    
+
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),
                                             name=u'plone_portal_state')
@@ -216,12 +217,30 @@ class OSHANetworkchooser(common.ViewletBase):
                                         name=u'plone_context_state')
 
         self.action = self.context.absolute_url() + '/global_network'
-        
-        
+
+
 class OSHAPathBarViewlet(common.PathBarViewlet):
-    
+
     render =  ViewPageTemplateFile('templates/path_bar.pt')
-    
+
+    @property
+    def is_lang_root(self):
+        portal = getSite()
+        lang = getToolByName(
+            self.context, 'portal_languages').getPreferredLanguage()
+        portal_lang = portal.get(lang)
+        if portal_lang is None:
+            # This can only happen for a bare test instance
+            return False
+        default_site_root_page = portal_lang.getDefaultPage()
+        if default_site_root_page is None:
+            if self.context == portal_lang:
+                return True
+        elif self.context == portal_lang.get(default_site_root_page, None):
+            return True
+        else:
+            return False
+
     def update(self):
         super(common.PathBarViewlet, self).update()
 
@@ -231,101 +250,100 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
 
         breadcrumbs_view = getMultiAdapter((self.context, self.request),
                                            name='breadcrumbs_view')
-        self.breadcrumbs = breadcrumbs_view.breadcrumbs()    
+        self.breadcrumbs = breadcrumbs_view.breadcrumbs()
 
 
-                
 class OSHACampaignAreaViewlet(common.ViewletBase):
-    
+
     render =  ViewPageTemplateFile('templates/osha_campaignarea.pt')
-    
+
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),
                                             name=u'plone_portal_state')
-        langtool = getToolByName(self.context, 'portal_languages', None) 
+        langtool = getToolByName(self.context, 'portal_languages', None)
         current_lang = langtool.getPreferredLanguage()
 
         self.navigation_root_url = portal_state.navigation_root_url()
 
         portal = portal_state.portal()
-        
+
         logoName = ''
-        
+
         if(hasattr(portal.restrictedTraverse('base_properties'), 'campaignLogoName')):
             logoName = portal.restrictedTraverse('base_properties').campaignLogoName
-       
+
         #self.campaign_logo_tag = ''
         if logoName != '':
             if current_lang != 'en':
                 file_name = logoName.split(".")
-                file_name[0] = file_name[0] + "_" + current_lang 
+                file_name[0] = file_name[0] + "_" + current_lang
                 logoName = ".".join(file_name)
-    
 
-        self.campaign_logo_name = logoName                
-        self.campaign_logo_url = '%s/%s' % (self.navigation_root_url, logoName)         
-    
+
+        self.campaign_logo_name = logoName
+        self.campaign_logo_url = '%s/%s' % (self.navigation_root_url, logoName)
+
 class OSHACampaignArea2Viewlet(common.ViewletBase):
-    
+
     render =  ViewPageTemplateFile('templates/osha_campaignarea2.pt')
-    
+
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),
                                             name=u'plone_portal_state')
-        langtool = getToolByName(self.context, 'portal_languages', None) 
+        langtool = getToolByName(self.context, 'portal_languages', None)
         bound = langtool.getLanguageBindings()
-        current_lang = bound[0]                                           
+        current_lang = bound[0]
 
         self.navigation_root_url = portal_state.navigation_root_url()
 
 
         portal = portal_state.portal()
-        
+
         logoName = ''
-        
+
         if(hasattr(portal.restrictedTraverse('base_properties'), 'campaignLogo2Name')):
             logoName = portal.restrictedTraverse('base_properties').campaignLogo2Name
-       
+
         if logoName != '':
             if current_lang != 'en':
                 file_name = logoName.split(".")
-                file_name[0] = file_name[0] + "_" + current_lang 
+                file_name[0] = file_name[0] + "_" + current_lang
                 logoName = ".".join(file_name)
-    
+
 
         self.campaign_logo2_name = logoName
-        self.campaign_logo2_url = '%s/%s' % (self.navigation_root_url, logoName)   
-            
+        self.campaign_logo2_url = '%s/%s' % (self.navigation_root_url, logoName)
+
 class OSHAFooterLanguageSelector(TranslatableLanguageSelector):
 
     render = ViewPageTemplateFile('templates/footer_languageselector.pt')
 
 
 class OSHAFooterActions(common.ViewletBase):
-    
+
     _template = ViewPageTemplateFile('templates/footer_actions.pt')
-    
+
     def _footer_render_details_cachekey(fun, self):
         """
         Generates a key based on:
-    
+
         * Current URL
         * Negotiated language
         * Anonymous user flag
-        
+
         """
         context = aq_inner(self.context)
-    
+
         anonymous = getToolByName(context, 'portal_membership').isAnonymousUser()
-    
+
         key= "".join((
             '/'.join(aq_inner(self.context).getPhysicalPath()),
             get_language(aq_inner(self.context), self.request),
             str(anonymous),
             ))
-        return key    
-    
-    @ram.cache(_footer_render_details_cachekey) 
+        return key
+
+    @ram.cache(_footer_render_details_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
@@ -333,23 +351,23 @@ class OSHAFooterActions(common.ViewletBase):
         context_state = getMultiAdapter((self.context, self.request),
                                         name=u'plone_context_state')
         portal_state = getMultiAdapter((self.context, self.request),
-                                            name=u'plone_portal_state')    
-                                            
-        self.portal = portal_state.portal() 
-        self.site_url = portal_state.portal_url()                                   
-                                        
+                                            name=u'plone_portal_state')
+
+        self.portal = portal_state.portal()
+        self.site_url = portal_state.portal_url()
+
         self.portal_actionicons = aq_base(getToolByName(self.context, 'portal_actionicons'))
-                                                
+
         self.document_actions = context_state.actions().get('document_actions', None)
-        self.footer_actions = context_state.actions().get('footer_actions', None)        
+        self.footer_actions = context_state.actions().get('footer_actions', None)
         self.site_actions = context_state.actions().get('site_actions', None)
-        
+
         plone_utils = getToolByName(self.context, 'plone_utils')
         self.getIconFor = plone_utils.getIconFor
 
     def icon(self, action):
         return self.getIconFor('plone', action['id'], None)
-        
+
 class OSHALogoViewlet(common.LogoViewlet):
 
     render = ViewPageTemplateFile('templates/logo.pt')
@@ -357,18 +375,18 @@ class OSHALogoViewlet(common.LogoViewlet):
     def preflang(self):
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         return portal_state.locale().getLocaleID()
- 
+
     def getLink(self):
         osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
         link = osha_view.get_subsite_property('link_on_logo')
         if link is None:
-            link = "http://osha.europa.eu"
+            link = "https://osha.europa.eu"
         return link
-       
+
     def update(self):
         portal_state = getMultiAdapter((self.context, self.request),
                                             name=u'plone_portal_state')
-        langtool = getToolByName(self.context, 'portal_languages', None) 
+        langtool = getToolByName(self.context, 'portal_languages', None)
         bound = langtool.getLanguageBindings()
         current_lang = bound[0]
 
@@ -384,7 +402,7 @@ class OSHALogoViewlet(common.LogoViewlet):
             try:
                 init = logoName
                 file_name = init.split(".")
-                file_name[0] = file_name[0] + "_" + current_lang 
+                file_name[0] = file_name[0] + "_" + current_lang
                 logoName = ".".join(file_name)
                 self.logo_tag = subsite.restrictedTraverse(logoName).tag()
             except:
@@ -422,11 +440,11 @@ class OSHANapoSubHeadViewlet(common.ViewletBase):
 
 class OSHANapoBelowFooterViewlet(common.ViewletBase):
     render = ViewPageTemplateFile('templates/napo_belowfooter.pt')
-    
+
 class AddThisButtonViewlet(common.ViewletBase):
     render = ViewPageTemplateFile('templates/addthis.pt')
-    
-        
+
+
 class OSHAContentSwitcherViewlet(common.ViewletBase):
 
     def showeditbox(self):
@@ -485,9 +503,9 @@ class OSHLinkToProviderViewlet(OSHAContentSwitcherViewlet):
 
 
 class InlineContentViewlet(common.ViewletBase):
-    
+
     render = ViewPageTemplateFile('templates/inline_content_viewlet.pt')
-    
+
     def showeditlink(self):
         user = getToolByName(self.context, 'portal_membership').getAuthenticatedMember()
         if user.has_role(('Manager', 'Reviewer')):

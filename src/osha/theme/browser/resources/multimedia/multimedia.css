@@ -28,8 +28,9 @@ body.template-multimedia-image-details-view a[rel="contactSheet"] {
 /* @group Gallery */
 
 body.template-multimedia-image-details-view .mainImage {
-	float: left;
-	margin-bottom: 20px;
+   float: left;
+   margin-bottom: 20px;
+   width: 630px;
 }
 
 body.template-multimedia-image-details-view #content .mainImage img {
@@ -112,9 +113,9 @@ body.template-multimedia-image-details-view ul.thumbnails li a img {
 	height: 70px;
 }
 
-body.template-multimedia-image-details-view ul.thumbnails li.portrait a img {
-	height: auto;
-	width: 70px;
+body.template-multimedia-image-details-view  ul.thumbnails li a img.multimedia-thumb-landscape {
+   height: auto;
+   width: 70px;
 }
 
 body.template-multimedia-image-details-view .noScript {
@@ -205,11 +206,7 @@ body.template-multimedia-film-episodes-listing-view div.episode {
     clear: left;
 }
 
-body.template-multimedia-image-folders-view .scrubber li {
-    display: list-item;
-    float: none;
-}
-
+body.template-lipstick-view .scrubber li h4,
 body.template-multimedia-film-listing-view #content .scrubber li h4,
 body.template-multimedia-image-folders-view #content .scrubber li h4,
 body.template-multimedia-film-listing-view .scrubber li a strong,

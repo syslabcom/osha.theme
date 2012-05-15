@@ -20,7 +20,7 @@
                   tal:condition="portlet_icon_ew2007">
                 <img tal:replace="structure portlet_icon_ew2007" />
             </span>
-            <a rel="nofollow" href="http://ew2007.osha.europa.eu/?sourceid=campaignsbanner&amp;utm_source=home&amp;utm_medium=banner&amp;utm_campaign=campaign" 
+            <a rel="nofollow" href="https://ew2007.osha.europa.eu/?sourceid=campaignsbanner&amp;utm_source=home&amp;utm_medium=banner&amp;utm_campaign=campaign" 
                i18n:translate="portlet_campaign_ew2007_text">
                Lighten the load!
             </a>

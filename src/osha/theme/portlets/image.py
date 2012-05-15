@@ -138,7 +138,9 @@ class Renderer(base.Renderer):
         header = self.title()
         path = self.data.image
         video_url = self.data.get('video_url')
-        return (header, modified, preflang, path, video_url)
+        # http or https?
+        protocol = self.request.get('SERVER_URL', '').split("://")[0]
+        return (header, modified, preflang, path, video_url, protocol)
 
     @ram.cache(_render_cachekey)
     def render(self):
@@ -281,7 +283,7 @@ class Renderer(base.Renderer):
             <iframe title="$header" 
                     width="$width" 
                     height="$height"
-                    src="http://www.youtube.com/embed/$video_id" 
+                    src="https://www.youtube.com/embed/$video_id" 
                     frameborder="0"
                     allowfullscreen>
             </iframe>
@@ -296,7 +298,7 @@ class Renderer(base.Renderer):
 
     def flash_code(self):
         """ For an explanation of swfobject.js (2.*), see:
-            http://code.google.com/p/swfobject/wiki/documentation
+            https://code.google.com/p/swfobject/wiki/documentation
         """
         obj = self.get_object()
         obj_id = self.id_attr()
@@ -318,7 +320,7 @@ class Renderer(base.Renderer):
                      i18n:translate=""
                      i18n:domain="osha">
                      You need the Adobe Flash Player to view this content.
-                     <a href="http://get.adobe.com/flashplayer"
+                     <a href="https://get.adobe.com/flashplayer"
                         target="_blank">Download it from Adobe</a>
                 </div>
                 <!--[if !IE]>-->

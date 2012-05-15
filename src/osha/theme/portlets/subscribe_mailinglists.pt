@@ -12,14 +12,14 @@
 
   <dd class="portletItem" id="newsletter">
     <a rel="nofollow" 
-       tal:attributes="href string:http://osha.europa.eu/${view/preflang}/news/oshmail/"
+       tal:attributes="href string:https://osha.europa.eu/${view/preflang}/news/oshmail/"
        i18n:translate="Free Newsletter"
        >Free newsletter</a>
   </dd>
 
   <dd class="portletItem" id="alerts">
     <a rel="nofollow" 
-       tal:attributes="href string:http://osha.europa.eu/${view/preflang}/alertservice"
+       tal:attributes="href string:https://osha.europa.eu/${view/preflang}/alertservice"
        i18n:translate="Alert Service"
        >Free alert service</a>
   </dd>

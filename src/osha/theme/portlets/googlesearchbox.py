@@ -26,4 +26,4 @@ class Renderer(BaseRenderer):
         return show
 
     def oshGlobalSearchLink(self):
-        return '%s/%s/slc_cse_search_results?&q=&cof=FORID:11&sa=Search&ie=UTF-8&cref=http://osha.europa.eu/google/international_cse.xml' %(self.subsite_url, self.language)
+        return '%s/%s/slc_cse_search_results?&q=&cof=FORID:11&sa=Search&ie=UTF-8&cref=https://osha.europa.eu/google/international_cse.xml' %(self.subsite_url, self.language)

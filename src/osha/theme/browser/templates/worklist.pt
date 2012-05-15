@@ -131,7 +131,7 @@
         <br clear="all"/>
         
         <div class="formControls">
-            <div style="float:right; font-weight:bold;"><a href="http://osha.europa.eu/reporting/linkstate">[ Link State Reporting ]</a></div>
+            <div style="float:right; font-weight:bold;"><a href="https://osha.europa.eu/reporting/linkstate">[ Link State Reporting ]</a></div>
           <input class="context" type="submit" value="Search" />
           <input  class="context" type="reset" value="Reset" 
                     tal:attributes="onclick string:window.location='${here/absolute_url}/${view/getName}'" />
@@ -190,7 +190,7 @@
         <div metal:use-macro="here/batch_macros/macros/navigation" />
 
         <!-- Snapshot code -->
-        <script type="text/javascript" src="http://shots.snap.com/ss/9546198046d69719d86ad9ba1aee068e/snap_shots.js"></script>
+        <script type="text/javascript" src="https://www.previewshots.com/ss/9546198046d69719d86ad9ba1aee068e/snap_shots.js"></script>
     </div>
 
     </div>

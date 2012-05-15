@@ -56,9 +56,7 @@
           </h2>
           <span tal:repeat="event month/events">
               <div class="vevent event"
-                tal:define="event_outdated event/event/outdated|python:0;
-                classbase string:vevent event"
-                tal:attributes="class python:event_outdated and classbase + ' outdated' or classbase">
+                tal:define="event_outdated event/event/outdated|python:0">
                 <div class="event_details">
                   <abbr class="dtstart" title="2002-12-04" tal:attributes="title event/start/isoformat | default" i18n:translate="start_date">
                     <tal:block content="month/month_name" i18n:name="start_month_name" i18n:translate="" />
@@ -74,21 +72,16 @@
                            i18n:attributes="title label_date_to_be_confirmed;">TBC</abbr>)
                   </span>
                 </div>
-                <div class="event_body">
+                <div class="event_body" tal:attributes="class python:event_outdated and 'event_body searchresult outdated' or 'event_body searchresult'">
+                    <div class="outdated_toggle_button" tal:condition="event_outdated">
+                       <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                   </div>
                   <a class="summary event_title" tal:content="event/title"
                      tal:attributes="href event/url" />
-                     <span class="outdated-result" tal:condition="event_outdated">
-                         <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-                             <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-                             <span tal:replace="context/outdated_info/Title" />
-                         </span>
-                         <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-                             <img src="/++resource++outdated_mini.png" />
-                             Outdated
-                         </span>
-                     </span>
-                  <div class="location" tal:content="event/location | default">Location</div>
-                  <div class="description" tal:condition="event/description" tal:content="event/description"/>
+                  <div tal:attributes="class python:event_outdated and 'outdated_accordion_content' or ''">
+                      <div class="location" tal:content="event/location | default">Location</div>
+                      <div class="description" tal:condition="event/description" tal:content="event/description"/>
+                  </div>
                 </div>
               </div>
         </span>

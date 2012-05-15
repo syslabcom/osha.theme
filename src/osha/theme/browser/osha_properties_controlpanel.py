@@ -69,7 +69,7 @@ class Settings(Persistent):
     oshmail_subscribers = ''
     show_atoz_link = True
     show_previous_events = True
-    link_on_logo = 'http://osha.europa.eu'
+    link_on_logo = 'https://osha.europa.eu'
 
 
 ### Language vocabulary
@@ -126,7 +126,7 @@ class ILogoSchema(Interface):
 
     link_on_logo = TextLine(title=_(u"Link to be placed on the logo"),
                         description=_(u"Enter the link (URL) that is placed around the logo"),
-                        default=u"http://osha.europa.eu",
+                        default=u"https://osha.europa.eu",
                         required=False
                     )
 

@@ -170,6 +170,7 @@
         />
 
     <!-- OSHA Custom Help Center / FAQ views -->
+
     <browser:page
         for="Products.PloneHelpCenter.interfaces.IHelpCenter"
         name="osha_help_center_view"
@@ -397,6 +398,7 @@
         manager=".interfaces.IOSHAHeaderTopactions"
         class="plone.app.layout.viewlets.common.PersonalBarViewlet"
         layer=".interfaces.IOSHAThemeLayer"
+        template="templates/osha_personal_bar.pt"
         permission="zope2.View"
         />
 
@@ -546,6 +548,21 @@
         name="oshnews-view"
         class=".oshnews_view.OSHNewsView"
         template="templates/oshnews_view.pt"
+        permission="zope2.View"
+        />
+
+<!--    <browser:page
+        for="*"
+        name="oshnews-view-simple"
+        class=".oshnews_view.OSHNewsSimpleView"
+        permission="zope2.View"
+        />
+-->
+    <browser:page
+        for="*"
+        name="oshmail2-view"
+        class=".oshmail2_view.OSHmailView"
+        allowed_interface=".interfaces.IOSHmailView"
         permission="zope2.View"
         />
 
