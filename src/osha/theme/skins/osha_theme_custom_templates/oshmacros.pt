@@ -84,6 +84,8 @@
           </tal:notfaq>
 
           <tal:get condition="python:result.portal_type == 'CaseStudy'">
+
+            aaa<p tal:content="python:oshaview.debug(res = result)"/>bbb
             <tal:def define="here result/getObject">
                 <metal:macro use-macro="context/widget_casestudy_attachmentmanager/macros/attachments_box" />
             </tal:def>

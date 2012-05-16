@@ -1,7 +1,6 @@
 <tal:block i18n:domain="plone">
 <dl class="portlet portletNavigationTree"  
     tal:define="root view/navigation_root">
-
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <span i18n:domain="osha" tal:omit-tag=""
