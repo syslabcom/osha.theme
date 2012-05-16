@@ -132,7 +132,7 @@
         class=".oshaview.OSHA"
         permission="zope.Public"
         allowed_interface=".interfaces.IOSHA"
-        allowed_attributes="debug"
+        allowed_attributes="pdb_from_page_template"
         />
 
     <!-- OSHA RollingQuotes -->

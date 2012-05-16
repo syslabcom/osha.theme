@@ -435,3 +435,6 @@ class OSHA(BrowserView):
             return "portrait"
         else:
             return "landscape"
+
+    def pdb_from_page_template(self, *args, **kwargs):
+        import pdb; pdb.set_trace()
