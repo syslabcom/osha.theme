@@ -513,7 +513,7 @@ class InlineContentViewlet(common.ViewletBase):
         return False
 
     def getContentObject(self):
-        return getattr(aq_parent(aq_inner(self.context)), config.INLINE_CONTENT_VIEWLET_NAME, None)
+        return getattr(self.context, config.INLINE_CONTENT_VIEWLET_NAME, None)
 
     def show(self):
         if not IInlineContentViewlet.providedBy(self.context):
