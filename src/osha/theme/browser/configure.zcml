@@ -866,6 +866,14 @@
         />
 
     <browser:page
+        name="osha-homepage"
+        for="*"
+        class=".homepage.HomepageView"
+        template="templates/osha_homepage.pt"
+        permission="zope2.View"
+        />
+
+    <browser:page
         name="teaser-archive-view"
         for="*"
         class=".teaserview.TeaserArchiveView"
