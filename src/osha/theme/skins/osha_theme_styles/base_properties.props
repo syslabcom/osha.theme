@@ -5,13 +5,13 @@ plone_skin:string=OSHA Plone Theme
 logoName:string=logo.gif
 
 fontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
-fontBaseSize:string=70%
+fontBaseSize:string=80%
 fontColor:string=#191919
 fontSmallSize:string=95%
 
 backgroundColor:string=White
 
-linkColor:string=#144989
+linkColor:string=#003399
 linkActiveColor:string=Red
 linkVisitedColor:string=#666666
 
@@ -20,13 +20,13 @@ borderStyle:string=solid
 borderStyleAnnotations:string=dashed
 
 globalBorderColor:string=#AAB1C5
-globalBackgroundColor:string=#C5CBD8
+globalBackgroundColor:string=#fff
 globalFontColor:string=#000
 
 headingFontFamily:string=Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif
 
 contentViewBorderColor:string=#AAB1C5
-contentViewBackgroundColor:string=#E6E8ED
+contentViewBackgroundColor:string=#ffffff
 contentViewFontColor:string=#000
 
 inputFontColor:string=#191919

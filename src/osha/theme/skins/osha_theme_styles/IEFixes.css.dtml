@@ -183,11 +183,9 @@ input.searchButton {
 }
 #portal-header {
     float: none;
-    height: 93px;
 }
 * html #portal-header {
     float: left;
-    height: 92px;
 }
 .navTreeItem a, 
 dd.portletItem .navTreeItem a {
@@ -229,5 +227,17 @@ dd.portletItem .navTreeItem a {
     margin-top:-5px;
 }
 
+
+/***********Redesign 2012***************/
+
+#select_language_form p{
+	position: absolute;
+	right: 130px;
+	top: 2px;
+}
+
+#osha-topdropdowns {
+    margin: 0px 80px 0 201px;
+}
 
 /* </dtml-with> */
