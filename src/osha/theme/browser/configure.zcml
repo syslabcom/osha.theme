@@ -866,7 +866,7 @@
         />
 
     <browser:page
-        name="osha-homepage"
+        name="osha_homepage"
         for="*"
         class=".homepage.HomepageView"
         template="templates/osha_homepage.pt"

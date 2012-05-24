@@ -59,7 +59,9 @@ class OSHAHelpCenterView(BrowserView):
         for faq in faqs:
             for category in getattr(faq, category_attr):
                 faq_categories.add(category)
-        return faq_categories.intersection(possible_categories)
+        rlv_cats = faq_categories.intersection(possible_categories)
+        # import pdb; pdb.set_trace()
+        return rlv_cats
 
     def _sort_categories_by_title(self, categories, vocab_dict):
         """ Return a list of category ids, sorted by the title. The
