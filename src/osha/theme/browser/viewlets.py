@@ -27,8 +27,8 @@ from osha.theme import config
 from osha.theme.browser.interfaces import IInlineContentViewlet
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 
-# TODO: Remove the dependency on p4a.plonevideoembed #4414
-# from osha.theme.browser.topics_view import TopicsBrowserView
+from osha.theme.browser.topics_view import TopicsBrowserView
+
 
 class OSHALanguageSelector(TranslatableLanguageSelector):
     """ Override LinguaPlone's language selector to provide our own template
