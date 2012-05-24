@@ -3,16 +3,16 @@
         metal:use-macro="here/main_template/macros/master"
         i18n:domain="osha">
 
+  <metal:javascript fill-slot="javascript_head_slot">
+    <script type="text/javascript"
+            src="++resource++osha.theme.behaviour/highlights-carousel.js"
+            language="javascript"></script>
+  </metal:javascript>
+
 <body>
 
     <div metal:fill-slot="main" id="Homepage"
         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
-
-    <script>
-    jQuery(function() {
-        jQuery("#highlights-tabs").tabs("#highlights-content > div");
-    });
-    </script>
 
         <div id="intro" tal:define="intro view/intro">
             <a href="" tal:attributes="href intro/link" i18n:translate="portlet_more_link">
