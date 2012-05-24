@@ -10,7 +10,7 @@
 
     <script>
     jQuery(function() {
-        jQuery( "#highlights" ).tabs();
+        jQuery("#highlights-tabs").tabs("#highlights-content > div");
     });
     </script>
 
