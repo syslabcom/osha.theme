@@ -23,11 +23,6 @@
 
     <!-- vpip import -->
     <browser:resource
-        name="vpip.js"
-        file="vpip.js"
-        />
-
-    <browser:resource
         file="resources/swfobject.js"
         name="swfobject.js"
         />
