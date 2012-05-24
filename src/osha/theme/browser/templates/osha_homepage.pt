@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-        lang="en"
-        metal:use-macro="here/main_template/macros/master"
-        i18n:domain="osha">
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
 
   <metal:javascript fill-slot="javascript_head_slot">
     <script type="text/javascript"
@@ -9,67 +9,67 @@
             language="javascript"></script>
   </metal:javascript>
 
-<body>
+  <body>
 
     <div metal:fill-slot="main" id="Homepage"
-        tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
 
-        <div id="intro" tal:define="intro view/intro">
-            <a href="" tal:attributes="href intro/link" i18n:translate="portlet_more_link">
-                <p id="agency_fullname" i18n:translate="box_agency_fullname">European Agency for Safety and Health at Work</p>
-                <h1 i18n:translate="label_making_europe_safer">Making Europe a safer, healthier and more productive place to work</h1>
-                <p id="intro_more"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</p>
-            </a>
+      <div id="intro" tal:define="intro view/intro">
+        <a href="" tal:attributes="href intro/link" i18n:translate="portlet_more_link">
+          <p id="agency_fullname" i18n:translate="box_agency_fullname">European Agency for Safety and Health at Work</p>
+          <h1 i18n:translate="label_making_europe_safer">Making Europe a safer, healthier and more productive place to work</h1>
+          <p id="intro_more"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</p>
+        </a>
+      </div>
+
+      <div id="highlightsContainer">
+        <div class="carouselContainer" id="highlights"
+             tal:define="items view/highlights">
+          <h2 i18n:translate="label_highlights">Highlights</h2>
+          <div id="highlights-content">
+            <tal:rep repeat="news items">
+              <div tal:define="no repeat/news/number"
+                   tal:attributes="id string:highlights-$no">
+                <tal:news_item>
+                  <h3><a tal:attributes="href news/link" tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</a></h3>
+                  <a tal:attributes="href news/link">
+                    <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
+                  </a>
+                  <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
+                  <p class="teaser_content" tal:content="news/description"></p>
+                  <p class="teaser_more"><a class="more" tal:attributes="href news/link"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</a></p>
+                </tal:news_item>
+              </div>
+            </tal:rep>
+          </div>
+          <ul id="highlights-tabs">
+            <tal:rep repeat="news items">
+              <li tal:define="no repeat/news/number">
+                <a href="#highlights-1" tal:attributes="href string:#highlights-$no" tal:content="no">1</a>
+              </li>
+            </tal:rep>
+          </ul>
         </div>
+      </div>
 
-        <div id="highlightsContainer">
-            <div class="carouselContainer" id="highlights"
-                tal:define="items view/highlights">
-                <h2 i18n:translate="label_highlights">Highlights</h2>
-                <div id="highlights-content">
-                    <tal:rep repeat="news items">
-                        <div tal:define="no repeat/news/number"
-                            tal:attributes="id string:highlights-$no">
-                          <tal:news_item>
-                              <h3><a tal:attributes="href news/link" tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</a></h3>
-                              <a tal:attributes="href news/link">
-                                <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
-                              </a>
-                              <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
-                              <p class="teaser_content" tal:content="news/description"></p>
-                              <p class="teaser_more"><a class="more" tal:attributes="href news/link"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</a></p>
-                          </tal:news_item>
-                        </div>
-                    </tal:rep>
-                </div>
-                <ul id="highlights-tabs">
-                    <tal:rep repeat="news items">
-                        <li tal:define="no repeat/news/number">
-                            <a href="#highlights-1" tal:attributes="href string:#highlights-$no" tal:content="no">1</a>
-                        </li>
-                    </tal:rep>
-                </ul>
-            </div>
-        </div>
+      <div id="in-focus-container">
+        <h2 i18n:translate="label_in-focus">In Focus</h2>
+        <ul class="in-focus" id="in-focus"
+            tal:define="items view/in_focus">
+          <tal:rep repeat="news items">
+            <li tal:define="no repeat/news/number"
+                tal:attributes="id string:highlight-$no">
+              <tal:news_item>
+                <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
+                <h3>EU-OSHA targets health risks in cleaning industry for European Week 2009</h3>
+                <!--p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/-->
+                <span tal:replace="structure news/description"></span>
 
-        <div id="in-focus-container">
-            <h2 i18n:translate="label_in-focus">In Focus</h2>
-            <ul class="in-focus" id="in-focus"
-                tal:define="items view/in_focus">
-                <tal:rep repeat="news items">
-                    <li tal:define="no repeat/news/number"
-                        tal:attributes="id string:highlight-$no">
-                      <tal:news_item>
-                          <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
-                          <h3>EU-OSHA targets health risks in cleaning industry for European Week 2009</h3>
-                          <!--p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/-->
-                          <span tal:replace="structure news/description"></span>
-
-                      </tal:news_item>
-                    </li>
-                </tal:rep>
-            </ul>
-        </div>
+              </tal:news_item>
+            </li>
+          </tal:rep>
+        </ul>
+      </div>
     </div>
-</body>
+  </body>
 </html>
