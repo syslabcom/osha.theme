@@ -3,7 +3,7 @@
     <div class="visualClear"></div>
     <div id="topic-view-heading-box">
         <div id="relatedMedia" tal:condition="view/hasRelatedMedia">
-            <tal:related_media replace="structure python:view.getRelatedMedia('200', 'mini')" />
+            <tal:related_media replace="structure python:view.getRelatedMedia('mini')" />
         </div>
         <div id="topic-heading-text">
             <h1 tal:content="context/Title">Title</h1>

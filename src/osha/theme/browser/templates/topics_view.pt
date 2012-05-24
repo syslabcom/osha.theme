@@ -15,7 +15,7 @@
 
         <div id="relatedMedia" 
              tal:condition="view/hasRelatedMedia">
-          <tal:related_media replace="structure python:view.getRelatedMedia('200', 'mini')" />
+          <tal:related_media replace="structure python:view.getRelatedMedia('mini')" />
         </div>
 
         <h1 tal:content="context/Title">Title</h1>

@@ -522,6 +522,6 @@ class InlineContentViewlet(common.ViewletBase):
             return False
         return True
 
-# TODO: Remove the dependency on p4a.plonevideoembed #4414
-# class TopicViewHeading(common.ViewletBase, TopicsBrowserView):
-#     render = ViewPageTemplateFile('templates/topic_view_heading_viewlet.pt')
+
+class TopicViewHeading(common.ViewletBase, TopicsBrowserView):
+    render = ViewPageTemplateFile('templates/topic_view_heading_viewlet.pt')

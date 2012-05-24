@@ -905,14 +905,12 @@
         />
 
 
-    <!-- TODO: #4414 fix, it depends on
-         p4a.plonevideo which in turn depends on an outdated hachoir -->
-    <!-- <browser:viewlet -->
-    <!--     name="osha.theme.topic_view_heading_viewlet" -->
-    <!--     manager="slc.seminarportal.browser.interfaces.IAboveSeminarListing" -->
-    <!--     class=".viewlets.TopicViewHeading" -->
-    <!--     permission="zope2.View" -->
-    <!--     /> -->
+    <browser:viewlet
+        name="osha.theme.topic_view_heading_viewlet"
+        manager="slc.seminarportal.browser.interfaces.IAboveSeminarListing"
+        class=".viewlets.TopicViewHeading"
+        permission="zope2.View"
+        />
 
     <browser:viewlet
         name="osha.belowcontentportlets"
