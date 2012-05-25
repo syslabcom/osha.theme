@@ -10,10 +10,6 @@ from Products.Five.browser import BrowserView
 
 _ = MessageFactory('osha.theme')
 class HomepageView(BrowserView):
-    # Remove this for Plone 4
-#    template = ViewPageTemplateFile('templates/osha_homepage.pt')
-#    template.id = "osha_homepage"
-    # and move it to the template= statement in configure.zcml
 
     def __init__(self, context, request=None):
         self.context = context
@@ -26,7 +22,6 @@ class HomepageView(BrowserView):
         self.langroot = getattr(self.portal, self.pref_lang, \
             getattr(self.portal, 'en'))
 
-    # For Plone 4
     def __call__(self):
         return self.index()
 
