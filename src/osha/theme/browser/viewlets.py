@@ -105,11 +105,6 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
             translations = translatable.getTranslations()
         else:
             translations = []
-        links =  self.context.getBRefs('lingualink')
-        # create a dict that maps language to LinguaLink object
-        lang_to_link = dict()
-        for link in links:
-            lang_to_link[link.Language()] = link
 
         for data in results:
             data['translated'] = data['code'] in translations
@@ -118,8 +113,6 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
                 state = getMultiAdapter((trans, self.request),
                         name='plone_context_state')
                 data['url'] = state.view_url() + '?set_language=' + data['code']
-            elif data['code'] in lang_to_link:
-                data['url'] = lang_to_link[data['code']].absolute_url()
             else:
                 state = getMultiAdapter((self.context, self.request),
                         name='plone_context_state')
