@@ -1,7 +1,8 @@
+from Products.Archetypes.interfaces import IVocabulary
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from plone.memoize import ram
+
 
 class VocabularyPathView(BrowserView):
     """View for calculating complete paths of hierarchical vocabulary entries
@@ -12,15 +13,20 @@ class VocabularyPathView(BrowserView):
             return []
 
         termUID = field.getRaw(self.context)
-        vocabname = field.vocabulary
-        
+
+        if IVocabulary.providedBy(field.vocabulary):
+            # when using e.g. a NamedVocabulary
+            vocabname = field.vocabulary.vocab_name
+        else:
+            # when vocabulary is set as a string
+            vocabname = field.vocabulary
+
         parents_map = self.getParentsMap(vocabname)
         res = set()
         for term in termUID:
             res.update(parents_map.get(term, []) + [term])
 
         return list(res)
-
 
     def _getParentsMap_cachekey(method, self, vocabname):
         return (vocabname,)
@@ -40,11 +46,11 @@ class VocabularyPathView(BrowserView):
         def recurseDict(vocab_dict, level):
             for k in vocab_dict.keys():
                 # clear the list of current parents for top level nodes
-                if level==0:
+                if level == 0:
                     self.cp = list()
                 else:
-                    # if it is not a root node, prune the list of current parents
-                    #  ( it cannot be longer than the current level )
+                    # if it is not a root node, prune the list of current
+                    # parents (it cannot be longer than the current level)
                     self.cp = self.cp[:level]
                     # and add the parents to the mapping
                     parents_map[k] = [x for x in self.cp]
@@ -52,6 +58,6 @@ class VocabularyPathView(BrowserView):
                 if vd:
                     # recurse one level deeper
                     self.cp.append(k)
-                    recurseDict(vd, level+1)
+                    recurseDict(vd, level + 1)
         recurseDict(vd, 0)
         return parents_map
