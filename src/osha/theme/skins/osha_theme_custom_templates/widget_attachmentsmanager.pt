@@ -9,6 +9,7 @@
 <!-- Attachments -->
 <metal:view define-macro="view"
             tal:define="voc field/Vocabulary;
+                        putils context/plone_utils;
                         accessor python:field.getAccessor(here);
                         value python:voc and voc.getValue(str(accessor())) or accessor();
                         attachments python:[x for x in
