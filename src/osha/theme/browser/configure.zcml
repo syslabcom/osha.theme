@@ -969,5 +969,13 @@
         layer=".interfaces.IOSHAThemeLayer"
         />
 
+    <!-- helper view for the dyntree -->
+    <browser:page
+        for="Products.CMFCore.interfaces.ISiteRoot"
+        name="vdex_as_json"
+        class=".vdex.VDEXAsJson"
+        permission="zope.Public"
+        layer=".interfaces.IOSHAThemeLayer"
+    />
 
 </configure>
