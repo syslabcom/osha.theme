@@ -1365,6 +1365,75 @@ div.teaserdate {
     padding-bottom: 1em;
 }
 
+/* dynatree */
+div.flatlist-template {
+    display: none;
+}
+div.ui_controls .sparse{
+    display: none;
+}
+
+div.flatlist_container{
+  padding: 4px 2px;
+}
+ul.dynatree-container,
+div.flatlist_container.opened{
+   background-color: #E5E6E8;
+   border: none;
+   font-size: 100%;
+}
+.dynatree-selected span.dynatree-checkbox {
+  background: url("ico_check_red.gif") no-repeat scroll 0 0 transparent;
+}
+.dynatree-selected span.dynatree-checkbox:hover {
+  background: url("ico_check_red_hover.gif") no-repeat scroll 0 0 transparent;
+}
+div.dynatree-atwidget span.toggleButton{
+    background: url("plus_icon.gif") no-repeat scroll 0 4px transparent;
+    margin: 0.5em 0 0;
+    padding: 3px 0 0 16px;
+}
+div.dynatree-atwidget span.toggleButton.opened{
+    background: url("minus_icon.gif") no-repeat scroll 0 4px #E5E6E8;
+
+}
+a.fakeLink{
+    color: #000000;
+}
+a.fakeLink:hover{
+    color: #A8126A;
+    cursor: pointer;
+}
+div.dynatree-custom.disabled{
+  display: none;
+}
+span.dynatree-selected a{
+  color: #A8126A;
+}
+div.flatlist_container .flatlist-item {
+   border-top: 1px solid #8095a8;
+   background: #02020c;
+   background: -webkit-gradient(linear, left top, left bottom, from(#627281), to(#02020c));
+   background: -webkit-linear-gradient(top, #627281, #02020c);
+   background: -moz-linear-gradient(top, #627281, #02020c);
+   background: -ms-linear-gradient(top, #627281, #02020c);
+   background: -o-linear-gradient(top, #627281, #02020c);
+   padding: 0 8px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   white-space: nowrap;
+   margin: 2px;
+   text-decoration: none;
+   vertical-align: middle;
+   float:left;
+   }
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
