@@ -95,40 +95,6 @@
 
                   <div class="field">
 
-                    <!--
-                       Disabling the "database" selector, as it leads to a logical problem.
-                      -->
-                    <!--
-                       <label i18n:translate="label_database"> Database </label>
-                       <br />
-
-                       <div class="formHelp"
-                            i18n:translate="help_advanced_search_database">
-                         Select the database types you want to search.
-                       </div>
-
-                       <div tal:repeat="T view/search_types">
-                         <input class="input_checkbox" type="checkbox"
-                                name="search_portal_types:list"
-                                tal:attributes="value python:T[1];
-                                                checked python: 'checked' and T[2] or ''" />
-                         <span tal:content="python:T[0]" ></span>
-                       </div>
-                       <input type="hidden" name="search_portal_types:list"
-                              tal:attributes="value get_search_portal_type" />
-                       -->
-
-                    <!--
-                       Exchanged the "Language" selector with "remoteLanguage", to be consistent
-                       with the worklist ("language problems", "lost content").
-                       For FAQ items, the language filter is not shown.
-                      -->
-                    <!--
-                       <div class="field_default">
-                         <metal:use use-macro="context/filter_macros/macros/Language"></metal:use>
-                       </div>
-                       -->
-
                     <div class="field_default"
                          tal:condition="python: get_search_portal_type!='HelpCenterFAQ'"
                          tal:define="multiple string:multiple">
@@ -232,16 +198,6 @@
                                  >234 </tal:number>
               </span>
             </span>
-            <!--
-               Commenting out temporarily for PU
-            <a href="/en/practical-solutions/useful-links?keywords:list=#database_search"
-               tal:define="url view/get_link_to_english_results"
-               tal:condition="url"
-               i18n:translate="label_more_results_in_en"
-               tal:attributes="href url">
-              Check for more results in EN
-            </a>
-            -->
           </h2>
 
           <div tal:condition="not: results">
