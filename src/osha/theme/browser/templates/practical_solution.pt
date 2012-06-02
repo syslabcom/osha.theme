@@ -91,7 +91,6 @@
                   the filters.
                 </div>
 
-                <div class="filter_column1">
 
                   <div class="field">
 
@@ -106,9 +105,7 @@
                     </div>
                   </div>
 
-                </div>
 
-                <div class="filter_column2">
 
                   <div class="field_default"
                        tal:define="value keyword; size python: 1">
@@ -152,7 +149,6 @@
                     <metal:use use-macro="context/filter_macros/macros/MultilingualThesaurus"></metal:use>
                   </div>
 
-                </div>
                 <div class="visualClear"></div>
 
               </dd>
