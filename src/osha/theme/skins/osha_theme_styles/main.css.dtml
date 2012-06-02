@@ -1392,6 +1392,7 @@ div.dynatree-atwidget span.toggleButton{
     background: url("plus_icon.gif") no-repeat scroll 0 4px transparent;
     margin: 0.5em 0 0;
     padding: 3px 0 0 16px;
+    font-weight: bold;
 }
 div.dynatree-atwidget span.toggleButton.opened{
     background: url("minus_icon.gif") no-repeat scroll 0 4px #E5E6E8;
