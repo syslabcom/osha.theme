@@ -13,7 +13,7 @@ class VDEXAsJson(object):
     def __call__(self, vdex):
         tool = getToolByName(self.context, 'portal_vocabularies')
         vocab_dict = tool[vdex].getVocabularyDict(self.context)
-        if vdex == 'NACE':
+        if vdex in ('NACE', 'MultilingualThesaurus'):
             showKey = True
         else:
             showKey = False
