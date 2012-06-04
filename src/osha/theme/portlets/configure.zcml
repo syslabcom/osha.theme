@@ -221,13 +221,13 @@
             
  <!-- Lingualink portlet -->
 <!-- TODO: BlueLinguaLink is obsolete see #4413 -->
-     <!-- <plone:portlet -->
-     <!--     name="osha.lingualinks" -->
-     <!--     interface=".lingualink.ILinguaLinkPortlet" -->
-     <!--     assignment=".lingualink.Assignment" -->
-     <!--     renderer=".lingualink.Renderer" -->
-     <!--     addview=".lingualink.AddForm" -->
-     <!--     />   -->
+      <plone:portlet
+          name="osha.lingualinks"
+          interface=".lingualink.ILinguaLinkPortlet"
+          assignment=".lingualink.Assignment"
+          renderer=".lingualink.Renderer" 
+          addview=".lingualink.AddForm"
+          />  
          
  <!-- Document Fallback portlet -->
      <plone:portlet

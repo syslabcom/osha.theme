@@ -15,7 +15,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 
-from Products.BlueLinguaLink.browser import LinguaLinkPortlet
+from Products.Five import BrowserView
 
 class ILinguaLinkPortlet(IPortletDataProvider):    
     pass
@@ -27,7 +27,7 @@ class Assignment(base.Assignment):
     def title(self):
         return _(u"LinguaLink Portlet")
 
-class Renderer(base.Renderer, LinguaLinkPortlet):
+class Renderer(base.Renderer, BrowserView):
 
     _template = ViewPageTemplateFile('lingualink.pt')
     
@@ -60,7 +60,7 @@ class Renderer(base.Renderer, LinguaLinkPortlet):
     def check_access(self):
         portal_membership = getToolByName(self.context, 'portal_membership')
         member = portal_membership.getAuthenticatedMember()
-        return member and member.hasRole('Manager')        
+        return member is not None
         
     @memoize
     def _data(self):
