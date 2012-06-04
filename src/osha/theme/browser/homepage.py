@@ -57,7 +57,7 @@ class HomepageView(BrowserView):
             obj = r.getObject()
             link = obj.absolute_url()
             img_url = obj.getImage() and \
-                '/'.join(obj.getImage().getPhysicalPath()) or ''
+                obj.getImage().absolute_url() or ''
             # use 'mini' scale
             img_url = img_url.replace('/image', '/image_mini')
             description = obj.Description().strip() != '' and \
@@ -93,7 +93,7 @@ class HomepageView(BrowserView):
             obj = r.getObject()
             link = obj.absolute_url()
             img_url = obj.getImage() and \
-                '/'.join(obj.getImage().getPhysicalPath()) or ''
+                obj.getImage().absolute_url() or ''
             # use 'thumb' scale
             img_url = img_url.replace('/image', '/image_thumb')
             description = obj.Description().strip() != '' and \
