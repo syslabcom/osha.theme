@@ -2,6 +2,7 @@ from cgi import escape
 
 from zope.app.component.hooks import getSite
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.i18n import translate
 from Acquisition import aq_base, aq_inner, aq_parent
 
@@ -22,6 +23,7 @@ from plone.app.portlets.cache import get_language
 from slc.subsite.interfaces import ISubsiteEnhanced
 from Products.RemoteProvider.content.interfaces import IProvider
 from Products.OSHContentLink.interfaces import IOSH_Link
+from slc.googlesearch.interfaces import IGoogleSearchSettings
 
 from osha.theme import config
 from osha.theme.browser.interfaces import IInlineContentViewlet
