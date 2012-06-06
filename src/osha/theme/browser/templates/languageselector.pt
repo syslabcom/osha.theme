@@ -4,16 +4,17 @@
                 dummy python:languages.sort(lambda x,y: cmp(x['native'], y['native']));
                 showFlags view/showFlags;
                 preflang  python:here.portal_languages.getPreferredLanguage()">
-    <form action="">
+    <form action="" id="select_language_form">
+        <p><span tal:omit-tag="" i18n:translate="label_select_language" i18n:domain="osha">Select your language</span>:</p>
         <ul id="portal-languageselector" accesskey="8"
             tal:condition="python:available and len(languages)>=2">
-    
+
             <li tal:condition="showFlags"
                 tal:repeat="lang languages">
                 <span tal:define="code lang/code;
                                   selected lang/selected"
                       tal:omit-tag="selected">
-    
+
                     <a href=""
                        tal:define="flag lang/flag;
                                    name lang/native"
@@ -31,14 +32,14 @@
                             <span tal:replace="code">language code</span>
                         </tal:nonflag>
                     </a>
-    
+
                 </span>
             </li>
-    
+
             <li tal:condition="not: showFlags">
                 <select style="font-size: 94%;"
-                        onchange=""  
-                        accesskey="8"                
+                        onchange=""
+                        accesskey="8"
                         tal:attributes="onchange string:window.location= this.options[this.selectedIndex].getAttributeNode('url').value">
                     <option tal:repeat="lang languages"
                             tal:content="lang/native"
