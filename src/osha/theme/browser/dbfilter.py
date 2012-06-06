@@ -109,7 +109,7 @@ class DBFilterView(BrowserView):
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query = query & Generic('SearchableText', {'query': SearchableText, 'ranking_maxhits': 10000 })
+            query = query & Generic('SearchableText', {'query': SearchableText})
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
 

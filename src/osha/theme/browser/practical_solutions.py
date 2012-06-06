@@ -272,7 +272,7 @@ class PracticalSolutionView(DBFilterView):
         if SearchableText != '':
             query = query & Generic(
                 'SearchableText',
-                {'query': SearchableText, 'ranking_maxhits': 10000 }
+                {'query': SearchableText}
                 )
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
         return query
