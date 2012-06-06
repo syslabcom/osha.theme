@@ -1,13 +1,12 @@
 <dl class="portlet portletFollowUs"
     i18n:domain="osha">
-    <dt>Follow us</dt>
- 
     <dd>
-
       <ul>
-      	<li><a class="twitter-logo" title="Twitter Logo" href="https://twitter.com/eu_osha" target="_blank">Twitter</a></li>
-      	<li><a class="youtube-logo" title="Youtube logo" href="https://www.youtube.com/EUOSHA" target="_blank">YouTube</a></li>
-      	<li><a class="linkedin-logo" title="LinkedIn Logo" href="https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank">Linked-In</a></li>
+        <li class="twitter-logo"><a title="Twitter Logo" href="https://twitter.com/eu_osha" target="_blank">&nbsp;</a></li>
+        <li class="youtube-logo"><a class="youtube-logo" title="Youtube logo" href="https://www.youtube.com/EUOSHA" target="_blank">&nbsp;</a></li>
+        <li class="linkedin-logo"><a title="LinkedIn Logo" href="https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank">&nbsp;</a></li>
+        <li class="oshablog-logo"><a title="OSH Blog Logo" href="/en/blog" target="_blank">&nbsp;</a></li>
       </ul>
     </dd>
+    <div class="visualClear"></div>
 </dl>
