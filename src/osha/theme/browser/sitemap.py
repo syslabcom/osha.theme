@@ -25,7 +25,7 @@ class NewsMapView(BaseView):
     """
 
     template = ViewPageTemplateFile('templates/newsmap.xml')
-    
+
     def __init__(self, context, request):
         self.context = context
         self.request = request
@@ -40,7 +40,7 @@ class NewsMapView(BaseView):
 
         self.request.response.setHeader('Content-Type',
                                         'application/octet-stream')
-        return self.generate()    
+        return self.generate()
 
 
     def generate(self):
@@ -56,21 +56,22 @@ class NewsMapView(BaseView):
 
     def objects(self):
         """Returns the data to create the sitemap."""
+
         catalog = getToolByName(self.context, 'portal_catalog')
         portal_url = getToolByName(self.context, 'portal_url')
         portal_path = portal_url.getPortalPath()
         if hasattr(catalog, 'getZCatalog'):
             catalog = catalog.getZCatalog()
         portal_url = getToolByName(self.context, 'portal_url')
-            
+
         query = Eq('Language', 'en') & Eq('review_state', 'published') \
             & In('portal_type', ['News Item', 'PressRelease']) \
             & ~Eq('outdated', True)
         paths = In('path', ['%s/en/teaser'%portal_path, '%s/en/press'%portal_path])
         query = query & paths
-        
-#        results = catalog.searchResults({'Language': 'en', 
-#                                           'review_state': 'published', 
+
+#        results = catalog.searchResults({'Language': 'en',
+#                                           'review_state': 'published',
 #                                           'portal_type': 'News Item'})[:1000]
 
         results = catalog.evalAdvancedQuery(query)[:1000]
@@ -79,23 +80,23 @@ class NewsMapView(BaseView):
                 lastmod = item.modified.ISO8601()
             except:
                 lastmod = '2008-01-01T1:00:00+00:00'
-                
+
             loc = item.getURL()
 
             changefreq = item.get('changefreq', "monthly")
-            priority = item.get('priority', 0.9)           
+            priority = item.get('priority', 0.9)
             if item.effective<(DateTime()-30):
                 priority = 0.3
             else:
                 priority = 0.9
             keywords = [x for x in item.Subject if x is not None]
             keywords = ",".join(keywords)
-            
+
             try:
                 publication_date = item.effective.ISO8601()
             except:
                 publication_date = '2008-01-01T1:00:00+00:00'
-                    
+
             yield {
                 'loc': loc,
                 'lastmod': lastmod,
@@ -110,7 +111,7 @@ def _render_cachekey(fun, self):
     # Cache by filename
     url_tool = getToolByName(self.context, 'portal_url')
     return '%s/%s' % (url_tool(), self.filename)
-    
+
 class SiteMapView(BaseView):
     """Creates the sitemap as explained in the specifications.
 
@@ -136,7 +137,7 @@ class SiteMapView(BaseView):
 
         self.request.response.setHeader('Content-Type',
                                         'application/octet-stream')
-        return self.generate()                                
+        return self.generate()
 
     def persistFiles(self, objects):
         """ write the map into a file object to avoid google download timeouts """
@@ -155,20 +156,20 @@ class SiteMapView(BaseView):
                 counter +=1
                 part_name = FILE_PART % counter
                 self._persist_file(part_name, self.env_snippet(LINKS=LINKS))
-                filenames.append("%s/%s" %(purl, part_name))   
+                filenames.append("%s/%s" %(purl, part_name))
                 LINKS = ''
                 total_len = 0
-                
+
         counter +=1
         part_name = FILE_PART % counter
         self._persist_file(part_name, self.env_snippet(LINKS=LINKS))
-        filenames.append("%s/%s" %(purl, part_name))   
+        filenames.append("%s/%s" %(purl, part_name))
 
         snip = self.index_snippet(filenames=filenames, now=now)
-        data = self._persist_file(FILE_IDX, snip) 
+        data = self._persist_file(FILE_IDX, snip)
         self._purgeFilenamesFromCache(filenames)
         return data
-        
+
     def _purgeFilenamesFromCache(self, filenames):
         """ if we have a portal_squid tool, try to purge the filenames """
         portal_squid = getToolByName(self.context, 'portal_squid')
@@ -177,7 +178,7 @@ class SiteMapView(BaseView):
         portal_cache_settings = getToolByName(self.context, 'portal_cache_settings')
         if portal_cache_settings is None:
             return
-    
+
         relative_urls = filenames + ['sitemap_index.xml.gz']
         domains = [urlparse.urlparse(d) for d in portal_cache_settings.getDomains()]
         relative_urls = self.context.rewritePurgeUrls(relative_urls, domains)
@@ -186,8 +187,8 @@ class SiteMapView(BaseView):
         from Products.CMFSquidTool.utils import pruneAsync
         for url in relative_urls:
             pruneAsync(url)
-        
-        
+
+
     def parseUrlFile(self):
         """ parses a simple file with format url,changefreq,priority """
         urlfile = getattr(self.context, 'sitemap_urlfile', None)
@@ -199,21 +200,21 @@ class SiteMapView(BaseView):
             elems = line.split(",")
             if len(elems)>2:
                 urlmap[elems[0].strip()] = (elems[1].strip(), elems[2].strip())
-                
+
         return urlmap
 
     def _persist_file(self, filename, data):
         """ persists a file to the site root """
         site = getSite()
-        data = self._make_zip(filename, data)        
+        data = self._make_zip(filename, data)
         if filename not in site.objectIds():
             site.manage_addFile(filename)
         F = getattr(site, filename)
         F.update_data(data)
-        F.content_type='application/octet-stream'                
+        F.content_type='application/octet-stream'
         return data
-        
-        
+
+
     def _make_zip(self, filename, data):
         """ generates a zipfile from data """
         fp = StringIO()
@@ -221,7 +222,7 @@ class SiteMapView(BaseView):
         gzip.write(data)
         gzip.close()
         data = fp.getvalue()
-        fp.close()        
+        fp.close()
         return data
 
 
@@ -236,15 +237,15 @@ class SiteMapView(BaseView):
         """Returns the data to create the sitemap."""
         catalog = getToolByName(self.context, 'portal_catalog')
         portal_url = getToolByName(self.context, 'portal_url')
-                
+
         # the main url does not turn up as a catalog result so we do it manually
         yield {
             'loc': portal_url(),
             'lastmod': DateTime().ISO8601(),
-            'changefreq': 'always', 
+            'changefreq': 'always',
             'priority': 1
         }
-        
+
         for item in catalog.searchResults({'Language': 'all', 'review_state': 'published'}):
             # We only want to link them in the search form results
             if item.portal_type in ['Amendment', 'Modification', 'Note', 'Proposal', 'LinguaLink']:
@@ -255,11 +256,11 @@ class SiteMapView(BaseView):
                 lastmod = item.modified.ISO8601()
             except:
                 lastmod = '2008-01-01T1:00:00+00:00'
-                
+
             loc = item.getURL()
 
             changefreq = item.get('changefreq', "monthly")
-            priority = item.get('priority', 0.3)           
+            priority = item.get('priority', 0.3)
 
             if item.portal_type in ['Event', 'News Item']:
                 changefreq = "never"
@@ -269,9 +270,9 @@ class SiteMapView(BaseView):
                 priority = 0.9
 
             # manually set urlmap overrides
-            if self.urlmap.has_key(loc):    
+            if self.urlmap.has_key(loc):
                 changefreq, priority = self.urlmap[loc]
-            
+
             yield {
                 'loc': loc,
                 'lastmod': lastmod,
