@@ -627,27 +627,32 @@ dl.portletFollowUs {
 
  #highlights-tabs li.ui-corner-top {
     float: left;
-    background:#c5cbd8;
-    padding: 0.1em 0.4em;
-    margin: 0 0.5em 0 0;
+	 margin: 0 0.5em 0 0;
+   
+
+}
+#highlights-tabs li a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-shadow:2px 2px 2px #999;
+	 background:#c5cbd8;
+    padding: 0.1em 0.8em;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
 }
 
-#highlights-tabs li a {
-    color: #fff;
-    padding: 0.1em 0.4em;
-    font-weight: bold;
-    font-size: 1.2em;
-    text-shadow:2px 2px 2px #999;
-}
-
 #highlights-tabs li:hover a{
-    color: #003399;
+    color: #fff;
+	background:#98a2b7;
 }
 
 #highlights-tabs li.ui-state-active {
+    background:#98a2b7;
+}
+
+#highlights-tabs a.current {
     background:#98a2b7;
 }
 

@@ -44,7 +44,7 @@
           </div>
           <ul id="highlights-tabs">
             <tal:rep repeat="news items">
-              <li tal:define="no repeat/news/number">
+              <li class="ui-corner-top" tal:define="no repeat/news/number">
                 <a href="#highlights-1" tal:attributes="href string:#highlights-$no" tal:content="no">1</a>
               </li>
             </tal:rep>
@@ -54,21 +54,25 @@
 
       <div id="in-focus-container">
         <h2 i18n:translate="label_in-focus">In Focus</h2>
-        <ul class="in-focus" id="in-focus"
+        <div class="in-focus" id="in-focus"
             tal:define="items view/in_focus">
           <tal:rep repeat="news items">
-            <li tal:define="no repeat/news/number"
+            <tal:focus define="no repeat/news/number">
+            <div
                 tal:attributes="id string:highlight-$no">
               <tal:news_item>
                 <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
                 <h3>EU-OSHA targets health risks in cleaning industry for European Week 2009</h3>
                 <!--p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/-->
                 <span tal:replace="structure news/description"></span>
-
               </tal:news_item>
-            </li>
+            </div>
+            <tal:clear condition="python:no==2 or no==4">
+                <div class="visualClear"></div>
+            </tal:clear>
+            </tal:focus>
           </tal:rep>
-        </ul>
+        </div>
       </div>
     </div>
   </body>
