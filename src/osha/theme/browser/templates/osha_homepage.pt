@@ -62,7 +62,7 @@
                 tal:attributes="id string:highlight-$no">
               <tal:news_item>
                 <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
-                <h3>EU-OSHA targets health risks in cleaning industry for European Week 2009</h3>
+                <h3 tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</h3>
                 <!--p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/-->
                 <span tal:replace="structure news/description"></span>
               </tal:news_item>
