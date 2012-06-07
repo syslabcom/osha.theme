@@ -15,6 +15,7 @@
                                   plone_view context/@@plone;
                                   normalizeString nocall:plone_view/normalizeString;
                                   toLocalizedTime nocall:plone_view/toLocalizedTime;
+                                  mtool context/portal_membership;
                                   templateId template/getId">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
