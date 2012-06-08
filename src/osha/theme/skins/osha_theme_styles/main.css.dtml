@@ -67,7 +67,7 @@ dl.portlet #portal-personaltools {
 	width: 275px;
 	position: absolute;
 	right: 0;
-	bottom: 60px
+	top: 65px
 	}
 	
 #cse-search-box{
