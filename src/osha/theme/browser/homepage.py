@@ -45,6 +45,7 @@ class HomepageView(BrowserView):
             Language=[self.pref_lang, ''],
             sort_order='reverse', sort_on='effective',
             expires={'query': DateTime(), 'range': 'min'},
+            review_state='published',
             path=['%s/%s/teaser' % (self.portal_path, self.pref_lang)])
         if len(res) and limit > 0:
             res = res[:limit]
@@ -82,6 +83,7 @@ class HomepageView(BrowserView):
             Language=[self.pref_lang, ''],
             sort_order='reverse', sort_on='effective',
             expires={'query': DateTime(), 'range': 'min'},
+            review_state='published',
             path=['%s/%s/in-focus' % (self.portal_path, self.pref_lang)])
         if len(res) and limit > 0:
             res = res[:limit]
