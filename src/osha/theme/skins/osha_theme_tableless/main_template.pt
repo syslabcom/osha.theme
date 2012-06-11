@@ -75,7 +75,7 @@
     <!-- Subsite CSS Support -->
     <tal:subsite define="subsite_url oshaview/subsiteRootPath; 
                          subsite python:portal.restrictedTraverse(subsite_url)">
-        <style type="text/css" media="all" tal:condition="exists: subsite/subsite.css"
+        <style type="text/css" media="all" tal:condition="exists: subsite/subsite.css | nothing"
                tal:content="string:@import url(${subsite/absolute_url}/subsite.css);">
         </style>
     </tal:subsite>
