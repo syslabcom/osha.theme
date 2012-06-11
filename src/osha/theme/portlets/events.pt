@@ -18,8 +18,7 @@
         tal:define="oddrow repeat/obj/odd;
                     plone_view context/@@plone;
                     getIcon nocall:plone_view/getIcon;
-                    item_icon python:getIcon(obj);
-                    calendar_helper_view context/@@calendar-helper-view;"
+                    item_icon python:getIcon(obj);"
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
 
         <a href="#" rel="nofollow"
@@ -38,7 +37,7 @@
                 May 5
                 </tal:date>
                 <span class="dateToBeConfirmed"
-                      tal:condition="python:calendar_helper_view.getDateToBeConfirmed(obj)">
+                      tal:condition="python:True if hasattr(obj, 'dateToBeConfirmed') and event.dateToBeConfirmed else False">
                   (<abbr title="Date to be confirmed"
                          i18n:translate="abbr_date_to_be_confirmed"
                          i18n:domain="osha"
