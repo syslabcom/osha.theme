@@ -9,12 +9,24 @@
     <div metal:fill-slot="main">
 
       <h1 tal:content="context/title_or_id">Title</h1>
-      <div class="eventlist">
-        <div class="eventlist_month" tal:repeat="month view/get_event_list">
+      <div class="eventlist"
+           tal:define="list view/get_event_list;
+                       Batch python:modules['Products.CMFPlone'].Batch;
+                       b_size python:3;
+                       b_start python:0;
+                       b_start request/b_start | b_start;
+                       batch python:Batch(list, b_size, int(b_start), orphan=1);
+                       ">
+
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+        <div class="eventlist_month" tal:repeat="month batch">
           <h2>
             <tal:block content="month/month_name" i18n:translate=""/>
             <tal:block content="month/year"/>
           </h2>
+
+
           <span tal:repeat="event month/events">
             <div class="vevent event"
                  tal:define="event_outdated event/is_outdated">
@@ -46,6 +58,9 @@
           </span>
           <div style="clear: both;"></div>
         </div>
+
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
       </div>
 
     </div> <!-- end main fill slot -->

@@ -29,9 +29,11 @@ class EventsListingView(BrowserView):
             query = {
                 "portal_type": "Event",
                 "path": { "query": current_path }}
+        query["sort_on"] = "start"
         if self.past_events:
             query["start"] = {
                 "query": DateTime(), "range" : "max"}
+            query["sort_order"] = "reverse"
         else:
             query["start"] = {
                 "query": DateTime(), "range" : "min"}
