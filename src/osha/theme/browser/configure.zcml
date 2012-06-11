@@ -586,15 +586,6 @@
         />
 
     <browser:page
-        name="calendar-helper-view"
-        for="*"
-        permission="zope2.View"
-        class=".calendar_helper_view.CalendarHelperView"
-        layer=".interfaces.IOSHAThemeLayer"
-        allowed_attributes="getDateToBeConfirmed"
-        />
-
-    <browser:page
         for="Products.Archetypes.interfaces.IBaseContent"
         name="competitions-view"
         class=".competitions.CompetitionsView"
@@ -612,10 +603,6 @@
         permission="zope2.View"
         />
 
-
-    <!-- TODO: remove templates/oshevent_calendar.pt 
-      This was a customised version the calendar Month view from p4a.calendar 
-    -->
     <browser:page
         for="*"
         name="events.html"
