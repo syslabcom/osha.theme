@@ -1,21 +1,22 @@
 """ BrowserViews to replace p4a.calendar listing views: events.html,
 past-events.html
 """
-from datetime import datetime
-
 from DateTime import DateTime
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from zope.annotation.interfaces import IAnnotations
 
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.ATContentTypes.interface.topic import IATTopic
+
+from osha.theme.browser.calendar_helper_view import getEventDateToBeConfirmed
 
 class EventsListingView(BrowserView):
     template = ViewPageTemplateFile('templates/calendar_events_list.pt')
     past_events = False
 
     def __call__(self):
-        return self.get_events()
+        return self.template()
 
     def get_events(self):
         context = self.context
@@ -37,32 +38,39 @@ class EventsListingView(BrowserView):
         return pc.searchResults(query)
 
     def get_event_list(self, start=None, stop=None):
-        now = datetime.datetime.now()
-        events = self.get_events()
+        now = DateTime()
+        events = (i.getObject() for i in self.get_events())
         months = []
         month_info = []
         old_month_year = None
         for event in events:
-            start = event.start
-            month = str(start.month)
-            year = str(start.year)
+            start = event.start()
+            month = str(start.month())
+            year = str(start.year())
             month_year = year+month
             if month_year != old_month_year:
                 old_month_year = month_year
                 if month_info:
                     months.append(month_info)
-                month_info = {'month': start.month,
-                              'year': start.year,
+                month_info = {'month': start.month(),
+                              'year': start.year(),
                               'month_name': start.strftime("%B"),
                               'events': []}
+            isDateToBeConfirmed = (
+                True if hasattr(event, "dateToBeConfirmed")
+                and event.dateToBeConfirmed
+                else False)
+            isOutdated = IAnnotations(event).get("slc.outdated", False)
             event_dict = {'event': event,
-                          'day': start.day,
+                          'day': start.day(),
                           'start': start,
-                          'end': event.end,
-                          'location': event.location,
-                          'title': event.title,
-                          'description': event.description,
-                          'url': event.local_url,
+                          'end': event.end(),
+                          'location': event.getLocation(),
+                          'title': event.Title(),
+                          'description': event.Description(),
+                          'url': event.absolute_url(),
+                          'is_tbc': isDateToBeConfirmed,
+                          'is_outdated': isOutdated
                           }
             month_info['events'].append(event_dict)
 

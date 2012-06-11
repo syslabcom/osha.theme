@@ -9,33 +9,47 @@
     <div metal:fill-slot="main">
 
       <h1 tal:content="context/title_or_id">Title</h1>
-      <div class="eventlist"
-           tal:define="event_list view/get_event_list">
-        <div class="eventlist_month" tal:repeat="month event_list">
+      <div class="eventlist">
+        <div class="eventlist_month" tal:repeat="month view/get_event_list">
           <h2>
             <tal:block content="month/month_name" i18n:translate=""/>
             <tal:block content="month/year"/>
           </h2>
-          <div class="vevent event" tal:repeat="event month/events">
-            <div class="event_details">
-              <abbr class="dtstart" title="2002-12-04" tal:attributes="title event/start/isoformat | default" i18n:translate="start_date">
-                <tal:block content="month/month_name" i18n:name="start_month_name" i18n:translate="" />  
-                <tal:block content="event/start/day" i18n:name="start_day_name" />
-              </abbr>
-              <abbr class="dtend" title="2002-12-04" tal:attributes="title event/end/isoformat | default">End Date</abbr>
+          <span tal:repeat="event month/events">
+            <div class="vevent event"
+                 tal:define="event_outdated event/is_outdated">
+              <div class="event_details">
+                <abbr class="dtstart" title="2002-12-04" tal:attributes="title event/start/isoformat | default" i18n:translate="start_date">
+                  <tal:block content="month/month_name" i18n:name="start_month_name" i18n:translate="" />
+                  <tal:block content="event/start/day" i18n:name="start_day_name" />
+                </abbr>
+                <abbr class="dtend" title="2002-12-04" tal:attributes="title event/end/isoformat | default">End Date</abbr>
+                <span class="dateToBeConfirmed" tal:condition="event/is_tbc">
+                  (<abbr title="Date to be confirmed"
+                  i18n:translate="abbr_date_to_be_confirmed"
+                  i18n:domain="osha"
+                  i18n:attributes="title label_date_to_be_confirmed;">TBC</abbr>)
+                </span>
+              </div>
+              <div class="event_body" tal:attributes="class python:event_outdated and 'event_body searchresult outdated' or 'event_body searchresult'">
+                <div class="outdated_toggle_button" tal:condition="event_outdated">
+                  <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                </div>
+                <a class="summary event_title" tal:content="event/title"
+                   tal:attributes="href event/url" />
+                <div tal:attributes="class python:event_outdated and 'outdated_accordion_content' or ''">
+                  <div class="location" tal:content="event/location | default">Location</div>
+                  <div class="description" tal:condition="event/description" tal:content="event/description"/>
+                </div>
+              </div>
             </div>
-            <div class="event_body">
-              <a class="summary event_title" tal:content="event/title"
-                 tal:attributes="href event/url" />
-              <div class="location" tal:content="event/location | default">Location</div>
-              <div class="description" tal:condition="event/description" tal:content="event/description"/>
-            </div>
-          </div>
+          </span>
           <div style="clear: both;"></div>
         </div>
       </div>
 
     </div> <!-- end main fill slot -->
+
 
   </body>
 </html>
