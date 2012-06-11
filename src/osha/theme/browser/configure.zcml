@@ -612,39 +612,23 @@
         permission="zope2.View"
         />
 
-    <!--browser:page
-        name="oshevents"
+
+    <!-- TODO: remove templates/oshevent_calendar.pt 
+      This was a customised version the calendar Month view from p4a.calendar 
+    -->
+    <browser:page
         for="*"
+        name="events.html"
         permission="zope2.View"
-        class=".oshevents.EventListingView"
-        attribute="upcomingEvents"
+        class=".calendar_events_list.EventsListingView"
         />
 
     <browser:page
-        name="past_oshevents"
+        name="past_events.html"
         for="*"
         permission="zope2.View"
-        class=".oshevents.EventListingView"
-        attribute="pastEvents"
-        /-->
-
-    <!-- <browser:page
-        name="month.html"
-        for="p4a.calendar.interfaces.ICalendarEnhanced"
-        permission="zope2.View"
-        class=".month.MonthView"
-        layer=".interfaces.IThemeSpecific"
-        template="templates/oshevent_calendar.pt"
-        /> -->
-
-    <!-- <browser:page
-        name="month.html"
-        for="p4a.calendar.interfaces.ICalendarEnhanced"
-        permission="zope2.View"
-        class=".month.MonthView"
-        layer=".interfaces.IHW2008Specific"
-        template="templates/oshevent_calendar.pt"
-        /> -->
+        class=".calendar_events_list.PastEventsListingView"
+        />
 
     <browser:page
         for="*"

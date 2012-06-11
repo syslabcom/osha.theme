@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="osha">
+
+  <body>
+    <div metal:fill-slot="main">
+
+      <h1 tal:content="context/title_or_id">Title</h1>
+      <div class="eventlist"
+           tal:define="event_list view/get_event_list">
+        <div class="eventlist_month" tal:repeat="month event_list">
+          <h2>
+            <tal:block content="month/month_name" i18n:translate=""/>
+            <tal:block content="month/year"/>
+          </h2>
+          <div class="vevent event" tal:repeat="event month/events">
+            <div class="event_details">
+              <abbr class="dtstart" title="2002-12-04" tal:attributes="title event/start/isoformat | default" i18n:translate="start_date">
+                <tal:block content="month/month_name" i18n:name="start_month_name" i18n:translate="" />  
+                <tal:block content="event/start/day" i18n:name="start_day_name" />
+              </abbr>
+              <abbr class="dtend" title="2002-12-04" tal:attributes="title event/end/isoformat | default">End Date</abbr>
+            </div>
+            <div class="event_body">
+              <a class="summary event_title" tal:content="event/title"
+                 tal:attributes="href event/url" />
+              <div class="location" tal:content="event/location | default">Location</div>
+              <div class="description" tal:condition="event/description" tal:content="event/description"/>
+            </div>
+          </div>
+          <div style="clear: both;"></div>
+        </div>
+      </div>
+
+    </div> <!-- end main fill slot -->
+
+  </body>
+</html>
