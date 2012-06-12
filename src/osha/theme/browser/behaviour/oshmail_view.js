@@ -19,6 +19,7 @@ OSHMAIL.loadOshmailContent = function () {
                     return stuff;
                 });
             jQuery.fancybox.hideActivity();
+            jQuery("div#fancybox-wrap").unbind("mousewheel");
         }
     });
 };
