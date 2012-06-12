@@ -225,7 +225,7 @@ body.template-osha_homepage #portal-breadcrumbs {
 }
 
 .portlet {
-   margin: 1px 0 2em;
+   margin: 1px 0 2em 1px;
     background: #fff;
 }
 .portlet,
