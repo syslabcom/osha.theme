@@ -233,3 +233,8 @@
 #footeraction-privacypolicy a {background-position: -964px -1723px;}
 #footeraction-disclaimer a {background-position: -464px -229px;}
 #footeraction-copyright a {background-position: -464px -116px;}
+
+
+.documentEditable #content {
+    border:0;
+}

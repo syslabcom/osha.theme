@@ -1,4 +1,4 @@
-<tal:cond condition="view/tag">
+<tal:cond condition="view/tag | nothing">
   <dl class="portlet portletImage">
     <dt tal:condition="view/show_box"
         class="portletHeader">
