@@ -289,7 +289,7 @@ form.searchPage input.searchButton {
 
 #portal-personaltools {
     /* Bar with personalized menu (user preferences, favorites etc) */
-    float:right;
+    /*float:right;*/
     line-height: 1.3em;
     color: &dtml-fontColor;;
     padding: 0;
