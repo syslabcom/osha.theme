@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+
+<body>
+
+<div metal:fill-slot="main">
+
+<style>
+    .selecttable {
+        xmargin: 0px;
+        xpadding: 0px;
+    }
+    .selecttable tr th {
+    	BACKGROUND: #edf2f2;
+    	text-align:left;
+        padding: 5px 10px 5px 3px;
+	    BORDER-BOTTOM: #ddd 2px solid;
+	    BORDER-RIGHT: #ddd 2px solid;
+        BORDER-TOP: #fff 2px solid;
+    }
+    .selecttable tr td {
+    	BACKGROUND: #edf2f2;
+        padding: 3px 3px 3px 3px;
+	    BORDER-BOTTOM: #ddd 1px solid;
+	    BORDER-RIGHT: #ddd 1px solid;
+        BORDER-TOP: #fff 1px solid;
+    }
+    .neutral {
+    	BACKGROUND: white !important;
+        border: 0px !important;
+
+    }
+
+.header_country { background: #D7E6FF url(info_small.gif) 1px 1px no-repeat; padding: 4px 4px 4px 28px; margin-top: 30px; margin-bottom: 10px; height: 18px; }
+.section {  position: static; top: 0; left: 0; float: none; overflow: hidden; clear: both; padding: 0; margin: 0; border-bottom: 1px solid #afafaf; }
+.section .block_member,
+.section .block_alternate {  position: static; top: 0; left: 0; float: left; height: auto; padding: 8px 0px 8px 0px; line-height: 16px;  }
+.section .body_section { padding: 0 0 0 4px; }
+.section .header_section {  background: transparent url(/job_icon.gif) 4px 0 no-repeat; padding: 3px 0 0px 24px; margin: 0; }
+#country-shortcut {padding:5px; text-align:center;
+.greybar {
+    background-color: #ccc !important; 
+}
+}
+</style>
+
+<h1 tal:content="here/Title"></h1>
+
+<p tal:content="structure here/Description"></p>
+
+<div tal:define="BUREAU here/sql/bureau_fetchBureau;">
+
+<!-- Bureau -->
+    <div tal:define="members python: BUREAU.get('Bureau-Titulars', []); alternates python: BUREAU.get('Bureau-Alternates', [])">
+	<h2 class="header_country"><a name="" name="bureau">Bureau of the Governing Board</a></h2>
+		
+        <div tal:define="dummy request">
+	  <div class="section greybar" style="background-color: #ccc">
+		<div class="block_member">
+			<h3 class="header_section">Member</h3>
+		</div>
+	  </div>
+        </div>
+	<div class="section" tal:repeat="idx python:range(len(members))">
+		<div class="block_member"  tal:condition="thisone" tal:define="thisone python: members[idx]" tal:on-error="nothing">
+			<div class="body_section" metal:define-macro="person">
+				<strong><span tal:replace="thisone/title |nothing"/> 
+                                        <span tal:replace="thisone/firstname |nothing"/> 
+                                        <span tal:replace="thisone/lastname |nothing"/></strong> 
+                                       (<span tal:replace="thisone/section |nothing"/> representative<span tal:condition="python:thisone.get('section', '') !='European Commission'"><span 
+                                        tal:condition="thisone/post | nothing">, <span tal:replace="thisone/post | nothing"/></span></span>) 
+                                       <span tal:condition="thisone/bureaupost | nothing">, <span tal:replace="thisone/bureaupost | nothing"/></span> 
+                                
+				<br />
+			</div>
+		</div>
+
+  	  </div>
+
+
+<!--alternates -->
+        <p>&nbsp;</p>
+        <div tal:define="dummy request">
+	  <div class="section greybar"  style="background-color: #ccc">
+		<div class="block_alternate">
+			<h3 class="header_section">Alternate</h3>
+		</div>
+	  </div>
+        </div>
+	<div class="section" tal:repeat="idx python:range(len(alternates))">
+
+		<div class="block_alternate" tal:condition="thisone" tal:define="thisone python: alternates[idx]" tal:on-error="nothing">
+			<div class="body_section" metal:use-macro="template/macros/person">
+			</div>
+		</div>
+  	  </div>
+
+
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
+
