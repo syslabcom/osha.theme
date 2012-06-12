@@ -1,8 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml" 
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      xml:lang="en"
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="osha">
@@ -33,7 +29,6 @@
             type="text/javascript" charset="utf-8">
     </script>
   </metal:javascriptslot>
-
   <metal:css fill-slot='css_slot'>
     <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
           tal:attributes="href string:${portal_url}/lipstick.css" />
@@ -166,11 +161,12 @@
               </ul>
             </tal:repeat>
           </div>
-        </div>
       </div>
-      <div id="oshmail-overlay"><div id="collage"/></div>
-      <div tal:replace="structure provider:plone.belowcontentbody" />
-
     </div>
-  </body>
+    <div id="oshmail-overlay"><span id="collage"/></div>
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+
+</body>
 </html>
