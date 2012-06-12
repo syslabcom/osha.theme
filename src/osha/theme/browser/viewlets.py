@@ -419,9 +419,8 @@ class TitleViewlet(common.TitleViewlet):
         if page_title == portal_title:
             return u"<title>%s</title>" % (escape(portal_title))
         else:
-            return u"<title>%s &mdash; %s &mdash; %s</title>" % (
+            return u"<title>%s &mdash; %s</title>" % (
                 escape(safe_unicode(page_title)),
-                escape(safe_unicode(osha)),
                 escape(safe_unicode(portal_title)))
 
 
