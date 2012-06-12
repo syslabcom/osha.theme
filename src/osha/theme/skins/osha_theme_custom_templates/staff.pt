@@ -1,0 +1,106 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+
+<body>
+
+<div metal:fill-slot="main">
+
+<style>
+    .selecttable {
+        xmargin: 0px;
+        xpadding: 0px;
+    }
+    .selecttable tr th {
+    	BACKGROUND: #edf2f2;
+    	text-align:left;
+        padding: 5px 10px 5px 3px;
+	    BORDER-BOTTOM: #ddd 2px solid;
+	    BORDER-RIGHT: #ddd 2px solid;
+        BORDER-TOP: #fff 2px solid;
+    }
+    .selecttable tr td {
+    	BACKGROUND: #edf2f2;
+        padding: 3px 3px 3px 3px;
+	    BORDER-BOTTOM: #ddd 1px solid;
+	    BORDER-RIGHT: #ddd 1px solid;
+        BORDER-TOP: #fff 1px solid;
+    }
+    .neutral {
+    	BACKGROUND: white !important;
+        border: 0px !important;
+
+    }
+
+.header_country { background: #D7E6FF url(info_small.gif) 1px 1px no-repeat; padding: 4px 4px 4px 28px; margin-top: 15px; margin-bottom: 5px; height: 18px; }
+.section { position: static; top: 0; left: 0; float: none; overflow: hidden; clear: both; padding: 0; margin: 0; border-bottom: 1px solid #afafaf; }
+.section .block_member,
+.section .block_alternate { position: static; top: 0; left: 0; float: left;  height: auto; padding: 4px 0px 4px 0px; line-height: 12px;  }
+.section .block_member { width: 30%;}
+.section .block_alternate { width: 60%;}
+.section .body_section { padding: 0 0 0 4px; }
+.section .header_section { background: transparent url(/job_icon.gif) 4px 0 no-repeat; padding: 3px 0 0px 24px; margin: 0; }
+#country-shortcut {padding:5px; text-align:center;
+}
+</style>
+
+<h1 tal:content="here/Title"></h1>
+
+
+<p tal:content="structure here/Description"></p>
+
+<div tal:define="PEOPLEMAP here/sql/staff_fetchAgency;">
+
+    <div tal:define="unitname string:Directorate; unit python:PEOPLEMAP.get(unitname, []);">
+      <div metal:define-macro="unit_macro">
+
+        <h2 class="header_country"><a name="" name="bureau" tal:content="unitname">Directorate</a></h2>
+        <div tal:repeat="person unit" class="section">
+	    <div tal:condition="person">
+
+               <div class="block_member">
+		  <span tal:replace="person/title |nothing"/> 
+                  <span tal:replace="person/firstname |nothing"/> 
+                  <span tal:replace="person/lastname |nothing"/> 
+	          (<span tal:replace="person/country |nothing"/>)
+               </div>
+               <div class="block_alternate">
+		  <span tal:replace="person/jobtitle |nothing"/>
+	       </div>
+
+           </div>
+  	</div>
+
+      </div>
+    </div>
+
+    <div tal:define="unitname string:Network Secretariat; unit python:PEOPLEMAP.get(unitname, []);">
+        <div class="body_section" metal:use-macro="template/macros/unit_macro">
+        </div>
+    </div>
+
+    <div tal:define="unitname string:Communication and Promotion Unit; unit python:PEOPLEMAP.get(unitname, []);">
+        <div class="body_section" metal:use-macro="template/macros/unit_macro">
+        </div>
+    </div>
+
+    <div tal:define="unitname string:Prevention and Research Unit; unit python:PEOPLEMAP.get(unitname, []);">
+        <div class="body_section" metal:use-macro="template/macros/unit_macro">
+        </div>
+    </div>
+
+    <div tal:define="unitname string:Resource and Service Centre; unit python:PEOPLEMAP.get(unitname, []);">
+        <div class="body_section" metal:use-macro="template/macros/unit_macro">
+        </div>
+    </div>
+
+
+
+</div>
+</div>
+
+</body>
+</html>
+
