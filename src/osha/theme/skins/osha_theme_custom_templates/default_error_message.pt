@@ -100,76 +100,6 @@
                       
                 </span>                                    
 
-
-                <!-- Offer search results for suggestions -->
-                <!--tal:suggestions define="first_parent redirection_view/find_first_parent;
-                                         similar_items redirection_view/search_for_similar;
-                                         plone_view context/@@plone;
-                                         use_view_action site_properties/typesUseViewActionInListings|python:();
-                                         desc_length site_properties/search_results_description_length;
-                                         desc_ellipsis site_properties/ellipsis;"
-                                 condition="python:first_parent is not None or similar_items">
-                    
-                    <h3 i18n:translate="heading_not_found_suggestions">You might have been looking for&hellip;</h3>
-                    
-                    <dl>
-                    
-                    <tal:firstparent condition="first_parent/absolute_url | nothing">
-                        <tal:entry define="result_url first_parent/absolute_url;
-                                           result_type python:first_parent.getTypeInfo().getId();
-                                           item_icon python:plone_view.getIcon(first_parent);
-                                           url python:test(result_type in use_view_action, result_url+'/view', result_url+'/');">
-                            <dt tal:define="item_wf_state_class python:'state-' + wtool.getInfoFor(first_parent, 'review_state', '');"
-                                tal:attributes="class python:'contenttype-' + normalizeString(result_type)">
-                              <img tal:replace="structure item_icon/html_tag" />
-                               <a
-                                 href="#" 
-                                 tal:attributes="href url;
-                                                 class string:$item_wf_state_class"
-                                 tal:content="first_parent/Title" />
-                               
-                                <span class="discreet" i18n:translate="results_by_author">
-                                by <span tal:omit-tag="" tal:content="first_parent/Creator" i18n:name="author">Author</span>,
-                                <span tal:omit-tag="" tal:content="python:toLocalizedTime(first_parent.ModificationDate(), long_format=1)" i18n:name="date">Modification Date</span>
-                                </span>
-
-                            </dt>
-            
-                            <dd tal:content="python:plone_view.cropText(first_parent.Description(), desc_length, desc_ellipsis)"> Description </dd>
-
-                        </tal:entry>
-                    </tal:firstparent>
-                    
-                    <tal:similar repeat="similar similar_items">
-                        <tal:entry define="result_url similar/getURL;
-                                           result_type similar/portal_type;
-                                           item_icon python:plone_view.getIcon(similar);
-                                           url python:test(result_type in use_view_action, result_url+'/view', result_url+'/');">
-                            <dt tal:define="item_wf_state_class string:state-${similar/review_state};"
-                                tal:attributes="class python:'contenttype-' + normalizeString(result_type)">
-                              <img tal:replace="structure item_icon/html_tag" />
-                               <a
-                                 href="#" 
-                                 tal:attributes="href url;
-                                                 class string:$item_wf_state_class"
-                                 tal:content="similar/pretty_title_or_id" />
-                               
-                                <span class="discreet" i18n:translate="results_by_author">
-                                by <span tal:omit-tag="" tal:content="similar/Creator" i18n:name="author">Author</span>,
-                                <span tal:omit-tag="" tal:content="python:toLocalizedTime(similar.ModificationDate, long_format=1)" i18n:name="date">Modification Date</span>
-                                </span>
-
-                            </dt>
-            
-                            <dd tal:content="python:plone_view.cropText(similar.Description or '', desc_length, desc_ellipsis)"> Description </dd>
-
-                        </tal:entry>
-                    </tal:similar>
-                        
-                    </dl>
-                    
-                </tal:suggestions-->
-
             </tal:redirect>
 
         </div>
@@ -229,3 +159,4 @@
 </div>
 </body>
 </html>
+
