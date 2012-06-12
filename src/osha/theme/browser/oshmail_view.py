@@ -73,6 +73,8 @@ class OSHmailView(BrowserView):
     def get_image(self):
         " find a suitable image to show "
         latest = self.getLatestIssue()
+        if latest is None:
+            return ''
         try:
             col1 = latest.getObject()['1']['1']
         except KeyError:
