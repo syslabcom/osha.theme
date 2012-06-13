@@ -7,6 +7,9 @@
 #visual-portal-wrapper {
     overflow-y:hidden !important;
 }
+
+html, body, #border-wrapper, #visual-portal-wrapper { height: 100%; }
+
 body {
     font: &dtml-fontBaseSize; <dtml-var fontFamily>;
     background-color: &dtml-backgroundColor;;
