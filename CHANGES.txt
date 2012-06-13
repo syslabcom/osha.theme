@@ -4,7 +4,7 @@ osha.theme Changelog
 1.4.30 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Rewrote the oshmail view, fixes #5081 and #5082 [deroiste]
 
 
 1.4.29 (2012-04-19)
