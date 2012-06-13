@@ -25,15 +25,6 @@ OSHMAIL.loadOshmailContent = function () {
 };
 
 jQuery(document).ready(function() {
-    var overlayWidth  = jQuery(window).width() - 100,
-        overlayHeight = jQuery(window).height() - 100;
-    jQuery("#oshmail-overlay #collage")
-        .css({
-            "width"    : overlayHeight,
-            "height"   : overlayWidth,
-            "position" : "absolute",
-            "z-index"  : -10
-        })
     if (jQuery("a[rel=oshmail-fancybox]").length>0) {
         jQuery("a[rel=oshmail-fancybox]")
             .fancybox({
@@ -46,8 +37,8 @@ jQuery(document).ready(function() {
                 'autoScale'         : false,
                 'autoDimensions'    : false,
                 'enableKeyboardNav' : false,
-                'width'             : overlayWidth,
-                'height'            : overlayHeight,
+                'width'             : jQuery(window).width() - 100,
+                'height'            : jQuery(window).height() - 100,
                 'content'           : jQuery('#oshmail-overlay'),
                 'onComplete'        : OSHMAIL.loadOshmailContent,
                 'onCleanup'         : function() {
@@ -57,3 +48,4 @@ jQuery(document).ready(function() {
             });
     }
 })
+
