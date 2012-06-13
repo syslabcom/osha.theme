@@ -12,15 +12,11 @@ OSHMAIL.loadOshmailContent = function () {
         type: 'GET',
         url: this.href,
         success: function(data) {
-            var stuff = jQuery(data).find("#collage");
             jQuery("#oshmail-overlay #collage")
-                .replaceWith(function() {
-                    console.log(stuff);
-                    return stuff;
-                });
+                .replaceWith(jQuery(data).find("#collage"));
             jQuery.fancybox.hideActivity();
             jQuery("div#fancybox-wrap").unbind("mousewheel");
-        }
+        },
     });
 };
 
