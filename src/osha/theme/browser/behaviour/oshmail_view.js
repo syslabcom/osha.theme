@@ -10,26 +10,38 @@ OSHMAIL.loadOshmailContent = function () {
     jQuery.ajax({
         async: false,
         type: 'GET',
-        url: this.href,
+        url: this.href + "?ajax_mode=1",
         success: function(data) {
             jQuery("#oshmail-overlay #collage")
-                .replaceWith(jQuery(data)
-                             .find("#collage"));
-        }
+                .replaceWith(jQuery(data).find("#collage"));
+            jQuery.fancybox.hideActivity();
+            jQuery("div#fancybox-wrap").unbind("mousewheel");
+        },
     });
 };
 
 jQuery(document).ready(function() {
     if (jQuery("a[rel=oshmail-fancybox]").length>0) {
-        jQuery("a[rel=oshmail-fancybox]").fancybox({
-            'transitionIn'   : 'elastic',
-            'transitionOut'  : 'elastic',
-            'titlePosition'  : 'over',
-            'overlayOpacity' : 0.7,
-            'overlayColor'   : '#FFF',
-            'showNavArrows'  : false,
-            'onStart'        : OSHMAIL.loadOshmailContent,
-            'content'        : jQuery('#oshmail-overlay'),
-        });
+        jQuery("a[rel=oshmail-fancybox]")
+            .fancybox({
+                'transitionIn'      : 'elastic',
+                'transitionOut'     : 'elastic',
+                'titlePosition'     : 'over',
+                'overlayOpacity'    : 0.7,
+                'overlayColor'      : '#FFF',
+                'showNavArrows'     : false,
+                'autoScale'         : false,
+                'autoDimensions'    : false,
+                'enableKeyboardNav' : false,
+                'width'             : jQuery(window).width() - 100,
+                'height'            : jQuery(window).height() - 100,
+                'content'           : jQuery('#oshmail-overlay'),
+                'onComplete'        : OSHMAIL.loadOshmailContent,
+                'onCleanup'         : function() {
+                    jQuery("#oshmail-overlay #collage")
+                        .css({"opacity" : "0",});
+                },
+            });
     }
 })
+
