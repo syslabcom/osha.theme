@@ -1383,6 +1383,10 @@ background: url("search_icon.png") no-repeat scroll 2px 1px White;
     text-transform: none;
     width: 50px;
 }
+.dynatree-atwidget .close {
+    cursor: pointer;
+    color: #144989;
+}
 ul.dynatree-container,
 div.flatlist_container.opened{
    background-color: #E5E6E8;
