@@ -52,6 +52,9 @@
      />  
 
  <!-- Custom navigation portlet -->
+ <adapter
+    factory=".navigation.TreeFactory" />
+
  <plone:portletRenderer 
      portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
      layer="osha.theme.browser.interfaces.IThemeSpecific"
@@ -65,15 +68,15 @@
      class=".inline_navigation.Renderer" 
      />  
       
-  <!-- custom inline box navigation portlet -->       
-    <plone:portlet
-        name="osha.InlineNavigation"
-        interface=".inline_navigation.IInlineNavigationPortlet"
-        assignment=".inline_navigation.Assignment"
-        renderer=".inline_navigation.Renderer"
-        addview=".inline_navigation.AddForm"
-        editview=".inline_navigation.EditForm"
-        />
+ <!-- custom inline box navigation portlet -->       
+ <plone:portlet
+     name="osha.InlineNavigation"
+     interface=".inline_navigation.IInlineNavigationPortlet"
+     assignment=".inline_navigation.Assignment"
+     renderer=".inline_navigation.Renderer"
+     addview=".inline_navigation.AddForm"
+     editview=".inline_navigation.EditForm"
+     />
 
 
  <!-- Custom defaultsearch portlet -->

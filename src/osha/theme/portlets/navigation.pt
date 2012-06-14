@@ -1,43 +1,25 @@
-<tal:block i18n:domain="plone">
-<dl class="portlet portletNavigationTree"  
-    tal:define="root view/navigation_root">
-    <dt class="portletHeader">
-        <span class="portletTopLeft"></span>
-        <span i18n:domain="osha" tal:omit-tag=""
-           tal:condition="not:view/title"
-           i18n:translate="Menu">Navigation</span>
-       <a href="#" 
-           class="tile"
-           tal:condition="view/title"
-           i18n:translate=""
-           i18n:domain="osha"
-           tal:content="view/title">Navigation</a>
-        <span class="portletTopRight"></span>
-    </dt>
-
-    <dd class="portletItem lastItem">
-        <ul class="portletNavigationTree navTreeLevel0">
-            <li class="navTreeItem"
-                tal:condition="view/include_top">
-                <div tal:define="selectedClass view/root_item_class;
-                                 rootIsPortal view/root_is_portal;">
-                   <a tal:attributes="href root/absolute_url;
-                                      title root/Description;
-                                      class selectedClass">
-                   <span tal:omit-tag=""
-                         tal:condition="rootIsPortal"
-                         i18n:translate="tabs_home">Home</span>
-                   <span tal:condition="not:rootIsPortal"
-                         tal:replace="root/Title">Root item title</span>
-                   </a>
-                </div>
-            </li>
-            <li tal:replace="structure view/createNavTree">
-                SUBTREE
-            </li>
-        </ul>
-        <span class="portletBottomLeft"></span>
-        <span class="portletBottomRight"></span>
-    </dd>
-</dl>
-</tal:block>
+<div xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag=""
+      tal:define="tree nothing">
+  <ul id="navigation" class="navigation" 
+      tal:condition="view/tree" 
+      tal:define="tree view/tree">
+      <metal:block use-macro="template/macros/showchildren"/>
+  </ul>
+  <tal:block metal:define-macro="showchildren">
+    <li tal:repeat="node tree" tal:attributes="class node/class">
+      <a tal:condition="node/title"
+        tal:attributes="title node/description;
+                        href node/url;
+                        class string:state-${node/review_state}">
+        <tal:span replace="node/title"/> <em
+          tal:attributes="class string:icon ${node/portal_type}">
+            (<tal:span replace="node/portal_type_title"/>)</em></a>
+      <ul tal:define="tree node/children" tal:condition="python:tree">
+          <metal:block use-macro="template/macros/showchildren"/>
+      </ul>
+    </li>
+  </tal:block>
+</div>
