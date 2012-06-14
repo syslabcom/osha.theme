@@ -8,7 +8,10 @@
     overflow-y:hidden !important;
 }
 
-html, body, #border-wrapper, #visual-portal-wrapper { height: 100%; }
+/* Allow the drop downs to extend below the height of the page content.
+For pages with too little content the "Add new" drop down gets clipped.*/
+html, body, #border-wrapper { height: 100%; }
+#visual-portal-wrapper { min-height: 100%; }
 
 body {
     font: &dtml-fontBaseSize; <dtml-var fontFamily>;
