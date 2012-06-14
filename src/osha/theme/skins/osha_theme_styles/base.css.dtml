@@ -11,7 +11,7 @@
 /* Allow the drop downs to extend below the height of the page content.
 For pages with too little content the "Add new" drop down gets clipped.*/
 html, body, #border-wrapper { height: 100%; }
-#visual-portal-wrapper { min-height: 100%; }
+#visual-portal-wrapper { min-height: 100%; height: auto; }
 
 body {
     font: &dtml-fontBaseSize; <dtml-var fontFamily>;
