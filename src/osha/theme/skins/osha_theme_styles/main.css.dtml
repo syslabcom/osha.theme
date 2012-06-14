@@ -1372,6 +1372,17 @@ div.ui_controls .sparse{
 div.flatlist_container{
   padding: 4px 2px;
 }
+.dynatree-atwidget .treepopup{
+background: url("search_icon.png") no-repeat scroll 2px 1px White;
+    border: 1px solid #AAB1C5;
+    color: #191919;
+    cursor: pointer;
+    font-size: 95%;
+    margin-bottom: 1px !important;
+    padding: 1px 1px 1px 19px;
+    text-transform: none;
+    width: 50px;
+}
 ul.dynatree-container,
 div.flatlist_container.opened{
    background-color: #E5E6E8;
@@ -1389,7 +1400,6 @@ div.dynatree-atwidget span.toggleButton{
 }
 div.dynatree-atwidget span.toggleButton.opened{
     background: url("minus_icon.gif") no-repeat scroll 0 4px #E5E6E8;
-
 }
 a.fakeLink{
     color: #000000;
