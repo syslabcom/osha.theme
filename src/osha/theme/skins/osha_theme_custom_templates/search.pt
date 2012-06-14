@@ -108,7 +108,7 @@
             </dt>
             
             <dd>
-                <span tal:replace="python:plone_view.cropText(result.Description, desc_length, desc_ellipsis)">
+                <span tal:replace="structure python:plone_view.cropText(result.Description, desc_length, desc_ellipsis)">
                     Cropped description
                 </span>
 
