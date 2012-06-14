@@ -1431,6 +1431,12 @@ div.flatlist_container .flatlist-item {
    float:left;
    }
 
+/* Don't display the description for all dynatree fields directly in the form.
+   It is only relevant in the overlay */
+#subcategory_help, #multilingual_thesaurus_help, #nace_help, #occupation_help {
+    display: none;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
