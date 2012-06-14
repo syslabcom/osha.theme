@@ -280,8 +280,9 @@ dl.portletSearch {
     background-color: #E6E8ED;
 
 }
-input.searchButton {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -964px -1388px white;
+#googlesearch_viewlet input.searchButton {
+    background: url("search_icon2.gif") no-repeat scroll 2px 1px White;
+    border: 0;
     height: 17px;
     width: 22px;
 }
@@ -307,10 +308,6 @@ dl.portletSearch .portletItem {
     background: #fff;
 }
 
-input.searchButton {
-    background: url("search_icon2.gif") no-repeat scroll 2px 1px White;
-    border: 0;
-}
 
 dl.portletSearch #additional-search-options {
     margin-top: 0.5em;
