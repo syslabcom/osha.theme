@@ -27,7 +27,7 @@ class HomepageView(BrowserView):
 
     @property
     def intro(self):
-        intro = getattr(self.langroot, 'help', None)
+        intro = getattr(self.langroot, 'about', None)
         if intro is None:
             return dict(title='No introduction found', link='#')
         else:
