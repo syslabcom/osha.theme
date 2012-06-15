@@ -1115,6 +1115,10 @@ padding-left:15px;
     margin-left: 1.5em;
 }
 
+ul.navigation .icon {
+    display: none;
+}
+
 /* Old linkcollection styles copied from slc.linkcollectio, pre-revamp.
 Reproduced here so that the revamp of slc.linkcollection does not affect the
 competitions linkcollection styles (tab-lke view)
