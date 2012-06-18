@@ -25,7 +25,7 @@ class EventsListingView(BrowserView):
         if IATTopic.providedBy(context):
             query = context.buildQuery()
         elif IATFolder.providedBy(context):
-            current_path = "/" + context.absolute_url(1)
+            current_path = "/".join(context.getPhysicalPath())
             query = {
                 "portal_type": "Event",
                 "path": { "query": current_path }}
