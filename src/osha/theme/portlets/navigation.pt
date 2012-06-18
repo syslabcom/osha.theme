@@ -6,6 +6,11 @@
   <ul id="navigation" class="navigation" 
       tal:condition="view/tree" 
       tal:define="tree view/tree">
+      <li class="portletHeader"
+        tal:attributes="class python:view.hasName() and 'portletHeader' or 'portletHeader hiddenStructure'"
+        tal:content="view/title">
+          Navigation
+      </li>
       <metal:block use-macro="template/macros/showchildren"/>
   </ul>
   <tal:block metal:define-macro="showchildren">
