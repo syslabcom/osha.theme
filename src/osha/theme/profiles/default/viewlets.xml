@@ -832,7 +832,7 @@
  </hidden>
  <hidden manager="plone.belowcontentbody" skinname="EW2000">
   <viewlet name="plone.abovecontenttitle.documentactions"/>
-  <viewlet name="osha.theme.addthisbutton"/>
+  <viewlet name="osha.theme.addthisbutton"/>  
  </hidden>
  <hidden manager="plone.portalfooter" skinname="EW2000">
   <viewlet name="plone.footer"/>
@@ -1162,6 +1162,7 @@
  </hidden>
  <hidden manager="plone.belowcontentbody" skinname="OSHA Plone Theme">
   <viewlet name="plone.abovecontenttitle.documentactions"/>
+  <viewlet name="plone.belowcontentbody.relateditems" />
  </hidden>
  <hidden manager="plone.portalfooter" skinname="OSHA Plone Theme">
   <viewlet name="plone.footer"/>
