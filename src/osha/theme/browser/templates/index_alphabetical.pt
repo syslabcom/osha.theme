@@ -73,32 +73,7 @@
                     </tal:repeat>
                 </ul>                
             </div>
-            <!--div id="resultcolB" class="resultcol">
-                <ul class="keylist">
-                    <tal:repeat tal:repeat="key colB">
-                    <li tal:define="key_caption python: key[0]; key_term_id python:key[1]"
-                        tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
-                        <a href="" rel="nofollow"
-                           tal:content="key_caption"
-                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
-                    </li>
-                    </tal:repeat>
-                </ul>                
-            </div>
-            <div id="resultcolC" class="resultcol">
-                <ul class="keylist">
-                    <tal:repeat tal:repeat="key colC">
-                    <li tal:define="key_caption python: key[0]; key_term_id python:key[1]"
-                        tal:attributes="class python: key_term_id==term_id and 'current_term' or ''"> 
-                        <a href="" rel="nofollow"
-                           tal:content="key_caption"
-                           tal:attributes="href string:${request/URL}?letter=${letter}&term_id=${key_term_id};"/>
-                    </li>
-                    </tal:repeat>
-                </ul>                
-            </div-->                        
-        
-
+                  
             <div tal:condition="not:view/getTerm_id">
                 <hr/>
                 <p>
