@@ -1164,7 +1164,7 @@ body.template-practical-solution .photoAlbumEntry {
 }
 
 body.template-practical-solutions .photoAlbumEntry {
-    margin: 15px 10px;
+    margin: 15px 10px 15px 4px;
 }
 
 body.template-practical-solution .photoAlbumEntry,
