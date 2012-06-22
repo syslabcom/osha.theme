@@ -483,3 +483,13 @@ body.template-napofilmlisting-view  img.video-thumbnail {
 	bottom:20px;
 }
 
+
+/* Plone 4 related changes */
+
+div#portal-personaltools-wrapper,
+div#viewlet-above-content,
+div#googlesearch_viewlet,
+ul#portal-siteactions,
+form#select_language_form p{
+   display: none;
+}
