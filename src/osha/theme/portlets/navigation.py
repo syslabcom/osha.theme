@@ -224,11 +224,16 @@ class Renderer(navigation.Renderer):
                                                         brain.portal_type)
             node["url"] = ("%s/view" % brain.getURL()if brain.portal_type
                            in use_view_types else brain.getURL())
-            node["review_state"] = normalize(brain.review_state)
+            node["link_class"] = " ".join(filter(None,
+                [normalize(brain.review_state),
+                 "navTreeItemInPath" if node["current"] or node["currentParent"] else None,
+                 "navTreeCurrentItem" if node["current"] else None])) 
             node["folderish"] = brain.is_folderish
             node["class"] = " ".join(filter(None,
-                ["active" if node["current"] or node["currentParent"] else None,
-                 "current" if node["current"] else None])) or None
+                ["navTreeItem",
+                 "navTreeFolderish" if brain.is_folderish else None, 
+                 "navTreeItemInPath" if node["current"] or node["currentParent"] else None,
+                 "navTreeCurrentNode" if node["current"] else None])) or None
 
         if "brain" in tree.root:
             self.tree = [tree.root]

@@ -3,22 +3,25 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag=""
       tal:define="tree nothing">
-  <ul id="navigation" class="navigation" 
-      tal:condition="view/tree" 
-      tal:define="tree view/tree">
-      <li class="portletHeader"
-        tal:attributes="class python:view.hasName() and 'portletHeader' or 'portletHeader hiddenStructure'"
+  <dl class="portlet portletNavigationTree">
+    <dt class="portletHeader"
         tal:content="view/title">
           Navigation
-      </li>
-      <metal:block use-macro="template/macros/showchildren"/>
-  </ul>
+    </dt>
+    <dd class="portletItem">
+      <ul id="navigation" class="portletNavigationTree navTreeLevel0" 
+          tal:condition="view/tree" 
+          tal:define="tree view/tree">
+          <metal:block use-macro="template/macros/showchildren"/>
+      </ul>
+    </dd>
+  </dl>
   <tal:block metal:define-macro="showchildren">
     <li tal:repeat="node tree" tal:attributes="class node/class">
       <a tal:condition="node/title"
         tal:attributes="title node/description;
                         href node/url;
-                        class string:state-${node/review_state}">
+                        class string:state-${node/link_class}">
         <tal:span replace="node/title"/> <em
           tal:attributes="class string:icon ${node/portal_type}">
             (<tal:span replace="node/portal_type_title"/>)</em></a>
