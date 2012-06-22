@@ -490,6 +490,7 @@ div#portal-personaltools-wrapper,
 div#viewlet-above-content,
 div#googlesearch_viewlet,
 ul#portal-siteactions,
+ul.portletNavigationTree .icon,
 form#select_language_form p{
    display: none;
 }
