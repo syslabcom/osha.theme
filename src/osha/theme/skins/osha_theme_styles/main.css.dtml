@@ -1114,20 +1114,7 @@ padding-left:15px;
     margin-bottom:0.5em;
     margin-left: 1.5em;
 }
-ul.navigation {
-    background: none repeat scroll 0 0 #E6E8ED;
-    font-size: 110%;
-
-}
-ul.navigation a {
-    border-bottom: 1px solid #FFFFFF;
-    color: #000000;
-    display: block;
-    line-height: normal;
-    padding: 0.3em 1em 0.4em;
-    text-decoration: none;
-}
-ul.navigation .icon {
+ul.portletNavigationTree .icon {
     display: none;
 }
 
