@@ -150,20 +150,36 @@ class Renderer(base.Renderer):
         lang = self.context.portal_languages.getPreferredLanguage()
         # Publications are Files which implement the
         # IPublicationEnhanced interface
-        query = ( Eq('portal_type', 'File') & \
-                      Eq('object_provides',
-                         'slc.publications.interfaces.IPublicationEnhanced') & \
-                      In('Subject', subject)
-                  )
-        query = query & Eq('review_state','published')
+        # query = ( Eq('portal_type', 'File') & \
+        #               Eq('object_provides',
+        #                  'slc.publications.interfaces.IPublicationEnhanced') & \
+        #               In('Subject', subject)
+        #           )
+        # query = query & Eq('review_state','published')
+        # if lang == "en":
+        #     query = query & In('Language', [lang, ""])
+        # else:
+        #     query = query & Eq('Language', lang)
+        # brains = pc.evalAdvancedQuery(query, (('effective','desc'),))
+
+        query = {
+            'portal_type': 'File',
+            'object_provides': 'slc.publications.interfaces.IPublicationEnhanced',
+            'Subject': subject,
+            'review_state': 'published',
+            'sort_on': 'effective',
+            'sort_order': 'descending',
+        }
+
         if lang == "en":
-            query = query & In('Language', [lang, ""])
+            query['Language'] = [lang, ""]
         else:
-            query = query & Eq('Language', lang)
+            query['Language'] = lang
+
         pc = getToolByName(context, 'portal_catalog')
         if hasattr(pc, 'getZCatalog'):
             pc = pc.getZCatalog()
-        brains = pc.evalAdvancedQuery(query, (('effective','desc'),))
+        brains = pc(query)
         results = brains[:3]
         return results
 
