@@ -133,10 +133,6 @@ if show_query:
         if use_navigation_root:
             rootAtNavigationRoot(query)
         query['show_inactive'] = show_inactive
-        # XXX: Make this more smooth....
-        ST = query.get('SearchableText', None)
-        if ST is not None:
-            query['SearchableText'] = {'query': ST, 'ranking_maxhits': 10000}
         results = catalog(**query)
     except ParseError:
         pass
