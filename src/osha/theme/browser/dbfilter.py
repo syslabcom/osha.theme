@@ -2,7 +2,11 @@ import Acquisition
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-from Products.AdvancedQuery import In, Eq, Ge, Le, And, Or, Generic
+
+from collective.solr.interfaces import ISearch
+from collective.solr.flare import PloneFlare
+from collective.solr.mangler import iso8601date
+from zope.component import queryUtility
 
 
 
@@ -41,7 +45,7 @@ class DBFilterView(BrowserView):
 
     def search_portal_types(self):
         """ compute the list of query params to search for portal_types"""
-        context = Acquisition.aq_inner(self.context)
+        #context = Acquisition.aq_inner(self.context)
         #local_portal_types = context.getProperty('search_portal_types', []);
         # we need to use the output of search_types() as default, not the
         # local Property search_portal_types
@@ -50,11 +54,11 @@ class DBFilterView(BrowserView):
 
         query = None
         if 'Publication' in search_portal_types:
-            query = ( Eq('portal_type', 'File') & Eq('object_provides', 'slc.publications.interfaces.IPublicationEnhanced') )
+            query = '(portal_type:File AND object_provides:slc.publications.interfaces.IPublicationEnhanced)'
             search_portal_types.remove('Publication')
-            query = Or(query, In('portal_type', search_portal_types))
+            query = ' OR '.join([query, 'portal_type:(%s)' % ' OR '.join(search_portal_types)])
         else:
-            query = In('portal_type', search_portal_types)
+            query = 'portal_type:(%s)' % ' OR '.join(search_portal_types)
 
 
         return query
@@ -75,41 +79,42 @@ class DBFilterView(BrowserView):
 
         keywords = self.request.get('keywords', local_keyword)
         if keywords:
-            query = query & In('Subject', keywords)
+            query = ' AND '.join([query, 'Subject:(%s)' % ' OR '.join(keywords)])
             #query.update({'Subject':keywords})
 
         nace = list(self.request.get('nace', ''))
         if '' in nace:
             nace.remove('')
         if nace:
-            query = query & In('nace', nace)
+            query = '%(query)s AND %(nace)s' % {'query': query, 'nace': 'nace:(%s)' % ' OR '.join(nace)}
             #query.update({'nace':nace})
 
         multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
         if '' in multilingual_thesaurus:
             multilingual_thesaurus.remove('')
         if multilingual_thesaurus:
-            query = query & In('multilingual_thesaurus', multilingual_thesaurus)
+            query = '%(query)s AND %(mul_the)s' % \
+                    {'query': query, 'mul_the': 'multilingual_thesaurus:(%s)' % ' OR '.join(multilingual_thesaurus)}
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
         getRemoteLanguage = self.request.get('getRemoteLanguage', '')
         if getRemoteLanguage:
-            query = query & In('getRemoteLanguage', getRemoteLanguage)
+            query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query, 'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage)}
             #query.update({'getRemoteLanguage':getRemoteLanguage})
 
         subcategory = self.request.get('subcategory', '')
         if subcategory:
-            query = query & In('subcategory', subcategory)
+            query = '%(query)s AND %(subcategory)s' % {'query': query, 'subcategory': 'subcategory:(%s)' % ' OR '.join(subcategory)}
             #query.update({'subcategory':subcategory})
 
         country = self.request.get('country', '')
         if country:
-            query = query & In('country', country)
+            query = '%(query)s AND %(country)s' % {'query': query, 'country': 'country:(%s)' % ' OR '.join(country)}
             #query.update({'country':country})
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query = query & Generic('SearchableText', {'query': SearchableText})
+            query = '%(query)s AND SearchableText:%(SearchableText)s' % {'query': query, 'SearchableText': SearchableText}
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
 
@@ -117,13 +122,10 @@ class DBFilterView(BrowserView):
 
 
     def search(self):
-        context = Acquisition.aq_inner(self.context)
+        search = queryUtility(ISearch)
         query = self.buildQuery()
-        portal_catalog = getToolByName(context, 'portal_catalog')
-        if hasattr(portal_catalog, 'getZCatalog'):
-            portal_catalog = portal_catalog.getZCatalog()
 
-        return portal_catalog.evalAdvancedQuery(query, (('effective','desc'),))
+        return [PloneFlare(x) for x in search(query, sort='effective desc')]
 
 
 class ProviderDBFilterView(DBFilterView):

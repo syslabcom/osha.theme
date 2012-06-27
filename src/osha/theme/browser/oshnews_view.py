@@ -4,7 +4,10 @@
 import Acquisition
 from DateTime import DateTime
 
-from zope.component import getMultiAdapter
+from zope.component import getMultiAdapter, queryUtility
+from collective.solr.interfaces import ISearch
+from collective.solr.flare import PloneFlare
+from collective.solr.mangler import iso8601date
 
 from plone.memoize import instance
 
@@ -35,14 +38,13 @@ class OSHNewsView(BrowserView):
 
     @instance.memoize
     def getResults(self):
+        search = queryUtility(ISearch)
         context = Acquisition.aq_inner(self.context)
-        catalog = getToolByName(context, 'portal_catalog')
-        if hasattr(catalog, 'getZCatalog'):
-            catalog = catalog.getZCatalog()
 
         # try to get query parameters from Topic (if present)
         query = hasattr(context, 'buildQuery') and context.buildQuery()
         if query:
+            catalog = getToolByName(context, 'portal_catalog')
             return catalog(query)
 
         # otherwise construct a query
@@ -56,13 +58,10 @@ class OSHNewsView(BrowserView):
         if mySEP:
             kw = mySEP.getProperty('keyword', '')
 
-        queryA = Eq('portal_type', 'News Item')
-        queryB = Eq('isNews', True)
-        queryBoth = In('review_state', 'published') & Eq('path', navigation_root_path)
+        query = '(portal_type:("News Item") OR isNews:true) AND review_state:published AND path_parents:%s' % navigation_root_path
         if kw != '':
-            queryBoth = queryBoth & In('Subject', kw)
-        query = And(Or(queryA, queryB), queryBoth)
-        return catalog.evalAdvancedQuery(query, (('Date', 'desc'),))
+            query += 'Subject:(%s)' % ' OR '.join(kw)
+        return [PloneFlare(x) for x in search(query, sort='Date desc')]
 
     def queryCatalog(self, b_size=20):
         results = self.getResults()
@@ -97,8 +96,13 @@ class OSHNewsLocalView(OSHNewsView):
             & Le('effective', now)
 
         query = And(Or(queryA, queryB), queryBoth)
-        results = catalog.evalAdvancedQuery(query, (('Date', 'desc'),))
+        oldresults = catalog.evalAdvancedQuery(query, (('Date', 'desc'),))
 
+        query = '(portal_type:("News Item") OR isNews:true) AND \
+                review_state:published AND path_parents:%(path)s AND effective:[* TO %(effective)s]' % \
+                {'path': '/'.join(context.getPhysicalPath()),
+                 'effective': iso8601date(now),}
+        results = [PloneFlare(x) for x in search(query, sort='Date desc')]
         return results
 
     def Title(self):
