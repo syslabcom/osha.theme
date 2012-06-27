@@ -244,7 +244,7 @@ class PracticalSolutionView(DBFilterView):
         # Important! Always include neutral! Neutral == relevant for ALL
         # languages!!!
         if language:
-            query = '%(query)s AND Language:(%s)' % (query, ' OR '.join((language, 'any')))
+            query = '%(query)s AND Language:(%(lang)s)' % dict(query=query, lang=' OR '.join((language, 'any')))
 
         # don't handle remoteLanguage for FAQHelpcenter items
         spt = self.get_search_portal_type()
