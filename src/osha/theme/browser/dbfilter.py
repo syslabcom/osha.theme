@@ -52,7 +52,7 @@ class DBFilterView(BrowserView):
         if 'Publication' in search_portal_types:
             query = '(portal_type:File AND object_provides:slc.publications.interfaces.IPublicationEnhanced)'
             search_portal_types.remove('Publication')
-            query = ' OR '.join([query, 'portal_type:(%s)' % ' OR '.join(search_portal_types)])
+            query = '(' + ' OR '.join([query, 'portal_type:(%s)' % ' OR '.join(search_portal_types)]) + ')'
         else:
             query = 'portal_type:(%s)' % ' OR '.join(search_portal_types)
 
@@ -63,7 +63,8 @@ class DBFilterView(BrowserView):
         """ Build the query based on the request """
         context = Acquisition.aq_inner(self.context)
 
-        query = self.search_portal_types()
+        queries = []
+        queries.append(self.search_portal_types())
 
         #query = { 'sort_on': 'effective',
         #          'sort_order':'reverse',
@@ -75,44 +76,44 @@ class DBFilterView(BrowserView):
 
         keywords = self.request.get('keywords', local_keyword)
         if keywords:
-            query = ' AND '.join([query, 'Subject:(%s)' % ' OR '.join(keywords)])
+            queries.append('Subject:(%s)' % ' OR '.join(keywords))
             #query.update({'Subject':keywords})
 
         nace = list(self.request.get('nace', ''))
         if '' in nace:
             nace.remove('')
         if nace:
-            query = '%(query)s AND %(nace)s' % {'query': query, 'nace': 'nace:(%s)' % ' OR '.join(nace)}
+            queries.append('nace:(%s)' % ' OR '.join(nace))
             #query.update({'nace':nace})
 
         multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
         if '' in multilingual_thesaurus:
             multilingual_thesaurus.remove('')
         if multilingual_thesaurus:
-            query = '%(query)s AND %(mul_the)s' % \
-                    {'query': query, 'mul_the': 'multilingual_thesaurus:(%s)' % ' OR '.join(multilingual_thesaurus)}
+            queries.append('multilingual_thesaurus:(%s)' % ' OR '.join(multilingual_thesaurus))
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
         getRemoteLanguage = self.request.get('getRemoteLanguage', '')
         if getRemoteLanguage:
-            query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query, 'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage)}
+            queries.append('getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage))
             #query.update({'getRemoteLanguage':getRemoteLanguage})
 
         subcategory = self.request.get('subcategory', '')
         if subcategory:
-            query = '%(query)s AND %(subcategory)s' % {'query': query, 'subcategory': 'subcategory:(%s)' % ' OR '.join(subcategory)}
+            queries.append('subcategory:(%s)' % ' OR '.join(subcategory))
             #query.update({'subcategory':subcategory})
 
         country = self.request.get('country', '')
         if country:
-            query = '%(query)s AND %(country)s' % {'query': query, 'country': 'country:(%s)' % ' OR '.join(country)}
+            queries.append('country:(%s)' % ' OR '.join(country))
             #query.update({'country':country})
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query = '%(query)s AND SearchableText:%(SearchableText)s' % {'query': query, 'SearchableText': SearchableText}
+            queries.append('SearchableText:%s' % SearchableText)
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
+        query = ' AND '.join(queries)
 
         return query
 
