@@ -1,9 +1,9 @@
 import Acquisition
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
-from Products.AdvancedQuery import In, Eq, Ge, Le, Or, Generic, Between
 from DateTime import DateTime
 
+from collective.solr.mangler import iso8601date
 from osha.theme.browser.dbfilter import DBFilterView
 
 class WorklistView(DBFilterView):
@@ -53,88 +53,67 @@ class WorklistView(DBFilterView):
         return TYPES
 
 
-    def search_portal_types(self):
-        """ compute the list of query params to search for portal_types"""
-        context = Acquisition.aq_inner(self.context)
-        #local_portal_types = context.getProperty('search_portal_types', []);
-        # we need to use the output of search_types() as default, not the
-        # local Property search_portal_types
-        search_types = [x[1] for x in self.search_types()]
-        search_portal_types = list(self.request.get('search_portal_types', search_types))
-
-
-        query = None
-        if 'Publication' in search_portal_types:
-            query = ( Eq('portal_type', 'File') & Eq('object_provides', 'slc.publications.interfaces.IPublicationEnhanced') )
-            search_portal_types.remove('Publication')
-            query = Or(query, In('portal_type', search_portal_types))
-        else:
-            query = In('portal_type', search_portal_types)
-
-
-        return query
-
     def buildQuery(self):
         """ Build the query based on the request """
         context = Acquisition.aq_inner(self.context)
 
-        query = self.search_portal_types()
+        queries = [self.search_portal_types()]
 
         local_keyword = context.getProperty('keyword', '')
         keywords = self.request.get('keywords', local_keyword)
         if keywords:
-            query = query & In('Subject', keywords)
+            queries.append('Subject:(%s)' % ' OR '.join(keywords))
             #query.update({'Subject':keywords})
 
         nace = list(self.request.get('nace', ''))
         if '' in nace:
             nace.remove('')
         if nace:
-            query = query & In('nace', nace)
+            queries.append('nace:(%s)' % ' OR '.join(nace))
             #query.update({'nace':nace})
 
         multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
         if '' in multilingual_thesaurus:
             multilingual_thesaurus.remove('')
         if multilingual_thesaurus:
-            query = query & In('multilingual_thesaurus', multilingual_thesaurus)
+            queries.append('multilingual_thesaurus:(%s)' % ' OR '.join(multilingual_thesaurus))
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
         getRemoteLanguage = self.request.get('getRemoteLanguage', '')
         if getRemoteLanguage:
-            query = query & In('getRemoteLanguage', getRemoteLanguage)
+            queries.append('getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage))
             #query.update({'getRemoteLanguage':getRemoteLanguage})
 
         country = self.request.get('country', '')
         if country:
-            query = query & In('country', country)
+            queries.append('country:(%s)' % ' OR '.join(country))
             #query.update({'country':country})
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query = query & Generic('SearchableText', {'query': SearchableText})
+            queries.append('SearchableText:%s' % SearchableText)
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
         Creator = self.request.get('Creator', '')
         if Creator:
-            query = query & In('Creator', Creator)
+            queries.append('Creator:(%s)' % ' OR '.join(Creator))
             #query.update(dict(Creator=Creator))
 
         subcategory = list(self.request.get('subcategory', ''))
         if '' in subcategory:
             subcategory.remove('')
         if subcategory:
-            query = query & In('subcategory', subcategory)
+            queries.append('subcategory:(%s)' % ' OR '.join(subcategory))
             #query.update({'subcategory':subcategory})
 
         getRemoteUrl = self.request.get('getRemoteUrl', '')
         if getRemoteUrl:
-            query = query & Eq('getRemoteUrl', getRemoteUrl)
+            queries.append('getRemoteUrl:%s' % getRemoteUrl)
             #query.update(dict(getRemoteUrl=getRemoteUrl))
 
         review_state = self.request.get('review_state', ['private', 'published', 'to_amend', 'pending', 'checked'])
         if review_state:
-            query = query & In('review_state', review_state)
+            queries.append('review_state:(%s)' % ' OR '.join(review_state))
 
         modified_year = self.request.get('modified_year', '')
         modified_month = self.request.get('modified_month', '')
@@ -147,14 +126,18 @@ class WorklistView(DBFilterView):
                 modified_day = 1
             searchdate = DateTime('%d/%d/%d' % (modified_year, modified_month, modified_day))
             if modified_mode=='before':
-                query = query & Le('modified', searchdate)
+                queries.append('modified:[* TO %s]' % iso8601date(searchdate))
             elif modified_mode=='after':
-                query = query & Ge('modified', searchdate)
+                queries.append('modified:[%s TO *]' % iso8601date(searchdate))
             elif modified_mode=='range':
-                query = query & Between('modified', searchdate-mdr, searchdate+mdr)
+                queries.append('modified:[%(from)s TO %(to)s]' % \
+                        {'from': iso8601date(searchdate - mdr), 
+                         'to': iso8601date(searchdate + mdr)})
 
         lang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
-        query = query & In('Language', [lang, ''])
+        queries.append('Language:(%s OR any)' % lang)
+
+        query = ' AND '.join(queries)
 
         return query
 
