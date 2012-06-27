@@ -1,9 +1,9 @@
 from Acquisition import aq_inner, aq_parent
 from zope.i18n import translate
-from Products.AdvancedQuery import In, Eq, Or, Generic
 from Products.CMFCore.utils import getToolByName
 
 from osha.theme.browser.dbfilter import DBFilterView
+from osha.theme.browser.utils import search_solr
 
 
 class PracticalSolutionsView(DBFilterView):
@@ -46,9 +46,9 @@ class PracticalSolutionsView(DBFilterView):
         preflang = getToolByName(self.context,
                                  'portal_languages').getPreferredLanguage()
         search_portal_types = [ "OSH_Link", "RALink", "CaseStudy", "Provider", "HelpCenterFAQ"]
-        query = In('portal_type', search_portal_types)\
-                & In('Language', (preflang, ''))\
-                & Eq('review_state','published')
+        query = 'portal_type:(%(portal_type)s) AND Language:(%(Language)s) AND review_state:published' % \
+                {'portal_type': ' OR '.join(search_portal_types),
+                 'Language': ' OR '.join([preflang, 'any']),}
         return query
 
     def getSectionDetails(self):
@@ -189,15 +189,12 @@ class PracticalSolutionView(DBFilterView):
         search_portal_types = self.get_search_portal_type()
         query = None
         if 'Publication' in search_portal_types:
-            query = ( Eq('portal_type', 'File')\
-                      & Eq('object_provides',
-                         'slc.publications.interfaces.IPublicationEnhanced')
-                      )
+            query = '(portal_type:File AND object_provides:slc.publications.interfaces.IPublicationEnhanced)'
             search_portal_types.remove('Publication')
-            query = Or(query, In('portal_type', search_portal_types))
+            query = ' OR '.join([query, 'portal_type:(%s)' % ' OR '.join(search_portal_types)])
         else:
-            query = In('portal_type', search_portal_types)
-        query = query & Eq('review_state','published')
+            query = 'portal_type:(%s)' % ' OR '.join(search_portal_types)
+        query = '(%s) AND review_state:published' % query
         return query
 
     def has_subcategory(self, subject=''):
@@ -224,22 +221,21 @@ class PracticalSolutionView(DBFilterView):
         keywords = self.request.get('keywords', local_keyword)
         if keywords:
             if keywords !=  ['']:
-                query = query & In('Subject', keywords)
+                query = ' AND '.join([query, 'Subject:(%s)' % ' OR '.join(keywords)])
 
         nace = list(self.request.get('nace', ''))
         if '' in nace:
             nace.remove('')
         if nace:
-            query = query & In('nace', nace)
+            query = '%(query)s AND %(nace)s' % {'query': query, 'nace': 'nace:(%s)' % ' OR '.join(nace)}
             #query.update({'nace':nace})
 
-        multilingual_thesaurus = list(
-            self.request.get('multilingual_thesaurus', '')
-            )
+        multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
         if '' in multilingual_thesaurus:
             multilingual_thesaurus.remove('')
         if multilingual_thesaurus:
-            query = query & In('multilingual_thesaurus', multilingual_thesaurus)
+            query = '%(query)s AND %(mul_the)s' % \
+                    {'query': query, 'mul_the': 'multilingual_thesaurus:(%s)' % ' OR '.join(multilingual_thesaurus)}
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
         preflang = getToolByName(self.context,
@@ -248,7 +244,7 @@ class PracticalSolutionView(DBFilterView):
         # Important! Always include neutral! Neutral == relevant for ALL
         # languages!!!
         if language:
-            query = query & In('Language', (language,''))
+            query = '%(query)s AND Language:(%s)' % (query, ' OR '.join(language,'any'))
 
         # don't handle remoteLanguage for FAQHelpcenter items
         spt = self.get_search_portal_type()
@@ -257,24 +253,24 @@ class PracticalSolutionView(DBFilterView):
                                              not faq_condition and preflang
                                              or '')
         if getRemoteLanguage:
-            query = query & In('getRemoteLanguage', getRemoteLanguage)
+            query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query, 'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage)}
+            #query.update({'getRemoteLanguage':getRemoteLanguage})
+
         subcategory = self.request.get('subcategory', '')
         if subcategory:
-            query = query & In('subcategory', subcategory)
+            query = '%(query)s AND %(subcategory)s' % {'query': query, 'subcategory': 'subcategory:(%s)' % ' OR '.join(subcategory)}
             #query.update({'subcategory':subcategory})
 
         country = self.request.get('country', '')
         if country:
-            query = query & In('country', country)
+            query = '%(query)s AND %(country)s' % {'query': query, 'country': 'country:(%s)' % ' OR '.join(country)}
             #query.update({'country':country})
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query = query & Generic(
-                'SearchableText',
-                {'query': SearchableText}
-                )
+            query = '%(query)s AND SearchableText:%(SearchableText)s' % {'query': query, 'SearchableText': SearchableText}
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
+
         return query
 
     def get_link_to_english_results(self):
