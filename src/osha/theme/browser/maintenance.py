@@ -4,7 +4,9 @@ from Acquisition import aq_base
 import transaction
 from Products.Five.browser import BrowserView
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.interface import implements
+from plone.app.async.interfaces import IAsyncService
 
 from osha.theme.browser.interfaces import IMaintenanceView
 from Products.CMFCore.utils import getToolByName
@@ -64,3 +66,16 @@ class MaintenanceView(BrowserView):
         print "starting conversion"
         findLPFolder(self.context)
         print "conversion done"
+
+
+class QueueSize(BrowserView):
+    """ Return the length of the default queue """
+
+    def __call__(self):
+        async = getUtility(IAsyncService)
+        queues = async.getQueues()
+        queue = queues.get('', None)
+        if queue is None:
+            return "No default queue found"
+        return "The default queue has %d items" % len(queue)
+

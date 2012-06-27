@@ -12,7 +12,7 @@
         name="plone4-maintenance"
         class=".maintenance.MaintenanceView"
         permission="cmf.ManagePortal"
-		allowed_interface=".interfaces.IMaintenanceView"
+        allowed_interface=".interfaces.IMaintenanceView"
         />
 
     <!-- OSHA RollingQuotes Tool -->
@@ -956,5 +956,14 @@
         directory="jbot"
         layer=".interfaces.IOSHAThemeLayer"        
         />
+
+    <!-- ASYNC QUEUE SIZE -->
+    <browser:page
+        for="*"
+        name="queue_size"
+        class=".maintenance.QueueSize"
+        permission="cmf.ManagePortal"
+        />
+
 
 </configure>
