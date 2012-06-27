@@ -15,7 +15,6 @@ class EnhancedExistingItemsView(ExistingItemsView):
 
     def getItems(self):
 #        import pdb; pdb.set_trace()
-        portal_type = self.request.get('portal_type', '').replace('+', ' ')
         SearchableText = self.request.get('SearchableText', '')
         path = self.request.get('path', '').strip()
         if path:
@@ -24,12 +23,11 @@ class EnhancedExistingItemsView(ExistingItemsView):
             abspath = urljoin(self.portal_path(), path)
         else:
             abspath = ''
-        if SearchableText=='' and portal_type=='' and abspath=='':
+        if SearchableText=='' and abspath=='':
             return list()
         langtool = cmfutils.getToolByName(self.context, 'portal_languages')
         prefLang = langtool.getPreferredLanguage()
-        items = self.catalog(portal_type=portal_type,
-                             SearchableText=SearchableText,
+        items = self.catalog(SearchableText=SearchableText,
                              Language=['', prefLang],
                              path=abspath,
                              sort_order='reverse',
@@ -58,7 +56,7 @@ class EnhancedExistingItemsView(ExistingItemsView):
                  'title': result.Title,
                  'description': cropText(result.Description, desc_length, desc_ellipsis),
                  'type': result.Type,
-                 'portal_type':  self.normalizeString(result.portal_type),
+                 'portal_type':  result.portal_type,
                  'modified': result.ModificationDate,
                  'published': result.EffectiveDate or ''} for (result, obj) in
                 map(lambda result: (result, result.getObject()), items)]

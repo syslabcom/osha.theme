@@ -6,27 +6,11 @@
 
   <form class="collage-existing-items"
      onsubmit="return false"
-    tal:define="filter_portal_type request/portal_type|nothing"
     tal:attributes="action string:${here/absolute_url}/existing-items-form">
-    <div class="field">
-      <label i18n:translate="label_content_type"
-         for="portal_type">Content type</label>
-      <select name="portal_type" style="font-size:80%"
-          tal:define="allowedTypes here/getAllowedTypes">
-    <option i18n:translate="label_all_content_types"
-        value="">All</option>
-    <option tal:repeat="ctype allowedTypes"
-        i18n:domain="plone"
-        i18n:translate=""
-        tal:attributes="value ctype/getId;
-                selected python: filter_portal_type == ctype.getId() and 'selected'"
-        tal:content="ctype/Title">Type-name</option>
-      </select>
-    </div>
     <div class="field" tal:define="value request/SearchableText|string:;
                         value python:value.replace('+', ' ');">
       <label i18n:domain="plone" i18n:translate="label_search_text"
-         for="portal_type">Search Text</label>
+         for="SearchableText">Search Text</label>
         <input type="text" name="SearchableText" tal:attributes="value value" />
     </div>
     <div class="field" tal:define="value python:request.get('path', '');
@@ -36,6 +20,13 @@
       <input type="text" name="path" 
         tal:attributes="value value" />
         <!--input type="submit" value="Search" /-->
+      <input class="searchButton"
+             type="submit"
+             name="submit"
+             value="Search"
+             i18n:domain="plone"
+             i18n:attributes="value label_search;"
+             />
     </div>
     <ul i18n:domain="plone" class="collage-content-menu">
       <li tal:repeat="item view/getItems" class="visualIcon">
