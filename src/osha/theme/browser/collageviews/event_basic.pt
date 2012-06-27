@@ -135,6 +135,6 @@
     
   </div>
 
-  <div class="visualClear" id="clear-space-after-relatedItems"><!-- --></div>
+  <div class="visualClear" id="clear-space-after-relatedItems"></div>
   
 </tal:event>

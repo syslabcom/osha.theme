@@ -24,11 +24,6 @@
         &nbsp; 
     </span>
 
-    <!--br/>
-    <span class="description" tal:content="structure obj_description">
-        description 
-    </span-->
-    
     </dd>
 
 </dl>

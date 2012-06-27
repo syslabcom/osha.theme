@@ -26,7 +26,7 @@
       
       <tal:columns replace="structure python: renderer(columns)" />
       
-      <div class="visualClear"><!-- nothing here --></div>
+      <div class="visualClear"></div>
       
     </div>  
   </tal:batches>
