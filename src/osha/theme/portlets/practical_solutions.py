@@ -17,6 +17,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+from osha.theme.browser.utils import search_solr
 
 class IPracticalSolutionsPortlet(IPortletDataProvider):
     subject = schema.List(
@@ -209,18 +210,17 @@ class Renderer(base.Renderer):
                                 "CaseStudy", "Provider", "Publication"]
         # Publications are Files which implement the
         # IPublicationEnhanced interface
-        query = ( Eq('portal_type', 'File') & \
-                      Eq('object_provides',
-                         'slc.publications.interfaces.IPublicationEnhanced') & \
-                      In('Subject', subject)
-                  )
-        query = Or(query,
-                   In('portal_type', search_portal_types)
-                   ) & Eq('review_state','published')
-        pc = getToolByName(context, 'portal_catalog')
-        if hasattr(pc, 'getZCatalog'):
-            pc = pc.getZCatalog()
-        brains = pc.evalAdvancedQuery(query, (('effective','desc'),))
+        query = '((portal_type:File ' \
+                'AND object_provides:slc.publications.interfaces.IPublicationEnhanced ' \
+                'AND Subject:(%(Subject)s)) ' \
+            'OR ' \
+                'portal_type:(%(portal_type)s)) ' \
+          'AND ' \
+            'review_state:published' % {
+                        'Subject': subject,
+                        'portal_type': search_portal_types,
+                            }
+        brains = search_solr(query, sort='effective desc')
         results = self.getBrainsBySection(brains, 3)
         return results
 
