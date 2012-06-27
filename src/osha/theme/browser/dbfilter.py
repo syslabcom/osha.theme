@@ -3,11 +3,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 
-from collective.solr.interfaces import ISearch
-from collective.solr.flare import PloneFlare
-from collective.solr.mangler import iso8601date
-from zope.component import queryUtility
-
+from osha.theme.browser.utils import search_solr
 
 
 class DBFilterView(BrowserView):
@@ -122,10 +118,9 @@ class DBFilterView(BrowserView):
 
 
     def search(self):
-        search = queryUtility(ISearch)
         query = self.buildQuery()
 
-        return [PloneFlare(x) for x in search(query, sort='effective desc')]
+        return search_solr(query, sort='effective desc')
 
 
 class ProviderDBFilterView(DBFilterView):

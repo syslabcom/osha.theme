@@ -4,9 +4,7 @@
 import Acquisition
 from DateTime import DateTime
 
-from zope.component import getMultiAdapter, queryUtility
-from collective.solr.interfaces import ISearch
-from collective.solr.flare import PloneFlare
+from zope.component import getMultiAdapter
 from collective.solr.mangler import iso8601date
 
 from plone.memoize import instance
@@ -18,6 +16,7 @@ from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
 
 from osha.theme import OSHAMessageFactory as _
+from osha.theme.browser.utils import search_solr
 
 
 class OSHNewsView(BrowserView):
@@ -38,7 +37,6 @@ class OSHNewsView(BrowserView):
 
     @instance.memoize
     def getResults(self):
-        search = queryUtility(ISearch)
         context = Acquisition.aq_inner(self.context)
 
         # try to get query parameters from Topic (if present)
@@ -61,7 +59,7 @@ class OSHNewsView(BrowserView):
         query = '(portal_type:("News Item") OR isNews:true) AND review_state:published AND path_parents:%s' % navigation_root_path
         if kw != '':
             query += 'Subject:(%s)' % ' OR '.join(kw)
-        return [PloneFlare(x) for x in search(query, sort='Date desc')]
+        return search_solr(query, sort='Date desc')
 
     def queryCatalog(self, b_size=20):
         results = self.getResults()
