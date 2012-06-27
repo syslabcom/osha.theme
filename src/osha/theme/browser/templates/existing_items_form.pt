@@ -32,7 +32,7 @@
       <li tal:repeat="item view/getItems" class="visualIcon">
          <img tal:attributes="src string:${view/portal_url}/${item/icon};
                 title item/type; alt item/type" i18n:attributes="title; alt" />
-        <a href="#"
+        <a href="#" class="post"
            tal:attributes="href string:${here/absolute_url}/insert-alias?uid=${item/UID};
                        title item/description">
           <tal:title content="item/title">Title</tal:title>
