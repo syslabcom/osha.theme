@@ -30,8 +30,6 @@
 </dl>
 
 <dl class="portlet portletPracticalSolutions"
-    tal:define="solutions view/getRecentPracticalSolutions;
-                titles python:view.getLocalisedSectionTitles()"
     i18n:domain="osha">
 
   <dt class="portletHeader"
