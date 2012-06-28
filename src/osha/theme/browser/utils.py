@@ -11,4 +11,8 @@ def search_solr(query, **params):
     prepareData(dummy) # this replaces '' with 'any'
     langquery = 'Language:(%s)' % ' OR '.join(dummy['Language'])
     query = '(%s) AND %s' % (query, langquery)
-    return [PloneFlare(x) for x in search(query, **params)]
+    response = search(query, **params)
+    results = response.results()
+    for idx, flare in enumerate(results):
+        results[idx] = PloneFlare(flare)
+    return response
