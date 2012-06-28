@@ -12,12 +12,13 @@ from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
 from plone.memoize.instance import memoize
 
-from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 log = logging.getLogger('osha.theme/portlets/news.py')
 
+from collective.solr.mangler import iso8601date
+from osha.theme.browser.utils import search_solr
 
 class Renderer(news.Renderer):
     """Dynamically override standard header for news portlet"""
@@ -39,10 +40,6 @@ class Renderer(news.Renderer):
 
     @memoize
     def _data(self):
-        context = aq_inner(self.context)
-        catalog = getToolByName(context, 'portal_catalog')
-        if hasattr(catalog, 'getZCatalog'):
-            catalog = catalog.getZCatalog()
         portal_languages = getToolByName(self.context, 'portal_languages')
         preflang = portal_languages.getPreferredLanguage()
 
@@ -68,18 +65,14 @@ class Renderer(news.Renderer):
         limit = self.data.count
         state = self.data.state
         
-        queryA = Eq('portal_type', 'News Item')
-        # queryB = Eq('isNews', True)
-        # queryBoth = In('review_state', state) & In('path', paths) & In('Language', ['', preflang])
-        # if kw !='':
-        #     queryBoth = queryBoth & In('Subject', kw)
-        # queryEffective = Le('effective', DateTime())
-        # query = And(Or(queryA, queryB), queryBoth, queryEffective)
-        # try:
-        #     return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
-        # except KeyError, e:
-        #     log.error('KeyError: %s' %  e.__str__())
-        #     return []
+        query = '(portal_type:"News Item" OR isNews:true) AND review_state:(%(review_state)s) AND path_parents:(%(path)s) AND Language:(%(Language)s) AND effective:[* TO %(effective)s]' % {'review_state': ' OR '.join(state), 'path': ' OR '.join(paths), 'Language': ' OR '.join([preflang, 'any']), 'effective': iso8601date(DateTime()), }
+        if kw !='':
+            query += ' AND Subject:(%s)' % ' OR '.join(kw)
+        try:
+            return search_solr(query, sort='Date desc', rows=limit)[:limit]
+        except KeyError, e:
+            log.error('KeyError: %s' %  e.__str__())
+            return []
 
         return []
 

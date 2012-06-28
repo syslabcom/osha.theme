@@ -58,7 +58,7 @@ class OSHNewsView(BrowserView):
 
         query = '(portal_type:("News Item") OR isNews:true) AND review_state:published AND path_parents:%s' % navigation_root_path
         if kw != '':
-            query += 'Subject:(%s)' % ' OR '.join(kw)
+            query = ' AND '.join([query, 'Subject:(%s)' % ' OR '.join(kw)])
         return search_solr(query, sort='Date desc')
 
     def queryCatalog(self, b_size=20):
@@ -88,19 +88,19 @@ class OSHNewsLocalView(OSHNewsView):
             catalog = catalog.getZCatalog()
 
         now = DateTime()
-        queryA = Eq('portal_type', 'News Item')
-        queryB = Eq('isNews', True)
-        queryBoth = In('review_state', 'published') & Eq('path', '/'.join(context.getPhysicalPath())) \
-            & Le('effective', now)
+        #queryA = Eq('portal_type', 'News Item')
+        #queryB = Eq('isNews', True)
+        #queryBoth = In('review_state', 'published') & Eq('path', '/'.join(context.getPhysicalPath())) \
+        #    & Le('effective', now)
 
-        query = And(Or(queryA, queryB), queryBoth)
-        oldresults = catalog.evalAdvancedQuery(query, (('Date', 'desc'),))
+        #query = And(Or(queryA, queryB), queryBoth)
+        #oldresults = catalog.evalAdvancedQuery(query, (('Date', 'desc'),))
 
-        query = '(portal_type:("News Item") OR isNews:true) AND \
-                review_state:published AND path_parents:%(path)s AND effective:[* TO %(effective)s]' % \
+        query = '(portal_type:("News Item") OR isNews:true) AND ' \
+                'review_state:published AND path_parents:%(path)s AND effective:[* TO %(effective)s]' % \
                 {'path': '/'.join(context.getPhysicalPath()),
                  'effective': iso8601date(now),}
-        results = [PloneFlare(x) for x in search(query, sort='Date desc')]
+        results = search_solr(query, sort='Date desc')
         return results
 
     def Title(self):

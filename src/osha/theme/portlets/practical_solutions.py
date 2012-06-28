@@ -12,7 +12,6 @@ from plone.portlets.interfaces import IPortletDataProvider
 
 from plone.app.portlets.portlets import base
 
-from Products.AdvancedQuery import In, Eq, Or
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile

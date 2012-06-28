@@ -14,11 +14,13 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from plone.app.portlets.interfaces import IPortletPermissionChecker
 
-from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from types import UnicodeType
+
+from collective.solr.mangler import iso8601date
+from osha.theme.browser.utils import search_solr
 
 class INewsPortlet(IPortletDataProvider):
 
@@ -144,11 +146,6 @@ class Renderer(base.Renderer):
 
     @memoize
     def _data(self):
-        context = aq_inner(self.context)
-        catalog = getToolByName(context, 'portal_catalog')
-        if hasattr(catalog, 'getZCatalog'):
-            catalog = catalog.getZCatalog()
-
         # search in the navigation root of the currently selected 
         # language and in the canonical path
         # with Language = preferredLanguage or neutral
@@ -160,22 +157,22 @@ class Renderer(base.Renderer):
         except:
             pass
         
-        queryA = Eq('portal_type', 'News Item')
-        queryB = Eq('isNews', True)
-        queryAll = In('review_state', self.data.state) & \
-                    In('path', paths) & \
-                    In('Language', ['', self.preflang])
-
         subject = list(self.data.subject)
-        if subject:
-            queryAll = queryAll & In('Subject', subject)
-
-        queryEffective = Le('effective', DateTime())
-
-        query = And(Or(queryA, queryB), queryAll, queryEffective)
-
         limit = self.data.count
-        return catalog.evalAdvancedQuery(query, (('Date', 'desc'),) )[:limit]
+
+        query = '(portal_type:"News Item" OR isNews:true) AND ' \
+        'review_state:(%(review_state)s) AND path_parents:(%(path)s) ' \
+        'AND Language:(%(Language)s) AND effective:[* TO %(effective)s]' % \
+            {'review_state': ' OR '.join(self.data.state),
+             'path': ' OR '.join(paths),
+             'Language': ' OR '.join([self.preflang, 'any']),
+             'effective': iso8601date(DateTime()), }
+
+        if subject:
+            query += ' AND Subject:(%s)' % ' OR '.join(subject)
+
+        result = search_solr(query, sort='Date desc', rows=limit)[:limit]
+        return result
 
     def showRSS(self):
         return bool(self.getRSSLink())
