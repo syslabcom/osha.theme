@@ -83,6 +83,8 @@ class OSHA(BrowserView):
         seplist = []
         for sep in seps:
             S = sep['subject']
+            if not S:
+                continue
             for subject in S:
                 if subject in subjects:
                     seplist.append(sep)
