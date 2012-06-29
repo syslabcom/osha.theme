@@ -575,6 +575,7 @@
         for="*"
         name="oshnews-local-view"
         class=".oshnews_view.OSHNewsLocalView"
+        template="templates/oshnews_view.pt"
         permission="zope2.View"
         />
 
