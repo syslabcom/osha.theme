@@ -93,8 +93,13 @@ class DBFilterView(BrowserView):
             queries.append('multilingual_thesaurus:(%s)' % ' OR '.join(multilingual_thesaurus))
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
-        getRemoteLanguage = self.request.get('getRemoteLanguage', '')
+        getRemoteLanguage = [x for x in self.request.get('getRemoteLanguage', [])]
         if getRemoteLanguage:
+            if not isinstance(getRemoteLanguage, list):
+                getRemoteLanguage = [getRemoteLanguage]
+            if '' in getRemoteLanguage:
+                getRemoteLanguage.remove('')
+                getRemoteLanguage.append('any')
             queries.append('getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage))
             #query.update({'getRemoteLanguage':getRemoteLanguage})
 
@@ -120,8 +125,10 @@ class DBFilterView(BrowserView):
 
     def search(self):
         query = self.buildQuery()
+        b_size = self.request.get('b_size', 10)
+        b_start = self.request.get('b_start', 0)
 
-        return search_solr(query, sort='effective desc')
+        return search_solr(query, sort='effective desc', start=b_start, rows=b_size)
 
 
 class ProviderDBFilterView(DBFilterView):
