@@ -10,7 +10,7 @@ from collective.solr.mangler import iso8601date
 from plone.memoize import instance
 
 from Products.ATContentTypes.interface import IATTopic
-from Products.AdvancedQuery import Or, Eq, And, In, Le
+#from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView

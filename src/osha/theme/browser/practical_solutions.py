@@ -142,7 +142,7 @@ class PracticalSolutionView(DBFilterView):
         if self.portal_types_map.has_key(parent.id):
             local_search_portal_type = self.portal_types_map[parent.id]
         search_portal_types = self.request.get('search_portal_types',
-                                               local_search_portal_type)
+                                               [local_search_portal_type])
         return search_portal_types
 
     def translate(self, msgid):
@@ -253,7 +253,7 @@ class PracticalSolutionView(DBFilterView):
                                              not faq_condition and preflang
                                              or '')
         if getRemoteLanguage:
-            query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query, 'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage)}
+            query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query, 'getRemoteLanguage': 'getRemoteLanguage:(%s)' % getRemoteLanguage}
             #query.update({'getRemoteLanguage':getRemoteLanguage})
 
         subcategory = self.request.get('subcategory', '')
