@@ -9,6 +9,7 @@
 <metal:main_macro define-macro="main">
     <metal:body define-macro="body_macro"
                 tal:define="templateId view/getName;
+                    toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                     normalizeString nocall:context/@@plone/normalizeString">
 
         <h1 class="documentFirstHeading" tal:content="view/Title"> </h1>
