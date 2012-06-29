@@ -50,7 +50,7 @@
             <h2 i18n:translate="label_ongoing_competitions">
               Ongoing competitions
             </h2>
-            <ul class="recentcarousel" id="competitionSchwusch">
+            <ul class="recentcarousel carousel" id="competitionSchwusch">
                 <span tal:repeat="competition ongoing" tal:omit-tag="">
                     <li tal:define="item nocall:competition/item;
                         images competition/images">
