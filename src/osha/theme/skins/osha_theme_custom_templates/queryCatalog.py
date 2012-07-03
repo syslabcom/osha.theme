@@ -24,6 +24,10 @@ second_pass = {}
 if REQUEST is None:
     REQUEST = context.REQUEST
 
+# See http://dev.plone.org/plone/ticket/9422 for
+# an explanation of '\u3000'
+multispace = u'\u3000'.encode('utf-8')
+
 def quotestring(s):
     return '"%s"' % s
 
@@ -101,6 +105,8 @@ for k in REQUEST.keys():
     if v and k in indexes:
         if k in quote_logic_indexes:
             v = quote_bad_chars(v)
+            if multispace in v:
+                v = v.replace(multispace, ' ')
             if quote_logic:
                 v = quotequery(v)
         query[k] = v
