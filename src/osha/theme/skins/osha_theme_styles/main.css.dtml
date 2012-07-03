@@ -1462,11 +1462,12 @@ div.flatlist_container.opened{
    border: none;
    font-size: 100%;
 }
-.dynatree-selected span.dynatree-checkbox {
+div.dynatree-atwidget span.delete{
   background: url("ico_check_red.gif") no-repeat scroll 0 0 transparent;
+  padding: 0 8px;
 }
-.dynatree-selected span.dynatree-checkbox:hover {
-  background: url("ico_check_red_hover.gif") no-repeat scroll 0 0 transparent;
+div.dynatree-atwidget span.delete span {
+  display: none
 }
 div.dynatree-atwidget span.toggleButton{
     font-weight: bold;
