@@ -192,7 +192,7 @@ select[multiple] {
 #footeractions-wrapper {
     text-align: center;
     font-size: 80%;
-    margin-top:1em;
+    margin:1em 0;
     border-top: 1px solid #083e8a;
     padding-top: 1em;
 }
