@@ -66,10 +66,10 @@ class INavtreeFactory(Interface):
 
 
 class CatalogNavTree(object):
-    def __init__(self, context, request):
-        self.build(context, request)
+    def __init__(self, context, request, portlet):
+        self.build(context, request, portlet)
 
-    def build(self, context, request):
+    def build(self, context, request, portlet):
         context = aq_inner(context)
 
         # If we are at a default page use the folder as context for the navtree
@@ -79,10 +79,17 @@ class CatalogNavTree(object):
         if isp is not None and isp.isDefaultPage(context):
             context = container
 
-        contextPath = "/".join(context.getPhysicalPath())
+        custom_nav_root_path = portlet.data.root
+        if custom_nav_root_path is not None:
+            portal_root = portlet.urltool.getPortalPath()
+            contextPath = portal_root + custom_nav_root_path
+            navrootPath = contextPath
+        else:
+            contextPath = "/".join(context.getPhysicalPath())
+            navrootPath = "/".join(getNavigationRoot(context).getPhysicalPath())
+
         contextPathLen = len(contextPath)
         parentDepth = (contextPath.count("/") - 1)
-        navrootPath = "/".join(getNavigationRoot(context).getPhysicalPath())
 
         query = {}
         query["path"] = dict(query=contextPath,
@@ -190,8 +197,8 @@ class TreeFactory(object):
         self.context = context
         self.request = request
 
-    def __call__(self):
-        return CatalogNavTree(self.context, self.request)
+    def __call__(self, portlet):
+        return CatalogNavTree(self.context, self.request, portlet)
 
 
 class Renderer(navigation.Renderer):
@@ -211,7 +218,7 @@ class Renderer(navigation.Renderer):
         normalize = getUtility(IIDNormalizer).normalize
         treefactory = getMultiAdapter((self.context, self.request),
                                       INavtreeFactory)
-        tree = treefactory()
+        tree = treefactory(self)
 
         for node in tree.iter():
             brain = node.get("brain", None)
