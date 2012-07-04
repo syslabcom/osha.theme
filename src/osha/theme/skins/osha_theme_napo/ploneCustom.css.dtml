@@ -447,8 +447,14 @@ button.blue-button {
 }
 
 body.template-napoepisode-view img.video-thumbnail,
+body.section-napos-films img.video-thumbnail,
 body.template-napofilmlisting-view  img.video-thumbnail {
    width: 100px;
+}
+
+#content span.link-external a {
+    background: none;
+    padding: 0;
 }
 
 /***************IE Fixes for the Napo Makeover for IE7**************/
