@@ -37,7 +37,7 @@
                 May 5
                 </tal:date>
                 <span class="dateToBeConfirmed"
-                      tal:condition="python:True if hasattr(obj, 'dateToBeConfirmed') and event.dateToBeConfirmed else False">
+                      tal:condition="python:True if hasattr(obj, 'dateToBeConfirmed') and obj.dateToBeConfirmed else False">
                   (<abbr title="Date to be confirmed"
                          i18n:translate="abbr_date_to_be_confirmed"
                          i18n:domain="osha"
