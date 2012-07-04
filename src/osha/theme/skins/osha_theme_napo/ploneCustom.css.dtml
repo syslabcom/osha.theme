@@ -90,6 +90,11 @@ background-color:transparent;
 border:0px solid #FFFFC9 !important;
 }
 
+/* Only 1 level of navigation */
+li.navTreeItem ul {
+    display: none;
+}
+
 #partners {
 margin:0;
 padding:1em 0;
