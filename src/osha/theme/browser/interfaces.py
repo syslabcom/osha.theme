@@ -20,6 +20,10 @@ class IOSHmailView(Interface):
 
     def subscribe():
         """ subscribe to oshmail """
+
+class IFullWidth(Interface):
+    """ Marker Interface to indicate that the right slot should be made available
+        to the content area as well """
         
 class IOSHAThemeLayer(Interface):
     """ Marker Interface used by BrowserLayer

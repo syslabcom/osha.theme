@@ -966,5 +966,17 @@
         permission="cmf.ManagePortal"
         />
 
+    <!-- override the plone_layout util -->
+    <interface interface=".interfaces.IFullWidth" />
+    <browser:page
+        name="plone_layout"
+        for="*"
+        permission="zope.Public"
+        class=".layout.OSHALayoutPolicy"
+        allowed_interface="plone.app.layout.globals.interfaces.ILayoutPolicy"
+        layer=".interfaces.IOSHAThemeLayer"
+        />
+
+
 
 </configure>

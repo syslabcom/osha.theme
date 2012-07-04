@@ -50,16 +50,20 @@
 }
 
 /* Editing */
-body.template-atct_edit #portal-column-one { 
+body.template-atct_edit #portal-column-one,
+body.full-width #portal-column-one { 
         margin: 0 0 0 -100%; 
 }
-body.template-atct_edit #portal-column-two { 
+body.template-atct_edit #portal-column-two,
+body.full-width #portal-column-two { 
     display:none;
 }
-body.template-atct_edit #portal-column-content {
+body.template-atct_edit #portal-column-content,
+body.full-width #portal-column-content {
     width:84%;
 }
-body.template-atct_edit #portal-column-content fieldset {
+body.template-atct_edit #portal-column-content fieldset,
+body.full-width #portal-column-content fieldset {
     width: 96%;
 }
 
