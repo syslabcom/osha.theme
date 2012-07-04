@@ -13,5 +13,3 @@ class OSHALayoutPolicy(LayoutPolicy):
         if IFullWidth.providedBy(self.context):
             body_class = u"%s full-width" % body_class
         return body_class
-
-
