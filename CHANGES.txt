@@ -4,6 +4,8 @@ osha.theme Changelog
 1.4.30 (unreleased)
 -------------------
 
+- added class carousel to competitions view to prevent breakage if lipstick 
+  is updated. Backport from plone4  [pilz]
 - Rewrote the oshmail view, fixes #5081 and #5082 [deroiste]
 
 
