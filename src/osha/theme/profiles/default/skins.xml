@@ -17,6 +17,9 @@
  <object name="osha_theme_scripts"
     meta_type="Filesystem Directory View"
     directory="osha.theme:skins/osha_theme_scripts"/>
+ <object name="osha_theme_legacy"
+    meta_type="Filesystem Directory View"
+    directory="osha.theme:skins/osha_theme_legacy" />
 
  <object name="osha_theme_ew2000"
     meta_type="Filesystem Directory View"
