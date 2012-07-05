@@ -72,16 +72,6 @@
         </style>
     <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
 
-    <!-- Subsite CSS Support -->
-    <tal:subsite define="subsite_url oshaview/subsiteRootPath; 
-                         subsite python:portal.restrictedTraverse(subsite_url);
-                         cssfile nocall:subsite/subsite.css|nothing">
-        <style type="text/css" media="all" tal:condition="cssfile"
-               tal:content="string:@import url(${subsite/absolute_url}/subsite.css);">
-        </style>
-    </tal:subsite>
-
-
     <tal:notajax tal:condition="python:not ajax_load or ajax_include_head">
         <div tal:replace="structure provider:plone.htmlhead" />
         <link tal:replace="structure provider:plone.htmlhead.links" />
@@ -105,6 +95,15 @@
         <tal:comment replace="nothing"> A slot where you can insert javascript in the header from a template </tal:comment>
         <metal:javascriptslot define-slot="javascript_head_slot" />
     </tal:notajax>
+
+    <!-- Subsite CSS Support -->
+    <tal:subsite define="subsite_url oshaview/subsiteRootPath; 
+                         subsite python:portal.restrictedTraverse(subsite_url);
+                         cssfile nocall:subsite/subsite.css|nothing">
+        <style type="text/css" media="all" tal:condition="cssfile"
+               tal:content="string:@import url(${subsite/absolute_url}/subsite.css);">
+        </style>
+    </tal:subsite>
 
   </head>
 
