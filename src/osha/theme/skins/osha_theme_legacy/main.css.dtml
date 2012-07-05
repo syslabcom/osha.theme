@@ -777,6 +777,9 @@ padding-left:15px;
     margin-bottom:0.5em;
  	margin-left: 1.5em;
 }
+ul.portletNavigationTree .icon {
+    display: none;
+}
 
 /* Old linkcollection styles copied from slc.linkcollectio, pre-revamp.
 Reproduced here so that the revamp of slc.linkcollection does not affect the
