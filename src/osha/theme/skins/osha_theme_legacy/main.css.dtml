@@ -20,6 +20,15 @@
 #portal-logo {
     float:left;
 }
+#select_language_form {
+    display: block;
+    float: right;
+}
+#select_language_form p {
+    float: left;
+    font-size: 80%;
+    line-height: 170%;
+}
 dl.portlet #portal-logo,
 dl.portlet #portal-header,
 dl.portlet #portal-personaltools {
