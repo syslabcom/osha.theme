@@ -12,7 +12,7 @@
       <li  tal:repeat="publication python:publications">
         <a href=""
            class="tile"
-           tal:attributes="href string:${publication/getPath}/view;
+           tal:attributes="href string:${publication/getURL}/view;
                            title publication/Title;">
           <img tal:attributes="src publication/getIcon" />
           <tal:title replace="publication/Title"></tal:title>
