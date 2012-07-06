@@ -117,8 +117,7 @@
 
     <div class="relatedItems"
         tal:define="getInfoFor python:wtool.getInfoFor;
-                    prh here/pressroom_helper">
-        
+                    prh nocall:here/pressroom_helper">
             <tal:referencedContent tal:define="referenced prh/getTextPieces;">
                 <tal:block tal:condition="python:referenced">
                         <tal:referenced tal:repeat="text referenced">
