@@ -666,7 +666,7 @@ dl.portletFollowUs {
     background:#98a2b7;
 }
 
-.teaserdate{
+.hpteaserdate{
     background: #e6e8ed;
     padding: 0.2em 1em;
     font-size: 0.8em;

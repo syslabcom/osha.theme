@@ -35,7 +35,7 @@
                   <a tal:attributes="href news/link">
                     <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
                   </a>
-                  <p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
+                  <p class="hpteaserdate" tal:content="python:toLocalizedTime(news['date'])"/>
                   <p class="teaser_content" tal:content="news/description"></p>
                   <p class="teaser_more"><a class="more" tal:attributes="href news/link"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</a></p>
                 </tal:news_item>
