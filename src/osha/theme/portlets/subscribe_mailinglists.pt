@@ -12,7 +12,7 @@
   <dd class="portletItem">
   <p i18n:translate="subscribe_portlet_intro">Get our monthly update on Safety and Health at work.</p>
   <p>
-    <a rel="nofollow" class="button" tal:attributes="href string:https://osha.europa.eu/${view/preflang}/news/oshmail/" i18n:translate="Subscribe"       >Subscribe</a>
+    <a rel="nofollow" class="button" tal:attributes="href string:/${view/preflang}/news/oshmail/" i18n:translate="Subscribe"       >Subscribe</a>
   </p>
   <p i18n:translate="subscribe_portlet_alertservice_intro">You could use our <a rel="nofollow" tal:attributes="href string:https://osha.europa.eu/${view/preflang}/alertservice" i18n:name="alertservice" i18n:translate="Alert Service">Alert Service</a> too!</p>
 </dl>
