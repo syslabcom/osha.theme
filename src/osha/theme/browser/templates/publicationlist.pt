@@ -1,4 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="osha">
@@ -29,12 +32,16 @@
 
     </div>
 
+    <div tal:define="lang context/plone_portal_state/language;">
+      <h2><a tal:attributes="href string:${portal_url}/${lang}/news/oshmail" i18n:translate="">OSHmail newsletter</a></h2>
+      <p i18n:translate="subscribe_to_oshmail_long">Stay in touch with the latest developments in occupational safety and health. <a tal:attributes="href string:${portal_url}/${lang}/news/oshmail" i18n:name="Subscribe">Subscribe</a> now to get your monthly update.
+      </p>
+    </div>
 
     <div style="border-top:1px solid gray;">
       <p i18n:translate="download_adobe_reader"><font size="1" color="#333333">To be able to see our most recent pdf publications, you will need to have installed the latest version of the Adobe Acrobat Reader, available at <a href="https://www.adobe.com/" i18n:name="reader_download">www.adobe.com</a>.</font></p>
       <p i18n:translate="label_eu_bookshop"><font size="1" color="#333333">Access all the EU publications on the <a href="https://bookshop.europa.eu/en/home/" i18n:name="link_eu_bookshop">EU-bookshop</a></font></p>
     </div>
-
 
   </div>
 </html>
