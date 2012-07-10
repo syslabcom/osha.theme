@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.4.30 (unreleased)
+1.4.30 (2012-07-10)
 -------------------
 
 - added class carousel to competitions view to prevent breakage if lipstick 
