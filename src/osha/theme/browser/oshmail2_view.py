@@ -1,3 +1,5 @@
+# See #3283
+
 import Acquisition
 from DateTime import DateTime
 
@@ -9,13 +11,12 @@ from Products.ATContentTypes.interface import IATTopic
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from slc.alertservice import AlertMessageFactory as _
 
 from osha.theme import OSHAMessageFactory as _
 
 class OSHmailView(BrowserView):
-    """View for displaying oshmail
+    """View for displaying oshmail 
     """
 
     def __call__(self):
@@ -33,7 +34,7 @@ class OSHmailView(BrowserView):
 
     def lastyear(self):
         " return last years number "
-        return DateTime().year()-1
+        return DateTime().year() - 1
 
     def thisyears_issues(self):
         " return this years issues "
@@ -71,6 +72,8 @@ class OSHmailView(BrowserView):
     def get_image(self):
         " find a suitable image to show "
         latest = self.getLatestIssue()
+        if latest is None:
+            return ''
         try:
             col1 = latest.getObject()['1']['1']
         except KeyError:
@@ -78,8 +81,8 @@ class OSHmailView(BrowserView):
         for aliasid in col1.keys()[1:4]:
             alias = col1[aliasid]
             target = alias.get_target()
-            if hasattr(target.aq_explicit, 'getImage') and target.getImage().get_size()>0:
-                return target.absolute_url()+'/image_thumb'
+            if hasattr(target.aq_explicit, 'getImage') and target.getImage().get_size() > 0:
+                return target.absolute_url() + '/image_thumb'
         return ''
 
 
@@ -100,11 +103,11 @@ class OSHmailView(BrowserView):
             if not 'oshmail' in issue['getId']:
                 continue
             date = issue['effective']
-            if latestissue is None or date >latestissue['effective']:
+            if latestissue is None or date > latestissue['effective']:
                 latestissue = issue
             (name, num) = issue['getId'].split('-')
             yearlist = yearmap.get(date.year(), [])
-            yearlist.append( (int(num), dict(id=issue['getId'],
+            yearlist.append((int(num), dict(id=issue['getId'],
                                         day=date.Day(),
                                         month=date.Month(),
                                         year=date.year(),
@@ -135,10 +138,10 @@ class OSHmailView(BrowserView):
         if not emailaddress:
             emailaddress = REQUEST.get('emailaddress', '')
         refererstem = REQUEST.get('HTTP_REFERER').split('?')[0]
-        referer = refererstem+'?'
-        qs =REQUEST.get('QUERY_STRING', '')
+        referer = refererstem + '?'
+        qs = REQUEST.get('QUERY_STRING', '')
         if qs:
-            referer += '?'+qs+'&'
+            referer += '?' + qs + '&'
 
         if reg_tool.isValidEmail(emailaddress):
             pass
@@ -148,7 +151,8 @@ class OSHmailView(BrowserView):
                 msg = unicode(msg, 'iso8859-1').encode('utf-8')
             except:
                 pass
-            return REQUEST.RESPONSE.redirect(referer+"portal_status_message="+msg)
+            return REQUEST.RESPONSE.redirect(
+                referer + "portal_status_message=" + msg)
 
         if REQUEST.has_key('unsubscribe'):
             mesg = "UNSUBSCRIBE OSHMAIL\n"
@@ -168,9 +172,9 @@ class OSHmailView(BrowserView):
         try:
             self.context.MailHost.secureSend(message=mesg , mto=recipient, mfrom=sender, subject=subject)
         except Exception, e:
-            mssg = "Your subscription could not be sent. Please try again. " +str(e)
+            mssg = "Your subscription could not be sent. Please try again. " + str(e)
 
         from slc.alertservice.utils import encodeEmail
         # this feedbackpage has been added to contain a specific tracking code for an external company
         #feedbackpage = "http://osha.europa.eu/news/oshmail/subscription_feedback?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender))
-        return REQUEST.RESPONSE.redirect(refererstem+"?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender)))
+        return REQUEST.RESPONSE.redirect(refererstem + "?portal_status_message=%s&e=%s" % (mssg, encodeEmail(sender)))
