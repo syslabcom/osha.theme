@@ -1077,6 +1077,9 @@
   <viewlet name="plone.searchbox"/>
   <viewlet name="plone.global_sections"/>
   <viewlet name="plone.site_actions"/>
+  <viewlet name="osha.theme.googlesearch_viewlet"/>
+  <viewlet name="plone.app.i18n.locales.languageselector"/>
+  <viewlet name="plone.personal_bar"/>
  </hidden>
  <hidden manager="plone.portaltop" skinname="EW2006">
   <viewlet name="plone.personal_bar"/>
@@ -1141,12 +1144,15 @@
  <hidden manager="plone.portalfooter" skinname="BeSWIC Safestart">
   <viewlet name="plone.footer"/>
   <viewlet name="plone.colophon"/>
+  <viewlet name="plone.site_actions"/>
  </hidden>
  <hidden manager="plone.portalheader" skinname="BeSWIC Safestart">
   <viewlet name="plone.logo"/>
   <viewlet name="plone.searchbox"/>
   <viewlet name="plone.global_sections"/>
   <viewlet name="plone.site_actions"/>
+  <viewlet name="osha.theme.googlesearch_viewlet"/>
+  <viewlet name="plone.app.i18n.locales.languageselector"/>
  </hidden>
  <hidden manager="plone.portaltop" skinname="BeSWIC Safestart">
   <viewlet name="plone.personal_bar"/>
@@ -1342,12 +1348,15 @@
  <hidden manager="plone.portalfooter" skinname="RISQ">
   <viewlet name="plone.footer"/>
   <viewlet name="plone.colophon"/>
+  <viewlet name="plone.site_actions"/>
  </hidden>
  <hidden manager="plone.portalheader" skinname="RISQ">
   <viewlet name="plone.logo"/>
   <viewlet name="plone.searchbox"/>
   <viewlet name="plone.global_sections"/>
   <viewlet name="plone.site_actions"/>
+  <viewlet name="osha.theme.googlesearch_viewlet"/>
+  <viewlet name="plone.app.i18n.locales.languageselector"/>
  </hidden>
  <hidden manager="plone.portaltop" skinname="RISQ">
   <viewlet name="plone.personal_bar"/>
