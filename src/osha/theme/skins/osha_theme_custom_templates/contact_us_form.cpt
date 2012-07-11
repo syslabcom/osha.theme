@@ -14,7 +14,8 @@
                 referer request/referer|python:request.get('HTTP_REFERER', '');
                 referer python:test(referer.endswith('contact_us'), '', referer);
                 subject request/subject|string:;
-                fields request/fields|python:None
+                fields request/fields|python:None;
+                member context/@@plone_portal_state/member;
      ">
 
     <h1 class="documentFirstHeading" i18n:translate="heading_feedback_contact_us">Contact us</h1>
