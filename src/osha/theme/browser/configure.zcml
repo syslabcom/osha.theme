@@ -558,6 +558,7 @@
         for="*"
         name="oshmail2-view"
         class=".oshmail2_view.OSHmailView"
+        template="templates/oshmail2_view.pt"
         allowed_interface=".interfaces.IOSHmailView"
         permission="zope2.View"
         />

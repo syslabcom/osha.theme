@@ -20,7 +20,10 @@ class OSHmailView(BrowserView):
     """
 
     def __call__(self):
-        return self.template()
+        return self.index()
+
+    def getName(self):
+        return self.__name__
 
     @memoize
     def getLatestIssue(self):
