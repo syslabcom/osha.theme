@@ -52,7 +52,7 @@
                 Thank you.
                 </p>
                 <!-- Check if the object perhaps exists in the default language and if so, offer alternative languages -->
-                <span tal:define="path_info python:request.get('URL', '');
+                <span tal:define="path_info here/absolute_url;
                                   portal_path python:here.portal_url.getPortalPath();
                                   portal python:here.portal_url.getPortalObject();
                                   rel_ob_path python:path_info.replace(portal.absolute_url(), '');
