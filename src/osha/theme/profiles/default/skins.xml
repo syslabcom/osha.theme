@@ -291,6 +291,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -319,7 +320,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
@@ -388,6 +388,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -416,7 +417,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
@@ -485,6 +485,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -513,7 +514,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
@@ -666,6 +666,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -711,7 +712,6 @@
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
   <layer name="osha_form_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -763,6 +763,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -791,7 +792,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
@@ -860,6 +860,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -888,7 +889,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
@@ -955,6 +955,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -983,7 +984,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
@@ -1051,6 +1051,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -1079,7 +1080,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
@@ -1146,6 +1146,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -1174,7 +1175,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
@@ -1405,6 +1405,7 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
+  <layer name="osha_forms"/> 
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -1433,7 +1434,6 @@
   <layer name="classic_ecmascript"/>
   <layer name="plone_form_scripts"/>
   <layer name="plone_scripts"/>
-  <layer name="osha_forms"/>
   <layer name="plone_forms"/>
   <layer name="plone_images"/>
   <layer name="plone_content"/>
