@@ -85,10 +85,6 @@
     directory="osha.policy:skins/osha_content"/>
  <object name="osha_dynamic" meta_type="Filesystem Directory View"
     directory="osha.policy:skins/osha_dynamic"/>
- <object name="osha_form_scripts" meta_type="Filesystem Directory View"
-    directory="osha.policy:skins/osha_form_scripts"/>
- <object name="osha_forms" meta_type="Filesystem Directory View"
-    directory="osha.policy:skins/osha_forms"/>
  <object name="osha_images" meta_type="Filesystem Directory View"
     directory="osha.policy:skins/osha_images"/>
  <object name="osha_portlets" meta_type="Filesystem Directory View"
@@ -291,7 +287,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -336,7 +331,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -388,7 +382,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -433,7 +426,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -485,7 +477,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -530,7 +521,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -666,7 +656,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -711,7 +700,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -763,7 +751,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -808,7 +795,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -860,7 +846,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -905,7 +890,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -955,7 +939,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -1000,7 +983,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -1051,7 +1033,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -1096,7 +1077,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -1146,7 +1126,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -1192,7 +1171,6 @@
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
   <layer name="osha_theme_germany"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -1405,7 +1383,6 @@
   <layer name="captchas"/>
   <layer name="tinymce"/>
   <layer name="referencebrowser"/>
-  <layer name="osha_forms"/> 
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
   <layer name="pressroom_styles"/>
@@ -1450,7 +1427,6 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
-  <layer name="osha_form_scripts"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
