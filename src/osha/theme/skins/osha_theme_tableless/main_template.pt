@@ -143,6 +143,13 @@
                         tal:condition="show_border"
                         tal:content="structure provider:plone.contentviews" />
 
+                    <form id="quickuploader">
+                      <input type="hidden"
+                             name="uploadUrl"
+                             class="uploadUrl"
+                             tal:attributes="value string:${context/@@plone/getCurrentFolderUrl}/@@quick_upload" />
+                    </form>
+
                     <div id="region-content"
                          class="documentContent">
                       <span id="contentTopLeft"></span>
@@ -271,6 +278,7 @@
     </div>
 <div id="kss-spinner"><img tal:attributes="src string:${portal_url}/spinner.gif" alt="" /></div>
 <div id="actual-url" tal:content="request/ACTUAL_URL|string:" style="display:none"></div>
+
 </body>
 </html>
 </metal:page>
