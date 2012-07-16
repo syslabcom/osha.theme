@@ -16,8 +16,10 @@ class VocabularyPathView(BrowserView):
 #        import pdb; pdb.set_trace()
         termUID = field.getRaw(self.context)
         pvt = getToolByName(self.context, 'portal_vocabularies')
-        VOCAB = getattr(pvt, field.widget.vocabulary, None)
-        vd = VOCAB.getVocabularyDict(VOCAB)
+        VOCAB = getattr(field, 'vocabulary', None)
+        if VOCAB is None:
+            return []
+        vd = VOCAB.getVocabularyDict(self.context)
 
         parents_map = dict()
         # list of current parents
