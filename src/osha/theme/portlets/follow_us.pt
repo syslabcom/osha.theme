@@ -1,11 +1,22 @@
 <dl class="portlet portletFollowUs"
     i18n:domain="osha">
+    <style type="text/css">
+    .portletFollowUs .social-icon img { padding-top:8px; }
+    .portletFollowUs .social-icon a { padding:0; }
+    .portletFollowUs .social-icon { width: 26px;}
+    .portletFollowUs .social-icon.oshablog-logo { height: 36px; width:28px;  padding-top:0;}
+
+    </style>
     <dd>
       <ul>
-        <li class="twitter-logo"><a title="Twitter Logo" href="https://twitter.com/eu_osha" target="_blank">&nbsp;</a></li>
+        <li class="social-icon"><a href="https://twitter.com/eu_osha" target="_blank"><img src="http://a0.twimg.com/a/1342202357/images/resources/twitter-bird-callout.png" alt="Twitter" style="width:20px;margin-right:5px" /></a></li>
+        <li class="social-icon"><a href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork" target="_blank"><img src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-prn1/14098_427100966728_6182604_n.jpg" alt="Facebook" style="width:20px;margin-right:5px" /></a></li>
+        <li class="social-icon"><a href="https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank"><img src="http://de.press.linkedin.com/sites/all/themes/presslinkedin/images/LinkedIn_IN_Icon_15px.png" alt="Twitter" style="width:20px;margin-right:5px" /></a></li>
+        <li class="social-icon"><a href="https://www.youtube.com/EUOSHA" target="_blank"><img src="http://s.ytimg.com/yt/img/creators_corner/YouTube/youtube_32x32.png" alt="YouTube" style="width:20px;margin-right:5px" /></a></li>
+        <!--li class="twitter-logo"><a title="Twitter Logo" href="https://twitter.com/eu_osha" target="_blank">&nbsp;</a></li>
         <li class="youtube-logo"><a class="youtube-logo" title="Youtube logo" href="https://www.youtube.com/EUOSHA" target="_blank">&nbsp;</a></li>
-        <li class="linkedin-logo"><a title="LinkedIn Logo" href="https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank">&nbsp;</a></li>
-        <li class="oshablog-logo"><a title="OSH Blog Logo" href="/en/blog" target="_blank">&nbsp;</a></li>
+        <li class="linkedin-logo"><a title="LinkedIn Logo" href="https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank">&nbsp;</a></li-->
+        <li class="social-icon oshablog-logo"><a title="OSH Blog Logo" href="/en/blog" target="_blank">&nbsp;</a></li>
       </ul>
     </dd>
     <div class="visualClear"></div>
