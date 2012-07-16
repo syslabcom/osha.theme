@@ -84,9 +84,12 @@ class CatalogNavTree(object):
             portal_root = portlet.urltool.getPortalPath()
             contextPath = portal_root + custom_nav_root_path
             navrootPath = contextPath
+            navroot = context.restrictedTraverse(navrootPath)
+            navrootLang = navroot.Language()
         else:
             contextPath = "/".join(context.getPhysicalPath())
             navrootPath = "/".join(getNavigationRoot(context).getPhysicalPath())
+            navrootLang = context.Language()
 
         contextPathLen = len(contextPath)
         parentDepth = (contextPath.count("/") - 1)
@@ -98,6 +101,7 @@ class CatalogNavTree(object):
         query["portal_type"] = typesToList(context)
         query["sort_on"] = "getObjPositionInParent"
         query["sort_order"] = "asc"
+        query["Language"] = navrootLang
 
         catalog = getToolByName(context, "portal_catalog")
         results = catalog.searchResults(query)
