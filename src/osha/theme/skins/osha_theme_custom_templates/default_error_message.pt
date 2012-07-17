@@ -56,7 +56,7 @@
                                   portal_path python:here.portal_url.getPortalPath();
                                   portal python:here.portal_url.getPortalObject();
                                   rel_ob_path python:path_info.replace(portal.absolute_url(), '');
-                                  en_url python:test(rel_ob_path[0]=='/' and rel_ob_path[3]=='/', 'en/%s' % rel_ob_path[4:], '');
+                                  en_url python:test(len(rel_ob_path)>3 and rel_ob_path[0]=='/' and rel_ob_path[3]=='/', 'en/%s' % rel_ob_path[4:], '');
                                   en_ob python:portal.restrictedTraverse(en_url);
                                   langtool python:portal.portal_languages;
                                   preflang python:langtool.getPreferredLanguage();
