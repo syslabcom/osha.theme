@@ -551,7 +551,7 @@
         for="*"
         name="oshnews-view-simple"
         class=".oshnews_view.OSHNewsSimpleView"
-        template="templates/oshnews_view_simple.pt
+        template="templates/oshnews_view_simple.pt"
         permission="zope2.View"
         />
 
