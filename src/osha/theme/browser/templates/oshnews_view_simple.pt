@@ -48,6 +48,8 @@
                                                 obj_description obj/Description;
                                                 obj_typeinfo python: here.portal_types.getTypeInfo(obj_type);
                                                 icon python:portal_url+'/'+ obj_typeinfo.getIcon();
+                                                normalizeString nocall:context/@@plone/normalizeString;
+                                                toLocalizedTime nocall:here/@@plone/toLocalizedTime;
                                                 obj_wf_state obj/review_state|python: wtool.getInfoFor(obj, 'review_state', '');
                                                 obj_wf_state_class python:'state-' + normalizeString(obj_wf_state);
                                                 title_or_id obj/pretty_title_or_id;
