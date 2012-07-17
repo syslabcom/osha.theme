@@ -50,7 +50,7 @@
         </div>
         <div tal:condition="view/get_feed">
         <div id="EuMediaCoverage">
-            <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU media coverage</h1>
+            <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU-OSHA in the media</h1>
         </div>
 
         <div id="boxBody">
