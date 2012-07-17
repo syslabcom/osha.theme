@@ -63,13 +63,13 @@
                                     </div>
                                     <h2>
                                     
-                                    <a href="#" tal:attributes="href url;
+                                        <a href="#" tal:attributes="href url;
                                                                 class obj_wf_state_class"
                                                 tal:condition="showLinkToNewsItem"
-                                                tal:content="title_or_id" />
-                                    <span tal:condition="not:showLinkToNewsItem"
-                                        tal:attributes="class obj_wf_state_class"
-                                        tal:content="title_or_id" />
+                                                tal:content="title_or_id">link</a>
+                                        <span tal:condition="not:showLinkToNewsItem"
+                                            tal:attributes="class obj_wf_state_class"
+                                            tal:content="title_or_id" />
                                     </h2>
 
                                   <div tal:attributes="class python:obj_outdated and 'outdated_accordion_content' or ''">
@@ -83,11 +83,11 @@
                                                 tal:attributes="href url"
                                                 tal:condition="showLinkToNewsItem"
                                                 class="parent-fieldname-image">
-                                                    <img tal:attributes="src string:${url}/image_thumb; alt title_or_id;" width="80"/>
+                                                    <img tal:attributes="src string:${url}/image_thumb; alt title_or_id;" width="80" />
                                                 </a>
                                                 <span tal:condition="not:showLinkToNewsItem"
                                                 class="parent-fieldname-image">
-                                                    <img tal:attributes="src string:${url}/image_thumb; alt title_or_id;" width="80"/>
+                                                    <img tal:attributes="src string:${url}/image_thumb; alt title_or_id;" width="80" />
                                                 </span>
                                             </div>                                     
                                     </tal:block>
@@ -116,7 +116,6 @@
                    tal:attributes="href string:${here/absolute_url}/archive">Show previous news</a>
                 </p>
 
-            <!-- Navigation -->
             <div metal:use-macro="here/batch_macros/macros/navigation" />
 
         </tal:topiccontents>
