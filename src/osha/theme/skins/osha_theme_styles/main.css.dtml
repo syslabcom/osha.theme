@@ -231,6 +231,20 @@ body.template-osha_homepage #portal-breadcrumbs {
     display: none;
 }
 
+/** quickuploader **/
+.contentViews #contentview-upload a {
+    cursor:pointer;
+}
+form#quickuploader .quick-uploader {
+    border-width: 1px;
+    border-color: rgb(170, 177, 197);
+    border-style: solid;
+    padding: 0 1em;
+    margin-bottom: 1em;
+}
+/** /quickuploader **/
+
+
 /*
 ** PORTLETS STYLES
 */
