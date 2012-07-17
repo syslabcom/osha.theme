@@ -220,7 +220,30 @@ h2.headline {
     margin-bottom: 1em;
 }
 .contentViews {
-    margin-top: 1px;
+    background-image: url(content-action-bg.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    position: relative;
+    top: 1px;
+}
+.contentViews::first-line {
+    background-image: url(content-action-bg.png);
+    background-repeat: repeat-x;
+    background-position: bottom;  
+    line-height: 2em;
+}
+.contentViews li:first-child {
+    padding-left: 1em;
+}
+.contentViews li {
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    margin: 0;
+    padding: 0;
+}
+.contentViews li a {
+    outline: none;
 }
 .documentEditable .documentContent {
     padding-top: 1em !important;
@@ -232,13 +255,17 @@ body.template-osha_homepage #portal-breadcrumbs {
 }
 
 /** quickuploader **/
+#quickuploader .main-uploader {
+    margin-bottom: 0;
+}
+#quickuploader .uploadifybuttons {
+    margin: 1em;
+}
 .contentViews #contentview-upload a {
     cursor:pointer;
 }
 form#quickuploader .quick-uploader {
-    border-width: 1px;
-    border-color: rgb(170, 177, 197);
-    border-style: solid;
+    border: 1px solid rgb(170, 177, 197);
     padding: 0 1em;
     margin-bottom: 1em;
 }

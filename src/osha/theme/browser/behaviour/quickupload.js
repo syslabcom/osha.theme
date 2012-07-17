@@ -9,7 +9,7 @@ OSHUPLOAD.showUploader = function () {
     // If it gets called again when it's already opened it loads the
     // content of the page into the element
     if ( jQuery(".quick-uploader").length < 1 ) {
-
+        jQuery(this).addClass("selected");
         jQuery("form#quickuploader").each(function(){
             var uploadUrl =  jQuery('.uploadUrl', this).val();
             var uploadData =  jQuery('.uploadData', this).val();
