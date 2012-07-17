@@ -547,13 +547,13 @@
         permission="zope2.View"
         />
 
-<!--    <browser:page
+    <browser:page
         for="*"
         name="oshnews-view-simple"
         class=".oshnews_view.OSHNewsSimpleView"
         permission="zope2.View"
         />
--->
+
     <browser:page
         for="*"
         name="oshmail2-view"
