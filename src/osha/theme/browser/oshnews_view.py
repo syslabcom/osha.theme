@@ -78,9 +78,7 @@ class OSHNewsView(BrowserView):
 
 
 class OSHNewsSimpleView(OSHNewsView):
-    template = ViewPageTemplateFile('templates/oshnews_view_simple.pt')
-    template.id = "oshnews-view-simple"
-
+    pass
 
 class OSHNewsLocalView(OSHNewsView):
     """Dislplay OSH news only from the local folder"""
