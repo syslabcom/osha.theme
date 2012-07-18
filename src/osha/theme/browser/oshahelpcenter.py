@@ -102,7 +102,8 @@ class OSHAHelpCenterView(BrowserView):
         """ Get a list of "subcategory" values from FAQ objects with
         the selected category
         """
-        subcat_vocab_dict = self.vocab_dict[category][1]
+        subcat_vocab_dict = category in self.vocab_dict and \
+            self.vocab_dict[category][1] or None
         if not subcat_vocab_dict:
             return []
 

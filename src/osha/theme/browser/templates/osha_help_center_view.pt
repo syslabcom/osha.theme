@@ -67,7 +67,7 @@
              i18n:translate="label_faqs">
             FAQs
           </a>→
-          <a tal:content="python:view.vocab_dict[selected_category][0]"
+          <a tal:content="python:selected_category in view.vocab_dict and view.vocab_dict[selected_category][0] or 'Term not found'"
              tal:attributes="href string:${current_url}&category=${selected_category}">
             Accident Prevention
           </a>
