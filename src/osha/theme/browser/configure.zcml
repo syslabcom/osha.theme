@@ -555,23 +555,31 @@
         permission="zope2.View"
         />
 
-    <browser:page
+    <browser:view
         for="*"
         name="oshmail2-view"
         class=".oshmail2_view.OSHmailView"
-        template="templates/oshmail2_view.pt"
+        provides=".interfaces.IOSHmailView"
         allowed_interface=".interfaces.IOSHmailView"
+        allowed_attributes="view subscribe"
         permission="zope2.View"
-        />
+        >
+      <browser:page name="view" attribute="view"/>
+      <browser:page name="subscribe" attribute="subscribe"/>
+    </browser:view>
 
-    <browser:page
+    <browser:view
         for="*"
         name="oshmail-view"
         class=".oshmail_view.OSHmailView"
-        template="templates/oshmail_view.pt"
+        provides=".interfaces.IOSHmailView"
         allowed_interface=".interfaces.IOSHmailView"
+        allowed_attributes="view subscribe"
         permission="zope2.View"
-        />
+        >
+      <browser:page name="view" attribute="view"/>
+      <browser:page name="subscribe" attribute="subscribe"/>
+    </browser:view>
 
     <browser:page
         for="*"

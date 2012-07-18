@@ -4,6 +4,7 @@ import Acquisition
 from DateTime import DateTime
 
 from zope.component import getMultiAdapter
+from zope.interface import implements
 from plone.memoize import instance
 from plone.memoize.instance import memoize
 
@@ -11,16 +12,20 @@ from Products.ATContentTypes.interface import IATTopic
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from slc.alertservice import AlertMessageFactory as _
 
 from osha.theme import OSHAMessageFactory as _
+from osha.theme.browser.interfaces import IOSHmailView
 
 class OSHmailView(BrowserView):
     """View for displaying oshmail 
     """
+    implements(IOSHmailView)
+    template = ViewPageTemplateFile('templates/oshmail2_view.pt')
 
-    def __call__(self):
-        return self.index()
+    def view(self):
+        return self.template()
 
     def getName(self):
         return self.__name__

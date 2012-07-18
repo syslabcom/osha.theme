@@ -49,7 +49,7 @@
           </h1>
 
           <dl id="subscriptionBox" class="portlet rounded-corners">
-            <form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
+            <form action="#" tal:attributes="action string:./${view/getName}/subscribe" method="post" id="subscribe">
             <dt>
               <h4 i18n:translate="oshmail2_header_subscribe">Subscription</h4> 
             </dt>
