@@ -1,5 +1,6 @@
 from urlparse import urljoin
 from types import *
+import logging
 
 import Acquisition
 
@@ -26,6 +27,8 @@ from osha.theme.browser.osha_properties_controlpanel import \
     PropertiesControlPanelAdapter
 from osha.theme.config import *
 
+logger = logging.getLogger("oshaview")
+
 
 class OSHA(BrowserView):
     implements(IOSHA)
@@ -34,7 +37,12 @@ class OSHA(BrowserView):
         """ first strip html, then crop """
         context = Acquisition.aq_inner(self.context)
         portal_transforms = getToolByName(context, 'portal_transforms')
-        text = portal_transforms.convert('html_to_text', text).getData()
+	try:
+            text = portal_transforms.convert('html_to_text', text).getData()
+	except Exception, err:
+	    logger.warning('An error occurred in cropHTMLText, original text: %s, message: %s' % \
+	        (str([text]), str(err)))
+	    return text
         return context.restrictedTraverse('@@plone').cropText(text, length,
             ellipsis)
 
