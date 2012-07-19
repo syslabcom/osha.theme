@@ -966,23 +966,29 @@ dl.portletFollowUs ul {
 dl.portletFollowUs ul li {
     float: left;
     list-style-type: none;
-    width: 35px;
+    width: 28px;
 }
-dl.portletFollowUs a {
+/*dl.portletFollowUs a {
     padding: 7px 0 7px 35px;
     display:block;
 }
-dl.portletFollowUs .twitter-logo {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -1214px -418px transparent;
+*/
+dl.portletFollowUs #twitter-icon {
 }
-dl.portletFollowUs .youtube-logo {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll -1214px -790px transparent;
+dl.portletFollowUs #youtube-icon {
 }
-dl.portletFollowUs .linkedin-logo {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll  -716px -474px transparent;
+dl.portletFollowUs #facebook-icon {
 }
-dl.portletFollowUs .oshablog-logo {
-    background: url(&dtml-portal_url;/sprites-icons.png) repeat-x scroll  -1214px -1039px transparent;
+dl.portletFollowUs #linkedin-icon {
+}
+dl.portletFollowUs #oshablog-icon a {
+    color: #d9eef7 !important;
+    font-size: 14px;
+    padding: 2px 5px;
+    font-weight: bold;
+    -webkit-border-radius: 2px; 
+    -moz-border-radius: 2px;
+    border-radius: 2px;
 }
 
 #dashboard-portlets1 div.managedPortlet a,
