@@ -1083,8 +1083,8 @@ div.kssattr-atfieldname-osha_metadata{
     display: None;
 }
 
-body.section-fop-belgium div.kssattr-atfieldname-osha_metadata,
-body.section-fop-luxemburg div.kssattr-atfieldname-osha_metadata,
+body.subsite-belgium div.kssattr-atfieldname-osha_metadata,
+body.subsite-luxemburg div.kssattr-atfieldname-osha_metadata,
 body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
     display: block;
 }
