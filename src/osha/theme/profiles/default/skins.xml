@@ -910,7 +910,6 @@
   <layer name="solgemafullcalendar"/>
   <layer name="ContextualContentMenu"/>
   <layer name="syslabcom_filter_templates"/>
-  <layer name="richdocument"/>
   <layer name="publications_templates"/>
   <layer name="ploneboard_images"/>
   <layer name="ploneboard_scripts"/>
@@ -928,6 +927,7 @@
   <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
+  <layer name="richdocument"/>
   <layer name="LinguaPlone"/>
   <layer name="osha_theme_scripts"/>
   <layer name="seminarportal_styles"/>
@@ -1003,7 +1003,6 @@
   <layer name="solgemafullcalendar"/>
   <layer name="ContextualContentMenu"/>
   <layer name="syslabcom_filter_templates"/>
-  <layer name="richdocument"/>
   <layer name="publications_templates"/>
   <layer name="ploneboard_images"/>
   <layer name="ploneboard_scripts"/>
@@ -1021,6 +1020,7 @@
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
   <layer name="osha_theme_styles"/>
+  <layer name="richdocument"/>
   <layer name="LinguaPlone"/>
   <layer name="osha_theme_tableless"/>
   <layer name="osha_theme_scripts"/>
@@ -1097,7 +1097,6 @@
   <layer name="solgemafullcalendar"/>
   <layer name="ContextualContentMenu"/>
   <layer name="syslabcom_filter_templates"/>
-  <layer name="richdocument"/>
   <layer name="publications_templates"/>
   <layer name="ploneboard_images"/>
   <layer name="ploneboard_scripts"/>
@@ -1115,6 +1114,7 @@
   <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
+  <layer name="richdocument"/>
   <layer name="LinguaPlone"/>
   <layer name="osha_theme_scripts"/>
   <layer name="seminarportal_styles"/>
