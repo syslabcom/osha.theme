@@ -90,6 +90,7 @@
         <div class="powered_py">
           <div style="float:right">
             <a tal:attributes="href string:https://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Twitter" src="https://osha.europa.eu/en/news/oshmail/twitter-logo.jpg"></a>
+            <a tal:attributes="href string:https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Facebook" src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-prn1/14098_427100966728_6182604_n.jpg"></a>
             <a tal:attributes="href string:https://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Youtube" src="https://osha.europa.eu/en/news/oshmail/youtube.gif"></a>
             <a class="button darkblue oshmail-blog-icon" tal:attributes="href string:https://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}">B</a>
             <a tal:attributes="href string:https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img width="30" height="30" alt="Linkedin" src="https://osha.europa.eu/en/news/oshmail/linkedin-logo.jpg"></a>
