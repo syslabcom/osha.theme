@@ -1,0 +1,229 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:fill-slot="main" 
+     tal:define="tabindex tabindex|python:Iterator(pos=7000);
+     CMAP here/sql/focal_points_fetch_countrycodes;">
+
+<style>
+    .selecttable {
+        xmargin: 0px;
+        xpadding: 0px;
+    }
+    .selecttable tr th {
+    	BACKGROUND: #edf2f2;
+    	text-align:left;
+        padding: 5px 10px 5px 3px;
+	    BORDER-BOTTOM: #ddd 2px solid;
+	    BORDER-RIGHT: #ddd 2px solid;
+        BORDER-TOP: #fff 2px solid;
+    }
+    .selecttable tr td {
+    	BACKGROUND: #edf2f2;
+        padding: 3px 3px 3px 3px;
+	    BORDER-BOTTOM: #ddd 1px solid;
+	    BORDER-RIGHT: #ddd 1px solid;
+        BORDER-TOP: #fff 1px solid;
+    }
+    .neutral {
+    	BACKGROUND: white !important;
+        border: 0px !important;
+
+    }
+
+.header_country { background: #D7E6FF url(info_small.gif) 1px 1px no-repeat; padding: 4px 4px 4px 28px; margin-top: 30px; margin-bottom: 10px; height: 18px; }
+.section { position: static; top: 0; left: 0; float: none; overflow: hidden; clear: both; padding: 0; margin: 0; border-bottom: 1px solid #afafaf; }
+.section .block_member,
+.section .block_alternate { position: static; top: 0; left: 0; float: left; width: 48%; height: auto; padding: 8px 0px 8px 0px; line-height: 16px;  }
+.section .body_section { padding: 0 0 0 4px; }
+.section .header_section { background: transparent url(/job_icon.gif) 4px 0 no-repeat; padding: 3px 0 0px 24px; margin: 0; }
+#country-shortcut {padding:5px; text-align:center;}
+.countrylinks {margin-top: 10px;}
+.weak { color: #888;}
+</style>
+
+<h1 tal:content="here/Title"></h1>
+
+<p tal:content="structure here/Description"></p>
+
+
+<div tal:define="people here/sql/focal_points_fetchFocalpoints; observers here/sql/focal_points_fetchFocalpointObservers;">
+
+
+<div id="country-shortcut">
+  <div class="countrylinks">
+    <strong>EU Member States</strong><br>
+    <span tal:omit-tag="" tal:repeat="res python:CMAP['M']">
+        <a href="" tal:attributes="href python:'%s#%s'%(template.id, res['abbrev'])" ><span tal:replace="res/name"/></a> 
+        <span tal:condition="not:repeat/res/end" tal:omit-tag="">|</span>
+    </span>
+
+  </div>
+
+  <div class="countrylinks">
+    <strong>Observers</strong><br>
+    <a href="focal_points#observers">Observers</a> from the European Commission and the Social Partners
+    
+  </div>
+
+  <div class="countrylinks">
+    <strong>Candidate Countries and Potential Candidate Countries</strong><br>
+    <span tal:omit-tag="" tal:repeat="res python:CMAP['PCC']">
+        <a href="" tal:attributes="href python:'%s#%s'%(template.id, res['abbrev'])" ><span tal:replace="res/name"/></a> 
+        <span tal:condition="not:repeat/res/end" tal:omit-tag="">|</span>
+    </span>
+  </div>
+
+  <!--div class="countrylinks">
+    <strong>Potential Candidate Countries</strong><br>
+    <span tal:omit-tag="" tal:repeat="res python:CMAP['PC']">
+        <a href="" tal:attributes="href python:'%s#%s'%(template.id, res['abbrev'])" ><span tal:replace="res/name"/></a> 
+        <span tal:condition="not:repeat/res/end" tal:omit-tag="">|</span>
+    </span>
+  </div-->
+
+  <div class="countrylinks">
+    <strong>EFTA Countries</strong><br>
+    <span tal:omit-tag="" tal:repeat="res python:CMAP['E']">
+        <a href="" tal:attributes="href python:'%s#%s'%(template.id, res['abbrev'])" ><span tal:replace="res/name"/></a> 
+        <span tal:condition="not:repeat/res/end" tal:omit-tag="">|</span>
+    </span>
+  </div>
+</div>
+
+<p>&nbsp;</p>
+
+<h1>Focal Points of the EU Member States</h1>
+
+<span tal:repeat="res python:CMAP['M']">
+    <div tal:define="cpeople python:people.get(res['abbrev'], {});" 
+         tal:on-error="string:error"
+         style="clear: both;">
+
+	<h2 class="header_country"><a name="" tal:attributes="name res/abbrev"><span tal:replace="res/name"/></a></h2>
+		
+	  <div class="section">
+		<div class="block_member" tal:condition="thisone" tal:define="thisone python: cpeople">
+			<div class="body_section" metal:define-macro="person">
+				<span tal:omit-tag="" tal:condition="thisone/organisation | nothing"><span tal:replace="thisone/organisation |nothing"/><br /></span>
+				<span tal:omit-tag="" tal:condition="thisone/unit | nothing"><span tal:replace="thisone/unit |nothing"/><br /></span>
+				<span tal:omit-tag="" tal:condition="thisone/address | nothing"><span tal:replace="thisone/address |nothing"/><br /></span>
+				<span tal:omit-tag="" tal:condition="thisone/postalcode | thisone/city | nothing">
+                                      <span tal:replace="thisone/postalcode |nothing"/>
+                                      <span tal:replace="thisone/city |nothing"/><br />
+                                </span>
+				<span tal:replace="res/name | nothing"/><br />
+
+                                <p>Contact person:<br>
+				<strong><span tal:replace="thisone/title |nothing"/> 
+                                        <span tal:replace="thisone/firstname |nothing"/> 
+                                        <span tal:replace="thisone/lastname |nothing"/></strong>                                        
+                                <br />
+                                Tel: <span tal:replace="thisone/phone|nothing"/><br />
+                                Email: <span tal:define="email thisone/email|nothing" 
+                                             tal:replace="structure python:here.prepemail(email)"/><br />
+                                <span tal:define="www thisone/www|nothing"  tal:condition="www" tal:omit-tag="">
+                                    Web 1: <a tal:attributes="href www" tal:content="www"/><br />
+                                </span>
+                                <span tal:define="www2 thisone/www2|nothing"  tal:condition="www2" tal:omit-tag="">
+                                    Web 1: <a tal:attributes="href www2" tal:content="www2"/><br />
+                                </span>
+                                </p>
+			</div>
+		</div>		
+	  </div>
+
+    </div>	
+
+</span>
+
+<br clear="all">
+
+<!-- Observers -->
+<a name="observers">&nbsp;</a>		
+<h1>Observers</h1>
+
+<span tal:repeat="cpeople python:observers">
+    <div tal:on-error="string:error">
+
+	  <div class="section">
+		<div class="block_member" tal:condition="thisone" tal:define="thisone python: cpeople">
+                        <div class="body_section" metal:use-macro="template/macros/person">
+			</div>
+                </div>
+          </div>
+    </div>
+</span>
+
+<p>&nbsp;</p>
+<br clear="all">
+
+<h1>Focal Points of the EFTA Countries</h1>
+
+<span tal:repeat="res python:CMAP['E']">
+    <div tal:define="cpeople python:people.get(res['abbrev'], {});" 
+         tal:on-error="string:error">
+<br clear="all">
+
+	<h2 class="header_country"><a name="" tal:attributes="name res/abbrev"><span tal:replace="res/name"/></a></h2>
+		
+	  <div class="section">
+		<div class="block_member" tal:condition="thisone" tal:define="thisone python: cpeople">
+                        <div class="body_section" metal:use-macro="template/macros/person">
+			</div>
+                </div>
+          </div>
+    </div>
+</span>
+
+<p>&nbsp;</p>
+<br clear="all">
+<h1>Focal Points of the Candidate Countries and Potential Candidate Countries</h1>
+
+<span tal:repeat="res python:CMAP['PCC']">
+    <div tal:define="cpeople python:people.get(res['abbrev'], {});" 
+         tal:on-error="string:error">
+
+	<h2 class="header_country"><a name="" tal:attributes="name res/abbrev"><span tal:replace="res/name"/></a></h2>
+		
+	  <div class="section">
+		<div class="block_member" tal:condition="thisone" tal:define="thisone python: cpeople">
+                        <div class="body_section" metal:use-macro="template/macros/person">
+			</div>
+                </div>
+          </div>
+    </div>
+<br clear="all">
+</span>
+
+
+<!--br clear="all">
+
+<h1>Focal Points of the Potential Candidate Countries</h1>
+
+<span tal:repeat="res python:CMAP['PC']">
+    <div tal:define="cpeople python:people.get(res['abbrev'], {});" 
+         tal:on-error="string:error">
+
+	<h2 class="header_country"><a name="" tal:attributes="name res/abbrev"><span tal:replace="res/name"/></a></h2>
+		
+	  <div class="section">
+		<div class="block_member" tal:condition="thisone" tal:define="thisone python: cpeople">
+                        <div class="body_section" metal:use-macro="template/macros/person">
+			</div>
+                </div>
+          </div>
+    </div>
+<br clear="all">
+</span-->
+
+
+</div>
+</div>
+
+</body>
+</html>
