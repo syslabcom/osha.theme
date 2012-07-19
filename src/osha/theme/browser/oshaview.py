@@ -40,8 +40,8 @@ class OSHA(BrowserView):
 	try:
             text = portal_transforms.convert('html_to_text', text).getData()
 	except Exception, err:
-	    logger.warning('An error occurred in cropHTMLText, original text: %s, message: %s' % \
-	        (str([text]), str(err)))
+	    logger.warning('An error occurred in cropHTMLText, original text: %s, message: %s ' \
+	        'URL: %s' % (str([text]), str(err), context.absolute_url()))
 	    return text
         return context.restrictedTraverse('@@plone').cropText(text, length,
             ellipsis)
