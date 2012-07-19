@@ -32,8 +32,6 @@
             <tal:block define="imgtitle defimage/Title">
             <img alt="" src="folder.gif"
                  tal:attributes="src python:defimage.absolute_url();
-                 width defimage/width|string:auto;
-                 height defimage/height|string:auto;
                  alt imgtitle;" />
             </tal:block>
         </div>

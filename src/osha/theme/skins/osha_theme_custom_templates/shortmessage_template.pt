@@ -7,16 +7,18 @@
       tal:define="plone_view context/@@plone;
       	          view nocall:view | nocall: plone_view;"
       >
-  <div tal:replace="structure provider:plone.htmlhead" />
+  <!--div tal:replace="structure provider:plone.htmlhead" /-->
 
 
   <body tal:define="bgcol python:context.getProperty('color', '#C5CBD8');
                     ltool nocall:here/portal_languages;
-                    prefLang ltool/getPreferredLanguage"
+                    prefLang ltool/getPreferredLanguage;
+					portal here/portal_url/getPortalObject;
+					portal_title portal/Title"
         tal:attributes="style string:background-color: ${bgcol}">
 
     <div id="shortmessage-body">
-      <style type="text/css" tal:content="structure here/shortmessage_preview_style.css"></style>
+      <style type="text/css" tal:content="structure python:here.restrictedTraverse('shortmessage_preview_style.css')"></style>
       <div id="portal-logo">
         <a href="/"
            tal:attributes="href string:https://osha.europa.eu">
@@ -62,7 +64,7 @@
       <metal:bodytext metal:define-slot="main" tal:content="nothing">
         <!-- Page body text -->
       </metal:bodytext>
-
+		
       <div class="footer" i18n:domain="osha"
            tal:define="portal_url here/portal_url">
         <!--div style="float: right; width: 200px; text-align: right"
@@ -89,7 +91,7 @@
           <div style="float:right">
             <a tal:attributes="href string:https://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Twitter" src="https://osha.europa.eu/en/news/oshmail/twitter-logo.jpg"></a>
             <a tal:attributes="href string:https://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Youtube" src="https://osha.europa.eu/en/news/oshmail/youtube.gif"></a>
-            <a tal:attributes="href string:https://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OSHA Blog" src="https://osha.europa.eu/en/news/oshmail/oshablog-logo.jpg"></a>
+            <a class="button darkblue oshmail-blog-icon" tal:attributes="href string:https://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}">B</a>
             <a tal:attributes="href string:https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img width="30" height="30" alt="Linkedin" src="https://osha.europa.eu/en/news/oshmail/linkedin-logo.jpg"></a>
             <a tal:attributes="href string:https://osha.europa.eu/en/news/oshmail/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OSHmail" src="https://osha.europa.eu/en/news/oshmail/oshmail.gif"></a>
             <a tal:attributes="href string:https://osha.europa.eu/en/alertservice/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" src="https://osha.europa.eu/en/news/oshmail/oshalert.gif" alt="OSHAlert"></a>

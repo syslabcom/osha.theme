@@ -981,7 +981,7 @@ dl.portletFollowUs #facebook-icon {
 }
 dl.portletFollowUs #linkedin-icon {
 }
-dl.portletFollowUs #oshablog-icon a {
+dl.portletFollowUs #oshablog-icon a, .oshmail-blog-icon {
     color: #d9eef7 !important;
     font-size: 14px;
     padding: 2px 5px;
