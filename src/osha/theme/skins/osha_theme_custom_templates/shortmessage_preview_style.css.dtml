@@ -101,7 +101,7 @@ img {
 }
 .button.darkblue {
     color: #d9eef7 !important;
-    border: solid 1px #0076a3;
+    border: solid 1px #003399;
     background: #999ada;
     background: -webkit-gradient(linear, left top, left bottom, from(#999ada), to(#003399));
     background: -moz-linear-gradient(top,  #999ada,  #003399);
