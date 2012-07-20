@@ -823,6 +823,14 @@ a.link-parent {
     background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -332px transparent;
     padding: 1px 0px 1px 16px;
 }
+/* Exception for oshmail */
+#content .socialMediaOSHMAILfg a[href^="http:"], #content .socialMediaOSHMAILfg a[href^="https:"]{
+  background: none;
+  padding: 0;
+  text-decoration:none;
+}
+/* End Exception for oshmail */
+
 #content a[href ^="https:"],
 #content a.link-https {
     background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -493px transparent;
