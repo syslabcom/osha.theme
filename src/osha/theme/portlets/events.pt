@@ -63,8 +63,9 @@
         <a href="" rel="nofollow"
            class="tile"
            tal:attributes="href view/all_events_link"
-           i18n:translate="box_upcoming_events">
-                Upcoming events&hellip;
+	   i18n:domain="osha"
+           i18n:translate="label_more_events">
+                More events&hellip;
         </a>
         <span class="portletBottomLeft"></span>
         <span class="portletBottomRight"></span>
