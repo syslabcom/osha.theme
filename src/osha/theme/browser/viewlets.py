@@ -62,7 +62,6 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
         append_path = self._findpath(context.getPhysicalPath(),
                                      self.request.get('PATH_INFO', ''))
         formvariables = self._formvariables(self.request.form)
-        _checkPermission = getSecurityManager().checkPermission
 
         # only interesting on the main portal
         # or on subsites without their own language tool
