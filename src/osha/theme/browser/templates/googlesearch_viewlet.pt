@@ -1,4 +1,4 @@
-<div id="googlesearch_viewlet"
+<div id="googlesearch_viewlet" i18n:domain="osha"
     tal:define="cx view/getCx; cref view/getCref; additional view/getAdditional">
     <form action="slc_cse_search_results" id="cse-search-box"
         tal:attributes="action view/search_action">
