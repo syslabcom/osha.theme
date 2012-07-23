@@ -90,9 +90,9 @@
 
           <div class="countrylinks">
             <strong>Social partners and European Commission</strong><br>
-            <a href="focal_points#workers">Workers</a> | 
-            <a href="focal_points#employers">Employers</a> | 
-            <a href="focal_points#commission">EU Commission</a>
+            <a tal:attributes="href python:'%s#%s'%(template.id, 'workers')">Workers</a> | 
+            <a tal:attributes="href python:'%s#%s'%(template.id, 'employers')">Employers</a> | 
+            <a tal:attributes="href python:'%s#%s'%(template.id, 'commission')">EU Commission</a>
           </div>
         </div>
 
