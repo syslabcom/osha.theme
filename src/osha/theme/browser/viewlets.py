@@ -50,12 +50,18 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
 
     def languages(self):
         results = LanguageSelector.languages(self)
-
+        supported_langs = [v['code'] for v in results]
+        missing = set([str(c) for c in supported_langs])
+        translations = self._translations(missing)
         # On the main portal, we want to be able to filter out unwanted
         # languages needes for subsites
         oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
         subsite_path = oshaview.subsiteRootPath()
         potential_subsite = self.context.restrictedTraverse(subsite_path)
+        append_path = self._findpath(context.getPhysicalPath(),
+                                     self.request.get('PATH_INFO', ''))
+        formvariables = self._formvariables(self.request.form)
+        _checkPermission = getSecurityManager().checkPermission
 
         # only interesting on the main portal
         # or on subsites without their own language tool
@@ -70,51 +76,36 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
 
         # for non-translatable content, use standard Plone way of switching language
         if not ITranslatable.providedBy(self.context):
-            # special handling for LinguaLinks
-            if self.context.getPortalTypeName() == 'LinguaLink':
-                can = self.context.getLinkTarget()
-                can_lang = can.Language()
-                links =  can.getBRefs('lingualink')
-                # create a dict that maps language to LinguaLink object
-                lang_to_link = dict()
-                for link in links:
-                    lang_to_link[link.Language()] = link
-                for data in results:
-                    # for the canonical object, simply link to it
-                    if data['code'] == can_lang:
-                        data['url'] = can.absolute_url()
-                    else:
-                        # link to the translation, if present
-                        trans = can.getTranslation(data['code'])
-                        link = lang_to_link.get(data['code'], None)
-                        if trans:
-                            data['url'] = trans.absolute_url()
-                        # else link to the LinguaLink, if present
-                        elif link:
-                            data['url'] = link.absolute_url()
-                        # or use Plone default language negotiation as a last measure
-                        else:
-                            data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
-                return results
-            else:
-                for data in results:
-                    data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
-                return results
+            for data in results:
+                data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
+            return results
 
-        # for translatable content, directly link to the translated objects
-        translatable = ITranslatable(self.context, None)
-        if translatable is not None:
-            translations = translatable.getTranslations()
-        else:
-            translations = []
+#        # for translatable content, directly link to the translated objects
+#        translatable = ITranslatable(self.context, None)
+#        if translatable is not None:
+#            translations = translatable.getTranslations()
+#        else:
+#            translations = []
 
         for data in results:
+            code = str(data['code'])
             data['translated'] = data['code'] in translations
+            set_language = '?set_language=%s' % code
+
+            try:
+                appendtourl = '/'.join(append_path)
+                appendtourl += '?' + make_query(formvariables,
+                                                    dict(set_language=code))
+            except UnicodeError:
+                appendtourl = '/'.join(append_path)
+                if self.set_language:
+                    appendtourl += set_language
+
             if data['translated']:
                 trans = translations[data['code']][0]
                 state = getMultiAdapter((trans, self.request),
                         name='plone_context_state')
-                data['url'] = state.view_url() + '?set_language=' + data['code']
+                data['url'] = state.view_url() + appendtourl
             else:
                 state = getMultiAdapter((self.context, self.request),
                         name='plone_context_state')
