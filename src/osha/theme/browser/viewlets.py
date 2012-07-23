@@ -49,6 +49,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
         return xhtml_compress(self._template())
 
     def languages(self):
+        context = aq_inner(self.context)
         results = LanguageSelector.languages(self)
         supported_langs = [v['code'] for v in results]
         missing = set([str(c) for c in supported_langs])
