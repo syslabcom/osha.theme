@@ -50,7 +50,8 @@
       <p tal:content="structure here/Description"></p>
 
 
-      <div tal:define="people here/sql/focal_points_fetchFocalpoints; observers here/sql/focal_points_fetchFocalpointObservers;">
+      <div tal:define="people here/sql/focal_points_fetchFocalpoints; 
+                       partners_and_eu here/sql/focal_points_fetchFocalpointSPEC;">
 
 
         <div id="country-shortcut">
@@ -91,7 +92,7 @@
             <strong>Social partners and European Commission</strong><br>
             <a href="focal_points#workers">Workers</a> | 
             <a href="focal_points#employers">Employers</a> | 
-            <a href="focal_points#observers">EU Commission</a>
+            <a href="focal_points#commission">EU Commission</a>
           </div>
         </div>
 
@@ -143,7 +144,7 @@
 
         <br clear="all">
 
-       <h1>Focal Points of the EFTA Countries</h1>
+        <h1>Focal Points of the EFTA Countries</h1>
 
         <span tal:repeat="res python:CMAP['E']">
           <div tal:define="cpeople python:people.get(res['abbrev'], {});"
@@ -181,6 +182,45 @@
           <br clear="all">
         </span>
 
+        <p>&nbsp;</p>
+        <br clear="all">
+        <h1>Social partners and European Commission representatives</h1>
+
+        <span tal:define="cpeople python:partners_and_eu.get(9, {});" 
+              tal:on-error="string:error">
+              <h2 class="header_country"><a name="workers">Workers' representative</a></h2>
+              <div class="section">
+                    <div class="block_member" tal:condition="thisone" tal:define="thisone python: cpeople">
+              <div class="body_section" metal:use-macro="template/macros/person">
+                          </div>
+            </div>
+          </div>
+          <br clear="all">
+        </span>
+
+        <span tal:define="cpeople python:partners_and_eu.get(10, {});" 
+              tal:on-error="string:error">
+              <h2 class="header_country"><a name="employers">Employers' representative</a></h2>
+              <div class="section">
+                    <div class="block_member" tal:condition="thisone" tal:define="thisone python: cpeople">
+              <div class="body_section" metal:use-macro="template/macros/person">
+                          </div>
+            </div>
+          </div>
+          <br clear="all">
+        </span>
+
+        <span tal:define="cpeople python:partners_and_eu.get(11, {});" 
+              tal:on-error="string:error">
+              <h2 class="header_country"><a name="commission">European Commission representative</a></h2>
+              <div class="section">
+                    <div class="block_member" tal:condition="thisone" tal:define="thisone python: cpeople">
+              <div class="body_section" metal:use-macro="template/macros/person">
+                          </div>
+            </div>
+          </div>
+          <br clear="all">
+        </span>
 
         <!--br clear="all">
 
@@ -208,4 +248,3 @@
 
   </body>
 </html>
-
