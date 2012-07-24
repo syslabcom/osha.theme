@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
@@ -22,7 +23,7 @@
 
         <div class="eventlist_month" tal:repeat="month batch">
           <h2>
-            <tal:block content="month/month_name" i18n:translate=""/>
+            <tal:block content="month/month_name" i18n:domain="plonelocales" i18n:translate=""/>
             <tal:block content="month/year"/>
           </h2>
 
@@ -32,7 +33,7 @@
                  tal:define="event_outdated event/is_outdated">
               <div class="event_details">
                 <abbr class="dtstart" title="2002-12-04" tal:attributes="title event/start/isoformat | default" i18n:translate="start_date">
-                  <tal:block content="month/month_name" i18n:name="start_month_name" i18n:translate="" />
+                  <tal:block content="month/month_name" i18n:translate="" i18n:domain="plonelocales" />
                   <tal:block content="event/start/day" i18n:name="start_day_name" />
                 </abbr>
                 <abbr class="dtend" title="2002-12-04" tal:attributes="title event/end/isoformat | default">End Date</abbr>

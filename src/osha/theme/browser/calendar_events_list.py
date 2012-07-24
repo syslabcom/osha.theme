@@ -54,10 +54,13 @@ class EventsListingView(BrowserView):
                 old_month_year = month_year
                 if month_info:
                     months.append(month_info)
-                month_info = {'month': start.month(),
-                              'year': start.year(),
-                              'month_name': start.strftime("%B"),
-                              'events': []}
+                month_info = {
+                    'month': start.month(),
+                    'year': start.year(),
+                    # e.g. month_oct as used in the plonelocales i18n:domain
+                    'month_name': "month_%s" %(
+                        start.strftime("%B").lower()[:3] ),
+                    'events': []}
             isDateToBeConfirmed = (
                 True if hasattr(event, "dateToBeConfirmed")
                 and event.dateToBeConfirmed
