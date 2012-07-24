@@ -211,6 +211,10 @@ class Renderer(navigation.Renderer):
     _template = ViewPageTemplateFile('navigation.pt')
     recurse = ViewPageTemplateFile('navigation_recurse.pt')
 
+    @property
+    def available(self):
+        return True
+
     def update(self):
         portal_types = getToolByName(self.context, "portal_types")
         type_titles = dict([(fti.getId(), fti.Title())
