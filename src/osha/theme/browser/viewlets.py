@@ -164,10 +164,7 @@ class OSHANetworkchooser(common.ViewletBase):
         oshaview = getMultiAdapter((self.context, self.request), name='oshaview')
         subsite_path = oshaview.subsiteRootPath()
 
-        if subsite_path.split('/')[-1]=='netherlands':
-            return (self.nl(),)
-
-        elif subsite_path.split('/')[-1]=='germany':
+        if subsite_path.split('/')[-1]=='germany':
             return (self.de(),)
 
         else:
