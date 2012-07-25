@@ -33,7 +33,7 @@ logger = logging.getLogger("oshaview")
 class OSHA(BrowserView):
     implements(IOSHA)
 
-    def cropHtmlText(self, text, length, ellipsis='...'):
+    def cropHtmlText(self, text, length, ellipsis=u'...'):
         """ first strip html, then crop """
         context = Acquisition.aq_inner(self.context)
         portal_transforms = getToolByName(context, 'portal_transforms')
