@@ -32,6 +32,9 @@ from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPan
 
 from osha.theme.browser.topics_view import TopicsBrowserView
 
+import logging
+logger = logging.getLogger("osha-viewlets")
+
 
 class OSHALanguageSelector(TranslatableLanguageSelector):
     """ Override LinguaPlone's language selector to provide our own template
@@ -62,6 +65,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
         potential_subsite = self.context.restrictedTraverse(subsite_path)
         append_path = self._findpath(context.getPhysicalPath(),
                                      self.request.get('PATH_INFO', ''))
+        logger.info('append_path: ' + str(append_path))
         formvariables = self._formvariables(self.request.form)
 
         # only interesting on the main portal
@@ -80,13 +84,6 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
             for data in results:
                 data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
             return results
-
-#        # for translatable content, directly link to the translated objects
-#        translatable = ITranslatable(self.context, None)
-#        if translatable is not None:
-#            translations = translatable.getTranslations()
-#        else:
-#            translations = []
 
         for data in results:
             code = str(data['code'])
