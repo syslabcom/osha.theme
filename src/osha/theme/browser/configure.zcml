@@ -79,6 +79,11 @@
         />
 
     <browser:resourceDirectory
+        name="osha.theme.browser.resources.follow_me_logos"
+        directory="resources/follow_me_logos"
+        />
+
+    <browser:resourceDirectory
         name="osha.theme.browser.resources.multimedia"
         directory="resources/multimedia"
         layer=".interfaces.IOSHAThemeLayer"

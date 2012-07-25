@@ -2,10 +2,10 @@
     i18n:domain="osha">
     <dd>
       <ul>
-        <li id="twitter-icon" class="social-icon"><a href="https://twitter.com/eu_osha" target="_blank"><img src="http://a0.twimg.com/a/1342202357/images/resources/twitter-bird-callout.png" alt="Twitter" style="width:20px;margin-right:5px" /></a></li>
-        <li id="facebook-icon" class="social-icon"><a href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork" target="_blank"><img src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-prn1/14098_427100966728_6182604_n.jpg" alt="Facebook" style="width:20px;margin-right:5px" /></a></li>
-        <li id="linkedin-icon" class="social-icon"><a href="https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank"><img src="http://de.press.linkedin.com/sites/all/themes/presslinkedin/images/LinkedIn_IN_Icon_15px.png" alt="Twitter" style="width:20px;margin-right:5px" /></a></li>
-        <li id="youtube-icon" class="social-icon"><a href="https://www.youtube.com/EUOSHA" target="_blank"><img src="http://s.ytimg.com/yt/img/creators_corner/YouTube/youtube_32x32.png" alt="YouTube" style="width:20px;margin-right:5px" /></a></li>
+        <li id="twitter-icon" class="social-icon"><a href="https://twitter.com/eu_osha" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/twitter_20x20.png" alt="Twitter" style="width:20px;margin-right:5px" /></a></li>
+        <li id="facebook-icon" class="social-icon"><a href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/facebook_20x20.png" alt="Facebook" style="width:20px;margin-right:5px" /></a></li>
+        <li id="linkedin-icon" class="social-icon"><a href="https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/linkedin_20x20.png" alt="Twitter" style="width:20px;margin-right:5px" /></a></li>
+        <li id="youtube-icon" class="social-icon"><a href="https://www.youtube.com/EUOSHA" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/youtube_20x20.png" alt="YouTube" style="width:20px;margin-right:5px" /></a></li>
         <li id="oshablog-icon"><a class="button darkblue social" title="OSH Blog Logo" href="/en/blog" target="_blank">B</a></li>
       </ul>
     </dd>
