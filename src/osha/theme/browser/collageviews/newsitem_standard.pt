@@ -10,13 +10,7 @@
         tal:replace="here/Title">title</span>
 </h2>
 
-<p metal:define-macro="description"
-   tal:define="view context/@@collage_kss_helper"
-   tal:attributes="id string:${view/getUniqueIdentifier}-description;
-		   class python: view.getKssClasses('description')"
-   tal:condition="here/Description">
-  <span metal:define-slot="inside" 
-        tal:replace="structure here/Description">description</span>
+<p tal:replace="structure here/Description">description
 </p>
 
         <div class="newsImageContainer"
