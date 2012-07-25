@@ -1,6 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<span tal:define="url here/absolute_url;
+<div class="collage-pressrelease-basic" tal:define="url here/absolute_url;
     title_or_id here/pretty_title_or_id;">
 
         <dt>
@@ -8,4 +8,4 @@
                <span tal:content="title_or_id">Title</span>
              </a>
         </dt>
-</span>
+</div>

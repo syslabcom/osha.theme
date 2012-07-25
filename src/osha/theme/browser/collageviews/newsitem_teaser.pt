@@ -1,6 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<span tal:define="url here/absolute_url;
+<span tal:omit-tag="" tal:define="url here/absolute_url;
     obj_description here/Description;
     oshaview here/@@oshaview;
     collage_id view/getCollageId;
@@ -9,6 +9,7 @@
     title_or_id here/pretty_title_or_id;">
 
 
+<div class="collage-newsitem-teaser">
     <h2 metal:define-macro="title"
         
         tal:condition="here/Title">
@@ -34,4 +35,6 @@
             </span> 
 
     <div class="visualClear"></div>
+</div>
+
 </span>

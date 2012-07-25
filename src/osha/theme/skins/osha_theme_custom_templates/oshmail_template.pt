@@ -29,29 +29,31 @@
           tal:attributes="name python:keyval[0];
                           content python:keyval[1];" />
 
-    <!-- Main style sheets for CSS2 capable browsers -->
-
-    <tal:scripts define="view context/@@plone|nothing"
-                replace="structure provider:plone.resourceregistries.scripts" />
-
     <link rel="stylesheet" type="text/css" media='all' href="oshmail.css"
         tal:attributes="href string:${here/portal_url}/oshmail.css" />
+    <link rel="stylesheet" type="text/css" media='all' href="lipstick.css"
+        tal:attributes="href string:${here/portal_url}/lipstick.css" />
 
 </head>
 
 <body leftmargin="5"
-    tal:define="ltool nocall:here/portal_languages;
+    tal:define="plone_view context/@@plone;
+				view nocall:view | nocall: plone_view;
+				ltool nocall:here/portal_languages;
                 propstool nocall:here/portal_properties;
                 site_props nocall:propstool/site_properties;
                 prefLang ltool/getPreferredLanguage;
                 oshaview here/@@oshaview;
                 collage_id here/getId;
-                url python:oshaview.handleOSHMailUrls('https://osha.europa.eu', collage_id);">
+                url python:oshaview.handleOSHMailUrls('https://osha.europa.eu', collage_id);
+				body_class python:plone_view.bodyClass(template, view);"
+	tal:attributes="class body_class;">
+   <div id="border-wrapper">
+	<div id="visual-portal-wrapper">
 
-<div id="visual-portal-wrapper">
-<table id="oshmail-topbanner" width="100%" cellpadding="0" cellspacing="0" border="0"
-    tal:condition="python:context.getId()=='oshmail-100'"
-    background="https://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
+		<table id="oshmail-topbanner" width="100%" cellpadding="0" cellspacing="0" border="0"
+    		tal:condition="python:context.getId()=='oshmail-100'"
+    		background="https://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
     <tr>
         <td>
             <img src="https://osha.europa.eu/en/news/OSHmailCandlesLogo.png" alt="OSHmail jubilee logo" ></td>
@@ -62,73 +64,20 @@
     </tr>
 </table>
 
-<table cellpadding="0" cellspacing="0" border="0" tal:condition="python:context.getId()!='oshmail-100'"
-       summary="Layout table"
-       i18n:attributes="summary"
-       tal:define="topbanner string:https://osha.europa.eu/images/topbanner2.jpg;
-       dbo python:0;
-       portal_title here/portal_properties/title;">
-    <tr>
-        <td rowspan="2" tal:attributes="rowspan python:test(dbo, '1', '2')" id="portal-logo-wrapper">
-    <div id="portal-logo">
-    <a href="/"
-       tal:attributes="href url">
-       <span tal:omit-tag="" tal:on-error="nothing" >
-         <img alt="" title="" tal:define="logo python: prefLang=='en' and 'logo.gif' or 'logo_'+prefLang+'.gif'"
-            tal:attributes="src string:https://osha.europa.eu/${logo};
-                            title portal_title;
-                            alt portal_title"
-            i18n:attributes="title"/>
-       </span>
-    </a>
-    </div>
-        </td>
-        <tal:block condition="not:dbo">
-        <td id="portal-top-content">
-            <div class="top-actions">
-                <div class="slogan" i18n:translate="" i18n:domain="osha"
-                     tal:content="site_properties/osha_properties/site_slogan|string:European Agency for Safety and Health at Work">
-                    European Network
-                </div>
-            </div>
-         </td>
-         <td id="portal-top-banner" rowspan="2" tal:condition="nocall:topbanner">
-             <img alt="European flag" title="European flag"
-             tal:attributes="src topbanner" />
-         </td>
-         </tal:block>
-     </tr>
-     <tr tal:condition="not:dbo">
-         <td id="portal-top-dropdowns" align="right">
-<img src="https://osha.europa.eu/images/oshmail_banner.jpg" border="0" title="OSHMail" alt="OSHMail">
-         </td>
-     </tr>
-     <tr tal:condition="not:dbo">
-        <td id="portal-variable1">
-            <div class="area" tal:condition="exists:here/variable_area1"
-                 tal:content="structure here/variable_area1|nothing" tal:on-error="structure python:test(member.has_role('Manager', here), chr(60)+'span style=\'color: red\'>page template variable_area1 has errors!'+chr(60)+'/span>', '')">
-                 area 1
-            </div>
-        </td>
-        <td id="portal-variable2" colspan="2"
-            tal:attributes="colspan python:test(topbanner, '2', '1')">
-            <div class="area" tal:condition="exists:here/variable_area2"
-                 tal:content="structure here/variable_area2|nothing" tal:on-error="structure python:test(member.has_role('Manager', here), chr(60)+'span style=\'color: red\'>page template variable_area2 has errors!'+chr(60)+'/span>', '')">
-                 area 2
-            </div>
-        </td>
-     </tr>
-</table>
+<div id="portal-header">
+<a id="portal-logo" accesskey="1" href="https://osha.europa.eu/en" target="_blank">
+    <img src="http://osha.europa.eu/logo.gif" alt="" title="Logo" height="110" width="177" tal:attributes="src string:${here/portal_url}/logo.gif"></a>
+
+	<h1 class="documentFirstHeading" tal:content="here/title_or_id">collection id or title</h1>
+</div>
+
+
 
 
 <div class="visualClear"></div>
 
-<p>&nbsp;</p>
 
-    <div class="title">
-        <h1 class="documentFirstHeading" tal:content="here/title_or_id">collection id or title</h1>
-    </div>
-<table width="100%">
+<table width="100%" id="language-list">
     <tr>
         <td valign="top"
             tal:define="lang_info ltool/getAvailableLanguageInformation;">
@@ -151,13 +100,14 @@
     </tr>
   </table>
 
-<p>&nbsp;</p>
+
 
    <metal:bodytext metal:define-slot="main" tal:content="nothing">
       <!-- Page body text -->
    </metal:bodytext>
 
 
+  </div>
 </div>
 
 </body>

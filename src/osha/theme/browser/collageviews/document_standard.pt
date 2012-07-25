@@ -1,12 +1,7 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<h2 metal:define-macro="title"
-    tal:define="view context/@@collage_kss_helper"
-    tal:attributes="id string:${view/getUniqueIdentifier}-title;
-		    class python: view.getKssClasses('title')"
-    tal:condition="here/Title">
-  <span metal:define-slot="inside" 
-        tal:replace="here/Title">title</span>
+<div class="collage-document-standard" >
+<h2 tal:content="here/Title">title
 </h2>
 
 <p>
@@ -32,3 +27,5 @@
   <span metal:define-slot="inside" 
         tal:replace="structure text">text</span>
 </div> 
+
+</div>

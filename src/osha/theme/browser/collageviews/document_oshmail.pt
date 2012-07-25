@@ -1,8 +1,8 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<h2 style="font-size: large;">
+<h1>
   <span tal:content="here/Title" i18n:domain="osha" i18n:translate="">title</span>
-</h2>
+</h1>
 
 <p tal:condition="here/Description">
     <span tal:replace="here/Description">description</span>

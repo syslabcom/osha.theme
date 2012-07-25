@@ -1,29 +1,32 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<dl tal:define="url string:${here/absolute_url}/view;
-    obj_description here/Description;
-    title_or_id here/pretty_title_or_id;
-    effective here/getEffectiveDate;
-    plone context/@@plone;
-    oshaview here/@@oshaview;
-    collage_id view/getCollageId;
-    url python:oshaview.handleOSHMailUrls(url, collage_id);
-    toLocalizedTime nocall:plone/toLocalizedTime">
+<div class="collage-file-publication"
+	tal:define="url string:${here/absolute_url}/view;
+	    obj_description here/Description;
+	    title_or_id here/pretty_title_or_id;
+	    effective here/getEffectiveDate;
+	    plone context/@@plone;
+	    oshaview here/@@oshaview;
+	    collage_id view/getCollageId;
+	    url python:oshaview.handleOSHMailUrls(url, collage_id);
+	    toLocalizedTime nocall:plone/toLocalizedTime">
 
-
-    <dt>
-        <img src="publication_icon.gif" 
-            tal:attributes="src string:${plone/navigationRootUrl}/publication_icon.gif"/>
+    <img src="publication_icon.gif" class="cover-image" 
+        tal:attributes="src string:${here/absolute_url}/cover_image" />
+    <h2>
         <a href="#"
             tal:attributes="href url" tal:content="title_or_id">
         </a>
-   </dt>
+   </h2>
   
-    <dd>
+    <p tal:content=="obj_description" />
     <span tal:content="structure python:toLocalizedTime(effective)"> 
         &nbsp; 
     </span>
-
-    </dd>
-
-</dl>
+	<p>
+	   <metal:field use-macro="python:here.widget('file', mode='view')">
+	    File
+	    </metal:field>
+	</p>
+	<div class="visualClear"><!-- --></div>
+</div>

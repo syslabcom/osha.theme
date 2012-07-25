@@ -1,27 +1,30 @@
 body {
 -x-system-font:none;
-background-color:White;
-color:#191919;
-font-family:Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
-font-size:70%;
 font-size-adjust:none;
 font-stretch:normal;
 font-style:normal;
 font-variant:normal;
 font-weight:normal;
 line-height:normal;
-margin:0;
-padding:0;
-}
 
+font: 80% Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
+background: transparent url(&dtml-portal_url;/top.gif) repeat-x top left;
+color: #191919;
+margin: 0;
+padding: 0;
+}
+#border-wrapper {
+background: url(&dtml-portal_url;/logoinner.gif) no-repeat scroll left top transparent;
+margin: 0 auto;
+width: 990px;
+}
 #visual-portal-wrapper {
 overflow-x:hidden;
 overflow-y:auto;
-position:relative;
-}
-
-#visual-portal-wrapper {
-margin:0 0 1em;
+position: relative;
+overflow-x: hidden;
+margin: 0 auto;
+width: 960px;
 padding:0;
 }
 
@@ -31,7 +34,25 @@ font-size:100%;
 
 #portal-logo {
 float:left;
+background: url(&dtml-portal_url;/logoinner2.gif) no-repeat scroll right bottom white;
+padding: 18px 30px 10px 10px;
 }
+#portal-logo img {
+border: 0;
+padding: 0;
+margin: 0;
+}
+
+#portal-header {
+border-bottom: 0;
+background: transparent url(&dtml-portal_url;/headereurope.gif) no-repeat top right;
+float: left;
+height: 160px;
+width: 100%;
+margin-top: -1px;
+position: relative;
+}
+
 
 a {
 background-color:transparent;
@@ -39,15 +60,10 @@ color:#144989;
 text-decoration:none;
 }
 
-#portal-logo img {
-border:0 none;
-margin:0;
-padding:0;
-}
-
 img {
 border:medium none;
 vertical-align:middle;
+
 }
 
 #portal-top-content {
@@ -116,7 +132,7 @@ text-align:left;
 }
 
 #collage .two-columns-largeleft .block_1 {
-border-right:1px solid black;
+/*border-right:1px solid black;*/
 margin-left:1%;
 width:68%;
 }
@@ -159,6 +175,7 @@ margin-bottom:1em;
 
 #collage .two-columns-largeleft .block_2 {
 width:29%;
+margin-left: 20px;
 }
 
 #collage .one-column .block_1 {
@@ -189,9 +206,7 @@ font-size:100%;
 background-color:#F7F8F9;
 border:1px solid #C5CBD8;
 font-size:100%;
-margin:1em auto;
 padding:1em;
-width:80%;
 }
 
 /****************/
@@ -280,3 +295,137 @@ vertical-align: bottom;
     top: -8px;
 }
 /* end oshmail button styles */
+
+#language-list {
+    margin-bottom: 4em;
+	padding: 8px;
+	margin-bottom: 20px;
+	-webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+	-moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+	box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+	font: italic 13px/20px Georgia, "Times New Roman", Times, serif;
+	
+	background-color: #fdfdc8;
+	color: #6f5a44;
+	border: 1px solid #d3d4a7;
+}
+
+/* Experimental styles for new oshmail looks by Maite */
+body.subsection1-oshmail h1.documentFirstHeading {
+    font-family: Georgia, "Times new roman", serif;
+    font-weight: normal;
+    font-size: 36px;
+    letter-spacing: 3px;
+    background: none;
+    margin-top:36px;
+    text-transform:none;
+    text-align:right;
+}
+
+body.subsection1-oshmail .collage-item:first-child h1 {
+    margin: 0px 0 24px;
+}    
+body.subsection1-oshmail h1 {
+    font-family: Georgia, "Times new roman", serif;
+    font-weight: normal;
+    font-size: 24px;
+    margin: 72px 0 24px;
+    border-bottom:0;
+    text-transform:uppercase;
+    letter-spacing: 5px;
+    text-shadow: 2px 2px 2px #CCCCCC;
+}
+
+body.subsection1-oshmail h2, 
+body.subsection1-oshmail h3 {
+	text-shadow: 0 1px 0 #FFFFFF;
+	font-weight: normal;
+	font-size:18px;
+	padding: 0px 8px 5px;
+	font-style: italic;
+	margin-bottom: 10px;
+	border-bottom: 0;
+}
+
+span.description {
+    display: block;
+    margin-left: 120px;
+}
+body.subsection1-oshmail .collage-newsitem-teaser,
+body.subsection1-oshmail .collage-newsitem-standard {
+    padding: 8px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+    -moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+    font: italic 13px/20px Georgia, "Times New Roman", Times, serif;
+
+}
+
+body.subsection1-oshmail .collage-newsitem-teaser {
+    -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
+    border: 1px solid #d1d1d1;
+    background: #eceef0 url(header.png) no-repeat fixed 75% 0;
+    text-shadow: white 0 1px 0;
+}
+
+body.subsection1-oshmail .collage-newsitem-standard {
+	background-color: #fdfdc8;
+	color: #6f5a44;
+	border: 1px solid #d3d4a7;
+	padding-bottom:1em;
+}
+body.subsection1-oshmail .collage-file-publication {
+    margin-bottom: 4em;
+}
+body.subsection1-oshmail .collage-file-publication img.cover-image {
+    float:left;
+    clear:right;
+    margin-right:20px;
+    -webkit-transform: rotate(-4deg);
+	-moz-transform: rotate(-4deg);
+	-ms-transform: rotate(-4deg);
+	transform: rotate(-4deg);
+	z-index: 30;
+	width:100px;
+    
+    	-moz-box-shadow: 3px 3px 4px #000;
+    	-webkit-box-shadow: 3px 3px 4px #000;
+    	box-shadow: 3px 3px 4px #000;
+    	/* For IE 8 */
+    	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+    	/* For IE 5.5 - 7 */
+    	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+    
+}
+body.subsection1-oshmail .collage-newsitem-rightcolumn i,
+body.subsection1-oshmail .collage-event-rightcolumn i {
+    color:#666;
+}
+body.subsection1-oshmail .collage-newsitem-rightcolumn,
+body.subsection1-oshmail .collage-event-rightcolumn {
+	padding: 20px;
+	-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.2);
+
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);    
+}
+
+body.subsection1-oshmail .collage-event-rightcolumn {
+    background-color: #d9d8f6;
+}
+
+
+body.subsection1-oshmail b.socialMediaOSHMAIL {
+    display:none;
+}
+body.subsection1-oshmail .socialMediaOSHMAILfg > p > strong > span {
+    font-family: Georgia, "Times new roman", serif;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 24px!important;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 2px #CCCCCC;
+}
+/* End Experimental styles for new oshmail looks by Maite */
+

@@ -1,7 +1,7 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
 
-<div metal:define-macro="portlet">
+<div metal:define-macro="portlet" class="collage-newsitem-portlet">
 
      <dl class="portlet" tal:define="kssview context/@@collage_kss_helper">
 	<dt class="portletHeader">

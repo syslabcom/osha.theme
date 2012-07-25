@@ -1,5 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
+<div class="collage-newsitem-standard">
 <h2 metal:define-macro="title"
     tal:define="view context/@@collage_kss_helper"
     tal:attributes="id string:${view/getUniqueIdentifier}-title;
@@ -45,3 +46,5 @@
   <span metal:define-slot="inside" 
         tal:replace="structure text">text</span>
 </div> 
+
+</div>
