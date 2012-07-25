@@ -7,6 +7,7 @@ from zope.i18n import translate
 from Acquisition import aq_base, aq_inner, aq_parent
 from ZTUtils import make_query
 
+from AccessControl.SecurityManagement import getSecurityManager
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -66,6 +67,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
                                      self.request.get('PATH_INFO', ''))
         logger.info('append_path: ' + str(append_path))
         formvariables = self._formvariables(self.request.form)
+        _checkPermission = getSecurityManager().checkPermission
 
         # only interesting on the main portal
         # or on subsites without their own language tool
@@ -78,41 +80,61 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
             if languages_on_main_site:
                 results = [x for x in results if x['code'] in languages_on_main_site]
 
-        # for non-translatable content, use standard Plone way of switching language
-        if not ITranslatable.providedBy(self.context):
-            for data in results:
-                data['url'] = self.context.absolute_url()+'/switchLanguage?set_language='+data['code']
-            return results
-
+        non_viewable = set()
         for data in results:
             code = str(data['code'])
-            data['translated'] = data['code'] in translations
+            data['translated'] = code in translations.keys()
             set_language = '?set_language=%s' % code
 
             try:
                 appendtourl = '/'.join(append_path)
-                appendtourl += '?' + make_query(formvariables,
+                if self.set_language:
+                    appendtourl += '?' + make_query(formvariables,
                                                     dict(set_language=code))
+                elif formvariables:
+                    appendtourl += '?' + make_query(formvariables)
             except UnicodeError:
                 appendtourl = '/'.join(append_path)
                 if self.set_language:
                     appendtourl += set_language
 
             if data['translated']:
-                trans = translations[data['code']][0]
+                trans, direct, has_view_permission = translations[code]
+                if not has_view_permission:
+                    # shortcut if the user cannot see the item
+                    non_viewable.add((data['code']))
+                    continue
+
                 state = getMultiAdapter((trans, self.request),
                         name='plone_context_state')
-                data['url'] = state.view_url() + appendtourl
+                if direct:
+                    data['url'] = state.canonical_object_url() + appendtourl
+                else:
+                    data['url'] = state.canonical_object_url() + set_language
             else:
-                state = getMultiAdapter((self.context, self.request),
+                has_view_permission = bool(_checkPermission('View', context))
+                # Ideally, we should also check the View permission of default
+                # items of folderish objects.
+                # However, this would be expensive at it would mean that the
+                # default item should be loaded as well.
+                #
+                # IOW, it is a conscious decision to not take in account the
+                # use case where a user has View permission a folder but not on
+                # its default item.
+                if not has_view_permission:
+                    non_viewable.add((data['code']))
+                    continue
+
+                state = getMultiAdapter((context, self.request),
                         name='plone_context_state')
                 try:
-                    data['url'] = state.view_url() + '/not_available_lang?set_language=' + data['code']
+                    data['url'] = state.canonical_object_url() + appendtourl
                 except AttributeError:
-                    data['url'] = self.context.absolute_url() + '/not_available_lang?set_language=' + data['code']
+                    data['url'] = context.absolute_url() + appendtourl
 
+        # filter out non-viewable items
+        results = [r for r in results if r['code'] not in non_viewable]
         return results
-
 
 class OSHAGermanyLanguageSelector(OSHALanguageSelector):
     """ Override OSHA language selector to provide a german template
