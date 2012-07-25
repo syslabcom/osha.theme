@@ -17,7 +17,6 @@ from zope.annotation.interfaces import IAnnotations, IAnnotatable
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
 
-from plone.app.i18n.locales.browser.selector import LanguageSelector
 from plone.app.layout.viewlets import common
 from plone.app.portlets.cache import get_language
 
@@ -54,7 +53,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
 
     def languages(self):
         context = aq_inner(self.context)
-        results = LanguageSelector.languages(self)
+        results = super(OSHALanguageSelector, self).languages()
         supported_langs = [v['code'] for v in results]
         missing = set([str(c) for c in supported_langs])
         translations = self._translations(missing)
