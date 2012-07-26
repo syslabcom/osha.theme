@@ -459,7 +459,7 @@ class OSHA(BrowserView):
     def inlinestyler(self, data):
         """ calls an external service to integrate styles into tags """
         service_url = "http://inlinestyler.torchboxapps.com/styler/convert/"
-        params = dict(returnraw=1, source=data.encode('utf8'))
+        params = dict(returnraw='1', source=data.encode('utf8'))
         req = urllib2.Request(url=service_url, data=urllib.urlencode(params))
         f = urllib2.urlopen(req)
 
