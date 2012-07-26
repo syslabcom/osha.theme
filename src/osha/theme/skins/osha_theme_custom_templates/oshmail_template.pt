@@ -30,11 +30,7 @@
                           content python:keyval[1];" />
 
 <style type="text/css" tal:define="sheet python:getattr(here, 'oshmail.css')" tal:content="structure sheet" ></style>
-<style type="text/css" tal:define="sheet python:getattr(here, 'lipstick.css')" tal:content="structure sheet" ></style>
-    <!--link rel="stylesheet" type="text/css" media='all' href="oshmail.css"
-        tal:attributes="href string:${here/portal_url}/oshmail.css" />
-    <link rel="stylesheet" type="text/css" media='all' href="lipstick.css"
-        tal:attributes="href string:${here/portal_url}/lipstick.css" /-->
+
 
 </head>
 
