@@ -89,7 +89,7 @@ class CatalogNavTree(object):
         else:
             contextPath = "/".join(context.getPhysicalPath())
             navrootPath = "/".join(getNavigationRoot(context).getPhysicalPath())
-            navrootLang = context.Language()
+            navrootLang = getNavigationRoot(context).Language()
 
         contextPathLen = len(contextPath)
         parentDepth = (contextPath.count("/") - 1)
@@ -106,11 +106,13 @@ class CatalogNavTree(object):
         catalog = getToolByName(context, "portal_catalog")
         results = catalog.searchResults(query)
         cache = {}
+
         cache[navrootPath] = {
             "current": False,
             "currentParent": True,
             "children": []
         }
+
         for brain in results:
             path = brain.getPath()
             pathLen = len(path)
@@ -146,7 +148,6 @@ class CatalogNavTree(object):
             else:
                 parentNode["children"].append(node)
             node["parent"] = parentNode
-
         self.tree = cache
         self.root = cache[navrootPath]
 
