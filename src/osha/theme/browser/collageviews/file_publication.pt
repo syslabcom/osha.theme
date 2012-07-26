@@ -11,7 +11,7 @@
 	    url python:oshaview.handleOSHMailUrls(url, collage_id);
 	    toLocalizedTime nocall:plone/toLocalizedTime">
 
-    <img src="publication_icon.gif" class="cover-image" 
+    <img src="publication_icon.gif" class="cover-image" width="100"
         tal:attributes="src string:${here/absolute_url}/cover_image" />
     <h2>
         <a href="#"
