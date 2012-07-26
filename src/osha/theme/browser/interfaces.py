@@ -205,7 +205,9 @@ class IOSHA(Interface):
     def get_native_language_by_code(lang_code):
         """Returns the localized name of a language for a given language code"""
 
-
+    def inlinestyler(data):
+        """ calls an external service to integrate styles into tags """
+        
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions
     """    

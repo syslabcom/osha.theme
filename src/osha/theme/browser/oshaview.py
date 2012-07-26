@@ -1,6 +1,9 @@
 from urlparse import urljoin
 from types import *
 import logging
+import urllib, urllib2
+from BeautifulSoup import BeautifulSoup
+
 
 import Acquisition
 
@@ -451,3 +454,15 @@ class OSHA(BrowserView):
 
     def pdb_from_page_template(self, *args, **kwargs):
         import pdb; pdb.set_trace()
+
+
+    def inlinestyler(self, data):
+        """ calls an external service to integrate styles into tags """
+        service_url = "http://inlinestyler.torchboxapps.com/styler/convert/"
+        params = dict(returnraw=1, source=data.encode('utf8'))
+        req = urllib2.Request(url=service_url, data=urllib.urlencode(params))
+        f = urllib2.urlopen(req)
+
+        ret = BeautifulSoup(f.read(), convertEntities=BeautifulSoup.HTML_ENTITIES)
+        return ret
+        
