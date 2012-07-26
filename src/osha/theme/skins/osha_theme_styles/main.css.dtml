@@ -1565,6 +1565,7 @@ div.flatlist_container .flatlist-item {
 
 .backlinks li {
     display: inline;
+    font-size: 90%;
 }
 
 /* </dtml-with> */
