@@ -1504,6 +1504,9 @@ div.flatlist_container.opened{
    border: none;
    font-size: 100%;
 }
+ul.dynatree-container .filtermatch a {
+ color: red;
+}
 div.dynatree-atwidget span.delete{
   background: url("ico_check_red.gif") no-repeat scroll 0 0 transparent;
   padding: 0 8px;
