@@ -447,7 +447,9 @@ class OSHA(BrowserView):
             height = int(height_str)
         except (ValueError, TypeError):
             return ""
-        if width / height < 1:
+        if height == 0:
+            return ""
+        elif width / height < 1:
             return "portrait"
         else:
             return "landscape"
