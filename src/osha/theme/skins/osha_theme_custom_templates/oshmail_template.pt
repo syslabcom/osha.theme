@@ -64,7 +64,7 @@
 
 <div id="portal-header">
 <a id="portal-logo" accesskey="1" href="https://osha.europa.eu/en" target="_blank">
-    <img src="http://osha.europa.eu/logo.gif" alt="" title="Logo" height="110" width="177" tal:attributes="src string:${here/portal_url}/logo.gif"></a>
+    <img src="http://osha.europa.eu/logo.gif" alt="" title="Logo" height="100" width="166" tal:attributes="src string:${here/portal_url}/logo.gif"></a>
 
 	<h1 class="documentFirstHeading" tal:content="here/title_or_id">collection id or title</h1>
 </div>

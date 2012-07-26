@@ -34,7 +34,6 @@ font-size:100%;
 
 #portal-logo {
 float:left;
-background: url(&dtml-portal_url;/logoinner2.gif) no-repeat scroll right bottom white;
 padding: 18px 30px 10px 10px;
 }
 #portal-logo img {
