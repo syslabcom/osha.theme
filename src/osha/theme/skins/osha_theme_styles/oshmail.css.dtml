@@ -174,8 +174,8 @@ margin-bottom:1em;
 }
 
 #collage .two-columns-largeleft .block_2 {
-width:29%;
-margin-left: 20px;
+width:27%;
+margin-left: 1%;
 }
 
 #collage .one-column .block_1 {
