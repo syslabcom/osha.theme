@@ -464,5 +464,5 @@ class OSHA(BrowserView):
         f = urllib2.urlopen(req)
 
         ret = BeautifulSoup(f.read(), convertEntities=BeautifulSoup.HTML_ENTITIES)
-        return ret
+        return ret.text
         

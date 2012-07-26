@@ -20,8 +20,8 @@ host = getToolByName(context, 'MailHost')
 email_subject = "%s\n" % (context.title_or_id())
 email_body = context.oshmail_view()
 oshaview = context.restrictedTraverse('@@oshaview')
-inlinehtml = oshaview.inlinestyler(email_body)
-email_body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">\n'+inlinehtml
+email_body = oshaview.inlinestyler(email_body)
+
 
 log.info(email_body)
     
