@@ -377,7 +377,8 @@ dl.portletSearch .LSBox {
     width: 127px;
 }
 
-dl.portletSearch #searchGadget {
+dl.portletSearch #searchGadget,
+dl.portletSearch .searchField {
     width: 95px;
 }
 
