@@ -2,6 +2,7 @@ from zope.app.component.hooks import getSite
 from ordereddict import OrderedDict
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
+from osha.theme.portlets.navigation import getNavigationRoot
 
 class OSHAHelpCenterView(BrowserView):
     """ support for HelpCenter templates """
@@ -13,6 +14,7 @@ class OSHAHelpCenterView(BrowserView):
         self.category = self.faq_form.get("category", "")
         self.portal = getSite()
         self.pc = self.portal.portal_catalog
+        self.faqfolder = getattr(getNavigationRoot(context), 'faq', None)
         self.faqs = self.get_faqs()
 
         subcategory_vocab = self.portal.portal_vocabularies.Subcategory
@@ -38,8 +40,9 @@ class OSHAHelpCenterView(BrowserView):
             query["subcategory"] = subcategory
 
         if searchable_text == subcategory == "":
-            path = "/".join(self.context.getPhysicalPath())
-            query["path"] = path+"/general-information"
+	    if self.faqfolder is not None:
+                path = "/".join(self.faqfolder.getPhysicalPath())
+                query["path"] = path+"/general-information"
 
         faq_brains = self.pc.searchResults(query)
         faqs = [i.getObject() for i in faq_brains]
