@@ -74,7 +74,7 @@ class HomepageView(BrowserView):
         return ret
 
     @property
-    def in_focus(self, limit=4):
+    def in_focus(self, limit=6):
         """Fetch the latest X In Focus news"""
         portal_path = self.ptool.getPortalPath()
         pc = getToolByName(self.context, 'portal_catalog')

@@ -58,7 +58,7 @@
             tal:define="items view/in_focus">
           <tal:rep repeat="news items">
             <tal:focus define="no repeat/news/number">
-            <div
+            <div class="in-focus-item"
                 tal:attributes="id string:highlight-$no">
               <tal:news_item>
                 <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
@@ -67,7 +67,7 @@
                 <span tal:replace="structure news/description"></span>
               </tal:news_item>
             </div>
-            <tal:clear condition="python:no==2 or no==4">
+            <tal:clear condition="python:no % 2 == 0 or repeat.news.end">
                 <div class="visualClear"></div>
             </tal:clear>
             </tal:focus>

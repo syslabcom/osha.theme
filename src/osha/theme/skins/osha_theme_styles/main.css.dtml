@@ -755,17 +755,17 @@ dl.portletFollowUs {
    margin: 0 0 0.5em 0;
    color:#003399;
 }
-#highlight-1, #highlight-2, #highlight-3, #highlight-4{
+#in-focus-container .in-focus-item{
     width: 48%;
     margin: 2em 0 1em;
 }
 
-#highlight-1, #highlight-3{
+#highlight-1, #highlight-3, #highlight-5{
     float: left;
     padding-right: 2%;
 }
 
-#highlight-2, #highlight-4{
+#highlight-2, #highlight-4, #highlight-6{
     float: right;
     padding-left: 2%;
 }
