@@ -9,32 +9,25 @@
     title_or_id here/pretty_title_or_id;">
 
 
-<div class="collage-newsitem-teaser">
-    <h2 metal:define-macro="title"
-        
-        tal:condition="here/Title">
-      <span metal:define-slot="inside" 
-            tal:replace="here/Title">title</span>
-    </h2>
-
-            <div class="newsImageContainer" style="width: 100px;"
-                 tal:condition="here/image_mini|nothing">
-                <a href="#"
-                   tal:attributes="href ga_url"
-                   class="parent-fieldname-image">
-                   <img width="100" tal:attributes="src string:${url}/image; alt title_or_id;" />
-                </a>
-            </div>
+<table class="collage-newsitem-teaser">
+	<tr><td colspan="2">
+    <h2 tal:content="here/Title">title</h2>
+	</td></tr><tr><td width="120" valign="top">
+	<a href="#"
+       tal:attributes="href ga_url"
+       class="parent-fieldname-image">
+       <img width="100" tal:attributes="src string:${url}/image; alt title_or_id;" />
+    </a>
+</td><td width="860">
 
             <span tal:omit-tag="" tal:condition="not:obj_description"> 
                 &nbsp; 
-            </span> 
-            
-            <span class="description" tal:content="structure obj_description">
+            </span>             
+            <span tal:content="structure obj_description">
                 description 
             </span> 
 
     <div class="visualClear"></div>
-</div>
-
+</td><tr>
+</table>
 </span>

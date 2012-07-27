@@ -1,20 +1,13 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<div class="collage-newsitem-standard">
-<h2 metal:define-macro="title"
-    tal:define="view context/@@collage_kss_helper"
-    tal:attributes="id string:${view/getUniqueIdentifier}-title;
-		    class python: view.getKssClasses('title')"
-    tal:condition="here/Title">
-  <span metal:define-slot="inside" 
-        tal:replace="here/Title">title</span>
-</h2>
-
-<p tal:replace="structure here/Description">description
-</p>
-
-        <div class="newsImageContainer"
-             tal:condition="here/image_mini|nothing">
+<table class="collage-newsitem-standard">
+	<tr>
+		<td colspan="2">
+			<h2 tal:content="here/Title">title</h2>
+		</td>
+	</tr>
+	<tr>
+		<td width="160" valign="top">
             <a href="#"
                tal:attributes="href string:${here/absolute_url}/image/image_view_fullscreen"
                class="parent-fieldname-image">
@@ -25,20 +18,22 @@
               Image Caption
               </metal:field>
             </p>
-        </div>
+		</td>
+		<td>
+			<p tal:replace="structure here/Description">description</p>
 
-
-<div metal:define-macro="text"
-     tal:define="view context/@@collage_kss_helper;
-		 text python: here.CookedBody(stx_level=2)"
-     tal:attributes="id string:${view/getUniqueIdentifier}-text;
-		     class python: here.Format() in
-		                   ['text/structured', 'text/x-rst'] and 'stx' or 'plain' +
-		     view.getKssClasses('text')"
-     tal:condition="text"
-     class="stx">
-  <span metal:define-slot="inside" 
-        tal:replace="structure text">text</span>
-</div> 
-
-</div>
+			<div metal:define-macro="text"
+			     tal:define="view context/@@collage_kss_helper;
+					 text python: here.CookedBody(stx_level=2)"
+			     tal:attributes="id string:${view/getUniqueIdentifier}-text;
+					     class python: here.Format() in
+					                   ['text/structured', 'text/x-rst'] and 'stx' or 'plain' +
+					     view.getKssClasses('text')"
+			     tal:condition="text"
+			     class="stx">
+			  <span metal:define-slot="inside" 
+			        tal:replace="structure text">text</span>
+			</div> 
+		</td>
+	</tr>
+</table>

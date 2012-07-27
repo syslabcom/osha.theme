@@ -34,7 +34,7 @@
 
 </head>
 
-<body leftmargin="5"
+<body leftmargin="5" style="margin-left: 1em"
     tal:define="plone_view context/@@plone;
 				view nocall:view | nocall: plone_view;
 				ltool nocall:here/portal_languages;
@@ -46,34 +46,17 @@
                 url python:oshaview.handleOSHMailUrls('https://osha.europa.eu', collage_id);
 				body_class python:plone_view.bodyClass(template, view);"
 	tal:attributes="class body_class;">
-   <div id="border-wrapper">
-	<div id="visual-portal-wrapper">
 
-		<table id="oshmail-topbanner" width="100%" cellpadding="0" cellspacing="0" border="0"
-    		tal:condition="python:context.getId()=='oshmail-100'"
-    		background="https://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
-    <tr>
-        <td>
-            <img src="https://osha.europa.eu/en/news/OSHmailCandlesLogo.png" alt="OSHmail jubilee logo" ></td>
-    <td background="https://osha.europa.eu/en/news/OSHmailCandlesMiddle.png">
-        <img src="https://osha.europa.eu/en/news/OSHmailCandlesMiddle.png" alt="OSHmail jubilee background"></td>
-    <td>
-        <img src="https://osha.europa.eu/en/news/OSHmailCandlesRight.png" alt="OSHmail jubilee candles" ></td>
-    </tr>
+<table width="890"><tr><td>
+<table background="http://localhost:6780/osha/portal/oshmailheaderbackground.png" width="100%">
+	<tr><td><a style="width:250px; height:180px; display:block" accesskey="1" href="https://osha.europa.eu/en" target="_blank" height="180" width="300">		&nbsp;</a>
+	</td>
+	<td>
+		<h1 class="documentFirstHeading" tal:content="here/title_or_id">collection id or title</h1>
+	</td></tr>
 </table>
 
-<div id="portal-header">
-<a id="portal-logo" accesskey="1" href="https://osha.europa.eu/en" target="_blank">
-    <img src="http://osha.europa.eu/logo.gif" alt="" title="Logo" height="100" width="166" tal:attributes="src string:${here/portal_url}/logo.gif"></a>
-
-	<h1 class="documentFirstHeading" tal:content="here/title_or_id">collection id or title</h1>
-</div>
-
-
-
-
-<div class="visualClear"></div>
-
+</td></tr><tr><td>
 
 <table width="100%" id="language-list">
     <tr>
@@ -96,8 +79,9 @@
         </tal:block>
       </td>
     </tr>
-  </table>
+</table>
 
+</td></tr><tr><td>
 
 
    <metal:bodytext metal:define-slot="main" tal:content="nothing">
@@ -105,9 +89,7 @@
    </metal:bodytext>
 
 
-  </div>
-</div>
-
+</td></tr></table>
 </body>
 </html>
 </metal:page>

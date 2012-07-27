@@ -1,6 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<div class="collage-event-rightcolumn" 
+<table align="left" class="collage-event-rightcolumn" 
 	tal:define="url here/absolute_url;
 	    title_or_id here/pretty_title_or_id;
 	    plone_view here/@@plone;
@@ -10,7 +10,7 @@
 	    url python:oshaview.handleOSHMailUrls(url, collage_id);
 	    item_icon python:getIcon(here);
 	    date here/start">
-    
+<tr><td>
         <img tal:replace="structure item_icon/html_tag" />
           <a href="#" tal:attributes="href url"><span tal:content="title_or_id">title</span></a>
         <br />
@@ -20,5 +20,5 @@
         </tal:condition>
         <span tal:replace="python:plone_view.toLocalizedTime(date)">May 5</span>
 		</i>
-    
-</div>
+</td></tr>
+</table>

@@ -1,6 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<div class="collage-file-publication"
+<table class="collage-file-publication"
 	tal:define="url string:${here/absolute_url}/view;
 	    obj_description here/Description;
 	    title_or_id here/pretty_title_or_id;
@@ -11,14 +11,17 @@
 	    url python:oshaview.handleOSHMailUrls(url, collage_id);
 	    toLocalizedTime nocall:plone/toLocalizedTime">
 
+<tr><td rowspan="2">
     <img src="publication_icon.gif" class="cover-image" width="100"
         tal:attributes="src string:${here/absolute_url}/cover_image" />
+</td><td>
     <h2>
         <a href="#"
             tal:attributes="href url" tal:content="title_or_id">
         </a>
    </h2>
-  
+</td></tr>
+<tr><td>  
     <p tal:content=="obj_description" />
     <span tal:content="structure python:toLocalizedTime(effective)"> 
         &nbsp; 
@@ -29,4 +32,5 @@
 	    </metal:field>
 	</p>
 	<div class="visualClear"><!-- --></div>
-</div>
+</td></tr>
+</table>
