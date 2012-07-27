@@ -341,7 +341,8 @@ dl.portletSearch {
     background-color: #E6E8ED;
 
 }
-#googlesearch_viewlet input.searchButton {
+#googlesearch_viewlet input.searchButton,
+.LSBox input.searchButton {
     background: url("search_icon2.gif") no-repeat scroll 2px 1px White;
     border: 0;
     height: 17px;
@@ -360,8 +361,8 @@ dl.portletSearch .portletItem {
     padding-right: 1px;
     text-align: right;
     border: 1px solid #c5cbd8;
-    padding: 5px;
-    
+    padding: 2px;
+    background-color: white;
 }
 
 .LSBox input{
@@ -369,6 +370,17 @@ dl.portletSearch .portletItem {
     background: #fff;
 }
 
+.LSBox input.searchButton {
+    color: rgba(0,0,0,0);
+}
+
+dl.portletSearch .LSBox {
+    width: 127px;
+}
+
+dl.portletSearch #searchGadget {
+    width: 95px;
+}
 
 dl.portletSearch #additional-search-options {
     margin-top: 0.5em;
