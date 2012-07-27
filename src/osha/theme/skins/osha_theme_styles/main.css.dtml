@@ -336,11 +336,10 @@ form#quickuploader .quick-uploader {
     border-top: 1px solid #fff;
 }
 
-
 dl.portletSearch {
     background-color: #E6E8ED;
-
 }
+
 #googlesearch_viewlet input.searchButton,
 .LSBox input.searchButton {
     background: url("search_icon2.gif") no-repeat scroll 2px 1px White;
@@ -351,7 +350,7 @@ dl.portletSearch {
 
 dl.portletSearch .portletItem {
     border: 0 none;
-    padding: 0;
+    padding: 1em;
 }
 
 .LSBox {
