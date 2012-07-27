@@ -317,7 +317,6 @@ body.subsection1-oshmail h1.documentFirstHeading {
     background: none;
     margin-top:36px;
     text-transform:none;
-    text-align:right;
 }
 
 body.subsection1-oshmail .collage-item:first-child h1 {
