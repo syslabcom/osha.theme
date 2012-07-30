@@ -75,11 +75,19 @@ dl.portlet #portal-personaltools {
 	padding: 2px;
 	}
 	
-#googlesearch_viewlet .searchField{
-	width: 235px;
+#googlesearch_viewlet #cse-search-box .searchField,
+#cse-search-box .searchField {
 	border:0 !important;
 	background: #fff;
 	}
+
+#googlesearch_viewlet #cse-search-box .searchField {
+    width: 235px;
+}
+
+#cse-search-box .searchField {
+    width: 575px;
+};
 	
 #googlesearch_viewlet .linkList li {
 	font-size: 80%;
@@ -341,6 +349,7 @@ dl.portletSearch {
 }
 
 #googlesearch_viewlet input.searchButton,
+#cse-search-box input.searchButton,
 .LSBox input.searchButton {
     background: url("search_icon2.gif") no-repeat scroll 2px 1px White;
     border: 0;
@@ -369,6 +378,7 @@ dl.portletSearch .portletItem {
     background: #fff;
 }
 
+#cse-search-box input.searchButton,
 .LSBox input.searchButton {
     color: rgba(0,0,0,0);
 }
