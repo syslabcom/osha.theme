@@ -1,22 +1,42 @@
 <div id="googlesearch_viewlet" i18n:domain="osha"
-    tal:define="cx view/getCx; cref view/getCref; additional view/getAdditional">
-    <form action="slc_cse_search_results" id="cse-search-box"
-        tal:attributes="action view/search_action">
+    tal:define="cx view/getCx;
+    search_action view/search_action;
+    language view/getLanguage">
 
-        <input type="hidden" name="cx" value="cx" tal:condition="cx"
-            tal:attributes="value cx" />
-        <input type="hidden" name="cref" value="cref" tal:condition="cref"
-            tal:attributes="value cref" />
-        <input type="hidden" name="additional_params" value="additional" tal:condition="additional"
-            tal:attributes="value additional" />
-        <input type="hidden" name="cof" value="FORID:11" />
-        <input type="hidden" name="ie" value="UTF-8" />
-        <input class="searchField inputLabel"
-            type="text" name="q" size="15" />
-        <input class="searchButton" type="submit" name="sa" value="" />
-    </form>
 
-    <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+    <span id="cse_settings">
+        <span id="search_action" tal:attributes="search_action search_action"></span>
+        <span id="cx_value" tal:attributes="cx_value cx"></span>
+        <span id="language_value" tal:attributes="language_value language"></span>
+    </span>
+
+    <div id="cse-search-form" style="width: 100%;">Loading</div>
+    <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+    var search_action = jQuery('#cse_settings #search_action').attr('search_action');
+    var cx_value = jQuery('#cse_settings #cx_value').attr('cx_value');
+    var language_value = jQuery('#cse_settings #language_value').attr('language_value');
+    google.load('search', '1', {language : language_value, style : google.loader.themes.V2_DEFAULT});
+    google.setOnLoadCallback(function() {
+        var customSearchOptions = {};
+        var orderByOptions = {};
+        orderByOptions['keys'] = [{label: 'Relevance', key: ''},{label: 'Date', key: 'date'}];
+        customSearchOptions['enableOrderBy'] = true;
+        customSearchOptions['orderByOptions'] = orderByOptions;
+        var imageSearchOptions = {};
+        imageSearchOptions['layout'] = google.search.ImageSearch.LAYOUT_POPUP;
+        customSearchOptions['enableImageSearch'] = true;
+        customSearchOptions['imageSearchOptions'] = imageSearchOptions;
+        var customSearchControl = new google.search.CustomSearchControl(cx_value, customSearchOptions);
+        customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+        var options = new google.search.DrawOptions();
+        options.setAutoComplete(true);
+        options.enableSearchboxOnly(search_action);
+        customSearchControl.draw('cse-search-form', options);
+    }, true);
+    </script>
+
+    <!--script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script-->
     <ul class="linkList">
         <li>
             <a href="" tal:attributes="href view/oshGlobalSearchLink" i18n:translate="label_osh_global_search">

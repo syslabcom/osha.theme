@@ -552,7 +552,7 @@ class GoogleSearchViewlet(common.ViewletBase):
         return show
 
     def oshGlobalSearchLink(self):
-        return '%s/%s/slc_cse_search_results?&q=&cof=FORID:11&sa=Search&ie=UTF-8&cref=https://osha.europa.eu/google/international_cse.xml' %(self.subsite_url, self.language)
+        return '%s/%s/slc_cse_search_results' %(self.subsite_url, self.language)
 
     def enable_livesearch(self):
         return False
@@ -574,14 +574,8 @@ class GoogleSearchViewlet(common.ViewletBase):
             pass
         return ''
 
-    def getCref(self):
-        try:
-            typus, value = self.getCSE().split('::')
-            if typus=='cref':
-                return value
-        except ValueError:
-            pass
-        return ''
+    def getLanguage(self):
+        return self.language
 
     def getAdditional(self):
         return ""
@@ -594,7 +588,8 @@ class GoogleSearchViewlet(common.ViewletBase):
         else:
             return root.absolute_url()
 
+    @property
     def search_action(self):
         base_url = self._get_base_url()
-        return '%s/slc_cse_search_results' % base_url
+        return '%s/site_search' % base_url
 
