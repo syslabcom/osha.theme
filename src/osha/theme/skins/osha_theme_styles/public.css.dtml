@@ -823,8 +823,10 @@ a.link-parent {
     background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -332px transparent;
     padding: 1px 0px 1px 16px;
 }
-/* Exception for oshmail */
-#content .socialMediaOSHMAILfg a[href^="http:"], #content .socialMediaOSHMAILfg a[href^="https:"]{
+/* Exception for oshmail and google search */
+#content .socialMediaOSHMAILfg a[href^="http:"], #content .socialMediaOSHMAILfg a[href^="https:"],
+#content .gsc-wrapper a[href^="http:"], #content .gsc-wrapper a[href^="https:"]
+{
   background: none;
   padding: 0;
   text-decoration:none;
@@ -994,7 +996,7 @@ dl.portletFollowUs #oshablog-icon a, .oshmail-blog-icon {
     font-size: 14px;
     padding: 2px 5px;
     font-weight: bold;
-    -webkit-border-radius: 2px; 
+    -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
 }
