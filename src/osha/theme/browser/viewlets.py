@@ -76,6 +76,7 @@ class OSHALanguageSelector(TranslatableLanguageSelector):
             if languages_on_main_site:
                 results = [x for x in results if x['code'] in languages_on_main_site]
 
+        # Starting here, we just copy from LinguaPlone
         non_viewable = set()
         for data in results:
             code = str(data['code'])
