@@ -86,7 +86,7 @@ dl.portlet #portal-personaltools {
 }
 
 #cse-search-box .searchField {
-    width: 575px;
+    width: 560px;
 };
 	
 #googlesearch_viewlet .linkList li {
@@ -94,11 +94,11 @@ dl.portlet #portal-personaltools {
 	float: left;
 	margin: 0 1em 0 0;
 	}
-
+#content .gsc-tabsArea{
+    border-bottom: none;
+}
 #googlesearch_viewlet input,
 #googlesearch_viewlet input.searchButton {
-    margin: 0;
-    padding-left: 1px;
     font-family: Verdana, Helvetica, 'Lucida Grande', Lucida, Arial, sans-serif;
     font-size: 13px;
     font-style: normal;
