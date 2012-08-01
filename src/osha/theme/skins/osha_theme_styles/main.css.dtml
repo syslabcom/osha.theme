@@ -97,6 +97,20 @@ dl.portlet #portal-personaltools {
 #content .gsc-tabsArea{
     border-bottom: none;
 }
+#border-wrapper input.gsc-input, 
+#border-wrapper .gsc-input-box,
+#border-wrapper .gsc-input-box-hover,
+#border-wrapper .gsc-input-box-focus {
+    border-color: #D9D9D9;
+ }
+#border-wrapper input.gsc-search-button,
+#border-wrapper input.gsc-search-button:hover,
+#border-wrapper input.gsc-search-button:focus {
+    border-color: #cccccc;
+    background-color: #dddddd;
+    background-image: none;
+    filter: none;
+}
 #googlesearch_viewlet input,
 #googlesearch_viewlet input.searchButton {
     font-family: Verdana, Helvetica, 'Lucida Grande', Lucida, Arial, sans-serif;
