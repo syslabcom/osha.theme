@@ -126,8 +126,28 @@ body.template-multimedia-image-details-view .noScript {
 
 
 /* @group multimedia film listing */
-body.template-multimedia-film-episodes-listing-view div#video_container {
+#video_container {
     display: none;
+
+    /* styling */
+    background-color:#333;
+ 
+    width:675px;
+    min-height:200px;
+    border:1px solid #666;
+
+    -moz-box-shadow:0 0 90px 5px #000;
+    -webkit-box-shadow: 0 0 90px #000;
+}
+
+#video_container .close {
+    background-image:url(++resource++osha.theme.resources/multimedia/close.png);
+    position:absolute;
+    right:-27px;
+    top:-27px;
+    cursor:pointer;
+    height:35px;
+    width:35px;
 }
 
 body.template-multimedia-film-episodes-listing-view div#film,

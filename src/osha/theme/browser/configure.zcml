@@ -42,15 +42,9 @@
         name="jquery.js"
         />
 
-    <!-- multimedia_film_listing_view -->
-    <browser:resource
-        file="resources/jwplayer.swf"
-        name="jwplayer.swf"
-        />
-
-    <browser:resource
-        file="resources/jwplayer.js"
-        name="jwplayer.js"
+    <browser:resourceDirectory
+        name="osha.theme.resources"
+        directory="resources"
         />
 
     <browser:resourceDirectory
