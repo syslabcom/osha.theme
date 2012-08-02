@@ -7,7 +7,7 @@ font-variant:normal;
 font-weight:normal;
 line-height:normal;
 
-font: 80% Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
+font: 13px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
 color: #191919;
 margin: 0;
 padding: 0;
