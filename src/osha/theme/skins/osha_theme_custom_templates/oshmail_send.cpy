@@ -22,7 +22,7 @@ email_subject = "%s\n" % (context.title_or_id())
 email_body = context.oshmail_view()
 
 #put styles inline
-#email_body = oshaview.inlinestyler(email_body)
+email_body = oshaview.inlinestyler(email_body)
 
 log.info(email_body)
     

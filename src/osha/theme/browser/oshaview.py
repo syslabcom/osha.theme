@@ -468,7 +468,7 @@ class OSHA(BrowserView):
         ret = BeautifulSoup(f.read(), convertEntities=BeautifulSoup.HTML_ENTITIES)
         return ret.text
 
-    def collage2table(self, data):
+    def collage2table(self, data, u=False):
         """ takes an html page generated from collage in the oshmail format and converts some divs to a table layout 
             the collage builds a system of nested divs for rows and columns. What we need is a table with two rows. 
             The first row contains two columns, the second one only one. 
@@ -503,4 +503,6 @@ class OSHA(BrowserView):
         table.insert(0, row1)
         table.insert(1, row2)
 
+        if u:
+            return unicode(table)
         return str(table)
