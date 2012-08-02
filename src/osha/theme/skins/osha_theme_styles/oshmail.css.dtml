@@ -98,12 +98,6 @@ line-height:1.5em;
 margin:0 0 0.75em;
 }
 
-.documentFirstHeading {
-background:#C5CBD8 none repeat scroll 0 0;
-margin-bottom:1em;
-margin-top:0;
-padding:0 !important;
-}
 
 h1 {
 font-size:130%;
@@ -430,5 +424,13 @@ body.subsection1-oshmail .socialMediaOSHMAILfg > p > strong > span {
 body.subsection1-oshmail #collage-table-cell2 {
     padding-left: 24px;
 }
+
+body.subsection1-oshmail .documentFirstHeading {
+background:#C5CBD8 none repeat scroll 0 0;
+margin-bottom:1em;
+margin-top:0;
+padding:0 !important;
+}
+
 /* End Experimental styles for new oshmail looks by Maite */
 
