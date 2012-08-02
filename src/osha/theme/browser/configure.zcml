@@ -42,9 +42,15 @@
         name="jquery.js"
         />
 
-    <browser:resourceDirectory
-        name="osha.theme.resources"
-        directory="resources"
+    <!-- multimedia_film_listing_view -->
+    <browser:resource
+        file="resources/jwplayer.swf"
+        name="jwplayer.swf"
+        />
+
+    <browser:resource
+        file="resources/jwplayer.js"
+        name="jwplayer.js"
         />
 
     <browser:resourceDirectory
@@ -70,11 +76,6 @@
     <browser:resourceDirectory
         name="osha.theme.browser.resources.fancybox"
         directory="resources/fancybox"
-        />
-
-    <browser:resourceDirectory
-        name="osha.theme.browser.resources.follow_me_logos"
-        directory="resources/follow_me_logos"
         />
 
     <browser:resourceDirectory
@@ -249,6 +250,17 @@
         class=".practical_solutions.PracticalSolutionView"
         template="templates/practical_solution.pt"
         permission="zope.Public"
+        />
+
+
+    <!-- OSHA NapoEpisodeView-->
+    <browser:page
+        for="*"
+        name="napoepisode"
+        class=".napoepisode.NapoEpisodeView"
+        template="templates/napoepisodesview.pt"
+        permission="zope.Public"
+        allowed_interface=".interfaces.INapoEpisodeView"
         />
 
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
@@ -535,39 +547,54 @@
         permission="zope2.View"
         />
 
-    <browser:page
+<!--    <browser:page
         for="*"
         name="oshnews-view-simple"
         class=".oshnews_view.OSHNewsSimpleView"
-        template="templates/oshnews_view_simple.pt"
         permission="zope2.View"
         />
-
-    <browser:view
+-->
+    <browser:page
+        for="*"
+        name="oshmail2-subscribe"
+        class=".oshmail2_subscribe.OSHmailSubscribe"
+        template="templates/oshmail2_view.pt"
+        allowed_interface=".interfaces.IOSHmailView"
+        permission="zope2.View"
+        />
+    <browser:page
         for="*"
         name="oshmail2-view"
         class=".oshmail2_view.OSHmailView"
-        provides=".interfaces.IOSHmailView"
+        template="templates/oshmail2_view.pt"
         allowed_interface=".interfaces.IOSHmailView"
-        allowed_attributes="view subscribe"
         permission="zope2.View"
-        >
-      <browser:page name="view" attribute="view"/>
-      <browser:page name="subscribe" attribute="subscribe"/>
-    </browser:view>
+        />
+        
+    <browser:page
+        for="*"
+        name="confirm-unsubscription"
+        template="templates/oshmail2_unsubscribe.pt"
+        permission="zope2.View"
+        />    
 
-    <browser:view
+    <browser:page
+        for="*"
+        name="unsubscribe"
+        class=".oshmail2_unsubscribe.OSHmailUnsubscribe"
+        template="templates/oshmail2_unsubscribe.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IOSHmailView"
+        /> 
+
+    <browser:page
         for="*"
         name="oshmail-view"
         class=".oshmail_view.OSHmailView"
-        provides=".interfaces.IOSHmailView"
+        template="templates/oshmail_view.pt"
         allowed_interface=".interfaces.IOSHmailView"
-        allowed_attributes="view subscribe"
         permission="zope2.View"
-        >
-      <browser:page name="view" attribute="view"/>
-      <browser:page name="subscribe" attribute="subscribe"/>
-    </browser:view>
+        />
 
     <browser:page
         for="*"

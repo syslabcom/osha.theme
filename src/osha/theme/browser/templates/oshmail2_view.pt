@@ -39,6 +39,9 @@
     <div metal:fill-slot="main"
          tal:define="templateId template/getId; currlang here/portal_languages/getPreferredLanguage">
 
+<!--div tal:condition="request/emailaddress|nothing" tal:define="dummy python:view.subscribe(request.get('emailaddress'))"></div-->
+
+
       <div id="content">
         <div class="message warning"
              tal:condition="request/portal_status_message | nothing"
@@ -49,7 +52,7 @@
           </h1>
 
           <dl id="subscriptionBox" class="portlet rounded-corners">
-            <form action="#" tal:attributes="action string:./${view/getName}/subscribe" method="post" id="subscribe">
+            <form action="#" tal:attributes="action string:./@@oshmail2-subscribe" method="post" id="subscribe">
             <dt>
               <h4 i18n:translate="oshmail2_header_subscribe">Subscription</h4> 
             </dt>
@@ -169,11 +172,11 @@
 
           <h2 id="unsubscribe">Unsubscribe</h2>
           <dl id="unsubscriptionBox">
-          <form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
+          <form action="#" tal:attributes="action string:./@@oshmail2-subscribe" method="post" id="subscribe">
           <dd>
               <label><span i18n:translate="xportlet_oshmail_email" tal:omit-tag="">Your e-mail</span> <input type="text" name="emailaddress" class="span-6" /></label>
           </dd>
-          <dd>
+          <dd style="padding:0.5em 0">
               <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
           </dd>
           </form>

@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+  <metal:javascriptslot fill-slot="javascript_head_slot">
+    <script src="#"
+            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/oshmail_view.js?v=3"
+            type="text/javascript" charset="utf-8">
+    </script>
+  </metal:javascriptslot>
+  <metal:css fill-slot='css_slot'>
+    <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
+          tal:attributes="href string:${portal_url}/collage.css"/>
+    <style type="text/css">.older-newsletter {display:none;}
+      #subscriptionBox { background-color: #F2F4F7; width:250px; border:1px solid #E6E8ED; float:right; } 
+      #unsubscriptionBox { display:block;width: 20em;} 
+      #unsubscriptionBox dd { display:block;margin-left: 0; text-align:right;} 
+      .rounded-corners {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -khtml-border-radius: 10px;
+        behavior: url(/border-radius.htc);
+        border-radius: 10px;
+      }
+      #subscriptionBox h4 {background-color: transparent; font-weight:bold; font-size:110%;  margin:6px;}
+      #subscriptionBox dl {background-color: white;}
+      #subscriptionBox dl dt {padding: 2px 2px 2px 10px; background-color: transparent; border:0px solid white;}
+      #subscriptionBox dd {margin:0;background:white; padding: 0.5em 2em; text-align:right;}
+      #blockLatestIssue img {float:left; margin-right: 1em;}
+      #blockLatestIssue ul {margin-left: 140px;}
+      .fadercontrol {margin-top:1em;}
+      h2 { margin-bottom: 1em;}
+
+    </style>
+  </metal:css>
+
+  <body>
+    <div metal:fill-slot="main"
+         tal:define="templateId template/getId; currlang here/portal_languages/getPreferredLanguage">
+
+
+      <div id="content">
+        <div class="message warning"
+             tal:condition="request/portal_status_message | nothing"
+             tal:content="request/portal_status_message | nothing" />
+        <div id="mainContent">
+          <h1 class="documentFirstHeading">
+            OSHmail newsletter
+          </h1>
+
+
+          <h2 id="unsubscribe">Confirm unsubscription</h2>
+            <form action="#" tal:attributes="action string:./@@unsubscribe" method="post" id="subscribe">          
+          <dl id="unsubscriptionConfirmBox">
+
+                <dd>
+                    <label><span i18n:translate="unsub_confirm_text">Do you really want to unsubscribe from the OSHmail newsletter?</span></label>
+                    <input type="hidden" name="confirm_email" value="" tal:attributes="value python:request.get('emailaddress')"/><br/>
+                    <input type="radio" name="confirm" value="yes" checked /><span i18n:translate="unsub_confirm_yes">Yes, unsubscribe me from the newsletter</span><br/>
+                    <input type="radio" name="confirm" value="no" /><span i18n:translate="unsub_confirm_no">No, I want to continue receiving the newsletter</span><br/>
+                </dd>    
+                <dd style="padding:0.5em 0">
+                    <button type="submit" name="unsub_confirm_send" i18n:translate="unsub_confirm_send_text" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Send</button>
+                </dd>
+            
+          </dl>          
+</form>
+        </div>
+    </div>
+    <div id="oshmail-overlay"><span id="collage"/></div>
+    <div tal:replace="structure provider:plone.belowcontentbody" />
+
+</div>
+
+</body>
+</html>
