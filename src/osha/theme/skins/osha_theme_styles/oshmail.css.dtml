@@ -102,7 +102,7 @@ margin:0 0 0.75em;
 background:#C5CBD8 none repeat scroll 0 0;
 margin-bottom:1em;
 margin-top:0;
-padding:0.5em 1em !important;
+padding:0 !important;
 }
 
 h1 {
@@ -346,7 +346,7 @@ span.description {
     margin-left: 120px;
 }
 body.subsection1-oshmail div.column-block.block_1 .collage-item table {
-    width: 643px;
+    width: 570px;
 }
 
 body.subsection1-oshmail .collage-newsitem-teaser,
