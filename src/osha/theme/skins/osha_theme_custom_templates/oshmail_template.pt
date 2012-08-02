@@ -34,7 +34,7 @@
 
 </head>
 
-<body leftmargin="5" style="margin-left: 1em"
+<body leftmargin="5" style="margin-left: 1em; font-family: Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;"
     tal:define="plone_view context/@@plone;
 				view nocall:view | nocall: plone_view;
 				ltool nocall:here/portal_languages;
