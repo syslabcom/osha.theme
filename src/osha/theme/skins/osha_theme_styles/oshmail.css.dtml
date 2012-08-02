@@ -412,7 +412,7 @@ body.subsection1-oshmail .collage-newsitem-rightcolumn {
 body.subsection1-oshmail .boxing_styles_inner_content b {
     display:none;
 }
-body.subsection1-oshmail .socialMediaOSHMAILfg > tr > td > p > strong > span {
+body.subsection1-oshmail .socialMediaOSHMAILfg > tbody > tr > td > p > strong > span {
     font-family: Georgia, "Times new roman", serif;
     font-weight: normal;
     font-style: italic;
