@@ -345,6 +345,10 @@ span.description {
     display: block;
     margin-left: 120px;
 }
+body.subsection1-oshmail div.column-block.block_1 .collage-item table {
+    width: 643px;
+}
+
 body.subsection1-oshmail .collage-newsitem-teaser,
 body.subsection1-oshmail .collage-newsitem-standard {
     padding: 8px;
@@ -353,7 +357,6 @@ body.subsection1-oshmail .collage-newsitem-standard {
     -moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
     font: italic 13px/20px Georgia, "Times New Roman", Times, serif;
-
 }
 
 body.subsection1-oshmail .collage-newsitem-teaser {
