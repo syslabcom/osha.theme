@@ -251,17 +251,6 @@
         permission="zope.Public"
         />
 
-
-    <!-- OSHA NapoEpisodeView-->
-    <browser:page
-        for="*"
-        name="napoepisode"
-        class=".napoepisode.NapoEpisodeView"
-        template="templates/napoepisodesview.pt"
-        permission="zope.Public"
-        allowed_interface=".interfaces.INapoEpisodeView"
-        />
-
     <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
     <interface
         interface=".interfaces.IThemeSpecific"
