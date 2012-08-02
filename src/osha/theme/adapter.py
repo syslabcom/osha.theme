@@ -1,4 +1,4 @@
-from zope.interface import implements, Interface
+from zope.interface import implements, classImplements, Interface
 from zope.component import adapts
 
 from plone.app.layout.navigation.interfaces import INavtreeStrategy
@@ -9,7 +9,8 @@ from plone.app.portlets.portlets.navigation import INavigationPortlet, getRootPa
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import utils
 from Products.CMFPlone.browser.navtree import SitemapNavtreeStrategy
-from osha.theme.browser.interfaces import IInlineContentViewlet
+from osha.theme.browser.interfaces import IInlineContentViewlet, IFullWidth
+from slc.googlesearch.browser.search_results import SearchResultsLinkedView
 
 # Special Query Builder for the Root object to build a query which takes the
 # language trees into account and shows the 2nd level navi below /en, /de, etc.
@@ -130,3 +131,5 @@ class InlineContentViewletAdapter(object):
     """
     implements(IInlineContentViewlet)
     adapts(IInlineContentViewlet)
+
+classImplements(SearchResultsLinkedView, IFullWidth)
