@@ -16,7 +16,7 @@
             </p>
 
             <div id="bodyContent" tal:define="data here/@@renderer">
-                <div tal:define="data here/@@renderer" tal:content="structure python:oshaview.collage2table(data)" ></div>
+                <div tal:define="data here/@@renderer" tal:content="structure python:oshaview.oshaview.inlinestyler(oshaview.collage2table(data))" ></div>
 
             </div>
             <br style="clear: both;" />
