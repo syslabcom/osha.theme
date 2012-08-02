@@ -198,13 +198,10 @@ padding:10px 0 5px 25px;
 
 .boxing_styles_inner_content {
 font-size:100%;
-}
-
-.boxing_styles_inner_content {
 background-color:#F7F8F9;
 border:1px solid #C5CBD8;
 font-size:100%;
-padding:1em;
+padding:0;
 }
 
 /****************/
@@ -411,7 +408,9 @@ body.subsection1-oshmail .collage-event-rightcolumn {
 body.subsection1-oshmail .collage-event-rightcolumn {
     background-color: #d9d8f6;
 }
-
+body.subsection1-oshmail .collage-newsitem-rightcolumn {
+    background-color: #F2F4F6;
+}
 
 body.subsection1-oshmail b.socialMediaOSHMAIL {
     display:none;
@@ -423,6 +422,10 @@ body.subsection1-oshmail .socialMediaOSHMAILfg > p > strong > span {
     font-size: 24px!important;
     letter-spacing: 3px;
     text-shadow: 2px 2px 2px #CCCCCC;
+}
+
+body.subsection1-oshmail #collage-table-cell2 {
+    padding-left: 24px;
 }
 /* End Experimental styles for new oshmail looks by Maite */
 

@@ -207,6 +207,15 @@ class IOSHA(Interface):
 
     def inlinestyler(data):
         """ calls an external service to integrate styles into tags """
+
+    def collage2table(data):
+        """ takes an html page generated from collage in the oshmail format and converts some divs to a table layout 
+            the collage builds a system of nested divs for rows and columns. What we need is a table with two rows. 
+            The first row contains two columns, the second one only one. 
+            into 1.1 and 1.2 we put the content of the div.content-column
+            into 2.1 we put the div.collage-row>div.collage-row
+            """ 
+ 
         
 class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions

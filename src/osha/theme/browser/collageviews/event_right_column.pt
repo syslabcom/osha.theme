@@ -1,6 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<table align="left" class="collage-event-rightcolumn" 
+<table class="collage-event-rightcolumn" 
 	tal:define="url here/absolute_url;
 	    title_or_id here/pretty_title_or_id;
 	    plone_view here/@@plone;

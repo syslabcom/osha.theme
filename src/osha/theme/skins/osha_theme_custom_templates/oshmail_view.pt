@@ -8,16 +8,16 @@
 <div metal:fill-slot="main" i18n:domain="osha">
     <metal:main-macro define-macro="main">
 
-         <div id="collage" >
+         <div id="collage" tal:define="oshaview nocall:here/@@oshaview">
 
             <p class="collage-header"
                 tal:condition="here/Description|nothing"
                tal:content="structure here/Description|nothing">description
             </p>
 
-            <div id="bodyContent"
-                 class="stx">
-                <div tal:content="structure here/@@renderer" ></div>
+            <div id="bodyContent" tal:define="data here/@@renderer">
+                <div tal:define="data here/@@renderer" tal:content="structure python:oshaview.collage2table(data)" ></div>
+
             </div>
             <br style="clear: both;" />
           </div>

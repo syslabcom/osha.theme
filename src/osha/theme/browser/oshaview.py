@@ -2,7 +2,7 @@ from urlparse import urljoin
 from types import *
 import logging
 import urllib, urllib2
-from BeautifulSoup import BeautifulSoup
+from BeautifulSoup import BeautifulSoup, Tag
 
 
 import Acquisition
@@ -467,4 +467,40 @@ class OSHA(BrowserView):
 
         ret = BeautifulSoup(f.read(), convertEntities=BeautifulSoup.HTML_ENTITIES)
         return ret.text
-        
+
+    def collage2table(self, data):
+        """ takes an html page generated from collage in the oshmail format and converts some divs to a table layout 
+            the collage builds a system of nested divs for rows and columns. What we need is a table with two rows. 
+            The first row contains two columns, the second one only one. 
+            into 1.1 and 1.2 we put the content of the div.content-column
+            into 2.1 we put the div.collage-row>div.collage-row
+            """
+        soup = BeautifulSoup(data)
+
+        # find the real content cells
+        cell_11, cell_12 = soup.findAll(attrs={'class':'collage-column'}, limit=2)
+        cell_21 = soup.findAll(attrs={'class':'collage-row'})[1]
+
+
+        # create a table
+        table = Tag(soup, "table", [("id", 'collage-table')])
+
+        row1 = Tag(soup, "tr")
+        row2 = Tag(soup, "tr")
+
+        col1 = Tag(soup, "td", [("valign", "top"), ("id", "collage-table-cell1")])
+        col2 = Tag(soup, "td", [("valign", "top"), ("id", "collage-table-cell2")])
+        col3 = Tag(soup, "td", [("colspan", "2"), ("id", "collage-table-cell3")])
+
+        col1.insert(0, cell_11)
+        col2.insert(0, cell_12)
+        col3.insert(0, cell_21)
+
+        row1.insert(0,col1)
+        row1.insert(1,col2)
+        row2.insert(0, col3)
+
+        table.insert(0, row1)
+        table.insert(1, row2)
+
+        return str(table)

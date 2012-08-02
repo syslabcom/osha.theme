@@ -10,6 +10,7 @@
 
 from logging import getLogger
 log = getLogger("moah")
+oshaview = context.restrictedTraverse('@@oshaview')
 
 request = context.REQUEST
 
@@ -19,9 +20,12 @@ from Products.CMFPlone.utils import getToolByName
 host = getToolByName(context, 'MailHost')
 email_subject = "%s\n" % (context.title_or_id())
 email_body = context.oshmail_view()
-oshaview = context.restrictedTraverse('@@oshaview')
-email_body = oshaview.inlinestyler(email_body)
 
+# convert to table layout
+oshaview.collage2table(email_body)
+
+#put styles inline
+email_body = oshaview.inlinestyler(email_body)
 
 log.info(email_body)
     
