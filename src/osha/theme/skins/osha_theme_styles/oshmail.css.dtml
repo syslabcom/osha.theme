@@ -189,7 +189,9 @@ margin-right:0.5em;
 .socialMediaOSHMAILfg {
 background:#F2F4F6 none repeat scroll 0 0;
 padding:10px 10px 10px 10px;
-font: 12px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
+}
+.socialMediaOSHMAILfg a {
+    font: 12px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
 }
 
 .boxing_styles_inner_content {
