@@ -187,17 +187,14 @@ margin-right:0.5em;
 }
 .socialMediaOSHMAILfg {
 background:#F2F4F6 none repeat scroll 0 0;
-padding:10px 0 5px 0px;
+padding:10px 0 5px 25px;
 }
-.socialMediaOSHMAILfg p img{
-    margin-left: 25px;
-}
+
 .boxing_styles_inner_content {
 font-size:100%;
 background-color:#F7F8F9;
 border:1px solid #C5CBD8;
 font-size:100%;
-padding:0;
 }
 
 /****************/
@@ -415,7 +412,7 @@ body.subsection1-oshmail .collage-newsitem-rightcolumn {
 body.subsection1-oshmail .boxing_styles_inner_content b {
     display:none;
 }
-body.subsection1-oshmail .socialMediaOSHMAILfg > p > strong > span {
+body.subsection1-oshmail .socialMediaOSHMAILfg > tr > td > p > strong > span {
     font-family: Georgia, "Times new roman", serif;
     font-weight: normal;
     font-style: italic;
