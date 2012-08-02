@@ -193,6 +193,9 @@ padding:10px 10px 10px 10px;
 .socialMediaOSHMAILfg a {
     font: 12px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
 }
+.collage-item {
+    font-family: Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
+}
 
 .boxing_styles_inner_content {
 font-size:100%;
