@@ -415,14 +415,14 @@ body.subsection1-oshmail .collage-newsitem-rightcolumn {
     background-color: #F2F4F6;
 }
 
-body.subsection1-oshmail b.socialMediaOSHMAIL {
+body.subsection1-oshmail .boxing_styles_inner_content b {
     display:none;
 }
 body.subsection1-oshmail .socialMediaOSHMAILfg > p > strong > span {
     font-family: Georgia, "Times new roman", serif;
     font-weight: normal;
     font-style: italic;
-    font-size: 24px!important;
+    font-size: 18px!important;
     letter-spacing: 3px;
     text-shadow: 2px 2px 2px #CCCCCC;
 }
