@@ -300,15 +300,7 @@ vertical-align: bottom;
 }
 
 /* Experimental styles for new oshmail looks by Maite */
-body.subsection1-oshmail h1.documentFirstHeading {
-    font-family: Georgia, "Times new roman", serif;
-    font-weight: normal;
-    font-size: 36px;
-    letter-spacing: 3px;
-    background: none;
-    margin-top:36px;
-    text-transform:none;
-}
+
 
 body.subsection1-oshmail .collage-item:first-child h1 {
     margin: 0px 0 24px;
@@ -322,6 +314,16 @@ body.subsection1-oshmail h1 {
     text-transform:uppercase;
     letter-spacing: 5px;
     text-shadow: 2px 2px 2px #CCCCCC;
+}
+
+body.subsection1-oshmail h1.documentFirstHeading {
+    font-family: Georgia, "Times new roman", serif;
+    font-weight: normal;
+    font-size: 36px;
+    letter-spacing: 3px;
+    background: none;
+    margin-top:36px;
+    text-transform:none;
 }
 
 body.subsection1-oshmail h2, 
