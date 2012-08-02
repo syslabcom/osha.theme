@@ -21,9 +21,6 @@ host = getToolByName(context, 'MailHost')
 email_subject = "%s\n" % (context.title_or_id())
 email_body = context.oshmail_view()
 
-# convert to table layout
-oshaview.collage2table(email_body)
-
 #put styles inline
 email_body = oshaview.inlinestyler(email_body)
 
