@@ -317,12 +317,10 @@ body.subsection1-oshmail h1 {
 }
 
 body.subsection1-oshmail h1.documentFirstHeading {
-    font-family: Georgia, "Times new roman", serif;
-    font-weight: normal;
     font-size: 36px;
     letter-spacing: 3px;
     background: none;
-    margin-top:36px;
+    margin-top:36px !important;
     text-transform:none;
 }
 
