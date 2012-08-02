@@ -17,7 +17,11 @@ class OSHALayoutPolicy(LayoutPolicy):
         navroot = portal_state.navigation_root()
 
         body_class = super(OSHALayoutPolicy, self).bodyClass(template, view)
+        # is there a marker interface for full width on the context?
         if IFullWidth.providedBy(self.context):
+            body_class = u"%s full-width" % body_class
+        # the marker interface can also be set on the view
+        if IFullWidth.providedBy(view):
             body_class = u"%s full-width" % body_class
 
         contentPath = context.getPhysicalPath()[len( \
