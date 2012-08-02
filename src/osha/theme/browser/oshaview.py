@@ -488,9 +488,9 @@ class OSHA(BrowserView):
         row1 = Tag(soup, "tr")
         row2 = Tag(soup, "tr")
 
-        col1 = Tag(soup, "td", [("valign", "top"), ("id", "collage-table-cell1")])
-        col2 = Tag(soup, "td", [("valign", "top"), ("id", "collage-table-cell2")])
-        col3 = Tag(soup, "td", [("colspan", "2"), ("id", "collage-table-cell3")])
+        col1 = Tag(soup, "td", [("valign", "top"), ("id", "collage-table-cell1"),("width", "590")])
+        col2 = Tag(soup, "td", [("valign", "top"), ("id", "collage-table-cell2"), ("width", "200")])
+        col3 = Tag(soup, "td", [("colspan", "2"), ("id", "collage-table-cell3"),("width", "790")])
 
         col1.insert(0, cell_11)
         col2.insert(0, cell_12)
