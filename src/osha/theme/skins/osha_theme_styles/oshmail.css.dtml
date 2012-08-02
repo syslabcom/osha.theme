@@ -190,7 +190,7 @@ background:#F2F4F6 none repeat scroll 0 0;
 padding:10px 0 5px 0px;
 }
 .socialMediaOSHMAILfg p {
-    margin-left: 25px;
+    padding-left: 25px;
 }
 .boxing_styles_inner_content {
 font-size:100%;
