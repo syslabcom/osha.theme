@@ -97,6 +97,10 @@ dl.portlet #portal-personaltools {
 #content .gsc-tabsArea{
     border-bottom: none;
 }
+#content .cse .gsc-webResult.gsc-result.gsc-promotion,
+#content .gsc-webResult.gsc-result.gsc-promotion{
+    background-color: #dddddd;
+}
 #border-wrapper input.gsc-input, 
 #border-wrapper .gsc-input-box,
 #border-wrapper .gsc-input-box-hover,
