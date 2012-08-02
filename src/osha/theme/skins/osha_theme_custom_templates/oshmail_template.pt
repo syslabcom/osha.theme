@@ -47,8 +47,8 @@
 				body_class python:plone_view.bodyClass(template, view);"
 	tal:attributes="class body_class;">
 
-<table width="890"><tr><td>
-<table background="http://localhost:6780/osha/portal/oshmailheaderbackground.png" width="100%">
+<table><tr><td>
+<table background="http://oshawebdev00.fe.rzob.gocept.net/oshmailheaderbackground.png">
 	<tr><td><a style="width:250px; height:180px; display:block" accesskey="1" href="https://osha.europa.eu/en" target="_blank" height="180" width="300">		&nbsp;</a>
 	</td>
 	<td>
