@@ -92,9 +92,13 @@
             </tal:episode>
           </div>
 
-          <div id="video_container"></div>
+
         </div>
       </tal:has_selected_film>
+      <div id="video_container">
+        <a id="video_close"></a>
+        <div id="video"></div>
+      </div>
     </div>
   </body>
 </html>

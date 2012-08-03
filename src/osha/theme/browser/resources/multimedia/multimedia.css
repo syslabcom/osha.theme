@@ -128,19 +128,20 @@ body.template-multimedia-image-details-view .noScript {
 /* @group multimedia film listing */
 #video_container {
     display: none;
-
-    /* styling */
-    background-color:#333;
- 
-    width:675px;
-    min-height:200px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -321px;
+    margin-top: -177px;
+    z-index: 100;
     border:1px solid #666;
 
     -moz-box-shadow:0 0 90px 5px #000;
     -webkit-box-shadow: 0 0 90px #000;
 }
 
-#video_container .close {
+
+#video_close {
     background-image:url(++resource++osha.theme.resources/multimedia/close.png);
     position:absolute;
     right:-27px;
