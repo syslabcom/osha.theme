@@ -30,7 +30,7 @@ v\:* { behavior: url(#default#VML); display:inline-block}
 </head>"""
 email_body = email_body.replace('</head>', v_hack)
 
-background = u"""<!–- [if gte vml 1]><v:shape stroked='f' style='position:absolute;z-index:-1;visibility:visible;width:790px; height:271px;top:0;left:0px;border:0;'>
+background = u"""<!–- [if gte vml 1]><v:shape stroked='f' style='position:absolute;z-index:-1;visibility:visible;width:800px; height:277px;top:0;left:0px;border:0;'>
 <v:imagedata src="http://plone4.osha.syslab.com/en/news/oshmailheaderbackground.jpg"/></v:shape><![endif]–->"""
 email_body = email_body.replace('<background></background>', background)
 

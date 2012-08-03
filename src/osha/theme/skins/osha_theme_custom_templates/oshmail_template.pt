@@ -60,10 +60,10 @@
 
 </td></tr>
 <tr><td>
-
-<table width="790" id="language-list">
+&nbsp;
+<table width="800" id="language-list">
     <tr>
-        <td valign="top" width="790"
+        <td valign="top"
             tal:define="lang_info ltool/getAvailableLanguageInformation;">
         <tal:block define="supported_languages ltool/listSupportedLanguages|python:[];
                            languages_on_main_site site_props/languages_on_main_site|python:[];
