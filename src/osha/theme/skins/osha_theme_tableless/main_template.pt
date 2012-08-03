@@ -278,7 +278,7 @@
     </div>
 <div id="kss-spinner"><img tal:attributes="src string:${portal_url}/spinner.gif" alt="" /></div>
 <div id="actual-url" tal:content="request/ACTUAL_URL|string:" style="display:none"></div>
-
+   </div>
 </body>
 </html>
 </metal:page>
