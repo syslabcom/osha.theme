@@ -24,8 +24,15 @@ email_body = context.oshmail_view()
 #put styles inline
 email_body = oshaview.inlinestyler(email_body)
 
-v_hack = """<style type="text/css">v\:* { behavior: url(#default#VML); display:inline-block}</style></head>"""
-#email_body = email_body.replace('</head>', v_hack)
+v_hack = u"""<style type="text/css">
+v\:* { behavior: url(#default#VML); display:inline-block}
+</style>
+</head>"""
+email_body = email_body.replace('</head>', v_hack)
+
+background = u"""<!–- [if gte vml 1]><v:shape stroked='f' style='position:absolute;z-index:-1;visibility:visible;width:790px; height:271px;top:0;left:0px;border:0;'><v:imagedata src="http://oshawebdev00.fe.rzob.gocept.net/en/news/oshmailheaderbackground.jpg"/></v:shape><![endif]–->"""
+email_body = email_body.replace('<background></background>', background)
+
 
 log.info(email_body)
     
