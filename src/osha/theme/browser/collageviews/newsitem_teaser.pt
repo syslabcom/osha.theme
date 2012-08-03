@@ -18,16 +18,16 @@
        class="parent-fieldname-image">
        <img width="100" tal:attributes="src string:${url}/image; alt title_or_id;" />
     </a>
-</td><td>
+</td><td valign="top">
 
             <span tal:omit-tag="" tal:condition="not:obj_description"> 
-                &nbsp; 
             </span>             
-            <span tal:content="structure obj_description">
+            <span tal:replace="structure obj_description">
                 description 
             </span> 
 
     <div class="visualClear"></div>
 </td></tr>
 </table>
+&nbsp;
 </span>

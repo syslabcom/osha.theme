@@ -1,6 +1,6 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
 
-<table class="collage-newsitem-rightcolumn"
+<table  cellpadding="2" cellspacing="2" class="collage-newsitem-rightcolumn"
 	tal:define="url here/absolute_url;
 	    title_or_id here/pretty_title_or_id;
 	    oshaview here/@@oshaview;

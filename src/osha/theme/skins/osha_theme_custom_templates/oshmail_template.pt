@@ -5,6 +5,7 @@
 <metal:block use-macro="here/global_defines/macros/defines" />
 <metal:block tal:define="charset here/site_properties/default_charset|string:utf-8; dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />
 <html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:v="urn:schemas-microsoft-com:vml"
       xml:lang="en"
       lang="en"
       tal:attributes="lang site_properties/default_language|default;
@@ -48,7 +49,9 @@
 	tal:attributes="class body_class;">
 
 <table width="790" style="width:790px;"><tr><td>
-<table style="width:790px;" background="http://oshawebdev00.fe.rzob.gocept.net/oshmailheaderbackground.png" width="790">
+	<!–- [if gte vml 1]><v:shape stroked='f' style='position:absolute;z-index:-1;visibility:visible;width:790px; height:271px;top:0;left:5px;border:0;'>
+	<v:imagedata src="http://oshawebdev00.fe.rzob.gocept.net/en/news/oshmailheaderbackground.jpg"/></v:shape><![endif]–->
+<table style="width:790px;" xbackground="http://oshawebdev00.fe.rzob.gocept.net/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
 	<tr><td width="200"><a style="width:200px; height:180px; display:block" accesskey="1" href="https://osha.europa.eu/en" target="_blank" height="180" width="200">		&nbsp;</a>
 	</td>
 	<td width="590" align="right">
@@ -59,9 +62,9 @@
 </td></tr>
 <tr><td>
 
-<table width="790" style="width:790px;" id="language-list">
+<table width="790" id="language-list">
     <tr>
-        <td valign="top"
+        <td valign="top" width="790"
             tal:define="lang_info ltool/getAvailableLanguageInformation;">
         <tal:block define="supported_languages ltool/listSupportedLanguages|python:[];
                            languages_on_main_site site_props/languages_on_main_site|python:[];
@@ -71,11 +74,12 @@
             <div i18n:domain="osha" style="text-align: center"
                 tal:define="thisurl string:${here/absolute_url}/${template/id}">
 
-              <span tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang"
+              <span tal:omit-tag="" tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang"
                         tal:define="lang_url python:thisurl+'?set_language='+lang;
                             url python:oshaview.handleOSHMailUrls(lang_url, collage_id);"
                         href="" tal:attributes="href url"
-                        tal:content="python:oshaview.get_native_language_by_code(lang)">lang</a><span tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span></span>
+                        tal:content="python:oshaview.get_native_language_by_code(lang)">lang</a>
+						<span tal:omit-tag="" tal:condition="not:repeat/lang/end"> | </span> </span>
             </div>
         </tal:block>
       </td>

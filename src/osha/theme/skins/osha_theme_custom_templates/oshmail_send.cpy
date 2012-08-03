@@ -24,6 +24,9 @@ email_body = context.oshmail_view()
 #put styles inline
 email_body = oshaview.inlinestyler(email_body)
 
+v_hack = """<style type="text/css">v\:* { behavior: url(#default#VML); display:inline-block}</style></head>"""
+#email_body = email_body.replace('</head>', v_hack)
+
 log.info(email_body)
     
 err = host.send(email_body, mto=email_to, mfrom=email_from,

@@ -12,8 +12,8 @@
 	    toLocalizedTime nocall:plone/toLocalizedTime">
 
 <tr><td rowspan="2">
-    <img src="publication_icon.gif" class="cover-image" width="100"
-        tal:attributes="src string:${here/absolute_url}/cover_image" />
+    <img src="publication_icon.gif" class="cover-image" width="100" align="left"
+        tal:attributes="src string:${here/absolute_url}/cover_image" style="margin-right:10px;"/>&nbsp;&nbsp; 
 </td><td>
     <h2>
         <a href="#"
@@ -34,3 +34,4 @@
 	<div class="visualClear"></div>
 </td></tr>
 </table>
+&nbsp;
