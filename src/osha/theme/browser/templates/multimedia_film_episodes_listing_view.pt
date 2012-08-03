@@ -22,7 +22,7 @@
   <body>
     <div metal:fill-slot="main">
       <tal:has_selected_film condition="view/film">
-        <div id="content" class="wide"
+        <div class="wide"
              tal:define="film view/film;
                          film_details python:view.film_details[film['id']]">
 
@@ -39,15 +39,15 @@
                  tal:attributes="id film/id;
                                  title film_details/title"
                  i18n:attributes="title">
+                <img class="video-thumbnail"
+                     tal:attributes="src film_details/image" />
               </a>
-              <img class="video-thumbnail"
-                   tal:attributes="src film_details/image" />
             </div>
 
             <div class="film_details">
               <h1 i18n:translate="" tal:content="film_details/title"></h1>
-              <p class="video-description" i18n:translate=""
-                 tal:content="structure film_details/description"></p>
+              <div class="video-description" i18n:translate=""
+                 tal:content="structure film_details/description"></div>
               <tal:download i18n:translate="label_napo_download_film_as">
               </tal:download>
               <a tal:attributes="href film_details/video_avi">Avi</a>,
@@ -71,9 +71,9 @@
                      tal:attributes="id episode;
                                      title episode_details/title"
                      i18n:attributes="title">
+                    <img class="video-thumbnail"
+                         tal:attributes="src episode_details/image" />
                   </a>
-                  <img class="video-thumbnail"
-                       tal:attributes="src episode_details/image" />
                 </div>
 
                 <div class="episode_details">
