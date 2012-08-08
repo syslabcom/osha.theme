@@ -6,6 +6,10 @@ from urlparse import urljoin
 from Acquisition import aq_acquire
 from Products.Five.browser import BrowserView
 from osha.policy.data.multimedia import napofilm
+from zope.interface import implements
+
+from interfaces import IFullWidth
+
 
 class LipstickView(BrowserView):
 
@@ -101,6 +105,7 @@ class MultimediaImageFoldersView(BrowserView):
 
 
 class MultimediaImageDetailsView(BrowserView):
+    implements(IFullWidth)
 
     def __call__(self):
         return self.index()

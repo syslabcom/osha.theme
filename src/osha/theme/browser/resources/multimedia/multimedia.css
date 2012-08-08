@@ -26,25 +26,16 @@ body.template-multimedia-image-details-view a[rel="contactSheet"] {
 }
 
 /* @group Gallery */
-
-body.template-multimedia-image-details-view .mainImage {
-   float: left;
-   margin-bottom: 20px;
-   width: 630px;
-}
-
 body.template-multimedia-image-details-view #content .mainImage img {
-	width: 630px;
-	max-width: 630px;
+	width: 768px;
+	max-width: 768px;
 	margin: 0;
-	float: left;
+	box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
 	outline: silver 1px solid;
 }
 
 body.template-multimedia-image-details-view .mainImage a {
-	position: relative;
-	float: left;
-	margin-bottom: 10px;
+    float: left;
 }
 
 body.template-multimedia-image-details-view .mainImage a:before {
@@ -53,17 +44,14 @@ body.template-multimedia-image-details-view .mainImage a:before {
 	-webkit-box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
 	-moz-box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
 	-o-box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
-	box-shadow: inset 0 2px 20px rgba(0,0,0,0.4);
 	width: 100%;
 	height: 100%;
 	position: absolute;
 }
 
-
-body.template-multimedia-image-details-view ul.thumbnails {
-	width: 240px;
-	float: right;
-	margin-right: -290px;
+body.template-multimedia-image-details-view #content ul.thumbnails {
+	width: 768px;
+	margin-left: 24px;
 }
 
 body.template-multimedia-image-details-view ul.thumbnails li {
@@ -96,10 +84,9 @@ body.template-multimedia-image-details-view ul.thumbnails li:before {
 
 body.template-multimedia-image-details-view ul.thumbnails li a {
 	width: 120px;
-	margin-left: -25px;
 	text-align: center;
 	height: 70px;
-	float: left;
+
 }
 
 body.template-multimedia-image-details-view ul.thumbnails li:hover {
@@ -113,9 +100,14 @@ body.template-multimedia-image-details-view ul.thumbnails li a img {
 	height: 70px;
 }
 
-body.template-multimedia-image-details-view  ul.thumbnails li a img.multimedia-thumb-landscape {
+body.template-multimedia-image-details-view  ul.thumbnails li a img.multimedia-thumb-portrait {
    height: auto;
    width: 70px;
+   margin-top: -8%;
+}
+
+body.template-multimedia-image-details-view  ul.thumbnails li a img.multimedia-thumb-landscape {
+   margin-left: -8%;
 }
 
 body.template-multimedia-image-details-view .noScript {
