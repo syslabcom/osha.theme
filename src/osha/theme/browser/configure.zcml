@@ -538,6 +538,7 @@
         <browser:page
         for="*"
         name="oshnews-view-simple"
+        template="templates/oshnews_view_simple.pt"
         class=".oshnews_view.OSHNewsSimpleView"
         permission="zope2.View"
         />
