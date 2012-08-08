@@ -14,6 +14,7 @@ from Products.ATContentTypes.interface import IATTopic
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from osha.theme import OSHAMessageFactory as _
 from osha.theme.browser.utils import search_solr
