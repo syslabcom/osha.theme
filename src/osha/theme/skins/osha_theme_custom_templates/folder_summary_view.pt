@@ -72,8 +72,10 @@
                                        item_start item/start/ISO|item/StartDate|nothing;
                                        item_end item/end/ISO|item/EndDate|nothing;
                                        item_object item/getObject;
+                                       item_outdated item/outdated|python:0;
+                                       outdated_class python:'outdated' if item_outdated else '';
                                    "
-                     tal:attributes="class string:tileItem visualIEFloatFix vevent ${item_type_class}">
+                     tal:attributes="class string:tileItem visualIEFloatFix vevent ${item_type_class} ${outdated_class}">
 
                     <a href="#"
                        tal:condition="python:item_type != 'Link'"
@@ -148,6 +150,17 @@
                         August 16, 2001 at 23:35:59
                         </span>
                     </tal:newsitem>
+                    <span class="outdated-result" tal:condition="item_outdated">
+                      <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
+                        <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
+                        <span tal:replace="context/outdated_info/Title" />
+                      </span>
+                      <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
+                        <img src="/++resource++outdated_mini.png" />
+                        Outdated
+                      </span>
+                    </span>
+
                     </div>
 
                     <p class="tileBody">
