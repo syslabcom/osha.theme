@@ -34,6 +34,9 @@ jQuery(document).ready (function() {
         });
     });
     jQuery("#video_close").click(function () {
-        jQuery("#video_container").hide("slow");
+        jQuery("#video_container")
+            .hide("slow", function () {
+                jwplayer("video").remove();                
+            });
     })
 });

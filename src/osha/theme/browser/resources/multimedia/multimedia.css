@@ -132,23 +132,26 @@ body.template-multimedia-image-details-view .noScript {
     top: 50%;
     left: 50%;
     margin-left: -321px;
-    margin-top: -177px;
+    margin-top: -200px;
     z-index: 100;
-    border:1px solid #666;
-
-    -moz-box-shadow:0 0 90px 5px #000;
-    -webkit-box-shadow: 0 0 90px #000;
 }
 
+#video {
+    border:1px solid #666;
+    -moz-box-shadow:0 0 90px 5px #000;
+    -webkit-box-shadow: 0 0 90px #000;    
+}
 
 #video_close {
     background-image:url(++resource++osha.theme.resources/multimedia/close.png);
-    position:absolute;
-    right:-27px;
-    top:-27px;
-    cursor:pointer;
+    position: relative;
+    left: 636px;
+    top: 5px;
     height:35px;
     width:35px;
+    display: block;
+    z-index: 1;
+    cursor:pointer;
 }
 
 body.template-multimedia-film-episodes-listing-view div#film,

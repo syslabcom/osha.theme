@@ -96,7 +96,7 @@
         </div>
       </tal:has_selected_film>
       <div id="video_container">
-        <a id="video_close"></a>
+        <a id="video_close" title="Close video"></a>
         <div id="video"></div>
       </div>
     </div>
