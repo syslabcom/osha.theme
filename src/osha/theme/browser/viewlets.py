@@ -1,4 +1,6 @@
+from BeautifulSoup import BeautifulSoup
 from cgi import escape
+import types
 
 from zope.app.component.hooks import getSite
 from zope.component import getMultiAdapter
@@ -8,6 +10,7 @@ from Acquisition import aq_base, aq_inner, aq_parent
 from ZTUtils import make_query
 
 from AccessControl.SecurityManagement import getSecurityManager
+from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
@@ -25,6 +28,7 @@ from slc.subsite.interfaces import ISubsiteEnhanced
 from Products.RemoteProvider.content.interfaces import IProvider
 from Products.OSHContentLink.interfaces import IOSH_Link
 from slc.googlesearch.interfaces import IGoogleSearchSettings
+from plone.app.layout.viewlets.common import DublinCoreViewlet
 
 from osha.theme import config
 from osha.theme.browser.interfaces import IInlineContentViewlet
@@ -593,3 +597,109 @@ class GoogleSearchViewlet(common.ViewletBase):
         base_url = self._get_base_url()
         return '%s/site_search' % base_url
 
+
+class OSHADublinCoreViewlet(DublinCoreViewlet):
+
+    def listMetaTags(self, context):
+        """ retrieve the metadata for the header and make osha specific
+            additions """
+        EASHW = 'European Agency for Safety and Health at Work'
+
+        putils = getToolByName(context, 'plone_utils')
+        portal_state = getMultiAdapter((context, self.request),
+            name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
+        navigation_root = context.restrictedTraverse(navigation_root_path)
+
+        # fetch plone standard
+        meta = putils.listMetaTags(context)
+
+        meta['title'] = context.Title()
+        meta['DC.title'] = context.Title()
+
+        desc = None
+        if shasattr(context, "getField") and context.getField("seoDescription"):
+            desc = context.getField("seoDescription").get(context)
+
+        if not desc:
+            desc = context.Description() or navigation_root.Description()
+
+        desc = "".join(BeautifulSoup(desc).findAll(text = True))
+        meta['description'] = desc
+        meta['DC.description'] = desc
+
+        medium = {
+                "Image": "image",
+                "News Item": "news",
+                "Blog Entry": "blog",
+                }
+        if context.portal_type in medium:
+            meta['medium'] = medium.get(context.portal_type)
+
+        Publisher = meta.get('Publisher', None)
+        if not Publisher or Publisher == 'No publisher':
+            meta['Publisher'] = EASHW
+
+        # Gorka requests on 6.3.2008
+        # Just in case, I'd like to remind you the decision we took regarding
+        # the keywords for the keywords html tag.
+        # The keywords should be added as follows
+        # 1.- OSH, OSHA, EU-OSHA, Occupational safety, Occupational health,
+        #     European Agency,
+        # 2.- plus the osha keywords, plus the thesaurus ones. in that order.
+
+        PREFIX_KEYWORDS = ['OSH', 'OSHA', 'EU-OSHA',
+                               'Occupational safety',
+                               'Occupational health',
+                               'European Agency']
+
+        lang = getToolByName(context,
+            'portal_languages').getPreferredLanguage()
+        domain = "osha"
+        SUBJECT = [translate(target_language=lang, msgid=s, default=s,
+            context=context, domain=domain)
+            for s in context.Subject()]
+
+        THESAURUS = []
+        if hasattr(aq_inner(context), 'getField'):
+            field = context.getField('multilingual_thesaurus')
+            if field is not None:
+                pvt = getToolByName(context, 'portal_vocabularies')
+                portal_languages = getToolByName(context, 'portal_languages')
+                lang = portal_languages.getPreferredLanguage()
+                manager = pvt.MultilingualThesaurus._getManager()
+
+                thesitems = field.getAccessor(context)()
+                for thesitem in thesitems:
+                    THESAURUS.append(manager.getTermCaptionById(thesitem,
+                        lang))
+
+        keywords = PREFIX_KEYWORDS + SUBJECT + THESAURUS
+        if isinstance(keywords, (list, tuple)):
+            # convert a list to a string
+            if keywords is None:
+                keywords = ''
+            else:
+                keywords = [x for x in keywords
+                    if type(x) in (types.StringType, types.UnicodeType)]
+                keywords = ', '.join(keywords)
+
+        meta['keywords'] = keywords
+        meta['DC.subject'] = keywords
+
+        # Creator, Contributor, Rights
+        meta['DC.creator'] = EASHW
+        meta['DC.contributors'] = EASHW
+        meta['DC.rights'] = EASHW
+
+        #Language
+        language = context.Language()
+        if language:
+            meta['DC.language'] = language
+            meta['language'] = language
+
+        return meta
+
+    def update(self):
+        context = aq_inner(self.context)
+        self.metatags = self.listMetaTags(context).items()

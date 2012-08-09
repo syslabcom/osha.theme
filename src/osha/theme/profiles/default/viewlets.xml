@@ -1477,7 +1477,4 @@
   <viewlet name="osha.path_bar"/>
   <viewlet name="plone.app.i18n.locales.languageselector"/>
  </hidden>
- <hidden manager="plone.htmlhead" skinname="OSHA Plone Theme">
-   <viewlet name="plone.htmlhead.dublincore" />
- </hidden>
 </object>
