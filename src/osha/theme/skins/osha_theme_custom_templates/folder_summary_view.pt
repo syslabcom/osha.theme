@@ -56,7 +56,7 @@
             <tal:listing condition="folderContents">
 
               <tal:block tal:repeat="item folderContents">
-                <div class="tileItem visualIEFloatFix vevent" 
+                <div class="tileItem visualIEFloatFix vevent searchresult" 
                      tal:define="item_url item/getURL|item/absolute_url;
                                  item_id item/getId|item/id;
                                  item_title_or_id item/pretty_title_or_id;
@@ -75,7 +75,11 @@
                                  item_outdated item/outdated|python:0;
                                  outdated_class python:'outdated' if item_outdated else '';
                                  "
-                     tal:attributes="class string:tileItem visualIEFloatFix vevent ${item_type_class} ${outdated_class}">
+                     tal:attributes="class string:tileItem visualIEFloatFix vevent searchresult ${item_type_class} ${outdated_class}">
+
+                  <div class="outdated_toggle_button" tal:condition="item_outdated">
+                      <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                  </div>
 
                   <a href="#"
                      tal:condition="python:item_type != 'Link'"
@@ -150,19 +154,9 @@
                         August 16, 2001 at 23:35:59
                       </span>
                     </tal:newsitem>
-                    <span class="outdated-result" tal:condition="item_outdated">
-                      <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-                        <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-                        <span tal:replace="context/outdated_info/Title" />
-                      </span>
-                      <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-                        <img src="/++resource++outdated_mini.png" />
-                        Outdated
-                      </span>
-                    </span>
-
                   </div>
 
+               <span class="" tal:attributes="class python:item_outdated and 'outdated_accordion_content' or ''">
                   <p class="tileBody">
                     <span tal:omit-tag="" tal:condition="not:item_description">
                       &nbsp;
@@ -179,6 +173,7 @@
                       Read More&hellip;
                     </a>
                   </p>
+                </span>
 
                   <div class="visualClear"><!-- --></div>
 
