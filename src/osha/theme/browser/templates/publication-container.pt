@@ -77,9 +77,11 @@
                                        item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                        item_outdated item/outdated|python:0;
                                    ">
-                 <div class="searchresult" tal:attributes="class python:item_outdated and 'searchresult-outdated' or 'searchresult'">
+                <div class="searchresult" tal:attributes="class python:item_outdated and 'searchresult outdated' or 'searchresult'">
+                        <div class="outdated_toggle_button" tal:condition="item_outdated">
+                            <p class="outdated_text" tal:content="context/outdated_info/Title" tal:attributes="title context/outdated_info/Description">archived</p>
+                        </div>
                     <dt metal:define-macro="listitem">
-                       
                         <div class="publicationImage">
                             <img tal:attributes="src string:${item_url}/cover_image" width="70"/>
                         </div>
@@ -105,22 +107,11 @@
                                     </span>
                                 </tal:published>
 
-                            <span class="outdated-result" tal:condition="item_outdated">
-                              <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
-                                  <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
-                                  <span tal:replace="context/outdated_info/Title" />
-                              </span>
-                              <span tal:condition="not:exists:context/outdated_info" tal:omit-tag="">
-                                <img src="/++resource++outdated_mini.png" />
-                                Outdated
-                              </span>
-                            </span>
-
                         </div>
 
                     </dt>
 
-                    <dd class="publicationText">
+                    <dd class="publicationText" tal:attributes="class python:item_outdated and 'publicationText outdated_accordion_content' or 'publicationText'">
                         <span tal:omit-tag="" tal:condition="not:item_description">
                             &nbsp;
                         </span>
