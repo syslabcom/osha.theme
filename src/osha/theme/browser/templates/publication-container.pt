@@ -96,8 +96,6 @@
 
                         <div class="documentByLine">
 
-                            <tal:byline condition="show_about">
-
                                 <tal:published>
                                     <tal:mod i18n:translate="box_published">
                                       published
@@ -107,7 +105,6 @@
                                     </span>
                                 </tal:published>
 
-                            </tal:byline>
                             <span class="outdated-result" tal:condition="item_outdated">
                               <span tal:condition="exists:context/outdated_info" tal:omit-tag="">
                                   <img src="/++resource++outdated_mini.png" tal:attributes="title context/outdated_info/Description" />
