@@ -34,7 +34,7 @@
 
     <div tal:define="lang context/plone_portal_state/language;">
       <h2><a tal:attributes="href string:${portal_url}/${lang}/news/oshmail" i18n:translate="">OSHmail newsletter</a></h2>
-      <p i18n:translate="subscribe_to_oshmail_long">Stay in touch with the latest developments in occupational safety and health. <a tal:attributes="href string:${portal_url}/${lang}/news/oshmail" i18n:name="Subscribe">Subscribe</a> now to get your monthly update.
+      <p i18n:translate="subscribe_to_oshmail_long">Stay in touch with the latest developments in occupational safety and health. <a tal:attributes="href string:${portal_url}/${lang}/news/oshmail" i18n:name="Subscribe" i18n:translate="Subscribe">Subscribe</a> now to get your monthly update.
       </p>
     </div>
 
