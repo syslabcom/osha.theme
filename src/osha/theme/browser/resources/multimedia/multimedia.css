@@ -181,13 +181,19 @@ body.template-multimedia-film-episodes-listing-view div.video_link a {
     z-index: 10;
 }
 
+body.template-multimedia-film-episodes-listing-view div#film div.video_link a,
+body.template-multimedia-film-episodes-listing-view div.video_link a {
+   /*background: url("video_play.png") repeat-x scroll 1px 6px transparent;*/
+    background: url("++resource++osha.theme.resources/multimedia/video_play.png") no-repeat scroll 125px 60px transparent;;
+    opacity: 0.4;
+}
+
 body.template-multimedia-film-episodes-listing-view div#film div.video_link a:hover,
 body.template-multimedia-film-episodes-listing-view div.video_link a:hover {
-    background: url("video_play.png") no-repeat scroll 125px 60px transparent;
     opacity: 0.9;
 }
 
-body.template-multimedia-film-episodes-listing-view div.episode div.video_link a:hover {
+body.template-multimedia-film-episodes-listing-view div.episode div.video_link a {
     background-position: 25px 4px;
 }
 
