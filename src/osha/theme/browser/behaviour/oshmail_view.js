@@ -1,27 +1,30 @@
-function displaynl () {
+function displaynl() {
+    "use strict";
     jQuery('.fadercontrol').hide();
     jQuery('.older-newsletter').fadeIn('slow');
 }
 
-var OSHMAIL = {}
+var OSHMAIL = {};
 
 OSHMAIL.loadOshmailContent = function () {
+    "use strict";
     jQuery.fancybox.showActivity();
     jQuery.ajax({
         async: false,
         type: 'GET',
-        url: this.href + "?ajax_mode=1",
-        success: function(data) {
+        url: this.href + "?ajax_load=1",
+        success: function (data) {
             jQuery("#oshmail-overlay #collage")
                 .replaceWith(jQuery(data).find("#collage"));
             jQuery.fancybox.hideActivity();
             jQuery("div#fancybox-wrap").unbind("mousewheel");
-        },
+        }
     });
 };
 
-jQuery(document).ready(function() {
-    if (jQuery("a[rel=oshmail-fancybox]").length>0) {
+jQuery(document).ready(function () {
+    "use strict";
+    if (jQuery("a[rel=oshmail-fancybox]").length > 0) {
         jQuery("a[rel=oshmail-fancybox]")
             .fancybox({
                 'transitionIn'      : 'elastic',
@@ -37,11 +40,11 @@ jQuery(document).ready(function() {
                 'height'            : jQuery(window).height() - 100,
                 'content'           : jQuery('#oshmail-overlay'),
                 'onComplete'        : OSHMAIL.loadOshmailContent,
-                'onCleanup'         : function() {
+                'onCleanup'         : function () {
                     jQuery("#oshmail-overlay #collage")
-                        .css({"opacity" : "0",});
-                },
+                        .css({"opacity" : "0"});
+                }
             });
     }
-})
+});
 
