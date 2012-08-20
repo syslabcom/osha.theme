@@ -85,6 +85,10 @@
     directory="osha.policy:skins/osha_content"/>
  <object name="osha_dynamic" meta_type="Filesystem Directory View"
     directory="osha.policy:skins/osha_dynamic"/>
+ <object name="osha_form_scripts" meta_type="Filesystem Directory View"
+    directory="osha.policy:skins/osha_form_scripts"/>
+ <object name="osha_forms" meta_type="Filesystem Directory View"
+    directory="osha.policy:skins/osha_forms"/>
  <object name="osha_images" meta_type="Filesystem Directory View"
     directory="osha.policy:skins/osha_images"/>
  <object name="osha_portlets" meta_type="Filesystem Directory View"
@@ -212,6 +216,8 @@
     directory="Products.RALink:skins/ralink_styles"/>
  <object name="ralink_templates" meta_type="Filesystem Directory View"
     directory="Products.RALink:skins/ralink_templates"/>
+ <object name="readonlystringfield" meta_type="Filesystem Directory View"
+    directory="quintagroup.ploneformgen.readonlystringfield:skins/readonlystringfield"/>
  <object name="referencebrowser" meta_type="Filesystem Directory View"
     directory="archetypes.referencebrowserwidget:skins/referencebrowser"/>
  <object name="relations" meta_type="Filesystem Directory View"
@@ -331,6 +337,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -426,6 +434,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -521,6 +531,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -700,6 +712,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -795,6 +809,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -890,6 +906,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -983,6 +1001,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -994,6 +1014,7 @@
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
   <layer name="feedfeeder"/>
+  <layer name="readonlystringfield"/>
  </skin-path>
  <skin-path name="OSHA Plone Theme">
   <layer name="textindexng3"/>
@@ -1077,6 +1098,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -1171,6 +1194,8 @@
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
   <layer name="osha_theme_germany"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
@@ -1427,6 +1452,8 @@
   <layer name="remoteprovider_templates"/>
   <layer name="remoteprovider_styles"/>
   <layer name="remoteprovider_images"/>
+  <layer name="osha_form_scripts"/>
+  <layer name="osha_forms"/>
   <layer name="osha_templates"/>
   <layer name="osha_scripts"/>
   <layer name="osha_portlets"/>
