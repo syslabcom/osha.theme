@@ -892,17 +892,14 @@
   <viewlet name="osha.topactions"/>
  </hidden>
  <hidden manager="plone.abovecontentbody" skinname="OSHAGermany"/>
- <hidden manager="plone.portaltop" skinname="OSHAGermany">
-  <viewlet name="plone.personal_bar"/>
-  <viewlet name="plone.app.i18n.locales.languageselector"/>
+ <hidden manager="osha.header.topactions" skinname="OSHAGermany"/>
+ <hidden manager="plone.htmlhead" skinname="OSHAGermany">
+  <viewlet name="plone.htmlhead.title"/>
  </hidden>
  <hidden manager="osha.header.dropdowns" skinname="OSHAGermany">
   <viewlet name="osha.germany.site_actions"/>
   <viewlet name="osha.languageselector"/>
   <viewlet name="osha.networkchooser"/>
- </hidden>
- <hidden manager="plone.htmlhead" skinname="OSHAGermany">
-  <viewlet name="plone.htmlhead.title"/>
  </hidden>
  <hidden manager="plone.belowcontentbody" skinname="OSHAGermany">
   <viewlet name="plone.abovecontenttitle.documentactions"/>
@@ -921,7 +918,10 @@
   <viewlet name="osha.theme.googlesearch_viewlet"/>
   <viewlet name="plone.personal_bar"/>
  </hidden>
- <hidden manager="osha.header.topactions" skinname="OSHAGermany"/>
+ <hidden manager="plone.portaltop" skinname="OSHAGermany">
+  <viewlet name="plone.personal_bar"/>
+  <viewlet name="plone.app.i18n.locales.languageselector"/>
+ </hidden>
  <hidden manager="plone.htmlhead" skinname="EW2000">
   <viewlet name="plone.htmlhead.title"/>
  </hidden>
@@ -1382,12 +1382,18 @@
   <viewlet name="plone.personal_bar"/>
   <viewlet name="plone.app.i18n.locales.languageselector"/>
  </hidden>
+ <hidden manager="plone.portalfooter" skinname="OSHA HW">
+  <viewlet name="plone.footer"/>
+  <viewlet name="plone.colophon"/>
+  <viewlet name="plone.site_actions"/>
+ </hidden>
  <hidden manager="plone.portalheader" skinname="OSHA HW">
   <viewlet name="plone.logo"/>
   <viewlet name="plone.searchbox"/>
   <viewlet name="plone.global_sections"/>
   <viewlet name="plone.site_actions"/>
   <viewlet name="plone.app.i18n.locales.languageselector"/>
+  <viewlet name="plone.personal_bar"/>
  </hidden>
  <hidden manager="plone.belowcontent" skinname="Old Plone 3 Custom Theme">
   <viewlet name="plone.belowcontenttitle.keywords"/>
