@@ -5,27 +5,7 @@
 
   <metal:javascriptslot fill-slot="javascript_head_slot">
     <script src="#"
-            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.js"
-            type="text/javascript" charset="utf-8">
-    </script>
-    <script src="#"
-            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.minified.js"
-            type="text/javascript" charset="utf-8">
-    </script>
-    <script src="#"
-            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.jcarousel.pack.js"
-            type="text/javascript" charset="utf-8">
-    </script>
-    <script src="#"
-            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.masonry.min.js"
-            type="text/javascript" charset="utf-8">
-    </script>
-    <script src="#"
-            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/base.js"
-            type="text/javascript" charset="utf-8">
-    </script>
-    <script src="#"
-            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/oshmail_view.js?v=3"
+            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/oshmail_view.js?v=4"
             type="text/javascript" charset="utf-8">
     </script>
   </metal:javascriptslot>
@@ -34,6 +14,8 @@
           tal:attributes="href string:${portal_url}/lipstick.css" />
     <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
           tal:attributes="href string:${portal_url}/collage.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
+          tal:attributes="href string:$portal_url/++resource++osha.theme.resources/overlay/overlay.css?v=1"/>
     <style type="text/css">.older-newsletter {display:none;}</style>
   </metal:css>
 
@@ -163,7 +145,13 @@
           </div>
       </div>
     </div>
-    <div id="oshmail-overlay"><span id="collage"/></div>
+
+    <div id="oshmail-overlay" class="osha-overlay full">
+        <a class="osha-overlay-close" title="Close video"></a>
+        <span id="collage"/>
+    </div>
+    <img id="overlay-spinner" src="spinner.gif"/>
+
     <div tal:replace="structure provider:plone.belowcontentbody" />
 
 </div>

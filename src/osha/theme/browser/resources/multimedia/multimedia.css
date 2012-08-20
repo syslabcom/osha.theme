@@ -135,7 +135,7 @@ body.template-multimedia-image-details-view .noScript {
 }
 
 #video_close {
-    background-image:url(++resource++osha.theme.resources/multimedia/close.png);
+    background-image:url(++resource++osha.theme.resources/overlay/close.png);
     position: relative;
     left: 636px;
     top: 5px;
