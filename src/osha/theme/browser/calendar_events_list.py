@@ -9,7 +9,6 @@ from zope.annotation.interfaces import IAnnotations
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.ATContentTypes.interface.topic import IATTopic
 
-from osha.theme.browser.calendar_helper_view import getEventDateToBeConfirmed
 
 class EventsListingView(BrowserView):
     template = ViewPageTemplateFile('templates/calendar_events_list.pt')
