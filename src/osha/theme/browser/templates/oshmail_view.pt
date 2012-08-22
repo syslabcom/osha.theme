@@ -28,18 +28,26 @@
              tal:condition="request/portal_status_message | nothing"
              tal:content="request/portal_status_message | nothing" />
         <div id="mainContent">
-          <h1>
-            OSHmail service
-          </h1>
+          <h1>OSHmail service</h1>
+
           <div class="introduction">
             <p i18n:translate="oshmail_intro_welcome">
               Welcome to <strong i18n:name="oshmail">OSHmail</strong>, the electronic newsletter issued by the European Agency for Safety and Health at Work.
             </p>
             <!-- that has already <strong><span i18n:name="number" tal:replace="view/get_num_subscribers">44169</span> subscribers</strong> -->
           </div>
+
           <form action="#" tal:attributes="action string:./${view/getName}/subscribe" method="post" id="subscribe">
             <fieldset class="concise">
-              <legend i18n:translate="oshmail_header_subscribe">Subscribe to OSHmail</legend> <label><span i18n:translate="label_name" tal:omit-tag="">Name</span> <input type="text" name="name" class="span-6" /></label> <label><span i18n:translate="portlet_oshmail_email" tal:omit-tag="">E-mail address</span>* <input type="text" name="emailaddress" class="span-6" /></label>
+              <legend i18n:translate="oshmail_header_subscribe">Subscribe to OSHmail</legend> 
+              <label>
+                <span i18n:translate="label_name" tal:omit-tag="">Name</span> 
+                <input type="text" name="name" class="span-6" />
+              </label> 
+              <label>
+                <span i18n:translate="portlet_oshmail_email" tal:omit-tag="">E-mail address</span>* 
+                <input type="text" name="emailaddress" class="span-6" />
+              </label>
             </fieldset>
 
             <fieldset class="buttonBar">
@@ -47,6 +55,7 @@
               <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
             </fieldset>
           </form>
+
           <hr class="clear" />
           <!--p i18n:translate="oshmail_intro_subsribe_now">
               Subscribe now for free and get:
@@ -71,11 +80,10 @@
             </li>
           </ul>
         </div>
+
         <div id="portlets">
           <div class="portlet" id="portletLatestIssue" tal:define="latest view/getLatestIssue">
-            <h2 i18n:translate="label_latest_issue">
-              Latest issue
-            </h2>
+            <h2 i18n:translate="label_latest_issue">Latest issue</h2>
             <img src="https://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini"
                  alt="Latest OSHMail Issue"
                  tal:attributes="src view/get_image"
@@ -94,13 +102,11 @@
               </li>
             </ul>
           </div>
+
           <div class="portlet" id="portletOlderIssues">
-            <h2 i18n:translate="label_previous_issues" i18n:domain="osha">
-              Previous issues
-            </h2>
-            <h3 tal:content="view/thisyear">
-              2010
-            </h3>
+
+            <h2 i18n:translate="label_previous_issues" i18n:domain="osha">Previous issues</h2>
+            <h3 tal:content="view/thisyear">2010</h3>
             <ul class="links" tal:define="issues view/thisyears_issues">
               <li tal:repeat="issue issues">
                 <a rel="oshmail-overlay"
@@ -109,9 +115,8 @@
                    tal:content="data/title">OSHmail 91 - 2009</a>
               </li>
             </ul>
-            <h3 tal:content="view/lastyear">
-              2009
-            </h3>
+
+            <h3 tal:content="view/lastyear">2009</h3>
             <ul class="links" tal:define="issues view/lastyears_issues">
               <li tal:repeat="issue issues">
                 <a rel="oshmail-overlay"
@@ -120,13 +125,13 @@
                    tal:content="data/title">OSHmail 91 - 2009</a>
               </li>
             </ul>
+
             <p class="fadercontrol" i18n:translate="label_load_older">
               Load <a onclick="displaynl()" href="javascript:return false;" i18n:name="link"><span i18n:translate="label_older_newsletters">older newsletters</span></a>.
             </p>
+
             <tal:repeat define="oldernl view/oldernewsletters" repeat="nl oldernl/keys">
-              <h3 tal:content="nl" class="older-newsletter">
-                2009
-              </h3>
+              <h3 tal:content="nl" class="older-newsletter">2009</h3>
               <ul class="links older-newsletter" tal:define="issues python:oldernl[nl]">
                 <li tal:repeat="issue issues">
                   <a rel="oshmail-overlay"
@@ -137,17 +142,16 @@
               </ul>
             </tal:repeat>
           </div>
+        </div>
       </div>
+
+      <div id="oshmail-overlay" class="osha-overlay full">
+        <img id="overlay-spinner" src="spinner.gif" />
+        <a class="osha-overlay-close" title="Close video"></a>
+      </div>
+
+      <div tal:replace="structure provider:plone.belowcontentbody" />
     </div>
 
-    <div id="oshmail-overlay" class="osha-overlay full">
-      <img id="overlay-spinner" src="spinner.gif" />
-      <a class="osha-overlay-close" title="Close video"></a>
-    </div>
-
-    <div tal:replace="structure provider:plone.belowcontentbody" />
-
-</div>
-
-</body>
+  </body>
 </html>
