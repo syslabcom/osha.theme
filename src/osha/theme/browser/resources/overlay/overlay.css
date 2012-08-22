@@ -1,4 +1,4 @@
-.osha-overlay, #overlay-spinner {
+.osha-overlay {
   padding: 1em;
   border:1px solid #666;
   -moz-box-shadow:0 0 90px 5px #000;
@@ -12,6 +12,7 @@
   top: 0;
   bottom: 0;
   left: 0;
+  right: 0;
   margin: 30px;
   z-index: 100;
   overflow: auto;
@@ -20,19 +21,15 @@
 .osha-overlay-close {
   background-image:url(++resource++osha.theme.resources/overlay/close.png);
   position: fixed;
-  height:35px;
-  width:35px;
+  height: 35px;
+  width: 35px;
   display: block;
-  cursor:pointer;
-}
-
-.osha-overlay.full .osha-overlay-close {
+  cursor: pointer;
   right: 0;
   top: 0;
 }
 
 #overlay-spinner {
-  display: None;
   position: fixed;
   margin: -13px 0 0 -13px;
   left: 50%;
