@@ -388,6 +388,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -396,8 +397,7 @@
   <layer name="osha_theme_ew2000"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_scripts"/>
   <layer name="alertservice"/>
   <layer name="casestudy_templates"/>
@@ -480,6 +480,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -488,8 +489,7 @@
   <layer name="osha_theme_ew2001"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_scripts"/>
   <layer name="alertservice"/>
   <layer name="casestudy_templates"/>
@@ -572,6 +572,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -580,8 +581,7 @@
   <layer name="osha_theme_ew2002"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_scripts"/>
   <layer name="alertservice"/>
   <layer name="casestudy_templates"/>
@@ -664,6 +664,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -672,8 +673,7 @@
   <layer name="osha_theme_ew2003"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_scripts"/>
   <layer name="alertservice"/>
   <layer name="casestudy_templates"/>
@@ -756,6 +756,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -764,8 +765,7 @@
   <layer name="osha_theme_ew2004"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_scripts"/>
   <layer name="alertservice"/>
   <layer name="casestudy_templates"/>
@@ -848,6 +848,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -856,8 +857,7 @@
   <layer name="osha_theme_ew2005"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_scripts"/>
   <layer name="alertservice"/>
   <layer name="casestudy_templates"/>
@@ -940,6 +940,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -948,8 +949,7 @@
   <layer name="osha_theme_ew2006"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_scripts"/>
   <layer name="alertservice"/>
   <layer name="casestudy_templates"/>
@@ -1032,6 +1032,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -1040,8 +1041,7 @@
   <layer name="osha_theme_ew2007"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_scripts"/>
   <layer name="alertservice"/>
   <layer name="casestudy_templates"/>
@@ -1092,6 +1092,7 @@
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="HWI">
+  <layer name="readonlystringfield"/>
   <layer name="textindexng3"/>
   <layer name="custom"/>
   <layer name="attachment_widgets"/>
@@ -1189,6 +1190,7 @@
   <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="HealthyWorkplaces">
+  <layer name="readonlystringfield"/>
   <layer name="textindexng3"/>
   <layer name="custom"/>
   <layer name="attachment_widgets"/>
@@ -1211,11 +1213,10 @@
   <layer name="PloneFormGen"/>
   <layer name="plone_ckeditor"/>
   <layer name="osha_theme_healthyworkplaces"/>
+  <layer name="osha_theme_legacy"/>
   <layer name="osha_theme_hybrid"/>
   <layer name="osha_theme_custom_images"/>
   <layer name="osha_theme_custom_templates"/>
-  <layer name="osha_theme_styles"/>
-  <layer name="osha_theme_tableless"/>
   <layer name="osha_theme_scripts"/>
   <layer name="seminarportal_styles"/>
   <layer name="seminarportal_templates"/>
@@ -1370,6 +1371,7 @@
   <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="NewOSHEra">
+  <layer name="readonlystringfield"/>
   <layer name="textindexng3"/>
   <layer name="custom"/>
   <layer name="attachment_widgets"/>
@@ -1467,6 +1469,7 @@
   <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="OSHA FOP skin">
+  <layer name="readonlystringfield"/>
   <layer name="textindexng3"/>
   <layer name="custom"/>
   <layer name="attachment_widgets"/>
@@ -1563,6 +1566,7 @@
   <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="OSHA HW">
+  <layer name="readonlystringfield"/>
   <layer name="textindexng3"/>
   <layer name="custom"/>
   <layer name="attachment_widgets"/>
@@ -1753,6 +1757,7 @@
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
   <layer name="feedfeeder"/>
+  <layer name="readonlystringfield"/>
  </skin-path>
  <skin-path name="OSHA Plone Theme">
   <layer name="textindexng3"/>
@@ -1947,6 +1952,7 @@
   <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="Plone Classic Theme">
+  <layer name="readonlystringfield"/>
   <layer name="textindexng3"/>
   <layer name="custom"/>
   <layer name="attachment_widgets"/>
@@ -2028,6 +2034,7 @@
   <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="Plone Default">
+  <layer name="readonlystringfield"/>
   <layer name="textindexng3"/>
   <layer name="custom"/>
   <layer name="attachment_widgets"/>
@@ -2239,6 +2246,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -2330,6 +2338,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -2390,6 +2399,7 @@
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="Sunburst Theme">
+  <layer name="readonlystringfield"/>
   <layer name="textindexng3"/>
   <layer name="custom"/>
   <layer name="attachment_widgets"/>
@@ -2504,6 +2514,7 @@
   <layer name="referencebrowser"/>
   <layer name="captchas_sendto_form"/>
   <layer name="captchas_discussion"/>
+  <layer name="readonlystringfield"/>
   <layer name="osha_dynamic"/>
   <layer name="pressroom_styles"/>
   <layer name="pressroom_scripts"/>
@@ -2567,6 +2578,7 @@
   <layer name="textindexng3"/>
   <layer name="osha_form_scripts"/>
   <layer name="osha_forms"/>
+  <layer name="readonlystringfield"/>
   <layer name="custom"/>
   <layer name="LinguaPlone"/>
   <layer name="syslabcom_filter_templates"/>
