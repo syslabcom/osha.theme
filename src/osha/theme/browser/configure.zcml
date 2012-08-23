@@ -554,37 +554,12 @@
 
     <browser:page
         for="*"
-        name="oshmail2-subscribe"
-        class=".oshmail2_subscribe.OSHmailSubscribe"
-        template="templates/oshmail2_view.pt"
+        name="oshmail-subscribe"
+        class=".oshmail_subscribe.OSHmailSubscribe"
+        template="templates/oshmail_view.pt"
         allowed_interface=".interfaces.IOSHmailView"
         permission="zope2.View"
         />
-    <browser:page
-        for="*"
-        name="oshmail2-view"
-        class=".oshmail2_view.OSHmailView"
-        template="templates/oshmail2_view.pt"
-        allowed_interface=".interfaces.IOSHmailView"
-        permission="zope2.View"
-        />
-        
-    <browser:page
-        for="*"
-        name="confirm-unsubscription"
-        template="templates/oshmail2_unsubscribe.pt"
-        permission="zope2.View"
-        />    
-
-    <browser:page
-        for="*"
-        name="unsubscribe"
-        class=".oshmail2_unsubscribe.OSHmailUnsubscribe"
-        template="templates/oshmail2_unsubscribe.pt"
-        permission="zope2.View"
-        allowed_interface=".interfaces.IOSHmailView"
-        /> 
-
     <browser:page
         for="*"
         name="oshmail-view"
@@ -593,6 +568,22 @@
         allowed_interface=".interfaces.IOSHmailView"
         permission="zope2.View"
         />
+        
+    <browser:page
+        for="*"
+        name="confirm-unsubscription"
+        template="templates/oshmail_unsubscribe.pt"
+        permission="zope2.View"
+        />    
+
+    <browser:page
+        for="*"
+        name="unsubscribe"
+        class=".oshmail_unsubscribe.OSHmailUnsubscribe"
+        template="templates/oshmail_unsubscribe.pt"
+        permission="zope2.View"
+        allowed_interface=".interfaces.IOSHmailView"
+        /> 
 
     <browser:page
         for="*"
