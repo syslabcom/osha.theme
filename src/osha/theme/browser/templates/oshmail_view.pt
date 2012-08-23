@@ -63,7 +63,8 @@
               <button type="submit" name="subscribe" i18n:translate="Subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button>
             </dd>
             <dd class="discreet rounded-corners">
-              Not interested any more? <a href="oshmail-view#unsubscribe">Unsubscribe</a>
+              Not interested any more? 
+              <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
             </dd>
           </form> 
           </dl>
@@ -81,18 +82,6 @@
           <p>
             Easy one-click unsubscription, if you are not interested anymore.
           </p>
-
-          <!--form action="#" tal:attributes="action string:./${templateId}/subscribe" method="post" id="subscribe">
-            <fieldset class="concise">
-              <legend i18n:translate="oshmail_header_subscribe">Subscribe to OSHmail</legend> <label><span i18n:translate="label_name" tal:omit-tag="">Name</span> <input type="text" name="name" class="span-6" /></label> <label><span i18n:translate="portlet_oshmail_email" tal:omit-tag="">E-mail address</span>* <input type="text" name="emailaddress" class="span-6" /></label>
-            </fieldset>
-
-            <fieldset class="buttonBar">
-              <button type="submit" name="subscribe" i18n:translate="Subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button>
-              <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
-            </fieldset>
-          </form-->
-
 
           <div id="blockLatestIssue" tal:define="latest view/getLatestIssue">
             <h2 i18n:translate="label_latest_newsletter">
@@ -117,7 +106,7 @@
             </ul>
           </div>
           
-          <div class="visualClear"><!-- --> </div>
+          <div class="visualClear"> </div>
 
           <p class="fadercontrol">
               <a onclick="displaynl()" href="javascript:return false;"><span i18n:translate="xlabel_older_newsletters">older newsletters</span></a>
@@ -167,20 +156,7 @@
             </tal:repeat>
           </div>
 
-
           <div class="visualClear"><!-- --> </div>
-
-          <h2 id="unsubscribe">Unsubscribe</h2>
-          <dl id="unsubscriptionBox">
-          <form action="#" tal:attributes="action string:./@@oshmail-subscribe" method="post" id="subscribe">
-          <dd>
-              <label><span i18n:translate="xportlet_oshmail_email" tal:omit-tag="">Your e-mail</span> <input type="text" name="emailaddress" class="span-6" /></label>
-          </dd>
-          <dd style="padding:0.5em 0">
-              <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
-          </dd>
-          </form>
-          </dl>
       </div>
     </div>
     <div id="oshmail-overlay"><span id="collage"/></div>
