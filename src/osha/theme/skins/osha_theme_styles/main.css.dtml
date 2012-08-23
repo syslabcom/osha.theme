@@ -1608,6 +1608,15 @@ div.flatlist_container .flatlist-item {
     font-size: 90%;
 }
 
+.info-provider-box {
+  font-weight: normal;
+  float: right;
+  padding: 0 5px 0 5px;
+  width: 141px;
+  margin:-5px -191px 0 10px;
+  position:static"
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
