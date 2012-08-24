@@ -1,9 +1,3 @@
-function displaynl() {
-    "use strict";
-    jQuery('.fadercontrol').hide();
-    jQuery('.older-newsletter').fadeIn('slow');
-}
-
 var OSHMAIL = {};
 
 OSHMAIL.loadOshmailContent = function (linkObj) {
@@ -39,7 +33,8 @@ jQuery(document).ready(function () {
     jQuery(".older-newsletter").hide();
 
     jQuery("#displaynl").click(function () {
-        displaynl();
+        jQuery('.fadercontrol').hide();
+        jQuery('.older-newsletter').fadeIn('slow');
         return false;
     });
 
