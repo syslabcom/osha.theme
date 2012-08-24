@@ -22,7 +22,7 @@
    </h2>
 </td></tr>
 <tr><td>  
-    <p tal:content=="obj_description" />
+    <p tal:content="obj_description" />
     <span tal:content="structure python:toLocalizedTime(effective)"> 
         &nbsp; 
     </span>
