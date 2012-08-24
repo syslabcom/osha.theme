@@ -35,13 +35,20 @@ OSHMAIL.loadOshmailContent = function (linkObj) {
 
 jQuery(document).ready(function () {
     "use strict";
-    if (jQuery("a[rel=oshmail-overlay]").length > 0) {
-        jQuery("a[rel=oshmail-overlay]")
-            .click(function () {
-                OSHMAIL.loadOshmailContent(this);
-                return false;
-            });
-    }
+
+    jQuery(".older-newsletter").hide();
+
+    jQuery("#displaynl").click(function () {
+        displaynl();
+        return false;
+    });
+
+    jQuery("a[rel=oshmail-overlay]")
+        .click(function () {
+            OSHMAIL.loadOshmailContent(this);
+            return false;
+        });
+    
 
     jQuery(".osha-overlay-close").click(function () {
         jQuery(".osha-overlay.full").hide("slow");

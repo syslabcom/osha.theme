@@ -5,34 +5,15 @@
 
   <metal:javascriptslot fill-slot="javascript_head_slot">
     <script src="#"
-            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/oshmail_view.js?v=3"
+            tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/oshmail_view.js?v=4"
             type="text/javascript" charset="utf-8">
     </script>
   </metal:javascriptslot>
   <metal:css fill-slot='css_slot'>
     <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
           tal:attributes="href string:${portal_url}/collage.css"/>
-    <style type="text/css">.older-newsletter {display:none;}
-      #subscriptionBox { background-color: #F2F4F7; width:250px; border:1px solid #E6E8ED; float:right; } 
-      #unsubscriptionBox { display:block;width: 20em;} 
-      #unsubscriptionBox dd { display:block;margin-left: 0; text-align:right;} 
-      .rounded-corners {
-        -moz-border-radius: 10px;
-        -webkit-border-radius: 10px;
-        -khtml-border-radius: 10px;
-        behavior: url(/border-radius.htc);
-        border-radius: 10px;
-      }
-      #subscriptionBox h4 {background-color: transparent; font-weight:bold; font-size:110%;  margin:6px;}
-      #subscriptionBox dl {background-color: white;}
-      #subscriptionBox dl dt {padding: 2px 2px 2px 10px; background-color: transparent; border:0px solid white;}
-      #subscriptionBox dd {margin:0;background:white; padding: 0.5em 2em; text-align:right;}
-      #blockLatestIssue img {float:left; margin-right: 1em;}
-      #blockLatestIssue ul {margin-left: 140px;}
-      .fadercontrol {margin-top:1em;}
-      h2 { margin-bottom: 1em;}
-
-    </style>
+    <link rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8"
+          tal:attributes="href string:$portal_url/++resource++osha.theme.resources/overlay/overlay.css?v=1"/>
   </metal:css>
 
   <body>
@@ -92,14 +73,14 @@
                  tal:attributes="src view/get_image"
                  tal:condition="view/get_image" />
             <h4>
-              <a rel="oshmail-fancybox"
+              <a rel="oshmail-overlay"
                  tal:attributes="href string:${latest/getURL}?set_language=$currlang"
                  tal:content="latest/Title" >title</a>
 
             </h4>
             <ul class="links">
               <li tal:repeat="latest_teaser view/latest_teasers">
-                <a rel="oshmail-fancybox"
+                <a rel="oshmail-overlay"
                    tal:attributes="href string:${latest/getURL}?set_language=$currlang"
                    tal:content="latest_teaser">Title of teaser</a>
               </li>
@@ -109,7 +90,7 @@
           <div class="visualClear"> </div>
 
           <p class="fadercontrol">
-              <a onclick="displaynl()" href="javascript:return false;"><span i18n:translate="xlabel_older_newsletters">older newsletters</span></a>
+              <a id="displaynl" href="#"><span i18n:translate="xlabel_older_newsletters">older newsletters</span></a>
           </p>
 
           <div id="blockOlderIssues" class="older-newsletter">
@@ -121,7 +102,7 @@
             </h3>
             <ul class="links" tal:define="issues view/thisyears_issues">
               <li tal:repeat="issue issues">
-                <a rel="oshmail-fancybox"
+                <a rel="oshmail-overlay"
                    tal:define="data python:issue[1]"
                    tal:attributes="href string:${data/url}?set_language=$currlang"
                    tal:content="data/title">OSHmail 91 - 2009</a>
@@ -132,7 +113,7 @@
             </h3>
             <ul class="links" tal:define="issues view/lastyears_issues">
               <li tal:repeat="issue issues">
-                <a rel="oshmail-fancybox"
+                <a rel="oshmail-overlay"
                    tal:define="data python:issue[1]"
                    tal:attributes="href string:${data/url}?set_language=$currlang"
                    tal:content="data/title">OSHmail 91 - 2009</a>
@@ -147,7 +128,7 @@
               </h3>
               <ul class="links older-newsletter" tal:define="issues python:oldernl[nl]">
                 <li tal:repeat="issue issues">
-                  <a rel="oshmail-fancybox"
+                  <a rel="oshmail-overlay"
                      tal:define="data python:issue[1]"
                      tal:attributes="href string:${data/url}?set_language=$currlang"
                      tal:content="data/title">OSHmail 91 - 2009</a>
@@ -156,10 +137,13 @@
             </tal:repeat>
           </div>
 
-          <div class="visualClear"><!-- --> </div>
+          <div class="visualClear"></div>
       </div>
     </div>
-    <div id="oshmail-overlay"><span id="collage"/></div>
+    <div id="oshmail-overlay" class="osha-overlay full">
+      <img id="overlay-spinner" src="spinner.gif" />
+      <a class="osha-overlay-close" title="Close video"></a>
+    </div>
     <div tal:replace="structure provider:plone.belowcontentbody" />
 
 </div>
