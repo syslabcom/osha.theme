@@ -10,7 +10,11 @@ class OSHmailUnsubscribe(BrowserView):
 
     def __call__(self, confirm):
 
-        """ helper method to enable osh mail subscription to anonymous user """
+        """ helper method to enable osh mail subscription to anonymous user
+
+        a tracking code is added to the response for tracking by an
+        external company
+        """
         ptool = getToolByName(self.context, 'portal_url')
         portal = ptool.getPortalObject()
 
@@ -31,16 +35,12 @@ class OSHmailUnsubscribe(BrowserView):
                 mssg = _(
                     u"Your unsubscription request could not be sent. Please "
                     "try again.") + str(e)
-            # this feedbackpage has been added to contain a specific
-            # tracking code for an external company
             self.context.plone_utils.addPortalMessage(mssg)
             return REQUEST.RESPONSE.redirect(
                 self.context.absolute_url() + "?e=%s" % (encodeEmail(sender)))
 
         else:
             mssg = _(u"You are still subscribed to the mailing list.")
-            # this feedbackpage has been added to contain a specific
-            # tracking code for an external company
             self.context.plone_utils.addPortalMessage(mssg)
             return REQUEST.RESPONSE.redirect(
                 self.context.absolute_url() + "?e=%s" % (encodeEmail(sender)))
