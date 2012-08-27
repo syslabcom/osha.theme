@@ -210,6 +210,12 @@ body.kupu {
     background: #ffffff;
 }
 
+input.searchButton{
+    width: auto;
+    height: auto;
+    background: url("search_icon.png") no-repeat scroll 2px 1px White;
+}
+
 
 /* </dtml-with> */
 
