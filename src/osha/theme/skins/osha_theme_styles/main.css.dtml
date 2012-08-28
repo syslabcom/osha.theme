@@ -6,6 +6,10 @@
   <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
 */
 
+
+/* Stop the body getting pushed down by the google translation toolbar #5670 */
+body { top: 0px !important; }
+
 .visualClearRight {
     clear: right;
 }
