@@ -68,7 +68,7 @@
     </a>
 
 
-    <form tal:attributes="action template/id" method="get">
+    <form tal:attributes="action view/getName" method="get">
       
       <div id="filter_searchfields">
       

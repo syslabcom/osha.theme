@@ -20,6 +20,9 @@ class DBFilterView(BrowserView):
 
         return self.template()
 
+    def getName(self):
+        return self.__name__
+
     def search_types(self):
         """ returns a list of translated search types to select from """
         context = Acquisition.aq_inner(self.context)
