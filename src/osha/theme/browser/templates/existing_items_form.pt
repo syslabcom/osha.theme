@@ -15,7 +15,7 @@
     </div>
     <div class="field" tal:define="value python:request.get('path', '');
                         value python:value.replace('%2F', '/');">
-      <label i18n:domain="plone" i18n:translate="label_path"
+      <label i18n:domain="osha" i18n:translate="label_path"
          for="path">Path</label>
       <input type="text" name="path" 
         tal:attributes="value value" />
