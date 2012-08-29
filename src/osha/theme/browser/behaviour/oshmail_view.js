@@ -3,9 +3,6 @@ var OSHMAIL = {};
 OSHMAIL.loadOshmailContent = function (linkObj) {
     "use strict";
 
-    // We can ignore ?set_language if it is set in the href
-    var href = linkObj.href.split("?")[0];
-
     /* IE8 crashes if replaceWith is used, and appending directly to
        .osha-overlay.full causes the content to be display behind the
        overlay (in IE8) even though the DOM looks correct
@@ -17,7 +14,7 @@ OSHMAIL.loadOshmailContent = function (linkObj) {
     jQuery.ajax({
         async: true,
         type: 'GET',
-        url: href + "?ajax_load=1",
+        url: href + "&ajax_load=1",
         success: function (data) {
             var collage = jQuery(data).find("#collage");
             jQuery(".osha-overlay.full").append("<span id='overlay-content'/>");
