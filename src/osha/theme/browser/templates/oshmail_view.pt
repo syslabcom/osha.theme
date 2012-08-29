@@ -50,19 +50,21 @@
           </form> 
           </dl>
 
-          <p>Once a month, OSHmail keeps you updated on occupational safety and health:</p>
+          <tal:oshmail_intro replace="structure context/oshmail_intro/getText | ">
+            <p>Once a month, OSHmail keeps you updated on occupational safety and health:</p>
 
-          <ul>
-            <li>Latest news from around the world.</li>
-            <li>Forthcoming events.</li>
-            <li>Latest Agency publications.</li>
-            <li>Updates on EU legislation.</li>
-            <li>In 22 languages.</li>
-            <li>Free subscription.</li>
-          </ul>
-          <p>
-            Easy one-click unsubscription, if you are not interested anymore.
-          </p>
+            <ul>
+              <li>Latest news from around the world.</li>
+              <li>Forthcoming events.</li>
+              <li>Latest Agency publications.</li>
+              <li>Updates on EU legislation.</li>
+              <li>In 22 languages.</li>
+              <li>Free subscription.</li>
+            </ul>
+            <p>
+              Easy one-click unsubscription, if you are not interested anymore.
+            </p>
+          </tal:oshmail_intro>
 
           <div id="blockLatestIssue" tal:define="latest view/getLatestIssue">
             <h2 i18n:translate="label_latest_newsletter">
@@ -70,6 +72,7 @@
             </h2>
             <img src="https://osha.europa.eu/en/teaser/mainstreaming-osh-into-business-management/image_mini"
                  alt="Latest OSHMail Issue"
+                 i18n:attributes="alt label_latest_issue;"
                  tal:attributes="src view/get_image"
                  tal:condition="view/get_image" />
             <h4>
@@ -94,7 +97,7 @@
           </p>
 
           <div id="blockOlderIssues" class="older-newsletter">
-            <h2 i18n:translate="xlabel_previous_issues" i18n:domain="osha">
+            <h2 i18n:translate="label_previous_issues" i18n:domain="osha">
               Older Newsletters
             </h2>
             <h3 tal:content="view/thisyear">
