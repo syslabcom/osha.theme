@@ -1489,6 +1489,10 @@ body.template-competitions-view #competitionSchwusch li {
   border-radius: 10px;
 }
 
+.template-oshmail-view .rounded-bottom-corners {
+  border-radius: 0 0 10px 10px;
+}
+
 .template-oshmail-view #subscriptionBox h4 {
   background-color: transparent;
   font-weight:bold;
