@@ -61,9 +61,9 @@
               <div class="documentByLine">
 
                 <div class="documentByLine"
-                     tal:define="item_creator context/Creator;
-                                 item_effective context/EffectiveDate|nothing;
-                                 item_subject context/Subject|nothing;
+                     tal:define="item_creator item/Creator;
+                                 item_effective item/EffectiveDate|nothing;
+                                 item_subject item/Subject|nothing;
                                  search_url string:${context/@@plone_portal_state/portal_url}/search;">
                   <metal:byline define-macro="blogentry-byline">
                     <tal:name tal:condition="item_creator"
