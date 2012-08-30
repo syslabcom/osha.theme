@@ -18,7 +18,7 @@
   <object name="rss" meta_type="CMF Action" i18n:domain="plone">
    <property name="visible">False</property>
   </object>
-  <object name="rssfeeds" meta_type="CMF Action" i18n:domain="plone">
+  <object name="rssfeeds" meta_type="CMF Action" i18n:domain="osha">
    <property name="title" i18n:translate="">RSS</property>
    <property name="description" i18n:translate=""></property>
    <property name="url_expr">string:$portal_url/@@rss-feeds</property>
