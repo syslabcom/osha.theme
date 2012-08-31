@@ -11,7 +11,7 @@
         tal:define="Subject userSettings/Subject|request/Subject|python:[];
                     oshaview here/@@oshaview;">
        <div class="key">
-            <label for="type" i18n:translate="label_subjects_of_interest">Subjects of interest:</label>
+            <label for="type" i18n:translate="label_subjects_of_interest">Subjects of interest</label>
         </div>
         <div class="value">
 
@@ -126,7 +126,7 @@
                         name userSettings/email | nothing;"
              tal:attributes="class python:test(error, 'field error', 'field')">
             <div class="key">
-                <label for="email" i18n:translate="label_email">Your email address</label>
+                <label for="email" i18n:translate="label_email">E-mail</label>
                 <span class="fieldRequired" title="Required"
                         i18n:attributes="title" i18n:domain="plone"
                         i18n:translate="label_required">(Required)</span>

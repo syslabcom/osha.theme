@@ -138,7 +138,7 @@
             <span i18n:translate="batch_x_items_matching_your_criteria">
                 <span i18n:name="number" 
                       tal:omit-tag="" 
-                      tal:content="python:len(resultsByTermId)">234</span> items matching your search terms
+                      tal:content="python:len(resultsByTermId)">234</span> items match your criteria.
                 </span>
             </span>
 

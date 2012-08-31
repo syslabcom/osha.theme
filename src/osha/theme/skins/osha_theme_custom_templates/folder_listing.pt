@@ -108,7 +108,9 @@
                         </span>
                         <span tal:condition="python: item_type == 'Event' and not item_samedate and not item_sametime"
                               i18n:translate="label_event_byline">
-                              from
+                                (<span tal:content="string:${item/location}"
+                                    class="location"
+                                    i18n:name="location">Oslo</span>, from
                                    <abbr class="dtstart"
                                    tal:attributes="title python:item_start"
                                    tal:content="python:toLocalizedTime(item_start,long_format=1)"
@@ -116,7 +118,7 @@
                              <abbr class="dtend"
                                    tal:attributes="title python:item_end"
                                    tal:content="python:toLocalizedTime(item_end,long_format=1)"
-                                   i18n:name="end">to date</abbr>
+                                   i18n:name="end">to date</abbr>)
                         </span>
                          <span tal:condition="python: item_type == 'Event' and item.location"
                               i18n:translate="label_event_byline_location">&mdash;

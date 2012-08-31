@@ -191,7 +191,7 @@
               <span i18n:translate="batch_x_items_matching_your_criteria"
                     ><tal:number i18n:name="number"
                                  content="python:len(results)"
-                                 >234 </tal:number>
+                                 >234 </tal:number> items match your criteria.
               </span>
             </span>
           </h2>

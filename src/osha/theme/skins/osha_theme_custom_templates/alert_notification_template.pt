@@ -53,7 +53,7 @@ h3 { border-bottom: 1px solid lightgrey;}
 
         <div id="parameter_body" i18n:domain="osha">
             <div class="data_col" id="keywords_col" tal:condition="python:topics">
-                <div class="key" i18n:translate="label_subjects_of_interest">Subjects</div>
+                <div class="key" i18n:translate="label_subjects_of_interest">Subjects of interest</div>
                 <div class="val">
                     <tal:keywords repeat="kw topics">
                         <span tal:content="kw" i18n:translate=""></span>
@@ -63,7 +63,7 @@ h3 { border-bottom: 1px solid lightgrey;}
             </div>
 
             <div class="data_col" id="lang_col" tal:condition="AvailableLanguages" i18n:domain="osha">
-                <div class="key" i18n:translate="label_additional_languages">Languages</div>
+                <div class="key" i18n:translate="label_additional_languages">Additional Languages</div>
                 <div class="val">
                     <span tal:replace="python: ', '.join(AvailableLanguages)" />
                 </div>
@@ -121,7 +121,7 @@ h3 { border-bottom: 1px solid lightgrey;}
         </div>
 
         <div class="morelink">
-            <span i18n:translate="box_last_modified" i18n:domain="plone">Last modified</span>: <span tal:replace="python:here.toLocalizedTime(result['modified'], long_format=0)"/><br>
+            <span i18n:translate="box_last_modified" i18n:domain="plone">last modified</span>: <span tal:replace="python:here.toLocalizedTime(result['modified'], long_format=0)"/><br>
             <span i18n:translate="alert_label_more" i18n:domain="osha">More</span> :
             <a tal:attributes="href string:${result/getURL}?sourceid=alert&utm_source=home&utm_medium=banner&utm_campaign=alertservice" tal:content="string:${result/getURL}">
                 <span tal:replace="options/siteurl"/>LINK

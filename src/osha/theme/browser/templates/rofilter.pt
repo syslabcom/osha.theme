@@ -21,7 +21,7 @@
     <h1>
         <img tal:define="search_img python:getattr(portal, 'database_search.gif')"
              tal:replace="structure search_img/tag" />
-        <span tal:omit-tag="" i18n:translate="label_search_database">Search the Risk Observatory Database</span>
+        <span tal:omit-tag="" i18n:translate="label_search_database">Search the Link Database</span>
     </h1>
 
     <br />
@@ -101,8 +101,7 @@
         </span>
         <span class="discreet">
         &mdash;
-        <span i18n:translate="batch_x_items_matching_your_criteria"
-        ><span i18n:name="number" 
+        <span ><span 
         tal:omit-tag="" 
         tal:content="python:len(results)">234</span> items matching your search terms</span>
         </span>

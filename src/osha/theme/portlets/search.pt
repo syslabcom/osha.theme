@@ -52,7 +52,7 @@
          class="tile"
          tal:attributes="href view/search_form"
          i18n:translate="label_advanced_search">
-        Advanced Search&hellip;
+        Advanced Search
         </a>
         <span class="portletBottomLeft"></span>
         <span class="portletBottomRight"></span>

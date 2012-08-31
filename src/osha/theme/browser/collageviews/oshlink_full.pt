@@ -92,7 +92,7 @@
             
 
             <div class="field">
-              <label i18n:translate="label_url">Url:</label>
+              <label i18n:translate="label_url">URL</label>
               <div tal:define="url python:oshaview.handleOSHMailUrls(provider.getRemoteUrl(), collage_id)">
                 <a rel="nofollow" class="link" href="" tal:attributes="href url" tal:content="provider/getRemoteUrl" />
               </div>
