@@ -689,7 +689,8 @@ ul.linkList li {
 }
 #more-syndicated-news{ text-align:right; margin-right:10px;}
 
-form#blog_entry-base-edit div#archetypes-fieldname-osha_metadata {
+form#blog_entry-base-edit div#archetypes-fieldname-osha_metadata,
+form#blog_entry-base-edit div#archetypes-fieldname-external_link {
     display: None;
 }
 .heading_rss_icon {
@@ -702,6 +703,7 @@ div.kssattr-atfieldname-osha_metadata{
 
 body.subsite-belgium div.kssattr-atfieldname-osha_metadata,
 body.subsite-luxemburg div.kssattr-atfieldname-osha_metadata,
+body.section-in-focus div.kssattr-atfieldname-external_link,
 body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
     display: block;
 }
