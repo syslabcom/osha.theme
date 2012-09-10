@@ -776,6 +776,7 @@ dl.portletFollowUs {
 #in-focus img{
    float: right;
    margin: 0 0 0.5em 0.5em;
+   width: 100px;
 }
 
 #in-focus  {
