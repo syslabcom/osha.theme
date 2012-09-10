@@ -14,7 +14,7 @@ OSHMAIL.loadOshmailContent = function (linkObj) {
     jQuery.ajax({
         async: true,
         type: 'GET',
-        url: href + "&ajax_load=1",
+        url: linkObj.href + "&ajax_load=1",
         success: function (data) {
             var collage = jQuery(data).find("#collage");
             jQuery(".osha-overlay.full").append("<span id='overlay-content'/>");
