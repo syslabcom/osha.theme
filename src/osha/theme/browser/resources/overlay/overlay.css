@@ -19,14 +19,14 @@
 }
 
 .osha-overlay-close {
-  background-image:url(++resource++osha.theme.resources/overlay/close.png);
+  background-image: url(++resource++plone.app.jquerytools.pb_close.png);
   position: fixed;
-  height: 35px;
-  width: 35px;
   display: block;
   cursor: pointer;
-  right: 0;
-  top: 0;
+  height: 30px;
+  width: 30px;
+  left: 16px;
+  top: 16px;
 }
 
 #overlay-spinner {
