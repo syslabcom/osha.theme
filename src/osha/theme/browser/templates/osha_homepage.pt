@@ -60,10 +60,16 @@
             <tal:focus define="no repeat/news/number">
             <div class="in-focus-item"
                 tal:attributes="id string:highlight-$no">
-              <tal:news_item>
+              <tal:news_item condition="news/external_link">
+                <a href="" target="_blank" tal:attributes="href news/external_link"><img tal:attributes="src news/img_url" tal:on-error="string:no image" /></a>
+                <h3><a href="" target="_blank" tal:attributes="href news/external_link">
+                    <span tal:replace="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</span>
+                </a></h3>
+                <span tal:replace="structure news/description"></span>
+              </tal:news_item>
+              <tal:news_item condition="not:news/external_link">
                 <img tal:attributes="src news/img_url" tal:on-error="string:no image" />
                 <h3 tal:content="news/title">EU-OSHA targets health risks in cleaning industry for European Week 2009</h3>
-                <!--p class="teaserdate" tal:content="python:toLocalizedTime(news['date'])"/-->
                 <span tal:replace="structure news/description"></span>
               </tal:news_item>
             </div>

@@ -9,6 +9,8 @@ from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 
 _ = MessageFactory('osha.theme')
+
+
 class HomepageView(BrowserView):
 
     def __init__(self, context, request=None):
@@ -94,6 +96,7 @@ class HomepageView(BrowserView):
         for r in res:
             obj = r.getObject()
             link = obj.absolute_url()
+            external_link = obj.getExternal_link()
             img_url = obj.getImage() and \
                 obj.getImage().absolute_url() or ''
             # use 'thumb' scale
@@ -104,4 +107,4 @@ class HomepageView(BrowserView):
                 description = description.decode('utf-8')
             date = obj.effective()
             yield dict(link=link, img_url=img_url, description=description,
-                title=obj.Title(), date=date)
+                title=obj.Title(), date=date, external_link=external_link)
