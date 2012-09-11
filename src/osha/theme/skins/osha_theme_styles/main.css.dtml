@@ -1683,10 +1683,20 @@ div.flatlist_container .flatlist-item {
   float: right;
   padding: 0 5px;
   width: 141px;
-  margin:-5px -176px 0 10px;
-  position:static"
+  margin: -5px -176px 0 10px;
+  position: static;
 }
 
+/* Line up the labels and fields for the login form */
+div#login-form div.field {
+  display: table-row;
+  line-height: 3em;
+}
+
+div#login-form label {
+  display: table-cell;
+  padding-right: 1em;
+}
 
 /* </dtml-with> */
 
