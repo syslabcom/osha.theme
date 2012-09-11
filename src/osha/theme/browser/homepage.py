@@ -96,7 +96,8 @@ class HomepageView(BrowserView):
         for r in res:
             obj = r.getObject()
             link = obj.absolute_url()
-            external_link = obj.getExternal_link()
+            field = obj.getField('external_link')
+            external_link = field and field.getAccessor(obj)() or ''
             img_url = obj.getImage() and \
                 obj.getImage().absolute_url() or ''
             # use 'thumb' scale
