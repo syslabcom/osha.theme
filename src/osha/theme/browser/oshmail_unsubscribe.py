@@ -27,7 +27,7 @@ class OSHmailUnsubscribe(BrowserView):
 
         if confirm =='yes':
             mesg = "unsubscribe ICT-TEST\n"
-            mssg = "Thank you! You have been unsubscribed succesfully."
+            mssg = _("Thank you! You have been unsubscribed succesfully.")
             subject = ''
             try:
                 host.send(mesg, mto=recipient, mfrom=sender, subject=subject)
