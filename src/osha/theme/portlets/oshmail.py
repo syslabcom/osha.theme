@@ -75,8 +75,8 @@ class Renderer(base.Renderer):
 
 class AddForm(base.NullAddForm):
     form_fields = form.Fields(IOSHMailPortlet)
-    label = _(u"Add Free Newsletter Portlet")
-    description = _(u"Monthly review of strategic news.")
+    label = u"Add Free Newsletter Portlet"
+    description = u"Monthly review of strategic news."
 
     def create(self):
         return Assignment()
