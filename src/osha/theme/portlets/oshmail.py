@@ -17,7 +17,7 @@ from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 
 class IOSHMailPortlet(IPortletDataProvider):
-    
+
     pass
 
 class Assignment(base.Assignment):
@@ -32,25 +32,27 @@ class Renderer(base.Renderer):
     _template = ViewPageTemplateFile('oshmail.pt')
 
     def _render_cachekey(method, self):
-        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        preflang = getToolByName(
+            self.context, 'portal_languages').getPreferredLanguage()
         return (preflang)
-        
+
     @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
-        
+
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
 
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name=u'plone_portal_state')
+
         self.portal = portal_state.portal()
 
     @property
     def available(self):
         return self._data()
-        
+
     def icon(self):
         icon = self.portal.restrictedTraverse('portlet_newsletter_icon.png')
         return icon.tag(title='Free Newsletter')
@@ -59,9 +61,11 @@ class Renderer(base.Renderer):
     def num_subscribers(self):
         context = Acquisition.aq_inner(self.context)
         portal_properties = getToolByName(context, 'portal_properties')
-        num = portal_properties.site_properties.getProperty('num_subscribers_oshmail')
+        num = portal_properties.site_properties.getProperty(
+            'num_subscribers_oshmail')
         if hasattr(portal_properties.site_properties, 'osha_properties'):
-            num = portal_properties.site_properties.osha_properties.getProperty('num_subscribers')
+            num = portal_properties.site_properties.osha_properties.getProperty(
+                'num_subscribers')
         return num
 
     @memoize
