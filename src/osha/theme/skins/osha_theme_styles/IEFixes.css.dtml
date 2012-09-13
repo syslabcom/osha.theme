@@ -240,4 +240,7 @@ dd.portletItem .navTreeItem a {
     margin: 0px 80px 0 201px;
 }
 
+/* IE7 will not scroll if the height is set to 100% */
+#border-wrapper { height: auto; }
+
 /* </dtml-with> */
