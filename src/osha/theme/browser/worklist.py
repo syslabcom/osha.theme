@@ -112,7 +112,7 @@ class WorklistView(DBFilterView):
         if '' in subcategory:
             subcategory.remove('')
         if subcategory:
-            queries.append('subcategory:(%s)' % ' OR '.join(subcategory))
+            queries.append('subcategory:(%s)' % ' OR '.join(['"%s"' % s for s in subcategory]))
             #query.update({'subcategory':subcategory})
 
         getRemoteUrl = self.request.get('getRemoteUrl', '')
