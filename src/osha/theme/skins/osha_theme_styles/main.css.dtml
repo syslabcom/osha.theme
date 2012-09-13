@@ -1698,6 +1698,10 @@ div#login-form label {
   padding-right: 1em;
 }
 
+dl.portletTwitterPortlet {
+  word-wrap: break-word;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
