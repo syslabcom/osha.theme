@@ -61,7 +61,7 @@
                     <input type="radio" name="confirm" value="no" /><span i18n:translate="unsub_confirm_no">No, I want to continue receiving the newsletter</span><br/>
                 </dd>    
                 <dd style="padding:0.5em 0">
-                    <button type="submit" name="unsub_confirm_send" i18n:translate="unsub_confirm_send_text" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Send</button>
+                    <button type="submit" name="unsub_confirm_send" i18n:translate="" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Send</button>
                 </dd>
             
           </dl>          
