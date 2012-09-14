@@ -53,7 +53,7 @@ class PressRoomView(BrowserView):
     def getRSSFeed(self):
         ass = RSSAssignment(
             portlet_title="", count=2,
-            url="http://my.memonews.com/archive/feed/atom/5465/newsfeed_homepage")
+            url="http://portal.kantarmedia.de/rss/index/1002043/100000062/0/1ad6585e7a78659293d2296b89174695c100e217")
         renderer = RSSRenderer(self.context, self.request, self, None, ass)
         renderer.update()
         return renderer
