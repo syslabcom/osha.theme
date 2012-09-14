@@ -27,7 +27,7 @@ class OSHmailSubscribe(BrowserView):
 
         if not reg_tool.isValidEmail(emailaddress):
             msg = _(u'You did not enter a valid email address.')
-            self.context.plone_utils.addPortalMessage(msg)
+            referer += "msg=%s&" % msg
             return REQUEST.RESPONSE.redirect(referer)
 
         if REQUEST.has_key('unsubscribe'):
@@ -54,9 +54,8 @@ class OSHmailSubscribe(BrowserView):
             mssg = _("Your subscription could not be sent. Please try again.")
             mssg = u"%s %s" %(mssg, e)
 
-        self.context.plone_utils.addPortalMessage(mssg)
         from slc.alertservice.utils import encodeEmail
         # this feedbackpage has been added to contain a specific
         # tracking code for an external company
         return REQUEST.RESPONSE.redirect(
-            refererstem + "?e=%s" % (encodeEmail(sender)))
+            refererstem + "?e=%s&msg=%s" % (encodeEmail(sender), mssg))

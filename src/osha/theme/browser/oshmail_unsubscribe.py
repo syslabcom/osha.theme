@@ -35,12 +35,13 @@ class OSHmailUnsubscribe(BrowserView):
                 mssg = _(
                     u"Your unsubscription request could not be sent. Please "
                     "try again.") + str(e)
-            self.context.plone_utils.addPortalMessage(mssg)
+
             return REQUEST.RESPONSE.redirect(
-                self.context.absolute_url() + "?e=%s" % (encodeEmail(sender)))
+                self.context.absolute_url() + "?e=%s&msg=%s" % (
+                    encodeEmail(sender), mssg))
 
         else:
             mssg = _(u"You are still subscribed to the mailing list.")
-            self.context.plone_utils.addPortalMessage(mssg)
             return REQUEST.RESPONSE.redirect(
-                self.context.absolute_url() + "?e=%s" % (encodeEmail(sender)))
+                self.context.absolute_url() + "?e=%s&msg=%s" % (
+                    encodeEmail(sender), mssg))

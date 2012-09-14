@@ -20,13 +20,14 @@
     <div metal:fill-slot="main"
          tal:define="templateId template/getId; currlang here/portal_languages/getPreferredLanguage">
 
-<!--div tal:condition="request/emailaddress|nothing" tal:define="dummy python:view.subscribe(request.get('emailaddress'))"></div-->
-
-
+      <dl class="portalMessage info"
+          tal:define="msg request/msg | nothing"
+          tal:condition="msg">
+        <dt i18n:domain="plone"
+            i18n:translate="">Info</dt>
+        <dd tal:content="msg"></dd>
+      </dl>
       <div id="content">
-        <div class="message warning"
-             tal:condition="request/portal_status_message | nothing"
-             tal:content="request/portal_status_message | nothing" />
         <div id="mainContent">
           <h1 class="documentFirstHeading" i18n:translate="">OSHmail newsletter</h1>
 
