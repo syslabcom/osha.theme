@@ -8,6 +8,7 @@ from plone.memoize import instance
 from plone.memoize.instance import memoize
 
 from Products.ATContentTypes.interface import IATTopic
+from Products.Archetypes.utils import OrderedDict
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
@@ -98,7 +99,7 @@ class OSHmailView(BrowserView):
         " fetch all oshmail issues "
         folder = self.context.data.oshmail
         pc = self.context.portal_catalog
-        yearmap = {}
+        yearmap = dict()
         allissues = []
         latestissue = None
 
@@ -120,13 +121,17 @@ class OSHmailView(BrowserView):
 
             yearmap[date.year()] = yearlist
 
-        for year in yearmap.keys():
+        ordered_yearmap = OrderedDict()
+        years = yearmap.keys()
+        years.sort()
+        years.reverse() 
+        for year in years:
             yearlist = yearmap[year]
             yearlist.sort()
             yearlist.reverse()
-            yearmap[year] = yearlist
+            ordered_yearmap[year] = yearlist
 
-        return latestissue, yearmap
+        return latestissue, ordered_yearmap
 """
     def subscribe(self, emailaddress, name=''):
 
