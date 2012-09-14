@@ -714,7 +714,22 @@ dl.portletFollowUs {
 #highlights-1, #highlights-2, #highlights-3, #highlights-4 {
     padding: 1em;
 }
+#content #highlights-archive a{
+        background: none repeat scroll 0 0 #C5CBD8;
+        border-radius: 3px 3px 3px 3px;
+        font-family: Arial,Helvetica,sans-serif;
+        color: #FFFFFF;
+        font-size: 1.2em;
+        float: left;
+        margin-left: 0.75em;
+        font-weight: bold;
+        padding: 0.1em 0.8em;
+        text-shadow: 2px 2px 2px #999999
+}
 
+#content #highlights-archive a:hover{
+        color: #003399;
+}
 #highlights-tabs {
     list-style: none;
     float: right;
