@@ -42,8 +42,8 @@
               <button type="submit" name="subscribe" i18n:translate="Subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button>
             </dd>
             <dd class="discreet rounded-bottom-corners">
-              <span i18n:translate="">Not interested any more?</span>
-              <button type="submit" name="unsubscribe" i18n:translate="Unsubscribe" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
+              <span i18n:translate="">Not interested any more?</span><br/>
+              <a href="#unsubscribe" i18n:translate="">Unsubscribe</a>
             </dd>
           </form> 
           </dl>
@@ -137,7 +137,21 @@
             </tal:repeat>
           </div>
 
+
           <div class="visualClear"></div>
+
+          <h2 id="unsubscribe" i18n:translate="">Unsubscribe</h2>
+          <dl id="unsubscriptionBox">
+            <form action="#" tal:attributes="action string:./@@oshmail-subscribe" method="post" id="subscribe">
+              <dd>
+                <label><span i18n:translate="" tal:omit-tag="">Your e-mail</span> <input type="text" name="emailaddress" class="span-6" /></label>
+              </dd>
+              <dd style="padding:0.5em 0">
+                <button type="submit" name="unsubscribe" i18n:translate="" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
+              </dd>
+            </form>
+          </dl>
+
       </div>
     </div>
     <div id="oshmail-overlay" class="osha-overlay full">
