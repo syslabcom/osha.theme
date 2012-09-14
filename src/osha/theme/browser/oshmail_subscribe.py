@@ -35,7 +35,7 @@ class OSHmailSubscribe(BrowserView):
                 self.context.absolute_url() +
                 "/confirm-unsubscription?emailaddress=%s" % (emailaddress))
         else:
-            mesg = "subscribe ICT-TEST anonymous\n"
+            mesg = "subscribe OSHMail anonymous\n"
             mssg = _(
                 "Thank you for subscribing to the OSHmail newsletter. You will "
                 "receive an email to confirm your subscription.")

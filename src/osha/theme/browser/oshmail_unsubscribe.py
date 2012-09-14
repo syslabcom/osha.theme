@@ -26,7 +26,7 @@ class OSHmailUnsubscribe(BrowserView):
         sender = REQUEST.get('confirm_email')
 
         if confirm =='yes':
-            mesg = "unsubscribe ICT-TEST\n"
+            mesg = "unsubscribe OSHMail\n"
             mssg = _("Thank you! You have been unsubscribed succesfully.")
             subject = ''
             try:
