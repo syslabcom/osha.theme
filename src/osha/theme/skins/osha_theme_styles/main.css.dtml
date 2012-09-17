@@ -1123,7 +1123,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 #boxBody h3 {
     color:#295994;
-    font-size:10px;
     padding-top:0.5em;
 }
 #boxBody p {
