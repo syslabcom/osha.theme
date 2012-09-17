@@ -1,8 +1,8 @@
 osha.theme Changelog
 ====================
 
-1.4.17 (unreleased)
--------------------
+1.5 (2012-09-17)
+----------------
 
 - Bugfix, adding social buttons to the shortmessage template #3228
   [deroiste]
@@ -11,6 +11,7 @@ osha.theme Changelog
 - On Press Releases, display "News Release" #3482 [thomasw]
 - Move the tests to osha.policy #4638 [jcerjak]
 - Replace deprecated method sendSecure to send #4569[jcerjak]
+- Various Plone 4 related fixes [syslab]
 
 
 1.4.16 (2011-07-21)
