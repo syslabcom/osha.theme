@@ -92,7 +92,7 @@ class HomepageView(BrowserView):
         if len(res) == 0:
             now = DateTime()
             yield dict(link='', description='No items for In Focus were found',
-                        title='No Focus', img_url='', date=DateTime())
+                        title='No Focus', img_url='', external_link='', date=DateTime())
         for r in res:
             obj = r.getObject()
             link = obj.absolute_url()
