@@ -43,7 +43,7 @@ class HomepageView(BrowserView):
         portal_transforms = getToolByName(self.context, 'portal_transforms')
         ploneview = self.context.restrictedTraverse('@@plone')
         end = {'query': DateTime(), 'range': 'min'}
-        res = pc(portal_type='News Item',
+        res = pc(portal_type=['News Item'],
             Language=[self.pref_lang, ''],
             sort_order='reverse', sort_on='effective',
             expires={'query': DateTime(), 'range': 'min'},
