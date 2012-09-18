@@ -81,7 +81,7 @@ class HomepageView(BrowserView):
         portal_path = self.ptool.getPortalPath()
         pc = getToolByName(self.context, 'portal_catalog')
         end = {'query': DateTime(), 'range': 'min'}
-        res = pc(portal_type='News Item',
+        res = pc(portal_type=['News Item'],
             Language=[self.pref_lang, ''],
             sort_order='reverse', sort_on='effective',
             expires={'query': DateTime(), 'range': 'min'},
