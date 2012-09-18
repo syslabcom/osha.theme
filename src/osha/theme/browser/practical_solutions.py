@@ -253,7 +253,8 @@ class PracticalSolutionView(DBFilterView):
                                              not faq_condition and preflang
                                              or '')
         if getRemoteLanguage:
-            query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query, 'getRemoteLanguage': 'getRemoteLanguage:(%s)' % getRemoteLanguage}
+            query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query,
+            'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage)}
             #query.update({'getRemoteLanguage':getRemoteLanguage})
 
         subcategory = self.request.get('subcategory', '')
