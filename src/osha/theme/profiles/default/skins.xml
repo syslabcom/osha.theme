@@ -66,8 +66,6 @@
  <object name="custom" meta_type="Folder"/>
  <object name="editonpro" meta_type="Filesystem Directory View"
     directory="slc.editonpro:skins/editonpro"/>
- <object name="feedfeeder" meta_type="Filesystem Directory View"
-    directory="Products.feedfeeder:skins/feedfeeder"/>
  <object name="hw2010" meta_type="Filesystem Directory View"
     directory="osha.hw2010:skins/hw2010"/>
  <object name="hw2012" meta_type="Filesystem Directory View"
@@ -353,7 +351,6 @@
   <layer name="ralink_styles"/>
   <layer name="surveyanswers"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="EW2000">
   <layer name="textindexng3"/>
@@ -444,7 +441,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="EW2001">
@@ -536,7 +532,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="EW2002">
@@ -628,7 +623,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="EW2003">
@@ -720,7 +714,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="EW2004">
@@ -812,7 +805,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="EW2005">
@@ -904,7 +896,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="EW2006">
@@ -996,7 +987,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="EW2007">
@@ -1088,7 +1078,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="HWI">
@@ -1187,7 +1176,6 @@
   <layer name="ralink_styles"/>
   <layer name="surveyanswers"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="HealthyWorkplaces">
   <layer name="readonlystringfield"/>
@@ -1284,7 +1272,6 @@
   <layer name="ralink_styles"/>
   <layer name="surveyanswers"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="NAPO">
   <layer name="textindexng3"/>
@@ -1294,7 +1281,6 @@
   <layer name="simpleattachment"/>
   <layer name="solgemafullcalendar"/>
   <layer name="ContextualContentMenu"/>
-  <layer name="LinguaPlone"/>
   <layer name="syslabcom_filter_templates"/>
   <layer name="richdocument"/>
   <layer name="publications_templates"/>
@@ -1311,6 +1297,8 @@
   <layer name="plone_ckeditor"/>
   <layer name="osha_theme_scripts"/>
   <layer name="osha_theme_napo"/>
+  <layer name="osha_theme_custom_templates"/>
+  <layer name="LinguaPlone"/>
   <layer name="seminarportal_styles"/>
   <layer name="seminarportal_templates"/>
   <layer name="relations"/>
@@ -1368,7 +1356,6 @@
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="NewOSHEra">
   <layer name="readonlystringfield"/>
@@ -1466,7 +1453,6 @@
   <layer name="ralink_styles"/>
   <layer name="surveyanswers"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="OSHA FOP skin">
   <layer name="readonlystringfield"/>
@@ -1476,7 +1462,6 @@
   <layer name="simpleattachment"/>
   <layer name="solgemafullcalendar"/>
   <layer name="ContextualContentMenu"/>
-  <layer name="LinguaPlone"/>
   <layer name="syslabcom_filter_templates"/>
   <layer name="richdocument"/>
   <layer name="publications_templates"/>
@@ -1498,6 +1483,7 @@
   <layer name="osha_theme_styles"/>
   <layer name="osha_theme_tableless"/>
   <layer name="osha_theme_scripts"/>
+  <layer name="LinguaPlone"/>
   <layer name="seminarportal_styles"/>
   <layer name="seminarportal_templates"/>
   <layer name="relations"/>
@@ -1563,7 +1549,6 @@
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="OSHA HW">
   <layer name="readonlystringfield"/>
@@ -1661,7 +1646,6 @@
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="OSHA Legacy">
   <layer name="textindexng3"/>
@@ -1756,7 +1740,6 @@
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
   <layer name="readonlystringfield"/>
  </skin-path>
  <skin-path name="OSHA Plone Theme">
@@ -1853,7 +1836,6 @@
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="OSHAGermany">
   <layer name="textindexng3"/>
@@ -1949,7 +1931,6 @@
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="Plone Classic Theme">
   <layer name="readonlystringfield"/>
@@ -2031,7 +2012,6 @@
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="Plone Default">
   <layer name="readonlystringfield"/>
@@ -2113,7 +2093,6 @@
   <layer name="cmf_legacy"/>
   <layer name="ploneboard_templates"/>
   <layer name="ATVocabularyManager"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="RISQ">
   <layer name="textindexng3"/>
@@ -2210,7 +2189,6 @@
   <layer name="ralink_styles"/>
   <layer name="surveyanswers"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="RiskObservatory">
   <layer name="textindexng3"/>
@@ -2302,7 +2280,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="SME">
@@ -2395,7 +2372,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="Sunburst Theme">
@@ -2479,7 +2455,6 @@
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
   <layer name="ploneboard_templates"/>
-  <layer name="feedfeeder"/>
  </skin-path>
  <skin-path name="WorkingOnSafety">
   <layer name="textindexng3"/>
@@ -2571,7 +2546,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
  <skin-path name="osha.dynamicpressroom">
@@ -2669,7 +2643,6 @@
   <layer name="ralink_templates"/>
   <layer name="ralink_images"/>
   <layer name="ralink_styles"/>
-  <layer name="feedfeeder"/>
   <layer name="ploneboard_templates"/>
  </skin-path>
 </object>
