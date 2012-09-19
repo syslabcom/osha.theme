@@ -1,6 +1,12 @@
 osha.theme Changelog
 ====================
 
+1.5.2 (2012-09-19)
+------------------
+
+- Adding MANIFEST to exclude Osha-main-site-hybrid/Media [deroiste]
+
+
 1.5.1 (2012-09-17)
 ------------------
 
