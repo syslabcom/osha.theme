@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.3 (unreleased)
+1.5.3 (2012-09-19)
 ------------------
 
 - Added missing indicator.gif [thomasw]
