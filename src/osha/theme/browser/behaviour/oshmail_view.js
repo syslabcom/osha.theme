@@ -1,5 +1,12 @@
 var OSHMAIL = {};
 
+
+
+/* Replaced by #4002 request to change oshmail design. Instead of loading the 
+   original collage view we now load the generated email output directly into 
+   a fancybox iframe 
+   can be removed if not needed after 10.2012 */
+   
 OSHMAIL.loadOshmailContent = function (linkObj) {
     "use strict";
 
@@ -27,6 +34,16 @@ OSHMAIL.loadOshmailContent = function (linkObj) {
 jQuery(document).ready(function () {
     "use strict";
 
+    jQuery("a[rel=oshmail-overlay]").fancybox({
+         'width' : '75%',
+         'height' : '75%',
+         'autoScale' : false,
+         'transitionIn' : 'none',
+         'transitionOut' : 'none',
+         'type' : 'iframe'
+     });
+ 
+
     jQuery(".older-newsletter").hide();
 
     jQuery("#displaynl").click(function () {
@@ -35,12 +52,18 @@ jQuery(document).ready(function () {
         return false;
     });
 
-    jQuery("a[rel=oshmail-overlay]")
+
+    /* Replaced by #4002 request to change oshmail design. Instead of loading the 
+       original collage view we now load the generated email output directly into 
+       a fancybox iframe 
+       can be removed if not needed after 10.2012 */
+       
+/*    jQuery("a[rel=oshmail-overlay]")
         .click(function () {
             OSHMAIL.loadOshmailContent(this);
             return false;
         });
-    
+  */  
 
     jQuery(".osha-overlay-close").click(function () {
         jQuery(".osha-overlay.full").hide("slow");

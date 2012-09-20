@@ -75,14 +75,14 @@
                  tal:condition="view/get_image" />
             <h4>
               <a rel="oshmail-overlay"
-                 tal:attributes="href string:${latest/getURL}?set_language=$currlang"
+                 tal:attributes="href string:${latest/getURL}/oshmail_view?set_language=$currlang"
                  tal:content="latest/Title" >title</a>
 
             </h4>
             <ul class="links">
               <li tal:repeat="latest_teaser view/latest_teasers">
                 <a rel="oshmail-overlay"
-                   tal:attributes="href string:${latest/getURL}?set_language=$currlang"
+                   tal:attributes="href string:${latest/getURL}/oshmail_view?set_language=$currlang"
                    tal:content="latest_teaser">Title of teaser</a>
               </li>
             </ul>
@@ -105,7 +105,7 @@
               <li tal:repeat="issue issues">
                 <a rel="oshmail-overlay"
                    tal:define="data python:issue[1]"
-                   tal:attributes="href string:${data/url}?set_language=$currlang"
+                   tal:attributes="href string:${data/url}/oshmail_view?set_language=$currlang"
                    tal:content="data/title">OSHmail 91 - 2009</a>
               </li>
             </ul>
@@ -116,7 +116,7 @@
               <li tal:repeat="issue issues">
                 <a rel="oshmail-overlay"
                    tal:define="data python:issue[1]"
-                   tal:attributes="href string:${data/url}?set_language=$currlang"
+                   tal:attributes="href string:${data/url}/oshmail_view?set_language=$currlang"
                    tal:content="data/title">OSHmail 91 - 2009</a>
               </li>
             </ul>
@@ -131,7 +131,7 @@
                 <li tal:repeat="issue issues">
                   <a rel="oshmail-overlay"
                      tal:define="data python:issue[1]"
-                     tal:attributes="href string:${data/url}?set_language=$currlang"
+                     tal:attributes="href string:${data/url}/oshmail_view?set_language=$currlang"
                      tal:content="data/title">OSHmail 91 - 2009</a>
                 </li>
               </ul>
