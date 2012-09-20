@@ -76,7 +76,7 @@
 			                             "
 			                 tal:attributes="href python:langurl+'?set_language='+lang"
 			                 tal:content="python:oshaview.get_native_language_by_code(lang)">lang</a><span
-			                 tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span>
+			                 tal:condition="not:repeat/lang/end"> | </span>
 			            </span>
 		            </div>
 		        </tal:block>
