@@ -51,9 +51,12 @@ class PressRoomView(BrowserView):
         return rows
 
     def getRSSFeed(self):
+        pp = getToolByName(self.context, 'portal_properties')
+        op = getattr(pp, 'osha_properties', None)
+        url = op and op.getProperty('osha_in_the_media_feed', '') or ''
         ass = RSSAssignment(
             portlet_title="", count=2,
-            url="http://portal.kantarmedia.de/rss/index/1002043/100000062/0/1ad6585e7a78659293d2296b89174695c100e217")
+            url=url)
         renderer = RSSRenderer(self.context, self.request, self, None, ass)
         renderer.update()
         return renderer
