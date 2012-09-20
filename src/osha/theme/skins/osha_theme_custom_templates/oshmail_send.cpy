@@ -35,7 +35,7 @@ background = u"""<!–- [if gte vml 1]><v:shape stroked='f' style='position:abso
 email_body = email_body.replace('<background></background>', background)
 
 
-log.info(email_body)
+#log.info(email_body)
     
 err = host.send(email_body, mto=email_to, mfrom=email_from,
     subject=email_subject, msg_type='text/html', charset="utf-8")

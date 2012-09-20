@@ -11,6 +11,7 @@
 #from Products.Shortmessage.utils import sendShortmessage
 
 request = context.REQUEST
+oshaview = context.restrictedTraverse('@@oshaview')
 
 email_to_list = []
 if email:
@@ -39,6 +40,21 @@ if context.portal_type == 'PressRelease':
     email_subject = "News release - %s" % email_subject
 email_body = context.shortmessage_preview_view()
 
+email_body = oshaview.inlinestyler(email_body)
+
+v_hack = u"""<style type="text/css">
+v\:* { behavior: url(#default#VML); display:inline-block}
+</style>
+</head>"""
+email_body = email_body.replace('</head>', v_hack)
+
+background = u"""<!–- [if gte vml 1]><v:shape stroked='f' style='position:absolute;z-index:-1;visibility:visible;width:800px; height:277px;top:0;left:0px;border:0;'>
+<v:imagedata src="http://plone4.osha.syslab.com/en/news/oshmailheaderbackground.jpg"/></v:shape><![endif]–->"""
+email_body = email_body.replace('<background></background>', background)
+
+
+
+
 try:
    host.send(email_body, mto=email_to, mfrom=email_from, subject=email_subject,
              msg_type='text/html', charset="utf-8")
@@ -47,7 +63,7 @@ except Exception, msg:
                   'There was a problem sending the Shortmessage: %s' % msg,
                   new_status="failure")
    return state
-
+#return "%s - %s - %s" %(email_to, email_from, email_subject)
 state.set(status='success',
           portal_status_message=('The Shortmessage has been sent to the '
                                  'List Manager.'))
