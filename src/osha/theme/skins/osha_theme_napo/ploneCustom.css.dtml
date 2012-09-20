@@ -213,6 +213,9 @@ border:0px solid Black;
 .documentEditable .documentContent {
 border:0px solid #000000;
 }
+.documentEditable .documentContent #content{
+border: none;
+}
 
 .documentContent {
 padding:1em 1em 0 !important;
