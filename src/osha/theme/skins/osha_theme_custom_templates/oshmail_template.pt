@@ -50,7 +50,7 @@
 
 <table width="790" style="width:790px"><tr><td>
 	<background></background>
-<table style="width:790px;" background="http://plone4.osha.syslab.com/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
+<table style="width:790px;" background="http://osha.plone4.syslab.com/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
 	<tr><td width="200"><a style="width:200px; display:block" accesskey="1" href="https://osha.europa.eu/en" target="_blank" width="200">		&nbsp;</a>
 	</td>
 	<td width="590" align="right" valign="top">

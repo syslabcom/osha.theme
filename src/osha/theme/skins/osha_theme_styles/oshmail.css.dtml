@@ -159,7 +159,8 @@ font-size:100%;
 body.subsection1-oshmail .collage-item:first-child h1 {
     margin: 0px 0 24px;
 }    
-body.subsection1-oshmail h1 {
+body.subsection1-oshmail h1,
+.template-shortmessage_preview_view h1 {
     font-family: Georgia, "Times new roman", serif;
     font-weight: normal;
     font-size: 24px;
@@ -170,7 +171,8 @@ body.subsection1-oshmail h1 {
     text-shadow: 2px 2px 2px #CCCCCC;
 }
 
-body.subsection1-oshmail h1.documentFirstHeading {
+body.subsection1-oshmail h1.documentFirstHeading,
+.template-shortmessage_preview_view h1.documentFirstHeading {
     font-size: 28px;
     letter-spacing: 3px;
     margin: 12px 0 24px !important;
@@ -178,7 +180,8 @@ body.subsection1-oshmail h1.documentFirstHeading {
     text-transform:none;
 }
 
-body.subsection1-oshmail h2, 
+body.subsection1-oshmail h2,
+.template-shortmessage_preview_view h2,  
 body.subsection1-oshmail h3 {
 	text-shadow: 0 1px 0 #FFFFFF;
 	font-weight: normal;
@@ -198,7 +201,8 @@ body.subsection1-oshmail div.column-block.block_1 .collage-item table {
 }
 
 body.subsection1-oshmail .collage-newsitem-teaser,
-body.subsection1-oshmail .collage-newsitem-standard {
+body.subsection1-oshmail .collage-newsitem-standard,
+.template-shortmessage_preview_view .teaser-shortmessage {
     padding: 8px;
     margin-bottom: 20px;
     /*-webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
@@ -207,7 +211,8 @@ body.subsection1-oshmail .collage-newsitem-standard {
     font: normal 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
 }
 
-body.subsection1-oshmail .collage-newsitem-teaser {
+body.subsection1-oshmail .collage-newsitem-teaser,
+.template-shortmessage_preview_view .teaser-shortmessage  {
     border: 1px solid #d1d1d1;
     text-shadow: white 0 1px 0;
 }

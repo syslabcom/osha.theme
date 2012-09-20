@@ -3,111 +3,126 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xml:lang="en"
+	  xmlns:v="urn:schemas-microsoft-com:vml"
       lang="en"
       tal:define="plone_view context/@@plone;
       	          view nocall:view | nocall: plone_view;"
       >
-  <!--div tal:replace="structure provider:plone.htmlhead" /-->
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+          tal:define="charset site_properties/default_charset|string:utf-8"
+          tal:attributes="content string:text/html;;charset=${charset}" />
+
+    <title tal:define="portal_title here/portal_properties/title;
+                       here_title here/Title | here/title | here/id;
+                       template_title python:template.title_or_id();
+                       here_title python:test( portal_title != here_title,
+                                               here_title,
+                                               template_title )"
+           tal:content="structure string:$portal_title - $here_title">Title of page</title>
 
 
-  <body tal:define="bgcol python:context.getProperty('color', '#C5CBD8');
-                    ltool nocall:here/portal_languages;
+    <meta tal:condition="here/listMetaTags|nothing"
+          tal:repeat="keyval here/listMetaTags"
+          tal:attributes="name python:keyval[0];
+                          content python:keyval[1];" />
+	<style type="text/css" tal:define="sheet python:getattr(here.portal_url.getPortalObject(), 'oshmail.css')" tal:content="structure sheet" ></style>
+    <style type="text/css" tal:content="structure python:here.restrictedTraverse('shortmessage_preview_style.css')"></style>
+</head>
+
+  <body leftmargin="5" style='margin-left: 1em; font-family: Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;'
+		tal:define="ltool nocall:here/portal_languages;
+					oshaview here/@@oshaview;
                     prefLang ltool/getPreferredLanguage;
 					portal here/portal_url/getPortalObject;
-					portal_title portal/Title"
-        tal:attributes="style string:background-color: ${bgcol}">
-
-    <div id="shortmessage-body">
-      <style type="text/css" tal:content="structure python:here.restrictedTraverse('shortmessage_preview_style.css')"></style>
-      <div id="portal-logo">
-        <a href="/"
-           tal:attributes="href string:https://osha.europa.eu">
-          <span tal:omit-tag="" tal:on-error="nothing" >
-            <img alt="" title="" tal:define="logo python: prefLang=='en' and 'logo.gif' or 'logo_'+prefLang+'.gif'"
-                 tal:attributes="src string:https://osha.europa.eu/${logo};
-                                 title portal_title;
-                                 alt portal_title"
-                 i18n:attributes="title"/>
-          </span>
-        </a>
-      </div>
+					portal_title portal/Title;
+					portal_url here/portal_url;
+					body_class python:plone_view.bodyClass(template, view);"
+		tal:attributes="class body_class;">
 
 
-      <div id="distance-keeper"></div>
+		<table width="790" style="width:790px"><tr><td>
+			<background></background>
+		<table style="width:790px;" background="http://osha.plone4.syslab.com/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
+			<tr><td width="200"><a style="width:200px; display:block" accesskey="1" href="https://osha.europa.eu/en" target="_blank" width="200">		&nbsp;</a>
+			</td>
+			<td width="590" align="right" height="120" valign="top">
+				<h1 class="documentFirstHeading" style="margin-top:36px">Short message
+			</td></tr>
+		</table>
 
-      <div id="language-bar">
-        <tal:block define="langs ltool/listSupportedLanguages;
-                           oshaview context/@@oshaview;
-                           my_languages_keys python:here.getTranslations().keys();
-                           my_languages python:oshaview.get_sorted(my_languages_keys);"
-                   condition="python:len(langs)>1">
-          <div i18n:domain="osha" style="text-align: center"
-               tal:define="thisurl string:${here/absolute_url}/${template/id}">
+		</td></tr>
+		<tr><td>
+		&nbsp;
+		<table width="800" id="language-list">
+		    <tr>
+		        <td valign="top"
+		            tal:define="lang_info ltool/getAvailableLanguageInformation;">
+		        <tal:block define="supported_languages ltool/listSupportedLanguages|python:[];
+								   my_languages_keys python:here.getTranslations().keys();
+                                   my_languages python:oshaview.get_sorted(my_languages_keys);
+		                           "
+		            condition="python:len(my_languages)>1">
+		            <div i18n:domain="osha" style="text-align: center"
+		                tal:define="thisurl string:${here/absolute_url}/${template/id}">
 
-            <span tal:repeat="lang my_languages">
-              <a tal:omit-tag="python:prefLang == lang"
-                 tal:define="ppath python:list(here.getPhysicalPath());
-                             plen python:len(here.portal_url.getPortalObject().getPhysicalPath());
-                             langurlx python:'/'.join(['']+[lang]+ppath[plen+1:]);
-                             langurl python:context.getTranslation(lang).absolute_url();
-                             "
-                 tal:attributes="href python:langurl+'?set_language='+lang"
-                 tal:content="python:oshaview.get_native_language_by_code(lang)">lang</a><span
-                 tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span>
-            </span>
-          </div>
+						<span tal:repeat="lang my_languages">
+			              <a tal:omit-tag="python:prefLang == lang"
+			                 tal:define="ppath python:list(here.getPhysicalPath());
+			                             plen python:len(here.portal_url.getPortalObject().getPhysicalPath());
+			                             langurlx python:'/'.join(['']+[lang]+ppath[plen+1:]);
+			                             langurl python:context.getTranslation(lang).absolute_url();
+			                             "
+			                 tal:attributes="href python:langurl+'?set_language='+lang"
+			                 tal:content="python:oshaview.get_native_language_by_code(lang)">lang</a><span
+			                 tal:condition="not:repeat/lang/end">&nbsp;|&nbsp;</span>
+			            </span>
+		            </div>
+		        </tal:block>
+		      </td>
+		    </tr>
+		</table>
 
-        </tal:block>
+		</td></tr><tr><td>
 
-      </div>
 
-      <metal:bodytext metal:define-slot="main" tal:content="nothing">
-        <!-- Page body text -->
-      </metal:bodytext>
+		   <metal:bodytext metal:define-slot="main" tal:content="nothing">
+		      <!-- Page body text -->
+		   </metal:bodytext>
+
+
+		</td></tr>
+		</table>
 		
-      <div class="footer" i18n:domain="osha"
-           tal:define="portal_url here/portal_url">
-        <!--div style="float: right; width: 200px; text-align: right"
-            tal:define="document_actions actions/document_actions|nothing;
-            document_actions python:[x for x in document_actions if x['id'] =='sendto']"
-            tal:condition="python:document_actions"
-            i18n:domain="osha">
-            <tal:actions repeat="daction document_actions"><a
-            href=""
-            tal:attributes="href daction/url"
-            i18n:translate=""
-            tal:content="daction/name" /> | </tal:actions>
-            <a href="" i18n:translate="">Unsubscribe</a>
+		<table width="790" style="width:790px">
+		<tr>
+			<td width="20">
+				<a title="European Agency for Safety and Health at Work" href="https://osha.europa.eu/"
+				   i18n:attributes="title"><img tal:attributes="src string:${portal_url}/logo_small.gif" width="28px" height="38px"
+				   i18n:attributes="alt"
+				   alt="European Agency for Safety and Health at Work" /></a>
+			</td>
+			<td i18n:domain="osha" width="500" valign="top">	
+				  <div><span i18n:domain="osha" tal:define="DateTime python:modules['DateTime'].DateTime"
+		                     i18n:translate="copyright">&copy; Copyright 1998-<span i18n:name="thisyear"><span
+		                     tal:replace="python:DateTime().year()" /></span> European Agency for Safety and Health at Work -</span> <br/>
+		          <a href="https://osha.europa.eu/disclaimer.stm" i18n:translate="">Disclaimer</a> - <a href="https://osha.europa.eu">https://osha.europa.eu</a>
+		          </div>
+		        
+			</td>
+			<td width="265" align="right" valign="top">
+	            <a tal:attributes="href string:https://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Twitter" src="https://osha.europa.eu/en/news/oshmail/twitter-logo.jpg"></a>
+	            <a tal:attributes="href string:https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Facebook" src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-prn1/14098_427100966728_6182604_n.jpg"></a>
+	            <a tal:attributes="href string:https://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Youtube" src="https://osha.europa.eu/en/news/oshmail/youtube.gif"></a>
+	            <a class="button darkblue oshmail-blog-icon" style="width:8px; height:15px;font-size:12px;line-height:normal;padding:4px 8px; top:0px" tal:attributes="href string:https://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}">B</a>
+	            <a tal:attributes="href string:https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img width="30" height="30" alt="Linkedin" src="https://osha.europa.eu/en/news/oshmail/linkedin-logo.jpg"></a>
+	            <a tal:attributes="href string:https://osha.europa.eu/en/news/oshmail/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OSHmail" src="https://osha.europa.eu/en/news/oshmail/oshmail.gif"></a>
+	            <a tal:attributes="href string:https://osha.europa.eu/en/alertservice/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" src="https://osha.europa.eu/en/news/oshmail/oshalert.gif" alt="OSHAlert"></a>
 
-</div-->
-        <div style="float:left; position:relative">
-          <a title="European Agency for Safety and Health at Work" href="https://osha.europa.eu/"
-             i18n:attributes="title"><img tal:attributes="src string:${portal_url}/logo_small.gif" width="28px" height="38px"
-             i18n:attributes="alt"
-             alt="European Agency for Safety and Health at Work" /></a>
-        </div>
-
-        <div class="powered_py">
-          <div style="float:right">
-            <a tal:attributes="href string:https://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Twitter" src="https://osha.europa.eu/en/news/oshmail/twitter-logo.jpg"></a>
-            <a tal:attributes="href string:https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Facebook" src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-prn1/14098_427100966728_6182604_n.jpg"></a>
-            <a tal:attributes="href string:https://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="30" height="30" alt="Youtube" src="https://osha.europa.eu/en/news/oshmail/youtube.gif"></a>
-            <a class="button darkblue oshmail-blog-icon" tal:attributes="href string:https://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}">B</a>
-            <a tal:attributes="href string:https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img width="30" height="30" alt="Linkedin" src="https://osha.europa.eu/en/news/oshmail/linkedin-logo.jpg"></a>
-            <a tal:attributes="href string:https://osha.europa.eu/en/news/oshmail/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OSHmail" src="https://osha.europa.eu/en/news/oshmail/oshmail.gif"></a>
-            <a tal:attributes="href string:https://osha.europa.eu/en/alertservice/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" src="https://osha.europa.eu/en/news/oshmail/oshalert.gif" alt="OSHAlert"></a>
-          </div>
-          <div><span i18n:domain="osha" tal:define="DateTime python:modules['DateTime'].DateTime"
-                     i18n:translate="copyright">&copy; Copyright 1998-<span i18n:name="thisyear"><span
-                     tal:replace="python:DateTime().year()" /></span> European Agency for Safety and Health at Work -</span> <br/>
-          <a href="https://osha.europa.eu/disclaimer.stm" i18n:translate="">Disclaimer</a> - <a href="https://osha.europa.eu">https://osha.europa.eu</a>
-          </div>
-        </div>
-        <br style="clear:both" />
-      </div>
-
-    </div>
-
+			</td>
+		</tr>
+		</table>
   </body>
 </html>
 </metal:page>

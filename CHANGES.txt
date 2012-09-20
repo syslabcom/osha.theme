@@ -7,6 +7,7 @@ osha.theme Changelog
 - The URL for the OSHA in the media feed is now taken from portal_properties/
   osha_properties [thomasw]
 - oshmail_view now points to a fancybox that loads the email layout, fixes #4002 [angeldasangel, pilz] 
+- shortmessage view now adapted to the new looks of oshmail [pilz]
 
 1.5.3 (2012-09-19)
 ------------------

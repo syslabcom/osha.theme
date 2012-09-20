@@ -15,7 +15,6 @@
             oshaview here/@@oshaview;
             ">
 
-    <h1 tal:content="here/title_or_id" />
 
         <p class="releaseTiming"
            id="parent-fieldname-releaseTiming"
@@ -27,33 +26,40 @@
                   tal:replace="python:here.toLocalizedTime(storydate)">[FOR IMMEDIATE RELEASE]</span>
         </p>
 
-    <div class="floatSurrounding">
-        <div class="floatingLeft" tal:condition="nocall:defimage">
-            <tal:block define="imgtitle defimage/Title">
-            <img alt="" src="folder.gif"
-                 tal:attributes="src python:defimage.absolute_url();
-                 alt imgtitle;" />
-            </tal:block>
-        </div>
+	<table class="teaser-shortmessage">
+		<tbody>
+			<tr>
+				<td colspan="2">
+					<h2 tal:content="here/Title">Title</h2>
+				</td>
+			</tr>
+			<tr>
+				<td width="120" valign="top">					
+		            <tal:block define="imgtitle defimage/Title" condition="nocall:defimage">
+		            	<img alt="" src="folder.gif" width="100"
+		                 	tal:attributes="src python:defimage.absolute_url()+'_thumb';
+		                 	alt imgtitle;" />
+		            </tal:block>
+				</td>
+				<td>
+			        <p class="intro" 
+			           tal:condition="python:here.Description().strip() != ''"
+			            tal:define="obj_description here/Description;
+			                        obj_description python:oshaview.makeAbsoluteUrls(obj_description);"
+			           tal:replace="structure obj_description|nothing">description
+			        </p>
         
-        <p class="intro" 
-           tal:condition="here/Description|nothing"
-            tal:define="obj_description here/Description;
-                        obj_description python:oshaview.makeAbsoluteUrls(obj_description);"
-           tal:content="structure obj_description|nothing">description
-        </p>
-        
-        <div id="bodyContent"
-             class="stx"
-             tal:condition="len_text"
-             tal:attributes="class python:test(here.text_format=='structured-text', 'stx', 'plain')">
-            <div tal:define="obj_text here/CookedBody;
-                        obj_text python:oshaview.makeAbsoluteUrls(obj_text);"
-            tal:replace="structure obj_text" />
-        </div>
-        <br style="clear: both;" />
-    </div>
-    <br style="clear: both;" />
+ 			       <div id="bodyContent"
+			             tal:condition="len_text"
+			             tal:attributes="class python:test(here.text_format=='structured-text', 'stx', 'plain')">
+			            <div tal:define="obj_text here/CookedBody;
+			                        obj_text python:oshaview.makeAbsoluteUrls(obj_text);"
+			            tal:replace="structure obj_text" />
+			        </div>
+        			<br style="clear: both;" />
+				</td>
+			</tbody>
+		</table>
     </tal:block>
     </metal:block>
 

@@ -1,7 +1,6 @@
-/* <dtml-var "enableHTTPCompression(request=REQUEST, debug=1, css=1)"> (this is for http compression) */
 /* <dtml-with base_properties> (do not remove this :) */
 /* <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either :) */
-body {
+/*body {
     padding:1em;
     background:transparent;
     background-color: <dtml-var "context.getProperty('color','#C5CBD8')">;
@@ -81,7 +80,7 @@ img {
 }
 .button {
     display: inline-block;
-    zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+    zoom: 1; 
     *display: inline;
     vertical-align: baseline;
     margin: 0 2px;
@@ -119,10 +118,11 @@ img {
     background: -moz-linear-gradient(top,  #003399, #999ada);
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#003399', endColorstr='#999ada');
 }
+*/
 .oshmail-blog-icon {
     color: #d9eef7 !important;
     font-size: 20px;
-    padding: 2px 5px;
+    padding: 4px 8px;
     font-weight: bold;
     -webkit-border-radius: 2px; 
     -moz-border-radius: 2px;
@@ -130,4 +130,5 @@ img {
     position:relative;
     top: -8px;
 }
+
 /* </dtml-with> */
