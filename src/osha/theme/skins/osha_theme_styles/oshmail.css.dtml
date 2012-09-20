@@ -11,12 +11,7 @@ font: 13px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
 color: #191919;
 margin: 0;
 padding: 0;
-/*background-image: url('http://oshawebdev00.fe.rzob.gocept.net/en/news/oshmailheaderbackground.jpg');
-background-repeat: repeat-x no-repeat;
-background-repeat-x: no-repeat;
-background-repeat-y: no-repeat;
-background-position: top left;
-background-color: transparent;*/
+
 }
 /* Outlook background http://www.campaignmonitor.com/blog/post/1777/body-background-images-outlook/ */
 
