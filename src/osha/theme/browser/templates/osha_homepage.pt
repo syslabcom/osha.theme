@@ -43,7 +43,7 @@
             </tal:rep>
           </div>
           <div id="highlights-archive">
-              <a href="" i18n:translate="label_archive" i18n:domain="osha" tal:attributes="href string:${here/absolute_url}/archive">Archive</a>
+              <a href="" i18n:translate="label_previous_highlights" i18n:domain="osha" tal:attributes="href string:${here/absolute_url}/archive">Previous highlights</a>
          </div>
           <ul id="highlights-tabs">
             <tal:rep repeat="news items">
