@@ -4,7 +4,8 @@ osha.theme Changelog
 1.5.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed the "close" icon on for the video overlay refs #5817
+  [deroiste]
 
 
 1.5.4 (2012-09-20)
