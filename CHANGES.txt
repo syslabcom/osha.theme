@@ -4,8 +4,8 @@ osha.theme Changelog
 1.5.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- The URL for the OSHA in the media feed is now taken from portal_properties/
+  osha_properties [thomasw]
 
 1.5.3 (2012-09-19)
 ------------------
