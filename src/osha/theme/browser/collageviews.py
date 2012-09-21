@@ -5,10 +5,9 @@ from zope.component import getMultiAdapter
 import Acquisition
 from Products.Collage.interfaces import ICollageBrowserLayer, IDynamicViewManager
 from Products.Collage.interfaces import ICollageAlias, ICollage, ICollageRow, ICollageColumn
-
 from Products.Collage.utilities import isTranslatable
-
 from Products.Five.browser import BrowserView
+from Products.CMFCore.utils import getToolByName
 
 class BaseView(CollageBaseView):
 
@@ -60,6 +59,13 @@ class SimpleContainerRenderer(BrowserView):
 
         if not contents:
             contents = self.context.folderlistingFolderContents()
+
+        # make sure the languager passed in via set_language is applied correctly
+        plt = getToolByName(self.context, 'portal_languages')
+        binding = self.request.get('LANGUAGE_TOOL', None)
+        language = self.request.get('set_language', plt.getPreferredLanguage())
+        if binding and binding.LANGUAGE != language:
+            binding.LANGUAGE = language
 
         for context in contents:
             target = context

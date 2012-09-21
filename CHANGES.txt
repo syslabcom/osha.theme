@@ -4,8 +4,7 @@ osha.theme Changelog
 1.5.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Make the Collage Renderer for the OSHMail consider the passed-in language, fixes #5823 [thomasw]
 
 1.5.5 (2012-09-21)
 ------------------
