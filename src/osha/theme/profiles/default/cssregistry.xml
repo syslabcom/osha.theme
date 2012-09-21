@@ -118,7 +118,7 @@
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="True" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="False" expression="context/@@jqueryui-include-condition"
+    enabled="on" expression="context/@@jqueryui-include-condition"
     id="++resource++jquery-ui-themes/sunburst/jqueryui.css" media="screen"
     rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
