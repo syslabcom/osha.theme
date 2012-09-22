@@ -252,6 +252,8 @@ class PracticalSolutionView(DBFilterView):
         getRemoteLanguage = self.request.get('getRemoteLanguage',
                                              not faq_condition and preflang
                                              or '')
+        if isinstance(getRemoteLanguage, basestring):
+            getRemoteLanguage = [getRemoteLanguage,]
         if getRemoteLanguage:
             query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query,
             'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage)}
