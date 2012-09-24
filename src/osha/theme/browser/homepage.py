@@ -42,11 +42,12 @@ class HomepageView(BrowserView):
         pc = getToolByName(self.context, 'portal_catalog')
         portal_transforms = getToolByName(self.context, 'portal_transforms')
         ploneview = self.context.restrictedTraverse('@@plone')
-        end = {'query': DateTime(), 'range': 'min'}
+        now = DateTime()
         res = pc(portal_type=['News Item'],
             Language=[self.pref_lang, ''],
             sort_order='reverse', sort_on='effective',
-            expires={'query': DateTime(), 'range': 'min'},
+            expires={'query': now, 'range': 'min'},
+            effective={'query': now, 'range': 'max'},
             review_state='published',
             path=['%s/%s/teaser' % (self.portal_path, self.pref_lang)])
         if len(res) and limit > 0:
@@ -80,11 +81,12 @@ class HomepageView(BrowserView):
         """Fetch the latest X In Focus news"""
         portal_path = self.ptool.getPortalPath()
         pc = getToolByName(self.context, 'portal_catalog')
-        end = {'query': DateTime(), 'range': 'min'}
+        now = DateTime()
         res = pc(portal_type=['News Item'],
             Language=[self.pref_lang, ''],
             sort_order='reverse', sort_on='effective',
-            expires={'query': DateTime(), 'range': 'min'},
+            expires={'query': now, 'range': 'min'},
+            effective={'query': now, 'range': 'max'},
             review_state='published',
             path=['%s/%s/in-focus' % (self.portal_path, self.pref_lang)])
         if len(res) and limit > 0:
