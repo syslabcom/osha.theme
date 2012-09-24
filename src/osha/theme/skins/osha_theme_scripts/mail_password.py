@@ -8,10 +8,23 @@
 ##parameters=
 
 from Products.CMFPlone import PloneMessageFactory as pmf
+from AccessControl import Unauthorized
 REQUEST=context.REQUEST
 try:
-    response = context.portal_registration.email_mailPassword(REQUEST['email'], REQUEST)
+    response = context.portal_registration.mailPassword(REQUEST['email'], REQUEST)
 except ValueError, e:
-    context.plone_utils.addPortalMessage(pmf(str(e)))
+    try:
+        msg = pmf(e.message)
+    except Unauthorized:
+        try:
+            msg = pmf(str(e))
+        except Unauthorized:
+            # If we are not allowed to tell the user, what is wrong, he
+            # should get an error message and contact the admins
+            raise e
+    context.plone_utils.addPortalMessage(msg)
+    response = context.mail_password_form()
+except KeyError:
     response = context.mail_password_form()
 return response
+
