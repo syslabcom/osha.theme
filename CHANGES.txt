@@ -4,7 +4,7 @@ osha.theme Changelog
 1.5.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- consider publication date for Highlight & In Focus [thomasw]
 
 
 1.5.7 (2012-09-22)
