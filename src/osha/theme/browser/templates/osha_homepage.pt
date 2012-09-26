@@ -48,7 +48,7 @@
           <ul id="highlights-tabs">
             <tal:rep repeat="news items">
               <li class="ui-corner-top" tal:define="no repeat/news/number">
-                <a href="#highlights-1" tal:attributes="href string:#highlights-$no" tal:content="no">1</a>
+                <a href="#highlights-1" tal:attributes="href string:#highlights-$no; title news/title" tal:content="no">1</a>
               </li>
             </tal:rep>
           </ul>
