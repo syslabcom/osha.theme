@@ -7,9 +7,19 @@ from DateTime import DateTime
 from Products.ATContentTypes.interface.document import IATDocument
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
+from BeautifulSoup import BeautifulSoup
 
 _ = MessageFactory('osha.theme')
 
+ALLOWED_TAGS = ["p", "br", "ul", "ol", "li", "sub", "sup", "abbr", "acronym",
+    "dl", "dt", "dd", "cite"]
+
+def stripHTML(text):
+    soup = BeautifulSoup(text)
+    for tag in soup.findAll(True):
+        if tag.name not in ALLOWED_TAGS:
+            tag.extract()
+    return soup.renderContents()
 
 class HomepageView(BrowserView):
 
@@ -66,8 +76,9 @@ class HomepageView(BrowserView):
             img_url = img_url.replace('/image', '/image_mini')
             description = obj.Description().strip() != '' and \
                 obj.Description() or obj.getText()
-            if isinstance(description, unicode):
-                description = description.encode('utf-8')
+            if not isinstance(description, unicode):
+                description = description.decode('utf-8')
+            description = stripHTML(description)
             description = portal_transforms.convert('html_to_text', description).getData()
             description = ploneview.cropText(description, length=400,
             ellipsis="...")
