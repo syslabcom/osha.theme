@@ -1,11 +1,12 @@
 osha.theme Changelog
 ====================
 
-1.5.10 (unreleased)
+1.5.10 (2012-09-26)
 -------------------
 
-- Nothing changed yet.
-
+- Better stripping of links inthe Highlights, fixes #5858 [thomasw]
+- Nicer heading for the subscribe portlet for more than one line [thomasw]
+- Show titles on mousever of the Highlight carousel numbers [thomasw]
 
 1.5.9 (2012-09-24)
 ------------------
