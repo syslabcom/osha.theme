@@ -454,6 +454,10 @@ dl.portletFirstTime dt.portletHeader {
     padding-top:5px;
     padding-bottom: 5px;
 }
+dl.portletSubscribe dt.portletHeader {
+    line-height: 1.2em;
+    padding: 5px 10px;
+}
 dl.portletLinguaLinks {
     background-color: #F09C82;
 }
