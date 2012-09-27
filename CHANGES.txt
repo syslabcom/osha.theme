@@ -4,6 +4,8 @@ osha.theme Changelog
 1.5.11 (unreleased)
 -------------------
 
+- Replaced hardcoded references to bullet.gif in styles with relative version
+  this contributes to #3772 ssl compatibility [pilz, riedl]
 - Translation tweaks #5783 [deroiste]
 
 1.5.10 (2012-09-26)
