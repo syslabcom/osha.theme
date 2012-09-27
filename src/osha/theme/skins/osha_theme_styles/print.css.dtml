@@ -98,6 +98,7 @@ div.top,
 #osha-topactions,
 #osha-topdropdowns,
 #footeractions-wrapper,
+#googlesearch_viewlet,
 #portal-footer-languageselector {
     display: none;
 }

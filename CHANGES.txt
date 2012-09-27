@@ -4,6 +4,7 @@ osha.theme Changelog
 1.5.11 (unreleased)
 -------------------
 
+- excluded osha cse search in print stylesheet [pilz]
 - change way how the pdf icon is fetched in the publications portlet, fixes #3772 [riedl, pilz]
 - Replaced hardcoded references to bullet.gif in styles with relative version
   this contributes to #3772 ssl compatibility [pilz, riedl]
