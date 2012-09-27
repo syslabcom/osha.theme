@@ -14,7 +14,7 @@
            class="tile"
            tal:attributes="href string:${publication/getURL}/view;
                            title publication/Title;">
-          <img src="#" tal:attributes="src string:${here/portal_url}/pdf.png" />
+          <img src="#" tal:attributes="src string:${here/portal_url}/pdf.png" alt="PDF Icon" />
           <tal:title replace="publication/Title"></tal:title>
         </a>
         <a class="more-related"
