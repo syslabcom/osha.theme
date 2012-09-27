@@ -31,7 +31,7 @@ body { top: 0px !important; }
 }
 
 .template-teaser-view #portal-header, .template-osha_homepage #portal-header{
-    height:173px;  
+    height:173px;
 }
 
 #portal-breadcrumbs {
@@ -47,7 +47,7 @@ body { top: 0px !important; }
 
 #select_language_form{
     float:right;
-	display: block; 
+	display: block;
 }
 
 #select_language_form p{
@@ -73,12 +73,12 @@ dl.portlet #portal-personaltools {
 	right: 0;
 	top: 65px
 	}
-	
+
 #cse-search-box{
 	border: 1px solid #C5CBD8;
 	padding: 2px;
 	}
-	
+
 #googlesearch_viewlet #cse-search-box .searchField,
 #cse-search-box .searchField {
 	border:0 !important;
@@ -92,7 +92,7 @@ dl.portlet #portal-personaltools {
 #cse-search-box .searchField {
     width: 560px;
 };
-	
+
 #googlesearch_viewlet .linkList li {
 	font-size: 80%;
 	float: left;
@@ -105,7 +105,7 @@ dl.portlet #portal-personaltools {
 #content .gsc-webResult.gsc-result.gsc-promotion{
     background-color: #dddddd;
 }
-#border-wrapper input.gsc-input, 
+#border-wrapper input.gsc-input,
 #border-wrapper .gsc-input-box,
 #border-wrapper .gsc-input-box-hover,
 #border-wrapper .gsc-input-box-focus {
@@ -125,7 +125,7 @@ dl.portlet #portal-personaltools {
     font-size: 13px;
     font-style: normal;
     font-variant: normal;
-    font-weight: normal;   
+    font-weight: normal;
     -moz-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
     -o-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
     -webkit-box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
@@ -135,8 +135,8 @@ dl.portlet #portal-personaltools {
     -webkit-background-size: initial;
     -o-background-size: initial;
 }
-	
-	
+
+
 #osha-topactions {
     background: &dtml-globalBackgroundColor;;
     margin:0 80px 0 201px;
@@ -260,7 +260,7 @@ h2.headline {
 .contentViews::first-line {
     background-image: url(content-action-bg.png);
     background-repeat: repeat-x;
-    background-position: bottom;  
+    background-position: bottom;
 }
 .contentViews li:first-child {
     padding-left: 1em;
@@ -312,7 +312,7 @@ form#quickuploader .quick-uploader {
 
 
 .portletEvents{
-    
+
 }
 
 .portlet {
@@ -650,9 +650,9 @@ dl.portletFollowUs {
 
 
 #content{
-   
+
     padding: 0 1em;
-    
+
 }
 #intro{
     border: 1px solid #003399;
@@ -744,7 +744,7 @@ dl.portletFollowUs {
  #highlights-tabs li.ui-corner-top {
     float: left;
 	 margin: 0 0.5em 0 0;
-   
+
 
 }
 #highlights-tabs li a {
@@ -778,7 +778,7 @@ dl.portletFollowUs {
     color: #666;
     display: inline-block;
     margin: 1em 0;
-    
+
 }
 
 
@@ -967,7 +967,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 .portletSubscribe p a.button:hover{
     background: #C5CBD8;
-   
+
 }
 
 
@@ -1451,7 +1451,7 @@ body.template-osha_help_center_view div.categorySearchBox {
 div#faq_results a.faq_toggle {
     display: block;
 	font-weight: bold;
-    font-size: 13px; 
+    font-size: 13px;
 	padding-left: 20px;
 	margin-left: -20px;
 }
