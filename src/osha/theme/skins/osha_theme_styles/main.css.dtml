@@ -1449,19 +1449,27 @@ body.template-osha_help_center_view div.categorySearchBox {
 }
 
 div#faq_results a.faq_toggle {
-    font-weight: bold;
-    font-size: 13px;
+    display: block;
+	font-weight: bold;
+    font-size: 13px; 
+	padding-left: 20px;
+	margin-left: -20px;
 }
 
-div#faq_results li.faq_result {
-    list-style-type: none;
-    list-style-image: url("treeCollapsed.gif");
-}
-
+div#faq_results li.faq_result,
 div#faq_results li.expanded {
     list-style-type: none;
-    list-style-image: url("treeExpanded.gif");
+    list-style-image: none;
 }
+
+div#faq_results li.faq_result a.faq_toggle {
+    background: transparent url("treeCollapsed.gif") 3px 6px no-repeat;
+}
+
+div#faq_results li.expanded a.faq_toggle {
+    background: transparent url("treeExpanded.gif") 3px 6px no-repeat;
+}
+
 
 /* #3209 on't activate the carousel if there is only one item
    lipstick.css: .jcarousel-clip width: 548px; padding-left: 31px
