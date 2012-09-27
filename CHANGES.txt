@@ -4,6 +4,7 @@ osha.theme Changelog
 1.5.11 (unreleased)
 -------------------
 
+- change way how the pdf icon is fetched in the publications portlet, fixes #3772 [riedl, pilz]
 - Replaced hardcoded references to bullet.gif in styles with relative version
   this contributes to #3772 ssl compatibility [pilz, riedl]
 - Translation tweaks #5783 [deroiste]
