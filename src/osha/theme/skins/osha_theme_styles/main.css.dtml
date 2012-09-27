@@ -686,6 +686,19 @@ dl.portletFollowUs {
     font-weight: normal;
     margin: 0 0 10px 0;
 }
+body.site-bg #intro h1 {
+    font-size: 1.6em
+}
+
+body.site-de #intro h1,
+body.site-lv #intro h1,
+body.site-hu #intro h1,
+body.site-mt #intro h1,
+body.site-pl #intro h1,
+body.site-cs #intro h1,
+body.site-el #intro h1 {
+    font-size: 1.7em
+}
 
 #agency_fullname{
     text-transform: uppercase;
