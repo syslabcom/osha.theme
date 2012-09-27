@@ -11,6 +11,7 @@ osha.theme Changelog
 - plus-icons in FAQ-list are now clickable to expand FAQ-items #5667 [asteinhardt]
 - Fixed Print-view bug in Firefox with overlapping page content #4086 [asteinhardt]
 - change logo hardcoded url (http vs https) #3772 [nruiz]
+- Style changes for the home page [nruiz, maite, thomasw]
 
 1.5.10 (2012-09-26)
 -------------------
