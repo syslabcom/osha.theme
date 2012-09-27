@@ -383,11 +383,16 @@ class OSHALogoViewlet(common.LogoViewlet):
         osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
         link = osha_view.get_subsite_property('link_on_logo')
         protocol = self.request.get('SERVER_URL').split(':')[0]
-        if link is None:
-            if protocol == 'http':
-                link = 'http://osha.europa.eu'
-	    else:
-                link = 'https://osha.europa.eu'
+        protocol = protocol == "https" and protocol or "http"
+        if link:
+            if ":" in link:
+                link = link.split(':')[1:][0]
+        if link:
+            if not link.startswith('//'):
+                link = "//%s" % link
+        else:
+            link = '//osha.europa.eu'
+        link = '%s:%s' % (protocol, link)
         return link
 
     def update(self):
