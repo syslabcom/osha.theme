@@ -49,12 +49,13 @@
               <div class="video-description" i18n:translate=""
                  tal:content="structure film_details/description"></div>
               <tal:download i18n:translate="label_napo_download_film_as">
+                Download this film as
               </tal:download>
               <a tal:attributes="href film_details/video_avi">Avi</a>,
               <a tal:attributes="href film_details/video_mp4">Mp4</a>,
               <a tal:attributes="href film_details/video_ogv">Ogv</a>,
               <a tal:attributes="href film_details/video_webm">WebM</a>
-              <tal:or i18n:translate="label_or"></tal:or>
+              <tal:or i18n:translate="label_or">or</tal:or>
               <a tal:attributes="href film_details/video_wmv">Wmv</a>.
             </div>
           </div>
@@ -79,12 +80,13 @@
                 <div class="episode_details">
                   <h2 tal:content="episode_details/title" i18n:translate=""></h2>
                   <tal:download i18n:translate="label_napo_download_episode_as">
+                    Download this episode as
                   </tal:download>
                   <a tal:attributes="href episode_details/video_avi">Avi</a>,
                   <a tal:attributes="href episode_details/video_mp4">Mp4</a>,
                   <a tal:attributes="href episode_details/video_ogv">Ogv</a>,
                   <a tal:attributes="href episode_details/video_webm">WebM</a>,
-                  <tal:or i18n:translate="label_or"></tal:or>
+                  <tal:or i18n:translate="label_or">or</tal:or>
                   <a tal:attributes="href episode_details/video_wmv">Wmv</a>.
                 </div>
               </div>
