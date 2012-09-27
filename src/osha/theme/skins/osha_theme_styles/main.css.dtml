@@ -508,7 +508,7 @@ dl.portletCampaigns .image-right {
 }
 
 dl.portletMoreAbout .portletItem ul {
-    list-style-image: url(bullet.gif);
+    list-style-image: url(&dtml-portal_url;/bullet.gif);
     list-style-type:square;
     padding-left: 15px;
     line-height: 1.2em;
@@ -1192,7 +1192,7 @@ body.section-en-riskobservatory div.kssattr-atfieldname-osha_metadata{
 
 .boxing_styles_inner_content ul {
 line-height:1.5em;
-list-style-image:url(http://osha.europa.eu/bullet.gif);
+list-style-image:url(&dtml-portal_url;/bullet.gif);
 list-style-type:square;
 margin:0.5em 0 0 0;
 padding-left:15px;
@@ -1231,7 +1231,7 @@ padding-left:15px;
 
 .boxing_styles_content ul {
 line-height:1.5em;
-list-style-image:url(http://osha.europa.eu/bullet.gif);
+list-style-image:url(&dtml-portal_url;/bullet.gif);
 list-style-type:square;
 margin:0.5em 0 0 0;
 padding-left:15px;
