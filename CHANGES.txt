@@ -4,8 +4,7 @@ osha.theme Changelog
 1.5.11 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Translation tweaks #5783 [deroiste]
 
 1.5.10 (2012-09-26)
 -------------------
