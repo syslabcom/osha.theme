@@ -8,6 +8,9 @@ osha.theme Changelog
 - Replaced hardcoded references to bullet.gif in styles with relative version
   this contributes to #3772 ssl compatibility [pilz, riedl]
 - Translation tweaks #5783 [deroiste]
+- plus-icons in FAQ-list are now clickable to expand FAQ-items #5667 [asteinhardt]
+- Fixed Print-view bug in Firefox with overlapping page content #4086 [asteinhardt]
+- change logo hardcoded url (http vs https) #3772 [nruiz]
 
 1.5.10 (2012-09-26)
 -------------------
