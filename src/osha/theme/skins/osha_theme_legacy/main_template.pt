@@ -134,6 +134,14 @@
                         tal:condition="show_border"
                         tal:content="structure provider:plone.contentviews" />
 
+                        <form id="quickuploader">
+                          <input type="hidden"
+                                 name="uploadUrl"
+                                 class="uploadUrl"
+                                 tal:attributes="value string:${context/@@plone/getCurrentFolderUrl}/@@quick_upload" />
+                        </form>
+
+
                     <div id="region-content"
                          class="documentContent">
                       <span id="contentTopLeft"></span>
