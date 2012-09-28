@@ -48,7 +48,7 @@
           <div class="floatcontrol">
             <div tal:define="mde string:Subject" class="field">
               <tal:block>
-                <label for="Subject" i18n:translate="">Keywords</label>
+                <label for="Subject" i18n:translate="label_keywords" i18n:domain="plone">Keywords</label>
                 <div class="formHelp">
                   Select one of the following keywords to filter the publications. 
                   You can always remove the filter again by selecting the empty entry.
