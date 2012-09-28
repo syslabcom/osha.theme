@@ -14,6 +14,7 @@ osha.theme Changelog
 - change logo hardcoded url (http vs https) #3772 [nruiz]
 - Style changes for the home page [nruiz, maite, thomasw]
 - Delete OSH Global seach link from search viewlet #5882 [thomasw]
+- Added BulkUpload snippet to legacy main template, fixes #5887 [thomasw]
 
 1.5.10 (2012-09-26)
 -------------------
