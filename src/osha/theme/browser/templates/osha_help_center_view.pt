@@ -28,7 +28,7 @@
                      current_url string:${context/absolute_url}/${view/getName}?SearchableText=${SearchableText}">
 
       <a name="top"></a>
-      <h1 i18n:translate="FAQs">FAQ</h1>
+      <h1 i18n:translate="phc_faq_title" i18n:domain="plonehelpcenter">FAQs</h1>
       <div class="introduction">
         <p i18n:translate="text_help_center_intro">
         Search the
