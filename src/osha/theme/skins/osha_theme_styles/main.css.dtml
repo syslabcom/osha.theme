@@ -346,6 +346,7 @@ form#quickuploader .quick-uploader {
     padding: 0.25em 0.5em;
     border-style:solid solid none;
     font-size: 90%;
+    font-weight: normal;
 }
 .portletItemDetails {
     text-align:left;
