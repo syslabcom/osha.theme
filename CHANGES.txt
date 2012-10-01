@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.11 (unreleased)
+1.5.11 (2012-10-01)
 -------------------
 
 - excluded osha cse search in print stylesheet [pilz]
