@@ -21,9 +21,6 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from types import UnicodeType
 # from p4a.calendar.interfaces import ICalendarEnhanced
 
-import logging
-log = logging.getLogger('osha events portlet')
-
 
 class IEventsPortlet(IPortletDataProvider):
     count = schema.Int(
@@ -131,7 +128,6 @@ class Renderer(events.Renderer):
         # http or https?
         server_url = self.request.get('SERVER_URL', '')
         protocol, domain = server_url.split("://")
-        log.info('cache key: %s' % str((calendar_path, preflang, subject, navigation_root_path, protocol, domain)))
         return (calendar_path, preflang, subject, navigation_root_path, protocol, domain)
 
     @ram.cache(_render_cachekey)
