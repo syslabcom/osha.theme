@@ -228,7 +228,7 @@
     rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="False" expression="" id="calendar.css" media="" rel="stylesheet"
+    enabled="on" expression="" id="calendar.css" media="" rel="stylesheet"
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
