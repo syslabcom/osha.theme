@@ -97,7 +97,7 @@ font-size:100%;
     font: 14px/100% Arial, Helvetica, sans-serif;
     padding: .5em 2em .55em;
     text-shadow: 0 1px 1px rgba(0,0,0,.3);
-    -webkit-border-radius: .5em; 
+    -webkit-border-radius: .5em;
     -moz-border-radius: .5em;
     border-radius: .5em;
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
@@ -129,7 +129,7 @@ font-size:100%;
     font-size: 20px;
     padding: 2px 5px;
     font-weight: bold;
-    -webkit-border-radius: 2px; 
+    -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
     position:relative;
@@ -153,7 +153,7 @@ font-size:100%;
 
 body.subsection1-oshmail .collage-item:first-child h1 {
     margin: 0px 0 24px;
-}    
+}
 body.subsection1-oshmail h1,
 .template-shortmessage_preview_view h1 {
     font-family: Georgia, "Times new roman", serif;
@@ -176,7 +176,7 @@ body.subsection1-oshmail h1.documentFirstHeading,
 }
 
 body.subsection1-oshmail h2,
-.template-shortmessage_preview_view h2,  
+.template-shortmessage_preview_view h2,
 body.subsection1-oshmail h3 {
 	text-shadow: 0 1px 0 #FFFFFF;
 	font-weight: normal;
@@ -203,6 +203,10 @@ body.subsection1-oshmail .collage-newsitem-standard,
     /*-webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
     -moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);*/
+    font: normal 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
+}
+
+.template-shortmessage_preview_view .footer-shortmessage {
     font: normal 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
 }
 
@@ -240,7 +244,7 @@ body.subsection1-oshmail .collage-file-publication img.cover-image {
 	transform: rotate(-4deg);
 	z-index: 30;
 	width:100px;
-    
+
 	-moz-box-shadow: 3px 3px 4px #000;
 	-webkit-box-shadow: 3px 3px 4px #000;
 	box-shadow: 3px 3px 4px #000;
@@ -248,7 +252,7 @@ body.subsection1-oshmail .collage-file-publication img.cover-image {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
 	/* For IE 5.5 - 7 */
 	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
-    
+
 }
 body.subsection1-oshmail .collage-newsitem-rightcolumn i,
 body.subsection1-oshmail .collage-event-rightcolumn i {
@@ -258,7 +262,7 @@ body.subsection1-oshmail .collage-newsitem-rightcolumn,
 body.subsection1-oshmail .collage-event-rightcolumn {
 	padding: 20px;
 	font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
-    
+
 	/*-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.2);
 	box-shadow: 0 0 20px rgba(0,0,0,0.2);    */

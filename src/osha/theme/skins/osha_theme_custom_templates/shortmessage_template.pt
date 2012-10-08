@@ -95,7 +95,7 @@
 		</td></tr>
 		</table>
 
-		<table width="790" style="width:790px">
+		<table width="790" style="width:790px" class="footer-shortmessage">
 		<tr>
 			<td width="20">
 				<a title="European Agency for Safety and Health at Work" href="http://osha.europa.eu/"
