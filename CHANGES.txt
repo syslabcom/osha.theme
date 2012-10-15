@@ -1,11 +1,10 @@
 osha.theme Changelog
 ====================
 
-1.5.13 (unreleased)
+1.5.13 (2012-10-15)
 -------------------
 
-- Nothing changed yet.
-
+- Replaced image for correct shadow on the logo #5824 [nagore,thomasw]
 
 1.5.12 (2012-10-15)
 -------------------
