@@ -333,6 +333,26 @@ IE6 */
 
 /* @end */
 
+/* fancybox change to not overlap scrollbar (e.g. oshmail) */
+#fancybox-left { 
+	margin-left: 25px; 
+}
+#fancybox-right { 
+	margin-right: 25px; 
+}
+
+#fancybox-left:hover span,
+#fancybox-left-ico{
+	left: -10px;
+}
+
+#fancybox-right:hover span,
+#fancybox-right-ico {
+	right: -10px;
+	left: auto;
+}
+
+
 /* @group lipstick-view */
 body.template-lipstick-view #content h1 {
     background: none;
@@ -350,3 +370,4 @@ body.template-lipstick-view #content dt {
     /* For the folder listing view */
     display: block;
 }
+
