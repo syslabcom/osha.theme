@@ -4,7 +4,9 @@ osha.theme Changelog
 1.5.14 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Changed margin and position of next and previous button to not overlap
+  scrollbar (e.g. oshmail) #5996 [steinhardt]
+
 
 
 1.5.13 (2012-10-15)
