@@ -223,7 +223,6 @@ font-weight: normal;
 }
 
 body.subsection1-oshmail .collage-newsitem-standard {
-	background-color: #fdfdc8;
 	color: #6f5a44;
 	border: 1px solid #d3d4a7;
 	padding-bottom:1em;
