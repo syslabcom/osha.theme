@@ -6,7 +6,7 @@ osha.theme Changelog
 
 - Changed margin and position of next and previous button to not overlap
   scrollbar (e.g. oshmail) #5996 [steinhardt]
-
+- The yellow background for teasers in the OSHMail is not wanted any more #6055 [thomasw]
 
 
 1.5.13 (2012-10-15)
