@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.14 (unreleased)
+1.5.14 (2012-11-05)
 -------------------
 
 - Changed margin and position of next and previous button to not overlap
