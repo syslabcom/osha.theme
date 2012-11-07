@@ -335,9 +335,17 @@ IE6 */
 
 /* fancybox change to not overlap scrollbar (e.g. oshmail) */
 #fancybox-left { 
+	width: 40px;
+	height: 40px;
+	bottom: 50%;
+	margin-bottom: -20px;
 	margin-left: 25px; 
 }
-#fancybox-right { 
+#fancybox-right {
+    width: 40px; 
+    height: 40px;
+	bottom: 50%;
+	margin-bottom: -20px;
 	margin-right: 25px; 
 }
 
