@@ -4,7 +4,7 @@ osha.theme Changelog
 1.5.15 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Changed size and position of next and previous button to enable mouse scrolling in fancybox #5996 [steinhardt].
 
 
 1.5.14 (2012-11-05)
