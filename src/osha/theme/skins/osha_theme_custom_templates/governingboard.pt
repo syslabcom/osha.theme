@@ -4,231 +4,332 @@
       i18n:domain="plone">
 
 
-<body>
+  <body>
 
-<div metal:fill-slot="main" 
-     tal:define="ALLOWEDCOUNTRIES python:['AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HR', 'HU', 'IE','IS','IT', 'LI', 'LT', 'LV', 'LU', 'MT', 'NL','NO','PL', 'PT', 'RO', 'SI', 'SK', 'ES', 'SE', 'GB', 'UK'];">
+    <div metal:fill-slot="main" 
+         tal:define="ALLOWEDCOUNTRIES python:['AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LT', 'LV', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SI', 'SK', 'ES', 'SE', 'UK'];
+                     OBSERVERCOUNTRIES python:['HR', 'IS', 'LI', 'NO'];
+                     people here/sql/governingboard_fetchPeople;
+                     country_codes here/sql/sql_getCountryCodes">
 
-<style>
-    .selecttable {
+      <style>
+        .selecttable {
         xmargin: 0px;
         xpadding: 0px;
-    }
-    .selecttable tr th {
+        }
+        .selecttable tr th {
     	BACKGROUND: #edf2f2;
     	text-align:left;
         padding: 5px 10px 5px 3px;
 	    BORDER-BOTTOM: #ddd 2px solid;
 	    BORDER-RIGHT: #ddd 2px solid;
         BORDER-TOP: #fff 2px solid;
-    }
-    .selecttable tr td {
+        }
+        .selecttable tr td {
     	BACKGROUND: #edf2f2;
         padding: 3px 3px 3px 3px;
 	    BORDER-BOTTOM: #ddd 1px solid;
 	    BORDER-RIGHT: #ddd 1px solid;
         BORDER-TOP: #fff 1px solid;
-    }
-    .neutral {
+        }
+        .neutral {
     	BACKGROUND: white !important;
         border: 0px !important;
 
-    }
+        }
 
-.header_country { background: #D7E6FF url(info_small.gif) 1px 1px no-repeat; padding: 4px 4px 4px 28px; margin-top: 30px; margin-bottom: 10px; height: 18px; }
-.section_group { clear: both; overflow: hidden; }
-.section { position: static; top: 0; left: 0; float: none; overflow: hidden; clear: both; padding: 0; margin: 0; border-bottom: 1px solid #afafaf; }
-.section .block_member,
-.section .block_alternate { position: static; top: 0; left: 0; float: left; width: 48%; height: auto; padding: 8px 0px 8px 0px; line-height: 16px;  }
-.section .body_section { padding: 0 0 0 4px; }
-.section .header_section { background: transparent url(/job_icon.gif) 4px 0 no-repeat; padding: 3px 0 0px 24px; margin: 0; }
-#country-shortcut {padding:5px; text-align:center;
-}
-</style>
+        .header_country { background: #D7E6FF url(info_small.gif) 1px 1px no-repeat; padding: 4px 4px 4px 28px; margin-top: 30px; margin-bottom: 10px; height: 18px; }
+        .section_group { clear: both; overflow: hidden; }
+        .section { position: static; top: 0; left: 0; float: none; overflow: hidden; clear: both; padding: 0; margin: 0; border-bottom: 1px solid #afafaf; }
+        .section .block_member,
+        .section .block_alternate { position: static; top: 0; left: 0; float: left; width: 48%; height: auto; padding: 8px 0px 8px 0px; line-height: 16px;  }
+        .section .body_section { padding: 0 0 0 4px; }
+        .section .header_section { background: transparent url(/job_icon.gif) 4px 0 no-repeat; padding: 3px 0 0px 24px; margin: 0; }
+        #country-shortcut {padding:5px; text-align:center;
+        }
+      </style>
 
-<h1 tal:content="here/Title"></h1>
+      <h1 tal:content="here/Title"></h1>
 
-<p tal:content="structure here/Description"></p>
-
-
-<div tal:define="people here/sql/governingboard_fetchPeople">
+      <p tal:content="structure here/Description"></p>
 
 
-<div id="country-shortcut">
-  <span tal:omit-tag="" tal:repeat="res here/sql/sql_getCountryCodes">
-    <span tal:omit-tag="" tal:condition="python:res['abbrev'] in ALLOWEDCOUNTRIES">
-      <a href="" tal:attributes="href python:'%s#%s'%(template.id, res['abbrev'])" ><span tal:replace="res/name"/></a> 
-      <span tal:condition="not:repeat/res/end" tal:omit-tag="">|</span>
-    </span>
-  </span>
-<br>
-  <a href="governingboard#ec">European Commission</a> |
-  <a href="governingboard#observers">Observers</a> 
-</div>
+      <div>
 
-<span tal:repeat="res here/sql/sql_getCountryCodes">
-    <div tal:define="cpeople python:people.get(res['abbrev'], {});" 
-         tal:condition="python:res['abbrev'] !='' and res['abbrev'] in ALLOWEDCOUNTRIES" tal:on-error="string:error">
-	<h2 class="header_country"><a name="" tal:attributes="name res/abbrev"><span tal:replace="res/name"/></a></h2>
-		
-      <div class="section_group" tal:define="govpeople python:cpeople.get('Government', {})">
-	  <div class="section">
-		<div class="block_member">
-			<h3 class="header_section">Government - Member</h3>
-		</div>
-		<div class="block_alternate">
-			<h3 class="header_section">Government - Alternate</h3>
-		</div>
-	  </div>
-	  <div class="section">
-		<div class="block_member" tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
-			<div class="body_section" metal:define-macro="person">
-				<strong><span tal:replace="thisone/title |nothing"/> 
-                                        <span tal:replace="thisone/firstname |nothing"/> 
-                                        <span tal:replace="thisone/lastname |nothing"/></strong>
-                                        <span tal:condition="python:thisone['list']=='Bureau of the Administrative Board'" tal:on-error="nothing">
-                                              (<a href="/about/organisation/lists/bureau"><span tal:omit-tag="" tal:condition="thisone/bureaupost|nothing"><span tal:replace="thisone/bureaupost|nothing"/>, </span>Bureau</a>)</span>
-                                <br />
-				<span tal:replace="thisone/organisation |nothing"/><br />
-				<span tal:omit-tag="" tal:condition="thisone/address |nothing"><span tal:replace="thisone/address |nothing"/><br /></span>
-				<span tal:replace="thisone/postalcode |nothing"/> <span tal:replace="thisone/city |nothing"/><br />
-				<span tal:replace="res/name | thisone/countryname | nothing"/><br />
-			</div>
-		</div>
-		<div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
-			<div class="body_section" metal:use-macro="template/macros/person">
-				<strong><span tal:replace="thisone/title |nothing"/> 
-                                        <span tal:replace="thisone/firstname |nothing"/> 
-                                        <span tal:replace="thisone/lastname |nothing"/></strong>
-                                        <span tal:condition="python:thisone['list']=='Bureau of the Administrative Board'" tal:on-error="nothing">
-                                              (<a href="/about/organisation/lists/bureau"><span tal:omit-tag="" tal:condition="thisone/bureaupost|nothing"><span tal:replace="thisone/bureaupost|nothing"/> and </span>Bureau</a>)</span>
-                                <br />
-				<span tal:replace="thisone/organisation |nothing"/><br />
-				<span tal:omit-tag="" tal:condition="thisone/address |nothing"><span tal:replace="thisone/address |nothing"/><br /></span>
-				<span tal:replace="thisone/postalcode |nothing"/> <span tal:replace="thisone/city |nothing"/><br />
-				<span tal:replace="res/name | thisone/countryname | nothing"/><br />
-			</div>
-		</div>
-	  </div>
-	</div>
 
-        <div class="section_group" tal:define="govpeople python:cpeople.get('Employers', {})">
-	  <div class="section">
-		<div class="block_member">
-			<h3 class="header_section">Employers - Member</h3>
-		</div>
-		<div class="block_alternate">
-			<h3 class="header_section">Employers - Alternate</h3>
-		</div>
-	</div>
-	<div class="section">
-		<div class="block_member"  tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
-			<div class="body_section" metal:use-macro="template/macros/person">
-			</div>
-		</div>
-		<div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
-			<div class="body_section" metal:use-macro="template/macros/person">
-			</div>
-		</div>
-  	  </div>
-	</div>
-
-        <div class="section_group" tal:define="govpeople python:cpeople.get('Workers', {})">
-	  <div class="section">
-		<div class="block_member">
-			<h3 class="header_section">Workers - Member</h3>
-		</div>
-		<div class="block_alternate">
-			<h3 class="header_section">Workers - Alternate</h3>
-		</div>
-	  </div>
-	  <div class="section">
-		<div class="block_member" tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
-			<div class="body_section" metal:use-macro="template/macros/person">
-			</div>
-		</div>
-		<div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
-			<div class="body_section" metal:use-macro="template/macros/person">
-			</div>
-		</div>
-	  </div>
+        <div id="country-shortcut">
+          <span tal:omit-tag="" tal:repeat="country_code ALLOWEDCOUNTRIES">
+            <span tal:omit-tag="" tal:define="country_name python:[i for i in country_codes if i.abbrev == country_code][0].name">
+              <a href="" tal:attributes="href python:'%s#%s'%(template.id, country_code)" ><span tal:replace="python:country_name"/></a> 
+              <span tal:condition="not:repeat/country_code/end" tal:omit-tag="">|</span>
+            </span>
+          </span>
+          <br/>
+          <a href="governingboard#ec">European Commission</a><br />
+          <a href="governingboard#observers">Observers</a> |
+          <span tal:omit-tag="" tal:repeat="country_code OBSERVERCOUNTRIES">
+            <span tal:omit-tag="" tal:define="country_name python:[i for i in country_codes if i.abbrev == country_code][0].name">
+              <a href="" tal:attributes="href python:'%s#%s'%(template.id, country_code)" ><span tal:replace="python:country_name"/></a> 
+              <span tal:condition="not:repeat/country_code/end" tal:omit-tag="">|</span>
+            </span>
+          </span>
         </div>
-    </div>	
 
-</span>
+        <span tal:repeat="res country_codes">
+          <div tal:define="cpeople python:people.get(res['abbrev'], {});" 
+               tal:condition="python:res['abbrev'] !='' and res['abbrev'] in ALLOWEDCOUNTRIES" tal:on-error="string:error">
+	        <h2 class="header_country"><a name="" tal:attributes="name res/abbrev"><span tal:replace="res/name"/></a></h2>
+		    
+            <div class="section_group" tal:define="govpeople python:cpeople.get('Government', {})">
+	          <div class="section">
+		        <div class="block_member">
+			      <h3 class="header_section">Government - Member</h3>
+		        </div>
+		        <div class="block_alternate">
+			      <h3 class="header_section">Government - Alternate</h3>
+		        </div>
+	          </div>
+	          <div class="section">
+		        <div class="block_member" tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
+			      <div class="body_section" metal:define-macro="person">
+				    <strong><span tal:replace="thisone/title |nothing"/> 
+                    <span tal:replace="thisone/firstname |nothing"/> 
+                    <span tal:replace="thisone/lastname |nothing"/></strong>
+                    <span tal:condition="python:thisone['list']=='Bureau of the Administrative Board'" tal:on-error="nothing">
+                    (<a href="/about/organisation/lists/bureau"><span tal:omit-tag="" tal:condition="thisone/bureaupost|nothing"><span tal:replace="thisone/bureaupost|nothing"/>, </span>Bureau</a>)</span>
+                    <br />
+				    <span tal:replace="thisone/organisation |nothing"/><br />
+				    <span tal:omit-tag="" tal:condition="thisone/address |nothing"><span tal:replace="thisone/address |nothing"/><br /></span>
+				    <span tal:replace="thisone/postalcode |nothing"/> <span tal:replace="thisone/city |nothing"/><br />
+				    <span tal:replace="res/name | thisone/countryname | nothing"/><br />
+			      </div>
+		        </div>
+		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+				    <strong><span tal:replace="thisone/title |nothing"/> 
+                    <span tal:replace="thisone/firstname |nothing"/> 
+                    <span tal:replace="thisone/lastname |nothing"/></strong>
+                    <span tal:condition="python:thisone['list']=='Bureau of the Administrative Board'" tal:on-error="nothing">
+                    (<a href="/about/organisation/lists/bureau"><span tal:omit-tag="" tal:condition="thisone/bureaupost|nothing"><span tal:replace="thisone/bureaupost|nothing"/> and </span>Bureau</a>)</span>
+                    <br />
+				    <span tal:replace="thisone/organisation |nothing"/><br />
+				    <span tal:omit-tag="" tal:condition="thisone/address |nothing"><span tal:replace="thisone/address |nothing"/><br /></span>
+				    <span tal:replace="thisone/postalcode |nothing"/> <span tal:replace="thisone/city |nothing"/><br />
+				    <span tal:replace="res/name | thisone/countryname | nothing"/><br />
+			      </div>
+		        </div>
+	          </div>
+	        </div>
+
+            <div class="section_group" tal:define="govpeople python:cpeople.get('Employers', {})">
+	          <div class="section">
+		        <div class="block_member">
+			      <h3 class="header_section">Employers - Member</h3>
+		        </div>
+		        <div class="block_alternate">
+			      <h3 class="header_section">Employers - Alternate</h3>
+		        </div>
+	          </div>
+	          <div class="section">
+		        <div class="block_member"  tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+			      </div>
+		        </div>
+		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+			      </div>
+		        </div>
+  	          </div>
+	        </div>
+
+            <div class="section_group" tal:define="govpeople python:cpeople.get('Workers', {})">
+	          <div class="section">
+		        <div class="block_member">
+			      <h3 class="header_section">Workers - Member</h3>
+		        </div>
+		        <div class="block_alternate">
+			      <h3 class="header_section">Workers - Alternate</h3>
+		        </div>
+	          </div>
+	          <div class="section">
+		        <div class="block_member" tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+			      </div>
+		        </div>
+		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+			      </div>
+		        </div>
+	          </div>
+            </div>
+          </div>	
+
+        </span>
 
 
 
 
-</div>
+      </div>
 
 
 
-<div tal:define="P here/sql/governingboard_fetchECOthers; EC python: P[0]; OTH python: P[1]">
+      <div tal:define="P here/sql/governingboard_fetchECOthers; EC python: P[0]; OTH python: P[1]">
 
-<!-- European Commission -->
-    <div tal:define="members python: EC.get('Titular', []); alternates python: EC.get('Alternate', [])">
-	<h2 class="header_country"><a name="ec">European Commission</a></h2>
-		
-        <div class="section_group" tal:define="dummy request">
-	  <div class="section">
-		<div class="block_member">
-			<h3 class="header_section">Member</h3>
-		</div>
-		<div class="block_alternate">
-			<h3 class="header_section">Alternate</h3>
-		</div>
-	  </div>
+        <!-- European Commission -->
+        <div tal:define="members python: EC.get('Titular', []); alternates python: EC.get('Alternate', [])">
+	      <h2 class="header_country"><a name="ec">European Commission</a></h2>
+		  
+          <div class="section_group" tal:define="dummy request">
+	        <div class="section">
+		      <div class="block_member">
+			    <h3 class="header_section">Member</h3>
+		      </div>
+		      <div class="block_alternate">
+			    <h3 class="header_section">Alternate</h3>
+		      </div>
+	        </div>
+          </div>
+	      <div class="section" tal:repeat="idx python:range(max(len(members), len(alternates)))">
+
+		    <div class="block_member" tal:condition="thisone" tal:define="thisone python: members[idx]" tal:on-error="nothing">
+
+			  <div class="body_section" metal:use-macro="template/macros/person">
+			  </div>
+		    </div>
+		    <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: alternates[idx]" tal:on-error="nothing">
+
+			  <div class="body_section" metal:use-macro="template/macros/person">
+			  </div>
+		    </div>
+  	      </div>
+
         </div>
-	<div class="section" tal:repeat="idx python:range(max(len(members), len(alternates)))">
 
-		<div class="block_member" tal:condition="thisone" tal:define="thisone python: members[idx]" tal:on-error="nothing">
+        <!-- Others -->
+        <div tal:define="members python: OTH.get('Observer', []); alternates python: OTH.get('Observer Alternate', [])">
+	      <h2 class="header_country"><a name="observers">Observers</a></h2>
+		  
+          <div class="section_group" tal:define="dummy request">
+	        <div class="section">
+		      <div class="block_member">
+			    <h3 class="header_section">Member</h3>
+		      </div>
+		      <div class="block_alternate">
+			    <h3 class="header_section">Alternate</h3>
+		      </div>
+	        </div>
+          </div>
+	      <div class="section" tal:repeat="idx python:range(max(len(members), len(alternates)))">
+		    <div class="block_member"  tal:condition="thisone" tal:define="thisone python: members[idx]" tal:on-error="nothing">
+			  <div class="body_section" metal:use-macro="template/macros/person">
+			  </div>
+		    </div>
+		    <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: alternates[idx]" tal:on-error="nothing">
+			  <div class="body_section" metal:use-macro="template/macros/person">
+			  </div>
+		    </div>
+  	      </div>
 
-			<div class="body_section" metal:use-macro="template/macros/person">
-			</div>
-		</div>
-		<div class="block_alternate" tal:condition="thisone" tal:define="thisone python: alternates[idx]" tal:on-error="nothing">
+        </div>
+      </div>
 
-			<div class="body_section" metal:use-macro="template/macros/person">
-			</div>
-		</div>
-  	  </div>
+
+      <div>
+
+        <span tal:repeat="res country_codes">
+          <div tal:define="cpeople python:people.get(res['abbrev'], {});" 
+               tal:condition="python:res['abbrev'] !='' and res['abbrev'] in OBSERVERCOUNTRIES" tal:on-error="string:error">
+	        <h2 class="header_country"><a name="" tal:attributes="name res/abbrev"><span tal:replace="res/name"/></a></h2>
+		    
+            <div class="section_group" tal:define="govpeople python:cpeople.get('Government', {})">
+	          <div class="section">
+		        <div class="block_member">
+			      <h3 class="header_section">Government - Observer</h3>
+		        </div>
+		        <div class="block_alternate">
+			      <h3 class="header_section">Government - Observer Alternate</h3>
+		        </div>
+	          </div>
+	          <div class="section">
+		        <div class="block_member" tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
+			      <div class="body_section" metal:define-macro="person">
+				    <strong><span tal:replace="thisone/title |nothing"/> 
+                    <span tal:replace="thisone/firstname |nothing"/> 
+                    <span tal:replace="thisone/lastname |nothing"/></strong>
+                    <span tal:condition="python:thisone['list']=='Bureau of the Administrative Board'" tal:on-error="nothing">
+                    (<a href="/about/organisation/lists/bureau"><span tal:omit-tag="" tal:condition="thisone/bureaupost|nothing"><span tal:replace="thisone/bureaupost|nothing"/>, </span>Bureau</a>)</span>
+                    <br />
+				    <span tal:replace="thisone/organisation |nothing"/><br />
+				    <span tal:omit-tag="" tal:condition="thisone/address |nothing"><span tal:replace="thisone/address |nothing"/><br /></span>
+				    <span tal:replace="thisone/postalcode |nothing"/> <span tal:replace="thisone/city |nothing"/><br />
+				    <span tal:replace="res/name | thisone/countryname | nothing"/><br />
+			      </div>
+		        </div>
+		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+				    <strong><span tal:replace="thisone/title |nothing"/> 
+                    <span tal:replace="thisone/firstname |nothing"/> 
+                    <span tal:replace="thisone/lastname |nothing"/></strong>
+                    <span tal:condition="python:thisone['list']=='Bureau of the Administrative Board'" tal:on-error="nothing">
+                    (<a href="/about/organisation/lists/bureau"><span tal:omit-tag="" tal:condition="thisone/bureaupost|nothing"><span tal:replace="thisone/bureaupost|nothing"/> and </span>Bureau</a>)</span>
+                    <br />
+				    <span tal:replace="thisone/organisation |nothing"/><br />
+				    <span tal:omit-tag="" tal:condition="thisone/address |nothing"><span tal:replace="thisone/address |nothing"/><br /></span>
+				    <span tal:replace="thisone/postalcode |nothing"/> <span tal:replace="thisone/city |nothing"/><br />
+				    <span tal:replace="res/name | thisone/countryname | nothing"/><br />
+			      </div>
+		        </div>
+	          </div>
+	        </div>
+
+            <div class="section_group" tal:define="govpeople python:cpeople.get('Employers', {})">
+	          <div class="section">
+		        <div class="block_member">
+			      <h3 class="header_section">Employers - Observer</h3>
+		        </div>
+		        <div class="block_alternate">
+			      <h3 class="header_section">Employers - Observer Alternate</h3>
+		        </div>
+	          </div>
+	          <div class="section">
+		        <div class="block_member"  tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+			      </div>
+		        </div>
+		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+			      </div>
+		        </div>
+  	          </div>
+	        </div>
+
+            <div class="section_group" tal:define="govpeople python:cpeople.get('Workers', {})">
+	          <div class="section">
+		        <div class="block_member">
+			      <h3 class="header_section">Workers - Observer</h3>
+		        </div>
+		        <div class="block_alternate">
+			      <h3 class="header_section">Workers - Observer Alternate</h3>
+		        </div>
+	          </div>
+	          <div class="section">
+		        <div class="block_member" tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+			      </div>
+		        </div>
+		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
+			      <div class="body_section" metal:use-macro="template/macros/person">
+			      </div>
+		        </div>
+	          </div>
+            </div>
+          </div>	
+
+        </span>
+
+      </div>
 
     </div>
 
-<!-- Others -->
-   <div tal:define="members python: OTH.get('Observer', []); alternates python: OTH.get('Observer Alternate', [])">
-	<h2 class="header_country"><a name="observers">Observers</a></h2>
-		
-        <div class="section_group" tal:define="dummy request">
-	  <div class="section">
-		<div class="block_member">
-			<h3 class="header_section">Member</h3>
-		</div>
-		<div class="block_alternate">
-			<h3 class="header_section">Alternate</h3>
-		</div>
-	  </div>
-        </div>
-	<div class="section" tal:repeat="idx python:range(max(len(members), len(alternates)))">
-		<div class="block_member"  tal:condition="thisone" tal:define="thisone python: members[idx]" tal:on-error="nothing">
-			<div class="body_section" metal:use-macro="template/macros/person">
-			</div>
-		</div>
-		<div class="block_alternate" tal:condition="thisone" tal:define="thisone python: alternates[idx]" tal:on-error="nothing">
-			<div class="body_section" metal:use-macro="template/macros/person">
-			</div>
-		</div>
-  	  </div>
-
-    </div>
-</div>
-
-
-
-
-</div>
-
-</body>
+  </body>
 </html>
-
