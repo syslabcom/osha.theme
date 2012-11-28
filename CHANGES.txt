@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.16 (unreleased)
+1.5.16 (2012-11-28)
 -------------------
 
 - #6135 Add a separate section for observer countries to the end [deroiste]
