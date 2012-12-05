@@ -4,7 +4,7 @@ if (!OSHA) { OSHA = {};}
 
 portal_url = '<dtml-var portal_url>';
 
-// works currently only for german-language and 
+// works currently only for german-language and
 // is used only by the german FOP
 function adjustTitle(elem) {
     var newTitle = '(neues Fenster)';
@@ -35,14 +35,14 @@ function osha_gotoURL (x) {
 }
 
 function getContentArea() {
-	// to end all doubt on where the content sits. It also felt a bit silly doing this over and over in every
-	// function, even if it is a tiny operation. Just guarding against someone changing the names again, in the name
-	// of semantics or something.... ;)
-	node =  document.getElementById('region-content');
-	if (! node){
-		node = document.getElementById('content');
-		}
-	return node;
+    // to end all doubt on where the content sits. It also felt a bit silly doing this over and over in every
+    // function, even if it is a tiny operation. Just guarding against someone changing the names again, in the name
+    // of semantics or something.... ;)
+    node =  document.getElementById('region-content');
+    if (! node){
+        node = document.getElementById('content');
+        }
+    return node;
 }
 
 function getPortlets() {
@@ -52,10 +52,10 @@ function getPortlets() {
     if (left) {
         portlets.push(left);
     }
-	if (right) {
+    if (right) {
         portlets.push(right);
     }
-	return portlets;
+    return portlets;
 }
 
 function injectNode(node, injectedtype, injectedclass) {
@@ -81,7 +81,7 @@ function modifyLinkTag(node, elonw) {
         var linkval = node.getAttribute('href');
 
         // check if the link href is a relative link, or an absolute link to the current host.
-		if (linkval.toLowerCase().indexOf(window.location.protocol+'//'+window.location.host)===0) {
+        if (linkval.toLowerCase().indexOf(window.location.protocol+'//'+window.location.host)===0) {
             // we are here because the link is an absolute pointer internal to our host
             // do nothing
             var donothing = true;
@@ -90,8 +90,8 @@ function modifyLinkTag(node, elonw) {
             // add tests for all relevant protocols as you like.
             protocols = ['ftp', 'news', 'irc', 'callto'];
             // h323, sip and callto are internet telephony VoIP protocols
-            
-            for (p=0; p < protocols.length; p++){  
+
+            for (p=0; p < protocols.length; p++){
                  if (linkval.indexOf(protocols[p]+':') === 0){
                     // this link matches the protocol . add a classname protocol+link
                     linkclass = 'link-'+protocols[p];
@@ -122,7 +122,7 @@ function modifyLinkTag(node, elonw) {
         if(filename.indexOf('?')<0 && fileelems.length>1 && node.getElementsByTagName('img').length === 0) {
             ending = fileelems[fileelems.length-1].toLowerCase();
             endings = ['pdf', 'doc', 'xls', 'ppt', 'zip'];
-            for (e=0; e < endings.length; e++){ 
+            for (e=0; e < endings.length; e++){
                 if (ending === endings[e]) {
                     linkclass = 'link-'+ending+'-js';
                     injectNode(node, 'span', linkclass);
@@ -135,34 +135,34 @@ function modifyLinkTag(node, elonw) {
 // script for detecting external links.
 // sets their target-attribute to _blank , and adds a class external
 function scanforlinks() {
-    // securing against really old DOMs 
+    // securing against really old DOMs
     if (! document.getElementsByTagName){return false;}
     if (! document.getElementById){return false;}
     // Quick utility function by Geir Bækholt
-    // Scan all links in the document and set classes on them dependant on 
+    // Scan all links in the document and set classes on them dependant on
     // whether they point to the current site or are external links
     contentarea = getContentArea();
     // guard against doing it twice
-    
+
     if (contentarea && contentarea.getAttribute('scanforlinks')==='done') {return false;}
 
     var elonw = false;
     if (typeof external_links_open_new_window === 'string') {
         elonw = external_links_open_new_window.toLowerCase() === 'true';
     }
-    
+
     var portlets = getPortlets();
     if (! contentarea && portlets.length<=0){
         return false;
     }
     var links = contentarea.getElementsByTagName('a');
-    for (i=0; i < links.length; i++){      
+    for (i=0; i < links.length; i++){
         modifyLinkTag(links[i], elonw);
     }
     var plinks;
     for(i=0;i<portlets.length;i++) {
         plinks = portlets[i].getElementsByTagName('a');
-        for (j=0; j < plinks.length; j++){      
+        for (j=0; j < plinks.length; j++){
             modifyLinkTag(plinks[j], elonw);
         }
     }
@@ -225,16 +225,16 @@ jq(document).ready(function(){
 /* NOTE: these need to be at the end otherwise there is a problem when
 the js files are merged in portal_javascripts */
 function registerPloneFunction(func){
-    // registers a function to fire onload. 
+    // registers a function to fire onload.
     // Turned out we kept doing this all the time
-    // Use this for initilaizing any javascript that should fire once the page has been loaded. 
-    // 
+    // Use this for initilaizing any javascript that should fire once the page has been loaded.
+    //
     if (window.addEventListener) { window.addEventListener("load",func,false);}
-    else if (window.attachEvent) {window.attachEvent("onload",func);}   
+    else if (window.attachEvent) {window.attachEvent("onload",func);}
 }
 
 function unRegisterPloneFunction(func){
-    // uregisters a previous function to fire onload. 
+    // uregisters a previous function to fire onload.
     if (window.removeEventListener) {window.removeEventListener("load",func,false);}
-    else if (window.detachEvent) {window.detachEvent("onload",func);}   
+    else if (window.detachEvent) {window.detachEvent("onload",func);}
 }
