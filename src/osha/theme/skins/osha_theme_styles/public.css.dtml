@@ -1402,15 +1402,25 @@ div#Speech div#add_to_calendar{
   display: none;
 }
 
-/* osha special for publications display */
+/*
+** Osha special for publications display
+*/
 .publicationLanguageBox span.link-pdf-js{
     display: none
 }
 
-/* osha special for publications display */
 div.collage-item  {
     margin-bottom: 2em;
 }
+
+.template-publications_view #portal-column-two{
+    display: none;
+}
+
+.template-publications_view #portlets{
+    margin-top: 0;
+}
+
 
 /* </dtml-with> */
 

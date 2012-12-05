@@ -209,18 +209,22 @@ OSHA.toggleHiddenField = function(id) {
 };
 
 jq(document).ready(function(){
-        // Toggles an 'Archived' search result
-        jq('.outdated_accordion_content').hide();
-        jq('.outdated_separator').show();
-        jq('.searchresult.outdated').toggleClass('collapsed', 1)
-        jq('.outdated_toggle_button').click(function(){
-            jq(this).parent().children('.outdated_accordion_content').toggle();
-            jq(this).parent().children('.outdated_accordion_content').next('.outdated_separator').toggle();
-            jq(this).parent().toggleClass('collapsed');
-            return false;
-        });
-      }
-    );
+
+    // PUBLICATIONS
+    // move newsletter portlet above publication portlets
+    $('.template-publications_view #portlets').prepend($('.portletSubscribe'));
+
+    // Toggles an 'Archived' search result
+    jq('.outdated_accordion_content').hide();
+    jq('.outdated_separator').show();
+    jq('.searchresult.outdated').toggleClass('collapsed', 1)
+    jq('.outdated_toggle_button').click(function(){
+        jq(this).parent().children('.outdated_accordion_content').toggle();
+        jq(this).parent().children('.outdated_accordion_content').next('.outdated_separator').toggle();
+        jq(this).parent().toggleClass('collapsed');
+        return false;
+    });
+});
 
 /* NOTE: these need to be at the end otherwise there is a problem when
 the js files are merged in portal_javascripts */
