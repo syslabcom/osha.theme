@@ -18,7 +18,6 @@
                       wtool context/portal_workflow;
                       text here/getText;
                       prh nocall:here/pressroom_helper;
-                      contacts prh/getContacts;
                       lang portal_state/language;">
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -118,34 +117,37 @@
             Show related items if they exist
         </div>
 
-        <div tal:condition="contacts">
-            <p><strong i18n:translate="label_press_inquiries">
-                Press inquiries</strong></p>
-            <div tal:content="structure contacts">Contacts</div>
+        <div class="related-items" id="notes"
+             tal:define="notes python: prh.getTranslatedReferences(fieldname='notesToEditors')"
+             tal:condition="notes">
+            <h3 i18n:translate="label_notes_to_editors">Notes to editors</h3>
+            <p tal:repeat="note notes" tal:content="structure note/getText"></p>
         </div>
 
-        <p><strong i18n:translate="label_links">Links</strong></p>
-        <ul tal:define="links python: context.Schema().getField('relatedLinks').getAccessor(context)();"
-             tal:condition="links" class="relatedLinks">
-            <tal:link tal:repeat="link links">
-                <li tal:define="translation python: link.getTranslation(lang) or link ">
-                    <a href="#" tal:attributes="href translation/absolute_url"
-                       tal:content="python:translation.Title() or translation.absolute_url(relative=1)">
+        <div class="related-items" id="contacts"
+             tal:define="contacts prh/getContacts" tal:condition="contacts">
+            <h3 i18n:translate="label_press_inquiries">Press inquiries</h3>
+            <div tal:replace="structure contacts">Contacts</div>
+        </div>
+
+        <div class="related-items"
+             tal:define="referenced python: prh.getTranslatedReferences(fieldname='referenced_content');"
+             tal:condition="referenced">
+            <p tal:repeat="ref referenced" tal:content="structure ref/getText"></p>
+        </div>
+
+        <div class="related-items" id="links"
+             tal:define="links python: prh.getTranslatedReferences(fieldname='relatedLinks')"
+             tal:condition="links">
+            <h3 i18n:translate="label_links">Links</h3>
+            <ul>
+                <li tal:repeat="link links">
+                    <a href="#" tal:attributes="href link/absolute_url"
+                       tal:content="python:link.Title() or link.absolute_url(relative=1)">
                         Link
                     </a>
                 </li>
-            </tal:link>
-        </ul>
-
-        <div class="relatedItems"
-             tal:define="getInfoFor python:wtool.getInfoFor;">
-            <tal:referencedContent tal:define="referenced prh/getTextPieces;">
-                <tal:block tal:condition="python:referenced">
-                    <tal:referenced tal:repeat="text referenced">
-                        <p tal:content="structure text"></p>
-                    </tal:referenced>
-                </tal:block>
-            </tal:referencedContent>
+            </ul>
         </div>
 
         <div tal:replace="structure provider:plone.belowcontentbody" />
