@@ -18,7 +18,8 @@
                       wtool context/portal_workflow;
                       text here/getText;
                       prh nocall:here/pressroom_helper;
-                      contacts prh/getContacts;">
+                      contacts prh/getContacts;
+                      lang portal_state/language;">
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
         <h1 metal:use-macro="here/kss_generic_macros/macros/generic_title_view">
@@ -117,8 +118,24 @@
             Show related items if they exist
         </div>
 
-        <div tal:content="structure contacts">Contacts</div>
+        <div tal:condition="contacts">
+            <p><strong i18n:translate="label_press_inquiries">
+                Press inquiries</strong></p>
+            <div tal:content="structure contacts">Contacts</div>
+        </div>
 
+        <p><strong i18n:translate="label_links">Links</strong></p>
+        <ul tal:define="links python: context.Schema().getField('relatedLinks').getAccessor(context)();"
+             tal:condition="links" class="relatedLinks">
+            <tal:link tal:repeat="link links">
+                <li tal:define="translation python: link.getTranslation(lang) or link ">
+                    <a href="#" tal:attributes="href translation/absolute_url"
+                       tal:content="python:translation.Title() or translation.absolute_url(relative=1)">
+                        Link
+                    </a>
+                </li>
+            </tal:link>
+        </ul>
 
         <div class="relatedItems"
              tal:define="getInfoFor python:wtool.getInfoFor;">
