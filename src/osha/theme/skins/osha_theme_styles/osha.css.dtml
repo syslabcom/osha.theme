@@ -206,8 +206,6 @@
 .sprite-oshalert{ background-position: -1214px -1272px; width: 30px; height: 30px;  } 
 
 
-
-
 /* Footer sprites */
 #footeraction-sendto a, #footeraction-print a, #footeraction-contact a, #footeraction-osha_help a, #footeraction-rssfeeds a,
 #footeraction-sitemap a, #footeraction-accessibility a,#footeraction-plone_setup a, #footeraction-osha_update a, #footeraction-osha_faq a,
@@ -235,12 +233,7 @@
 #footeraction-copyright a {background-position: -464px -116px;}
 
 
-.documentEditable #content {
-    border:0;
-}
-
-
-
+/* Button */
 .button {
     display: inline-block;
     zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
@@ -268,7 +261,6 @@
     position: relative;
     top: 1px;
 }
-
 .bigrounded {
     -webkit-border-radius: 2em;
     -moz-border-radius: 2em;
@@ -502,6 +494,13 @@
     background: -moz-linear-gradient(top,  #f171ab,  #feb1d3);
     filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f171ab', endColorstr='#feb1d3');
 }
+/* end Button */
+
+
+/* Misc */
+.documentEditable #content {
+    border:0;
+}
 .oshmail-blog-icon {
     color: #d9eef7 !important;
     font-size: 20px;
@@ -513,4 +512,3 @@
     position:relative;
     top: -8px;
 }
-/* end Button */
