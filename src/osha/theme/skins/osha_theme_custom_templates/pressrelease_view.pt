@@ -109,23 +109,6 @@
             ###
         </p-->
 
-        <div metal:use-macro="here/document_relateditems/macros/relatedItems">
-            Show related items if they exist
-        </div>
-
-        <div class="related-items" id="notes"
-             tal:define="notes python: prh.getTranslatedReferences(fieldname='notesToEditors')"
-             tal:condition="notes">
-            <h3 i18n:translate="label_notes_to_editors">Notes to editors</h3>
-            <p tal:repeat="note notes" tal:content="structure note/getText"></p>
-        </div>
-
-        <div class="related-items" id="contacts"
-             tal:define="contacts prh/getContacts" tal:condition="contacts">
-            <h3 i18n:translate="label_press_inquiries">Press inquiries</h3>
-            <div tal:replace="structure contacts">Contacts</div>
-        </div>
-
         <div class="related-items"
              tal:define="referenced python: prh.getTranslatedReferences(fieldname='referenced_content');"
              tal:condition="referenced">
@@ -144,6 +127,19 @@
                     </a>
                 </li>
             </ul>
+        </div>
+
+        <div class="related-items" id="notes"
+             tal:define="notes python: prh.getTranslatedReferences(fieldname='notesToEditors')"
+             tal:condition="notes">
+            <h3 i18n:translate="label_notes_to_editors">Notes to editors</h3>
+            <p tal:repeat="note notes" tal:content="structure note/getText"></p>
+        </div>
+
+        <div class="related-items" id="contacts"
+             tal:define="contacts prh/getContacts" tal:condition="contacts">
+            <h3 i18n:translate="label_press_inquiries">Press inquiries</h3>
+            <div tal:replace="structure contacts">Contacts</div>
         </div>
 
         <div tal:replace="structure provider:plone.belowcontentbody" />
