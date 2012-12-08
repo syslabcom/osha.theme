@@ -73,10 +73,6 @@
                    tal:replace="here/getImageCaption">Image Caption</span></p>
         </div>
 
-        <div metal:use-macro="here/pressrelease_relatedcontacts/macros/releaseContacts">
-            Show press contacts (if they exist)
-        </div>
-
         <span class="releaseLocation"
               id="parent-fieldname-location"
               metal:define-macro="location-field-view"
