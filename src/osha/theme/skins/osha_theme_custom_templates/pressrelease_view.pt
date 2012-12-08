@@ -109,13 +109,13 @@
             ###
         </p-->
 
-        <div class="related-items"
+        <div class="pressrelease-section" id="textpieces"
              tal:define="referenced python: prh.getTranslatedReferences(fieldname='referenced_content');"
              tal:condition="referenced">
             <p tal:repeat="ref referenced" tal:content="structure ref/getText"></p>
         </div>
 
-        <div class="related-items" id="links"
+        <div class="pressrelease-section" id="links"
              tal:define="links python: prh.getTranslatedReferences(fieldname='relatedLinks')"
              tal:condition="links">
             <h3 i18n:translate="label_links">Links</h3>
@@ -129,14 +129,14 @@
             </ul>
         </div>
 
-        <div class="related-items" id="notes"
+        <div class="pressrelease-section" id="notes"
              tal:define="notes python: prh.getTranslatedReferences(fieldname='notesToEditors')"
              tal:condition="notes">
             <h3 i18n:translate="label_notes_to_editors">Notes to editors</h3>
             <p tal:repeat="note notes" tal:content="structure note/getText"></p>
         </div>
 
-        <div class="related-items" id="contacts"
+        <div class="pressrelease-section" id="contacts"
              tal:define="contacts prh/getContacts" tal:condition="contacts">
             <h3 i18n:translate="label_press_inquiries">Press inquiries</h3>
             <div tal:replace="structure contacts">Contacts</div>

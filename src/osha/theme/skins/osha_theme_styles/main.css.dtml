@@ -1132,6 +1132,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .pressbox-publications-on {background: url(pressbox_dark_on.gif) no-repeat;}
 .pressbox-publications-on div {position:relative;right: 0px;bottom: 0px;}
 
+.pressrelease-section h3{
+    font-size: 102%;
+}
+
 #EuMediaCoverage {
     clear:both;
     border: 1px solid #000000;
