@@ -3,71 +3,76 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="osha">
 
-      <metal:javascriptslot fill-slot="javascript_head_slot">
-    <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.js" type="text/javascript" charset="utf-8">
-</script>
-    <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.hoverIntent.minified.js" type="text/javascript" charset="utf-8">
-</script>
-    <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.jcarousel.pack.js" type="text/javascript" charset="utf-8">
-</script>
-    <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/jquery.masonry.min.js" type="text/javascript" charset="utf-8">
-</script>
-    <script src="#" tal:attributes="src string:$portal_url/++resource++osha.theme.behaviour/base.js" type="text/javascript" charset="utf-8">
-</script>
-      <script type="text/javascript" language="javascript">
-      function displaycomp () {
-          jQuery('.older-competitions').fadeIn('slow');
-      }</script>
-
-    <script type="text/javascript">
-//<![CDATA[
-    jQuery(document).ready(function() {
-      recentcarousel = jQuery(".recentcarousel").jcarousel({scroll: 1});
-    });
-
-    //]]>
+<metal:javascriptslot fill-slot="javascript_head_slot">
+    <script type="text/javascript"
+            src="++resource++osha.theme.behaviour/highlights-carousel.js"
+            language="javascript">
     </script>
-      </metal:javascriptslot>
-      <metal:css fill-slot='css_slot'>
-      <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8"
-        tal:attributes="href string:$portal_url/lipstick.css"/>
-      </metal:css>
+    <script type="text/javascript" language="javascript">
+        function displaycomp () {
+            jQuery('.older-competitions').fadeIn('slow');
+        }
+    </script>
+</metal:javascriptslot>
+
+<metal:css fill-slot='css_slot'>
+    <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8"
+          tal:attributes="href string:$portal_url/lipstick.css"/>
+</metal:css>
 
 <body>
 
-<div metal:fill-slot="main">
+<div metal:fill-slot="main"
+     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                 ploneview nocall:context/@@plone">
+
     <div id="mainContent">
+
         <h1 tal:content="here/Title">
           Competitions
         </h1>
+
         <div class="introduction">
           <p tal:content="here/Description">
             Description
           </p>
         </div>
 
-        <div id="ongoingCompetitions" tal:define="ongoing view/getOngoing" tal:condition="ongoing">
+        <div id="ongoingCompetitions"
+             tal:define="ongoing view/getOngoing" tal:condition="ongoing">
             <h2 i18n:translate="label_ongoing_competitions">
               Ongoing competitions
             </h2>
-            <ul class="recentcarousel carousel" id="competitionSchwusch">
-                <span tal:repeat="competition ongoing" tal:omit-tag="">
-                    <li tal:define="item nocall:competition/item;
-                        images competition/images">
-                        <h3>
-                            <a href="#" tal:attributes="href item/absolute_url" tal:content="item/Title">Title</a>
-                        </h3>
-                        <p class="previews">
-                            <a href="#" tal:attributes="href item/absolute_url"><img tal:repeat="image images" src="#"
-                                alt="Page 1" class="page-1" tal:attributes="src image; class string:page-${repeat/image/number}"/></a>
-                        </p>
-                        <p>
-                            <span tal:replace="item/Description">Description</span>
-                            <a href="#" tal:attributes="href item/absolute_url" i18n:translate="label_learn_more">Learn more</a>
-                        </p>
-                    </li>
-                </span>
-            </ul>
+            <div class="carouselContainer" id="highlights">
+                <div id="highlights-content">
+                    <tal:rep repeat="competition ongoing">
+                        <div tal:define="no repeat/competition/number;
+                                         item nocall:competition/item;
+                                         images competition/images;"
+                             tal:attributes="id string:highlights-$no">
+                            <tal:item>
+                                <h3><a tal:attributes="href item/absolute_url" tal:content="item/title">Competition title</a></h3>
+                                <a tal:attributes="href item/absolute_url"
+                                   tal:condition="images">
+                                    <img tal:attributes="src python: images[0]"/>
+                                </a>
+                                <p class="hpteaserdate" tal:content="python:toLocalizedTime(item.effective())"/>
+                                <p class="teaser_content" tal:content="python:ploneview.cropText(item.Description(), length=400, ellipsis='...')"></p>
+                                <p class="teaser_more"><a class="more" tal:attributes="href item/absolute_url"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</a></p>
+                            </tal:item>
+                        </div>
+                    </tal:rep>
+                </div>
+                <ul id="highlights-tabs">
+                    <tal:rep repeat="competition ongoing">
+                        <li class="ui-corner-top"
+                            tal:define="no repeat/competition/number;
+                                         item nocall:competition/item;">
+                            <a href="#highlights-1" tal:attributes="href string:#highlights-$no; title item/title" tal:content="no">1</a>
+                        </li>
+                    </tal:rep>
+                </ul>
+            </div>
         </div>
 
         <div class="upcomingCompetitions"
@@ -93,7 +98,6 @@
         </div>
 
     </div>
-
 
     <div id="portlets">
         <div class="portlet portletBanner" id="portletBanner" tal:condition="view/bannerContent">
