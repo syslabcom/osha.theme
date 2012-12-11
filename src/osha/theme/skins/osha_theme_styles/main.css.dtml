@@ -1752,6 +1752,11 @@ dl.portletTwitterPortlet {
   word-wrap: break-word;
 }
 
+/* fixes #6315 */
+body.template-usergroup-userprefs div#content-core {
+    overflow: scroll;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
