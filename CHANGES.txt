@@ -4,7 +4,13 @@ osha.theme Changelog
 1.5.17 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Update press release view: show fields 'contacts', 'relatedLinks',
+  'notesToEditors' and remove fields 'releaseContacts', 'relatedItems' #6105
+  [jcerjak]
+- Minor osha.js.dtml and osha.css cleanup [jcerjak]
+- Use js to move newsletter portlet above publication portlets #3790
+  [jcerjak]
+- Use homepage carousel on the competitions page #6362 [jcerjak]
 
 
 1.5.16 (2012-11-28)
