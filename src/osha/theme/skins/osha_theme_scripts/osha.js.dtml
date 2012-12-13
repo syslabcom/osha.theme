@@ -211,8 +211,8 @@ OSHA.toggleHiddenField = function(id) {
 jq(document).ready(function(){
 
     // PUBLICATIONS
-    // move newsletter portlet above publication portlets
-    $('.template-publications_view #portlets').prepend($('.portletSubscribe'));
+    // move newsletter portlet bellow publication portlets
+    $('.template-publications_view #portlets').append($('.portletSubscribe'));
 
     // Toggles an 'Archived' search result
     jq('.outdated_accordion_content').hide();
