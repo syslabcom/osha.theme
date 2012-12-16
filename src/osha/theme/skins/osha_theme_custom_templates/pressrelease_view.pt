@@ -4,7 +4,7 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="plone">
+      i18n:domain="osha">
 <body>
 
 <div metal:fill-slot="main">
@@ -32,7 +32,7 @@
                                                     templateId=templateId,
                                                     macro='releaseTiming-field-view');"
            tal:attributes="class string:releaseTiming summary$kss_class;">
-            <span i18n:translate="label_newsrelease">News release</span> -
+            <span i18n:translate="label_newsrelease" i18n:domain="plone">News release</span> -
             <span metal:define-slot="inside"
                   tal:replace="python:here.toLocalizedTime(storydate)">[FOR IMMEDIATE RELEASE]</span>
         </p>
