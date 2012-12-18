@@ -130,10 +130,10 @@
         </div>
 
         <div class="pressrelease-section" id="notes"
-             tal:define="notes python: prh.getTranslatedReferences(fieldname='notesToEditors')"
+             tal:define="notes prh/getNotes"
              tal:condition="notes">
             <h3 i18n:translate="label_notes_to_editors">Notes to editors</h3>
-            <p tal:repeat="note notes" tal:content="structure note/getText"></p>
+            <span tal:omit-tag="" tal:repeat="note notes"><span tal:replace="structure note" /></span>
         </div>
 
         <div class="pressrelease-section" id="contacts"
