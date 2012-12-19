@@ -47,7 +47,7 @@ osha.theme Changelog
 1.5.12 (2012-10-15)
 -------------------
 
-- Nothing changed yet.
+- #6106 Bugfix alertservice: remove fixed width (in customised version of slc.alertservice) [deroiste]
 
 
 1.5.11 (2012-10-01)
