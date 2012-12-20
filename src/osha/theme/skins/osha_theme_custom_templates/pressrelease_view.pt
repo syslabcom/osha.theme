@@ -7,7 +7,7 @@
       i18n:domain="osha">
 <body>
 
-<div metal:fill-slot="main">
+<metal:main fill-slot="main">
     <tal:main-macro metal:define-macro="main"
           tal:define="pub_name context/getPublication | nothing;
                       permalink context/getPermalink | nothing;
@@ -145,7 +145,7 @@
         <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </tal:main-macro>
-</div>
+</metal:main>
 
 </body>
 </html>
