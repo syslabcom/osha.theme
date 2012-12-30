@@ -530,6 +530,13 @@
 
     <browser:page
         for="*"
+        name="rss-current-jobs"
+        template="templates/rss_currentjobs.pt"
+        permission="zope2.View"
+        />
+
+    <browser:page
+        for="*"
         name="oshtopic-view"
         class=".oshtopic_view.OSHTopicView"
         template="templates/oshtopic_view.pt"

@@ -98,15 +98,31 @@ class RSSFeedsView(BrowserView):
             target_language=lang, context=self.context)
         blog_url_title = unicode(
             url_quote(blog_title.encode('utf-8')), 'utf-8')
-        feeds = [dict(
-            title=media_title,
-            icon="newsitem_icon.gif",
-            url=(portal_path + '/en/press/sinRSS?synmap=MemoNews&RSSTitle='
-                 + media_url_title)),
-            dict(title=blog_title,
-            icon="newsitem_icon.gif",
-            url=(portal_path + '/en/blog/front-page/RSS?RSSTitle=' +
-                 blog_url_title))]
+        jobs_title = translate(
+            msgid=_(u'eu_osha_current_jobs',
+                    default=u'EU-OSHA Current job vacancies'),
+            target_language=lang, context=self.context)
+        jobs_url_title = unicode(
+            url_quote(jobs_title.encode('utf-8')), 'utf-8')
+        feeds = [
+            dict(
+                title=media_title,
+                icon="newsitem_icon.gif",
+                url=(portal_path + '/en/press/sinRSS?synmap=MemoNews&RSSTitle='
+                     + media_url_title)),
+            dict(
+                title=blog_title,
+                icon="newsitem_icon.gif",
+                url=(portal_path + '/en/blog/front-page/RSS?RSSTitle=' +
+                     blog_url_title)),
+            dict(
+                title=jobs_title,
+                icon="newsitem_icon.gif",
+                url=(portal_path +
+                     '/en/about/jobs/@@rss-current-jobs?RSSTitle=' +
+                     jobs_url_title),
+            )
+        ]
         return feeds
 
     def _getTranslatedCategories(self):
