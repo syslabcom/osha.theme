@@ -107,7 +107,7 @@
 
 
 
-                  <div class="field_default"
+                  <!--div class="field_default"
                        tal:define="value keyword; size python: 1">
 
                     <span tal:attributes="class python:value and 'hiddenStructure' or ''">
@@ -136,6 +136,12 @@
                       </div>
                     </tal:has_categories>
 
+                  </div-->
+
+
+                  <div class="field_vocab"
+                       tal:define="portal_type string:OSH_Link">
+                    <metal:use use-macro="context/filter_macros/macros/Subcategory"></metal:use>
                   </div>
 
                   <div class="field_vocab"
