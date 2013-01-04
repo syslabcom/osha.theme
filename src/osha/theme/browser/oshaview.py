@@ -192,6 +192,14 @@ class OSHA(BrowserView):
         """ returns the sites from the European Network """
         return INTERNATIONAL_NETWORK
 
+    def retrieveLinksFromHTML(self, text):
+        """ The method retrieveHTML provided by gocept.linkchecker is NOT
+        reliable. It fails to find more than one relative link inside a given text.
+        Therefore we build our own link exctractor based on BeautifulSoup """
+        soup = BeautifulSoup(text)
+        links = soup.findAll('a')
+        return [x.get('href', '').encode('utf-8') for x in links]
+
     def handleOSHMailUrls(self, text, id=''):
         """ turn relative URLs into absolute URLs based on the context's URL;
             append google analytics code
@@ -207,7 +215,7 @@ class OSHA(BrowserView):
             for link in retrieveSTX(text):
                 links.append(link)
 
-            for link in retrieveHTML(text):
+            for link in self.retrieveLinksFromHTML(text):
                 links.append(link)
 
         au = self.context.absolute_url()
