@@ -4,8 +4,8 @@ osha.theme Changelog
 1.5.20 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Teaser headlines in OSHmails now link to the respective news item #6484 [thomasw]
+- Added overflow-scrollbars to vocabulary tree-picker pop-ups #6338 [thomasw]
 
 1.5.19 (2013-01-02)
 -------------------
