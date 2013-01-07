@@ -1589,7 +1589,7 @@ div.teaserdate {
 div.overlay {
     display: none;
     font-size: 80%;
-    max-height: 500px;
+    max-height: 600px;
     max-width: 1000px;
     margin: 1em;
     overflow: auto;
