@@ -315,6 +315,18 @@
         layer=".interfaces.IOSHAThemeLayer"
         />
 
+    <!-- #6254 Cillian: no idea why the dublincore metadata viewlet
+         (or the custom version, above) is not successfully registered
+         for the IHtmlHead manager for the HW subsite, adding a custom
+         one here, just for that. -->
+    <browser:viewlet
+        name="plone.htmlhead.oshadublincore"
+        manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+        class=".viewlets.OSHADublinCoreViewlet"
+        permission="zope2.View"
+        layer="osha.hw.interfaces.IHWThemeLayer"
+        />
+
     <!-- The portal header -->
     <browser:viewlet
         name="osha.topactions"
