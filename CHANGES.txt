@@ -4,8 +4,6 @@ osha.theme Changelog
 1.5.21 (unreleased)
 -------------------
 
-- #6254 Register additional OSHADublinCoreViewlet for the HW sub site [deroiste]
-
 
 1.5.20 (2013-01-08)
 -------------------
