@@ -1,8 +1,13 @@
-from zope.app.component.hooks import getSite
+from collective.solr.solr import SolrException
 from ordereddict import OrderedDict
-from Products.Five.browser import BrowserView
-from Products.CMFCore.utils import getToolByName
 from osha.theme.portlets.navigation import getNavigationRoot
+from Products.Five.browser import BrowserView
+from zope.app.component.hooks import getSite
+
+import logging
+
+logger = logging.getLogger('osha.theme.browser.oshahelpcenter')
+
 
 class OSHAHelpCenterView(BrowserView):
     """ support for HelpCenter templates """
@@ -40,12 +45,18 @@ class OSHAHelpCenterView(BrowserView):
             query["subcategory"] = subcategory
 
         if searchable_text == subcategory == "":
-	    if self.faqfolder is not None:
+            if self.faqfolder is not None:
                 path = "/".join(self.faqfolder.getPhysicalPath())
-                query["path"] = path+"/general-information"
+                query["path"] = path + "/general-information"
 
-        faq_brains = self.pc.searchResults(query)
-        faqs = [i.getObject() for i in faq_brains]
+        try:
+            faq_brains = self.pc.searchResults(query)
+            faqs = [i.getObject() for i in faq_brains]
+        except SolrException:
+            logger.exception('Error during solr search for string "%s"'
+                             % searchable_text)
+            faqs = []
+
         return faqs
 
     def _get_relevant_categories(self, faqs, vocab_dict):
@@ -110,8 +121,8 @@ class OSHAHelpCenterView(BrowserView):
         if not subcat_vocab_dict:
             return []
 
-        faq_brains = self.pc.searchResults({"portal_type":"HelpCenterFAQ",
-                                            "Subject":category})
+        faq_brains = self.pc.searchResults({"portal_type": "HelpCenterFAQ",
+                                            "Subject": category})
         faqs = [i.getObject() for i in faq_brains]
 
         return self._get_categories(faqs, subcat_vocab_dict)
