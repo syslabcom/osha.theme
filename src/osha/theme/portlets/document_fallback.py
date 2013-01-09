@@ -47,7 +47,7 @@ class IDocumentFallbackPortlet(IPortletDataProvider):
 
 class Assignment(base.Assignment):
     """
-    Portlet assignment.    
+    Portlet assignment.
     This is what is actually managed through the portlets UI and associated
     with columns.
     """
@@ -73,7 +73,7 @@ class Assignment(base.Assignment):
 
 class Renderer(base.Renderer):
     """Portlet renderer.
-    
+
     This is registered in configure.zcml. The referenced page template is
     rendered, and the implicit variable 'view' will refer to an instance
     of this class. Other methods can be added and referenced in the template.
@@ -124,7 +124,7 @@ class Renderer(base.Renderer):
         f = self.fallback(self.preflang)
         if f is None:
             return ''
-        return f.absolute_url()+'/edit'   
+        return f.absolute_url()+'/edit'
 
     @memoize
     def content(self):
@@ -144,7 +144,7 @@ class Renderer(base.Renderer):
             return None
         pref = doc.getTranslation(preflang)
         if not pref:
-            canonical = doc.getCanonical()   
+            canonical = doc.getCanonical()
             return canonical
         return pref
 
@@ -170,32 +170,32 @@ class Renderer(base.Renderer):
     def document(self):
         """ get the document the portlet is pointing to
             fall back to the canonical if language version cannot be found
-        """        
+        """
         document_path = self.data.target_document
         if not document_path:
             return None
 
         if document_path.startswith('/'):
             document_path = document_path[1:]
-        
+
         if not document_path:
             return None
 
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
         portal = portal_state.portal()
         return portal.restrictedTraverse(document_path, default=None)
-        
-        
+
+
 class AddForm(base.AddForm):
     """Portlet add form.
-    
+
     This is registered in configure.zcml. The form_fields variable tells
     zope.formlib which fields to display. The create() method actually
     constructs the assignment that is being added.
     """
     form_fields = form.Fields(IDocumentFallbackPortlet)
     form_fields['target_document'].custom_widget = UberSelectionWidget
-    
+
     label = _(u"Add Document Fallback Portlet")
     description = _(u"This portlet displays the contents of a document.")
 
@@ -204,7 +204,7 @@ class AddForm(base.AddForm):
 
 class EditForm(base.EditForm):
     """Portlet edit form.
-    
+
     This is registered with configure.zcml. The form_fields variable tells
     zope.formlib which fields to display.
     """
