@@ -25,18 +25,21 @@ from plone.portlet.collection import PloneMessageFactory as _plone
 IDS_FOR_TRACKING = ['top5']
 
 class IDocumentFallbackPortlet(IPortletDataProvider):
-    """A portlet which renders the contents of a Document object and provides fallback to the canonical object.
+    """A portlet which renders the contents of a Document object and
+    provides fallback to the canonical object.
     """
 
     header = schema.TextLine(title=_(u"Portlet header"),
                              description=_(u"Title of the rendered portlet"),
                              required=True)
 
-    target_document = schema.Choice(title=_(u"Target document"),
-                                  description=_(u"Find the document which provides the content"),
-                                  required=True,
-                                  source=SearchableTextSourceBinder({'object_provides' : IATDocument.__identifier__},
-                                                                    default_query='path:'))
+    target_document = schema.Choice(
+        title=_(u"Target document"),
+        description=_(u"Find the document which provides the content"),
+        required=True,
+        source=SearchableTextSourceBinder(
+            {'object_provides' : IATDocument.__identifier__},
+            default_query='path:'))
 
     omit_border = schema.Bool(
         title=_(u"Omit portlet border"),
@@ -89,7 +92,8 @@ class Renderer(base.Renderer):
         self.myid = self.data.target_document.split('/')[-1]
 
     def _render_cachekey(method, self):
-        preflang = getToolByName(self.context, 'portal_languages').getPreferredLanguage()
+        preflang = getToolByName(
+            self.context, 'portal_languages').getPreferredLanguage()
         portal_membership = getToolByName(self.context, 'portal_membership')
         member = portal_membership.getAuthenticatedMember()
         roles = member.getRolesInContext(self.context)
@@ -152,9 +156,11 @@ class Renderer(base.Renderer):
     def replace_link(self, mobj):
         link = mobj.group(1)
         if '?' in link:
-            text = mobj.group(0).replace(link, '%s&sourceid=%s' %(link, self.myid))
+            text = mobj.group(0).replace(
+                link, '%s&sourceid=%s' %(link, self.myid))
         else:
-            text = mobj.group(0).replace(link, '%s?sourceid=%s' %(link, self.myid))
+            text = mobj.group(0).replace(
+                link, '%s?sourceid=%s' %(link, self.myid))
         return text
 
     def modifyLinks(self, text):
@@ -181,7 +187,8 @@ class Renderer(base.Renderer):
         if not document_path:
             return None
 
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name=u'plone_portal_state')
         portal = portal_state.portal()
         return portal.restrictedTraverse(document_path, default=None)
 
