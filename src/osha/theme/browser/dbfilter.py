@@ -108,7 +108,7 @@ class DBFilterView(BrowserView):
 
         subcategory = self.request.get('subcategory', '')
         if subcategory:
-            queries.append('subcategory:(%s)' % ' OR '.join(subcategory))
+            queries.append('subcategory:(%s)' % ' OR '.join(['"%s"' % s for s in subcategory]))
             #query.update({'subcategory':subcategory})
 
         country = self.request.get('country', '')
@@ -118,7 +118,7 @@ class DBFilterView(BrowserView):
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            queries.append('SearchableText:%s' % SearchableText)
+            queries.append('SearchableText:"%s"' % SearchableText)
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
         query = ' AND '.join(queries)
