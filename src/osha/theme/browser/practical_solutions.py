@@ -261,7 +261,7 @@ class PracticalSolutionView(DBFilterView):
 
         subcategory = self.request.get('subcategory', '')
         if subcategory:
-            query = '%(query)s AND %(subcategory)s' % {'query': query, 'subcategory': 'subcategory:(%s)' % ' OR '.join(subcategory)}
+            query = '%(query)s AND %(subcategory)s' % {'query': query, 'subcategory': 'subcategory:(%s)' % ' OR '.join(['"%s"' % s for s in subcategory])}
             #query.update({'subcategory':subcategory})
 
         country = self.request.get('country', '')
@@ -271,7 +271,7 @@ class PracticalSolutionView(DBFilterView):
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query = '%(query)s AND SearchableText:%(SearchableText)s' % {'query': query, 'SearchableText': SearchableText}
+            query = '%(query)s AND SearchableText:"%(SearchableText)s"' % {'query': query, 'SearchableText': SearchableText}
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
         return query

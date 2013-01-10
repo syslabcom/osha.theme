@@ -96,7 +96,7 @@ class WorklistView(DBFilterView):
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            queries.append('SearchableText:%s' % SearchableText)
+            queries.append('SearchableText:"%s"' % SearchableText)
             #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
 
         Creator = [x for x in self.request.get('Creator', [])]
