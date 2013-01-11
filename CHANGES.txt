@@ -1,8 +1,12 @@
 osha.theme Changelog
 ====================
 
-1.5.21 (unreleased)
+1.5.21 (2013-01-11)
 -------------------
+
+- Catch solr exceptions in get_faqs to prevent errors on malformed queries. PEP8
+  for oshahelpcenter. Refs #6344 [jure]
+- quote SearchableText and subcategory, refs #6532 [reinhardt]
 
 
 1.5.20 (2013-01-08)
