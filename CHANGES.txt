@@ -4,8 +4,9 @@ osha.theme Changelog
 1.5.22 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Fix for the PDF (publication) download tracking: since we now use https,
+  a hardcoded "http" substitution does not work any more; we need to consider
+  https [thomasw]
 
 1.5.21 (2013-01-11)
 -------------------
