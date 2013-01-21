@@ -1413,14 +1413,17 @@ div.collage-item  {
     margin-bottom: 2em;
 }
 
-.template-publications_view #portal-column-two{
+.template-publications_view #portal-column-two {
     display: none;
 }
 
-.template-publications_view #portlets{
+.template-publications_view #portlets {
     margin-top: 0;
 }
 
+.template-publications_view #publicationsFilter fieldset.checkList label {
+    font-weight: normal;
+}
 
 /* </dtml-with> */
 
