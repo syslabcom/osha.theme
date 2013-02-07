@@ -326,7 +326,7 @@ form.searchPage input.searchButton {
 }
 
 #portal-languageselector {
-    margin: 0 1em;
+    margin: 0 5px;
     float: right;
 }
 

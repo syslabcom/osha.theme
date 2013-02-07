@@ -4,7 +4,7 @@ osha.theme Changelog
 1.5.23 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Correctly align european flag on the front-page. Fixes #6529 [mlarreategi]
 
 
 1.5.22 (2013-01-31)
@@ -123,7 +123,7 @@ osha.theme Changelog
 1.5.7 (2012-09-22)
 ------------------
 
-- Fixed bug in practical solution search [reinhardt] 
+- Fixed bug in practical solution search [reinhardt]
 
 1.5.6 (2012-09-21)
 ------------------
@@ -142,7 +142,7 @@ osha.theme Changelog
 
 - The URL for the OSHA in the media feed is now taken from portal_properties/
   osha_properties [thomasw]
-- oshmail_view now points to a fancybox that loads the email layout, fixes #4002 [angeldasangel, pilz] 
+- oshmail_view now points to a fancybox that loads the email layout, fixes #4002 [angeldasangel, pilz]
 - shortmessage view now adapted to the new looks of oshmail [pilz]
 
 1.5.3 (2012-09-19)
