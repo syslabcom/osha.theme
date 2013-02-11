@@ -232,12 +232,21 @@ dd.portletItem .navTreeItem a {
 
 #select_language_form p{
 	position: absolute;
-	right: 130px;
+	right: 105px;
 	top: 2px;
 }
 
 #osha-topdropdowns {
-    margin: 0px 80px 0 201px;
+    margin: 1px 62px 0 201px;
+}
+
+.cse .gsc-search-button input.gsc-search-button-v2, input.gsc-search-button-v2 {
+    padding: 6px 24px !important;
+}
+
+
+.gsc-search-box-tools .gsc-search-box .gsc-input {
+    padding: 1px 2px 0 0 !important;
 }
 
 /* IE7 will not scroll if the height is set to 100% */
