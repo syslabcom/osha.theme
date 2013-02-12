@@ -5,7 +5,7 @@ osha.theme Changelog
 -------------------
 
 - Correctly align european flag on the front-page. Fixes #6529 [mlarreategi]
-
+- governingboard: METALError: duplicate macro definition: 'person' [deroiste]
 
 1.5.22 (2013-01-31)
 -------------------
