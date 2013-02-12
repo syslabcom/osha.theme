@@ -252,7 +252,7 @@
 	          </div>
 	          <div class="section">
 		        <div class="block_member" tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
-			      <div class="body_section" metal:define-macro="person">
+			      <div class="body_section" metal:define-macro="observer_person">
 				    <strong><span tal:replace="thisone/title |nothing"/> 
                     <span tal:replace="thisone/firstname |nothing"/> 
                     <span tal:replace="thisone/lastname |nothing"/></strong>
@@ -266,7 +266,7 @@
 			      </div>
 		        </div>
 		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
-			      <div class="body_section" metal:use-macro="template/macros/person">
+			      <div class="body_section" metal:use-macro="template/macros/observer_person">
 				    <strong><span tal:replace="thisone/title |nothing"/> 
                     <span tal:replace="thisone/firstname |nothing"/> 
                     <span tal:replace="thisone/lastname |nothing"/></strong>
@@ -293,11 +293,11 @@
 	          </div>
 	          <div class="section">
 		        <div class="block_member"  tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
-			      <div class="body_section" metal:use-macro="template/macros/person">
+			      <div class="body_section" metal:use-macro="template/macros/observer_person">
 			      </div>
 		        </div>
 		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
-			      <div class="body_section" metal:use-macro="template/macros/person">
+			      <div class="body_section" metal:use-macro="template/macros/observer_person">
 			      </div>
 		        </div>
   	          </div>
@@ -314,11 +314,11 @@
 	          </div>
 	          <div class="section">
 		        <div class="block_member" tal:condition="thisone" tal:define="thisone python: govpeople.get('Titular', {})">
-			      <div class="body_section" metal:use-macro="template/macros/person">
+			      <div class="body_section" metal:use-macro="template/macros/observer_person">
 			      </div>
 		        </div>
 		        <div class="block_alternate" tal:condition="thisone" tal:define="thisone python: govpeople.get('Alternate', {})">
-			      <div class="body_section" metal:use-macro="template/macros/person">
+			      <div class="body_section" metal:use-macro="template/macros/observer_person">
 			      </div>
 		        </div>
 	          </div>
