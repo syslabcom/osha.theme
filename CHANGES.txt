@@ -4,7 +4,7 @@ osha.theme Changelog
 1.5.24 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- #6661 Link OSHmail portlet title to oshmail [deroiste]
 
 
 1.5.23 (2013-02-15)

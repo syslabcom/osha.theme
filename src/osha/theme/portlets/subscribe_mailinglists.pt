@@ -2,9 +2,9 @@
     i18n:domain="osha">
   <dt class="portletHeader">
     <span class="portletTopLeft"></span>
-    <span class="tile"
-          i18n:translate="Free Newsletter">
-      Free Newsletter
+    <span class="tile">
+      <a tal:attributes="href string:/${view/preflang}/news/oshmail/" 
+         i18n:translate="">Free Newsletter</a>
     </span>
     <span class="portletTopRight"></span>
   </dt>
