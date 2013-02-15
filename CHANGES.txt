@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.23 (unreleased)
+1.5.23 (2013-02-15)
 -------------------
 
 - Correctly align european flag on the front-page. Fixes #6529 [mlarreategi]
