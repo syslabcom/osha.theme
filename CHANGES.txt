@@ -5,7 +5,7 @@ osha.theme Changelog
 -------------------
 
 - #6661 Link OSHmail portlet title to oshmail [deroiste]
-
+- #5626 Style bullets in document fallback portlets [deroiste]
 
 1.5.23 (2013-02-15)
 -------------------

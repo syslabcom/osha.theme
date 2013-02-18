@@ -948,6 +948,9 @@ ul.linkList {
     margin:0.5em 0pt 0pt;
     padding:0pt;
 }
+
+dl.portletMoreAbout li,
+dl.portletDocumentFallback li,
 ul.linkList li {
     background-color:transparent;
     /*background-image:url(&dtml-portal_url;/link.gif);*/
