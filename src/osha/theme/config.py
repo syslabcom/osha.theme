@@ -106,4 +106,3 @@ DUTCH_NETWORK = (
 
 
 EXISTING_SWITCHED_CONTENT_UID = 'switched_osh_content_uid'
-

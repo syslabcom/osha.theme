@@ -877,6 +877,13 @@
         permission="zope2.View"
         />
 
+    <browser:page
+        name="osha-enable-js"
+        for="*"
+        class=".utils.EnableJSView"
+        permission="zope2.View"
+        />
+
     <!-- Switching from Provider to OSH Link -->
     <browser:viewlet
         name="osha.theme.provider_to_oshlink"
