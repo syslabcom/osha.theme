@@ -958,8 +958,7 @@ dl.portletFollowUs  {
    margin: 0;
    border: 0 none;
    background-color:#FFF;
-   font-size:100%;
-   margin:1em auto;
+   text-align: center;
 }
 
 dl.portletFollowUs dt {
@@ -975,32 +974,14 @@ dl.portletFollowUs ul {
     margin:0;
 }
 dl.portletFollowUs ul li {
-    float: left;
     list-style-type: none;
-    width: 28px;
+    display: inline;
 }
 /*dl.portletFollowUs a {
     padding: 7px 0 7px 35px;
     display:block;
 }
 */
-dl.portletFollowUs #twitter-icon {
-}
-dl.portletFollowUs #youtube-icon {
-}
-dl.portletFollowUs #facebook-icon {
-}
-dl.portletFollowUs #linkedin-icon {
-}
-dl.portletFollowUs #oshablog-icon a, .oshmail-blog-icon {
-    color: #d9eef7 !important;
-    font-size: 14px;
-    padding: 2px 5px;
-    font-weight: bold;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-}
 
 #dashboard-portlets1 div.managedPortlet a,
 #dashboard-portlets2 div.managedPortlet a,
