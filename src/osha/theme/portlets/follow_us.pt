@@ -6,7 +6,7 @@
         <li id="facebook-icon" class="social-icon"><a href="https://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/facebook_20x20.png" alt="Facebook" title="Facebook" style="width:20px;margin-right:5px" /></a></li>
         <li id="linkedin-icon" class="social-icon"><a href="https://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/linkedin_20x20.png" alt="LinkedIn" title="LinkedIn" style="width:20px;margin-right:5px" /></a></li>
         <li id="youtube-icon" class="social-icon"><a href="https://www.youtube.com/EUOSHA" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/youtube_20x20.png" title="YouTube" alt="YouTube" style="width:20px;margin-right:5px" /></a></li>
-        <li id="oshablog-icon"><a title="OSH Blog" alt="OSH Blog" href="/en/about/director_corner/blog" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/oshablog_20x20.png" alt="OSH Blog" title="OSH Blog" style="width:20px;margin-right:5px" /></a></li>
+        <li id="oshablog-icon" class="social-icon"><a title="OSH Blog" alt="OSH Blog" href="/en/about/director_corner/blog" target="_blank"><img src="/++resource++osha.theme.browser.resources.follow_me_logos/oshablog_20x20.png" alt="OSH Blog" title="OSH Blog" style="width:20px;margin-right:5px" /></a></li>
       </ul>
     </dd>
     <div class="visualClear"></div>
