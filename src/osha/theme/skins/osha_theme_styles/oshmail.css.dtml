@@ -210,7 +210,7 @@ body.subsection1-oshmail .collage-newsitem-standard,
     font: normal 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
 }
 .template-shortmessage_preview_view .footer-shortmessage #followme a {
-    padding: 0 5px;
+    padding: 0 1px;
 }
 
 body.subsection1-oshmail .collage-newsitem-teaser,
