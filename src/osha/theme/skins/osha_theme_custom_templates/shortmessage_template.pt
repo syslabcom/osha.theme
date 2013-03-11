@@ -111,7 +111,7 @@
 		          </div>
 
 			</td>
-			<td width="265" align="right" valign="top">
+			<td width="265" align="right" valign="top" id="followme">
 	            <a tal:attributes="href string:http://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img alt="Twitter" title="Twitter" height="30" width="30" tal:attributes="src string:${portal_url}/++resource++osha.theme.browser.resources.follow_me_logos/twitter_30x30.png" /></a>
 
 	            <a tal:attributes="href string:http://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img alt="Facebook" title="Facebook" height="30" width="30" tal:attributes="src string:${portal_url}/++resource++osha.theme.browser.resources.follow_me_logos/facebook_30x30.png" /></a>
