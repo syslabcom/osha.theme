@@ -2,11 +2,11 @@
       lang="en-US"
       i18n:domain="elevateIT"
       metal:use-macro="here/shortmessage_template/macros/master">
-      
+
 
 <body>
 <div metal:fill-slot="main" i18n:domain="elevateIT">
-    
+
     <metal:block define-macro="main">
     <tal:block define="text here/getText;
             itemtype python:here.getTypeInfo().Title();
@@ -19,7 +19,7 @@
         <p class="releaseTiming"
            id="parent-fieldname-releaseTiming"
            tal:define="storydate here/getStorydate|nothing;"
-           tal:condition="python:here.portal_type=='PressRelease'" 
+           tal:condition="python:here.portal_type=='PressRelease'"
            metal:define-macro="releaseTiming-field-view">
             <span i18n:translate="label_newsrelease">News release</span> -
             <span metal:define-slot="inside"
@@ -34,7 +34,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td width="120" valign="top">					
+				<td width="120" valign="top">
 		            <tal:block define="imgtitle defimage/Title" condition="nocall:defimage">
 		            	<img alt="" src="folder.gif" width="100"
 		                 	tal:attributes="src python:defimage.absolute_url()+'_thumb';
@@ -42,18 +42,18 @@
 		            </tal:block>
 				</td>
 				<td>
-			        <p class="intro" 
+			        <p class="intro"
 			           tal:condition="python:here.Description().strip() != ''"
 			            tal:define="obj_description here/Description;
-			                        obj_description python:oshaview.makeAbsoluteUrls(obj_description);"
+			                        obj_description python:oshaview.handleOSHMailUrls(obj_description, 'shortmessage');"
 			           tal:replace="structure obj_description|nothing">description
 			        </p>
-        
+
  			       <div id="bodyContent"
 			             tal:condition="len_text"
 			             tal:attributes="class python:test(here.text_format=='structured-text', 'stx', 'plain')">
 			            <div tal:define="obj_text here/CookedBody;
-			                        obj_text python:oshaview.makeAbsoluteUrls(obj_text);"
+			                        obj_text python:oshaview.handleOSHMailUrls(obj_text, 'shortmessage');"
 			            tal:replace="structure obj_text" />
 			        </div>
         			<br style="clear: both;" />
