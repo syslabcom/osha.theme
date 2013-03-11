@@ -112,13 +112,18 @@
 
 			</td>
 			<td width="265" align="right" valign="top">
-	            <a tal:attributes="href string:http://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="24" height="24" alt="Twitter" src="http://osha.europa.eu/en/news/oshmail/twitter-logo.jpg"></a>
-	            <a tal:attributes="href string:http://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="22" height="22" alt="Facebook" src="http://a3.sphotos.ak.fbcdn.net/hphotos-ak-prn1/14098_427100966728_6182604_n.jpg"></a>
-	            <a tal:attributes="href string:http://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img width="24" height="24" alt="Youtube" src="http://osha.europa.eu/en/news/oshmail/youtube.gif"></a>
-	            <a class="oshmail-blog-icon" style="top:2px;padding:0; margin:0;" tal:attributes="href string:http://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="30" height="30" alt="OshBlog" src="http://osha.europa.eu/en/news/oshmail/oshblog.png"></a>
-	            <a tal:attributes="href string:http://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img width="26" height="26" alt="Linkedin" src="http://osha.europa.eu/en/news/oshmail/linkedin-logo.jpg"></a>
-	            <a tal:attributes="href string:http://osha.europa.eu/en/news/oshmail/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="24" height="24" alt="OSHmail" src="http://osha.europa.eu/en/news/oshmail/oshmail.gif"></a>
-	            <a tal:attributes="href string:http://osha.europa.eu/en/alertservice/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img width="24" height="24" src="http://osha.europa.eu/en/news/oshmail/oshalert.gif" alt="OSHAlert"></a>
+	            <a tal:attributes="href string:http://twitter.com/eu_osha?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img alt="Twitter" title="Twitter" height="30" width="30" src="/++resource++osha.theme.browser.resources.follow_me_logos/twitter_30x30.png" /></a>
+
+	            <a tal:attributes="href string:http://www.facebook.com/EuropeanAgencyforSafetyandHealthatWork?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img alt="Facebook" title="Facebook" height="30" width="30" src="/++resource++osha.theme.browser.resources.follow_me_logos/facebook_30x30.png" /></a>
+
+	            <a tal:attributes="href string:http://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img alt="YouTube" title="YouTube" height="30" width="30" src="/++resource++osha.theme.browser.resources.follow_me_logos/youtube_30x30.png" /></a>
+
+	            <a class="oshmail-blog-icon" tal:attributes="href string:http://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img alt="OSH Blog" title="OSH Blog" height="30" width="30" src="/++resource++osha.theme.browser.resources.follow_me_logos/oshablog_30x30.png" title="OSH Blog" /></a>
+
+	            <a tal:attributes="href string:http://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img alt="Linked-In" title="Linked-In" height="30" width="30" src="/++resource++osha.theme.browser.resources.follow_me_logos/linkedin_30x30.png" /></a>
+
+	            <a tal:attributes="href string:http://osha.europa.eu/en/news/oshmail/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img height="30" width="30" alt="OSHmail" src="http://osha.europa.eu/en/news/oshmail/oshmail.gif"></a>
+	            <a tal:attributes="href string:http://osha.europa.eu/en/alertservice/?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img height="30" width="30" src="http://osha.europa.eu/en/news/oshmail/oshalert.gif" alt="OSHAlert"></a>
 
 			</td>
 		</tr>
