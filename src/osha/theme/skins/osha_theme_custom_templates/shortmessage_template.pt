@@ -44,8 +44,8 @@
 
 		<table width="790" style="width:790px"><tr><td>
 			<background></background>
-		<table style="width:790px;" background="http://osha.europa.eu/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
-			<tr><td width="200"><a style="width:200px; display:block" accesskey="1" href="http://osha.europa.eu/en" target="_blank" width="200">		&nbsp;</a>
+		<table style="width:790px;" tal:attributes="background string:${portal_url}/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
+			<tr><td width="200"><a style="width:200px; display:block" accesskey="1" tal:attributes="href string:${portal_url}/en" target="_blank" width="200">		&nbsp;</a>
 			</td>
 			<td width="590" align="right" height="120" valign="top">
 				<h1 class="documentFirstHeading" style="margin-top:36px">Short message
@@ -118,7 +118,7 @@
 
 	            <a tal:attributes="href string:http://www.youtube.com/EUOSHA?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"><img alt="YouTube" title="YouTube" height="30" width="30" tal:attributes="src string:${portal_url}/++resource++osha.theme.browser.resources.follow_me_logos/youtube_30x30.png" /></a>
 
-	            <a tal:attributes="href string:http://osha.europa.eu/en/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img alt="OSH Blog" title="OSH Blog" height="30" width="30" tal:attributes="src string:${portal_url}/++resource++osha.theme.browser.resources.follow_me_logos/oshablog_30x30.png" title="OSH Blog" /></a>
+	            <a tal:attributes="href string:http://osha.europa.eu/en/about/director_corner/blog?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}"><img alt="OSH Blog" title="OSH Blog" height="30" width="30" tal:attributes="src string:${portal_url}/++resource++osha.theme.browser.resources.follow_me_logos/oshablog_30x30.png" title="OSH Blog" /></a>
 
 	            <a tal:attributes="href string:http://www.linkedin.com/companies/european-agency-for-safety-and-health-at-work?utm_source=shortmessage&utm_medium=email&utm_campaign=${here/getId}" target="_blank"> <img alt="Linked-In" title="Linked-In" height="30" width="30" tal:attributes="src string:${portal_url}/++resource++osha.theme.browser.resources.follow_me_logos/linkedin_30x30.png" /></a>
 
