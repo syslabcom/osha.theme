@@ -385,18 +385,18 @@ class OSHA(BrowserView):
 
     def inlinestyler(self, data):
         """ calls an external service to integrate styles into tags """
-        #service_url = "http://inlinestyler.torchboxapps.com/styler/convert/"
-        #params = dict(returnraw='1', source=data.encode('utf8'))
-        #req = urllib2.Request(url=service_url, data=urllib.urlencode(params))
-        #f = urllib2.urlopen(req)
+        service_url = "http://inlinestyler.torchboxapps.com/styler/convert/"
+        params = dict(returnraw='1', source=data.encode('utf8'))
+        req = urllib2.Request(url=service_url, data=urllib.urlencode(params))
+        f = urllib2.urlopen(req)
 
-        #ret = BeautifulSoup(
-        #    f.read(), convertEntities=BeautifulSoup.HTML_ENTITIES)
-        #return ret.text
-        converter = Converter()
-        text = converter.perform(data)
-        ret = BeautifulSoup(text, convertEntities=BeautifulSoup.HTML_ENTITIES)
+        ret = BeautifulSoup(
+            f.read(), convertEntities=BeautifulSoup.HTML_ENTITIES)
         return ret.text
+        # converter = Converter()
+        # text = converter.perform(data)
+        # ret = BeautifulSoup(text, convertEntities=BeautifulSoup.HTML_ENTITIES)
+        # return ret.text
 
     def collage2table(self, data, u=False):
         """ Takes an html page generated from collage in the oshmail format and
