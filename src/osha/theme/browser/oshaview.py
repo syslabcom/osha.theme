@@ -3,18 +3,16 @@ import sys
 from urlparse import urljoin
 from types import *
 import logging
-import urllib, urllib2
+import urllib
 from BeautifulSoup import BeautifulSoup, Tag
 
 import Acquisition
 
-from zope.component import getMultiAdapter
 from zope.i18n import translate
 from zope.interface import implements
 
 from plone.memoize import ram
 
-from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import getSiteEncoding
 from Products.Five import BrowserView
@@ -50,15 +48,19 @@ class OSHA(BrowserView):
             text = portal_transforms.convert('html_to_text', text).getData()
             text = text.decode('utf-8')
         except Exception, err:
-            logger.error('An error occurred in cropHTMLText, original text: %s, message: %s ' \
-                'URL: %s' % (str([text]), str(err), context.absolute_url()))
+            logger.error(
+                'An error occurred in cropHTMLText, original text: %s, '
+                'message: %s URL: %s' % (
+                    str([text]), str(err), context.absolute_url()
+                )
+            )
             return text
-        return context.restrictedTraverse('@@plone').cropText(text, length,
-            ellipsis)
+        return context.restrictedTraverse('@@plone').cropText(
+            text, length, ellipsis)
 
     def _render_cachekey_getSEPs(method, self):
         preflang = getToolByName(
-                    self.context, 'portal_languages').getPreferredLanguage()
+            self.context, 'portal_languages').getPreferredLanguage()
         url = self.context.REQUEST.get('SERVER_URL')
         return (preflang, url)
 
@@ -69,12 +71,15 @@ class OSHA(BrowserView):
         """
         portal_catalog = getToolByName(self, 'portal_catalog')
         sections = portal_catalog(
-                    object_provides='osha.policy.interfaces.ISingleEntryPoint',
-                    review_state="published")
+            object_provides='osha.policy.interfaces.ISingleEntryPoint',
+            review_state="published"
+        )
         rs = []
         for section in sections:
-            rs.append(dict(title=section.Title, url=section.getURL(),
-                subject=section.Subject))
+            rs.append(dict(
+                title=section.Title, url=section.getURL(),
+                subject=section.Subject,
+            ))
         rs.sort(lambda x, y: cmp(x['title'].lower(), y['title'].lower()))
         return rs
 
@@ -156,11 +161,15 @@ class OSHA(BrowserView):
         else:
             envelope_from = send_from_address
         # Cook from template
-        message = template(context, send_to_address=send_to_address,
+        message = template(
+            context, send_to_address=send_to_address,
             send_from_address=send_from_address, comment=comment,
-            subject=subject, **kwargs)
-        host.send(message, mto=send_to_address, mfrom=envelope_from,
-            subject=subject, msg_type=msg_type, charset=encoding)
+            subject=subject, **kwargs
+        )
+        host.send(
+            message, mto=send_to_address, mfrom=envelope_from,
+            subject=subject, msg_type=msg_type, charset=encoding
+        )
 
     def getTranslatedCategories(self, domain='osha'):
         """ returns a list of tuples, that contain key and title of
@@ -174,9 +183,10 @@ class OSHA(BrowserView):
         for s in usedSubjects:
             if s in IGNORE:
                 continue
-            subjects.append((s,
-                      translate(target_language=lang, msgid=s, default=s,
-                      context=self.context, domain=domain)))
+            subjects.append((
+                s, translate(target_language=lang, msgid=s, default=s,
+                            context=self.context, domain=domain)
+            ))
         subjects.sort(lambda x, y: cmp(x[1], y[1]))
 
         return subjects
@@ -199,8 +209,9 @@ class OSHA(BrowserView):
 
     def retrieveLinksFromHTML(self, text):
         """ The method retrieveHTML provided by gocept.linkchecker is NOT
-        reliable. It fails to find more than one relative link inside a given text.
-        Therefore we build our own link exctractor based on BeautifulSoup """
+        reliable. It fails to find more than one relative link inside a given
+        text. Therefore we build our own link exctractor based on BeautifulSoup
+        """
         soup = BeautifulSoup(text)
         links = soup.findAll('a')
         return [x.get('href', '').encode('utf-8') for x in links]
@@ -290,8 +301,8 @@ class OSHA(BrowserView):
     def getBase_url(self):
         """ Returns a (sub-) sites URL including the language folder
         if present """
-        language = getToolByName(self.context,
-            'portal_languages').getPreferredLanguage()
+        language = getToolByName(
+            self.context, 'portal_languages').getPreferredLanguage()
         subsite_url = self.subsiteRootUrl()
         subsite_path = self.subsiteRootPath()
         root = self.context.restrictedTraverse(subsite_path)
@@ -324,8 +335,9 @@ class OSHA(BrowserView):
 
     def getLocalObject(self, name):
         """ see interface """
-        return hasattr(Acquisition.aq_base(Acquisition.aq_inner(self.context)),
-            name) and getattr(self.context, name) or None
+        return hasattr(
+            Acquisition.aq_base(Acquisition.aq_inner(self.context)), name
+        ) and getattr(self.context, name) or None
 
     def getNumAlertSubscribers(self):
         """ This is the same as num_subscribers in portlets/alertservice.py
@@ -368,8 +380,8 @@ class OSHA(BrowserView):
             return "landscape"
 
     def pdb_from_page_template(self, *args, **kwargs):
-        import pdb; pdb.set_trace()
-
+        import pdb
+        pdb.set_trace()
 
     def inlinestyler(self, data):
         """ calls an external service to integrate styles into tags """
@@ -378,7 +390,8 @@ class OSHA(BrowserView):
         #req = urllib2.Request(url=service_url, data=urllib.urlencode(params))
         #f = urllib2.urlopen(req)
 
-        #ret = BeautifulSoup(f.read(), convertEntities=BeautifulSoup.HTML_ENTITIES)
+        #ret = BeautifulSoup(
+        #    f.read(), convertEntities=BeautifulSoup.HTML_ENTITIES)
         #return ret.text
         converter = Converter()
         text = converter.perform(data)
@@ -386,8 +399,10 @@ class OSHA(BrowserView):
         return ret.text
 
     def collage2table(self, data, u=False):
-        """ takes an html page generated from collage in the oshmail format and converts some divs to a table layout
-            the collage builds a system of nested divs for rows and columns. What we need is a table with two rows.
+        """ Takes an html page generated from collage in the oshmail format and
+            converts some divs to a table layout. The collage builds a system
+            of nested divs for rows and columns. What we need is a table with
+            two rows.
             The first row contains two columns, the second one only one.
             into 1.1 and 1.2 we put the content of the div.content-column
             into 2.1 we put the div.collage-row>div.collage-row
@@ -395,9 +410,9 @@ class OSHA(BrowserView):
         soup = BeautifulSoup(data)
 
         # find the real content cells
-        cell_11, cell_12 = soup.findAll(attrs={'class':'collage-column'}, limit=2)
-        cell_21 = soup.findAll(attrs={'class':'collage-row'})[1]
-
+        cell_11, cell_12 = soup.findAll(
+            attrs={'class': 'collage-column'}, limit=2)
+        cell_21 = soup.findAll(attrs={'class': 'collage-row'})[1]
 
         # create a table
         table = Tag(soup, "table", [("id", 'collage-table')])
@@ -405,16 +420,22 @@ class OSHA(BrowserView):
         row1 = Tag(soup, "tr")
         row2 = Tag(soup, "tr")
 
-        col1 = Tag(soup, "td", [("valign", "top"), ("id", "collage-table-cell1"),("width", "590")])
-        col2 = Tag(soup, "td", [("valign", "top"), ("id", "collage-table-cell2"), ("width", "200")])
-        col3 = Tag(soup, "td", [("colspan", "2"), ("id", "collage-table-cell3"),("width", "790")])
+        col1 = Tag(soup, "td", [
+            ("valign", "top"), ("id", "collage-table-cell1"),
+            ("width", "590")
+        ])
+        col2 = Tag(soup, "td", [
+            ("valign", "top"), ("id", "collage-table-cell2"), ("width", "200")
+        ])
+        col3 = Tag(soup, "td", [
+            ("colspan", "2"), ("id", "collage-table-cell3"), ("width", "790")])
 
         col1.insert(0, cell_11)
         col2.insert(0, cell_12)
         col3.insert(0, cell_21)
 
-        row1.insert(0,col1)
-        row1.insert(1,col2)
+        row1.insert(0, col1)
+        row1.insert(1, col2)
         row2.insert(0, col3)
 
         table.insert(0, row1)
@@ -432,54 +453,64 @@ class Converter(object):
     """
 
     def __init__(self):
-        self.CSSErrors=[]
-        self.CSSUnsupportErrors=dict()
-        self.supportPercentage=100
-        self.convertedHTML=""
+        self.CSSErrors = []
+        self.CSSUnsupportErrors = dict()
+        self.supportPercentage = 100
+        self.convertedHTML = ""
 
-    def perform(self ,sourceHTML, sourceURL=''):
-        aggregateCSS="";
+    def perform(self, sourceHTML, sourceURL=''):
+        aggregateCSS = ""
         document = etree.HTML(sourceHTML)
 
-        aggregateCSS="";
+        aggregateCSS = ""
 
         # retrieve CSS rel links from html pasted and aggregate into one string
-        CSSRelSelector = CSSSelector("link[rel=stylesheet],link[rel=StyleSheet],link[rel=STYLESHEET]")
+        CSSRelSelector = CSSSelector(
+            "link[rel=stylesheet],link[rel=StyleSheet],link[rel=STYLESHEET]")
         matching = CSSRelSelector.evaluate(document)
         for element in matching:
             try:
-                csspath=element.get("href")
+                csspath = element.get("href")
                 if len(sourceURL):
-                    if element.get("href").lower().find("http://",0) < 0:
-                        parsedUrl=urlparse.urlparse(sourceURL);
-                        csspath=urlparse.urljoin(parsedUrl.scheme+"://"+parsedUrl.hostname, csspath)
-                f=urllib.urlopen(csspath)
-                aggregateCSS+=''.join(f.read())
+                    if element.get("href").lower().find("http://", 0) < 0:
+                        parsedUrl = urlparse.urlparse(sourceURL)
+                        csspath = urlparse.urljoin(
+                            parsedUrl.scheme + "://" + parsedUrl.hostname,
+                            csspath
+                        )
+                f = urllib.urlopen(csspath)
+                aggregateCSS += ''.join(f.read())
                 element.getparent().remove(element)
             except:
-                raise IOError('The stylesheet '+element.get("href")+' could not be found')
+                raise IOError(
+                    'The stylesheet ' + element.get("href") + ' could not be '
+                    'found'
+                )
 
         #include inline style elements
         print aggregateCSS
         CSSStyleSelector = CSSSelector("style,Style")
         matching = CSSStyleSelector.evaluate(document)
         for element in matching:
-            aggregateCSS+=element.text
+            aggregateCSS += element.text
             element.getparent().remove(element)
 
         #convert  document to a style dictionary compatible with etree
         styledict = self._get_style(document, aggregateCSS)
 
-        #set inline style attribute if not one of the elements not worth styling
-        ignoreList=['html','head','title','meta','link','script']
+        #set inline style attribute if not one of the elements not worth
+        #styling
+        ignoreList = ['html', 'head', 'title', 'meta', 'link', 'script']
         for element, style in styledict.items():
             if element.tag not in ignoreList:
                 v = style.getCssText(separator=u'')
                 element.set('style', v)
 
         #convert tree back to plain text html
-        convertedHTML = etree.tostring(document, method="xml", pretty_print=True,encoding='UTF-8')
-        convertedHTML = convertedHTML.replace('&#13;', '') #tedious raw conversion of line breaks.
+        convertedHTML = etree.tostring(
+            document, method="xml", pretty_print=True, encoding='UTF-8')
+        #tedious raw conversion of line breaks.
+        convertedHTML = convertedHTML.replace('&#13;', '')
 
         return convertedHTML
 
@@ -507,35 +538,40 @@ class Converter(object):
                             specificities[element] = {}
 
                             # add inline style if present
-                            inlinestyletext= element.get('style')
+                            inlinestyletext = element.get('style')
                             if inlinestyletext:
-                                inlinestyle= cssutils.css.CSSStyleDeclaration(cssText=inlinestyletext)
+                                inlinestyle = cssutils.css.CSSStyleDeclaration(
+                                    cssText=inlinestyletext)
                             else:
                                 inlinestyle = None
                             if inlinestyle:
                                 for p in inlinestyle:
                                     # set inline style specificity
                                     view[element].setProperty(p)
-                                    specificities[element][p.name] = (1,0,0,0)
+                                    specificities[element][p.name] = (
+                                        1, 0, 0, 0)
 
                         for p in rule.style:
                             #create supportratio dic item for this property
                             if p.name not in supportratios:
-                                supportratios[p.name]={'usage':0,'failedClients':0}
+                                supportratios[p.name] = {
+                                    'usage': 0, 'failedClients': 0}
                             #increment usage
-                            supportratios[p.name]['usage']+=1
+                            supportratios[p.name]['usage'] += 1
 
                             try:
                                 if not p.name in self.CSSUnsupportErrors:
-                                    for client, support in compliance[p.name].items():
-                                        if support == "N" or support=="P":
-                                            #increment client failure count for this property
-                                            supportratios[p.name]['failedClients']+=1
+                                    for client, support in \
+                                            compliance[p.name].items():
+                                        if support == "N" or support == "P":
+                                            #increment client failure count for
+                                            #this property
+                                            supportratios[p.name]['failedClients'] += 1
                                             if not p.name in self.CSSUnsupportErrors:
                                                 if support == "P":
-                                                    self.CSSUnsupportErrors[p.name]=[client + ' (partial support)']
+                                                    self.CSSUnsupportErrors[p.name] = [client + ' (partial support)']
                                                 else:
-                                                    self.CSSUnsupportErrors[p.name]=[client]
+                                                    self.CSSUnsupportErrors[p.name] = [client]
                                             else:
                                                 if support == "P":
                                                     self.CSSUnsupportErrors[p.name].append(client + ' (partial support)')
@@ -547,7 +583,8 @@ class Converter(object):
 
                             # update styles
                             if p not in view[element]:
-                                view[element].setProperty(p.name, p.value, p.priority)
+                                view[element].setProperty(
+                                    p.name, p.value, p.priority)
                                 specificities[element][p.name] = selector.specificity
                             else:
                                 sameprio = (p.priority == view[element].getPropertyPriority(p.name))
@@ -560,4 +597,3 @@ class Converter(object):
                         self.CSSErrors.append(str(sys.exc_info()[1]))
                     pass
         return view
-
