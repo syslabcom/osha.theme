@@ -4,8 +4,8 @@ osha.theme Changelog
 1.5.25 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- OSHMail no longer depends on external service, but uses local code for
+  inline styling [thomasw]
 
 1.5.24 (2013-03-07)
 -------------------
