@@ -4,8 +4,12 @@ osha.theme Changelog
 1.5.25 (unreleased)
 -------------------
 
+- Modified the default error message template to use the new helper for fetching
+  objects in the default language, refs #5152 [jure]
 - OSHMail no longer depends on external service, but uses local code for
   inline styling [thomasw]
+- Custom breadcrumbs for ESENER #5828 [thomasw]
+- Custom breadcrumbs for FOP section #6920 [thomasw]
 
 1.5.24 (2013-03-07)
 -------------------
