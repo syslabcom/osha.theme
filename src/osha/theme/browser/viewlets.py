@@ -260,12 +260,41 @@ class OSHAEsenerPathBarViewlet(OSHAPathBarViewlet):
 
     def update(self):
         super(OSHAPathBarViewlet, self).update()
-        portal = getSite()
+        context = self.context
+        ptool = getToolByName(self.context, 'portal_url')
+        portal = ptool.getPortalObject()
         lang = getToolByName(
             self.context, 'portal_languages').getPreferredLanguage()
-        portal_lang = portal.get(lang)
+        portal_lang = portal.get(lang, portal.get('en'))
 
         self.navigation_root_url = "/".join(portal_lang.getPhysicalPath())
+        self.breadcrumbs = (dict(
+            absolute_url=context.absolute_url(), Title=context.Title(),
+        ),)
+
+
+class OSHAFopPathBarViewlet(OSHAPathBarViewlet):
+
+    def update(self):
+        super(OSHAPathBarViewlet, self).update()
+        context = self.context
+        ptool = getToolByName(self.context, 'portal_url')
+        portal = ptool.getPortalObject()
+        lang = getToolByName(
+            self.context, 'portal_languages').getPreferredLanguage()
+        portal_lang = portal.get(lang, portal.get('en'))
+        self.navigation_root_url = "/".join(portal_lang.getPhysicalPath())
+
+        breadcrumbs = list()
+        network = portal_lang.get('oshnetwork', None)
+        if network:
+            breadcrumbs.append(dict(
+                absolute_url=network.absolute_url(), Title=network.Title(),
+            ))
+        breadcrumbs.append(dict(
+            absolute_url=context.absolute_url(), Title=context.Title(),
+        ))
+        self.breadcrumbs = tuple(breadcrumbs)
 
 
 class OSHACampaignAreaViewlet(common.ViewletBase):

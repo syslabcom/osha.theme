@@ -487,6 +487,14 @@
         permission="zope2.View"
         />
 
+    <browser:viewlet
+        name="osha.path_bar"
+        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+        class=".viewlets.OSHAFopPathBarViewlet"
+        layer="osha.fop.browser.interfaces.IFOPSpecific"
+        permission="zope2.View"
+        />
+
     <!-- The bottom language selector bar -->
     <browser:viewlet
         name="osha.footer.actions"
