@@ -256,6 +256,18 @@ class OSHAPathBarViewlet(common.PathBarViewlet):
         self.breadcrumbs = breadcrumbs_view.breadcrumbs()
 
 
+class OSHAEsenerPathBarViewlet(OSHAPathBarViewlet):
+
+    def update(self):
+        super(OSHAPathBarViewlet, self).update()
+        portal = getSite()
+        lang = getToolByName(
+            self.context, 'portal_languages').getPreferredLanguage()
+        portal_lang = portal.get(lang)
+
+        self.navigation_root_url = "/".join(portal_lang.getPhysicalPath())
+
+
 class OSHACampaignAreaViewlet(common.ViewletBase):
 
     render =  ViewPageTemplateFile('templates/osha_campaignarea.pt')

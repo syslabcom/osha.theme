@@ -478,6 +478,15 @@
         permission="zope2.View"
         />
 
+    <browser:viewlet
+        for="osha.surveyanswers.interfaces.ISurvey"
+        name="osha.path_bar"
+        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+        class=".viewlets.OSHAEsenerPathBarViewlet"
+        layer=".interfaces.IOSHAThemeLayer"
+        permission="zope2.View"
+        />
+
     <!-- The bottom language selector bar -->
     <browser:viewlet
         name="osha.footer.actions"
@@ -575,13 +584,13 @@
         allowed_interface=".interfaces.IOSHmailView"
         permission="zope2.View"
         />
-        
+
     <browser:page
         for="*"
         name="confirm-unsubscription"
         template="templates/oshmail_unsubscribe.pt"
         permission="zope2.View"
-        />    
+        />
 
     <browser:page
         for="*"
@@ -590,7 +599,7 @@
         template="templates/oshmail_unsubscribe.pt"
         permission="zope2.View"
         allowed_interface=".interfaces.IOSHmailView"
-        /> 
+        />
 
     <browser:page
         for="*"
@@ -983,7 +992,7 @@
 
     <browser:jbot
         directory="jbot"
-        layer=".interfaces.IOSHAThemeLayer"        
+        layer=".interfaces.IOSHAThemeLayer"
         />
 
     <!-- ASYNC QUEUE SIZE -->
