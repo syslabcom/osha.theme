@@ -44,9 +44,9 @@
                  tal:attributes="value request/form/category | nothing" />
           <input type="hidden" name="subcategory"
                  tal:attributes="value request/form/subcategory | nothing" />
-          <input type="submit"
+          <input type="submit" value="Search"
                  i18n:domain="osha"
-                 i18n:attributes="value Search"/>
+                 i18n:attributes="value"/>
         </form>
         <hr class="clear"/>
 
@@ -124,4 +124,3 @@
   </body>
 
 </html>
-
