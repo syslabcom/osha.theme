@@ -6,8 +6,11 @@ from zope.i18nmessageid import MessageFactory
 
 _ = MessageFactory('osha.theme')
 
-ALLOWED_TAGS = ["p", "br", "ul", "ol", "li", "sub", "sup", "abbr", "acronym",
-    "dl", "dt", "dd", "cite"]
+ALLOWED_TAGS = [
+    "p", "br", "ul", "ol", "li", "sub", "sup", "abbr", "acronym",
+    "dl", "dt", "dd", "cite",
+]
+
 
 def stripHTML(text):
     soup = BeautifulSoup(text)
@@ -15,6 +18,7 @@ def stripHTML(text):
         if tag.name not in ALLOWED_TAGS:
             tag.extract()
     return soup.renderContents()
+
 
 class HomepageView(BrowserView):
 
@@ -26,8 +30,8 @@ class HomepageView(BrowserView):
         self.pref_lang = self.ltool.getPreferredLanguage()
         self.portal = self.ptool.getPortalObject()
         self.portal_path = '/'.join(self.portal.getPhysicalPath())
-        self.langroot = getattr(self.portal, self.pref_lang, \
-            getattr(self.portal, 'en'))
+        self.langroot = getattr(
+            self.portal, self.pref_lang, getattr(self.portal, 'en'))
 
     def __call__(self):
         return self.index()
@@ -43,24 +47,32 @@ class HomepageView(BrowserView):
     @property
     def highlights(self, limit=4):
         """Fetch the latest X teasers"""
-        portal_path = self.ptool.getPortalPath()
         pc = getToolByName(self.context, 'portal_catalog')
         portal_transforms = getToolByName(self.context, 'portal_transforms')
         ploneview = self.context.restrictedTraverse('@@plone')
         now = DateTime()
-        res = pc(portal_type=['News Item'],
+        res = pc(
+            portal_type=['News Item'],
             Language=[self.pref_lang, ''],
             sort_order='reverse', sort_on='effective',
             expires={'query': now, 'range': 'min'},
             effective={'query': now, 'range': 'max'},
             review_state='published',
-            path=['%s/%s/teaser' % (self.portal_path, self.pref_lang)])
+            path=['%s/%s/teaser' % (self.portal_path, self.pref_lang)]
+        )
         if len(res) and limit > 0:
             res = res[:limit]
         if len(res) == 0:
             now = DateTime()
-            return [dict(link='', description='No highlights were found',
-                        title='No Highlights', img_url='', date=DateTime())]
+            return [
+                dict(
+                    link='',
+                    description='No highlights were found',
+                    title='No Highlights',
+                    img_url='',
+                    date=DateTime(),
+                )
+            ]
         ret = list()
         for r in res:
             obj = r.getObject()
@@ -74,33 +86,48 @@ class HomepageView(BrowserView):
             if not isinstance(description, unicode):
                 description = description.decode('utf-8')
             description = stripHTML(description)
-            description = portal_transforms.convert('html_to_text', description).getData()
-            description = ploneview.cropText(description, length=400,
-            ellipsis="...")
+            description = portal_transforms.convert(
+                'html_to_text', description).getData()
+            description = ploneview.cropText(
+                description, length=400, ellipsis="...")
             date = obj.effective()
-            ret.append(dict(link=link, img_url=img_url, description=description,
-                title=obj.Title(), date=date))
+            ret.append(
+                dict(
+                    link=link,
+                    img_url=img_url,
+                    description=description,
+                    title=obj.Title(),
+                    date=date,
+                )
+            )
         return ret
 
     @property
     def in_focus(self, limit=6):
         """Fetch the latest X In Focus news"""
-        portal_path = self.ptool.getPortalPath()
         pc = getToolByName(self.context, 'portal_catalog')
         now = DateTime()
-        res = pc(portal_type=['News Item'],
+        res = pc(
+            portal_type=['News Item'],
             Language=[self.pref_lang, ''],
             sort_order='reverse', sort_on='effective',
             expires={'query': now, 'range': 'min'},
             effective={'query': now, 'range': 'max'},
             review_state='published',
-            path=['%s/%s/in-focus' % (self.portal_path, self.pref_lang)])
+            path=['%s/%s/in-focus' % (self.portal_path, self.pref_lang)]
+        )
         if len(res) and limit > 0:
             res = res[:limit]
         if len(res) == 0:
             now = DateTime()
-            yield dict(link='', description='No items for In Focus were found',
-                        title='No Focus', img_url='', external_link='', date=DateTime())
+            yield dict(
+                link='',
+                description='No items for In Focus were found',
+                title='No Focus',
+                img_url='',
+                external_link='',
+                date=DateTime(),
+            )
         for r in res:
             obj = r.getObject()
             link = obj.absolute_url()
@@ -115,5 +142,11 @@ class HomepageView(BrowserView):
             if not isinstance(description, unicode):
                 description = description.decode('utf-8')
             date = obj.effective()
-            yield dict(link=link, img_url=img_url, description=description,
-                title=obj.Title(), date=date, external_link=external_link)
+            yield dict(
+                link=link,
+                img_url=img_url,
+                description=description,
+                title=obj.Title(),
+                date=date,
+                external_link=external_link,
+            )
