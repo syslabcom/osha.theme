@@ -1,8 +1,8 @@
-from zope.i18nmessageid import MessageFactory
+from BeautifulSoup import BeautifulSoup
 from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from BeautifulSoup import BeautifulSoup
+from zope.i18nmessageid import MessageFactory
 
 _ = MessageFactory('osha.theme')
 
