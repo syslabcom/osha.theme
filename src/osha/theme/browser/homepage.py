@@ -1,10 +1,5 @@
 from zope.i18nmessageid import MessageFactory
-from zope.interface import implements
-from Acquisition import aq_inner, aq_parent, aq_base
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.memoize import ram
 from DateTime import DateTime
-from Products.ATContentTypes.interface.document import IATDocument
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from BeautifulSoup import BeautifulSoup
