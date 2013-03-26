@@ -10,6 +10,7 @@ osha.theme Changelog
   inline styling [thomasw]
 - Custom breadcrumbs for ESENER #5828 [thomasw]
 - Custom breadcrumbs for FOP section #6920 [thomasw]
+- #6693 Twitter async loader [deroiste]
 
 1.5.24 (2013-03-07)
 -------------------
