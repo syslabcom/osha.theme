@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-    jQuery("dl.portlet-static-latest-tweets")
+    jQuery("dl.portlet-static-twitter")
         .parent()
-        .load("/en/twitter?ajax_load=True dl.latest-tweets-tweet");
+        .load("/en/twitter?ajax_load=True dl.twitter-tweet");
 });
