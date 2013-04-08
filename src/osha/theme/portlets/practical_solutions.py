@@ -172,9 +172,9 @@ class Renderer(base.Renderer):
         }
 
         if lang == "en":
-            query['Language'] = [lang, ""]
+            query['Language'] = [lang]
         else:
-            query['Language'] = lang
+            query['Language'] = [lang, ""]
 
         pc = getToolByName(context, 'portal_catalog')
         if hasattr(pc, 'getZCatalog'):
