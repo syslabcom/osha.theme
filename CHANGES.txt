@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.25 (unreleased)
+1.5.25 (2013-04-08)
 -------------------
 
 - Modified the default error message template to use the new helper for fetching
@@ -11,6 +11,7 @@ osha.theme Changelog
 - Custom breadcrumbs for ESENER #5828 [thomasw]
 - Custom breadcrumbs for FOP section #6920 [thomasw]
 - #6693 Twitter async loader [deroiste]
+- Bugfix for the publications portlet to display language neutral content #7222 [thomasw]
 
 1.5.24 (2013-03-07)
 -------------------
