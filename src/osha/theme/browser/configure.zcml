@@ -1,1027 +1,1025 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="osha.theme">
-
-    <include package="plone.app.portlets" />
-    <include package="p4a.subtyper" />
-
-    <browser:page
-        for="*"
-        name="plone4-maintenance"
-        class=".maintenance.MaintenanceView"
-        permission="cmf.ManagePortal"
-        allowed_interface=".interfaces.IMaintenanceView"
-        />
-
-    <!-- OSHA RollingQuotes Tool -->
-    <browser:resource
-        name="rollingquote.kss"
-        file="rollingquote.kss"
-        />
-
-    <!-- vpip import -->
-    <browser:resource
-        file="resources/swfobject.js"
-        name="swfobject.js"
-        />
-
-    <browser:resource
-        file="resources/jquery.bigtarget.1.0.1.js"
-        name="jquery.bigtarget.1.0.1.js"
-        />
-
-    <browser:resource
-        file="resources/trackingscripts.js"
-        name="trackingscripts.js"
-        />
-
-    <browser:resource
-        file="resources/jquery.js"
-        name="jquery.js"
-        />
-
-    <browser:resourceDirectory
-        name="osha.theme.resources"
-        directory="resources"
-        />
-
-    <browser:resourceDirectory
-        name="osha.theme.behaviour"
-        directory="behaviour"
-        />
-
-    <!-- Include Collage views -->
-    <include file="collage.zcml" />
-
-    <!-- Include lipstick.css, re-uses the main content macro but adds
-         the template id so that the lipstick.css can be applied -->
-    <browser:page
-        for="*"
-        name="lipstick-view"
-        permission="zope.Public"
-        class=".multimedia_view.LipstickView"
-        template="templates/lipstick_view.pt"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
-
-    <!-- fancybox resources -->
-    <browser:resourceDirectory
-        name="osha.theme.browser.resources.fancybox"
-        directory="resources/fancybox"
-        />
-
-    <browser:resourceDirectory
-        name="osha.theme.browser.resources.follow_me_logos"
-        directory="resources/follow_me_logos"
-        />
-
-    <browser:resourceDirectory
-        name="osha.theme.browser.resources.multimedia"
-        directory="resources/multimedia"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
-
-    <!-- OSHA Properties panel -->
-    <utility
-        component=".osha_properties_controlpanel.AvailableLanguagesVocabularyFactory"
-        name="osha.vocabularies.AvailableLanguages"
-        />
-
-    <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        />
-
-    <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter"
-        for="slc.subsite.interfaces.ISubsiteEnhanced"
-        />
-
-    <!--browser:page
-        for="*"
-        name="site_settings"
-        class=".osha_properties_controlpanel.SettingsView"
-        permission="zope.Public"
-        allowed_interface=".osha_properties_controlpanel.ISettingsView"
-        /-->
-
-    <browser:page
-        name="oshaprops-controlpanel"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".osha_properties_controlpanel.PropertiesControlPanel"
-        permission="cmf.ManagePortal"
-        />
-
-    <browser:page
-        name="oshaprops-controlpanel"
-        for="slc.subsite.interfaces.ISubsiteEnhanced"
-        class=".osha_properties_controlpanel.PropertiesControlPanel"
-        permission="cmf.ManagePortal"
-        />
-
-    <!-- OSHA Tool view -->
-    <browser:page
-        for="*"
-        name="oshaview"
-        class=".oshaview.OSHA"
-        permission="zope.Public"
-        allowed_interface=".interfaces.IOSHA"
-        allowed_attributes="pdb_from_page_template"
-        />
-
-    <!-- OSHA RollingQuotes -->
-    <browser:page
-        for="*"
-        name="rollingquotestool"
-        class=".rollingquotestool.RollingQuotesToolsView"
-        attribute="set_url"
-        permission="zope.Public"
-        allowed_interface=".interfaces.IRollingQuotesToolsView"
-            />
-
-    <!-- OSHA PressRoom-->
-    <browser:page
-        for="*"
-        name="pressroom"
-        class=".pressroom.PressRoomView"
-        permission="zope.Public"
-        allowed_interface=".interfaces.IPressRoomView"
-        />
-
-    <browser:page
-        for="*"
-        name="dynamic-pressroom"
-        class=".pressroom.DynamicPressRoomView"
-        permission="zope.Public"
-        allowed_interface=".interfaces.IPressRoomView"
-        template="templates/pressroom_dynamic.pt"
-        />
-
-    <browser:page
-        for="*"
-        name="pressroom-config-form"
-        class=".pressroom.DynamicPressRoomConfigurationForm"
-        permission="cmf.ModifyPortalContent"
-        />
-
-    <!-- OSHA Custom Help Center / FAQ views -->
-
-    <browser:page
-        for="Products.PloneHelpCenter.interfaces.IHelpCenter"
-        name="osha_help_center_view"
-        class=".oshahelpcenter.OSHAHelpCenterView"
-        template="templates/osha_help_center_view.pt"
-        permission="zope2.View"
-        />
-
-    <!-- OSHA Multimedia views -->
-    <browser:page
-        for="Products.ATContentTypes.interface.folder.IATFolder"
-        name="multimedia-folder-listing-view"
-        class=".multimedia_view.MultimediaFolderListingView"
-        template="templates/multimedia_folder_listing_view.pt"
-        permission="zope.Public"
-        />
-
-    <browser:page
-        for="Products.ATContentTypes.interface.folder.IATFolder"
-        name="multimedia-image-folders-view"
-        class=".multimedia_view.MultimediaImageFoldersView"
-        template="templates/multimedia_image_folders_view.pt"
-        permission="zope.Public"
-        />
-
-    <browser:page
-        for="Products.ATContentTypes.interface.image.IATImage"
-        name="multimedia-image-details-view"
-        class=".multimedia_view.MultimediaImageDetailsView"
-        template="templates/multimedia_image_details_view.pt"
-        permission="zope.Public"
-        />
-
-    <browser:page
-        for="Products.ATContentTypes.interface.folder.IATFolder"
-        name="multimedia-film-listing-view"
-        class=".multimedia_view.MultimediaFilmListingView"
-        template="templates/multimedia_film_listing_view.pt"
-        permission="zope.Public"
-        />
-
-    <browser:page
-        for="Products.ATContentTypes.interface.folder.IATFolder"
-        name="multimedia-film-episodes-listing-view"
-        class=".multimedia_view.MultimediaFilmEpisodeListingView"
-        template="templates/multimedia_film_episodes_listing_view.pt"
-        permission="zope.Public"
-        />
-
-    <!-- OSHA NapoFilmView-->
-    <browser:page
-        for="*"
-        name="napofilm"
-        class=".napofilm.NapoFilmView"
-        template="templates/napofilmview.pt"
-        permission="zope.Public"
-        allowed_interface=".interfaces.INapoFilmView"
-        />
-
-    <browser:viewlet
-        name="napo.languageselector"
-        manager="plone.app.layout.viewlets.interfaces.IContentViews"
-        class=".viewlets.OSHALanguageSelector"
-        layer=".interfaces.INAPOSpecific"
-        permission="zope2.View"
-        for="*"
-        />
-
-    <!-- OSHA Practical Solutions Views -->
-    <browser:page
-        for="Products.ATContentTypes.interface.folder.IATFolder"
-        name="practical-solutions"
-        class=".practical_solutions.PracticalSolutionsView"
-        template="templates/practical_solutions.pt"
-        permission="zope.Public"
-        />
-
-    <browser:page
-        for="Products.ATContentTypes.interfaces.IATDocument"
-        name="practical-solution"
-        class=".practical_solutions.PracticalSolutionView"
-        template="templates/practical_solution.pt"
-        permission="zope.Public"
-        />
-
-    <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
-    <interface
-        interface=".interfaces.IThemeSpecific"
-        type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="OSHA Plone Theme"
-        />
-
-    <interface
-        interface=".interfaces.IHW2008Specific"
-        type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="HealthyWorkplaces"
-        />
-
-    <interface
-        interface=".interfaces.IRISQSpecific"
-        type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="RISQ"
-        />
-
-    <interface
-        interface=".interfaces.ISafestartSpecific"
-        type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="BeSWIC Safestart"
-        />
-
-    <interface
-        interface=".interfaces.INAPOSpecific"
-        type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="NAPO"
-        />
-
-    <interface
-        interface=".interfaces.IGermanySpecific"
-        type="zope.publisher.interfaces.browser.IBrowserSkinType"
-        name="OSHAGermany"
-        />
-
-    <!-- Viewlet manager that will wrap top actions -->
-    <browser:viewletManager
-        name="osha.header.topactions"
-        provides=".interfaces.IOSHAHeaderTopactions"
-        permission="zope2.View"
-        layer=".interfaces.IOSHAThemeLayer"
-        class="plone.app.viewletmanager.manager.OrderedViewletManager"
-        />
-
-    <!-- Viewlet manager for top dropdowns with language selector -->
-    <browser:viewletManager
-        name="osha.header.dropdowns"
-        provides=".interfaces.IOSHAHeaderDropdowns"
-        permission="zope2.View"
-        layer=".interfaces.IOSHAThemeLayer"
-        class="plone.app.viewletmanager.manager.OrderedViewletManager"
-        />
-
-    <!-- custom dublincore metadata viewlet -->
-    <browser:viewlet
-        name="plone.htmlhead.dublincore"
-        manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
-        class=".viewlets.OSHADublinCoreViewlet"
-        permission="zope2.View"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
-
-    <!-- The portal header -->
-    <browser:viewlet
-        name="osha.topactions"
-        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-        template="templates/osha_topactions.pt"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <!-- Napo Header-->
-    <browser:viewlet
-        name="osha.napo.header"
-        manager="plone.app.layout.viewlets.interfaces.IContentViews"
-        template="templates/napo_head.pt"
-        layer=".interfaces.INAPOSpecific"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="osha.napo.subheader"
-        manager="plone.app.layout.viewlets.interfaces.IContentViews"
-        template="templates/napo_subhead.pt"
-        layer=".interfaces.INAPOSpecific"
-        permission="zope2.View"
-        />
-
-    <!-- Napo Below footer-->
-    <browser:viewlet
-        name="osha.napo.logofooter"
-        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
-        template="templates/napo_logofooter.pt"
-        layer=".interfaces.INAPOSpecific"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="osha.napo.friendsmenu"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
-        class=".napo.NapoFriendsViewlet"
-        layer=".interfaces.INAPOSpecific"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="osha.napo.belowfooter"
-        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
-        template="templates/napo_belowfooter.pt"
-        layer=".interfaces.INAPOSpecific"
-        permission="zope2.View"
-        />
-
-    <!-- Website buttons for the blog -->
-    <browser:viewlet
-        name="osha.theme.addthisbutton"
-        for="Products.ATContentTypes.interface.news.IATNewsItem"
-        manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
-        class=".viewlets.AddThisButtonViewlet"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <!-- The portal header -->
-    <browser:viewlet
-        name="osha.topdropdowns"
-        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-        template="templates/osha_topdropdowns.pt"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <!-- The personal bar -->
-    <browser:viewlet
-        name="plone.personal_bar"
-        manager=".interfaces.IOSHAHeaderTopactions"
-        class="plone.app.layout.viewlets.common.PersonalBarViewlet"
-        layer=".interfaces.IOSHAThemeLayer"
-        template="templates/osha_personal_bar.pt"
-        permission="zope2.View"
-        />
-
-    <!-- The site actions -->
-    <browser:viewlet
-        name="plone.site_actions"
-        manager=".interfaces.IOSHAHeaderTopactions"
-        class=".viewlets.OSHASiteActionsViewlet"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <!-- The top language selector bar -->
-    <!-- For translatable items -->
-    <browser:viewlet
-        name="osha.languageselector"
-        manager=".interfaces.IOSHAHeaderDropdowns"
-        class=".viewlets.OSHALanguageSelector"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        for="*"
-        />
-
-    <!-- Render the browser title - overwritten so we can insert OSHA specific title -->
-    <browser:viewlet
-        name="osha.htmlhead.title"
-        manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
-        class=".viewlets.TitleViewlet"
-        permission="zope2.View"
-        />
-
-    <!-- The network chooser bar -->
-    <browser:viewlet
-        name="osha.networkchooser"
-        manager=".interfaces.IOSHAHeaderDropdowns"
-        class=".viewlets.OSHANetworkchooser"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <!-- Germany specifics -->
-    <!-- The site actions -->
-    <browser:viewlet
-        name="osha.germany.site_actions"
-        manager=".interfaces.IOSHAHeaderDropdowns"
-        class=".viewlets.OSHASiteActionsViewlet"
-        layer=".interfaces.IGermanySpecific"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="osha.germany.languageselector"
-        manager="osha.theme.browser.interfaces.IOSHAHeaderDropdowns"
-        class=".viewlets.OSHAGermanyLanguageSelector"
-        layer=".interfaces.IGermanySpecific"
-        permission="zope2.View"
-        for="*"
-        />
-    <!-- / Germany specifics -->
-
-    <!-- Variable Area for Campaign Sites -->
-    <browser:viewlet
-        name="osha.campaignarea"
-        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
-        class=".viewlets.OSHACampaignAreaViewlet"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="osha.campaignarea2"
-        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-        class=".viewlets.OSHACampaignArea2Viewlet"
-        layer=".interfaces.IHW2008Specific"
-        permission="zope2.View"
-        />
-
-    <!-- The breadcrumbs -->
-    <browser:viewlet
-        name="osha.path_bar"
-        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
-        class=".viewlets.OSHAPathBarViewlet"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        for="osha.surveyanswers.interfaces.ISurvey"
-        name="osha.path_bar"
-        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
-        class=".viewlets.OSHAEsenerPathBarViewlet"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="osha.path_bar"
-        manager="plone.app.layout.viewlets.interfaces.IPortalTop"
-        class=".viewlets.OSHAFopPathBarViewlet"
-        layer="osha.fop.browser.interfaces.IFOPSpecific"
-        permission="zope2.View"
-        />
-
-    <!-- The bottom language selector bar -->
-    <browser:viewlet
-        name="osha.footer.actions"
-        manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
-        class=".viewlets.OSHAFooterActions"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <!-- The logo -->
-    <browser:viewlet
-        name="osha.logo"
-        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-        class=".viewlets.OSHALogoViewlet"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <!-- Above content portlets -->
-    <browser:viewlet
-        name="osha.abovecontentportlets"
-        manager="plone.app.layout.viewlets.interfaces.IContentViews"
-        template="templates/abovecontent_portlets.pt"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="plone.portlets.interfaces.ILocalPortletAssignable"
-        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
-        name="manage-oshaabove"
-        template="templates/manage_osha_above.pt"
-        permission="plone.app.portlets.ManagePortlets"
-        />
-
-    <browser:page
-        for="plone.portlets.interfaces.ILocalPortletAssignable"
-        class="plone.app.portlets.browser.manage.ManageContextualPortlets"
-        name="manage-oshabelow"
-        template="templates/manage_osha_below.pt"
-        permission="plone.app.portlets.ManagePortlets"
-        />
-
-    <browser:page
-        for="*"
-        name="rss-feeds"
-        class=".rssfeeds.RSSFeedsView"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="rss-current-jobs"
-        template="templates/rss_currentjobs.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="oshtopic-view"
-        class=".oshtopic_view.OSHTopicView"
-        template="templates/oshtopic_view.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="oshnews-view"
-        class=".oshnews_view.OSHNewsView"
-        template="templates/oshnews_view.pt"
-        permission="zope2.View"
-        />
-
-        <browser:page
-        for="*"
-        name="oshnews-view-simple"
-        template="templates/oshnews_view_simple.pt"
-        class=".oshnews_view.OSHNewsSimpleView"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="oshmail-subscribe"
-        class=".oshmail_subscribe.OSHmailSubscribe"
-        template="templates/oshmail_view.pt"
-        allowed_interface=".interfaces.IOSHmailView"
-        permission="zope2.View"
-        />
-    <browser:page
-        for="*"
-        name="oshmail-view"
-        class=".oshmail_view.OSHmailView"
-        template="templates/oshmail_view.pt"
-        allowed_interface=".interfaces.IOSHmailView"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="confirm-unsubscription"
-        template="templates/oshmail_unsubscribe.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="unsubscribe"
-        class=".oshmail_unsubscribe.OSHmailUnsubscribe"
-        template="templates/oshmail_unsubscribe.pt"
-        permission="zope2.View"
-        allowed_interface=".interfaces.IOSHmailView"
-        />
-
-    <browser:page
-        for="*"
-        name="oshnews-local-view"
-        class=".oshnews_view.OSHNewsLocalView"
-        template="templates/oshnews_view.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="oshevent-view"
-        class=".oshevent_view.OSHEventView"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="Products.Archetypes.interfaces.IBaseContent"
-        name="competitions-view"
-        class=".competitions.CompetitionsView"
-        template="templates/competitions_view.pt"
-        allowed_interface=".interfaces.ICompetitionsView"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="Products.Archetypes.interfaces.IBaseContent"
-        name="competition-detail"
-        class=".competitions.CompetitionDetail"
-        template="templates/competition_detail.pt"
-        allowed_interface=".interfaces.ICompetitionDetail"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="events.html"
-        permission="zope2.View"
-        class=".calendar_events_list.EventsListingView"
-        />
-
-    <browser:page
-        name="past_events.html"
-        for="*"
-        permission="zope2.View"
-        class=".calendar_events_list.PastEventsListingView"
-        />
-
-    <browser:page
-        for="*"
-        name="publications-overview"
-        class=".publications.PublicationsSearchView"
-        template="templates/publicationsearch.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        for="*"
-        name="publications-list"
-        class=".publications.PublicationsListView"
-        template="templates/publicationlist.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-      name="publication-container.html"
-      for="slc.publications.interfaces.IPublicationContainerEnhanced"
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="osha.theme">
+
+  <include package="plone.app.portlets" />
+  <include package="p4a.subtyper" />
+
+  <browser:page
+     for="*"
+     name="plone4-maintenance"
+     class=".maintenance.MaintenanceView"
+     permission="cmf.ManagePortal"
+     allowed_interface=".interfaces.IMaintenanceView"
+     />
+
+  <!-- OSHA RollingQuotes Tool -->
+  <browser:resource
+     name="rollingquote.kss"
+     file="rollingquote.kss"
+     />
+
+  <!-- vpip import -->
+  <browser:resource
+     file="resources/swfobject.js"
+     name="swfobject.js"
+     />
+
+  <browser:resource
+     file="resources/jquery.bigtarget.1.0.1.js"
+     name="jquery.bigtarget.1.0.1.js"
+     />
+
+  <browser:resource
+     file="resources/trackingscripts.js"
+     name="trackingscripts.js"
+     />
+
+  <browser:resource
+     file="resources/jquery.js"
+     name="jquery.js"
+     />
+
+  <browser:resourceDirectory
+     name="osha.theme.resources"
+     directory="resources"
+     />
+
+  <browser:resourceDirectory
+     name="osha.theme.behaviour"
+     directory="behaviour"
+     />
+
+  <!-- Include Collage views -->
+  <include file="collage.zcml" />
+
+  <!-- Include lipstick.css, re-uses the main content macro but adds
+       the template id so that the lipstick.css can be applied -->
+  <browser:page
+     for="*"
+     name="lipstick-view"
+     permission="zope.Public"
+     class=".multimedia_view.LipstickView"
+     template="templates/lipstick_view.pt"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
+
+  <!-- fancybox resources -->
+  <browser:resourceDirectory
+     name="osha.theme.browser.resources.fancybox"
+     directory="resources/fancybox"
+     />
+
+  <browser:resourceDirectory
+     name="osha.theme.browser.resources.follow_me_logos"
+     directory="resources/follow_me_logos"
+     />
+
+  <browser:resourceDirectory
+     name="osha.theme.browser.resources.multimedia"
+     directory="resources/multimedia"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
+
+  <!-- OSHA Properties panel -->
+  <utility
+     component=".osha_properties_controlpanel.AvailableLanguagesVocabularyFactory"
+     name="osha.vocabularies.AvailableLanguages"
+     />
+
+  <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter"
+           for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+           />
+
+  <adapter factory=".osha_properties_controlpanel.PropertiesControlPanelAdapter"
+           for="slc.subsite.interfaces.ISubsiteEnhanced"
+           />
+
+  <!--browser:page
+      for="*"
+      name="site_settings"
+      class=".osha_properties_controlpanel.SettingsView"
+      permission="zope.Public"
+      allowed_interface=".osha_properties_controlpanel.ISettingsView"
+      /-->
+
+  <browser:page
+     name="oshaprops-controlpanel"
+     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+     class=".osha_properties_controlpanel.PropertiesControlPanel"
+     permission="cmf.ManagePortal"
+     />
+
+  <browser:page
+     name="oshaprops-controlpanel"
+     for="slc.subsite.interfaces.ISubsiteEnhanced"
+     class=".osha_properties_controlpanel.PropertiesControlPanel"
+     permission="cmf.ManagePortal"
+     />
+
+  <!-- OSHA Tool view -->
+  <browser:page
+     for="*"
+     name="oshaview"
+     class=".oshaview.OSHA"
+     permission="zope.Public"
+     allowed_interface=".interfaces.IOSHA"
+     allowed_attributes="pdb_from_page_template"
+     />
+
+  <!-- OSHA RollingQuotes -->
+  <browser:page
+     for="*"
+     name="rollingquotestool"
+     class=".rollingquotestool.RollingQuotesToolsView"
+     attribute="set_url"
+     permission="zope.Public"
+     allowed_interface=".interfaces.IRollingQuotesToolsView"
+     />
+
+  <!-- OSHA PressRoom-->
+  <browser:page
+     for="*"
+     name="pressroom"
+     class=".pressroom.PressRoomView"
+     permission="zope.Public"
+     allowed_interface=".interfaces.IPressRoomView"
+     />
+
+  <browser:page
+     for="*"
+     name="dynamic-pressroom"
+     class=".pressroom.DynamicPressRoomView"
+     permission="zope.Public"
+     allowed_interface=".interfaces.IPressRoomView"
+     template="templates/pressroom_dynamic.pt"
+     />
+
+  <browser:page
+     for="*"
+     name="pressroom-config-form"
+     class=".pressroom.DynamicPressRoomConfigurationForm"
+     permission="cmf.ModifyPortalContent"
+     />
+
+  <!-- OSHA Custom Help Center / FAQ views -->
+
+  <browser:page
+     for="Products.PloneHelpCenter.interfaces.IHelpCenter"
+     name="osha_help_center_view"
+     class=".oshahelpcenter.OSHAHelpCenterView"
+     template="templates/osha_help_center_view.pt"
+     permission="zope2.View"
+     />
+
+  <!-- OSHA Multimedia views -->
+  <browser:page
+     for="Products.ATContentTypes.interface.folder.IATFolder"
+     name="multimedia-folder-listing-view"
+     class=".multimedia_view.MultimediaFolderListingView"
+     template="templates/multimedia_folder_listing_view.pt"
+     permission="zope.Public"
+     />
+
+  <browser:page
+     for="Products.ATContentTypes.interface.folder.IATFolder"
+     name="multimedia-image-folders-view"
+     class=".multimedia_view.MultimediaImageFoldersView"
+     template="templates/multimedia_image_folders_view.pt"
+     permission="zope.Public"
+     />
+
+  <browser:page
+     for="Products.ATContentTypes.interface.image.IATImage"
+     name="multimedia-image-details-view"
+     class=".multimedia_view.MultimediaImageDetailsView"
+     template="templates/multimedia_image_details_view.pt"
+     permission="zope.Public"
+     />
+
+  <browser:page
+     for="Products.ATContentTypes.interface.folder.IATFolder"
+     name="multimedia-film-listing-view"
+     class=".multimedia_view.MultimediaFilmListingView"
+     template="templates/multimedia_film_listing_view.pt"
+     permission="zope.Public"
+     />
+
+  <browser:page
+     for="Products.ATContentTypes.interface.folder.IATFolder"
+     name="multimedia-film-episodes-listing-view"
+     class=".multimedia_view.MultimediaFilmEpisodeListingView"
+     template="templates/multimedia_film_episodes_listing_view.pt"
+     permission="zope.Public"
+     />
+
+  <!-- OSHA NapoFilmView-->
+  <browser:page
+     for="*"
+     name="napofilm"
+     class=".napofilm.NapoFilmView"
+     template="templates/napofilmview.pt"
+     permission="zope.Public"
+     allowed_interface=".interfaces.INapoFilmView"
+     />
+
+  <browser:viewlet
+     name="napo.languageselector"
+     manager="plone.app.layout.viewlets.interfaces.IContentViews"
+     class=".viewlets.OSHALanguageSelector"
+     layer=".interfaces.INAPOSpecific"
+     permission="zope2.View"
+     for="*"
+     />
+
+  <!-- OSHA Practical Solutions Views -->
+  <browser:page
+     for="Products.ATContentTypes.interface.folder.IATFolder"
+     name="practical-solutions"
+     class=".practical_solutions.PracticalSolutionsView"
+     template="templates/practical_solutions.pt"
+     permission="zope.Public"
+     />
+
+  <browser:page
+     for="Products.ATContentTypes.interfaces.IATDocument"
+     name="practical-solution"
+     class=".practical_solutions.PracticalSolutionView"
+     template="templates/practical_solution.pt"
+     permission="zope.Public"
+     />
+
+  <!-- 'OSHA Plone Theme' Zope 3 skin layer -->
+  <interface
+     interface=".interfaces.IThemeSpecific"
+     type="zope.publisher.interfaces.browser.IBrowserSkinType"
+     name="OSHA Plone Theme"
+     />
+
+  <interface
+     interface=".interfaces.IHW2008Specific"
+     type="zope.publisher.interfaces.browser.IBrowserSkinType"
+     name="HealthyWorkplaces"
+     />
+
+  <interface
+     interface=".interfaces.IRISQSpecific"
+     type="zope.publisher.interfaces.browser.IBrowserSkinType"
+     name="RISQ"
+     />
+
+  <interface
+     interface=".interfaces.ISafestartSpecific"
+     type="zope.publisher.interfaces.browser.IBrowserSkinType"
+     name="BeSWIC Safestart"
+     />
+
+  <interface
+     interface=".interfaces.INAPOSpecific"
+     type="zope.publisher.interfaces.browser.IBrowserSkinType"
+     name="NAPO"
+     />
+
+  <interface
+     interface=".interfaces.IGermanySpecific"
+     type="zope.publisher.interfaces.browser.IBrowserSkinType"
+     name="OSHAGermany"
+     />
+
+  <!-- Viewlet manager that will wrap top actions -->
+  <browser:viewletManager
+     name="osha.header.topactions"
+     provides=".interfaces.IOSHAHeaderTopactions"
+     permission="zope2.View"
+     layer=".interfaces.IOSHAThemeLayer"
+     class="plone.app.viewletmanager.manager.OrderedViewletManager"
+     />
+
+  <!-- Viewlet manager for top dropdowns with language selector -->
+  <browser:viewletManager
+     name="osha.header.dropdowns"
+     provides=".interfaces.IOSHAHeaderDropdowns"
+     permission="zope2.View"
+     layer=".interfaces.IOSHAThemeLayer"
+     class="plone.app.viewletmanager.manager.OrderedViewletManager"
+     />
+
+  <!-- custom dublincore metadata viewlet -->
+  <browser:viewlet
+     name="plone.htmlhead.dublincore"
+     manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+     class=".viewlets.OSHADublinCoreViewlet"
+     permission="zope2.View"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
+
+  <!-- The portal header -->
+  <browser:viewlet
+     name="osha.topactions"
+     manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+     template="templates/osha_topactions.pt"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <!-- Napo Header-->
+  <browser:viewlet
+     name="osha.napo.header"
+     manager="plone.app.layout.viewlets.interfaces.IContentViews"
+     template="templates/napo_head.pt"
+     layer=".interfaces.INAPOSpecific"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
+     name="osha.napo.subheader"
+     manager="plone.app.layout.viewlets.interfaces.IContentViews"
+     template="templates/napo_subhead.pt"
+     layer=".interfaces.INAPOSpecific"
+     permission="zope2.View"
+     />
+
+  <!-- Napo Below footer-->
+  <browser:viewlet
+     name="osha.napo.logofooter"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+     template="templates/napo_logofooter.pt"
+     layer=".interfaces.INAPOSpecific"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
+     name="osha.napo.friendsmenu"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+     class=".napo.NapoFriendsViewlet"
+     layer=".interfaces.INAPOSpecific"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
+     name="osha.napo.belowfooter"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+     template="templates/napo_belowfooter.pt"
+     layer=".interfaces.INAPOSpecific"
+     permission="zope2.View"
+     />
+
+  <!-- Website buttons for the blog -->
+  <browser:viewlet
+     name="osha.theme.addthisbutton"
+     for="Products.ATContentTypes.interface.news.IATNewsItem"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+     class=".viewlets.AddThisButtonViewlet"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <!-- The portal header -->
+  <browser:viewlet
+     name="osha.topdropdowns"
+     manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+     template="templates/osha_topdropdowns.pt"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <!-- The personal bar -->
+  <browser:viewlet
+     name="plone.personal_bar"
+     manager=".interfaces.IOSHAHeaderTopactions"
+     class="plone.app.layout.viewlets.common.PersonalBarViewlet"
+     layer=".interfaces.IOSHAThemeLayer"
+     template="templates/osha_personal_bar.pt"
+     permission="zope2.View"
+     />
+
+  <!-- The site actions -->
+  <browser:viewlet
+     name="plone.site_actions"
+     manager=".interfaces.IOSHAHeaderTopactions"
+     class=".viewlets.OSHASiteActionsViewlet"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <!-- The top language selector bar -->
+  <!-- For translatable items -->
+  <browser:viewlet
+     name="osha.languageselector"
+     manager=".interfaces.IOSHAHeaderDropdowns"
+     class=".viewlets.OSHALanguageSelector"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     for="*"
+     />
+
+  <!-- Render the browser title - overwritten so we can insert OSHA specific title -->
+  <browser:viewlet
+     name="osha.htmlhead.title"
+     manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+     class=".viewlets.TitleViewlet"
+     permission="zope2.View"
+     />
+
+  <!-- The network chooser bar -->
+  <browser:viewlet
+     name="osha.networkchooser"
+     manager=".interfaces.IOSHAHeaderDropdowns"
+     class=".viewlets.OSHANetworkchooser"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <!-- Germany specifics -->
+  <!-- The site actions -->
+  <browser:viewlet
+     name="osha.germany.site_actions"
+     manager=".interfaces.IOSHAHeaderDropdowns"
+     class=".viewlets.OSHASiteActionsViewlet"
+     layer=".interfaces.IGermanySpecific"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
+     name="osha.germany.languageselector"
+     manager="osha.theme.browser.interfaces.IOSHAHeaderDropdowns"
+     class=".viewlets.OSHAGermanyLanguageSelector"
+     layer=".interfaces.IGermanySpecific"
+     permission="zope2.View"
+     for="*"
+     />
+  <!-- / Germany specifics -->
+
+  <!-- Variable Area for Campaign Sites -->
+  <browser:viewlet
+     name="osha.campaignarea"
+     manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+     class=".viewlets.OSHACampaignAreaViewlet"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
+     name="osha.campaignarea2"
+     manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+     class=".viewlets.OSHACampaignArea2Viewlet"
+     layer=".interfaces.IHW2008Specific"
+     permission="zope2.View"
+     />
+
+  <!-- The breadcrumbs -->
+  <browser:viewlet
+     name="osha.path_bar"
+     manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+     class=".viewlets.OSHAPathBarViewlet"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
+     for="osha.surveyanswers.interfaces.ISurvey"
+     name="osha.path_bar"
+     manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+     class=".viewlets.OSHAEsenerPathBarViewlet"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <browser:viewlet
+     name="osha.path_bar"
+     manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+     class=".viewlets.OSHAFopPathBarViewlet"
+     layer="osha.fop.browser.interfaces.IFOPSpecific"
+     permission="zope2.View"
+     />
+
+  <!-- The bottom language selector bar -->
+  <browser:viewlet
+     name="osha.footer.actions"
+     manager="plone.app.layout.viewlets.interfaces.IPortalFooter"
+     class=".viewlets.OSHAFooterActions"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <!-- The logo -->
+  <browser:viewlet
+     name="osha.logo"
+     manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+     class=".viewlets.OSHALogoViewlet"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <!-- Above content portlets -->
+  <browser:viewlet
+     name="osha.abovecontentportlets"
+     manager="plone.app.layout.viewlets.interfaces.IContentViews"
+     template="templates/abovecontent_portlets.pt"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="plone.portlets.interfaces.ILocalPortletAssignable"
+     class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+     name="manage-oshaabove"
+     template="templates/manage_osha_above.pt"
+     permission="plone.app.portlets.ManagePortlets"
+     />
+
+  <browser:page
+     for="plone.portlets.interfaces.ILocalPortletAssignable"
+     class="plone.app.portlets.browser.manage.ManageContextualPortlets"
+     name="manage-oshabelow"
+     template="templates/manage_osha_below.pt"
+     permission="plone.app.portlets.ManagePortlets"
+     />
+
+  <browser:page
+     for="*"
+     name="rss-feeds"
+     class=".rssfeeds.RSSFeedsView"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="rss-current-jobs"
+     template="templates/rss_currentjobs.pt"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="oshtopic-view"
+     class=".oshtopic_view.OSHTopicView"
+     template="templates/oshtopic_view.pt"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="oshnews-view"
+     class=".oshnews_view.OSHNewsView"
+     template="templates/oshnews_view.pt"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="oshnews-view-simple"
+     template="templates/oshnews_view_simple.pt"
+     class=".oshnews_view.OSHNewsSimpleView"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="oshmail-subscribe"
+     class=".oshmail_subscribe.OSHmailSubscribe"
+     template="templates/oshmail_view.pt"
+     allowed_interface=".interfaces.IOSHmailView"
+     permission="zope2.View"
+     />
+  <browser:page
+     for="*"
+     name="oshmail-view"
+     class=".oshmail_view.OSHmailView"
+     template="templates/oshmail_view.pt"
+     allowed_interface=".interfaces.IOSHmailView"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="confirm-unsubscription"
+     template="templates/oshmail_unsubscribe.pt"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="unsubscribe"
+     class=".oshmail_unsubscribe.OSHmailUnsubscribe"
+     template="templates/oshmail_unsubscribe.pt"
+     permission="zope2.View"
+     allowed_interface=".interfaces.IOSHmailView"
+     />
+
+  <browser:page
+     for="*"
+     name="oshnews-local-view"
+     class=".oshnews_view.OSHNewsLocalView"
+     template="templates/oshnews_view.pt"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="oshevent-view"
+     class=".oshevent_view.OSHEventView"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="Products.Archetypes.interfaces.IBaseContent"
+     name="competitions-view"
+     class=".competitions.CompetitionsView"
+     template="templates/competitions_view.pt"
+     allowed_interface=".interfaces.ICompetitionsView"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="Products.Archetypes.interfaces.IBaseContent"
+     name="competition-detail"
+     class=".competitions.CompetitionDetail"
+     template="templates/competition_detail.pt"
+     allowed_interface=".interfaces.ICompetitionDetail"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="events.html"
+     permission="zope2.View"
+     class=".calendar_events_list.EventsListingView"
+     />
+
+  <browser:page
+     name="past_events.html"
+     for="*"
+     permission="zope2.View"
+     class=".calendar_events_list.PastEventsListingView"
+     />
+
+  <browser:page
+     for="*"
+     name="publications-overview"
+     class=".publications.PublicationsSearchView"
+     template="templates/publicationsearch.pt"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="publications-list"
+     class=".publications.PublicationsListView"
+     template="templates/publicationlist.pt"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     name="publication-container.html"
+     for="slc.publications.interfaces.IPublicationContainerEnhanced"
+     permission="zope2.View"
+     template="templates/publication-container.pt"
+     class="slc.publications.browser.publication.PublicationContainerView"
+     layer=".interfaces.IThemeSpecific"
+     />
+
+  <browser:page
+     for="*"
+     name="questions-in-parliament-search"
+     class=".publications.QuestionsInParliamentSearchView"
+     template="templates/questionsinparliamentsearch.pt"
+     permission="zope2.View"
+     />
+
+  <!-- TODO: #4414 fix topic-view depends on p4a.plonevideo which in
+       turn depends on an outdated hachoir -->
+  <browser:page
+     for="*"
+     name="topics-view"
+     template="templates/topics_view.pt"
+     class=".topics_view.TopicsView"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="topic-view"
+     template="templates/topic_view.pt"
+     class=".topics_view.TopicView"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="seplisting"
+     class=".seplisting.SEPListingView"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
+     name="index_alphabetical"
+     class=".index_alphabetical.IndexAlphabetical"
+     permission="zope2.View"
+     />
+
+  <!--browser:page
+      for="*"
+      name="index_atoz"
+      class=".index_atoz.IndexAtoZView"
       permission="zope2.View"
-      template="templates/publication-container.pt"
-      class="slc.publications.browser.publication.PublicationContainerView"
-      layer=".interfaces.IThemeSpecific"
-      />
+      /-->
 
-    <browser:page
-        for="*"
-        name="questions-in-parliament-search"
-        class=".publications.QuestionsInParliamentSearchView"
-        template="templates/questionsinparliamentsearch.pt"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="site_update"
+     class=".site_update.SiteUpdateView"
+     template="templates/site_update.pt"
+     permission="zope2.View"
+     />
 
-    <!-- TODO: #4414 fix topic-view depends on p4a.plonevideo which in
-         turn depends on an outdated hachoir -->
-    <browser:page
-        for="*"
-        name="topics-view"
-        template="templates/topics_view.pt"
-        class=".topics_view.TopicsView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="index_providers"
+     class=".dbfilter.ProviderDBFilterView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="topic-view"
-        template="templates/topic_view.pt"
-        class=".topics_view.TopicView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="db_filter"
+     class=".dbfilter.DBFilterView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="seplisting"
-        class=".seplisting.SEPListingView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="index_provider"
+     class=".dbfilter.ProviderDBFilterView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="index_alphabetical"
-        class=".index_alphabetical.IndexAlphabetical"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="index_oshlink"
+     class=".dbfilter.OSHLinkDBFilterView"
+     permission="zope2.View"
+     />
 
-    <!--browser:page
-        for="*"
-        name="index_atoz"
-        class=".index_atoz.IndexAtoZView"
-        permission="zope2.View"
-        /-->
+  <browser:page
+     for="*"
+     name="index_ralink"
+     class=".dbfilter.RALinkDBFilterView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="site_update"
-        class=".site_update.SiteUpdateView"
-        template="templates/site_update.pt"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="index_casestudy"
+     class=".dbfilter.CaseStudyDBFilterView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="index_providers"
-        class=".dbfilter.ProviderDBFilterView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="index_directive"
+     class=".dbfilter.DirectiveDBFilterView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="db_filter"
-        class=".dbfilter.DBFilterView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="ro_filter"
+     class=".rofilter.ROFilterView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="index_provider"
-        class=".dbfilter.ProviderDBFilterView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="index_ro_metadata"
+     class=".index_ro_metadata.IndexROMetadataView"
+     template="templates/index_ro_metadata.pt"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="index_oshlink"
-        class=".dbfilter.OSHLinkDBFilterView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="search_ro"
+     class=".search_ro.SearchROView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="index_ralink"
-        class=".dbfilter.RALinkDBFilterView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="worklist"
+     class=".worklist.WorklistView"
+     template="templates/worklist.pt"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="index_casestudy"
-        class=".dbfilter.CaseStudyDBFilterView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="broken-link-log"
+     class=".brokenlinks.BrokenLinkLog"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="index_directive"
-        class=".dbfilter.DirectiveDBFilterView"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="sitemap_builder_view"
+     class=".navigation.CatalogSiteMap"
+     permission="zope.Public"
+     allowed_attributes="siteMap"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
 
-    <browser:page
-        for="*"
-        name="ro_filter"
-        class=".rofilter.ROFilterView"
-        permission="zope2.View"
-        />
+  <browser:page
+     name="sitemap.xml.gz"
+     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+     class=".sitemap.SiteMapView"
+     permission="zope2.Public"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
 
-    <browser:page
-        for="*"
-        name="index_ro_metadata"
-        class=".index_ro_metadata.IndexROMetadataView"
-        template="templates/index_ro_metadata.pt"
-        permission="zope2.View"
-        />
+  <browser:page
+     name="newsmap.xml.gz"
+     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+     class=".sitemap.NewsMapView"
+     permission="zope2.Public"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
 
-    <browser:page
-        for="*"
-        name="search_ro"
-        class=".search_ro.SearchROView"
-        permission="zope2.View"
-        />
+  <browser:page
+     name="getVocabularyPath"
+     for="*"
+     class=".vocabulary.VocabularyPathView"
+     permission="zope2.Public"
+     />
 
-    <browser:page
-        for="*"
-        name="worklist"
-        class=".worklist.WorklistView"
-        template="templates/worklist.pt"
-        permission="zope2.View"
-        />
+  <browser:page
+     name="faq_view"
+     for="Products.ATContentTypes.interface.folder.IATFolder"
+     class=".faq_view.FAQView"
+     template="templates/faq_view.pt"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="broken-link-log"
-        class=".brokenlinks.BrokenLinkLog"
-        permission="zope2.View"
-        />
+  <browser:page
+     name="teaser-view"
+     for="*"
+     class=".teaserview.TeaserView"
+     template="templates/teaser_view.pt"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="sitemap_builder_view"
-        class=".navigation.CatalogSiteMap"
-        permission="zope.Public"
-        allowed_attributes="siteMap"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
+  <browser:page
+     name="osha_homepage"
+     for="*"
+     class=".homepage.HomepageView"
+     template="templates/osha_homepage.pt"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        name="sitemap.xml.gz"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".sitemap.SiteMapView"
-        permission="zope2.Public"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
+  <browser:page
+     name="teaser-archive-view"
+     for="*"
+     class=".teaserview.TeaserArchiveView"
+     template="templates/teaser_view.pt"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        name="newsmap.xml.gz"
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-        class=".sitemap.NewsMapView"
-        permission="zope2.Public"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
+  <browser:page
+     name="resource_listing"
+     for="*"
+     class=".resource_listing.ResourceListingView"
+     template="templates/resource_listing.pt"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        name="getVocabularyPath"
-        for="*"
-        class=".vocabulary.VocabularyPathView"
-        permission="zope2.Public"
-        />
+  <browser:page
+     name="osha-enable-js"
+     for="*"
+     class=".utils.EnableJSView"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        name="faq_view"
-        for="Products.ATContentTypes.interface.folder.IATFolder"
-        class=".faq_view.FAQView"
-        template="templates/faq_view.pt"
-        permission="zope2.View"
-        />
+  <!-- Switching from Provider to OSH Link -->
+  <browser:viewlet
+     name="osha.theme.provider_to_oshlink"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+     class=".viewlets.ProviderToOSHLinkViewlet"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        name="teaser-view"
-        for="*"
-        class=".teaserview.TeaserView"
-        template="templates/teaser_view.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        name="osha_homepage"
-        for="*"
-        class=".homepage.HomepageView"
-        template="templates/osha_homepage.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        name="teaser-archive-view"
-        for="*"
-        class=".teaserview.TeaserArchiveView"
-        template="templates/teaser_view.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        name="resource_listing"
-        for="*"
-        class=".resource_listing.ResourceListingView"
-        template="templates/resource_listing.pt"
-        permission="zope2.View"
-        />
-
-    <browser:page
-        name="osha-enable-js"
-        for="*"
-        class=".utils.EnableJSView"
-        permission="zope2.View"
-        />
-
-    <!-- Switching from Provider to OSH Link -->
-    <browser:viewlet
-        name="osha.theme.provider_to_oshlink"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
-        class=".viewlets.ProviderToOSHLinkViewlet"
-        permission="zope2.View"
-        />
-
-    <browser:viewlet
-        name="osha.theme.oshlink_to_provider"
-        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
-        class=".viewlets.OSHLinkToProviderViewlet"
-        permission="zope2.View"
-        />
+  <browser:viewlet
+     name="osha.theme.oshlink_to_provider"
+     manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+     class=".viewlets.OSHLinkToProviderViewlet"
+     permission="zope2.View"
+     />
 
 
-    <browser:viewlet
-        name="osha.theme.topic_view_heading_viewlet"
-        manager="slc.seminarportal.browser.interfaces.IAboveSeminarListing"
-        class=".viewlets.TopicViewHeading"
-        permission="zope2.View"
-        />
+  <browser:viewlet
+     name="osha.theme.topic_view_heading_viewlet"
+     manager="slc.seminarportal.browser.interfaces.IAboveSeminarListing"
+     class=".viewlets.TopicViewHeading"
+     permission="zope2.View"
+     />
 
-    <browser:viewlet
-        name="osha.belowcontentportlets"
-        manager="plone.app.layout.viewlets.interfaces.IBelowContent"
-        template="templates/belowcontent_portlets.pt"
-        layer=".interfaces.IOSHAThemeLayer"
-        permission="zope2.View"
-        />
+  <browser:viewlet
+     name="osha.belowcontentportlets"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContent"
+     template="templates/belowcontent_portlets.pt"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="Products.RemoteProvider.content.interfaces.IProvider"
-        name="oshcontent_switch_form"
-        template="templates/oshcontent_switch_form.pt"
-        class=".oshcontent_switcher.OSHContentSwitcher"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="Products.RemoteProvider.content.interfaces.IProvider"
+     name="oshcontent_switch_form"
+     template="templates/oshcontent_switch_form.pt"
+     class=".oshcontent_switcher.OSHContentSwitcher"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="Products.OSHContentLink.interfaces.IOSH_Link"
-        name="oshcontent_switch_form"
-        class=".oshcontent_switcher.OSHContentSwitcher"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="Products.OSHContentLink.interfaces.IOSH_Link"
+     name="oshcontent_switch_form"
+     class=".oshcontent_switcher.OSHContentSwitcher"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="switch_osh_content"
-        class=".oshcontent_switcher.SwitchOSHContent"
-        permission="zope2.View"
-        />
+  <browser:page
+     for="*"
+     name="switch_osh_content"
+     class=".oshcontent_switcher.SwitchOSHContent"
+     permission="zope2.View"
+     />
 
-    <browser:page
-        for="*"
-        name="pressrelease_listing"
-        template="templates/pressrelease_listing.pt"
-        class=".item_listing.ItemListingView"
-        permission="zope2.View"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
+  <browser:page
+     for="*"
+     name="pressrelease_listing"
+     template="templates/pressrelease_listing.pt"
+     class=".item_listing.ItemListingView"
+     permission="zope2.View"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
 
-    <!-- Renders an object in a different location of the site when passed the path to it #1150 -->
-    <browser:page
-        for="*"
-        name="slc.telescope"
-        class=".telescope.TelescopeView"
-        permission="zope2.View"
-        />
+  <!-- Renders an object in a different location of the site when passed the path to it #1150 -->
+  <browser:page
+     for="*"
+     name="slc.telescope"
+     class=".telescope.TelescopeView"
+     permission="zope2.View"
+     />
 
-    <!-- Inline content viewlet -->
-    <browser:viewlet
-        name="osha.theme.inline_content_viewlet"
-        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
-        class=".viewlets.InlineContentViewlet"
-        permission="zope2.View"
-        />
+  <!-- Inline content viewlet -->
+  <browser:viewlet
+     name="osha.theme.inline_content_viewlet"
+     manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+     class=".viewlets.InlineContentViewlet"
+     permission="zope2.View"
+     />
 
-    <!-- GoogleSearch viewlet, replacing the GoogleSearch portlet -->
-    <browser:viewlet
-        name="osha.theme.googlesearch_viewlet"
-        manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
-        class=".viewlets.GoogleSearchViewlet"
-        permission="zope2.View"
-        />
+  <!-- GoogleSearch viewlet, replacing the GoogleSearch portlet -->
+  <browser:viewlet
+     name="osha.theme.googlesearch_viewlet"
+     manager="plone.app.layout.viewlets.interfaces.IPortalHeader"
+     class=".viewlets.GoogleSearchViewlet"
+     permission="zope2.View"
+     />
 
-    <!-- helper view for the dyntree -->
-    <browser:page
-        for="Products.CMFCore.interfaces.ISiteRoot"
-        name="vdex_as_json"
-        class=".vdex.VDEXAsJson"
-        permission="zope.Public"
-        layer=".interfaces.IOSHAThemeLayer"
-    />
+  <!-- helper view for the dyntree -->
+  <browser:page
+     for="Products.CMFCore.interfaces.ISiteRoot"
+     name="vdex_as_json"
+     class=".vdex.VDEXAsJson"
+     permission="zope.Public"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
 
-    <include package="z3c.jbot" file="meta.zcml" />
+  <include package="z3c.jbot" file="meta.zcml" />
 
-    <browser:jbot
-        directory="jbot"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
+  <browser:jbot
+     directory="jbot"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
 
-    <!-- ASYNC QUEUE SIZE -->
-    <browser:page
-        for="*"
-        name="queue_size"
-        class=".maintenance.QueueSize"
-        permission="cmf.ManagePortal"
-        />
+  <!-- ASYNC QUEUE SIZE -->
+  <browser:page
+     for="*"
+     name="queue_size"
+     class=".maintenance.QueueSize"
+     permission="cmf.ManagePortal"
+     />
 
-    <!-- override the plone_layout util -->
-    <interface interface=".interfaces.IFullWidth" />
-    <browser:page
-        name="plone_layout"
-        for="*"
-        permission="zope.Public"
-        class=".layout.OSHALayoutPolicy"
-        allowed_interface="plone.app.layout.globals.interfaces.ILayoutPolicy"
-        layer=".interfaces.IOSHAThemeLayer"
-        />
-
-
+  <!-- override the plone_layout util -->
+  <interface interface=".interfaces.IFullWidth" />
+  <browser:page
+     name="plone_layout"
+     for="*"
+     permission="zope.Public"
+     class=".layout.OSHALayoutPolicy"
+     allowed_interface="plone.app.layout.globals.interfaces.ILayoutPolicy"
+     layer=".interfaces.IOSHAThemeLayer"
+     />
 
 </configure>

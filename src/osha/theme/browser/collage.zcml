@@ -1,8 +1,8 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    xmlns:zcml="http://namespaces.zope.org/zcml"
-    i18n_domain="osha">
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   xmlns:zcml="http://namespaces.zope.org/zcml"
+   i18n_domain="osha">
 
 
   <!-- Document -->
@@ -45,17 +45,17 @@
      />
 
   <browser:page
-    name="oshlinkfull"
-    for="Products.OSHContentLink.OSH_Link.OSH_Link"
-    permission="zope.Public"
-    template="collageviews/oshlink_full.pt"
-    class=".collageviews.OSHLinkFullView"
-    layer="Products.Collage.interfaces.ICollageBrowserLayer"
-    />
+     name="oshlinkfull"
+     for="Products.OSHContentLink.OSH_Link.OSH_Link"
+     permission="zope.Public"
+     template="collageviews/oshlink_full.pt"
+     class=".collageviews.OSHLinkFullView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
 
 
   <!-- News Item -->
-   <browser:page
+  <browser:page
      name="right_column"
      for="Products.ATContentTypes.content.newsitem.ATNewsItem"
      permission="zope.Public"

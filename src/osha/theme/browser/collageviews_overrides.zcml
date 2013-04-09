@@ -1,7 +1,7 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="osha">
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="osha">
 
   <!-- overridethe renderer so that we can provide the collage context -->
   <browser:page
@@ -11,7 +11,7 @@
      class="osha.theme.browser.collageviews.SimpleContainerRenderer"
      template="collageviews/collage_renderer.pt"
      />
-  
+
   <browser:page
      name="renderer"
      for="Products.Collage.interfaces.ICollageRow"
@@ -19,7 +19,7 @@
      class="osha.theme.browser.collageviews.SimpleContainerRenderer"
      template="collageviews/row_renderer.pt"
      />
-  
+
   <browser:page
      name="renderer"
      for="Products.Collage.interfaces.ICollageColumn"
@@ -28,10 +28,8 @@
      template="collageviews/column_renderer.pt"
      />
 
-
-
   <!-- News Item -->
-   <browser:page
+  <browser:page
      name="standard"
      for="Products.ATContentTypes.content.newsitem.ATNewsItem"
      permission="zope.Public"
@@ -50,7 +48,6 @@
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
-
   <!-- Document -->
   <browser:page
      name="text"
@@ -61,4 +58,4 @@
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
-</configure> 
+</configure>

@@ -1,11 +1,11 @@
 <configure
    xmlns="http://namespaces.zope.org/zope"
    xmlns:browser="http://namespaces.zope.org/browser"
-   xmlns:zcml="http://namespaces.zope.org/zcml"    
+   xmlns:zcml="http://namespaces.zope.org/zcml"
    i18n_domain="osha.theme">
 
   <!-- Overwrite subscription utilites for the alertservice -->
-  <utility factory=".alertservice.SubjectGetter" 
+  <utility factory=".alertservice.SubjectGetter"
            provides="slc.alertservice.interfaces.ISubjectGetter"
            name="alertservice.subjectgetter"
            />

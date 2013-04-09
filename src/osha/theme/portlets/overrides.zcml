@@ -22,5 +22,5 @@
      addview="slc.googlesearch.portlets.searchbox.AddForm"
      editview="slc.googlesearch.portlets.searchbox.EditForm"
      />
-  
+
 </configure>

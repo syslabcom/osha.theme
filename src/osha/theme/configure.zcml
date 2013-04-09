@@ -1,48 +1,46 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:five="http://namespaces.zope.org/five"
-    xmlns:cmf="http://namespaces.zope.org/cmf"
-    i18n_domain="osha.theme">
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:five="http://namespaces.zope.org/five"
+   xmlns:cmf="http://namespaces.zope.org/cmf"
+   i18n_domain="osha.theme">
 
-    
+  <five:registerPackage package="." initialize=".initialize" />
 
-   <five:registerPackage package="." initialize=".initialize" />
+  <include package=".browser" />
+  <include package=".portlets" />
 
-   <include package=".browser" />
-   <include package=".portlets" />   
+  <include file="skins.zcml" />
+  <include file="profiles.zcml" />
 
-   <include file="skins.zcml" />
-   <include file="profiles.zcml" />
+  <utility
+     component=".vocabulary.FriendlyTypesVocabulary"
+     name="osha.theme.FriendlyTypesVocabulary"
+     />
 
-    <utility
-        component=".vocabulary.FriendlyTypesVocabulary"
-        name="osha.theme.FriendlyTypesVocabulary"
-        /> 
+  <utility
+     component=".vocabulary.SubjectValuesVocabulary"
+     name="osha.theme.SubjectValuesVocabulary"
+     />
 
-    <utility
-        component=".vocabulary.SubjectValuesVocabulary"
-        name="osha.theme.SubjectValuesVocabulary"
-        /> 
+  <utility
+     component=".vocabulary.SortableIndexesVocabulary"
+     name="osha.theme.SortableIndexesVocabulary"
+     />
 
-    <utility
-        component=".vocabulary.SortableIndexesVocabulary"
-        name="osha.theme.SortableIndexesVocabulary"
-        /> 
+  <utility
+     component=".vocabulary.SinToolKeyVocabulary"
+     name="osha.theme.SinToolKeyVocabulary"
+     />
 
-    <utility
-        component=".vocabulary.SinToolKeyVocabulary"
-        name="osha.theme.SinToolKeyVocabulary"
-        /> 
+  <utility
+     component=".vocabulary.PressContactVocabulary"
+     name="osha.theme.PressContactVocabulary"
+     />
 
-    <utility
-        component=".vocabulary.PressContactVocabulary"
-        name="osha.theme.PressContactVocabulary"
-        /> 
-
-    <adapter
-        for=".browser.interfaces.IInlineContentViewlet"
-        provides=".browser.interfaces.IInlineContentViewlet"
-        factory=".adapter.InlineContentViewletAdapter"
-        />
+  <adapter
+     for=".browser.interfaces.IInlineContentViewlet"
+     provides=".browser.interfaces.IInlineContentViewlet"
+     factory=".adapter.InlineContentViewletAdapter"
+     />
 
 </configure>

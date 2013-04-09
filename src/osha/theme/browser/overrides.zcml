@@ -1,9 +1,9 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="osha.theme">
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="osha.theme">
 
- <browser:page
+  <browser:page
      name="existing-items-form"
      for="Products.Collage.interfaces.ICollageColumn"
      permission="cmf.ModifyPortalContent"
@@ -11,4 +11,4 @@
      template="templates/existing_items_form.pt"
      />
 
-</configure> 
+</configure>

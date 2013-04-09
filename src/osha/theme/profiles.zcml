@@ -1,14 +1,14 @@
 <configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="osha.theme">
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+   i18n_domain="osha.theme">
 
   <genericsetup:registerProfile
-      name="default"
-      title="OSHA Plone Theme"
-      directory="profiles/default"
-      description='Extension profile for the "OSHA Plone Theme" Plone theme.'
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+     name="default"
+     title="OSHA Plone Theme"
+     directory="profiles/default"
+     description='Extension profile for the "OSHA Plone Theme" Plone theme.'
+     provides="Products.GenericSetup.interfaces.EXTENSION"
+     />
 
 </configure>

@@ -2,74 +2,74 @@
            xmlns:browser="http://namespaces.zope.org/browser"
            xmlns:plone="http://namespaces.plone.org/plone">
 
- <include package="plone.app.portlets" />
- 
- <!-- Custom news portlet -->
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.news.INewsPortlet" 
+  <include package="plone.app.portlets" />
+
+  <!-- Custom news portlet -->
+  <plone:portletRenderer
+     portlet="plone.app.portlets.portlets.news.INewsPortlet"
      layer="osha.theme.browser.interfaces.IThemeSpecific"
-     class=".news.Renderer" 
+     class=".news.Renderer"
      />
 
-    <plone:portlet
-        name="osha.OSHNews"
-        interface=".oshnews.INewsPortlet"
-        assignment=".oshnews.Assignment"
-        renderer=".oshnews.Renderer"
-        addview=".oshnews.AddForm"
-        editview=".oshnews.EditForm"
-        />
+  <plone:portlet
+     name="osha.OSHNews"
+     interface=".oshnews.INewsPortlet"
+     assignment=".oshnews.Assignment"
+     renderer=".oshnews.Renderer"
+     addview=".oshnews.AddForm"
+     editview=".oshnews.EditForm"
+     />
 
- <!-- Custom events portlet -->
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.events.IEventsPortlet" 
+  <!-- Custom events portlet -->
+  <plone:portletRenderer
+     portlet="plone.app.portlets.portlets.events.IEventsPortlet"
      layer="osha.theme.browser.interfaces.IThemeSpecific"
-     class=".events.Renderer" 
-     />    
+     class=".events.Renderer"
+     />
 
-    <plone:portlet
-        name="osha.OSHEvents"
-        interface=".oshevents.IEventsPortlet"
-        assignment=".oshevents.Assignment"
-        renderer=".oshevents.Renderer"
-        addview=".oshevents.AddForm"
-        editview=".oshevents.EditForm"
-        />
+  <plone:portlet
+     name="osha.OSHEvents"
+     interface=".oshevents.IEventsPortlet"
+     assignment=".oshevents.Assignment"
+     renderer=".oshevents.Renderer"
+     addview=".oshevents.AddForm"
+     editview=".oshevents.EditForm"
+     />
 
- <!-- Custom risq navigation portlet -->
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
+  <!-- Custom risq navigation portlet -->
+  <plone:portletRenderer
+     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet"
      layer="osha.theme.browser.interfaces.IRISQSpecific"
-     class=".risqnavigation.Renderer" 
-     />  
+     class=".risqnavigation.Renderer"
+     />
 
 
- <!-- Custom safestart navigation portlet -->
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
+  <!-- Custom safestart navigation portlet -->
+  <plone:portletRenderer
+     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet"
      layer="osha.theme.browser.interfaces.ISafestartSpecific"
      class=".safestartnavigation.Renderer"
-     />  
+     />
 
- <!-- Custom navigation portlet -->
- <adapter
-    factory=".navigation.TreeFactory" />
+  <!-- Custom navigation portlet -->
+  <adapter
+     factory=".navigation.TreeFactory" />
 
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet" 
+  <plone:portletRenderer
+     portlet="plone.app.portlets.portlets.navigation.INavigationPortlet"
      layer="osha.theme.browser.interfaces.IThemeSpecific"
-     class=".navigation.Renderer" 
-     />  
+     class=".navigation.Renderer"
+     />
 
- <!-- Custom navigation portlet -->
- <plone:portletRenderer 
-     portlet=".inline_navigation.IInlineNavigationPortlet" 
+  <!-- Custom navigation portlet -->
+  <plone:portletRenderer
+     portlet=".inline_navigation.IInlineNavigationPortlet"
      layer="osha.theme.browser.interfaces.IThemeSpecific"
-     class=".inline_navigation.Renderer" 
-     />  
-      
- <!-- custom inline box navigation portlet -->       
- <plone:portlet
+     class=".inline_navigation.Renderer"
+     />
+
+  <!-- custom inline box navigation portlet -->
+  <plone:portlet
      name="osha.InlineNavigation"
      interface=".inline_navigation.IInlineNavigationPortlet"
      assignment=".inline_navigation.Assignment"
@@ -79,57 +79,57 @@
      />
 
 
- <!-- Custom defaultsearch portlet -->
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.search.ISearchPortlet" 
+  <!-- Custom defaultsearch portlet -->
+  <plone:portletRenderer
+     portlet="plone.app.portlets.portlets.search.ISearchPortlet"
      layer="osha.theme.browser.interfaces.IThemeSpecific"
-     class=".defaultsearch.Renderer" 
+     class=".defaultsearch.Renderer"
      />
 
- <plone:portletRenderer 
-     portlet="plone.app.portlets.portlets.search.ISearchPortlet" 
+  <plone:portletRenderer
+     portlet="plone.app.portlets.portlets.search.ISearchPortlet"
      layer="osha.theme.browser.interfaces.ISafestartSpecific"
      class=".defaultsearch.Renderer"
-     />  
-     
- <!-- Alert Service portlet -->
- <plone:portlet
+     />
+
+  <!-- Alert Service portlet -->
+  <plone:portlet
      name="osha.AlertService"
      interface=".alertservice.IAlertServicePortlet"
      assignment=".alertservice.Assignment"
      renderer=".alertservice.Renderer"
      addview=".alertservice.AddForm"
-     />        
+     />
 
- <!-- OSHMail portlet -->
- <plone:portlet
+  <!-- OSHMail portlet -->
+  <plone:portlet
      name="osha.FreeNewsletter"
      interface=".oshmail.IOSHMailPortlet"
      assignment=".oshmail.Assignment"
      renderer=".oshmail.Renderer"
      addview=".oshmail.AddForm"
-     />        
+     />
 
- <!-- Mailing list Subscribe portlet -->
- <plone:portlet
+  <!-- Mailing list Subscribe portlet -->
+  <plone:portlet
      name="osha.Subscribe"
      interface=".subscribe_mailinglists.ISubscribePortlet"
      assignment=".subscribe_mailinglists.Assignment"
      renderer=".subscribe_mailinglists.Renderer"
      addview=".subscribe_mailinglists.AddForm"
-     />        
+     />
 
- <!-- Follow us portlet -->
- <plone:portlet
+  <!-- Follow us portlet -->
+  <plone:portlet
      name="osha.FollowUs"
      interface=".follow_us.IFollowUsPortlet"
      assignment=".follow_us.Assignment"
      renderer=".follow_us.Renderer"
      addview=".follow_us.AddForm"
-     />        
+     />
 
-<!-- Network Member Links portlet -->
- <plone:portlet
+  <!-- Network Member Links portlet -->
+  <plone:portlet
      name="osha.NetworkMemberLinks"
      interface=".network_member_links.IOSHNetworkMemberLinksPortlet"
      assignment=".network_member_links.Assignment"
@@ -138,8 +138,8 @@
      editview=".network_member_links.EditForm"
      />
 
-<!-- Practical Solutions portlet used on the Topics page -->
- <plone:portlet
+  <!-- Practical Solutions portlet used on the Topics page -->
+  <plone:portlet
      name="osha.PracticalSolutions"
      interface=".practical_solutions.IPracticalSolutionsPortlet"
      assignment=".practical_solutions.Assignment"
@@ -148,7 +148,7 @@
      editview=".practical_solutions.EditForm"
      />
 
- <plone:portlet
+  <plone:portlet
      name="osha.OSHAItems"
      interface=".osha_items.IOSHAItemsPortlet"
      assignment=".osha_items.Assignment"
@@ -157,7 +157,7 @@
      editview=".osha_items.EditForm"
      />
 
- <plone:portlet
+  <plone:portlet
      name="osha.Publications"
      interface=".publications.IPublicationsPortlet"
      assignment=".publications.Assignment"
@@ -166,8 +166,8 @@
      editview=".publications.EditForm"
      />
 
- <!-- Campaigns portlet -->
- <plone:portlet
+  <!-- Campaigns portlet -->
+  <plone:portlet
      name="osha.Campaigns"
      interface=".campaigns.ICampaignsPortlet"
      assignment=".campaigns.Assignment"
@@ -175,110 +175,110 @@
      addview=".campaigns.AddForm"
      />
 
- <!-- EW2007 portlet -->
- <plone:portlet
+  <!-- EW2007 portlet -->
+  <plone:portlet
      name="osha.EW2007"
      interface=".ew2007.IEW2007Portlet"
      assignment=".ew2007.Assignment"
      renderer=".ew2007.Renderer"
      addview=".ew2007.AddForm"
-     />        
+     />
 
- <!-- FirstTime portlet -->
- <plone:portlet
+  <!-- FirstTime portlet -->
+  <plone:portlet
      name="osha.FirstTime"
      interface=".firsttime.IFirstTimePortlet"
      assignment=".firsttime.Assignment"
      renderer=".firsttime.Renderer"
      addview=".firsttime.AddForm"
-     />        
+     />
 
 
- <!-- SEP About portlet -->
- <plone:portlet
+  <!-- SEP About portlet -->
+  <plone:portlet
      name="osha.SEPAbout"
      interface=".sep_about.ISEPAboutPortlet"
      assignment=".sep_about.Assignment"
      renderer=".sep_about.Renderer"
      addview=".sep_about.AddForm"
-     />        
+     />
 
- <!-- Custom Search portlet -->
-    <plone:portlet
-        name="osha.GoogleSearch"
-        interface=".search.ISearchPortlet"
-        assignment=".search.Assignment"
-        renderer=".search.Renderer"
-        addview=".search.AddForm"
-        editview=".search.EditForm"
-        />
+  <!-- Custom Search portlet -->
+  <plone:portlet
+     name="osha.GoogleSearch"
+     interface=".search.ISearchPortlet"
+     assignment=".search.Assignment"
+     renderer=".search.Renderer"
+     addview=".search.AddForm"
+     editview=".search.EditForm"
+     />
 
- <!-- More About portlet -->
-     <plone:portlet
-         name="osha.MoreAbout"
-         interface=".moreabout.IMoreAboutPortlet"
-         assignment=".moreabout.Assignment"
-         renderer=".moreabout.Renderer"
-         addview=".moreabout.AddForm"
-         />     
-            
- <!-- Lingualink portlet -->
-<!-- TODO: BlueLinguaLink is obsolete see #4413 -->
-      <plone:portlet
-          name="osha.lingualinks"
-          interface=".lingualink.ILinguaLinkPortlet"
-          assignment=".lingualink.Assignment"
-          renderer=".lingualink.Renderer" 
-          addview=".lingualink.AddForm"
-          />  
-         
- <!-- Document Fallback portlet -->
-     <plone:portlet
-         name="osha.document_fallback"
-         interface=".document_fallback.IDocumentFallbackPortlet"
-         assignment=".document_fallback.Assignment"
-         renderer=".document_fallback.Renderer"
-         addview=".document_fallback.AddForm"
-         editview=".document_fallback.EditForm"
-         view_permission="zope2.View"
-         edit_permission="cmf.ManagePortal"
-         />
+  <!-- More About portlet -->
+  <plone:portlet
+     name="osha.MoreAbout"
+     interface=".moreabout.IMoreAboutPortlet"
+     assignment=".moreabout.Assignment"
+     renderer=".moreabout.Renderer"
+     addview=".moreabout.AddForm"
+     />
 
- <!-- Document Fallback portlet -->
-     <plone:portlet
-         name="osha.top5"
-         interface=".top5.ITop5Portlet"
-         assignment=".top5.Assignment"
-         renderer=".top5.Renderer"
-         addview=".top5.AddForm"
-         editview=".top5.EditForm"
-         view_permission="zope2.View"
-         edit_permission="cmf.ManagePortal"
-         />
+  <!-- Lingualink portlet -->
+  <!-- TODO: BlueLinguaLink is obsolete see #4413 -->
+  <plone:portlet
+     name="osha.lingualinks"
+     interface=".lingualink.ILinguaLinkPortlet"
+     assignment=".lingualink.Assignment"
+     renderer=".lingualink.Renderer"
+     addview=".lingualink.AddForm"
+     />
+
+  <!-- Document Fallback portlet -->
+  <plone:portlet
+     name="osha.document_fallback"
+     interface=".document_fallback.IDocumentFallbackPortlet"
+     assignment=".document_fallback.Assignment"
+     renderer=".document_fallback.Renderer"
+     addview=".document_fallback.AddForm"
+     editview=".document_fallback.EditForm"
+     view_permission="zope2.View"
+     edit_permission="cmf.ManagePortal"
+     />
+
+  <!-- Document Fallback portlet -->
+  <plone:portlet
+     name="osha.top5"
+     interface=".top5.ITop5Portlet"
+     assignment=".top5.Assignment"
+     renderer=".top5.Renderer"
+     addview=".top5.AddForm"
+     editview=".top5.EditForm"
+     view_permission="zope2.View"
+     edit_permission="cmf.ManagePortal"
+     />
 
 
- <!-- Image portlet -->
-     <plone:portlet
-         name="osha.image"
-         interface=".image.IImagePortlet"
-         assignment=".image.Assignment"
-         renderer=".image.Renderer"
-         addview=".image.AddForm"
-         editview=".image.EditForm"
-         view_permission="zope2.View"
-         edit_permission="cmf.ManagePortal"
-         />        
+  <!-- Image portlet -->
+  <plone:portlet
+     name="osha.image"
+     interface=".image.IImagePortlet"
+     assignment=".image.Assignment"
+     renderer=".image.Renderer"
+     addview=".image.AddForm"
+     editview=".image.EditForm"
+     view_permission="zope2.View"
+     edit_permission="cmf.ManagePortal"
+     />
 
-     <!--Rolling Quotes portlet-->
-     <plone:portlet
-         name="osha.RollingQuotes"
-         interface=".rollingquotes.IRollingQuotesPortlet"
-         assignment=".rollingquotes.Assignment"
-         renderer=".rollingquotes.Renderer"
-         addview=".rollingquotes.AddForm"
-         editview=".rollingquotes.EditForm"
-         view_permission="zope2.View"
-         edit_permission="cmf.ManagePortal"
-         />        
+  <!--Rolling Quotes portlet-->
+  <plone:portlet
+     name="osha.RollingQuotes"
+     interface=".rollingquotes.IRollingQuotesPortlet"
+     assignment=".rollingquotes.Assignment"
+     renderer=".rollingquotes.Renderer"
+     addview=".rollingquotes.AddForm"
+     editview=".rollingquotes.EditForm"
+     view_permission="zope2.View"
+     edit_permission="cmf.ManagePortal"
+     />
 
 </configure>
