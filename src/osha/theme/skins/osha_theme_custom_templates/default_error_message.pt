@@ -36,7 +36,7 @@
                     We're sorry, but that page doesn't exist&hellip;
                 </h1>
 
-                <p i18n:translate="description_site_error_double_check_or_search">
+                <p i18n:domain="osha" i18n:translate="description_site_error_double_check_or_search">
                 Please double check the web address or use the search function on this page to find what you are looking for.
                 </p>
 
@@ -58,7 +58,7 @@
                                   langtool python:portal.portal_languages;
                                   preflang python:langtool.getPreferredLanguage();
                                   lang_name python:langtool.getNameForLanguageCode(preflang);"
-                      i18n:domain="linguaplone">
+                      i18n:domain="osha">
 
                     <h2 i18n:translate="header_translation_unavailable">
                         Translation Unavailable
