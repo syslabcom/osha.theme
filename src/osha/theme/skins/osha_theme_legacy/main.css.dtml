@@ -979,9 +979,12 @@ div.teaserdate {
 div.overlay {
     display: none;
     font-size: 80%;
-    height: auto;
+    max-height: 600px;
+    max-width: 1000px;
     margin: 1em;
-    width: auto;
+    overflow: auto;
+    padding-left: 10px;
+    padding-top:20px;
 }
 div.overlay-iframe, div.overlay-ajax {
     min-height: 100px;
@@ -995,9 +998,9 @@ div.overlaybg div.close, div.overlay div.close {
     background-image: url("pb_close.png");
     cursor: pointer;
     height: 30px;
-    left: -14px;
+    left: 0;
     position: absolute;
-    top: -14px;
+    top: 0;
     width: 30px;
 }
 .pb-ajax {
