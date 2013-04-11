@@ -70,7 +70,10 @@
                                 tal:content="lang_name">
                             Language
                         </strong>,
-                        but you can keep browsing the site in this language.
+                        <a href="#"
+                           tal:attributes="href python: translation_helper.get_fallback_url(not_found_url)">
+                          but you can keep browsing the site in this language
+                        </a>.
                     </p>
 
                     <tal:translations condition="en_obj"
