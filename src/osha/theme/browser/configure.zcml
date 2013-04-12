@@ -1034,7 +1034,7 @@
 
   <browser:viewlet
       name="osha.item_deleted"
-      manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+      manager="plone.app.layout.viewlets.interfaces.IPortalTop"
       class=".viewlets.ItemDeletedViewlet"
       template="templates/item_deleted.pt"
       layer=".interfaces.IOSHAThemeLayer"
