@@ -1,0 +1,9 @@
+<dl class="portalMessage error" id="osha-item-deleted">
+    <dt i18n:domain="plone" i18n:translate="Error">Error</dt>
+    <dd i18n:domain="osha" i18n:translate="message_item_deleted">
+        The <span i18n:name="portal_type" i18n:domain="plone" i18n:translate="">
+            <span tal:replace="view/portal_type" />
+        </span>
+        you are looking for has been deleted.
+    </dd>
+</dl>

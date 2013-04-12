@@ -1032,4 +1032,13 @@
       permission="zope2.View"
       />
 
+  <browser:viewlet
+      name="osha.item_deleted"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+      class=".viewlets.ItemDeletedViewlet"
+      template="templates/item_deleted.pt"
+      layer=".interfaces.IOSHAThemeLayer"
+      permission="zope2.View"
+      />
+
 </configure>

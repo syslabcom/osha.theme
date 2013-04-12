@@ -16,7 +16,6 @@ from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 from Products.LinguaPlone.interfaces import ITranslatable
-from Products.statusmessages.interfaces import IStatusMessage
 from zope.annotation.interfaces import IAnnotations, IAnnotatable
 
 from plone.memoize import ram
@@ -33,7 +32,6 @@ from slc.googlesearch.interfaces import IGoogleSearchSettings
 from plone.app.layout.viewlets.common import DublinCoreViewlet
 
 from osha.theme import config
-from osha.theme import _
 from osha.theme.browser.interfaces import IInlineContentViewlet
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
 from osha.theme.browser.topics_view import TopicsBrowserView
@@ -761,6 +759,8 @@ class OSHADublinCoreViewlet(DublinCoreViewlet):
 
 class OutdatedViewlet(OutdatedViewletBase):
     """A viewlet that indicates that content is outdated
+        If the content item is also expired and the user is not logged in,
+        redirect to the parent folder with a 301
     """
     outdated = Outdated()
 
@@ -770,11 +770,20 @@ class OutdatedViewlet(OutdatedViewletBase):
         is_anon = getToolByName(self, 'portal_membership').isAnonymousUser()
         if isExpired(self.context) and is_anon:
             parent = aq_parent(self.context)
-            status = IStatusMessage(self.request)
-            status.addStatusMessage(
-                _(u"The content you are looking for has been deleted."),
-                type='error')
             self.request.response.redirect(
-                parent.absolute_url(), status=301)
+                "%s?msg=deleted_content&portal_type=%s" % (
+                    parent.absolute_url(), self.context.portal_type),
+                status=301)
         return super(OutdatedViewlet, self).render()
 
+
+class ItemDeletedViewlet(common.ViewletBase):
+    """ Display a message if the current request has been redirected from
+        "deleted" content.
+    """
+
+    def render(self):
+        if self.request.get('msg', '') == 'deleted_content':
+            self.portal_type = self.request.get('portal_type', 'Item')
+            return super(ItemDeletedViewlet, self).render()
+        return ""
