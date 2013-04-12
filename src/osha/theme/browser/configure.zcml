@@ -1022,4 +1022,14 @@
      layer=".interfaces.IOSHAThemeLayer"
      />
 
+  <!-- overwrite outdated viewlet to force a 301 redirection -->
+  <browser:viewlet
+      name="slc.outdated"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+      class=".viewlets.OutdatedViewlet"
+      template="templates/outdated.pt"
+      layer=".interfaces.IOSHAThemeLayer"
+      permission="zope2.View"
+      />
+
 </configure>

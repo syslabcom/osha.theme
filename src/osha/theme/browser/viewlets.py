@@ -16,6 +16,7 @@ from Products.CMFPlone.utils import safe_unicode
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.LinguaPlone.browser.selector import TranslatableLanguageSelector
 from Products.LinguaPlone.interfaces import ITranslatable
+from Products.statusmessages.interfaces import IStatusMessage
 from zope.annotation.interfaces import IAnnotations, IAnnotatable
 
 from plone.memoize import ram
@@ -25,16 +26,19 @@ from plone.app.layout.viewlets import common
 from plone.app.portlets.cache import get_language
 
 from slc.subsite.interfaces import ISubsiteEnhanced
+from Products.CMFPlone.utils import isExpired
 from Products.RemoteProvider.content.interfaces import IProvider
 from Products.OSHContentLink.interfaces import IOSH_Link
 from slc.googlesearch.interfaces import IGoogleSearchSettings
 from plone.app.layout.viewlets.common import DublinCoreViewlet
 
 from osha.theme import config
+from osha.theme import _
 from osha.theme.browser.interfaces import IInlineContentViewlet
 from osha.theme.browser.osha_properties_controlpanel import PropertiesControlPanelAdapter
-
 from osha.theme.browser.topics_view import TopicsBrowserView
+from slc.outdated.viewlet import OutdatedViewlet as OutdatedViewletBase
+from slc.outdated import Outdated
 
 
 class OSHALanguageSelector(TranslatableLanguageSelector):
@@ -753,3 +757,24 @@ class OSHADublinCoreViewlet(DublinCoreViewlet):
     def update(self):
         context = aq_inner(self.context)
         self.metatags = self.listMetaTags(context).items()
+
+
+class OutdatedViewlet(OutdatedViewletBase):
+    """A viewlet that indicates that content is outdated
+    """
+    outdated = Outdated()
+
+    def render(self):
+        if not self.outdated:
+            return ""
+        is_anon = getToolByName(self, 'portal_membership').isAnonymousUser()
+        if isExpired(self.context) and is_anon:
+            parent = aq_parent(self.context)
+            status = IStatusMessage(self.request)
+            status.addStatusMessage(
+                _(u"The content you are looking for has been deleted."),
+                type='error')
+            self.request.response.redirect(
+                parent.absolute_url(), status=301)
+        return super(OutdatedViewlet, self).render()
+
