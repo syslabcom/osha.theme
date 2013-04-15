@@ -1,100 +1,106 @@
 <metal:page define-macro="master">
-<metal:doctype define-slot="doctype">
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-</metal:doctype>
-<metal:block use-macro="here/global_defines/macros/defines" />
-<metal:block tal:define="charset here/site_properties/default_charset|string:utf-8; dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:v="urn:schemas-microsoft-com:vml"
-      xml:lang="en"
-      lang="en"
-      tal:attributes="lang site_properties/default_language|default;
-                      xml:lang site_properties/default_language|default;">
+  <metal:doctype define-slot="doctype">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  </metal:doctype>
+  <metal:block use-macro="here/global_defines/macros/defines" />
+  <metal:block tal:define="charset here/site_properties/default_charset|string:utf-8; dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
-          tal:define="charset site_properties/default_charset|string:utf-8"
-          tal:attributes="content string:text/html;;charset=${charset}" />
+  <html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:v="urn:schemas-microsoft-com:vml"
+        xml:lang="en"
+        lang="en"
+        tal:attributes="lang site_properties/default_language|default;
+                        xml:lang site_properties/default_language|default;">
 
-    <title tal:define="portal_title here/portal_properties/title;
-                       here_title here/Title | here/title | here/id;
-                       template_title python:template.title_or_id();
-                       here_title python:test( portal_title != here_title,
-                                               here_title,
-                                               template_title )"
-           tal:content="structure string:$portal_title - $here_title">Title of page</title>
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"
+            tal:define="charset site_properties/default_charset|string:utf-8"
+            tal:attributes="content string:text/html;;charset=${charset}" />
 
-
-    <meta tal:condition="here/listMetaTags|nothing"
-          tal:repeat="keyval here/listMetaTags"
-          tal:attributes="name python:keyval[0];
-                          content python:keyval[1];" />
-
-<style type="text/css" tal:define="sheet python:getattr(here.portal_url.getPortalObject(), 'oshmail.css')" tal:content="structure sheet" ></style>
+      <title tal:define="portal_title here/portal_properties/title;
+                         here_title here/Title | here/title | here/id;
+                         template_title python:template.title_or_id();
+                         here_title python:test( portal_title != here_title,
+                         here_title,
+                         template_title )"
+             tal:content="structure string:$portal_title - $here_title">Title of page</title>
 
 
-</head>
+      <meta tal:condition="here/listMetaTags|nothing"
+            tal:repeat="keyval here/listMetaTags"
+            tal:attributes="name python:keyval[0];
+                            content python:keyval[1];" />
 
-<body leftmargin="5" style='margin-left: 1em; font-family: Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;'
-    tal:define="plone_view context/@@plone;
-				view nocall:view | nocall: plone_view;
-				ltool nocall:here/portal_languages;
-                propstool nocall:here/portal_properties;
-                site_props nocall:propstool/site_properties;
-                prefLang ltool/getPreferredLanguage;
-                oshaview here/@@oshaview;
-                collage_id here/getId;
-                url python:oshaview.handleOSHMailUrls('https://osha.europa.eu', collage_id);
-				body_class python:plone_view.bodyClass(template, view);"
-	tal:attributes="class body_class;">
+      <style type="text/css" tal:define="sheet python:getattr(here.portal_url.getPortalObject(), 'oshmail.css')" tal:content="structure sheet"></style>
 
-<table width="790" style="width:790px"><tr><td>
-	<background></background>
-<table style="width:790px;" background="http://osha.plone4.syslab.com/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
-	<tr><td width="200"><a style="width:200px; display:block" accesskey="1" href="https://osha.europa.eu/en" target="_blank" width="200">		&nbsp;</a>
-	</td>
-	<td width="590" align="right" valign="top">
-		<h1 class="documentFirstHeading" style="margin-top:36px"><span tal:replace="here/title_or_id" /><br/>Newsletter</h1><br/>
-	</td></tr>
-</table>
+    </head>
 
-</td></tr>
-<tr><td>
-&nbsp;
-<table width="800" id="language-list">
-    <tr>
-        <td valign="top"
-            tal:define="lang_info ltool/getAvailableLanguageInformation;">
-        <tal:block define="supported_languages ltool/listSupportedLanguages|python:[];
-                           languages_on_main_site site_props/languages_on_main_site|python:[];
-                           served_language_keys python:[x[0] for x in supported_languages if x[0] in languages_on_main_site];
-                           served_languages python:oshaview.get_sorted(served_language_keys);"
-            condition="python:len(served_languages)>1">
-            <div i18n:domain="osha" style="text-align: center"
-                tal:define="thisurl string:${here/absolute_url}/${template/id}">
+    <body leftmargin="5" style="margin-left: 1em; font-family: Verdana,Helvetica,'Lucida Grande',Lucida,Arial,sans-serif;"
+          tal:define="plone_view context/@@plone;
+                      view nocall:view | nocall: plone_view;
+                      ltool nocall:here/portal_languages;
+                      propstool nocall:here/portal_properties;
+                      site_props nocall:propstool/site_properties;
+                      prefLang ltool/getPreferredLanguage;
+                      oshaview here/@@oshaview;
+                      collage_id here/getId;
+                      url python:oshaview.handleOSHMailUrls('https://osha.europa.eu', collage_id);
+                      body_class python:plone_view.bodyClass(template, view);"
+          tal:attributes="class body_class;">
 
-              <span tal:omit-tag="" tal:repeat="lang served_languages"><a tal:omit-tag="python:prefLang == lang"
-                        tal:define="lang_url python:thisurl+'?set_language='+lang;
-                            url python:oshaview.handleOSHMailUrls(lang_url, collage_id);"
-                        href="" tal:attributes="href url"
-                        tal:content="python:oshaview.get_native_language_by_code(lang)">lang</a>
-						<span tal:omit-tag="" tal:condition="not:repeat/lang/end"> | </span> </span>
-            </div>
-        </tal:block>
-      </td>
-    </tr>
-</table>
+      <table width="790" style="width:790px">
+        <tr>
+          <td>
+            <background></background>
+            <table style="width:790px;" background="http://osha.plone4.syslab.com/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
+              <tr>
+                <td width="200"><a style="width:200px; display:block" accesskey="1" href="https://osha.europa.eu/en" target="_blank" width="200">       &nbsp;</a>
+                </td>
+                <td width="590" align="right" valign="top">
+                  <h1 class="documentFirstHeading" style="margin-top:36px"><span tal:replace="here/title_or_id" /><br/>Newsletter</h1><br/>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            &nbsp;
+            <table width="800" id="language-list">
+              <tr>
+                <td valign="top"
+                    tal:define="lang_info ltool/getAvailableLanguageInformation;">
+                  <tal:block define="supported_languages ltool/listSupportedLanguages|python:[];
+                                     languages_on_main_site site_props/languages_on_main_site|python:[];
+                                     served_language_keys python:[x[0] for x in supported_languages if x[0] in languages_on_main_site];
+                                     served_languages python:oshaview.get_sorted(served_language_keys);"
+                             condition="python:len(served_languages)>1">
+                    <div i18n:domain="osha" style="text-align: center"
+                         tal:define="thisurl string:${here/absolute_url}/${template/id}">
 
-</td></tr><tr><td>
-
-
-   <metal:bodytext metal:define-slot="main" tal:content="nothing">
-      <!-- Page body text -->
-   </metal:bodytext>
-
-
-</td></tr></table>
-</body>
-</html>
+                      <span tal:omit-tag="" tal:repeat="lang served_languages">
+                        <a tal:omit-tag="python:prefLang == lang"
+                           tal:define="lang_url python:thisurl+'?set_language='+lang;
+                                       url python:oshaview.handleOSHMailUrls(lang_url, collage_id);"
+                           href="" tal:attributes="href url"
+                           tal:content="python:oshaview.get_native_language_by_code(lang)">
+                          lang</a>
+                        <span tal:omit-tag="" tal:condition="not:repeat/lang/end"> | </span> </span>
+                    </div>
+                  </tal:block>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <metal:bodytext metal:define-slot="main" tal:content="nothing">
+              <!-- Page body text -->
+            </metal:bodytext>
+          </td>
+        </tr>
+      </table>
+    </body>
+  </html>
 </metal:page>
-
