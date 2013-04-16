@@ -41,7 +41,7 @@
                       ltool nocall:here/portal_languages;
                       propstool nocall:here/portal_properties;
                       site_props nocall:propstool/site_properties;
-                      prefLang ltool/getPreferredLanguage;
+                      prefLang python: request.get('set_language', 'en');
                       oshaview here/@@oshaview;
                       collage_id here/getId;
                       url python:oshaview.handleOSHMailUrls('https://osha.europa.eu', collage_id);
