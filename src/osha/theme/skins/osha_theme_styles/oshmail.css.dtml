@@ -1,16 +1,16 @@
 body {
--x-system-font:none;
-font-size-adjust:none;
-font-stretch:normal;
-font-style:normal;
-font-variant:normal;
-font-weight:normal;
-line-height:normal;
-margin:0.75em 0 0.25em;
-font: 13px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
-color: #191919;
-margin: 0;
-padding: 0;
+    -x-system-font:none;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+    margin:0.75em 0 0.25em;
+    font: 13px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
+    color: #191919;
+    margin: 0;
+    padding: 0;
 
 }
 /* Outlook background http://www.campaignmonitor.com/blog/post/1777/body-background-images-outlook/ */
@@ -19,52 +19,48 @@ v\:* { behavior: url(#default#VML); display:inline-block}
 
 
 #visual-portal-wrapper {
-overflow-x:hidden;
-overflow-y:auto;
-position: relative;
-overflow-x: hidden;
-margin: 0 auto;
-width: 960px;
-padding:0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    position: relative;
+    overflow-x: hidden;
+    margin: 0 auto;
+    width: 960px;
+    padding:0;
 }
 
 a {
-background-color:transparent;
-color:#144989;
-text-decoration:none;
+    background-color:transparent;
+    color:#144989;
+    text-decoration:none;
 }
 
 img {
-border:medium none;
-vertical-align:middle;
+    border:medium none;
+    vertical-align:middle;
 }
 
-
-
-
-
 .visualClear {
-clear:both;
-display:block;
+    clear:both;
+    display:block;
 }
 
 p {
-margin:0 0 0.75em;
+    margin:0 0 0.75em;
 }
 
 
 h1, h2, h3, h4, h5, h6 {
-color:#191919;
-font: 13px/20px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
-margin:0 0 12px;
+    color:#191919;
+    font: 13px/20px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
+    margin:0 0 12px;
 }
 h1 {
     font: 18px/35px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
 }
 
 .socialMediaOSHMAILfg {
-background:#F2F4F6 none repeat scroll 0 0;
-padding:10px 10px 10px 10px;
+    background:#F2F4F6 none repeat scroll 0 0;
+    padding:10px 10px 10px 10px;
 }
 .socialMediaOSHMAILfg a {
     font: 12px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
@@ -75,10 +71,10 @@ padding:10px 10px 10px 10px;
 }
 
 .boxing_styles_inner_content {
-font-size:100%;
-background-color:#F7F8F9;
-border:1px solid #C5CBD8;
-font-size:100%;
+    font-size:100%;
+    background-color:#F7F8F9;
+    border:1px solid #C5CBD8;
+    font-size:100%;
 }
 
 /****************/
@@ -139,14 +135,14 @@ font-size:100%;
 
 #language-list {
     margin: 5px 0;
-	padding: 8px;
-	-webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
-	-moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
-	box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
-	font: italic 13px/16px Georgia, "Times New Roman", Times, serif;
-	background-color: #fdfdc8;
-	color: #6f5a44;
-	border: 1px solid #d3d4a7;
+    padding: 8px;
+    -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+    -moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+    font: italic 13px/16px Georgia, "Times New Roman", Times, serif;
+    background-color: #fdfdc8;
+    color: #6f5a44;
+    border: 1px solid #d3d4a7;
 }
 /* Experimental styles for new oshmail looks by Maite */
 
@@ -178,13 +174,13 @@ body.subsection1-oshmail h1.documentFirstHeading,
 body.subsection1-oshmail h2,
 .template-shortmessage_preview_view h2,
 body.subsection1-oshmail h3 {
-	text-shadow: 0 1px 0 #FFFFFF;
-	font-weight: normal;
-	font-size:18px;
-	padding: 0;
-	font-style: italic;
-	margin-bottom: 10px;
-	border-bottom: 0;
+    text-shadow: 0 1px 0 #FFFFFF;
+    font-weight: normal;
+    font-size:18px;
+    padding: 0;
+    font-style: italic;
+    margin-bottom: 10px;
+    border-bottom: 0;
 }
 
 span.description {
@@ -221,16 +217,16 @@ body.subsection1-oshmail .collage-newsitem-teaser,
 
 
 body.subsection1-oshmail .collage-pressrelease-standard {
-font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
-font-weight: normal;
+    font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
+    font-weight: normal;
 }
 
 body.subsection1-oshmail .collage-newsitem-standard {
-	color: #6f5a44;
-	border: 1px solid #d3d4a7;
-	padding-bottom:1em;
-	font: 13px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
-	font-weight: normal;
+    color: #6f5a44;
+    border: 1px solid #d3d4a7;
+    padding-bottom:1em;
+    font: 13px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
+    font-weight: normal;
 }
 body.subsection1-oshmail .collage-file-publication {
     margin-bottom: 4em;
@@ -241,19 +237,19 @@ body.subsection1-oshmail .collage-file-publication img.cover-image {
     clear:right;
     margin-right:20px;
     -webkit-transform: rotate(-4deg);
-	-moz-transform: rotate(-4deg);
-	-ms-transform: rotate(-4deg);
-	transform: rotate(-4deg);
-	z-index: 30;
-	width:100px;
+    -moz-transform: rotate(-4deg);
+    -ms-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+    z-index: 30;
+    width:100px;
 
-	-moz-box-shadow: 3px 3px 4px #000;
-	-webkit-box-shadow: 3px 3px 4px #000;
-	box-shadow: 3px 3px 4px #000;
-	/* For IE 8 */
-	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
-	/* For IE 5.5 - 7 */
-	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+    -moz-box-shadow: 3px 3px 4px #000;
+    -webkit-box-shadow: 3px 3px 4px #000;
+    box-shadow: 3px 3px 4px #000;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 
 }
 body.subsection1-oshmail .collage-newsitem-rightcolumn i,
@@ -262,12 +258,12 @@ body.subsection1-oshmail .collage-event-rightcolumn i {
 }
 body.subsection1-oshmail .collage-newsitem-rightcolumn,
 body.subsection1-oshmail .collage-event-rightcolumn {
-	padding: 20px;
-	font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
+    padding: 20px;
+    font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
 
-	/*-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0 0 20px rgba(0,0,0,0.2);
-	box-shadow: 0 0 20px rgba(0,0,0,0.2);    */
+    /*-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);    */
 }
 
 body.subsection1-oshmail .collage-event-rightcolumn {
@@ -294,11 +290,10 @@ body.subsection1-oshmail #collage-table-cell2 {
 }
 
 body.subsection1-oshmail .documentFirstHeading {
-/*background:#C5CBD8 none repeat scroll 0 0;*/
-margin-bottom:1em;
-margin-top:0;
-padding:0 !important;
+    /*background:#C5CBD8 none repeat scroll 0 0;*/
+    margin-bottom:1em;
+    margin-top:0;
+    padding:0 !important;
 }
 
 /* End Experimental styles for new oshmail looks by Maite */
-
