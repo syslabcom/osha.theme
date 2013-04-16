@@ -44,7 +44,6 @@
                       prefLang python: request.get('set_language', 'en');
                       oshaview here/@@oshaview;
                       collage_id here/getId;
-                      url python:oshaview.handleOSHMailUrls('https://osha.europa.eu', collage_id);
                       body_class python:plone_view.bodyClass(template, view);"
           tal:attributes="class body_class;">
 
@@ -52,9 +51,13 @@
         <tr>
           <td>
             <background></background>
-            <table id="headertable">
+            <table id="headertable"
+                   tal:attributes="background string:${context/portal_url}/en/news/oshmailheaderbackground.jpg">
               <tr>
-                <td class="col1"><a accesskey="1" href="https://osha.europa.eu/en" target="_blank">&nbsp;</a>
+                <td class="col1">
+                  <a href="#" accesskey="1"
+                     tal:attributes="href string:${context/portal_url}"
+                     target="_blank">&nbsp;</a>
                 </td>
                 <td class="col2">
                   <h1 class="documentFirstHeading"><span tal:replace="here/title_or_id" /><br/>Newsletter</h1><br/>

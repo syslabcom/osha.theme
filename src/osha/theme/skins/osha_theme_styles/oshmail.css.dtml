@@ -294,10 +294,8 @@ body.subsection1-oshmail {
 #oshmail-wrapper {
     width: 790px;
 }
-
 #headertable {
     width: 790px;
-    background-image: url("http://osha.plone4.syslab.com/en/news/oshmailheaderbackground.jpg");
 }
 #headertable td.col1{
     width: 200px;
