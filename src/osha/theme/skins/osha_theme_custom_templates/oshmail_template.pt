@@ -35,7 +35,7 @@
 
     </head>
 
-    <body leftmargin="5" style="margin-left: 1em; font-family: Verdana,Helvetica,'Lucida Grande',Lucida,Arial,sans-serif;"
+    <body leftmargin="5"
           tal:define="plone_view context/@@plone;
                       view nocall:view | nocall: plone_view;
                       ltool nocall:here/portal_languages;
@@ -48,16 +48,16 @@
                       body_class python:plone_view.bodyClass(template, view);"
           tal:attributes="class body_class;">
 
-      <table width="790" style="width:790px">
+      <table id="oshmail-wrapper">
         <tr>
           <td>
             <background></background>
-            <table style="width:790px;" background="http://osha.plone4.syslab.com/en/news/oshmailheaderbackground.jpg" width="790" id="headertable">
+            <table id="headertable">
               <tr>
-                <td width="200"><a style="width:200px; display:block" accesskey="1" href="https://osha.europa.eu/en" target="_blank" width="200">       &nbsp;</a>
+                <td class="col1"><a accesskey="1" href="https://osha.europa.eu/en" target="_blank">&nbsp;</a>
                 </td>
-                <td width="590" align="right" valign="top">
-                  <h1 class="documentFirstHeading" style="margin-top:36px"><span tal:replace="here/title_or_id" /><br/>Newsletter</h1><br/>
+                <td class="col2">
+                  <h1 class="documentFirstHeading"><span tal:replace="here/title_or_id" /><br/>Newsletter</h1><br/>
                 </td>
               </tr>
             </table>
@@ -66,7 +66,7 @@
         <tr>
           <td>
             &nbsp;
-            <table width="800" id="language-list">
+            <table id="language-list-wrapper">
               <tr>
                 <td valign="top"
                     tal:define="lang_info ltool/getAvailableLanguageInformation;">
@@ -75,7 +75,7 @@
                                      served_language_keys python:[x[0] for x in supported_languages if x[0] in languages_on_main_site];
                                      served_languages python:oshaview.get_sorted(served_language_keys);"
                              condition="python:len(served_languages)>1">
-                    <div i18n:domain="osha" style="text-align: center"
+                    <div id="language-list" i18n:domain="osha"
                          tal:define="thisurl string:${here/absolute_url}/${template/id}">
 
                       <span tal:omit-tag="" tal:repeat="lang served_languages">
