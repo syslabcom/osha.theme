@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.26 (unreleased)
+1.5.26 (2013-04-17)
 -------------------
 
 - #6717 make it possible to scroll in overlay for vocabularies [thomasw]
