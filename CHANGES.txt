@@ -4,7 +4,12 @@ osha.theme Changelog
 1.5.26 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- #6717 make it possible to scroll in overlay for vocabularies [thomasw]
+- #5152: use the right i18n domains in default_error_message template [jure]
+- replace '$' with 'jq' in osha.js to get rid of the error, refs #6914 [jure]
+- read preferred language from request to make the language switcher work,
+  refs #6718 [jure]
+- add a vielwet that will display a "item has been deleted" message #7211 [thomasw]
 
 
 1.5.25 (2013-04-08)
