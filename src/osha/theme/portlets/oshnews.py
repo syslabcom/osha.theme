@@ -1,26 +1,22 @@
+from Acquisition import aq_parent, aq_inner
+from DateTime import DateTime
+from collective.solr.mangler import iso8601date
+from osha.theme.browser.utils import search_solr
+from plone.memoize import ram
+from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
+from plone.portlets.interfaces import IPortletDataProvider
+from plone.app.portlets.portlets import base
+from plone.app.portlets.interfaces import IPortletPermissionChecker
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone import PloneMessageFactory as _
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from types import UnicodeType
 from zope import schema
 from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 
-from Acquisition import aq_parent, aq_inner
-from DateTime import DateTime
-
-from plone.memoize import ram
-from plone.memoize.compress import xhtml_compress
-from plone.memoize.instance import memoize
-from plone.portlets.interfaces import IPortletDataProvider
-
-from plone.app.portlets.portlets import base
-from plone.app.portlets.interfaces import IPortletPermissionChecker
-
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import PloneMessageFactory as _
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from types import UnicodeType
-
-from collective.solr.mangler import iso8601date
-from osha.theme.browser.utils import search_solr
 
 class INewsPortlet(IPortletDataProvider):
 
@@ -75,15 +71,16 @@ class INewsPortlet(IPortletDataProvider):
             required=False,
             )
 
+
 class Assignment(base.Assignment):
     implements(INewsPortlet)
 
-    def __init__(self, 
-                count=5, 
-                state=('published', ), 
-                subject=tuple(), 
-                newsfolder_path='', 
-                rss_path='', 
+    def __init__(self,
+                count=5,
+                state=('published', ),
+                subject=tuple(),
+                newsfolder_path='',
+                rss_path='',
                 rss_explanation_path=''):
 
         self.count = count
@@ -97,6 +94,7 @@ class Assignment(base.Assignment):
     def title(self):
         return _(u"News")
 
+
 class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('oshnews.pt')
@@ -104,12 +102,13 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
 
-        portal_lang= getToolByName(self.context, 'portal_languages')
+        portal_lang = getToolByName(self.context, 'portal_languages')
         self.preflang = portal_lang.getPreferredLanguage()
 
         portal_state = getMultiAdapter(
-                        (self.context, self.request), 
-                        name=u'plone_portal_state')
+            (self.context, self.request),
+            name=u'plone_portal_state'
+        )
 
         self.navigation_root_path = portal_state.navigation_root_path()
         portal = portal_state.portal()
@@ -142,37 +141,48 @@ class Renderer(base.Renderer):
 
     @ram.cache(_render_cachekey)
     def render(self):
-        return xhtml_compress(self._template()) 
+        return xhtml_compress(self._template())
 
     @memoize
     def _data(self):
-        # search in the navigation root of the currently selected 
-        # language and in the canonical path
-        # with Language = preferredLanguage or neutral
-        paths = list()
-        paths.append(self.navigation_root_path)
+        """Search for news in 'en', then try to find translations in the
+        current language. If no translation is found, use the 'en' version.
+        """
+
         try:
-            canonical_path = '/'.join(self.root.getCanonical().getPhysicalPath())
-            paths.append(canonical_path)
+            canonical_path = '/'.join(
+                self.root.getCanonical().getPhysicalPath())
         except:
-            pass
-        
+            return []
+
         subject = list(self.data.subject)
         limit = self.data.count
 
         query = '(portal_type:"News Item" OR isNews:true) AND ' \
         'review_state:(%(review_state)s) AND path_parents:(%(path)s) ' \
-        'AND Language:(%(Language)s) AND effective:[* TO %(effective)s]' % \
+        'AND Language:en AND effective:[* TO %(effective)s]' % \
             {'review_state': ' OR '.join(self.data.state),
-             'path': ' OR '.join(paths),
-             'Language': ' OR '.join([self.preflang, 'any']),
+             'path': canonical_path,
              'effective': iso8601date(DateTime()), }
 
         if subject:
             query += ' AND Subject:(%s)' % ' OR '.join(subject)
 
-        result = search_solr(query, sort='Date desc', rows=limit)[:limit]
-        return result
+        results_en = search_solr(
+            query, sort='Date desc', rows=limit, lang_query=False)[:limit]
+        portal = self.context.portal_url.getPortalObject()
+        results = []
+
+        for result_en in results_en:
+            path = result_en['path_string']
+            result_en = portal.restrictedTraverse(path)
+            result = result_en.getTranslation()
+            if result:
+                results.append(result)
+            else:
+                results.append(result_en)
+
+        return results
 
     def showRSS(self):
         return bool(self.getRSSLink())
@@ -210,11 +220,13 @@ class Renderer(base.Renderer):
                 newsfolder_path = newsfolder_path[1:]
             if isinstance(newsfolder_path, UnicodeType):
                 newsfolder_path = newsfolder_path.encode('utf-8')
-            target = self.root.restrictedTraverse(newsfolder_path, default=None)
+            target = self.root.restrictedTraverse(
+                newsfolder_path, default=None)
             if target is None:
                 # try the canonical
                 canroot = self.root.getCanonical()
-                target = canroot.restrictedTraverse(newsfolder_path, default=None)
+                target = canroot.restrictedTraverse(
+                    newsfolder_path, default=None)
             if target:
                 return target.absolute_url()
             else:
@@ -222,7 +234,7 @@ class Renderer(base.Renderer):
 
         if not context.isPrincipiaFolderish:
             context = aq_parent(context)
-        
+
         return '%s/oshnews-view' % context.absolute_url()
 
 
@@ -234,9 +246,9 @@ class AddForm(base.AddForm):
     def __call__(self):
         context = aq_parent(aq_parent(aq_inner(self.context)))
         oshaview = getMultiAdapter(
-                    (context, self.request), 
-                    name=u'oshaview'
-                    )
+            (context, self.request),
+            name=u'oshaview'
+        )
         sep = oshaview.getCurrentSingleEntryPoint()
         if sep is not None:
             AddForm.form_fields.get('subject').field.default = sep.Subject()
@@ -246,18 +258,16 @@ class AddForm(base.AddForm):
 
     def create(self, data):
         return Assignment(
-                    count=data.get('count', 5),
-                    state=data.get('state', ('published',)),
-                    subject=data.get('subject', tuple()),
-                    newsfolder_path=data.get('newsfolder_path', ''),
-                    rss_path=data.get('rss_path', ''),
-                    rss_explanation_path=data.get('rss_explanation_path','')
-                    )
+            count=data.get('count', 5),
+            state=data.get('state', ('published',)),
+            subject=data.get('subject', tuple()),
+            newsfolder_path=data.get('newsfolder_path', ''),
+            rss_path=data.get('rss_path', ''),
+            rss_explanation_path=data.get('rss_explanation_path', '')
+        )
 
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(INewsPortlet)
     label = _(u"Edit News Portlet")
     description = _(u"This portlet displays recent News Items.")
-
-

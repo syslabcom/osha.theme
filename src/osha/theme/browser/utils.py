@@ -9,13 +9,16 @@ from zope.component import queryUtility
 from zope.component.hooks import getSite
 
 
-def search_solr(query, request=None, **params):
+def search_solr(query, request=None, lang_query=True, **params):
     search = queryUtility(ISearch)
-    dummy = {}
-    languageFilter(dummy)
-    prepareData(dummy)  # this replaces '' with 'any'
-    langquery = 'Language:(%s)' % ' OR '.join(dummy['Language'])
-    query = '(%s) AND %s' % (query, langquery)
+
+    if lang_query:
+        dummy = {}
+        languageFilter(dummy)
+        prepareData(dummy)  # this replaces '' with 'any'
+        langquery = 'Language:(%s)' % ' OR '.join(dummy['Language'])
+        query = '(%s) AND %s' % (query, langquery)
+
     response = search(query, **params)
     if request is None:
         request = getSite().REQUEST

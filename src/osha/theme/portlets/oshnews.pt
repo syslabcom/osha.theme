@@ -21,14 +21,14 @@
 
         <a href=""
            class="tile"
-           tal:attributes="href obj/getURL;
-                           title python:oshaview.cropHtmlText(obj.Description, 200)">
+           tal:attributes="href obj/absolute_url;
+                           title python:oshaview.cropHtmlText(obj.Description(), 200)">
             <img tal:replace="structure item_icon/html_tag" />
             <span tal:replace="obj/pretty_title_or_id">
             Plone 2.1 announced!
             </span>
             <span class="portletItemDetails"
-                  tal:content="python:toLocalizedTime(obj.Date)">May 5</span>
+                  tal:content="python:toLocalizedTime(obj.Date())">May 5</span>
         </a>
     </dd>
     </tal:newsitems>
