@@ -34,7 +34,7 @@
           <dl id="subscriptionBox" class="portlet rounded-corners">
             <form action="#" tal:attributes="action string:./@@oshmail-subscribe" method="post" id="subscribe">
             <dt>
-              <h4 i18n:translate="heading_oshmail_subscribe">Subscription</h4> 
+              <h4 i18n:translate="heading_oshmail_subscribe">Subscription</h4>
             </dt>
             <dd>
               <label><span i18n:translate="label_email" tal:omit-tag="">E-mail</span>* <input type="text" name="emailaddress" class="span-4" /></label>
@@ -46,7 +46,7 @@
               <span i18n:translate="">Not interested any more?</span><br/>
               <a href="#unsubscribe" i18n:translate="">Unsubscribe</a>
             </dd>
-          </form> 
+          </form>
           </dl>
 
           <tal:oshmail_intro replace="structure context/oshmail_intro/getText | ">
@@ -87,7 +87,7 @@
               </li>
             </ul>
           </div>
-          
+
           <div class="visualClear"> </div>
 
           <p class="fadercontrol">
