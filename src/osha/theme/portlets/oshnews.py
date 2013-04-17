@@ -169,18 +169,26 @@ class Renderer(base.Renderer):
             query += ' AND Subject:(%s)' % ' OR '.join(subject)
 
         results_en = search_solr(
-            query, sort='Date desc', rows=limit, lang_query=False)[:limit]
+            query, sort='Date desc', rows=limit, lang_query=False)
         portal = self.context.portal_url.getPortalObject()
         results = []
 
+        cnt = 0
         for result_en in results_en:
             path = result_en['path_string']
-            result_en = portal.restrictedTraverse(path)
+	    try:
+                result_en = portal.restrictedTraverse(path)
+            except AttributeError:
+                continue
+            else:
+                cnt += 1
             result = result_en.getTranslation()
             if result:
                 results.append(result)
             else:
                 results.append(result_en)
+            if cnt == limit:
+                break
 
         return results
 
