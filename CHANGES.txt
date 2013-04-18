@@ -4,7 +4,8 @@ osha.theme Changelog
 1.5.27 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- The oshnews portlet now has a correct language fallback to EN and
+  excludes teasers #7106 [jure, thomasw]
 
 
 1.5.26 (2013-04-17)
