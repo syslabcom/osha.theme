@@ -159,10 +159,11 @@ class Renderer(base.Renderer):
         limit = self.data.count
 
         query = '(portal_type:"News Item" OR isNews:true) AND ' \
-        'review_state:(%(review_state)s) AND path_parents:(%(path)s) ' \
-        'AND Language:en AND effective:[* TO %(effective)s]' % \
+        'review_state:(%(review_state)s) AND path_parents:(%(path)s AND ' \
+        '-%(teaser_path)s) AND Language:en AND effective:[* TO %(effective)s]' % \
             {'review_state': ' OR '.join(self.data.state),
              'path': canonical_path,
+             'teaser_path': canonical_path + '/teaser',
              'effective': iso8601date(DateTime()), }
 
         if subject:
