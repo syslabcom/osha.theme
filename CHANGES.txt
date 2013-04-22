@@ -4,8 +4,7 @@ osha.theme Changelog
 1.5.28 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Make enhanced oshnews portlet more robust [thomasw] 
 
 1.5.27 (2013-04-18)
 -------------------
