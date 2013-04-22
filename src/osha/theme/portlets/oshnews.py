@@ -1,3 +1,4 @@
+from AccessControl.SecurityManagement import getSecurityManager
 from Acquisition import aq_parent, aq_inner
 from DateTime import DateTime
 from collective.solr.mangler import iso8601date
@@ -172,19 +173,22 @@ class Renderer(base.Renderer):
         results_en = search_solr(
             query, sort='Date desc', rows=limit, lang_query=False)
         portal = self.context.portal_url.getPortalObject()
+        pwt = getToolByName(portal, 'portal_workflow')
+        sm = getSecurityManager()
         results = []
 
         cnt = 0
         for result_en in results_en:
             path = result_en['path_string']
-	    try:
+            try:
                 result_en = portal.restrictedTraverse(path)
             except AttributeError:
                 continue
             else:
                 cnt += 1
             result = result_en.getTranslation()
-            if result:
+            if result and pwt.getInfoFor(result, 'review_state') in \
+                    self.data.state and sm.checkPermission('View', result):
                 results.append(result)
             else:
                 results.append(result_en)
