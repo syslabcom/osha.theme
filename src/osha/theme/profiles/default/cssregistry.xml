@@ -89,9 +89,9 @@
     enabled="on" expression="" id="main.css" media="screen" rel="stylesheet"
     rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="seminarportal.css" media="all"
-    rel="stylesheet" rendering="import"/>
+    cacheable="True" compression="safe" conditionalcomment=""
+    cookable="False" enabled="on" expression="" id="seminarportal.css"
+    media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression=""
