@@ -57,7 +57,9 @@
                                   en_obj python:translation_helper.find_default(not_found_url);
                                   langtool python:portal.portal_languages;
                                   preflang python:langtool.getPreferredLanguage();
-                                  lang_name python:langtool.getNameForLanguageCode(preflang);"
+                                  lang_name python:langtool.getNameForLanguageCode(preflang);
+                                  lang_info python:langtool.getAvailableLanguages().get(preflang);
+                                  lang_name python:lang_info and lang_info.get('native') or lang_name;"
                       i18n:domain="osha">
 
                     <h2 i18n:translate="header_translation_unavailable">
