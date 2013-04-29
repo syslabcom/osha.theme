@@ -512,3 +512,7 @@
     position:relative;
     top: -8px;
 }
+.heading-rss {
+    margin-bottom: 1.5em;
+    text-align: right;
+}

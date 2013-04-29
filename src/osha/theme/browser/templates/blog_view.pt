@@ -24,16 +24,6 @@
             Title or id
         </h1>
 
-        <div class="heading_rss_icon">
-            <a href="" 
-                title="Click here for the RSS feed"
-                tal:attributes="href string:${here/absolute_url}/RSS">
-                <img src="" 
-                    tal:attributes="src string:${here/portal_url}/icon_rss_feed.gif" 
-                    alt="Click here for the RSS Feed">
-            </a>
-        </div>
-
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
         <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
@@ -43,7 +33,7 @@
         <div class="blog-filter"
              i18n:domain="scrawl"
              i18n:translate="label_blog_showing_blog_entries_tagged_as"
-             tal:condition="request/Subject|nothing">Showing blog entries tagged as: 
+             tal:condition="request/Subject|nothing">Showing blog entries tagged as:
                 <strong i18n:name="keyword"
                         tal:content="request/Subject">[keyword]</strong>
         </div>
@@ -58,6 +48,18 @@
              tal:condition="text"
              tal:attributes="class python:here.Format() in ('text/structured', 'text/x-rst', ) and ('stx' + kss_class) or ('plain' + kss_class)">
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
+        </div>
+
+        <div class="heading-rss">
+          <a href=""
+             title="Click here for the RSS feed"
+             tal:attributes="href string:${here/absolute_url}/@@blog-rss">
+            <img src=""
+                 tal:attributes="src string:${here/portal_url}/icon_rss_medium.png"
+                 alt="Click here for the RSS Feed">
+            <span i18n:translate="link_rss_feed">
+              Click here for the RSS Feed</span>
+          </a>
         </div>
 
         <metal:listingmacro define-macro="listing">
@@ -82,7 +84,7 @@
         <tal:listing condition="folderContents">
 
             <tal:block tal:repeat="item folderContents">
-                <div class="tileItem visualIEFloatFix vevent" 
+                <div class="tileItem visualIEFloatFix vevent"
                      tal:define="item_url item/getURL|item/absolute_url;
                                        item_id item/getId|item/id;
                                        item_title_or_id item/pretty_title_or_id;
@@ -165,11 +167,11 @@
                            i18n:domain="scrawl"
                            i18n:translate="label_perma_link"
                            tal:attributes="href item_url">Permalink</a>
-                           
+
                         <div class="keyword-info"
                              i18n:domain="scrawl"
                              tal:condition="item/Subject">
-                            Filed under: 
+                            Filed under:
                             <tal:loop repeat="subject item/Subject">
                                 <a class="item-keyword"
                                    tal:content="subject"
@@ -209,7 +211,7 @@
                     <div class="tileBody blog-entry"
                        tal:condition="python: not item_description and item_text"
                        tal:content="structure item_text">Item Body</div>
-                    
+
                     <p class="tileFooter"
                        tal:condition="python: item_description and item_text">
                         <a href=""
