@@ -981,6 +981,14 @@
       description="View for displaying blog entries"
       />
 
+  <browser:page
+     for="Products.Archetypes.interfaces.base.IBaseFolder"
+     name="blog-rss"
+     permission="zope.Public"
+     layer=".interfaces.IOSHAThemeLayer"
+     template="templates/blog_rss.pt"
+     />
+
   <!-- Renders an object in a different location of the site when passed the path to it #1150 -->
   <browser:page
      for="*"
