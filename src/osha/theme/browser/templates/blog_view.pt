@@ -44,13 +44,32 @@
              id="parent-fieldname-text" class="stx"
              tal:define="kss_class python:getKssClasses('text',
                          templateId=templateId, macro='text-field-view');
-                         text here/getText|nothing"
+                         text view/blog_intro"
              tal:condition="text"
              tal:attributes="class python:here.Format() in ('text/structured', 'text/x-rst', ) and ('stx' + kss_class) or ('plain' + kss_class)">
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
 
-        <div class="heading-rss">
+        <metal:listingmacro define-macro="listing">
+        <tal:foldercontents define="Batch python:modules['Products.CMFPlone.PloneBatch'].Batch;
+                            b_size python:10;
+                            b_start python:0;
+                            b_start request/b_start | b_start;
+                            more_url more_url|request/more_url|string:folder_contents;
+                            limit_display limit_display|request/limit_display|nothing;
+                            blog_description view/blog_description;
+                            folderContents view/blog_items;
+                            batch python:Batch(folderContents, b_size, int(b_start), orphan=1);
+                            use_view_action site_properties/typesUseViewActionInListings|python:();
+                            over_limit python: limit_display and len(folderContents) > limit_display;
+                            folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
+                            portal_discussion nocall:context/portal_discussion;
+                            isDiscussionAllowedFor nocall:portal_discussion/isDiscussionAllowedFor;
+                            getDiscussionFor nocall:portal_discussion/getDiscussionFor;
+                            wtool here/portal_workflow;
+                            ">
+
+        <div tal:condition="folderContents" class="heading-rss">
           <a href=""
              title="Click here for the RSS feed"
              tal:attributes="href string:${here/absolute_url}/@@blog-rss">
@@ -62,24 +81,11 @@
           </a>
         </div>
 
-        <metal:listingmacro define-macro="listing">
-        <tal:foldercontents define="Batch python:modules['Products.CMFPlone.PloneBatch'].Batch;
-                            b_size python:10;
-                            b_start python:0;
-                            b_start request/b_start | b_start;
-                            more_url more_url|request/more_url|string:folder_contents;
-                            limit_display limit_display|request/limit_display|nothing;
-
-                            folderContents view/get_blog_items;
-                            batch python:Batch(folderContents, b_size, int(b_start), orphan=1);
-                            use_view_action site_properties/typesUseViewActionInListings|python:();
-                            over_limit python: limit_display and len(folderContents) > limit_display;
-                            folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
-                            portal_discussion nocall:context/portal_discussion;
-                            isDiscussionAllowedFor nocall:portal_discussion/isDiscussionAllowedFor;
-                            getDiscussionFor nocall:portal_discussion/getDiscussionFor;
-                            wtool here/portal_workflow;
-                            ">
+        <div class="documentDescription"
+             tal:condition="blog_description"
+             tal:content="blog_description">
+          Blog description
+        </div>
 
         <tal:listing condition="folderContents">
 
