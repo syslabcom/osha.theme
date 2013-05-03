@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
+
+  <body>
+
+    <div metal:fill-slot="main">
+
+      <h1 class="documentFirstHeading"
+          i18n:translate="osha_label_eu_media_coverage">
+        EU-OSHA in the media</h1>
+
+      <a href="#" tal:attributes="href context/absolute_url">
+        Back to Press Room</a>
+
+      <div tal:define="pressroom_view nocall:context/pressroom;
+                       renderer pressroom_view/getRSSFeed">
+        <div class="heading-rss">
+          <a href=""
+             title="Click here for the RSS feed"
+             tal:attributes="href renderer/feedlink">
+            <img src=""
+                 tal:attributes="src string:${here/portal_url}/icon_rss_medium.png"
+                 alt="Click here for the RSS Feed">
+            <span i18n:translate="link_rss_feed">
+              Click here for the RSS Feed</span>
+          </a>
+        </div>
+
+        <tal:block repeat="row renderer/items">
+          <h3><a tal:attributes="href row/url" tal:content="structure row/title">Hallo</a></h3>
+          <p>
+            <span tal:condition="python:row.get('updated') or nothing" tal:omit-tag=""><i tal:content="structure python: here.toLocalizedTime(row['updated'])"/></span>
+            <span tal:replace="structure row/summary">Welt</span>
+          </p>
+        </tal:block>
+      </div>
+
+    </div>
+  </body>
+</html>

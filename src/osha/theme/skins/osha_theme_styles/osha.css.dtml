@@ -516,3 +516,6 @@
     margin-bottom: 1.5em;
     text-align: right;
 }
+#content .heading-rss a {
+    background: none;
+}

@@ -159,6 +159,13 @@
 
   <browser:page
      for="*"
+     name="osha-in-media"
+     permission="zope.Public"
+     template="templates/osha_in_media.pt"
+     />
+
+  <browser:page
+     for="*"
      name="pressroom-config-form"
      class=".pressroom.DynamicPressRoomConfigurationForm"
      permission="cmf.ModifyPortalContent"

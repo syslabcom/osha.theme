@@ -9,6 +9,7 @@ from Products.Five.browser import pagetemplatefile
 from zope.app.form import CustomWidgetFactory
 from zope.app.form.browser.textwidgets import TextWidget
 from zope.annotation.interfaces import IAnnotations
+from zope.deprecation import deprecation
 from zope.formlib import form
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
@@ -41,6 +42,7 @@ class PressRoomView(BrowserView):
         return ('MemoNews')
 
     @ram.cache(_render_cachekey)
+    @deprecation.deprecate("getFeed() is deprecated, use getRSSFeed instead.")
     def getFeed(self):
         context = Acquisition.aq_inner(self.context)
         sin = getToolByName(context, 'sin_tool')
@@ -48,13 +50,15 @@ class PressRoomView(BrowserView):
         rows = sin.sin(map, max_size=2)
         return rows
 
-    def getRSSFeed(self):
+    def getRSSFeed(self, count=1000000):
         pp = getToolByName(self.context, 'portal_properties')
         op = getattr(pp, 'osha_properties', None)
         url = op and op.getProperty('osha_in_the_media_feed', '') or ''
         ass = RSSAssignment(
-            portlet_title="", count=2,
-            url=url)
+            portlet_title="",
+            count=count,
+            url=url
+        )
         renderer = RSSRenderer(self.context, self.request, self, None, ass)
         renderer.update()
         return renderer

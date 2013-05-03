@@ -72,7 +72,7 @@
       </div>
 
       <div id="boxBody"
-           tal:define="renderer view/getRSSFeed">
+           tal:define="renderer python: view.getRSSFeed(count=2)">
         <tal:block repeat="row renderer/items">
           <h3><a tal:attributes="href row/url" tal:content="structure row/title">Hallo</a></h3>
           <p>
@@ -81,7 +81,8 @@
           </p>
         </tal:block>
         <div id="more-syndicated-news">
-          <a tal:attributes="href renderer/feedlink" i18n:translate="box_more" i18n:domain="plone">More...</a>
+          <a tal:attributes="href string:${context/absolute_url}/@@osha-in-media"
+             i18n:translate="box_more" i18n:domain="plone">More...</a>
         </div>
       </div>
 
