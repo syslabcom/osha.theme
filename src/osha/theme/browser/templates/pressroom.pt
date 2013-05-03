@@ -1,75 +1,74 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-        lang="en"
-        metal:use-macro="here/main_template/macros/master"
-        i18n:domain="osha">
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="osha">
 
-<body>
+  <body>
 
-  <div metal:fill-slot="main" id="PressRoom">
-
+    <div metal:fill-slot="main" id="PressRoom">
 
       <h1 class="header"
           i18n:domain="osha-navigation"
           i18n:translate="osha_nav_title_press_room">
-          Press Room
+        Press Room
       </h1>
 
       <div id="pressroom-boxes">
-          <table id="pressroom-boxes-table">
-              <tr>
-                  <td class="pressbox-pr-off"
-                      onmouseover='jq(this).addClass("pressbox-pr-on");jq(this).removeClass("pressbox-pr-off");'
-                      onmouseout='jq(this).removeClass("pressbox-pr-on");jq(this).addClass("pressbox-pr-off");'>
-                      <div><a href="press-releases" i18n:translate="osha_label_pressbox_pressreleases">
-                           Press Releases</a>
-                      </div>
-                  </td>
-                  <td class="pressbox-campaigns-off"
-                      onmouseover='jq(this).addClass("pressbox-campaigns-on");jq(this).removeClass("pressbox-campaigns-off");'
-                      onmouseout='jq(this).removeClass("pressbox-campaigns-on");jq(this).addClass("pressbox-campaigns-off");'>
-                      <div>
-                           <a href="../campaigns" i18n:translate="osha_label_pressbox_campaigns">Campaigns</a>
-                      </div>
-                  </td>
-                  <td class="pressbox-photos-off"
-                      onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");'
-                      onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'>
-                      <div>
-                           <a href="photos" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
-                      </div>
-                  </td>
-              </tr>
+        <table id="pressroom-boxes-table">
+          <tr>
+            <td class="pressbox-pr-off"
+                onmouseover='jq(this).addClass("pressbox-pr-on");jq(this).removeClass("pressbox-pr-off");'
+                onmouseout='jq(this).removeClass("pressbox-pr-on");jq(this).addClass("pressbox-pr-off");'>
+              <div><a href="press-releases" i18n:translate="osha_label_pressbox_pressreleases">
+                  Press Releases</a>
+              </div>
+            </td>
+            <td class="pressbox-campaigns-off"
+                onmouseover='jq(this).addClass("pressbox-campaigns-on");jq(this).removeClass("pressbox-campaigns-off");'
+                onmouseout='jq(this).removeClass("pressbox-campaigns-on");jq(this).addClass("pressbox-campaigns-off");'>
+              <div>
+                <a href="../campaigns" i18n:translate="osha_label_pressbox_campaigns">Campaigns</a>
+              </div>
+            </td>
+            <td class="pressbox-photos-off"
+                onmouseover='jq(this).addClass("pressbox-photos-on");jq(this).removeClass("pressbox-photos-off");'
+                onmouseout='jq(this).removeClass("pressbox-photos-on");jq(this).addClass("pressbox-photos-off");'>
+              <div>
+                <a href="photos" i18n:translate="osha_label_pressbox_photos">Images and Audiovisual</a>
+              </div>
+            </td>
+          </tr>
 
-              <tr>
-                  <td class="pressbox-articles-off"
-                      onmouseover='jq(this).addClass("pressbox-articles-on");jq(this).removeClass("pressbox-articles-off");'
-                      onmouseout='jq(this).removeClass("pressbox-articles-on");jq(this).addClass("pressbox-articles-off");'>
-                      <div>
-                           <a href="/en/press/articles" i18n:translate="osha_label_pressbox_articles">Articles and<br/> Interviews</a>
-                      </div>
-                  </td>
-                  <td class="pressbox-about-off"
-                      onmouseover='jq(this).addClass("pressbox-about-on");jq(this).removeClass("pressbox-about-off");'
-                      onmouseout='jq(this).removeClass("pressbox-about-on");jq(this).addClass("pressbox-about-off");'>
-                      <div>
-                           <a href="../about" i18n:translate="osha_label_pressbox_aboutus">About Us</a>
-                      </div>
-                  </td>
-                  <td class="pressbox-publications-off"
-                      onmouseover='jq(this).addClass("pressbox-publications-on");jq(this).removeClass("pressbox-publications-off");'
-                      onmouseout='jq(this).removeClass("pressbox-publications-on");jq(this).addClass("pressbox-publications-off");'>
-                      <div>
-                          <a href="../publications" i18n:translate="osha_label_pressbox_publications">Publications</a>
-                      </div>
-                  </td>
-              </tr>
-          </table>
+          <tr>
+            <td class="pressbox-articles-off"
+                onmouseover='jq(this).addClass("pressbox-articles-on");jq(this).removeClass("pressbox-articles-off");'
+                onmouseout='jq(this).removeClass("pressbox-articles-on");jq(this).addClass("pressbox-articles-off");'>
+              <div>
+                <a href="/en/press/articles" i18n:translate="osha_label_pressbox_articles">Articles and<br/> Interviews</a>
+              </div>
+            </td>
+            <td class="pressbox-about-off"
+                onmouseover='jq(this).addClass("pressbox-about-on");jq(this).removeClass("pressbox-about-off");'
+                onmouseout='jq(this).removeClass("pressbox-about-on");jq(this).addClass("pressbox-about-off");'>
+              <div>
+                <a href="../about" i18n:translate="osha_label_pressbox_aboutus">About Us</a>
+              </div>
+            </td>
+            <td class="pressbox-publications-off"
+                onmouseover='jq(this).addClass("pressbox-publications-on");jq(this).removeClass("pressbox-publications-off");'
+                onmouseout='jq(this).removeClass("pressbox-publications-on");jq(this).addClass("pressbox-publications-off");'>
+              <div>
+                <a href="../publications" i18n:translate="osha_label_pressbox_publications">Publications</a>
+              </div>
+            </td>
+          </tr>
+        </table>
 
       </div>
       <div class="visualClear"></div>
 
       <div id="EuMediaCoverage">
-          <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU-OSHA in the media</h1>
+        <h1 class="boxTitle" i18n:translate="osha_label_eu_media_coverage">EU-OSHA in the media</h1>
       </div>
 
       <div id="boxBody"
@@ -77,47 +76,41 @@
         <tal:block repeat="row renderer/items">
           <h3><a tal:attributes="href row/url" tal:content="structure row/title">Hallo</a></h3>
           <p>
-              <span tal:condition="python:row.get('updated') or nothing" tal:omit-tag=""><i tal:content="structure python: here.toLocalizedTime(row['updated'])"/></span>
-              <span tal:replace="structure row/summary">Welt</span>
+            <span tal:condition="python:row.get('updated') or nothing" tal:omit-tag=""><i tal:content="structure python: here.toLocalizedTime(row['updated'])"/></span>
+            <span tal:replace="structure row/summary">Welt</span>
           </p>
         </tal:block>
-          <div id="more-syndicated-news">
-              <a tal:attributes="href renderer/feedlink" i18n:translate="box_more" i18n:domain="plone">More...</a>
-          </div>
+        <div id="more-syndicated-news">
+          <a tal:attributes="href renderer/feedlink" i18n:translate="box_more" i18n:domain="plone">More...</a>
+        </div>
       </div>
-
-
-
-
 
       <div id="addresses">
         <table class="Tabelle">
-            <tr>
+          <tr>
             <td tal:repeat="contact view/getPresscontacts">
-                <div>
-                    <strong tal:content="contact/Description">International press</strong><br/>
-                    <span tal:replace="contact/Title" />,<br/>
-                    <span tal:replace="contact/getJobtitle" /><br/><br/>
-                    <span tal:replace="contact/getOrganization" />,<br/>
-                    <span tal:replace="contact/getCity" />, <span tal:replace="contact/getStateOrProvince" /><br/>
-	                <tal:if condition="contact/getPhone">
-	                   Tel: <span tal:replace="contact/getPhone" /><br/>
-	                </tal:if>
-	                <tal:if condition="contact/getCellphone">
-	                    Mobile: <span tal:replace="contact/getCellphone" /><br/>
-	                </tal:if>
-	                <tal:if condition="contact/getEmail">
-	                    <a tal:attributes="href string:mailto:${contact/getEmail}" tal:content="contact/getEmail"/>
+              <div>
+                <strong tal:content="contact/Description">International press</strong><br/>
+                <span tal:replace="contact/Title" />,<br/>
+                <span tal:replace="contact/getJobtitle" /><br/><br/>
+                <span tal:replace="contact/getOrganization" />,<br/>
+                <span tal:replace="contact/getCity" />, <span tal:replace="contact/getStateOrProvince" /><br/>
+                <tal:if condition="contact/getPhone">
+                  Tel: <span tal:replace="contact/getPhone" /><br/>
                 </tal:if>
-                </div>
+                <tal:if condition="contact/getCellphone">
+                  Mobile: <span tal:replace="contact/getCellphone" /><br/>
+                </tal:if>
+                <tal:if condition="contact/getEmail">
+                  <a tal:attributes="href string:mailto:${contact/getEmail}" tal:content="contact/getEmail"/>
+                </tal:if>
+              </div>
             </td>
 
-           </tr>
-          </table>
+          </tr>
+        </table>
       </div>
 
-</div>
-</body>
+    </div>
+  </body>
 </html>
-
-
