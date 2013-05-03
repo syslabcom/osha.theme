@@ -1,22 +1,17 @@
+from five.formlib import formbase
+from plone.app.portlets.portlets.rss import Assignment as RSSAssignment
+from plone.app.portlets.portlets.rss import Renderer as RSSRenderer
+from plone.memoize import ram
+from Products.ATContentTypes.interface.document import IATDocument
+from Products.CMFCore.utils import getToolByName
+from Products.Five import BrowserView
+from Products.Five.browser import pagetemplatefile
+from zope.app.form import CustomWidgetFactory
+from zope.app.form.browser.textwidgets import TextWidget
 from zope.annotation.interfaces import IAnnotations
 from zope.formlib import form
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
-
-from zope.app.form import CustomWidgetFactory
-from zope.app.form.browser.textwidgets import TextWidget
-
-import Acquisition
-
-from plone.memoize import ram
-
-from Products.ATContentTypes.interface.document import IATDocument
-from Products.CMFCore.utils import getToolByName
-from Products.Five import BrowserView
-from Products.Five.browser import pagetemplatefile 
-from five.formlib import formbase
-
-from plone.app.portlets.portlets.rss import Assignment as RSSAssignment, Renderer as RSSRenderer
 
 from osha.theme.browser.interfaces import IPressRoomConfiguration
 from osha.theme.browser.interfaces import IPressRoomView
@@ -24,7 +19,10 @@ from osha.theme.config import FEED_KEY
 from osha.theme.config import KEYWORDS_KEY
 from osha.theme.config import PRESS_CONTACTS_KEY
 
+import Acquisition
+
 _ = MessageFactory('osha.theme')
+
 
 class PressRoomView(BrowserView):
     implements(IPressRoomView)
@@ -38,10 +36,10 @@ class PressRoomView(BrowserView):
         self.context = context
         self.request = request
         self.result = []
-    
+
     def _render_cachekey(method, self):
         return ('MemoNews')
-    
+
     @ram.cache(_render_cachekey)
     def getFeed(self):
         context = Acquisition.aq_inner(self.context)
@@ -79,8 +77,7 @@ class PressRoomView(BrowserView):
 
         return contactInfo
 
-                
-        
+
 class DynamicPressRoomView(BrowserView):
     implements(IPressRoomView)
 
@@ -88,7 +85,7 @@ class DynamicPressRoomView(BrowserView):
         self.context = context
         self.request = request
         self.result = []
-    
+
     def _render_cachekey(method, self):
         return ('MemoNews')
 
@@ -99,7 +96,7 @@ class DynamicPressRoomView(BrowserView):
             context = Acquisition.aq_parent(context)
         context = context.getCanonical()
         return context
-    
+
     #@ram.cache(_render_cachekey)
     def get_feed(self):
         context = self.getContext()
@@ -110,15 +107,15 @@ class DynamicPressRoomView(BrowserView):
         sin = getToolByName(context, 'sin_tool')
         rows = []
         for k in keys:
-            rows += sin.sin(k, max_size=2)        
-        return rows        
+            rows += sin.sin(k, max_size=2)
+        return rows
 
     #@ram.cache(_render_cachekey)
     def get_press_contacts(self):
         context = self.getContext()
         annotations = IAnnotations(context)
         contactInfo = list()
-        if annotations.has_key(PRESS_CONTACTS_KEY):
+        if PRESS_CONTACTS_KEY in annotations:
             contact_paths = annotations[PRESS_CONTACTS_KEY]
             portal = context.portal_url.getPortalObject()
             for path in contact_paths:
@@ -145,18 +142,19 @@ class DynamicPressRoomView(BrowserView):
         except AttributeError:
             path = self.get_press_subfolder_path(folder, 'en')
             return self.context.restrictedTraverse(path)
-    
+
     def get_press_releases(self):
         context = self.getContext()
         annotations = IAnnotations(context)
         cat = getToolByName(context, 'portal_catalog')
         sf = self.get_press_subfolder('press-releases')
         path = '/'.join(sf.getPhysicalPath())
-        q = {'portal_type': 'PressRelease', 
-             'path': path,
-             'sort_on': 'Date',
-             'sort_order': 'reverse',
-            }
+        q = {
+            'portal_type': 'PressRelease',
+            'path': path,
+            'sort_on': 'Date',
+            'sort_order': 'reverse'
+        }
         keywords = annotations.get(KEYWORDS_KEY)
         if keywords:
             q['Subject'] = keywords
@@ -168,9 +166,11 @@ class DynamicPressRoomView(BrowserView):
         cat = getToolByName(context, 'portal_catalog')
         sf = self.get_press_subfolder('articles')
         path = '/'.join(sf.getPhysicalPath())
-        q = { 'path': path, 
-              'sort_on': 'effective',
-              'sort_order': 'reverse',}
+        q = {
+            'path': path,
+            'sort_on': 'effective',
+            'sort_order': 'reverse'
+        }
         keywords = annotations.get(KEYWORDS_KEY)
         if keywords:
             q['Subject'] = keywords
@@ -182,7 +182,7 @@ class DynamicPressRoomView(BrowserView):
         cat = getToolByName(context, 'portal_catalog')
         sf = self.get_press_subfolder('photos')
         path = '/'.join(sf.getPhysicalPath())
-        q = { 'path': path, }
+        q = {'path': path}
         keywords = annotations.get(KEYWORDS_KEY)
         if keywords:
             q['Subject'] = keywords
@@ -205,15 +205,16 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
 
     def setUpWidgets(self, ignore_request=False):
         request = self.request
-        if not request.has_key('form.actions.save'):
-            # Add annotated values to the request so that we see the saved 
+        if 'form.actions.save' in request:
+            # Add annotated values to the request so that we see the saved
             # values on a freshly opened form.
             context = Acquisition.aq_inner(self.context).getCanonical()
             annotations = IAnnotations(context)
             for key in [PRESS_CONTACTS_KEY, FEED_KEY, KEYWORDS_KEY]:
                 if annotations.get(key):
                     if key == KEYWORDS_KEY:
-                        request.form['form.%s' % key] =  ' '.join(annotations[key])
+                        request.form['form.%s' % key] = ' '.join(
+                            annotations[key])
                     elif key == PRESS_CONTACTS_KEY:
                         good_paths = list()
                         # safeguard against missing press contacts
@@ -223,13 +224,14 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
                                 try:
                                     context.restrictedTraverse(str(path))
                                     good_paths.append(path)
-                                    request.form['form.%s' % key] =  annotations[key]
+                                    request.form['form.%s' % key] = \
+                                        annotations[key]
                                 except AttributeError:
                                     pass
                         if len(good_paths) < len(annotations[key]):
                             annotations[key] = good_paths
                     else:
-                        request.form['form.%s' % key] =  annotations[key]
+                        request.form['form.%s' % key] = annotations[key]
 
         self.adapters = {}
         self.widgets = form.setUpWidgets(
@@ -254,13 +256,10 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
             annotations[KEYWORDS_KEY] = []
 
         return request.RESPONSE.redirect(
-                        '%s/@@dynamic-pressroom/' % '/'.join(context.getPhysicalPath()))
+            '%s/@@dynamic-pressroom/' % '/'.join(context.getPhysicalPath()))
 
     @form.action("cancel")
-    def action_save(self, action, data):
+    def action_cancel(self, action, data):
         context = Acquisition.aq_inner(self.context)
-        return request.RESPONSE.redirect(
-                        '%s/@@dynamic-pressroom/' % '/'.join(context.getPhysicalPath()))
-
-
-
+        return context.request.RESPONSE.redirect(
+            '%s/@@dynamic-pressroom/' % '/'.join(context.getPhysicalPath()))
