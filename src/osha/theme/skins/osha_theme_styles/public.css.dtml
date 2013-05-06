@@ -779,7 +779,7 @@ textarea.proportional {
     display: block;
     overflow: hidden;
     width: 128px;
-    height: 3.6em;
+    height: 4em;
 }
 
 /* Link types */
