@@ -6,6 +6,7 @@ osha.theme Changelog
 
 - #6724: Added blog view which displays blog entries in selected language
 with fallback to default language [jure]
+- Changed logo for Croatia #7315 [thomasw]
 
 
 1.5.28 (2013-04-22)
