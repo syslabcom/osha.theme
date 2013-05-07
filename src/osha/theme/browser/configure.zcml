@@ -1022,7 +1022,7 @@
 
   <!-- helper view for the dyntree -->
   <browser:page
-     for="Products.CMFCore.interfaces.ISiteRoot"
+     for="plone.app.layout.navigation.interfaces.INavigationRoot"
      name="vdex_as_json"
      class=".vdex.VDEXAsJson"
      permission="zope.Public"
