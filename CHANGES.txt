@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.29 (unreleased)
+1.5.29 (2013-05-14)
 -------------------
 
 - #6724: Added blog view which displays blog entries in selected language
