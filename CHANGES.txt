@@ -7,6 +7,16 @@ osha.theme Changelog
 - #6724: Added blog view which displays blog entries in selected language
 with fallback to default language [jure]
 - Changed logo for Croatia #7315 [thomasw]
+- #6914 js for seminarportal [jure]
+- add a rss view for blog, refs #6726 [jure]
+- update default error message template, refs #5152 [jure]
+- Create a view for displaying 'OSHA in the media' feed. Deprecate getFeed().
+  Refs #7258 [jure]
+- set #content width in multimedia image details view and increase height of
+  album title in the album ov erview so that the titles and image captions are
+  not cut, refs #7428. [jure]
+- register vdex_as_json view for INavigationRoot instead of ISiteRoot to get
+  the vocabularies in the sel ected language, refs #6710 [jure]
 
 
 1.5.28 (2013-04-22)
