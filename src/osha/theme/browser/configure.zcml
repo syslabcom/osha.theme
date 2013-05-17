@@ -972,7 +972,7 @@
 
   <!-- OSHA Blog -->
   <browser:page
-     for="Products.Archetypes.interfaces.base.IBaseFolder"
+     for="Products.ATContentTypes.interfaces.IATDocument"
      name="blog-view"
      class=".blog.BlogView"
      permission="zope.Public"

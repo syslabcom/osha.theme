@@ -26,10 +26,6 @@
 
         <div tal:replace="structure provider:plone.belowcontenttitle" />
 
-        <p metal:use-macro="here/kss_generic_macros/macros/generic_description_view">
-            Description
-        </p>
-
         <div class="blog-filter"
              i18n:domain="scrawl"
              i18n:translate="label_blog_showing_blog_entries_tagged_as"
@@ -44,11 +40,19 @@
              id="parent-fieldname-text" class="stx"
              tal:define="kss_class python:getKssClasses('text',
                          templateId=templateId, macro='text-field-view');
-                         text view/blog_intro"
+                         text context/getText"
              tal:condition="text"
              tal:attributes="class python:here.Format() in ('text/structured', 'text/x-rst', ) and ('stx' + kss_class) or ('plain' + kss_class)">
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
+
+        <h2>OSH Blog</h2>
+
+        <p class="documentDescription">
+          <img class="image-right" height="80" width="80"
+               src="/en/blog/blogo_logo" alt="blog_logo-def.jpg" />
+          <span tal:replace="context/Description">Blog description</span>
+        </p>
 
         <metal:listingmacro define-macro="listing">
         <tal:foldercontents define="Batch python:modules['Products.CMFPlone.PloneBatch'].Batch;
@@ -57,7 +61,6 @@
                             b_start request/b_start | b_start;
                             more_url more_url|request/more_url|string:folder_contents;
                             limit_display limit_display|request/limit_display|nothing;
-                            blog_description view/blog_description;
                             folderContents view/blog_items;
                             batch python:Batch(folderContents, b_size, int(b_start), orphan=1);
                             use_view_action site_properties/typesUseViewActionInListings|python:();
@@ -79,12 +82,6 @@
             <span i18n:translate="link_rss_feed">
               Click here for the RSS Feed</span>
           </a>
-        </div>
-
-        <div class="documentDescription"
-             tal:condition="blog_description"
-             tal:content="blog_description">
-          Blog description
         </div>
 
         <tal:listing condition="folderContents">
