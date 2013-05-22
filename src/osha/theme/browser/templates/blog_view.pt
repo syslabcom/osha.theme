@@ -75,7 +75,7 @@
         <div tal:condition="folderContents" class="heading-rss">
           <a href=""
              title="Click here for the RSS feed"
-             tal:attributes="href string:${here/absolute_url}/@@blog-rss">
+             tal:attributes="href string:${context/aq_parent/absolute_url}/@@blog-rss">
             <img src=""
                  tal:attributes="src string:${here/portal_url}/icon_rss_medium.png"
                  alt="Click here for the RSS Feed">

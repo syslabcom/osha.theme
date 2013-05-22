@@ -981,7 +981,7 @@
      />
 
   <browser:menuItem
-      for="Products.Archetypes.interfaces.base.IBaseFolder"
+      for="Products.ATContentTypes.interfaces.IATDocument"
       menu="plone_displayviews"
       title="OSHA Blog view"
       action="@@blog-view"
