@@ -46,6 +46,12 @@
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
 
+        <h2>OSH Blog</h2>
+
+        <p class="documentDescription" tal:content="structure view/blog_intro">
+          Blog intro
+        </p>
+
         <metal:listingmacro define-macro="listing">
         <tal:foldercontents define="Batch python:modules['Products.CMFPlone.PloneBatch'].Batch;
                             b_size python:10;
@@ -67,7 +73,7 @@
         <div tal:condition="folderContents" class="heading-rss">
           <a href=""
              title="Click here for the RSS feed"
-             tal:attributes="href string:${context/aq_parent/absolute_url}/@@blog-rss">
+             tal:attributes="href string:${context/aq_parent/blog/absolute_url}/@@blog-rss">
             <img src=""
                  tal:attributes="src string:${here/portal_url}/icon_rss_medium.png"
                  alt="Click here for the RSS Feed">

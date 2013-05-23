@@ -11,8 +11,7 @@
   <tal:block define="dummy context/rssAllowed" />
 
   <tal:block define="syn context/portal_syndication;
-                     blog_view nocall:context/front-page/@@blog-view;
-                     objectList python: blog_view.blog_items()">
+                     objectList view/blog_items">
     <metal:block use-macro="context/rss_template/macros/master">
       <metal:block fill-slot="syndication">
         <syn:updatePeriod tal:content="python:syn.getUpdatePeriod(context) or default">hourly</syn:updatePeriod>

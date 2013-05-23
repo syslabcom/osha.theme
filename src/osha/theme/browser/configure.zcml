@@ -989,8 +989,18 @@
       />
 
   <browser:page
+     for="Products.ATContentTypes.interfaces.IATDocument"
+     name="director-corner-view"
+     class=".blog.DirectorCornerView"
+     permission="zope.Public"
+     layer=".interfaces.IOSHAThemeLayer"
+     template="templates/director_corner_view.pt"
+     />
+
+  <browser:page
      for="Products.Archetypes.interfaces.base.IBaseFolder"
      name="blog-rss"
+     class=".blog.BlogRssView"
      permission="zope.Public"
      layer=".interfaces.IOSHAThemeLayer"
      template="templates/blog_rss.pt"
