@@ -28,10 +28,6 @@
 
           <h1 tal:content="context/Title" />
 
-          <div class="introduction">
-            <p tal:content="context/Description"></p>
-          </div>
-
           <div id="film">
             <div class="video_link">
               <a class="video"
