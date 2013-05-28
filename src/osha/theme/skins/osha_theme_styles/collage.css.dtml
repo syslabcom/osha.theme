@@ -184,7 +184,7 @@ span.collage-navigation a {
 
 
 * html #collage .collage-row {
-  width:100%px;
+  width:100%;
   height:100%;
 }
 
@@ -197,10 +197,9 @@ span.collage-navigation a {
     float: left;
 }
 
-
 .collage-item {
     margin-bottom: 0.8em;
-    margin-top: 0.em;
+    margin-top: 0em;
 }
 
 #collage .collage-row .block_1 div.collage-item {

@@ -94,7 +94,7 @@ dl.portlet #portal-personaltools {
 
 #cse-search-box .searchField {
     width: 560px;
-};
+}
 
 #googlesearch_viewlet .linkList li {
     font-size: 80%;
@@ -340,7 +340,7 @@ form#quickuploader .quick-uploader {
 .portletHeader,
 .portletItem,
 .portletFooter {
-    border-color: 1px solid #c5cbd8;
+    border: 1px solid #c5cbd8;
 }
 .portletHeader {
     line-height:2em;
@@ -889,7 +889,6 @@ h1 span#publication-date,
     font-weight: normal;
     padding: 3px 10px;
 }
-}
 
 /* Changes to satisfy request #2073 */
 
@@ -964,24 +963,23 @@ ul.linkList li {
     width:auto;
 }
 
-/******************suscribe portlet*********************/
+/* Subscribe portlet */
 }
 .portletSubscribe  p{
    margin:  0 0 1.5em 0;
 }
 .portletSubscribe  p:last-child{
-   margin:  0 ;
+   margin:  0;
 }
-
 .portletSubscribe p a.button{
-background: rgb(255,255,255); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
-background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+    background: rgb(255,255,255); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(204,204,204,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* IE10+ */
+    background: linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(204,204,204,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
 
     border: 1px solid #B6B6B6;
     color: #393939;
@@ -993,13 +991,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     text-transform: uppercase;
     margin-left: 1em;
 }
-
-
-
-
 .portletSubscribe p a.button:hover{
     background: #C5CBD8;
-
 }
 
 
