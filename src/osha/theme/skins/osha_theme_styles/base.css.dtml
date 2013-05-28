@@ -5,16 +5,23 @@
   <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
 */
 #visual-portal-wrapper {
-    overflow-y:hidden !important;
+    overflow-y: hidden !important;
 }
 
 /* Allow the drop downs to extend below the height of the page content.
 For pages with too little content the "Add new" drop down gets clipped.*/
-html, body, #border-wrapper { height: 100%; }
-#visual-portal-wrapper { min-height: 100%; height: auto; }
+html, body, #border-wrapper {
+    height: 100%;
+}
+
+#visual-portal-wrapper {
+    min-height: 100%;
+    height: auto;
+}
 
 body {
-    font: &dtml-fontBaseSize; <dtml-var fontFamily>;
+    font: &dtml-fontBaseSize;
+    <dtml-var fontFamily>;
     background-color: &dtml-backgroundColor;;
     color: &dtml-fontColor;;
     margin: 0;

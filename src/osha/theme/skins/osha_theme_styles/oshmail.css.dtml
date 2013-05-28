@@ -1,67 +1,69 @@
 body {
-    -x-system-font:none;
-    font-size-adjust:none;
-    font-stretch:normal;
-    font-style:normal;
-    font-variant:normal;
-    font-weight:normal;
-    line-height:normal;
-    margin:0.75em 0 0.25em;
+    -x-system-font: none;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0.75em 0 0.25em;
     font: 13px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
     color: #191919;
     margin: 0;
     padding: 0;
-
 }
 /* Outlook background http://www.campaignmonitor.com/blog/post/1777/body-background-images-outlook/ */
 
-v\:* { behavior: url(#default#VML); display:inline-block}
-
+v\:* {
+    behavior: url(#default#VML);
+    display: inline-block;
+}
 
 #visual-portal-wrapper {
-    overflow-x:hidden;
-    overflow-y:auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
     overflow-x: hidden;
     margin: 0 auto;
     width: 960px;
-    padding:0;
+    padding: 0;
 }
 
 a {
-    background-color:transparent;
-    color:#144989;
-    text-decoration:none;
+    background-color: transparent;
+    color: #144989;
+    text-decoration: none;
 }
 
 img {
-    border:medium none;
-    vertical-align:middle;
+    border: medium none;
+    vertical-align: middle;
 }
 
 .visualClear {
-    clear:both;
-    display:block;
+    clear: both;
+    display: block;
 }
 
 p {
-    margin:0 0 0.75em;
+    margin: 0 0 0.75em;
 }
-
 
 h1, h2, h3, h4, h5, h6 {
-    color:#191919;
+    color: #191919;
     font: 13px/20px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
-    margin:0 0 12px;
+    margin: 0 0 12px;
 }
+
 h1 {
     font: 18px/35px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
 }
 
 .socialMediaOSHMAILfg {
-    background:#F2F4F6 none repeat scroll 0 0;
-    padding:10px 10px 10px 10px;
+    background: #F2F4F6 none repeat scroll 0 0;
+    padding: 10px 10px 10px 10px;
 }
+
 .socialMediaOSHMAILfg a {
     font: 12px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
 }
@@ -71,18 +73,18 @@ h1 {
 }
 
 .boxing_styles_inner_content {
-    font-size:100%;
-    background-color:#F7F8F9;
-    border:1px solid #C5CBD8;
-    font-size:100%;
+    font-size: 100%;
+    background-color: #F7F8F9;
+    border: 1px solid #C5CBD8;
+    font-size: 100%;
 }
 
-/****************/
-
 /* oshmail button styles */
+
 .button {
     display: inline-block;
-    zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+    /* zoom and *display = ie7 hack for display:inline-block */
+    zoom: 1;
     *display: inline;
     vertical-align: baseline;
     margin: 0 2px;
@@ -100,26 +102,30 @@ h1 {
     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
     box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
+
 .button.darkblue {
     color: #d9eef7 !important;
     border: solid 1px #003399;
     background: #999ada;
     background: -webkit-gradient(linear, left top, left bottom, from(#999ada), to(#003399));
     background: -moz-linear-gradient(top,  #999ada,  #003399);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#999ada', endColorstr='#003399');
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#999ada', endColorstr='#003399');
 }
+
 .button.darkblue:hover {
     background: #52126d;
     background: -webkit-gradient(linear, left top, left bottom, from(#001e8e), to(#061454));
     background: -moz-linear-gradient(top,  #001e8e,  #061454);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#001e8e', endColorstr='#061454');
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#001e8e', endColorstr='#061454');
 }
+
 .button.darkblue:active {
     color: #80bed6;
     background: -webkit-gradient(linear, left top, left bottom, from(#003399), to(#999ada));
     background: -moz-linear-gradient(top,  #003399, #999ada);
-    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#003399', endColorstr='#999ada');
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003399', endColorstr='#999ada');
 }
+
 .oshmail-blog-icon {
     color: #d9eef7 !important;
     font-size: 20px;
@@ -128,7 +134,7 @@ h1 {
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
-    position:relative;
+    position: relative;
     top: -8px;
 }
 /* end oshmail button styles */
@@ -139,14 +145,15 @@ h1 {
 body.subsection1-oshmail .collage-item:first-child h1 {
     margin: 0px 0 24px;
 }
+
 body.subsection1-oshmail h1,
 .template-shortmessage_preview_view h1 {
     font-family: Georgia, "Times new roman", serif;
     font-weight: normal;
     font-size: 24px;
     margin: 36px 0 24px;
-    border-bottom:0;
-    text-transform:uppercase;
+    border-bottom: 0;
+    text-transform: uppercase;
     letter-spacing: 5px;
     text-shadow: 2px 2px 2px #CCCCCC;
 }
@@ -156,8 +163,8 @@ body.subsection1-oshmail h1.documentFirstHeading,
     font-size: 28px;
     letter-spacing: 3px;
     margin: 12px 0 24px !important;
-    margin-top:12px !important;
-    text-transform:none;
+    margin-top: 12px !important;
+    text-transform: none;
 }
 
 body.subsection1-oshmail h2,
@@ -165,7 +172,7 @@ body.subsection1-oshmail h2,
 body.subsection1-oshmail h3 {
     text-shadow: 0 1px 0 #FFFFFF;
     font-weight: normal;
-    font-size:18px;
+    font-size: 18px;
     padding: 0;
     font-style: italic;
     margin-bottom: 10px;
@@ -176,6 +183,7 @@ span.description {
     display: block;
     margin-left: 120px;
 }
+
 body.subsection1-oshmail div.column-block.block_1 .collage-item table {
     width: 570px;
 }
@@ -194,16 +202,16 @@ body.subsection1-oshmail .collage-newsitem-standard,
 .template-shortmessage_preview_view .footer-shortmessage {
     font: normal 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
 }
+
 .template-shortmessage_preview_view .footer-shortmessage #followme a {
     padding: 0 1px;
 }
 
 body.subsection1-oshmail .collage-newsitem-teaser,
-.template-shortmessage_preview_view .teaser-shortmessage  {
+.template-shortmessage_preview_view .teaser-shortmessage {
     border: 1px solid #d1d1d1;
     text-shadow: white 0 1px 0;
 }
-
 
 body.subsection1-oshmail .collage-pressrelease-standard {
     font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
@@ -213,25 +221,26 @@ body.subsection1-oshmail .collage-pressrelease-standard {
 body.subsection1-oshmail .collage-newsitem-standard {
     color: #6f5a44;
     border: 1px solid #d3d4a7;
-    padding-bottom:1em;
+    padding-bottom: 1em;
     font: 13px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
     font-weight: normal;
 }
+
 body.subsection1-oshmail .collage-file-publication {
     margin-bottom: 4em;
     font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
 }
+
 body.subsection1-oshmail .collage-file-publication img.cover-image {
-    float:left;
-    clear:right;
-    margin-right:20px;
+    float: left;
+    clear: right;
+    margin-right: 20px;
     -webkit-transform: rotate(-4deg);
     -moz-transform: rotate(-4deg);
     -ms-transform: rotate(-4deg);
     transform: rotate(-4deg);
     z-index: 30;
-    width:100px;
-
+    width: 100px;
     -moz-box-shadow: 3px 3px 4px #000;
     -webkit-box-shadow: 3px 3px 4px #000;
     box-shadow: 3px 3px 4px #000;
@@ -239,17 +248,17 @@ body.subsection1-oshmail .collage-file-publication img.cover-image {
     -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
     /* For IE 5.5 - 7 */
     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
-
 }
+
 body.subsection1-oshmail .collage-newsitem-rightcolumn i,
 body.subsection1-oshmail .collage-event-rightcolumn i {
-    color:#666;
+    color: #666;
 }
+
 body.subsection1-oshmail .collage-newsitem-rightcolumn,
 body.subsection1-oshmail .collage-event-rightcolumn {
     padding: 20px;
     font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
-
     /*-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2);
     -moz-box-shadow: 0 0 20px rgba(0,0,0,0.2);
     box-shadow: 0 0 20px rgba(0,0,0,0.2);    */
@@ -258,13 +267,15 @@ body.subsection1-oshmail .collage-event-rightcolumn {
 body.subsection1-oshmail .collage-event-rightcolumn {
     background-color: #dce8f4;
 }
+
 body.subsection1-oshmail .collage-newsitem-rightcolumn {
     background-color: #F2F4F6;
 }
 
 body.subsection1-oshmail .boxing_styles_inner_content b {
-    display:none;
+    display: none;
 }
+
 body.subsection1-oshmail .socialMediaOSHMAILfg > tbody > tr > td > p > strong > span {
     font-family: Georgia, "Times new roman", serif;
     font-weight: normal;
@@ -280,9 +291,9 @@ body.subsection1-oshmail #collage-table-cell2 {
 
 body.subsection1-oshmail .documentFirstHeading {
     /*background:#C5CBD8 none repeat scroll 0 0;*/
-    margin-bottom:1em;
-    margin-top:0;
-    padding:0 !important;
+    margin-bottom: 1em;
+    margin-top: 0;
+    padding: 0 !important;
 }
 
 /* End Experimental styles for new oshmail looks by Maite */
@@ -291,27 +302,34 @@ body.subsection1-oshmail {
     margin-left: 1em;
     font-family: Verdana,Helvetica,'Lucida Grande',Lucida,Arial,sans-serif;
 }
+
 #oshmail-wrapper {
     width: 790px;
 }
+
 #headertable {
     width: 790px;
 }
-#headertable td.col1{
+
+#headertable td.col1 {
     width: 200px;
 }
-#headertable td.col2{
+
+#headertable td.col2 {
     width: 590px;
     text-align: right;
     vertical-align: top;
 }
+
 #headertable a {
     width: 200px;
     display: block;
 }
+
 #headertable h1 {
     margin-top: 36px;
 }
+
 #language-list-wrapper {
     width: 800px;
     margin: 5px 0;
@@ -324,6 +342,7 @@ body.subsection1-oshmail {
     color: #6f5a44;
     border: 1px solid #d3d4a7;
 }
+
 #language-list {
     text-align: center;
 }

@@ -24,22 +24,26 @@
     list-style: none !important;
     list-style-image: none !important;
     line-height: 1em;
-    border:none;
+    border: none;
     background: #E6E8ED;
 }
+
 .portletNavigationTree .portletItem {
     padding: 0;
     border: none;
 }
+
 .navTree {
     list-style: none;
     list-style-image: none;
 }
+
 .navTreeItem {
     display: block;
     padding: 0;
     margin: 0;
 }
+
 .navTreeItem a,
 dd.portletItem .navTreeItem a {
     display: block;
@@ -49,11 +53,13 @@ dd.portletItem .navTreeItem a {
     color: &dtml-globalFontColor;;
     border-bottom: 1px solid #fff;
 }
+
 .navTreeItem a:hover,
 dd.portletItem .navTreeItem a:hover {
     background-color: &dtml-contentViewBorderColor;;
     color: &dtml-globalFontColor;;
 }
+
 .navTreeCurrentItem,
 .navTreeItemInPath {
     background: &dtml-contentViewBorderColor;;
@@ -88,7 +94,9 @@ li.navTreeItemInPath a.navTreeItemInPath:hover {
 ** LOWER NAVIGATION LEVELS STYLES
 */
 
-.navTreeLevel0 { margin: 0;}
+.navTreeLevel0 {
+    margin: 0;
+}
 
 .navTreeLevel0 * ul {
     background: #F7F8F9;
@@ -96,30 +104,36 @@ li.navTreeItemInPath a.navTreeItemInPath:hover {
     margin: 0;
     font-size: 85%;
 }
+
 .navTreeLevel0 * ul .navTreeCurrentItem,
 .navTreeLevel0 * ul .navTreeItemInPath {
     background: &dtml-contentViewBackgroundColor;;
 }
+
 .navTreeLevel0 * ul li {
-    border-left:3px solid &dtml-contentViewBackgroundColor;;
-    border-right:1px solid &dtml-contentViewBackgroundColor;;
-    border-top:1px solid &dtml-contentViewBackgroundColor;;
+    border-left: 3px solid &dtml-contentViewBackgroundColor;;
+    border-right: 1px solid &dtml-contentViewBackgroundColor;;
+    border-top: 1px solid &dtml-contentViewBackgroundColor;;
     list-style: none;
     list-style-image: none;
 }
+
 .navTreeLevel0 * ul a,
 dd.portletItem .navTreeLevel0 * ul .navTreeItem a {
-    background:transparent url('&dtml-portal_url;/link.gif') 6px 50% no-repeat;
-    padding-left:21px;
+    background: transparent url('&dtml-portal_url;/link.gif') 6px 50% no-repeat;
+    padding-left: 21px;
 }
+
 .navTreeLevel1 .navTreeLevel0 * ul a:hover,
 dd.portletItem .navTreeLevel0 * ul .navTreeItem a:hover {
-    background-color: &dtml-contentViewBackgroundColor;;
+    background-color: &dtml-contentViewBackgroundColor;
+    ;
 }
 
 dd.portletItem .navTreeLevel0 * ul a.navTreeCurrentItem,
 dd.portletItem .navTreeLevel0 * ul a.navTreeCurrentItem:hover {
-    background: &dtml-contentViewBackgroundColor;;
+    background: &dtml-contentViewBackgroundColor;
+    ;
 }
 
 dd.portletItem .navTreeLevel0 * ul li.navTreeCurrentNode.navTreeFolderish a.navTreeCurrentItem,
@@ -131,16 +145,20 @@ dd.portletItem .navTreeLevel0 * ul li.navTreeCurrentNode.navTreeFolderish a.navT
 
 dd.portletItem .navTreeLevel0 * ul li.navTreeItemInPath a.navTreeItemInPath,
 dd.portletItem .navTreeLevel0 * ul li.navTreeItemInPath a.navTreeItemInPath:hover {
-    background: &dtml-contentViewBackgroundColor; url("&dtml-portal_url;/submenu.gif") 6px 50% no-repeat;
+    background: &dtml-contentViewBackgroundColor;
+    url("&dtml-portal_url;/submenu.gif") 6px 50% no-repeat;
 }
 
 .navTreeLevel1 .navTreeLevel1 * ul a:hover,
 dd.portletItem .navTreeLevel1 * ul .navTreeItem a:hover {
     background-color: transparent;
 }
+
 .navTreeLevel2 li.navTreeCurrentNode div {
-    background-color: &dtml-contentViewBackgroundColor;;
+    background-color: &dtml-contentViewBackgroundColor;
+    ;
 }
+
 .navTreeLevel2 li.navTreeCurrentNode ul div {
     background-color: #F7F8F9;
 }
@@ -149,8 +167,16 @@ dd.portletItem .navTreeLevel1 * ul .navTreeItem a:hover {
     border-right: none;
 }
 
-.navTreeLevel1 ul li div {padding-left:12px;}
-.navTreeLevel2 ul li div {padding-left:24px;}
-.navTreeLevel3 ul li div {padding-left:36px;}
+.navTreeLevel1 ul li div {
+    padding-left: 12px;
+}
+
+.navTreeLevel2 ul li div {
+    padding-left: 24px;
+}
+
+.navTreeLevel3 ul li div {
+    padding-left: 36px;
+}
 
 /* </dtml-with> */

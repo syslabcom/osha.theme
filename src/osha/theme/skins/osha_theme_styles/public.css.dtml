@@ -5,44 +5,53 @@
 */
 /* fix for using snap */
 #snap_com_shot_main button {
-visibility: inherit;
+    visibility: inherit;
 }
 
 /* specials for the german fop */
 #german-slogan {
-    color:#144989;
-    font-size:150%;
-    font-weight:bold;
-    padding-bottom:0.5em;
-    padding-right:0.7em;
-    text-align:right;
+    color: #144989;
+    font-size: 150%;
+    font-weight: bold;
+    padding-bottom: 0.5em;
+    padding-right: 0.7em;
+    text-align: right;
     margin-top: 60px;
 }
 
 /* Compatibility with old style templates */
 .documentActions {
-    display:none;
+    display: none;
 }
+
 .documentActions ul {
-    display:none;
+    display: none;
 }
+
 .documentActions li {
-    display:none;
+    display: none;
 }
+
 .documentActions a {
     display: none;
 }
 
 
 /* Accessibility elements, applied by JS */
-body.largeText { font-size: 95%; }
-body.smallText { font-size: 60%; }
+body.largeText {
+    font-size: 95%;
+}
+
+body.smallText {
+    font-size: 60%;
+}
 
 /* Padding for the columns */
 
 #portal-column-one .visualPadding {
     padding: 0em 0em 1em 0em;
 }
+
 #portal-column-two .visualPadding {
     padding: 0em 0em 1em 0em;
 }
@@ -57,8 +66,8 @@ body.kssActive h1.inlineEditable:hover {
 
 .documentFirstHeading {
     margin-top: 0;
-    background:&dtml-globalBackgroundColor;;
-    padding:0 0 0 !important;
+    background: &dtml-globalBackgroundColor;;
+    padding: 0 0 0 !important;
     margin-bottom: 1em;
     font-size: 150%
 }
@@ -77,6 +86,7 @@ body.kssActive h1.inlineEditable:hover {
     list-style-type: square;
     margin: 0.5em 0 0 1.5em;
 }
+
 .documentContent ol {
     margin: 0.5em 0 0 2.5em;
 }
@@ -112,12 +122,14 @@ body.kssActive h1.inlineEditable:hover {
     padding: 3px 2em 3px 0;
     font-size: &dtml-fontSmallSize;;
     overflow: hidden;
-    position:relative;
-    float:left;
+    position: relative;
+    float: left;
 }
+
 #portal-siteactions li {
     display: inline;
 }
+
 #portal-siteactions li a {
     height: auto;
     padding: 0pt 0.4em 0 0.5em;
@@ -125,9 +137,11 @@ body.kssActive h1.inlineEditable:hover {
     border-left: 1px solid &dtml-fontColor;;
     margin-left: -1px;
 }
+
 #portal-siteactions li.selected a {
     color: &dtml-globalFontColor;;
 }
+
 #portal-siteactions li a:hover {
     color: &dtml-globalFontColor;;
 }
@@ -145,10 +159,12 @@ body.kssActive h1.inlineEditable:hover {
     white-space: nowrap;
     z-index: 2;
 }
+
 #portal-advanced-search {
     margin-top: 0.2em;
     clear: both;
 }
+
 #portal-advanced-search a {
     color: &dtml-discreetColor;;
     text-decoration: none;
@@ -171,18 +187,18 @@ input.searchPage {
 }
 
 form.searchPage input.searchButton {
-    background-position:5px 7px;
-    padding:1px 10px 1px 25px;
+    background-position: 5px 7px;
+    padding: 1px 10px 1px 25px;
 }
 
 /* LiveSearch styles */
 .LSRes {
-    font-family:  <dtml-var fontFamily>;
+    font-family: <dtml-var fontFamily>;
     visibility: visible;
     color: &dtml-globalFontColor;;
     background-color: &dtml-backgroundColor;;
     vertical-align: middle;
-    display:block;
+    display: block;
     list-style-image: none;
     list-style-type: none;
     text-align: left;
@@ -191,31 +207,36 @@ form.searchPage input.searchButton {
     margin-left: 0;
     line-height: 1.1em;
 }
+
 #LSHighlight,
 .LSHighlight {
     background-color: &dtml-globalBackgroundColor;;
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
     color: &dtml-globalFontColor;;
 }
+
 .LSRow {
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor;;
     white-space: normal;
-    padding:0;
+    padding: 0;
     margin: 0;
     list-style-image: none;
     list-style-type: none;
 }
+
 .LSRow a {
     text-decoration: none;
-    font-weight:bold;
-    white-space:nowrap
+    font-weight: bold;
+    white-space: nowrap
 }
+
 .LSDescr {
     color: &dtml-discreetColor;;
     text-transform: &dtml-textTransform;;
-    padding-left:2.1em;
-    margin-top:-0.1em;
+    padding-left: 2.1em;
+    margin-top: -0.1em;
 }
+
 .LSResult {
     position: relative;
     display: block;
@@ -225,10 +246,12 @@ form.searchPage input.searchButton {
     left: 3px;
     z-index: 3;
 }
+
 .LSShadow {
     position: relative;
     text-align: right;
 }
+
 .livesearchContainer {
     background-color: &dtml-backgroundColor;;
     margin-top: 0;
@@ -238,7 +261,7 @@ form.searchPage input.searchButton {
     /* Currently exposes a rendering bug in Mozilla */
     top: 0;
     white-space: normal;
-    font-family:  <dtml-var fontFamily>;
+    font-family: <dtml-var fontFamily>;
     visibility: visible;
     text-align: left;
     color: &dtml-globalFontColor;;
@@ -246,12 +269,14 @@ form.searchPage input.searchButton {
     width: 30em;
     text-transform: none;
 }
+
 * html .livesearchContainer {
     padding: &dtml-borderWidth; !important;
     padding-top: 0 !important;
     background-color: &dtml-globalBorderColor;;
     border: 0;
 }
+
 #livesearchLegend {
     line-height: 1em;
     margin-top: -2em;
@@ -259,6 +284,7 @@ form.searchPage input.searchButton {
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
     border-bottom: 0;
 }
+
 * html #livesearchLegend {
     margin-top: -1.9em;
     margin-left: -8px;

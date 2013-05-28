@@ -18,22 +18,28 @@ body {
     font-family: Baskerville, Georgia, Garamond, Times, serif;
     font-size: 11pt !important;
 }
+
 h1, h2, h3, h4, h5, h6 {
     border: none;
     font-family: Baskerville, Georgia, Garamond, Times, serif;
 }
+
 div, p, ul, dl, ol {
     width: auto;
 }
+
 ul, ol, dl {
     padding-right: 0.5em;
 }
+
 ul {
     list-style-type: square;
 }
+
 .documentDescription {
     font-weight: bold;
 }
+
 pre {
     border: 1pt dotted black;
     white-space: pre;
@@ -41,16 +47,19 @@ pre {
     overflow: auto;
     padding: 1em 0;
 }
+
 table.listing,
 table.listing td {
     border: 1pt solid black;
     border-collapse: collapse;
 }
+
 a {
     color: Black !important;
     padding: 0 !important;
     text-decoration: none !important;
 }
+
 a:link, a:visited {
     color: #520;
     background: transparent;
@@ -102,7 +111,8 @@ div.top,
 #portal-footer-languageselector {
     display: none;
 }
+
 div#seminar-content div#add_to_calendar,
-div#Speech div#add_to_calendar{
+div#Speech div#add_to_calendar {
     display: none;
 }

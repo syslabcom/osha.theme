@@ -1,9 +1,10 @@
 body {
-    padding:1em;
-    background:transparent;
+    padding: 1em;
+    background: transparent;
     background-color: #C5CBD8;
     text-align: center;
 }
+
 h1 {
     font-size: 130%;
     text-align: center;
@@ -14,10 +15,12 @@ h1 {
     line-height: normal;
     border: none;
 }
+
 img {
     border: 0;
     padding-right: 0.5em;
 }
+
 .footer {
     font-size: 80%;
     padding: 0;
@@ -27,26 +30,31 @@ img {
     border-top: 1px solid #AAB1C5;
     line-height: 1.5em;
 }
+
 .powered_py {
     margin-top: 0;
     text-align: left;
     font-weight: bold;
     color: #999999;
 }
+
 #language-bar {
     margin: 20px;
 }
+
 #distance-keeper {
     clear: both;
 }
+
 #shortmessage-body {
-    text-align:left;
+    text-align: left;
     margin: 0px auto;
     width: 720px;
     align: middle;
     background-color: white;
     padding: 10px;
 }
+
 #portal-logo {
     float: left;
 }
@@ -59,6 +67,7 @@ img {
     position: static;
     width: auto;
 }
+
 .floatingLeft {
     border: none;
     background: White;

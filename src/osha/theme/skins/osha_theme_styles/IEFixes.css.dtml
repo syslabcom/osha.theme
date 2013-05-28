@@ -5,33 +5,41 @@
 /* <dtml-with base_properties> */
 
 * html #portal-columns {
-  width: 100%;
+    width: 100%;
 }
+
 * html*#portal-columns {
     width: auto;
 }
+
 input {
     margin-bottom: 1px; /* bug fix */
 }
+
 table.listing td.top {
     /* insane IE row bug workaround */
     position: relative;
     left: -1px;
     top: -1px;
 }
+
 div#portal-columns div#portal-column-one,
 div#portal-columns div#portal-column-two {
     overflow: hidden;
 }
+
 textarea {
     width: 97%;
 }
+
 .visualOverflow {
     width: 88%;
 }
+
 .visualGhosted {
-    filter:alpha(opacity=20);
+    filter: alpha(opacity=20);
 }
+
 .button {
     /* zoom and display = ie7 hack for display:inline-block */
     zoom: 1;
@@ -45,34 +53,41 @@ textarea {
 
 /* Fix bottom margin on tabs in IE */
 #portal-globalnav li.selected a {
-position: relative;
+    position: relative;
 }
+
 #portal-colophon .colophonIcon {
     height: 0px !important;
     height /**/: 15px;
 }
+
 .actionMenu .actionMenuHeader a {
     display: inline;
 }
+
 .actionMenu .actionMenuContent {
     top: 1.4em;
 }
 
 /* Calendar fixes */
 .ploneCalendar {
-    border-collapse:collapse;
-    width:auto;
-    height:1%;
+    border-collapse: collapse;
+    width: auto;
+    height: 1%;
 }
+
 .ploneCalendar td {
-    width:1%;
+    width: 1%;
 }
+
 .ploneCalendar .todaynoevent,
 .ploneCalendar .todayevent {
     position: relative;
 }
-.hiddenStructure { /* This is necessary to eliminate the 1px high object in
-                      the document flow in place of .hiddenStructure block objects */
+
+.hiddenStructure {
+ /* This is necessary to eliminate the 1px high object in
+    the document flow in place of .hiddenStructure block objects */
     position: absolute;
 }
 
@@ -104,7 +119,7 @@ body {
 * html .link-external a,
 * html .link-mailto a,
 * html .link-mailto {
-     height: 1%;
+    height: 1%;
 }
 
 /* Fix for IE float bug */
@@ -181,17 +196,24 @@ table.ploneCalendar caption {
 #osha-topdropdowns {
     height: 1%;
 }
-.portletSearch input {font-size:1em}
+
+.portletSearch input {
+    font-size: 1em;
+}
+
 input.searchButton {
     padding: 1px 0px 1px 12px;
     font-size: 0.9em;
 }
+
 #portal-header {
     float: none;
 }
+
 * html #portal-header {
     float: left;
 }
+
 .navTreeItem a,
 dd.portletItem .navTreeItem a {
     height: 1%;
@@ -209,33 +231,39 @@ dd.portletItem .navTreeItem a {
     height: 1%;
     overflow: hidden;
 }
+
 * html #visual-portal-wrapper {
     overflow: visible;
 }
+
 #portal-column-content {
-    display:inline;
+    display: inline;
 }
+
 #portal-column-two {
-    position:relative;
+    position: relative;
     width: 15.9%;
 }
 
 /* Hides from IE-Mac \*/
-* html #portal-column-content { height: 1%; }
+* html #portal-column-content {
+    height: 1%;
+}
 /* End hide from IE-Mac */
 
 * html #belowcontent-portlets dl.portlet {
     margin-left: 0.5%;
     width: 46%;
 }
+
 * html #boxBody {
-    margin-top:-5px;
+    margin-top: -5px;
 }
 
 
 /***********Redesign 2012***************/
 
-#select_language_form p{
+#select_language_form p {
     position: absolute;
     right: 105px;
     top: 2px;
@@ -249,12 +277,13 @@ dd.portletItem .navTreeItem a {
     padding: 6px 24px !important;
 }
 
-
 .gsc-search-box-tools .gsc-search-box .gsc-input {
     padding: 1px 2px 0 0 !important;
 }
 
 /* IE7 will not scroll if the height is set to 100% */
-#border-wrapper { height: auto; }
+#border-wrapper {
+    height: auto;
+}
 
 /* </dtml-with> */
