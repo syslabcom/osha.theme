@@ -30,7 +30,7 @@ textarea {
     width: 88%;
 }
 .visualGhosted {
-    filter:alpha(opacity=20); 
+    filter:alpha(opacity=20);
 }
 
 /* make spans within ABBR have a border in IE6 the same way it is in all other browsers */
@@ -54,12 +54,12 @@ position: relative;
 }
 
 /* Calendar fixes */
-.ploneCalendar { 
+.ploneCalendar {
     border-collapse:collapse;
-    width:auto; 
+    width:auto;
     height:1%;
 }
-.ploneCalendar td { 
+.ploneCalendar td {
     width:1%;
 }
 .ploneCalendar .todaynoevent,
@@ -71,11 +71,11 @@ position: relative;
     position: absolute;
 }
 
-/* These work in IE only, changes the look of the scrollbar + textareas 
-   We disabled these in Plone 3.0, but if you want them back, uncomment 
+/* These work in IE only, changes the look of the scrollbar + textareas
+   We disabled these in Plone 3.0, but if you want them back, uncomment
 */
 /*
-body { 
+body {
     scrollbar-base-color: &dtml-globalBackgroundColor;;
     scrollbar-highlight-color: &dtml-globalBackgroundColor;;
     scrollbar-track-color: &dtml-evenRowBackgroundColor;;
@@ -99,8 +99,8 @@ body {
 * html .link-external a,
 * html .link-mailto a,
 * html .link-mailto {
-     height: 1%; 
-} 
+     height: 1%;
+}
 
 /* Fix for IE float bug */
 * html .visualIEFloatFix,
@@ -143,7 +143,7 @@ dd.portletFooter {
 * html .portletHeader {
     height: 1%;
 }
-.portletTopRight, 
+.portletTopRight,
 .portletTopLeft {
     top: 0px;
 }
@@ -156,7 +156,7 @@ dd.portletFooter {
 
 /* fix for the horizontal scroll due to the floated searchbox without width definition */
 #portal-searchbox {
-    overflow: auto; 
+    overflow: auto;
 }
 body.fullscreen #portal-searchbox {
     overflow: visible;
@@ -169,7 +169,7 @@ table.ploneCalendar caption {
 }
 
 /*
-** CUSTOM STYLES 
+** CUSTOM STYLES
 */
 
 .portlet,
@@ -187,7 +187,7 @@ input.searchButton {
 * html #portal-header {
     float: left;
 }
-.navTreeItem a, 
+.navTreeItem a,
 dd.portletItem .navTreeItem a {
     height: 1%;
 }
@@ -197,7 +197,7 @@ dd.portletItem .navTreeItem a {
 }
 
 /*
-** TABLELESS STYLES 
+** TABLELESS STYLES
 */
 
 #visual-portal-wrapper {
@@ -205,7 +205,7 @@ dd.portletItem .navTreeItem a {
     overflow: hidden;
 }
 * html #visual-portal-wrapper {
-    overflow: visible;    
+    overflow: visible;
 }
 #portal-column-content {
     display:inline;
@@ -231,9 +231,9 @@ dd.portletItem .navTreeItem a {
 /***********Redesign 2012***************/
 
 #select_language_form p{
-	position: absolute;
-	right: 105px;
-	top: 2px;
+    position: absolute;
+    right: 105px;
+    top: 2px;
 }
 
 #osha-topdropdowns {

@@ -7,42 +7,42 @@
 }
 
 .eventlist H2 {
-	font-size: 1.25em;
+    font-size: 1.25em;
 }
 
 .eventlist .event {
-	float: left;
-	width: 100%;
-	padding-bottom: 5px;
+    float: left;
+    width: 100%;
+    padding-bottom: 5px;
 }
 
 .eventlist .event .event_details {
     float: left;
     clear: right;
     text-align: right;
-	font-weight: bold;
+    font-weight: bold;
     width: 15%;
 }
 
 .eventlist .event .event_details ABBR {
-	border: none;
+    border: none;
 }
 
 .eventlist .event .event_details ABBR.dtend {
-	display: none;
+    display: none;
 }
 
 .event .location, .day-event-popup .event .description {
-	font-size: 0.8em;
+    font-size: 0.8em;
 }
 
 .event .location {
-	color: #999;
+    color: #999;
 }
 
 .eventlist .event .location {
-	border-top: 1px dashed #ccc;
-	padding-top: 3px;
+    border-top: 1px dashed #ccc;
+    padding-top: 3px;
 }
 
 .eventlist .event .event_body {
@@ -53,11 +53,11 @@
 }
 
 .eventlist .event .event_title {
-	display: block;
+    display: block;
 }
 
 .eventlist .event .description {
-	padding-top: 3px;
+    padding-top: 3px;
 }
 
 .eventlist A {

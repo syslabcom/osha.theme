@@ -20,9 +20,9 @@
 /* New navtree styles */
 
 .portletNavigationTree {
-    padding: 0; 
+    padding: 0;
     list-style: none !important;
-    list-style-image: none !important; 
+    list-style-image: none !important;
     line-height: 1em;
     border:none;
     background: #E6E8ED;
@@ -32,8 +32,8 @@
     border: none;
 }
 .navTree {
-    list-style: none; 
-    list-style-image: none; 
+    list-style: none;
+    list-style-image: none;
 }
 .navTreeItem {
     display: block;
@@ -64,7 +64,7 @@ dd.portletItem .navTreeItem a:hover {
     background-image: url("&dtml-portal_url;/submenu.gif");
     background-position: 9px 50%;
     background-repeat: no-repeat;
-    padding-left: 24px !important;    
+    padding-left: 24px !important;
 }*/
 
 li.navTreeCurrentNode.navTreeFolderish a.navTreeCurrentItem,
@@ -75,7 +75,7 @@ li.navTreeItemInPath a.navTreeItemInPath:hover {
     background-image: url("&dtml-portal_url;/submenu.gif");
     background-position: 9px 50%;
     background-repeat: no-repeat;
-    padding-left: 24px !important;    
+    padding-left: 24px !important;
 }
 
 /* Another workaround for broken Internet Explorer */
@@ -85,16 +85,16 @@ li.navTreeItemInPath a.navTreeItemInPath:hover {
 }*/
 
 /*
-** LOWER NAVIGATION LEVELS STYLES 
+** LOWER NAVIGATION LEVELS STYLES
 */
 
 .navTreeLevel0 { margin: 0;}
 
 .navTreeLevel0 * ul {
     background: #F7F8F9;
-    padding-bottom: 1px; 
-    margin: 0;   
-	font-size: 85%;
+    padding-bottom: 1px;
+    margin: 0;
+    font-size: 85%;
 }
 .navTreeLevel0 * ul .navTreeCurrentItem,
 .navTreeLevel0 * ul .navTreeItemInPath {
@@ -126,7 +126,7 @@ dd.portletItem .navTreeLevel0 * ul li.navTreeCurrentNode.navTreeFolderish a.navT
 dd.portletItem .navTreeLevel0 * ul li.navTreeCurrentNode.navTreeFolderish a.navTreeCurrentItem:hover {
     background-image: url("&dtml-portal_url;/submenu.gif");
     background-position: 6px 50%;
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat;
 }
 
 dd.portletItem .navTreeLevel0 * ul li.navTreeItemInPath a.navTreeItemInPath,
@@ -139,10 +139,10 @@ dd.portletItem .navTreeLevel1 * ul .navTreeItem a:hover {
     background-color: transparent;
 }
 .navTreeLevel2 li.navTreeCurrentNode div {
-    background-color: &dtml-contentViewBackgroundColor;;    
+    background-color: &dtml-contentViewBackgroundColor;;
 }
 .navTreeLevel2 li.navTreeCurrentNode ul div {
-    background-color: #F7F8F9;    
+    background-color: #F7F8F9;
 }
 
 .navTreeLevel1 * ul li {
@@ -152,6 +152,5 @@ dd.portletItem .navTreeLevel1 * ul .navTreeItem a:hover {
 .navTreeLevel1 ul li div {padding-left:12px;}
 .navTreeLevel2 ul li div {padding-left:24px;}
 .navTreeLevel3 ul li div {padding-left:36px;}
-
 
 /* </dtml-with> */

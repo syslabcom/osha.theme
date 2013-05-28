@@ -6,28 +6,28 @@
 ** link classes for js usage
 */
 .link-external-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -332px transparent; 
-    width: 11px; height: 11px; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -332px transparent;
+    width: 11px; height: 11px;
     padding: 1px 0px 1px 10px;
 }
 .link-https-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -493px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -493px transparent;
     padding: 1px 0px 1px 10px;
 }
 .link-mailto-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -656px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -656px transparent;
     padding: 1px 0px 1px 12px;
 }
 .link-news-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1486px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1486px transparent;
     padding: 1px 0px 1px 16px;
 }
 .link-ftp-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -166px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll  0 -166px transparent;
     padding: 1px 0px 1px 16px;
 }
 .link-pdf-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1154px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1154px transparent;
     padding: 0px 2px 1px 16px;
 }
 /*
@@ -35,23 +35,23 @@
 */
 
 .link-doc-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -988px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -988px transparent;
     padding: 0px 2px 1px 16px;
 }
 .link-xls-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1652px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1652px transparent;
     padding: 0px 2px 1px 16px;
 }
 .link-ppt-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -822px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -822px transparent;
     padding: 0px 2px 1px 16px;
 }
 .link-zip-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1818px transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 -1818px transparent;
     padding: 0px 2px 1px 16px;
 }
 .link-irc-js {
-    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 0 transparent; 
+    background: url(&dtml-portal_url;/sprites-contenttypes.png) no-repeat scroll 0 0 transparent;
     padding: 1px 0px 1px 16px;
 }
 .link-callto-js {
@@ -60,158 +60,158 @@
 }
 
 /* Sprites for content types */
-.sprite-discussionitem_icon{ background-position: 0 0; width: 16px; height: 16px; } 
-.sprite-file_icon{ background-position: 0 -166px; width: 16px; height: 16px; } 
-.sprite-link_external{ background-position: 0 -332px; width: 11px; height: 11px; } 
-.sprite-lock_icon{ background-position: 0 -493px; width: 10px; height: 13px; } 
-.sprite-mail_icon{ background-position: 0 -656px; width: 16px; height: 16px; } 
-.sprite-msppt_icon{ background-position: 0 -822px; width: 16px; height: 16px; } 
-.sprite-msword_icon{ background-position: 0 -988px; width: 16px; height: 16px; } 
-.sprite-pdf_icon{ background-position: 0 -1154px; width: 16px; height: 16px; } 
-.sprite-phone_icon{ background-position: 0 -1320px; width: 16px; height: 16px; } 
-.sprite-topic_icon{ background-position: 0 -1486px; width: 16px; height: 16px; } 
-.sprite-xls_icon{ background-position: 0 -1652px; width: 16px; height: 16px; } 
-.sprite-zip_icon{ background-position: 0 -1818px; width: 16px; height: 16px; } 
-.sprite-link_icon{ background-position: 0 -1948px; width: 16px; height: 16px; } 
+.sprite-discussionitem_icon{ background-position: 0 0; width: 16px; height: 16px; }
+.sprite-file_icon{ background-position: 0 -166px; width: 16px; height: 16px; }
+.sprite-link_external{ background-position: 0 -332px; width: 11px; height: 11px; }
+.sprite-lock_icon{ background-position: 0 -493px; width: 10px; height: 13px; }
+.sprite-mail_icon{ background-position: 0 -656px; width: 16px; height: 16px; }
+.sprite-msppt_icon{ background-position: 0 -822px; width: 16px; height: 16px; }
+.sprite-msword_icon{ background-position: 0 -988px; width: 16px; height: 16px; }
+.sprite-pdf_icon{ background-position: 0 -1154px; width: 16px; height: 16px; }
+.sprite-phone_icon{ background-position: 0 -1320px; width: 16px; height: 16px; }
+.sprite-topic_icon{ background-position: 0 -1486px; width: 16px; height: 16px; }
+.sprite-xls_icon{ background-position: 0 -1652px; width: 16px; height: 16px; }
+.sprite-zip_icon{ background-position: 0 -1818px; width: 16px; height: 16px; }
+.sprite-link_icon{ background-position: 0 -1948px; width: 16px; height: 16px; }
 
 
 
 /* Flagsprites */
 .sprite-flags {background: url(&dtml-portal_url;/sprites-flags.png) no-repeat top left;}
-.sprite-albania_l{ background-position: 0 0; width: 48px; height: 34px; } 
-.sprite-austria_l{ background-position: 0 -84px; width: 52px; height: 34px; } 
-.sprite-belgium_l{ background-position: 0 -168px; width: 52px; height: 34px; } 
-.sprite-bosnia_and_herzegovina_l{ background-position: 0 -252px; width: 52px; height: 26px; } 
-.sprite-bulgaria_l{ background-position: 0 -328px; width: 52px; height: 34px; } 
-.sprite-croatia_l{ background-position: 0 -412px; width: 52px; height: 26px; } 
-.sprite-cyprus_l{ background-position: 0 -488px; width: 52px; height: 34px; } 
-.sprite-czechrepublic_l{ background-position: 0 -572px; width: 52px; height: 34px; } 
-.sprite-denmark_l{ background-position: 0 -656px; width: 52px; height: 34px; } 
-.sprite-estonia_l{ background-position: 0 -740px; width: 52px; height: 34px; } 
-.sprite-finland_l{ background-position: 0 -824px; width: 52px; height: 34px; } 
-.sprite-france_l{ background-position: 0 -908px; width: 52px; height: 34px; } 
-.sprite-germany_l{ background-position: 0 -992px; width: 52px; height: 34px; } 
-.sprite-greece_l{ background-position: 0 -1076px; width: 52px; height: 34px; } 
-.sprite-hungary_l{ background-position: 0 -1160px; width: 52px; height: 34px; } 
-.sprite-iceland_l{ background-position: 0 -1244px; width: 47px; height: 34px; } 
-.sprite-ireland_l{ background-position: 0 -1328px; width: 52px; height: 34px; } 
-.sprite-italy_l{ background-position: 0 -1412px; width: 52px; height: 34px; } 
-.sprite-kosovo_l{ background-position: 0 -1496px; width: 51px; height: 34px; } 
-.sprite-latvia_l{ background-position: 0 -1580px; width: 52px; height: 34px; } 
-.sprite-liechtenstein_l{ background-position: 0 -1664px; width: 52px; height: 31px; } 
-.sprite-lithuania_l{ background-position: 0 -1745px; width: 52px; height: 34px; } 
-.sprite-luxembourg_l{ background-position: 0 -1829px; width: 52px; height: 34px; } 
-.sprite-macedonia_l{ background-position: 0 -1913px; width: 52px; height: 26px; } 
-.sprite-malta_l{ background-position: -102px 0; width: 52px; height: 34px; } 
-.sprite-montenegro_l{ background-position: -102px -84px; width: 52px; height: 26px; } 
-.sprite-netherlands_l{ background-position: -102px -160px; width: 52px; height: 34px; } 
-.sprite-norway_l{ background-position: -102px -244px; width: 47px; height: 34px; } 
-.sprite-poland_l{ background-position: -102px -328px; width: 52px; height: 34px; } 
-.sprite-portugal_l{ background-position: -102px -412px; width: 52px; height: 34px; } 
-.sprite-romania_l{ background-position: -102px -496px; width: 52px; height: 34px; } 
-.sprite-serbia_l{ background-position: -102px -580px; width: 51px; height: 34px; } 
-.sprite-slovakia_l{ background-position: -102px -664px; width: 52px; height: 34px; } 
-.sprite-slovenia_l{ background-position: -102px -748px; width: 52px; height: 34px; } 
-.sprite-spain_l{ background-position: -102px -832px; width: 52px; height: 34px; } 
-.sprite-sweden_l{ background-position: -102px -916px; width: 52px; height: 34px; } 
-.sprite-switzerland_l{ background-position: -102px -1000px; width: 34px; height: 34px; } 
-.sprite-turkey_l{ background-position: -102px -1084px; width: 51px; height: 34px; } 
-.sprite-unitedkingdom_l{ background-position: -102px -1168px; width: 52px; height: 34px; } 
+.sprite-albania_l{ background-position: 0 0; width: 48px; height: 34px; }
+.sprite-austria_l{ background-position: 0 -84px; width: 52px; height: 34px; }
+.sprite-belgium_l{ background-position: 0 -168px; width: 52px; height: 34px; }
+.sprite-bosnia_and_herzegovina_l{ background-position: 0 -252px; width: 52px; height: 26px; }
+.sprite-bulgaria_l{ background-position: 0 -328px; width: 52px; height: 34px; }
+.sprite-croatia_l{ background-position: 0 -412px; width: 52px; height: 26px; }
+.sprite-cyprus_l{ background-position: 0 -488px; width: 52px; height: 34px; }
+.sprite-czechrepublic_l{ background-position: 0 -572px; width: 52px; height: 34px; }
+.sprite-denmark_l{ background-position: 0 -656px; width: 52px; height: 34px; }
+.sprite-estonia_l{ background-position: 0 -740px; width: 52px; height: 34px; }
+.sprite-finland_l{ background-position: 0 -824px; width: 52px; height: 34px; }
+.sprite-france_l{ background-position: 0 -908px; width: 52px; height: 34px; }
+.sprite-germany_l{ background-position: 0 -992px; width: 52px; height: 34px; }
+.sprite-greece_l{ background-position: 0 -1076px; width: 52px; height: 34px; }
+.sprite-hungary_l{ background-position: 0 -1160px; width: 52px; height: 34px; }
+.sprite-iceland_l{ background-position: 0 -1244px; width: 47px; height: 34px; }
+.sprite-ireland_l{ background-position: 0 -1328px; width: 52px; height: 34px; }
+.sprite-italy_l{ background-position: 0 -1412px; width: 52px; height: 34px; }
+.sprite-kosovo_l{ background-position: 0 -1496px; width: 51px; height: 34px; }
+.sprite-latvia_l{ background-position: 0 -1580px; width: 52px; height: 34px; }
+.sprite-liechtenstein_l{ background-position: 0 -1664px; width: 52px; height: 31px; }
+.sprite-lithuania_l{ background-position: 0 -1745px; width: 52px; height: 34px; }
+.sprite-luxembourg_l{ background-position: 0 -1829px; width: 52px; height: 34px; }
+.sprite-macedonia_l{ background-position: 0 -1913px; width: 52px; height: 26px; }
+.sprite-malta_l{ background-position: -102px 0; width: 52px; height: 34px; }
+.sprite-montenegro_l{ background-position: -102px -84px; width: 52px; height: 26px; }
+.sprite-netherlands_l{ background-position: -102px -160px; width: 52px; height: 34px; }
+.sprite-norway_l{ background-position: -102px -244px; width: 47px; height: 34px; }
+.sprite-poland_l{ background-position: -102px -328px; width: 52px; height: 34px; }
+.sprite-portugal_l{ background-position: -102px -412px; width: 52px; height: 34px; }
+.sprite-romania_l{ background-position: -102px -496px; width: 52px; height: 34px; }
+.sprite-serbia_l{ background-position: -102px -580px; width: 51px; height: 34px; }
+.sprite-slovakia_l{ background-position: -102px -664px; width: 52px; height: 34px; }
+.sprite-slovenia_l{ background-position: -102px -748px; width: 52px; height: 34px; }
+.sprite-spain_l{ background-position: -102px -832px; width: 52px; height: 34px; }
+.sprite-sweden_l{ background-position: -102px -916px; width: 52px; height: 34px; }
+.sprite-switzerland_l{ background-position: -102px -1000px; width: 34px; height: 34px; }
+.sprite-turkey_l{ background-position: -102px -1084px; width: 51px; height: 34px; }
+.sprite-unitedkingdom_l{ background-position: -102px -1168px; width: 52px; height: 34px; }
 
 /* icon sprites */
-.sprite-CaseStudy{ background-position: 0 0; width: 16px; height: 16px; } 
-.sprite-Form{ background-position: 0 -116px; width: 16px; height: 16px; } 
-.sprite-arrowBlank{ background-position: 0 -232px; width: 9px; height: 6px; } 
-.sprite-arrowDown{ background-position: 0 -338px; width: 9px; height: 6px; } 
-.sprite-arrowDownAlternative{ background-position: 0 -444px; width: 9px; height: 6px; } 
-.sprite-arrowLeft{ background-position: 0 -550px; width: 6px; height: 9px; } 
-.sprite-arrowLeftAlternative{ background-position: 0 -659px; width: 6px; height: 9px; } 
-.sprite-arrowLeftDouble{ background-position: 0 -768px; width: 12px; height: 19px; } 
-.sprite-arrowLeftInactive{ background-position: 0 -887px; width: 7px; height: 11px; } 
-.sprite-arrowRight{ background-position: 0 -998px; width: 6px; height: 9px; } 
-.sprite-arrowRightAlternative{ background-position: 0 -1107px; width: 6px; height: 9px; } 
-.sprite-arrowRightDouble{ background-position: 0 -1216px; width: 12px; height: 19px; } 
-.sprite-arrowRightInactive{ background-position: 0 -1335px; width: 7px; height: 11px; } 
-.sprite-arrowUp{ background-position: 0 -1446px; width: 9px; height: 6px; } 
-.sprite-arrowUpAlternative{ background-position: 0 -1552px; width: 9px; height: 6px; } 
-.sprite-bullet{ background-position: 0 -1658px; width: 6px; height: 6px; } 
-.sprite-button_bg{ background-position: 0 -1764px; width: 13px; height: 11px; } 
-.sprite-call_icon{ background-position: 0 -1875px; width: 16px; height: 16px; } 
-.sprite-collage_icon{ background-position: -216px 0; width: 16px; height: 16px; } 
-.sprite-copy_icon{ background-position: -216px -116px; width: 17px; height: 17px; } 
-.sprite-cut_icon{ background-position: -216px -233px; width: 15px; height: 16px; } 
-.sprite-database_search{ background-position: -216px -349px; width: 48px; height: 48px; } 
-.sprite-dbtableedit_icon{ background-position: -216px -497px; width: 16px; height: 13px; } 
-.sprite-delete_icon{ background-position: -216px -610px; width: 17px; height: 16px; } 
-.sprite-directive_icon{ background-position: -216px -726px; width: 16px; height: 16px; } 
-.sprite-document_icon{ background-position: -216px -958px; width: 16px; height: 16px; } 
-.sprite-edit_box{ background-position: -216px -1074px; width: 13px; height: 13px; } 
-.sprite-event_icon{ background-position: -216px -1187px; width: 16px; height: 16px; } 
-.sprite-faq_icon{ background-position: -216px -1303px; width: 16px; height: 16px; } 
-.sprite-flag-plone{ background-position: -216px -1535px; width: 14px; height: 11px; } 
-.sprite-folder_icon{ background-position: -216px -1646px; width: 16px; height: 16px; } 
-.sprite-helpcenter_icon{ background-position: -216px -1762px; width: 16px; height: 16px; } 
-.sprite-icon_accessibility{ background-position: -216px -1878px; width: 16px; height: 16px; } 
-.sprite-icon_comments{ background-position: -464px 0; width: 16px; height: 16px; } 
-.sprite-icon_copyright{ background-position: -464px -116px; width: 14px; height: 13px; } 
-.sprite-icon_disclaimer{ background-position: -464px -229px; width: 16px; height: 16px; } 
-.sprite-icon_faq{ background-position: -464px -345px; width: 16px; height: 16px; } 
-.sprite-icon_help{ background-position: -464px -461px; width: 16px; height: 16px; } 
-.sprite-icon_press{ background-position: -464px -577px; width: 15px; height: 15px; } 
-.sprite-icon_provider{ background-position: -464px -692px; width: 16px; height: 16px; } 
-.sprite-icon_riskassessment{ background-position: -464px -808px; width: 16px; height: 16px; } 
-.sprite-icon_rss_feed{ background-position: -464px -924px; width: 12px; height: 12px; } 
-.sprite-icon_sitemap{ background-position: -464px -1036px; width: 16px; height: 16px; } 
-.sprite-icon_siteupdate{ background-position: -464px -1152px; width: 16px; height: 16px; } 
-.sprite-icon_translations{ background-position: -464px -1268px; width: 16px; height: 16px; } 
-.sprite-icon_unlink{ background-position: -464px -1384px; width: 21px; height: 20px; } 
-.sprite-image_icon{ background-position: -464px -1504px; width: 16px; height: 16px; } 
-.sprite-info_small{ background-position: -464px -1620px; width: 23px; height: 23px; } 
-.sprite-job_icon{ background-position: -464px -1743px; width: 16px; height: 16px; } 
-.sprite-large_arrow_left{ background-position: -464px -1859px; width: 50px; height: 38px; } 
-.sprite-large_arrow_right{ background-position: -714px 0; width: 50px; height: 38px; } 
-.sprite-linkedin-logo{ background-position: -714px -474px; width: 30px; height: 30px; } 
-.sprite-minus_icon{ background-position: -714px -843px; width: 16px; height: 16px; } 
-.sprite-msaccess_icon{ background-position: -714px -959px; width: 16px; height: 16px; } 
-.sprite-msexcel_icon{ background-position: -714px -1075px; width: 16px; height: 16px; } 
-.sprite-newsitem_icon{ background-position: -714px -1423px; width: 16px; height: 16px; } 
-.sprite-oshlink_icon{ background-position: -714px -1539px; width: 16px; height: 16px; } 
-.sprite-pdf{ background-position: -714px -1655px; width: 16px; height: 16px; } 
-.sprite-ploneboard_icon{ background-position: -714px -1887px; width: 16px; height: 16px; } 
-.sprite-plus_icon{ background-position: -964px 0; width: 16px; height: 16px; } 
-.sprite-pressclip_icon{ background-position: -964px -116px; width: 16px; height: 16px; } 
-.sprite-pressrelease_icon{ background-position: -964px -232px; width: 16px; height: 16px; } 
-.sprite-pressroom_icon{ background-position: -964px -348px; width: 16px; height: 16px; } 
-.sprite-print{ background-position: -964px -464px; width: 11px; height: 11px; } 
-.sprite-print_icon{ background-position: -964px -575px; width: 16px; height: 16px; } 
-.sprite-resourcecheckout{ background-position: -964px -691px; width: 16px; height: 16px; } 
-.sprite-resourcelinkcollection_edit_box{ background-position: -964px -807px; width: 13px; height: 13px; } 
-.sprite-resourceshoppinglist_icon{ background-position: -964px -920px; width: 16px; height: 16px; } 
-.sprite-resourcexliff_icon{ background-position: -964px -1036px; width: 16px; height: 16px; } 
-.sprite-ribbon{ background-position: -964px -1152px; width: 17px; height: 20px; } 
-.sprite-richdocument_icon{ background-position: -964px -1272px; width: 16px; height: 16px; } 
-.sprite-search_icon{ background-position: -964px -1388px; width: 16px; height: 13px; } 
-.sprite-select{ background-position: -964px -1501px; width: 11px; height: 11px; } 
-.sprite-select_lang{ background-position: -964px -1612px; width: 15px; height: 11px; } 
-.sprite-site_icon{ background-position: -964px -1723px; width: 16px; height: 16px; } 
-.sprite-square_empty{ background-position: -964px -1839px; width: 9px; height: 9px; } 
-.sprite-submenu{ background-position: -1214px 0; width: 9px; height: 10px; } 
-.sprite-topbanner2{ background-position: -1214px -110px; width: 104px; height: 92px; } 
-.sprite-twitter-logo{ background-position: -1214px -418px; width: 30px; height: 30px; } 
-.sprite-user{ background-position: -1214px -558px; width: 16px; height: 16px; } 
-.sprite-youtube{ background-position: -1214px -790px; width: 30px; height: 30px; } 
+.sprite-CaseStudy{ background-position: 0 0; width: 16px; height: 16px; }
+.sprite-Form{ background-position: 0 -116px; width: 16px; height: 16px; }
+.sprite-arrowBlank{ background-position: 0 -232px; width: 9px; height: 6px; }
+.sprite-arrowDown{ background-position: 0 -338px; width: 9px; height: 6px; }
+.sprite-arrowDownAlternative{ background-position: 0 -444px; width: 9px; height: 6px; }
+.sprite-arrowLeft{ background-position: 0 -550px; width: 6px; height: 9px; }
+.sprite-arrowLeftAlternative{ background-position: 0 -659px; width: 6px; height: 9px; }
+.sprite-arrowLeftDouble{ background-position: 0 -768px; width: 12px; height: 19px; }
+.sprite-arrowLeftInactive{ background-position: 0 -887px; width: 7px; height: 11px; }
+.sprite-arrowRight{ background-position: 0 -998px; width: 6px; height: 9px; }
+.sprite-arrowRightAlternative{ background-position: 0 -1107px; width: 6px; height: 9px; }
+.sprite-arrowRightDouble{ background-position: 0 -1216px; width: 12px; height: 19px; }
+.sprite-arrowRightInactive{ background-position: 0 -1335px; width: 7px; height: 11px; }
+.sprite-arrowUp{ background-position: 0 -1446px; width: 9px; height: 6px; }
+.sprite-arrowUpAlternative{ background-position: 0 -1552px; width: 9px; height: 6px; }
+.sprite-bullet{ background-position: 0 -1658px; width: 6px; height: 6px; }
+.sprite-button_bg{ background-position: 0 -1764px; width: 13px; height: 11px; }
+.sprite-call_icon{ background-position: 0 -1875px; width: 16px; height: 16px; }
+.sprite-collage_icon{ background-position: -216px 0; width: 16px; height: 16px; }
+.sprite-copy_icon{ background-position: -216px -116px; width: 17px; height: 17px; }
+.sprite-cut_icon{ background-position: -216px -233px; width: 15px; height: 16px; }
+.sprite-database_search{ background-position: -216px -349px; width: 48px; height: 48px; }
+.sprite-dbtableedit_icon{ background-position: -216px -497px; width: 16px; height: 13px; }
+.sprite-delete_icon{ background-position: -216px -610px; width: 17px; height: 16px; }
+.sprite-directive_icon{ background-position: -216px -726px; width: 16px; height: 16px; }
+.sprite-document_icon{ background-position: -216px -958px; width: 16px; height: 16px; }
+.sprite-edit_box{ background-position: -216px -1074px; width: 13px; height: 13px; }
+.sprite-event_icon{ background-position: -216px -1187px; width: 16px; height: 16px; }
+.sprite-faq_icon{ background-position: -216px -1303px; width: 16px; height: 16px; }
+.sprite-flag-plone{ background-position: -216px -1535px; width: 14px; height: 11px; }
+.sprite-folder_icon{ background-position: -216px -1646px; width: 16px; height: 16px; }
+.sprite-helpcenter_icon{ background-position: -216px -1762px; width: 16px; height: 16px; }
+.sprite-icon_accessibility{ background-position: -216px -1878px; width: 16px; height: 16px; }
+.sprite-icon_comments{ background-position: -464px 0; width: 16px; height: 16px; }
+.sprite-icon_copyright{ background-position: -464px -116px; width: 14px; height: 13px; }
+.sprite-icon_disclaimer{ background-position: -464px -229px; width: 16px; height: 16px; }
+.sprite-icon_faq{ background-position: -464px -345px; width: 16px; height: 16px; }
+.sprite-icon_help{ background-position: -464px -461px; width: 16px; height: 16px; }
+.sprite-icon_press{ background-position: -464px -577px; width: 15px; height: 15px; }
+.sprite-icon_provider{ background-position: -464px -692px; width: 16px; height: 16px; }
+.sprite-icon_riskassessment{ background-position: -464px -808px; width: 16px; height: 16px; }
+.sprite-icon_rss_feed{ background-position: -464px -924px; width: 12px; height: 12px; }
+.sprite-icon_sitemap{ background-position: -464px -1036px; width: 16px; height: 16px; }
+.sprite-icon_siteupdate{ background-position: -464px -1152px; width: 16px; height: 16px; }
+.sprite-icon_translations{ background-position: -464px -1268px; width: 16px; height: 16px; }
+.sprite-icon_unlink{ background-position: -464px -1384px; width: 21px; height: 20px; }
+.sprite-image_icon{ background-position: -464px -1504px; width: 16px; height: 16px; }
+.sprite-info_small{ background-position: -464px -1620px; width: 23px; height: 23px; }
+.sprite-job_icon{ background-position: -464px -1743px; width: 16px; height: 16px; }
+.sprite-large_arrow_left{ background-position: -464px -1859px; width: 50px; height: 38px; }
+.sprite-large_arrow_right{ background-position: -714px 0; width: 50px; height: 38px; }
+.sprite-linkedin-logo{ background-position: -714px -474px; width: 30px; height: 30px; }
+.sprite-minus_icon{ background-position: -714px -843px; width: 16px; height: 16px; }
+.sprite-msaccess_icon{ background-position: -714px -959px; width: 16px; height: 16px; }
+.sprite-msexcel_icon{ background-position: -714px -1075px; width: 16px; height: 16px; }
+.sprite-newsitem_icon{ background-position: -714px -1423px; width: 16px; height: 16px; }
+.sprite-oshlink_icon{ background-position: -714px -1539px; width: 16px; height: 16px; }
+.sprite-pdf{ background-position: -714px -1655px; width: 16px; height: 16px; }
+.sprite-ploneboard_icon{ background-position: -714px -1887px; width: 16px; height: 16px; }
+.sprite-plus_icon{ background-position: -964px 0; width: 16px; height: 16px; }
+.sprite-pressclip_icon{ background-position: -964px -116px; width: 16px; height: 16px; }
+.sprite-pressrelease_icon{ background-position: -964px -232px; width: 16px; height: 16px; }
+.sprite-pressroom_icon{ background-position: -964px -348px; width: 16px; height: 16px; }
+.sprite-print{ background-position: -964px -464px; width: 11px; height: 11px; }
+.sprite-print_icon{ background-position: -964px -575px; width: 16px; height: 16px; }
+.sprite-resourcecheckout{ background-position: -964px -691px; width: 16px; height: 16px; }
+.sprite-resourcelinkcollection_edit_box{ background-position: -964px -807px; width: 13px; height: 13px; }
+.sprite-resourceshoppinglist_icon{ background-position: -964px -920px; width: 16px; height: 16px; }
+.sprite-resourcexliff_icon{ background-position: -964px -1036px; width: 16px; height: 16px; }
+.sprite-ribbon{ background-position: -964px -1152px; width: 17px; height: 20px; }
+.sprite-richdocument_icon{ background-position: -964px -1272px; width: 16px; height: 16px; }
+.sprite-search_icon{ background-position: -964px -1388px; width: 16px; height: 13px; }
+.sprite-select{ background-position: -964px -1501px; width: 11px; height: 11px; }
+.sprite-select_lang{ background-position: -964px -1612px; width: 15px; height: 11px; }
+.sprite-site_icon{ background-position: -964px -1723px; width: 16px; height: 16px; }
+.sprite-square_empty{ background-position: -964px -1839px; width: 9px; height: 9px; }
+.sprite-submenu{ background-position: -1214px 0; width: 9px; height: 10px; }
+.sprite-topbanner2{ background-position: -1214px -110px; width: 104px; height: 92px; }
+.sprite-twitter-logo{ background-position: -1214px -418px; width: 30px; height: 30px; }
+.sprite-user{ background-position: -1214px -558px; width: 16px; height: 16px; }
+.sprite-youtube{ background-position: -1214px -790px; width: 30px; height: 30px; }
 
-.sprite-oshablog{ background-position: -1214px -1039px; width: 30px; height: 30px; } 
-.sprite-oshmail{ background-position: -1214px -1152px; width: 30px; height: 30px;  } 
-.sprite-oshalert{ background-position: -1214px -1272px; width: 30px; height: 30px;  } 
+.sprite-oshablog{ background-position: -1214px -1039px; width: 30px; height: 30px; }
+.sprite-oshmail{ background-position: -1214px -1152px; width: 30px; height: 30px;  }
+.sprite-oshalert{ background-position: -1214px -1272px; width: 30px; height: 30px;  }
 
 
 /* Footer sprites */
 #footeraction-sendto a, #footeraction-print a, #footeraction-contact a, #footeraction-osha_help a, #footeraction-rssfeeds a,
 #footeraction-sitemap a, #footeraction-accessibility a,#footeraction-plone_setup a, #footeraction-osha_update a, #footeraction-osha_faq a,
-#footeraction-osha_translations a, #footeraction-worklist a, #footeraction-privacypolicy a, #footeraction-disclaimer a, 
+#footeraction-osha_translations a, #footeraction-worklist a, #footeraction-privacypolicy a, #footeraction-disclaimer a,
 #footeraction-copyright a{
-    background: url(&dtml-portal_url;/sprites-icons.png) no-repeat scroll 0 0 transparent; 
+    background: url(&dtml-portal_url;/sprites-icons.png) no-repeat scroll 0 0 transparent;
     width: 16px; height: 16px;
     padding-left: 20px;
     padding-bottom:2px;
@@ -247,7 +247,7 @@
     font: 14px/100% Arial, Helvetica, sans-serif;
     padding: .5em 2em .55em;
     text-shadow: 0 1px 1px rgba(0,0,0,.3);
-    -webkit-border-radius: .5em; 
+    -webkit-border-radius: .5em;
     -moz-border-radius: .5em;
     border-radius: .5em;
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
@@ -506,7 +506,7 @@
     font-size: 20px;
     padding: 2px 5px;
     font-weight: bold;
-    -webkit-border-radius: 2px; 
+    -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
     position:relative;

@@ -1,6 +1,6 @@
 /*
   This file is based on the ploneCustom.css.dtml file shipped with Plone.
- 
+
   <dtml-with base_properties> (do not remove this)
   <dtml-call "REQUEST.set('portal_url', portal_url())"> (not this either)
 */
@@ -22,9 +22,9 @@ body {
     background: transparent url('&dtml-portal_url;/top.gif') repeat-x top left;
 }
 
-/* 
+/*
   Don't display the background image on iframes used in overlays
-  e.g. Solgema Fullcalendar 
+  e.g. Solgema Fullcalendar
 */
 body.ajax_edition {
    background-image: none;
@@ -80,7 +80,7 @@ h2 {
     font-size: 110%;
     border-bottom-style: solid;
     border-bottom-width: 1px;
-    border-bottom-color: gray;    
+    border-bottom-color: gray;
 }
 h3 {
     font-size: 105%;
@@ -173,6 +173,5 @@ del {
 
 /* </dtml-with> */
 
-/* Latest version of the documentation on pre-defined properties from Plone 
+/* Latest version of the documentation on pre-defined properties from Plone
    can be found in CMFPlone/skins/plone_styles/ploneCustom.css.dtml */
-
