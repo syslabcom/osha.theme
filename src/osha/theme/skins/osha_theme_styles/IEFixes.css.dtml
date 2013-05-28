@@ -32,6 +32,11 @@ textarea {
 .visualGhosted {
     filter:alpha(opacity=20);
 }
+.button {
+    /* zoom and display = ie7 hack for display:inline-block */
+    zoom: 1;
+    *display: inline;
+}
 
 /* make spans within ABBR have a border in IE6 the same way it is in all other browsers */
 * html abbr .explain {
