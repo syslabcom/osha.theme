@@ -8,4 +8,11 @@
     Various import steps that are not handled by GS import/export
     handlers.
   </import-step>
+  <import-step
+      id='osha.theme.cssregistry'
+      version='20130529-01'
+      handler="osha.theme.setuphandlers.resetCSSRegistry">
+    Remove all resources from the Css registry and add them
+    from cssregistry.xml
+  </import-step>
 </import-steps>
