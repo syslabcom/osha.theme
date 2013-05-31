@@ -4,6 +4,14 @@
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="member.css" media="screen" rel="stylesheet"
     rendering="import"/>
+ <stylesheet title="" applyPrefix="True" authenticated="True" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="on"
+    expression="" id="++resource++quickupload_static/uploadify.css" media=""
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="True" authenticated="True" cacheable="True"
+    compression="safe" conditionalcomment="" cookable="True" enabled="on"
+    expression="" id="++resource++quickupload_static/fileuploader.css"
+    media="" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on"
@@ -33,11 +41,6 @@
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="controlpanel.css" media="screen"
     rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression=""
-    id="++resource++tinymce.stylesheets/tinymce.css" media="screen"
-    rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="print.css" media="print" rel="stylesheet"
@@ -71,11 +74,6 @@
     cacheable="True" compression="none" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="remoteprovider_styles.css" media="all"
     rel="stylesheet" rendering="import"/>
- <stylesheet title="PressRoom styles" applyPrefix="False"
-    authenticated="False" cacheable="True" compression="safe"
-    conditionalcomment="" cookable="True" enabled="on"
-    expression="python:object.getTypeInfo().getId() in ('PressRoom','PressRelease','PressClip','PressContact')"
-    id="PressRoom.css" media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="osha.css" media="screen" rel="stylesheet"
@@ -102,10 +100,11 @@
     enabled="on" expression=""
     id="++resource++osha.theme.browser.resources.multimedia/multimedia.css"
     media="screen" rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="lt IE 8"
-    cookable="True" enabled="on" expression="" id="IEFixes.css" media="screen"
-    rel="stylesheet" rendering="link"/>
+ <stylesheet title="PressRoom styles" applyPrefix="False"
+    authenticated="False" cacheable="True" compression="safe"
+    conditionalcomment="" cookable="True" enabled="on"
+    expression="python:object.getTypeInfo().getId() in ('PressRoom','PressRelease','PressClip','PressContact')"
+    id="PressRoom.css" media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="False" compression="safe" conditionalcomment="" cookable="True"
     enabled="False" expression=""
@@ -116,20 +115,51 @@
     enabled="False" expression=""
     id="++resource++plone.app.jquerytools.dateinput.css" media="screen"
     rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="False" expression="context/@@jqueryui-include-condition"
+    id="++resource++jquery-ui-themes/sunburst-patch.css" media="screen"
+    rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="True" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="context/@@jqueryui-include-condition"
     id="++resource++jquery-ui-themes/sunburst/jqueryui.css" media="screen"
     rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="full" conditionalcomment="" cookable="True"
+    enabled="on" expression="here/@@iscalendarlayout"
+    id="solgemafullcalendar.css" media="all" rel="stylesheet"
+    rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="False" expression="context/@@jqueryui-include-condition"
-    id="++resource++jquery-ui-themes/sunburst-patch.css" media="screen"
+    enabled="on" expression="here/@@plonetruegallery_util/enabled"
+    id="++resource++plonetruegallery.resources/style.css" media="screen"
+    rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="False"
+    enabled="on" expression="nocall: object/@@collage_view|nothing"
+    id="collage.css" media="all" rel="stylesheet" rendering="import"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="lt IE 8"
+    cookable="True" enabled="on" expression="" id="IEFixes.css" media="screen"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="helpcenter.css" media="all"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression="" id="helpcenter_print.css" media="print"
     rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression=""
     id="++resource++collective.js.fullcalendar/fullcalendar.css" media="all"
+    rel="stylesheet" rendering="link"/>
+ <stylesheet title="" applyPrefix="False" authenticated="False"
+    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
+    enabled="on" expression=""
+    id="++resource++tinymce.stylesheets/tinymce.css" media="screen"
     rel="stylesheet" rendering="link"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
@@ -145,31 +175,9 @@
     enabled="on" expression="" id="++resource++collective.js.colorpicker.css"
     media="screen" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="full" conditionalcomment="" cookable="True"
-    enabled="on" expression="here/@@iscalendarlayout"
-    id="solgemafullcalendar.css" media="all" rel="stylesheet"
-    rendering="import"/>
- <stylesheet title="" applyPrefix="True" authenticated="True" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="on"
-    expression="" id="++resource++quickupload_static/uploadify.css" media=""
-    rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="True" authenticated="True" cacheable="True"
-    compression="safe" conditionalcomment="" cookable="True" enabled="on"
-    expression="" id="++resource++quickupload_static/fileuploader.css"
-    media="" rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="here/@@plonetruegallery_util/enabled"
-    id="++resource++plonetruegallery.resources/style.css" media="screen"
-    rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="++resource++plonetruegallery-portlet.css"
     media="screen" rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="False"
-    enabled="on" expression="nocall: object/@@collage_view|nothing"
-    id="collage.css" media="all" rel="stylesheet" rendering="import"/>
  <stylesheet title="" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="++resource++osha-searchurls.css"
@@ -178,14 +186,6 @@
     cacheable="True" compression="none" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="surveyanswers.css" media="all"
     rel="stylesheet" rendering="import"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="helpcenter.css" media="all"
-    rel="stylesheet" rendering="link"/>
- <stylesheet title="" applyPrefix="False" authenticated="False"
-    cacheable="True" compression="safe" conditionalcomment="" cookable="True"
-    enabled="on" expression="" id="helpcenter_print.css" media="print"
-    rel="stylesheet" rendering="link"/>
  <stylesheet title="Ploneboard CSS" applyPrefix="False" authenticated="False"
     cacheable="True" compression="safe" conditionalcomment="" cookable="True"
     enabled="on" expression="" id="ploneboard.css" media="all"
