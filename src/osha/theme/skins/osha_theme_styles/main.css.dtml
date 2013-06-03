@@ -356,18 +356,11 @@ form#quickuploader .quick-uploader {
  */
 
 
-/***************portlet CS*************/
+/***************portlet CSS*************/
 
 .portlet {
     margin: 1px 0 2em 1px;
     background: #fff;
-}
-
-.portlet,
-.portletHeader,
-.portletItem,
-.portletFooter {
-    border: 1px solid #c5cbd8;
 }
 
 .portletHeader {
