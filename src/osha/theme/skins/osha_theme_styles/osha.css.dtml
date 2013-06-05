@@ -530,11 +530,7 @@
 /* end Button */
 
 
-/* Misc */
-.documentEditable #content {
-    border: 0;
-}
-
+/* Blog */
 .oshmail-blog-icon {
     color: #d9eef7 !important;
     font-size: 20px;
@@ -554,4 +550,14 @@
 
 #content .heading-rss a {
     background: none;
+}
+
+/* HR Form */
+#formfield-form-widgets-vacancies {
+    width: 100%;
+}
+
+/* Misc */
+.documentEditable #content {
+    border: 0;
 }
