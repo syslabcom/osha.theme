@@ -131,7 +131,12 @@ class DBFilterView(BrowserView):
         b_size = self.request.get('b_size', 10)
         b_start = self.request.get('b_start', 0)
 
-        return search_solr(query, sort='effective desc', start=b_start, rows=b_size)
+        search_view = self.context.restrictedTraverse(
+            '@@language-fallback-search')
+
+        return search_view.search_solr(
+            query, sort='effective desc', start=b_start, rows=b_size)
+
 
 
 class ProviderDBFilterView(DBFilterView):

@@ -244,23 +244,21 @@ class PracticalSolutionView(DBFilterView):
             }
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
-        preflang = getToolByName(self.context,
-                                 'portal_languages').getPreferredLanguage()
-        language = self.request.get('Language', preflang)
-        # Important! Always include neutral! Neutral == relevant for ALL
-        # languages!!!
-        if language:
-            query = '%(query)s AND Language:(%(lang)s)' % dict(
-                query=query, lang=' OR '.join((language, 'any')))
+        # preflang = getToolByName(self.context,
+        #                          'portal_languages').getPreferredLanguage()
+        # language = self.request.get('Language', preflang)
+        # # Important! Always include neutral! Neutral == relevant for ALL
+        # # languages!!!
+        # if language:
+        #     query = '%(query)s AND Language:(%(lang)s)' % dict(
+        #         query=query, lang=' OR '.join((language, 'any')))
 
         # don't handle remoteLanguage for FAQHelpcenter items
         spt = self.get_search_portal_type()
         faq_condition = type(spt) == list \
                         and 'HelpCenterFAQ' in spt \
                         or spt == 'HelpCenterFAQ'
-        getRemoteLanguage = self.request.get('getRemoteLanguage',
-                                             not faq_condition and preflang
-                                             or '')
+        getRemoteLanguage = self.request.get('getRemoteLanguage', '')
         if isinstance(getRemoteLanguage, basestring):
             getRemoteLanguage = [getRemoteLanguage,]
         if getRemoteLanguage:
