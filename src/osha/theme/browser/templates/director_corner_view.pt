@@ -16,7 +16,8 @@
                                   mtool context/portal_membership;
                                   normalizeString nocall:plone_view/normalizeString;
                                   toLocalizedTime nocall:plone_view/toLocalizedTime;
-                                  templateId template/getId;">
+                                  templateId template/getId;
+                                  blog_items view/blog_items;">
 
         <div tal:replace="structure provider:plone.abovecontenttitle" />
 
@@ -46,31 +47,30 @@
             <div metal:define-slot="inside" tal:replace="structure text">The body</div>
         </div>
 
-        <h2>OSH Blog</h2>
+        <div id="blog-intro"
+             tal:define="blog_intro view/blog_intro"
+             tal:condition="blog_intro">
+          <h2>OSH Blog</h2>
+          <p class="documentDescription" tal:content="structure view/blog_intro">
+            Blog intro
+          </p>
+        </div>
 
-        <p class="documentDescription" tal:content="structure view/blog_intro">
-          Blog intro
-        </p>
-
-        <metal:listingmacro define-macro="listing">
+        <metal:listingmacro define-macro="listing"
+                            tal:condition="blog_items">
         <tal:foldercontents define="Batch python:modules['Products.CMFPlone.PloneBatch'].Batch;
-                            b_size python:10;
+                            b_size python:20;
                             b_start python:0;
                             b_start request/b_start | b_start;
                             more_url more_url|request/more_url|string:folder_contents;
-                            limit_display limit_display|request/limit_display|nothing;
-                            folderContents view/blog_items;
-                            batch python:Batch(folderContents, b_size, int(b_start), orphan=1);
+                            batch python:Batch(blog_items, b_size, int(b_start), orphan=1);
                             use_view_action site_properties/typesUseViewActionInListings|python:();
-                            over_limit python: limit_display and len(folderContents) > limit_display;
-                            folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
                             portal_discussion nocall:context/portal_discussion;
                             isDiscussionAllowedFor nocall:portal_discussion/isDiscussionAllowedFor;
                             getDiscussionFor nocall:portal_discussion/getDiscussionFor;
-                            wtool here/portal_workflow;
-                            ">
+                            wtool here/portal_workflow;">
 
-        <div tal:condition="folderContents" class="heading-rss">
+        <div class="heading-rss">
           <a href=""
              title="Click here for the RSS feed"
              tal:attributes="href string:${context/aq_parent/blog/absolute_url}/@@blog-rss">
@@ -82,9 +82,9 @@
           </a>
         </div>
 
-        <tal:listing condition="folderContents">
+        <tal:listing>
 
-            <tal:block tal:repeat="item folderContents">
+            <tal:block tal:repeat="item batch">
                 <div class="tileItem visualIEFloatFix vevent"
                      tal:define="item_url item/getURL|item/absolute_url;
                                        item_id item/getId|item/id;
@@ -233,7 +233,7 @@
         </tal:listing>
         <metal:empty metal:define-slot="no_items_in_listing">
             <p class="discreet"
-               tal:condition="not: folderContents"
+               tal:condition="not: blog_items"
                i18n:translate="description_no_items_in_folder">
                 There are currently no items in this folder.
             </p>
