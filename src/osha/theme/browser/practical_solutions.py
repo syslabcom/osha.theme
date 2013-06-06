@@ -221,21 +221,27 @@ class PracticalSolutionView(DBFilterView):
         keywords = self.request.get('keywords', local_keyword)
         if keywords:
             if keywords !=  ['']:
-                query = ' AND '.join([query, 'Subject:(%s)' % ' OR '.join(keywords)])
+                query = ' AND '.join(
+                    [query, 'Subject:(%s)' % ' OR '.join(keywords)])
 
         nace = list(self.request.get('nace', ''))
         if '' in nace:
             nace.remove('')
         if nace:
-            query = '%(query)s AND %(nace)s' % {'query': query, 'nace': 'nace:(%s)' % ' OR '.join(nace)}
+            query = '%(query)s AND %(nace)s' % {
+                'query': query, 'nace': 'nace:(%s)' % ' OR '.join(nace)}
             #query.update({'nace':nace})
 
-        multilingual_thesaurus = list(self.request.get('multilingual_thesaurus', ''))
+        multilingual_thesaurus = list(
+            self.request.get('multilingual_thesaurus', ''))
         if '' in multilingual_thesaurus:
             multilingual_thesaurus.remove('')
         if multilingual_thesaurus:
-            query = '%(query)s AND %(mul_the)s' % \
-                    {'query': query, 'mul_the': 'multilingual_thesaurus:(%s)' % ' OR '.join(multilingual_thesaurus)}
+            query = '%(query)s AND %(mul_the)s' % {
+                'query': query,
+                'mul_the': 'multilingual_thesaurus:(%s)' % ' OR '.join(
+                    multilingual_thesaurus)
+            }
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
         preflang = getToolByName(self.context,
@@ -244,35 +250,47 @@ class PracticalSolutionView(DBFilterView):
         # Important! Always include neutral! Neutral == relevant for ALL
         # languages!!!
         if language:
-            query = '%(query)s AND Language:(%(lang)s)' % dict(query=query, lang=' OR '.join((language, 'any')))
+            query = '%(query)s AND Language:(%(lang)s)' % dict(
+                query=query, lang=' OR '.join((language, 'any')))
 
         # don't handle remoteLanguage for FAQHelpcenter items
         spt = self.get_search_portal_type()
-        faq_condition = type(spt) == list and 'HelpCenterFAQ' in spt or spt == 'HelpCenterFAQ'
+        faq_condition = type(spt) == list \
+                        and 'HelpCenterFAQ' in spt \
+                        or spt == 'HelpCenterFAQ'
         getRemoteLanguage = self.request.get('getRemoteLanguage',
                                              not faq_condition and preflang
                                              or '')
         if isinstance(getRemoteLanguage, basestring):
             getRemoteLanguage = [getRemoteLanguage,]
         if getRemoteLanguage:
-            query = '%(query)s AND %(getRemoteLanguage)s' % {'query': query,
-            'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(getRemoteLanguage)}
+            query = '%(query)s AND %(getRemoteLanguage)s' % {
+                'query': query,
+                'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(
+                    getRemoteLanguage)}
             #query.update({'getRemoteLanguage':getRemoteLanguage})
 
         subcategory = self.request.get('subcategory', '')
         if subcategory:
-            query = '%(query)s AND %(subcategory)s' % {'query': query, 'subcategory': 'subcategory:(%s)' % ' OR '.join(['"%s"' % s for s in subcategory])}
+            query = '%(query)s AND %(subcategory)s' % {
+                'query': query,
+                'subcategory': 'subcategory:(%s)' % ' OR '.join(
+                    ['"%s"' % s for s in subcategory])}
             #query.update({'subcategory':subcategory})
 
         country = self.request.get('country', '')
         if country:
-            query = '%(query)s AND %(country)s' % {'query': query, 'country': 'country:(%s)' % ' OR '.join(country)}
+            query = '%(query)s AND %(country)s' % {
+                'query': query,
+                'country': 'country:(%s)' % ' OR '.join(country)}
             #query.update({'country':country})
 
         SearchableText = self.request.get('SearchableText', '')
         if SearchableText != '':
-            query = '%(query)s AND SearchableText:"%(SearchableText)s"' % {'query': query, 'SearchableText': SearchableText}
-            #query.update({'SearchableText': {'query': SearchableText, 'ranking_maxhits': 10000 }})
+            query = '%(query)s AND SearchableText:"%(SearchableText)s"' % {
+                'query': query, 'SearchableText': SearchableText}
+            #query.update({'SearchableText': {
+            #    'query': SearchableText, 'ranking_maxhits': 10000 }})
 
         return query
 
