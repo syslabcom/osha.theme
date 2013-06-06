@@ -18,7 +18,6 @@ from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
 
-
 class INewsPortlet(IPortletDataProvider):
 
     count = schema.Int(
@@ -49,7 +48,8 @@ class INewsPortlet(IPortletDataProvider):
             title=_(u'Newsfolder path'),
             description=_(
                     u"Enter a folder where the 'more news' link will "
-                    "point to. This is optional"
+                    "point to. This is optional. If you add a %s, "
+                    "it will be replaced by the current language."
                     ),
             required=False,
             )
@@ -93,7 +93,7 @@ class Assignment(base.Assignment):
 
     @property
     def title(self):
-        return _(u"News")
+        return _(u"OSH News")
 
 
 class Renderer(base.Renderer):
@@ -140,7 +140,7 @@ class Renderer(base.Renderer):
         navigation_root_path = self.navigation_root_path
         return (newsfolder_path, preflang, subject, navigation_root_path)
 
-    @ram.cache(_render_cachekey)
+#    @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
@@ -160,11 +160,10 @@ class Renderer(base.Renderer):
         limit = self.data.count
 
         query = '(portal_type:"News Item" OR isNews:true) AND ' \
-        'review_state:(%(review_state)s) AND path_parents:(%(path)s AND ' \
-        '-%(teaser_path)s) AND effective:[* TO %(effective)s]' % \
+        'review_state:(%(review_state)s) AND path_parents:%(path)s AND ' \
+        'effective:[* TO %(effective)s]' % \
             {'review_state': ' OR '.join(self.data.state),
              'path': canonical_path,
-             'teaser_path': canonical_path + '/teaser',
              'effective': iso8601date(DateTime()), }
 
         if subject:
@@ -173,6 +172,7 @@ class Renderer(base.Renderer):
         lf_search_view = self.context.restrictedTraverse("@@language-fallback-search")
         results = lf_search_view.search_solr(
             query, sort='Date desc', rows=limit, lang_query=False)
+
         return [r.getObject() for r in results]
 
     def showRSS(self):
@@ -207,6 +207,9 @@ class Renderer(base.Renderer):
         context = aq_inner(self.context)
         if getattr(self.data, 'newsfolder_path', None):
             newsfolder_path = self.data.newsfolder_path
+            if "%s" in newsfolder_path:
+                newsfolder_path = newsfolder_path % self.preflang
+                
             if newsfolder_path.startswith('/'):
                 newsfolder_path = newsfolder_path[1:]
             if isinstance(newsfolder_path, UnicodeType):
