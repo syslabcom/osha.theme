@@ -140,24 +140,32 @@ class Renderer(base.Renderer):
         navigation_root_path = self.navigation_root_path
         return (newsfolder_path, preflang, subject, navigation_root_path)
 
-    @ram.cache(_render_cachekey)
+    #@ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
     @memoize
     def _data(self):
-        """Search for news everywhere but in the subs, then try to find translations in the
+        """Search for news everywhere, then try to find translations in the
         current language. If no translation is found, use the 'en' version.
         """
+        current_path = self.context.getPhysicalPath()
+        if len(current_path) > 2 and current_path[3] in ('sub', 'fop'):
+            # in a subsite, take only the subsite or fop site
+            path = '/'.join(self.navigation_root_path.split('/')[:-1])
+        else:
+            # in the main site, exclude sub
+            path = "/osha/portal AND -/osha/portal/sub AND -/osha/portal/fop"
 
         subject = list(self.data.subject)
         limit = self.data.count
 
         # make sure to exclude the subs 
         query = '(portal_type:"News Item" OR isNews:true) AND ' \
-        'review_state:(%(review_state)s) AND path_parents:(/osha/portal AND ' \
-        '-/osha/portal/sub) AND effective:[* TO %(effective)s]' % \
+        'review_state:(%(review_state)s) AND path_parents:(%(path)s) ' \
+        'AND effective:[* TO %(effective)s]' % \
             {'review_state': ' OR '.join(self.data.state),
+             'path': path,
              'effective': iso8601date(DateTime()), }
 
         if subject:
