@@ -146,24 +146,25 @@ class Renderer(base.Renderer):
 
     @memoize
     def _data(self):
-        """Search for news in 'en', then try to find translations in the
+        """Search for news everywhere but in the subs, then try to find translations in the
         current language. If no translation is found, use the 'en' version.
         """
 
-        try:
-            canonical_path = '/'.join(
-                self.root.getCanonical().getPhysicalPath())
-        except:
-            return []
-
+        # try:
+        #     canonical_path = '/'.join(
+        #         self.root.getCanonical().getPhysicalPath())
+        # except:
+        #     return []
+        root_path = '/osha/portal'
         subject = list(self.data.subject)
         limit = self.data.count
 
+        # make sure to exclude the subs 
         query = '(portal_type:"News Item" OR isNews:true) AND ' \
-        'review_state:(%(review_state)s) AND path_parents:%(path)s AND ' \
-        'effective:[* TO %(effective)s]' % \
+        'review_state:(%(review_state)s) AND path_parents:(%(path)s AND ' \
+        '-/osha/portal/sub) AND effective:[* TO %(effective)s]' % \
             {'review_state': ' OR '.join(self.data.state),
-             'path': canonical_path,
+             'path': root_path,
              'effective': iso8601date(DateTime()), }
 
         if subject:
