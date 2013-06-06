@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - remove the first paragraph added to each napo film, on the description
   pages #7467 [thomasw]
+- #7379 #7602 #7379 Replace the server side truncation of the teaser
+  text on the home page with JavaScript (jQuery.dotdotdot) [deroiste]
 
 1.5.29 (2013-05-14)
 -------------------

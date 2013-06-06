@@ -85,11 +85,6 @@ class HomepageView(BrowserView):
                 obj.Description() or obj.getText()
             if not isinstance(description, unicode):
                 description = description.decode('utf-8')
-            description = stripHTML(description)
-            description = portal_transforms.convert(
-                'html_to_text', description).getData()
-            description = ploneview.cropText(
-                description, length=400, ellipsis="...")
             date = obj.effective()
             ret.append(
                 dict(

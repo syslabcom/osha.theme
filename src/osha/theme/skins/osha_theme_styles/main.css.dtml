@@ -829,6 +829,9 @@ body.site-el #intro h1 {
 #highlights-1, #highlights-2, #highlights-3, #highlights-4 {
     padding: 1em;
 }
+
+.highlight { height: 250px; }
+
 #content #highlights-archive a{
     background: none repeat scroll 0 0 #C5CBD8;
     border-radius: 3px 3px 3px 3px;
