@@ -42,8 +42,8 @@ class OSHNewsView(BrowserView):
         # try to get query parameters from Topic (if present)
         query = hasattr(context, 'buildQuery') and context.buildQuery()
         if query:
-            catalog = getToolByName(context, 'portal_catalog')
-            return catalog(query)
+            search_view = self.context.restrictedTraverse('@@language-fallback-search')
+            return search_view.search(query)
 
         # otherwise construct a query
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
