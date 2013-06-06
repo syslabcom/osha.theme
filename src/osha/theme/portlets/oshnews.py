@@ -161,7 +161,7 @@ class Renderer(base.Renderer):
 
         query = '(portal_type:"News Item" OR isNews:true) AND ' \
         'review_state:(%(review_state)s) AND path_parents:(%(path)s AND ' \
-        '-%(teaser_path)s) AND Language:en AND effective:[* TO %(effective)s]' % \
+        '-%(teaser_path)s) AND effective:[* TO %(effective)s]' % \
             {'review_state': ' OR '.join(self.data.state),
              'path': canonical_path,
              'teaser_path': canonical_path + '/teaser',
@@ -170,32 +170,10 @@ class Renderer(base.Renderer):
         if subject:
             query += ' AND Subject:(%s)' % ' OR '.join(subject)
 
-        results_en = search_solr(
+        lf_search_view = self.context.restrictedTraverse("@@language-fallback-search")
+        results = lf_search_view.search_solr(
             query, sort='Date desc', rows=limit, lang_query=False)
-        portal = self.context.portal_url.getPortalObject()
-        pwt = getToolByName(portal, 'portal_workflow')
-        sm = getSecurityManager()
-        results = []
-
-        cnt = 0
-        for result_en in results_en:
-            path = result_en['path_string']
-            try:
-                result_en = portal.restrictedTraverse(path)
-            except AttributeError:
-                continue
-            else:
-                cnt += 1
-            result = result_en.getTranslation()
-            if result and pwt.getInfoFor(result, 'review_state') in \
-                    self.data.state and sm.checkPermission('View', result):
-                results.append(result)
-            else:
-                results.append(result_en)
-            if cnt == limit:
-                break
-
-        return results
+        return [r.getObject() for r in results]
 
     def showRSS(self):
         return bool(self.getRSSLink())
