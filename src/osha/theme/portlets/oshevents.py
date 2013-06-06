@@ -1,9 +1,5 @@
-from zope import schema
-from zope.component import getMultiAdapter
-from zope.formlib import form
-from zope.interface import implements
-
 import Acquisition
+from collective.solr.mangler import iso8601date
 from DateTime.DateTime import DateTime
 
 from plone.memoize.instance import memoize
@@ -19,7 +15,11 @@ from Products.CMFPlone import PloneMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from types import UnicodeType
-# from p4a.calendar.interfaces import ICalendarEnhanced
+
+from zope import schema
+from zope.component import getMultiAdapter
+from zope.formlib import form
+from zope.interface import implements
 
 
 class IEventsPortlet(IPortletDataProvider):
@@ -90,7 +90,7 @@ class Assignment(base.Assignment):
 
     @property
     def title(self):
-        return _(u"Events")
+        return _(u"OSH Events")
 
 
 class Renderer(events.Renderer):
@@ -145,38 +145,43 @@ class Renderer(events.Renderer):
         # search in the navigation root of the currently selected 
         # language and in the canonical path
         # with Language = preferredLanguage or neutral
-        paths = list()
-        paths.append(self.navigation_root_path)
-        try:
-            canonical_path = '/'.join(self.root.getCanonical().getPhysicalPath())
-            paths.append(canonical_path)
-        except:
-            pass
+        current_path = self.context.getPhysicalPath()
+        if len(current_path) > 3 and current_path[3] in ('sub', 'fop'):
+            # in a subsite, take only the subsite or fop site
+            path = '/'.join(self.navigation_root_path.split('/')[:-1])
+        else:
+            # in the main site, exclude sub
+            path = "/osha/portal AND -/osha/portal/sub AND -/osha/portal/fop"
 
         oshaview = getMultiAdapter((context, self.request),
             name=u'oshaview')
         subsite = oshaview.getCurrentSubsite()
-        calendar = self.getCalendar(preflang)
-        # If we're in the root (i.e. no in a subiste), and a valid pointer to a
-        # calendar exists, use its path as a query parameter
-        if subsite is None and calendar:
-            paths = ['/'.join(calendar.getPhysicalPath())]
+        # calendar = self.getCalendar(preflang)
+        # # If we're in the root (i.e. no in a subiste), and a valid pointer to a
+        # # calendar exists, use its path as a query parameter
+        # if subsite is None and calendar:
+        #     paths = ['/'.join(calendar.getPhysicalPath())]
 
         subject = list(self.data.subject)
         limit = self.data.count
-        state = self.data.state
-        query = dict(portal_type=['Event'],
-                       review_state=state,
-                       path=paths,
-                       end={'query': DateTime(),
-                            'range': 'min'},
-                       sort_on='start',
-                       Language=['', self.preflang],
-                       sort_limit=limit)
+                
+        # make sure to exclude the subs 
+        query = 'portal_type:(Event) AND ' \
+            'review_state:(%(review_state)s) AND path_parents:(%(path)s) ' \
+            'AND end:[%(now)s TO *]' % \
+                {'review_state': ' OR '.join(self.data.state),
+                'path': path,
+                'now': iso8601date(DateTime()), }
+        
         # If a subject is selected, use that for the query
-        if len(subject):
-            query.update(Subject=subject)
-        return catalog(query)[:limit]
+        if subject:
+            query += ' AND Subject:(%s)' % ' OR '.join(subject)
+
+        lf_search_view = self.context.restrictedTraverse("@@language-fallback-search")
+        results = lf_search_view.search_solr(
+            query, sort='start asc', rows=limit, lang_query=False)
+
+        return results
 
     def _render_cachekey_calendar(method, self, preflang):
         calendar_path = self.data.calendar_path
