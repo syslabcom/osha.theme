@@ -1,10 +1,9 @@
 <ul id="partners">
-<li><a href="http://www.auva.at/" target="_blank"><img src="/osha_theme_napo_images/logoAuvaS.jpg" alt="AUVA" height="35" width="64" /></a></li>
-<li><a href="http://www.dguv.de/" target="_blank"><img src="/osha_theme_napo_images/DGUV_Logo.jpg" alt="DGUV" height="35" width="95" /></a></li>
-<li><a href="http://www.hse.gov.uk/" target="_blank"><img src="/osha_theme_napo_images/logoHseS.jpg" alt="HSE" height="35" width="41" /></a></li>
-<li><a href="http://www.inail.it/" target="_blank"><img src="/osha_theme_napo_images/logoInailS.jpg" alt="INAIL" height="35" width="90" /></a></li>
-<li><a href="http://www.inrs.fr/" target="_blank"><img src="/osha_theme_napo_images/logoINRSS.jpg" alt="INRS" height="35" width="94" /></a></li>
-<li><a href="http://www.suva.ch/en/home_en" target="_blank"><img src="/osha_theme_napo_images/logoSuvaS.jpg" alt="SUVA" height="35" width="76" /></a></li>
-<li><a href="https://osha.europa.eu/" target="_blank"><img src="/osha_theme_napo_images/logoOshaS.jpg" alt="OSHA" height="35" width="89" /></a></li>
-
+<li><a href="http://www.auva.at/" target="_blank"><img src="osha_theme_napo_images/logoAuvaS.png" alt="AUVA" height="51" width="69" /></a></li>
+<li><a href="http://www.dguv.de/" target="_blank"><img src="osha_theme_napo_images/logoDGUV.png" alt="DGUV" height="51" width="114" /></a></li>
+<li><a href="http://www.hse.gov.uk/" target="_blank"><img src="osha_theme_napo_images/logoHseS.png" alt="HSE" height="51" width="63" /></a></li>
+<li><a href="http://www.inail.it/" target="_blank"><img src="osha_theme_napo_images/logoInailS.png" alt="INAIL" height="51" width="111" /></a></li>
+<li><a href="http://www.inrs.fr/" target="_blank"><img src="osha_theme_napo_images/logoINRSS.png" alt="INRS" height="51" width="129" /></a></li>
+<li><a href="http://www.suva.ch/en/home_en" target="_blank"><img src="osha_theme_napo_images/logoSuvaS.png" alt="SUVA" height="51" width="91" /></a></li>
+<li><a href="https://osha.europa.eu/" target="_blank"><img src="osha_theme_napo_images/logoOshaS.png" alt="OSHA" height="51" width="99" /></a></li>
 </ul>
