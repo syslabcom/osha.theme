@@ -29,5 +29,3 @@ class LanguageFallbackView(SeminarFolderView):
             }
         search_view = context.restrictedTraverse('@@language-fallback-search')
         return search_view.search(query)
-        
-        return catalog(query)
