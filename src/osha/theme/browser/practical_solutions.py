@@ -244,15 +244,6 @@ class PracticalSolutionView(DBFilterView):
             }
             #query.update({'multilingual_thesaurus':multilingual_thesaurus})
 
-        # preflang = getToolByName(self.context,
-        #                          'portal_languages').getPreferredLanguage()
-        # language = self.request.get('Language', preflang)
-        # # Important! Always include neutral! Neutral == relevant for ALL
-        # # languages!!!
-        # if language:
-        #     query = '%(query)s AND Language:(%(lang)s)' % dict(
-        #         query=query, lang=' OR '.join((language, 'any')))
-
         # don't handle remoteLanguage for FAQHelpcenter items
         spt = self.get_search_portal_type()
         faq_condition = type(spt) == list \
@@ -261,12 +252,15 @@ class PracticalSolutionView(DBFilterView):
         getRemoteLanguage = self.request.get('getRemoteLanguage', '')
         if isinstance(getRemoteLanguage, basestring):
             getRemoteLanguage = [getRemoteLanguage,]
-        if getRemoteLanguage:
+        # Only filter by remote language if someone explicitly selects
+        # one, and doesn't select "Any language"
+        if '' not in getRemoteLanguage:
             query = '%(query)s AND %(getRemoteLanguage)s' % {
                 'query': query,
-                'getRemoteLanguage': 'getRemoteLanguage:(%s)' % ' OR '.join(
-                    getRemoteLanguage)}
-            #query.update({'getRemoteLanguage':getRemoteLanguage})
+                'getRemoteLanguage': 'getRemoteLanguage:(%s)' % (
+                    ' OR '.join(getRemoteLanguage)
+                )
+            }
 
         subcategory = self.request.get('subcategory', '')
         if subcategory:
