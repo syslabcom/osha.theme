@@ -11,4 +11,17 @@
      template="templates/existing_items_form.pt"
      />
 
+
+  <!-- Override seminar view to have language fall back in the event search -->
+    <browser:page
+      for="*"
+      name="seminars-view"
+      template="templates/seminarfolder_view.pt"
+      class="osha.theme.browser.seminar_views.LanguageFallbackView"
+      permission="zope2.View"
+      layer="slc.seminarportal.interfaces.IThemeLayer"
+      menu="plone_displayviews"
+      title="Seminars View"
+      />
+
 </configure>
