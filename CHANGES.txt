@@ -8,6 +8,9 @@ osha.theme Changelog
   pages #7467 [thomasw]
 - #7379 #7602 #7379 Replace the server side truncation of the teaser
   text on the home page with JavaScript (jQuery.dotdotdot) [deroiste]
+- #7634, #7508, #7488: Made News listing, Event/Seminar listsings and
+  publications listings show untranslated documents as fallback. [regebro]
+
 
 1.5.29 (2013-05-14)
 -------------------

@@ -13,8 +13,8 @@
 
 
   <!-- Override seminar view to have language fall back in the event search -->
-    <browser:page
-      for="*"
+  <browser:page
+     for="*"
       name="seminars-view"
       template="templates/seminarfolder_view.pt"
       class="osha.theme.browser.seminar_views.LanguageFallbackView"
@@ -22,6 +22,14 @@
       layer="slc.seminarportal.interfaces.IThemeLayer"
       menu="plone_displayviews"
       title="Seminars View"
+      />
+
+  <!-- Override publications view to have language fall back in the publication search -->
+  <browser:page
+      name="publications_view"
+      class="osha.theme.browser.publications.LanguageFallbackView"
+      for="*"
+      permission="zope2.View"
       />
 
 </configure>

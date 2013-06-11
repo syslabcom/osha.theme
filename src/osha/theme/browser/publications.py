@@ -3,6 +3,9 @@ from Products.CMFCore.utils import getToolByName
 import Acquisition
 from zope.component import getMultiAdapter
 from DateTime import DateTime
+from zope.i18n import translate
+
+from slc.publications.browser.publications import PublicationsView, MAX_RESULTS
 
 class PublicationsSearchView(BrowserView):
     """View for displaying the publications overview page at /xx/publications
@@ -134,3 +137,69 @@ class QuestionsInParliamentSearchView(BrowserView):
                 query.update(dict(effective=dict(query=(searchdate-edr, searchdate+edr), range='min:max')))
 
         return query
+
+class LanguageFallbackView(PublicationsView):
+    """Publications view with language fallback"""
+    
+    def get_publications(self):
+        form = self.request.form
+        typelist = form.get("typelist", "")
+        search_path = self.path
+        if typelist:
+            search_path += "/" + typelist
+        keywords = form.get("keywords")
+        query = {
+            'object_provides':
+                'slc.publications.interfaces.IPublicationEnhanced',
+            'review_state': 'published',
+            'SearchableText': form.get("SearchableText", ''),
+            'path': search_path,
+            'sort_on': 'effective',
+            'sort_order': 'descending'
+            }
+        if keywords:
+            query['Subject'] = keywords
+
+        search_view = self.context.restrictedTraverse('@@language-fallback-search')
+        brains = search_view.search(query)
+
+        show_all = form.get("show-all", False)
+        results = show_all and brains or brains[:MAX_RESULTS]
+        if len(brains) > MAX_RESULTS and show_all == False:
+            self.has_more_results = True
+
+        publications = []
+
+        for result in results:
+            path = result.getPath()
+            title = result.Title.replace("'", "&#39;")
+
+            # Searches without SearchableText are sent to the normal
+            # portal_catalog and the Title returned is a string
+            if not isinstance(title, unicode):
+                title.decode("utf-8")
+
+            pub_type = self.get_publication_type(path)
+            type_info = self.publication_types.get(pub_type)
+            type_title = type_info and type_info['title'] or u''
+
+            portal_languages = getToolByName(
+                self.context, 'portal_languages')
+            preflang = portal_languages.getPreferredLanguage()
+
+            # Need to translate the type_name here for the JSON version
+            translated_type_title = translate(
+                type_title,
+                domain="slc.publications",
+                target_language=preflang,
+                )
+            publications.append({
+                "title": title,
+                "year": result.effective.year(),
+                "size": result.getObjSize,
+                "path": path + "/view",
+                "type": pub_type,
+                "type_title": translated_type_title,
+            })
+        return publications
+    
