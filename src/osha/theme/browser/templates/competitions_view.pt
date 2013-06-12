@@ -3,30 +3,30 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="osha">
 
-<metal:javascriptslot fill-slot="javascript_head_slot">
+  <metal:javascriptslot fill-slot="javascript_head_slot">
     <script type="text/javascript"
             src="++resource++osha.theme.behaviour/highlights-carousel.js"
             language="javascript">
     </script>
     <script type="text/javascript" language="javascript">
-        function displaycomp () {
-            jQuery('.older-competitions').fadeIn('slow');
-        }
+      function displaycomp () {
+      jQuery('.older-competitions').fadeIn('slow');
+      }
     </script>
-</metal:javascriptslot>
+  </metal:javascriptslot>
 
-<metal:css fill-slot='css_slot'>
+  <metal:css fill-slot='css_slot'>
     <link rel="stylesheet" href="lipstick.css" type="text/css" media="screen" title="no title" charset="utf-8"
           tal:attributes="href string:$portal_url/lipstick.css"/>
-</metal:css>
+  </metal:css>
 
-<body>
+  <body>
 
-<div metal:fill-slot="main"
-     tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
-                 ploneview nocall:context/@@plone">
+    <div metal:fill-slot="main"
+         tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+                     ploneview nocall:context/@@plone">
 
-    <div id="mainContent">
+      <div id="mainContent">
 
         <h1 tal:content="here/Title">
           Competitions
@@ -40,117 +40,117 @@
 
         <div id="ongoingCompetitions"
              tal:define="ongoing view/getOngoing" tal:condition="ongoing">
-            <h2 i18n:translate="label_ongoing_competitions">
-              Ongoing competitions
-            </h2>
-            <div class="carouselContainer" id="highlights">
-                <div id="highlights-content">
-                    <tal:rep repeat="competition ongoing">
-                        <div tal:define="no repeat/competition/number;
-                                         item nocall:competition/item;
-                                         images competition/images;"
-                             tal:attributes="id string:highlights-$no">
-                            <tal:item>
-                                <h3><a tal:attributes="href item/absolute_url" tal:content="item/title">Competition title</a></h3>
-                                <a tal:attributes="href item/absolute_url"
-                                   tal:condition="images">
-                                    <img tal:attributes="src python: images[0]"/>
-                                </a>
-                                <p class="hpteaserdate" tal:content="python:toLocalizedTime(item.effective())"/>
-                                <p class="teaser_content" tal:content="python:ploneview.cropText(item.Description(), length=400, ellipsis='...')"></p>
-                                <p class="teaser_more"><a class="more" tal:attributes="href item/absolute_url"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</a></p>
-                            </tal:item>
-                        </div>
-                    </tal:rep>
+          <h2 i18n:translate="label_ongoing_competitions">
+            Ongoing competitions
+          </h2>
+          <div class="carouselContainer" id="highlights">
+            <div id="highlights-content">
+              <tal:rep repeat="competition ongoing">
+                <div tal:define="no repeat/competition/number;
+                                 item nocall:competition/item;
+                                 images competition/images;"
+                     tal:attributes="id string:highlights-$no">
+                  <tal:item>
+                    <h3><a tal:attributes="href item/absolute_url" tal:content="item/title">Competition title</a></h3>
+                    <a tal:attributes="href item/absolute_url"
+                       tal:condition="images">
+                      <img tal:attributes="src python: images[0]"/>
+                    </a>
+                    <p class="hpteaserdate" tal:content="python:toLocalizedTime(item.effective())"/>
+                    <p class="teaser_content" tal:content="python:ploneview.cropText(item.Description(), length=400, ellipsis='...')"></p>
+                    <p class="teaser_more"><a class="more" tal:attributes="href item/absolute_url"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</a></p>
+                  </tal:item>
                 </div>
-                <ul id="highlights-tabs">
-                    <tal:rep repeat="competition ongoing">
-                        <li class="ui-corner-top"
-                            tal:define="no repeat/competition/number;
-                                         item nocall:competition/item;">
-                            <a href="#highlights-1" tal:attributes="href string:#highlights-$no; title item/title" tal:content="no">1</a>
-                        </li>
-                    </tal:rep>
-                </ul>
+              </tal:rep>
             </div>
+            <ul id="highlights-tabs">
+              <tal:rep repeat="competition ongoing">
+                <li class="ui-corner-top"
+                    tal:define="no repeat/competition/number;
+                                item nocall:competition/item;">
+                  <a href="#highlights-1" tal:attributes="href string:#highlights-$no; title item/title" tal:content="no">1</a>
+                </li>
+              </tal:rep>
+            </ul>
+          </div>
         </div>
 
         <div class="upcomingCompetitions"
-            tal:define="upcoming view/getUpcoming">
+             tal:define="upcoming view/getUpcoming">
           <h2 i18n:translate="label_upcoming_competitions" tal:condition="python:len(upcoming)">
             Upcoming competitions
           </h2>
           <span tal:repeat="competition upcoming" tal:omit-tag="">
-              <div class="section"
-                tal:define="item nocall:competition/item;
-                            images competition/images;
-                            img_src python:len(images) and images[0] or ''">
+            <div class="section"
+                 tal:define="item nocall:competition/item;
+                             images competition/images;
+                             img_src python:len(images) and images[0] or ''">
               <a href="#" tal:attributes="href item/absolute_url"><img src="#" alt="Page 1" class="span-4 floatBefore"
-                tal:attributes="src img_src" /></a>
+              tal:attributes="src img_src" /></a>
               <h4>
                 <a href="#" tal:attributes="href item/absolute_url" tal:content="item/Title">Photocompetition 2011</a>
               </h4>
               <p>
                 <span tal:replace="item/Description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae voluptas sit aspernatur aut odit aut fugit.</span> <a href="#" tal:attributes="href item/absolute_url" i18n:translate="label_learn_more">Learn more</a>
               </p>
-              </div>
+            </div>
           </span>
         </div>
 
-    </div>
+      </div>
 
-    <div id="portlets">
+      <div id="portlets">
         <div class="portlet portletBanner" id="portletBanner" tal:condition="view/bannerContent">
-            <div class="portletHeader" tal:condition="view/bannerEditable">
-                <a tal:attributes="href view/bannerEditlink">[edit]</a>
-            </div>
-            <span tal:replace="structure view/bannerContent" />
+          <div class="portletHeader" tal:condition="view/bannerEditable">
+            <a tal:attributes="href view/bannerEditlink">[edit]</a>
+          </div>
+          <span tal:replace="structure view/bannerContent" />
         </div>
 
         <div class="portlet" id="portletOlderIssues">
-            <h2 i18n:translate="label_closed_competitions">
-              Closed competitions
-            </h2>
-            <h3 tal:content="view/thisyear">
-              2010
-            </h3>
-            <ul class="links" tal:define="competitions view/getThisyearsCompetitions">
-              <li tal:repeat="competition competitions">
-                <a href="#" tal:define="data python:competition[1]" tal:attributes="href data/url"
-            tal:content="data/title">Lorem ipsum dolor sit</a>
-              </li>
-            </ul>
-            <h3 tal:content="view/lastyear">
+          <h2 i18n:translate="label_closed_competitions">
+            Closed competitions
+          </h2>
+          <h3 tal:content="view/thisyear">
+            2010
+          </h3>
+          <ul class="links" tal:define="competitions view/getThisyearsCompetitions">
+            <li tal:repeat="competition competitions">
+              <a href="#" tal:define="data python:competition[1]" tal:attributes="href data/url"
+                 tal:content="data/title">Lorem ipsum dolor sit</a>
+            </li>
+          </ul>
+          <h3 tal:content="view/lastyear">
+            2009
+          </h3>
+          <ul class="links" tal:define="competitions view/getLastyearsCompetitions">
+            <li tal:repeat="competition competitions">
+              <a href="#" tal:define="data python:competition[1]" tal:attributes="href data/url"
+                 tal:content="data/title">Lorem ipsum dolor sit</a>
+            </li>
+          </ul>
+
+          <tal:repeat define="oldercomp view/getOldCompetitions" repeat="year oldercomp/keys">
+            <h3 tal:content="year" class="older-competitions">
               2009
             </h3>
-            <ul class="links" tal:define="competitions view/getLastyearsCompetitions">
-              <li tal:repeat="competition competitions">
-                <a href="#" tal:define="data python:competition[1]" tal:attributes="href data/url"
-            tal:content="data/title">Lorem ipsum dolor sit</a>
+            <ul class="links older-competitions" tal:define="issues python:oldercomp[year]">
+              <li tal:repeat="issue issues">
+                <a tal:define="data python:issue[1]"
+                   href="#" tal:attributes="href data/url" tal:content="data/title">Competition X</a>
               </li>
             </ul>
-
-            <tal:repeat define="oldercomp view/getOldCompetitions" repeat="year oldercomp/keys">
-                <h3 tal:content="year" class="older-competitions">
-                    2009
-                </h3>
-                <ul class="links older-competitions" tal:define="issues python:oldercomp[year]">
-                    <li tal:repeat="issue issues">
-                        <a tal:define="data python:issue[1]"
-                        href="#" tal:attributes="href data/url" tal:content="data/title">Competition X</a>
-                    </li>
-                </ul>
-            </tal:repeat>
+          </tal:repeat>
         </div>
 
         <div class="portlet portletMoreAbout" id="portletMoreAbout" tal:condition="view/moreAboutContent">
-            <div class="portletHeader" tal:condition="view/moreAboutEditable">
-                <a tal:attributes="href view/moreAboutEditlink">[edit]</a>
-            </div>
-            <span tal:replace="structure view/moreAboutContent" />
+          <div class="portletHeader" tal:condition="view/moreAboutEditable">
+            <a tal:attributes="href view/moreAboutEditlink">[edit]</a>
+          </div>
+          <span tal:replace="structure view/moreAboutContent" />
         </div>
-    </div>
+      </div>
 
-</div>
-</body>
+    </div>
+  </body>
 </html>
