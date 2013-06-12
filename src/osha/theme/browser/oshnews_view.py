@@ -42,21 +42,25 @@ class OSHNewsView(BrowserView):
         # try to get query parameters from Topic (if present)
         query = hasattr(context, 'buildQuery') and context.buildQuery()
         if query:
-            search_view = self.context.restrictedTraverse('@@language-fallback-search')
+            search_view = self.context.restrictedTraverse(
+                '@@language-fallback-search')
             return search_view.search(query)
 
         # otherwise construct a query
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name=u'plone_portal_state')
         navigation_root_path = portal_state.navigation_root_path()
 
-        oshaview = getMultiAdapter((self.context, self.request), name=u'oshaview')
+        oshaview = getMultiAdapter(
+            (self.context, self.request), name=u'oshaview')
         mySEP = oshaview.getCurrentSingleEntryPoint()
         kw = ''
 
         if mySEP:
             kw = mySEP.getProperty('keyword', '')
 
-        query = '(portal_type:("News Item") OR isNews:true) AND review_state:published AND path_parents:%s' % navigation_root_path
+        query = '(portal_type:("News Item") OR isNews:true) AND '
+        'review_state:published AND path_parents:%s' % navigation_root_path
         if kw != '':
             query = ' AND '.join([query, 'Subject:(%s)' % ' OR '.join(kw)])
         return search_solr(query, sort='Date desc')
@@ -94,16 +98,18 @@ class OSHNewsLocalView(OSHNewsView):
         now = DateTime()
         #queryA = Eq('portal_type', 'News Item')
         #queryB = Eq('isNews', True)
-        #queryBoth = In('review_state', 'published') & Eq('path', '/'.join(context.getPhysicalPath())) \
+        #queryBoth = In('review_state', 'published') & \
+        #Eq('path', '/'.join(context.getPhysicalPath())) \
         #    & Le('effective', now)
 
         #query = And(Or(queryA, queryB), queryBoth)
         #oldresults = catalog.evalAdvancedQuery(query, (('Date', 'desc'),))
 
         query = '(portal_type:("News Item") OR isNews:true) AND ' \
-                'review_state:published AND path_parents:%(path)s AND effective:[* TO %(effective)s]' % \
+                'review_state:published AND path_parents:%(path)s AND ' \
+                'effective:[* TO %(effective)s]' % \
                 {'path': '/'.join(context.getPhysicalPath()),
-                 'effective': iso8601date(now),}
+                 'effective': iso8601date(now), }
         results = search_solr(query, sort='Date desc')
         return results
 
