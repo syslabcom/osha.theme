@@ -50,7 +50,7 @@
                                  item nocall:competition/item;
                                  images competition/images;"
                      tal:attributes="id string:highlights-$no">
-                  <tal:item>
+                  <div class="highlight">
                     <h3><a tal:attributes="href item/absolute_url" tal:content="item/title">Competition title</a></h3>
                     <a tal:attributes="href item/absolute_url"
                        tal:condition="images">
@@ -58,8 +58,9 @@
                     </a>
                     <p class="hpteaserdate" tal:content="python:toLocalizedTime(item.effective())"/>
                     <p class="teaser_content" tal:content="python:ploneview.cropText(item.Description(), length=400, ellipsis='...')"></p>
-                    <p class="teaser_more"><a class="more" tal:attributes="href item/absolute_url"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</a></p>
-                  </tal:item>
+                  </div>
+                  <span class="teaser_more"><a class="more" tal:attributes="href item/absolute_url"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</a></span>
+
                 </div>
               </tal:rep>
             </div>
