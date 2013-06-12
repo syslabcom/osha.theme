@@ -145,7 +145,7 @@
           <dl id="unsubscriptionBox">
             <form action="#" tal:attributes="action string:./@@oshmail-subscribe" method="post" id="subscribe">
               <dd>
-                <label><span i18n:translate="" tal:omit-tag="">Your e-mail</span> <input type="text" name="emailaddress" class="span-6" /></label>
+                <label><span i18n:translate="label_email" tal:omit-tag="">E-mail</span>* <input type="text" name="emailaddress" class="span-6" /></label>
               </dd>
               <dd style="padding:0.5em 0">
                 <button type="submit" name="unsubscribe" i18n:translate="" onclick="pageTracker._trackPageview('/Events/oshmail/unsub/en')">Unsubscribe</button>
