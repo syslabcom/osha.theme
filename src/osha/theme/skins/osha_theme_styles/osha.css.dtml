@@ -553,7 +553,7 @@
 }
 
 /* HR Form */
-#formfield-form-widgets-vacancies {
+#form-widgets-vacancies {
     width: 100%;
 }
 
