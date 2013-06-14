@@ -32,4 +32,11 @@
       permission="zope2.View"
       />
 
+  <browser:page
+      name="publications_view.json"
+      class="osha.theme.browser.publications.PublicationsJSONView"
+      for="*"
+      permission="zope2.View"
+      />
+
 </configure>

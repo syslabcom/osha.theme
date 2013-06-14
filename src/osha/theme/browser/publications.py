@@ -4,8 +4,10 @@ import Acquisition
 from zope.component import getMultiAdapter
 from DateTime import DateTime
 from zope.i18n import translate
+import json
 
 from slc.publications.browser.publications import PublicationsView, MAX_RESULTS
+
 
 class PublicationsSearchView(BrowserView):
     """View for displaying the publications overview page at /xx/publications
@@ -140,7 +142,7 @@ class QuestionsInParliamentSearchView(BrowserView):
 
 class LanguageFallbackView(PublicationsView):
     """Publications view with language fallback"""
-    
+
     def get_publications(self):
         form = self.request.form
         typelist = form.get("typelist", "")
@@ -202,4 +204,10 @@ class LanguageFallbackView(PublicationsView):
                 "type_title": translated_type_title,
             })
         return publications
-    
+
+
+class PublicationsJSONView(LanguageFallbackView):
+    """Return search results in JSON"""
+
+    def __call__(self):
+        return json.dumps(self.get_publications())
