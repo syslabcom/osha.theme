@@ -160,7 +160,7 @@ class Renderer(base.Renderer):
         subject = list(self.data.subject)
         limit = self.data.count
 
-        # make sure to exclude the subs 
+        # make sure to exclude the subs
         query = '(portal_type:"News Item" OR isNews:true) AND ' \
         'review_state:(%(review_state)s) AND path_parents:(%(path)s) ' \
         'AND effective:[* TO %(effective)s]' % \
@@ -211,7 +211,7 @@ class Renderer(base.Renderer):
             newsfolder_path = self.data.newsfolder_path
             if "%s" in newsfolder_path:
                 newsfolder_path = newsfolder_path % self.preflang
-                
+
             if newsfolder_path.startswith('/'):
                 newsfolder_path = newsfolder_path[1:]
             if isinstance(newsfolder_path, UnicodeType):

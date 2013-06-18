@@ -74,12 +74,12 @@ class IEventsPortlet(IPortletDataProvider):
 class Assignment(base.Assignment):
     implements(IEventsPortlet)
 
-    def __init__(self, 
-                count=5, 
-                state=('published', ), 
-                subject=tuple(), 
-                calendar_path=None, 
-                rss_path='', 
+    def __init__(self,
+                count=5,
+                state=('published', ),
+                subject=tuple(),
+                calendar_path=None,
+                rss_path='',
                 rss_explanation_path=''):
         self.count = count
         self.state = state
@@ -104,7 +104,7 @@ class Renderer(events.Renderer):
         self.preflang = portal_languages.getPreferredLanguage()
 
         portal_state = getMultiAdapter(
-                            (self.context, self.request), 
+                            (self.context, self.request),
                             name=u'plone_portal_state'
                             )
         self.navigation_root_path = portal_state.navigation_root_path()
@@ -142,7 +142,7 @@ class Renderer(events.Renderer):
         portal_languages = getToolByName(context, 'portal_languages')
         preflang = portal_languages.getPreferredLanguage()
 
-        # search in the navigation root of the currently selected 
+        # search in the navigation root of the currently selected
         # language and in the canonical path
         # with Language = preferredLanguage or neutral
         current_path = self.context.getPhysicalPath()
@@ -164,15 +164,15 @@ class Renderer(events.Renderer):
 
         subject = list(self.data.subject)
         limit = self.data.count
-                
-        # make sure to exclude the subs 
+
+        # make sure to exclude the subs
         query = 'portal_type:(Event) AND ' \
             'review_state:(%(review_state)s) AND path_parents:(%(path)s) ' \
             'AND end:[%(now)s TO *]' % \
                 {'review_state': ' OR '.join(self.data.state),
                 'path': path,
                 'now': iso8601date(DateTime()), }
-        
+
         # If a subject is selected, use that for the query
         if subject:
             query += ' AND Subject:(%s)' % ' OR '.join(subject)
@@ -200,7 +200,7 @@ class Renderer(events.Renderer):
 
         if calendar_path.startswith('/'):
             calendar_path = calendar_path[1:]
-        
+
         if not calendar_path:
             return None
 
@@ -231,7 +231,7 @@ class Renderer(events.Renderer):
     def prev_events_link(self):
         osha_view = getMultiAdapter((self.context, self.request), name=u'oshaview')
         show_previous_events = osha_view.get_subsite_property('show_previous_events')
-        if show_previous_events is None: #Property does not yet exist. Old 
+        if show_previous_events is None: #Property does not yet exist. Old
                                          #behaviour was to show previous_events
             show_previous_events = True
 
@@ -272,13 +272,13 @@ class Renderer(events.Renderer):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IEventsPortlet)
-    
+
     label = _(u"Add Events Portlet")
     description = _(u"This portlet lists upcoming Events.")
 
     def create(self, data):
         return Assignment(
-                    count=data.get('count', 5), 
+                    count=data.get('count', 5),
                     state=data.get('state', ('published',)),
                     subject=data.get('subject', tuple()),
                     calendar_path=data.get('calendar_path', None),
