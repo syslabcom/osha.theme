@@ -552,6 +552,24 @@
     background: none;
 }
 
+/* Portlets */
+.TwitterWidgetPortlet {
+    border: none;
+}
+.TwitterWidgetPortlet .portletHeader,
+.TwitterWidgetPortlet .portletFooter {
+    display: none;
+}
+
+.TwitterWidgetPortlet .portletItem {
+    border: none;
+    padding: 0;
+}
+
+.twitter-timeline {
+    min-width: 150px !important;
+}
+
 /* HR Form */
 #form-widgets-vacancies {
     width: 100%;
