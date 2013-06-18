@@ -181,7 +181,7 @@ class Renderer(events.Renderer):
         results = lf_search_view.search_solr(
             query, sort='start asc', rows=limit, lang_query=False)
 
-        return results
+        return results[:limit]
 
     def _render_cachekey_calendar(method, self, preflang):
         calendar_path = self.data.calendar_path

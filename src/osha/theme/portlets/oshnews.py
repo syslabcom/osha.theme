@@ -175,7 +175,7 @@ class Renderer(base.Renderer):
         results = lf_search_view.search_solr(
             query, sort='Date desc', rows=limit, lang_query=False)
 
-        return [r.getObject() for r in results]
+        return [r.getObject() for r in results[:limit]]
 
     def showRSS(self):
         return bool(self.getRSSLink())
