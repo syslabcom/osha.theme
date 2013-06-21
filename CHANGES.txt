@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.29a (unreleased)
+1.5.29a (2013-06-21)
 --------------------
 
 - don't call get_faqs in __init__ of OSHAHelpCenterView. Attempt
