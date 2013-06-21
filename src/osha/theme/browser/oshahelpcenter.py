@@ -20,7 +20,6 @@ class OSHAHelpCenterView(BrowserView):
         self.portal = getSite()
         self.pc = self.portal.portal_catalog
         self.faqfolder = getattr(getNavigationRoot(context), 'faq', None)
-        self.faqs = self.get_faqs()
 
         subcategory_vocab = self.portal.portal_vocabularies.Subcategory
         self.vocab_dict = subcategory_vocab.getVocabularyDict(self.context)
@@ -31,6 +30,7 @@ class OSHAHelpCenterView(BrowserView):
     def getName(self):
         return self.__name__
 
+    @property
     def get_faqs(self):
         """ Return a list of FAQ objects. """
         query = {}
