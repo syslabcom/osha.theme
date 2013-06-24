@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.30 (unreleased)
+1.5.30 (2013-06-24)
 -------------------
 
 - remove the first paragraph added to each napo film, on the description
@@ -13,6 +13,7 @@ osha.theme Changelog
   publications listings show untranslated documents as fallback. [regebro]
 - don't call get_faqs in __init__ of OSHAHelpCenterView. Attempt
   to fix post-Hotfix SNAFU [pysailor]
+- Add collective.portlet.twitter [jure, pysailor]
 
 1.5.29 (2013-05-14)
 -------------------
