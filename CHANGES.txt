@@ -11,13 +11,14 @@ osha.theme Changelog
   JavaScript (jQuery.dotdotdot) [deroiste]
 - #7634, #7508, #7488: Made News listing, Event/Seminar listsings and
   publications listings show untranslated documents as fallback. [regebro]
-
+- don't call get_faqs in __init__ of OSHAHelpCenterView. Attempt
+  to fix post-Hotfix SNAFU [pysailor]
 
 1.5.29 (2013-05-14)
 -------------------
 
 - #6724: Added blog view which displays blog entries in selected language
-with fallback to default language [jure]
+  with fallback to default language [jure]
 - Changed logo for Croatia #7315 [thomasw]
 - #6914 js for seminarportal [jure]
 - add a rss view for blog, refs #6726 [jure]

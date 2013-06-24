@@ -92,7 +92,7 @@
 
       <hr class="clear"/>
       <div id="faq_results"
-           tal:define="faqs view/faqs">
+           tal:define="faqs view/get_faqs">
         <p id="no_faqs"
            tal:condition="python:not faqs"
            i18n:translate="text_no_faq_results">
