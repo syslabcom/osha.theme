@@ -58,7 +58,7 @@ class HomepageView(BrowserView):
             expires={'query': now, 'range': 'min'},
             effective={'query': now, 'range': 'max'},
             review_state='published',
-            path=['%s/%s/teaser' % (self.portal_path, self.pref_lang)]
+            path=['%s/%s/teaser' % (self.portal_path, self.pref_lang)],
         )
         if len(res) and limit > 0:
             res = res[:limit]

@@ -58,6 +58,7 @@
                 <span tal:define="translation_helper nocall:context/@@translation-helper;
                                   not_found_url request/URL;
                                   en_obj python:translation_helper.find_default(not_found_url);
+                                  portal python:context.portal_url.getPortalObject();
                                   langtool python:portal.portal_languages;
                                   preflang python:langtool.getPreferredLanguage();
                                   lang_name python:langtool.getNameForLanguageCode(preflang);
