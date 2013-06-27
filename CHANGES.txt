@@ -5,6 +5,8 @@ osha.theme Changelog
 -------------------
 
 - Fixed task #7854: default_error_message raised an error.
+- Add version param to highlights-carousel.js on homepage, and remove
+  the twitter-loader JS, since it has been replaced [deroiste]
 
 
 1.5.30 (2013-06-24)

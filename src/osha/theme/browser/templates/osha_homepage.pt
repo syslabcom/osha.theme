@@ -5,10 +5,7 @@
 
   <metal:javascript fill-slot="javascript_head_slot">
     <script type="text/javascript"
-            src="++resource++osha.theme.behaviour/highlights-carousel.js"
-            language="javascript"></script>
-    <script type="text/javascript"
-            src="++resource++osha.theme.behaviour/twitter-loader.js"
+            src="++resource++osha.theme.behaviour/highlights-carousel.js?v=3"
             language="javascript"></script>
   </metal:javascript>
 
