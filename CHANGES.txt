@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.32 (unreleased)
+1.5.32 (2013-06-28)
 -------------------
 
 - Osh news portlet: guard against stale catalog entries [pysailor]
