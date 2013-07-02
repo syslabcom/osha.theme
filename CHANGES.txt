@@ -4,8 +4,8 @@ osha.theme Changelog
 1.5.33 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Don't show OSHMails or News that are both expired and outdated in
+  listings #7912, #7913 [pysailor]
 
 1.5.32 (2013-06-28)
 -------------------
