@@ -9,7 +9,8 @@ from plone.memoize.instance import memoize
 
 from Products.ATContentTypes.interface import IATTopic
 from Products.Archetypes.utils import OrderedDict
-from Products.CMFCore.utils import getToolByName, isExpired
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import isExpired
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
 from slc.alertservice import AlertMessageFactory as _
