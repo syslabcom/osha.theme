@@ -9,7 +9,7 @@ from plone.memoize.instance import memoize
 
 from Products.ATContentTypes.interface import IATTopic
 from Products.Archetypes.utils import OrderedDict
-from Products.CMFCore.utils import getToolByName
+from Products.CMFCore.utils import getToolByName, isExpired
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
 from slc.alertservice import AlertMessageFactory as _
@@ -105,6 +105,10 @@ class OSHmailView(BrowserView):
 
         for issue in pc(portal_type='Collage', review_state="published"):
             if not 'oshmail' in issue['getId']:
+                continue
+            # Don't list OSHMails that are both expired and outdated,
+            # aka "deleted"
+            if getattr(issue, 'outdated', False) and isExpired(issue):
                 continue
             date = issue['effective']
             if latestissue is None or date > latestissue['effective']:
