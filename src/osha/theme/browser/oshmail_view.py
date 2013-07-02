@@ -17,7 +17,7 @@ from slc.alertservice import AlertMessageFactory as _
 from osha.theme import OSHAMessageFactory as _
 
 class OSHmailView(BrowserView):
-    """View for displaying oshmail 
+    """View for displaying oshmail
     """
 
     def __call__(self):
@@ -124,7 +124,7 @@ class OSHmailView(BrowserView):
         ordered_yearmap = OrderedDict()
         years = yearmap.keys()
         years.sort()
-        years.reverse() 
+        years.reverse()
         for year in years:
             yearlist = yearmap[year]
             yearlist.sort()
