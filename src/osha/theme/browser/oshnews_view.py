@@ -12,6 +12,7 @@ from plone.memoize import instance
 from Products.ATContentTypes.interface import IATTopic
 #from Products.AdvancedQuery import Or, Eq, And, In, Le
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import isExpired
 from Products.CMFPlone.PloneBatch import Batch
 from Products.Five.browser import BrowserView
 
@@ -44,7 +45,12 @@ class OSHNewsView(BrowserView):
         if query:
             search_view = self.context.restrictedTraverse(
                 '@@language-fallback-search')
-            return search_view.search(query)
+            results = search_view.search(query)
+            # filter out results that are both outdated and expired
+            to_show = [
+                x for x in results if not getattr(x, 'outdated', False)
+                and not isExpired(x)]
+            return to_show
 
         # otherwise construct a query
         portal_state = getMultiAdapter(
