@@ -593,6 +593,14 @@
 
   <browser:page
      for="*"
+     name="oshnews-view-fop"
+     template="templates/oshnews_view.pt"
+     class=".oshnews_view.OSHNewsViewFOP"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
      name="oshmail-subscribe"
      class=".oshmail_subscribe.OSHmailSubscribe"
      template="templates/oshmail_view.pt"

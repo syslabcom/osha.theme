@@ -89,6 +89,45 @@ class OSHNewsView(BrowserView):
 
 
 class OSHNewsSimpleView(OSHNewsView):
+
+    def getResults(self):
+        context = Acquisition.aq_inner(self.context)
+
+        # try to get query parameters from Topic (if present)
+        query = hasattr(context, 'buildQuery') and context.buildQuery()
+        if query:
+            catalog = getToolByName(context, 'portal_catalog')
+            results = catalog(query)
+            # filter out results that are both outdated and expired
+            to_show = [
+                x for x in results if not (
+                    getattr(x, 'outdated', False) and isExpired(x))
+            ]
+            return to_show
+
+        # otherwise construct a query
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name=u'plone_portal_state')
+        navigation_root_path = portal_state.navigation_root_path()
+
+        oshaview = getMultiAdapter(
+            (self.context, self.request), name=u'oshaview')
+        mySEP = oshaview.getCurrentSingleEntryPoint()
+        kw = ''
+
+        if mySEP:
+            kw = mySEP.getProperty('keyword', '')
+
+        query = '(portal_type:("News Item") OR isNews:true) AND '
+        'review_state:published AND path_parents:%s' % navigation_root_path
+        if kw != '':
+            query = ' AND '.join([query, 'Subject:(%s)' % ' OR '.join(kw)])
+        return search_solr(query, sort='Date desc')
+
+
+class OSHNewsViewFOP(OSHNewsSimpleView):
+    """ A view for FOP sites where we don't want the language fallback
+    """
     pass
 
 
