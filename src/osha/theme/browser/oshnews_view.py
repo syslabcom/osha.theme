@@ -48,8 +48,9 @@ class OSHNewsView(BrowserView):
             results = search_view.search(query)
             # filter out results that are both outdated and expired
             to_show = [
-                x for x in results if not getattr(x, 'outdated', False)
-                and not isExpired(x)]
+                x for x in results if not (
+                    getattr(x, 'outdated', False) and isExpired(x))
+            ]
             return to_show
 
         # otherwise construct a query
