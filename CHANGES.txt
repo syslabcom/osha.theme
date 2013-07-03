@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - Don't show OSHMails or News that are both expired and outdated in
   listings #7912, #7913 [pysailor]
+- #7814 Wrap the agency name on the homepage, except for el, hu & pl
+  [deroiste]
 
 1.5.32 (2013-06-28)
 -------------------
