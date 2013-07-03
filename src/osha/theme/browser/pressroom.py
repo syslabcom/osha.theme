@@ -4,6 +4,7 @@ from plone.app.portlets.portlets.rss import Renderer as RSSRenderer
 from plone.memoize import ram
 from Products.ATContentTypes.interface.document import IATDocument
 from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.utils import isExpired
 from Products.Five import BrowserView
 from Products.Five.browser import pagetemplatefile
 from zope.app.form import CustomWidgetFactory
@@ -134,7 +135,7 @@ class DynamicPressRoomView(BrowserView):
         context = self.context
         pu = getToolByName(context, 'portal_url')
         portal = pu.getPortalObject()
-        if lan == None:
+        if lan is None:
             pl = getToolByName(context, 'portal_languages')
             lan = pl.getLanguageBindings()[0]
         return '/'.join(portal.getPhysicalPath() + (lan, 'press', folder))
@@ -267,3 +268,27 @@ class DynamicPressRoomConfigurationForm(formbase.PageForm):
         context = Acquisition.aq_inner(self.context)
         return context.request.RESPONSE.redirect(
             '%s/@@dynamic-pressroom/' % '/'.join(context.getPhysicalPath()))
+
+
+class PressReleasesView(BrowserView):
+
+    def getResults(self):
+        context = Acquisition.aq_inner(self.context)
+
+        # try to get query parameters from Topic (if present)
+        query = hasattr(context, 'buildQuery') and context.buildQuery()
+        if not query:
+            # otherwise construct a query
+            query = dict(
+                portal_type="PressRelease", sort_on='Date',
+                sort_order='reverse', path='/'.join(context.getPhysicalPath()))
+
+        search_view = self.context.restrictedTraverse(
+            '@@language-fallback-search')
+        results = search_view.search(query)
+        # filter out results that are both outdated and expired
+        to_show = [
+            x for x in results if not (
+                getattr(x, 'outdated', False) and isExpired(x))
+        ]
+        return to_show

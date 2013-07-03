@@ -569,6 +569,14 @@
 
   <browser:page
      for="*"
+     name="pressreleases-view"
+     class=".pressroom.PressReleasesView"
+     template="templates/pressreleases_view.pt"
+     permission="zope2.View"
+     />
+
+  <browser:page
+     for="*"
      name="oshnews-view"
      class=".oshnews_view.OSHNewsView"
      template="templates/oshnews_view.pt"
