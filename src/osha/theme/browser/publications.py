@@ -1,12 +1,15 @@
 from Products.Five.browser import BrowserView
 from Products.CMFCore.utils import getToolByName
 import Acquisition
+from ordereddict import OrderedDict
 from zope.component import getMultiAdapter
 from DateTime import DateTime
 from zope.i18n import translate
 import json
+import locale
 
-from slc.publications.browser.publications import PublicationsView, MAX_RESULTS
+from slc.publications.browser.publications import (
+    PublicationsView, MAX_RESULTS, IGNORE_KEYWORDS, CAROUSEL_ITEMS)
 
 
 class PublicationsSearchView(BrowserView):
@@ -28,13 +31,14 @@ class PublicationsSearchView(BrowserView):
         return subject
 
     def make_query(self):
-        portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
+        portal_state = getMultiAdapter(
+            (self.context, self.request), name=u'plone_portal_state')
         navigation_root_path = portal_state.navigation_root_path()
         query = {'portal_type': 'File',
                  'object_provides': 'slc.publications.interfaces.IPublicationEnhanced',
                  'path': navigation_root_path,
                  'sort_on': 'effective',
-                 'sort_order':'reverse'}
+                 'sort_order': 'reverse'}
         if self.get_subject():
             query.update({'Subject': self.get_subject()})
 
@@ -60,6 +64,7 @@ class PublicationsSearchView(BrowserView):
                   % (solution, keywords)
         return url
 
+
 class PublicationsListView(BrowserView):
     """ View for displaying publications by subfolder. Replaces index_html
     """
@@ -71,7 +76,7 @@ class PublicationsListView(BrowserView):
         pc = getToolByName(self.context, 'portal_catalog')
         path = '/'.join(self.context.getPhysicalPath())
         query = {'portal_type': 'Folder', 'review_state': ['published'],
-                'path': {'query': path, 'depth': 1}, 'sort_on': 'getObjPositionInParent' }
+                'path': {'query': path, 'depth': 1}, 'sort_on': 'getObjPositionInParent'}
         return pc(query)
 
     def __call__(self):
@@ -204,6 +209,74 @@ class LanguageFallbackView(PublicationsView):
                 "type_title": translated_type_title,
             })
         return publications
+
+    def get_keywords(self):
+        """Return keyword ids, sorted alphabetically by keyword titles
+        (multi-lingual aware).
+
+        :returns: List of keyword ids
+        """
+        query = {
+            'object_provides':
+                'slc.publications.interfaces.IPublicationEnhanced',
+            'review_state': "published",
+            'path': self.path,
+        }
+        search_view = self.context.restrictedTraverse(
+            '@@language-fallback-search')
+        brains = search_view.search(query)
+        keywords = set()
+        for brain in brains:
+            for keyword in brain.Subject:
+                if keyword not in IGNORE_KEYWORDS:
+                    keywords.add(keyword)
+
+        # this reads the environment and inits the right locale
+        locale.setlocale(locale.LC_ALL, "")
+
+        # sort the keywords by translated keyword title, properly handling
+        # unicode characters
+        # XXX: This could probably be written a little cleaner and more
+        # efficient
+        translation_tool = getToolByName(self.context, 'translation_service')
+        language_tool = getToolByName(self.context, 'portal_languages')
+        lang = language_tool.getPreferredLanguage()
+        results = {}
+        for keyword in keywords:
+            title = translation_tool.translate(
+                keyword, 'osha', target_language=lang)
+            results[title] = keyword
+        sorted_titles = sorted(results.iterkeys(), cmp=locale.strcoll)
+
+        ordered_keywords = OrderedDict()
+        for title in sorted_titles:
+            keyword_id = results[title]
+            ordered_keywords[keyword_id] = title
+
+        return ordered_keywords
+
+    def get_carousel_details(self):
+        query = {
+            'object_provides':
+            'slc.publications.interfaces.IPublicationEnhanced',
+            'review_state': 'published',
+            'path': self.path,
+            'sort_on': 'Date',
+            'sort_order': 'descending'
+        }
+        search_view = self.context.restrictedTraverse(
+            '@@language-fallback-search')
+        brains = search_view.search(query)
+        pubs = [i.getObject() for i in brains[:CAROUSEL_ITEMS]]
+        pub_details = []
+        for pub in pubs:
+            pub_details.append({
+                "absolute_url": pub.absolute_url(),
+                "title": pub.Title(),
+                "description": pub.Description(),
+                "date": pub.Date()
+            })
+        return pub_details
 
 
 class PublicationsJSONView(LanguageFallbackView):
