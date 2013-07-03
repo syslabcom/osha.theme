@@ -794,17 +794,17 @@ body.site-el #intro h1 {
     text-transform: uppercase;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 80%;
-    padding-right: 260px;
+    display: inline-block;
+    background: white;
+    box-shadow: 2px 0 3px 2px white;
 }
 
-body.site-el #agency_fullname,
-body.site-hu #agency_fullname,
-body.site-pl #agency_fullname {
-  padding-right: 0;
-  background: white;
-  display: inline-block;
-  box-shadow: 2px 0 3px 2px white;
-}
+body.site-de #agency_fullname { width: 255px; }
+body.site-mt #agency_fullname { width: 294px; }
+body.site-nl #agency_fullname { width: 264px; }
+body.site-ro #agency_fullname { width: 244px; }
+body.site-sk #agency_fullname { width: 224px; }
+body.site-cs #agency_fullname { width: 229px; }
 
 #highlights{
     border: 1px solid #c5cbd8;
