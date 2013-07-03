@@ -46,7 +46,7 @@ class INewsPortlet(IPortletDataProvider):
             )
     newsfolder_path = schema.TextLine(
             title=_(u'Newsfolder path'),
-            description=_(
+            description=(
                     u"Enter a folder where the 'more news' link will "
                     "point to. This is optional. If you add a %s, "
                     "it will be replaced by the current language."
