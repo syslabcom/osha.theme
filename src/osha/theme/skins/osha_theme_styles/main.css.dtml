@@ -794,6 +794,16 @@ body.site-el #intro h1 {
     text-transform: uppercase;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 80%;
+    padding-right: 260px;
+}
+
+body.site-el #agency_fullname,
+body.site-hu #agency_fullname,
+body.site-pl #agency_fullname {
+  padding-right: 0;
+  background: white;
+  display: inline-block;
+  box-shadow: 2px 0 3px 2px white;
 }
 
 #highlights{
