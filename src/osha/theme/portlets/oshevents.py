@@ -150,8 +150,8 @@ class Renderer(events.Renderer):
             # in a subsite, take only the subsite or fop site
             path = '/'.join(self.navigation_root_path.split('/')[:-1])
         else:
-            # in the main site, exclude sub
-            path = "/osha/portal AND -/osha/portal/sub AND -/osha/portal/fop"
+            # in the main site, limit to the events folder #7932
+            path = "/osha/portal/en/events"
 
         oshaview = getMultiAdapter((context, self.request),
             name=u'oshaview')
