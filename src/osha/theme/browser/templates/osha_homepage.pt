@@ -15,7 +15,7 @@
          tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
 
       <div id="intro" tal:define="intro view/intro">
-        <a href="" tal:attributes="href intro/link" i18n:translate="portlet_more_link">
+        <a href="" tal:attributes="href intro/link">
           <p id="agency_fullname" i18n:translate="box_agency_fullname">European Agency for Safety and Health at Work</p>
           <h1 i18n:translate="label_making_europe_safer">Making Europe a safer, healthier and more productive place to work</h1>
           <p id="intro_more"><span tal:omit-tag="" i18n:translate="alert_label_more">More</span>&hellip;</p>
