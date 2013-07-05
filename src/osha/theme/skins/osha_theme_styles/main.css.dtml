@@ -1195,6 +1195,8 @@ ul.linkList li {
 
 #pressroom-boxes a {
     color: black;
+    color: black;
+    font-size: 90%;
 }
 
 #pressroom-boxes-table {
