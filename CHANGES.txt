@@ -8,6 +8,15 @@ osha.theme Changelog
   listings #7912, #7913 [pysailor]
 - #7814 Wrap the agency name on the homepage, except for el, hu & pl
   [deroiste]
+- crop OSHA in the media clipping #7936 [pysailor]
+- only display events from /en/events #7932 [pysailor]
+- enhanced oshnews simple view and created oshnews-view-fop: both views
+  DO NOT use the language fallback. To be used in fop pages where EN is
+  not canonical #7937 [pysailor]
+- Updated logo in HR #7918 [pysailor]
+- Publications: Added language fallback for carousel and keywords #7923 [pysailor]
+
+
 
 1.5.32 (2013-06-28)
 -------------------
