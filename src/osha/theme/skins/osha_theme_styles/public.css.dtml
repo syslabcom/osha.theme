@@ -1183,6 +1183,7 @@ body.template-practical-solutions .photoAlbumEntry a {
 body.template-practical-solution .photoAlbumEntry img ,
 body.template-practical-solutions .photoAlbumEntry img {
     border: none;
+    margin: 0 auto 5px;
 }
 
 body.template-practical-solutions .photoAlbumEntryTitle,
