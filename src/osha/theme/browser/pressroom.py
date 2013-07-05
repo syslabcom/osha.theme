@@ -10,6 +10,7 @@ from Products.Five.browser import pagetemplatefile
 from zope.app.form import CustomWidgetFactory
 from zope.app.form.browser.textwidgets import TextWidget
 from zope.annotation.interfaces import IAnnotations
+from zope.component import getMultiAdapter
 from zope.deprecation import deprecation
 from zope.formlib import form
 from zope.i18nmessageid import MessageFactory
@@ -54,6 +55,8 @@ class PressRoomView(BrowserView):
     def getRSSFeed(self, count=1000000):
         pp = getToolByName(self.context, 'portal_properties')
         op = getattr(pp, 'osha_properties', None)
+        oshaview = getMultiAdapter(
+            (self.context, self.request), name='oshaview')
         url = op and op.getProperty('osha_in_the_media_feed', '') or ''
         ass = RSSAssignment(
             portlet_title="",
@@ -62,6 +65,8 @@ class PressRoomView(BrowserView):
         )
         renderer = RSSRenderer(self.context, self.request, self, None, ass)
         renderer.update()
+        for item in renderer.items:
+            item['summary'] = oshaview.cropHtmlText(item['summary'], 500)
         return renderer
 
     @ram.cache(_render_cachekey)
