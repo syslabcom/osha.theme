@@ -1996,6 +1996,12 @@ body.template-usergroup-userprefs div#content-core {
     overflow: scroll;
 }
 
+/* fixes #7836 publications form layout issue */
+.floatcontrol {
+  width: 100% !important;
+  float: none;
+}
+
 /* </dtml-with> */
 
 /* Latest version of the documentation on pre-defined properties from Plone
