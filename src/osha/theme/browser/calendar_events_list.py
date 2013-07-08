@@ -8,6 +8,7 @@ from zope.annotation.interfaces import IAnnotations
 
 from Products.ATContentTypes.interface.folder import IATFolder
 from Products.ATContentTypes.interface.topic import IATTopic
+from Products.CMFPlone.utils import isExpired
 
 
 class EventsListingView(BrowserView):
@@ -41,6 +42,8 @@ class EventsListingView(BrowserView):
     def get_event_list(self, start=None, stop=None):
         now = DateTime()
         events = (i.getObject() for i in self.get_events())
+        events = (x for x in events if not (
+            getattr(x, 'outdated', False) and isExpired(x)))
         months = []
         month_info = []
         old_month_year = None

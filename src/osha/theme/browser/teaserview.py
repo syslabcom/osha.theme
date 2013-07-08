@@ -3,6 +3,7 @@ from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_inner, aq_parent, aq_base
 from zope.component import getMultiAdapter
 from DateTime import DateTime
+from Products.CMFPlone.utils import isExpired
 
 
 class TeaserView(BrowserView):
@@ -47,7 +48,10 @@ class TeaserView(BrowserView):
                            sort_order='reverse',
                            Language=['', preflang])
 
-        self.items = catalog(query)
+        items = catalog(query)
+        self.items = [
+            x for x in items if not (
+                getattr(x, 'outdated', False) and isExpired(x))]
         return self.index()
 
     def getName(self):
@@ -59,7 +63,7 @@ class TeaserView(BrowserView):
         context = aq_base(aq_inner(self.context))
         text = getattr(context, 'getText', None) and context.getText() or ''
         return text
-    
+
     def showLinkToNewsItem(self):
         return self.context.getProperty('show_link_to_news_item', True)
 
@@ -102,7 +106,7 @@ class TeaserArchiveView(TeaserView):
                        sort_on='effective',
                        sort_order='reverse',
                        Language=['', preflang])
-                       
+
         self.items = catalog(query)
         return self.index()
 
