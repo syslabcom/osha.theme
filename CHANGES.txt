@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - #7815: Practical solutions: set section image width to 50px
   [deroiste]
+- #7210: Change domain for site_admin on default_error_message.pt
+  [deroiste]
 
 
 1.5.33 (2013-07-08)

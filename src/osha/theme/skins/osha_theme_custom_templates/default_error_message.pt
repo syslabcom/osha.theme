@@ -134,6 +134,7 @@
                 <span i18n:name="site_admin">
                 <a href="#"
                    i18n:translate="label_site_admin"
+                   i18n:domain="osha"
                    tal:attributes="href string:${portal_url}/contact-info">site administration</a></span>,
                 please include this entry number in your message.
                 </p>
