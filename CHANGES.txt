@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.33 (unreleased)
+1.5.33 (2013-07-08)
 -------------------
 
 - Don't show OSHMails or News that are both expired and outdated in
