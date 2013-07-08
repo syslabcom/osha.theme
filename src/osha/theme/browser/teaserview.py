@@ -107,6 +107,9 @@ class TeaserArchiveView(TeaserView):
                        sort_order='reverse',
                        Language=['', preflang])
 
-        self.items = catalog(query)
+        items = catalog(query)
+        self.items = [
+            x for x in items if not (
+                getattr(x, 'outdated', False) and isExpired(x))]
         return self.index()
 
