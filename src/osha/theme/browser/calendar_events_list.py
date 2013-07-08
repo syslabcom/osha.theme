@@ -41,9 +41,8 @@ class EventsListingView(BrowserView):
 
     def get_event_list(self, start=None, stop=None):
         now = DateTime()
-        events = (i.getObject() for i in self.get_events())
-        events = (x for x in events if not (
-            getattr(x, 'outdated', False) and isExpired(x)))
+        events = (i.getObject() for i in self.get_events() if not(
+            getattr(i, 'outdated', False) and isExpired(i)))
         months = []
         month_info = []
         old_month_year = None
