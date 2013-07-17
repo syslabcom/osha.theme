@@ -13,17 +13,17 @@
         <span class="portletTopRight"></span>
     </dt>
 
-    <tal:events tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime"
+    <tal:events tal:define="plone_view context/@@plone;
+                toLocalizedTime nocall:plone_view/toLocalizedTime
+                getIcon nocall:plone_view/getIcon;"
                 tal:repeat="obj view/published_events">
     <dd class="portletItem"
         tal:define="oddrow repeat/obj/odd;
-                    plone_view context/@@plone;
-                    getIcon nocall:plone_view/getIcon;
                     item_icon python:getIcon(obj);"
         tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
         <a href="#" rel="nofollow"
            class="tile"
-           tal:attributes="href obj/getURL;
+           tal:attributes="href obj/absolute_url;
                            title obj/Description">
             <img tal:replace="structure item_icon/html_tag" />
             <span tal:replace="obj/pretty_title_or_id">
@@ -33,7 +33,7 @@
                 <tal:condition condition="obj/location">
                     <tal:location content="obj/location">Location</tal:location>,
                 </tal:condition>
-                <tal:date content="python:toLocalizedTime(obj.start)">
+                <tal:date content="python:toLocalizedTime(obj.start())">
                 May 5
                 </tal:date>
                 <span class="dateToBeConfirmed"
