@@ -14,7 +14,7 @@
     </dt>
 
     <tal:events tal:define="plone_view context/@@plone;
-                toLocalizedTime nocall:plone_view/toLocalizedTime
+                toLocalizedTime nocall:plone_view/toLocalizedTime;
                 getIcon nocall:plone_view/getIcon;"
                 tal:repeat="obj view/published_events">
     <dd class="portletItem"
