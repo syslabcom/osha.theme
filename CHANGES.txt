@@ -6,6 +6,8 @@ osha.theme Changelog
 
 - On the events portlets, use getObject instead of catalog brains to
   make it work also in subsites #7941 [pysailor]
+- cached available methods in events and news portlet as they again triggered 
+  a catalog query (pilz)
 
 1.5.34 (2013-07-09)
 -------------------

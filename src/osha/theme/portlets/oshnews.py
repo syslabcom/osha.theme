@@ -125,9 +125,6 @@ class Renderer(base.Renderer):
         if not hasattr(self.data, 'subject'):
             self.data.subject = tuple()
 
-    @property
-    def available(self):
-        return len(self._data())
 
     def published_news_items(self):
         return self._data()
@@ -139,6 +136,12 @@ class Renderer(base.Renderer):
         subject = self.data.subject
         navigation_root_path = self.navigation_root_path
         return (newsfolder_path, preflang, subject, navigation_root_path)
+
+
+    @ram.cache(_render_cachekey)
+    @property
+    def available(self):
+        return len(self._data())
 
     @ram.cache(_render_cachekey)
     def render(self):
