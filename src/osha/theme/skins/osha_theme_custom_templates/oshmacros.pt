@@ -84,7 +84,7 @@
 
           <tal:get condition="python:result.portal_type == 'CaseStudy'">
 
-            <tal:def define="here result/getObject">
+            <tal:def define="here result/getObject" on-error="string:[Error displaying the attachments box]">
                 <metal:macro use-macro="context/widget_casestudy_attachmentmanager/macros/attachments_box" />
             </tal:def>
           </tal:get>

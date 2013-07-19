@@ -211,7 +211,7 @@
             <dl id="db_results">
               <tal:results repeat="result batch">
                 <tal:entry define="provider_helper context/@@provider_helper;
-                                   result_url result/getURL;
+                                   result_url result/getURL|string:;
                                    url result/getRemoteUrl | result_url;
                                    title result/Title|string:;
                                    item_cas result/getCas|string:;
