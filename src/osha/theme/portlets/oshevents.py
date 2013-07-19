@@ -189,7 +189,7 @@ class Renderer(events.Renderer):
             query, sort='start asc', rows=limit, lang_query=False)
 
         items = list()
-        for res in results:
+        for res in results[:limit]:
             try:
                 items.append(res.getObject())
             except AttributeError:

@@ -147,7 +147,6 @@ class Renderer(base.Renderer):
     def render(self):
         return xhtml_compress(self._template())
 
-    @memoize
     def _data(self):
         """Search for news everywhere, then try to find translations in the
         current language. If no translation is found, use the 'en' version.
@@ -176,10 +175,9 @@ class Renderer(base.Renderer):
 
         lf_search_view = self.context.restrictedTraverse("@@language-fallback-search")
         results = lf_search_view.search_solr(
-            query, sort='Date desc', rows=limit, lang_query=False)
-
+            query, sort='Date desc', rows=limit) #, lang_query=False)
         items = list()
-        for res in results:
+        for res in results[:limit]:
             try:
                 items.append(res.getObject())
             except AttributeError:

@@ -9,7 +9,6 @@
            i18n:translate="box_news">News</a>
         <span class="portletTopRight"></span>
     </dt>
-
     <tal:newsitems  tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;
                                 plone_view context/@@plone;
                                 oshaview context/@@oshaview;
