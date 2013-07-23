@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.36 (unreleased)
+1.5.36 (2013-07-23)
 -------------------
 
 - News and events portlet: don't do language fallback in FOPs [pysailor]
