@@ -1,6 +1,7 @@
 from Acquisition import aq_parent, aq_inner
 from DateTime import DateTime
 from collective.solr.mangler import iso8601date
+from osha.theme.browser.utils import search_solr
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
 from plone.memoize.instance import memoize
@@ -149,9 +150,11 @@ class Renderer(base.Renderer):
         if len(current_path) > 3 and current_path[3] in ('sub', 'fop'):
             # in a subsite, take only the subsite or fop site
             path = '/'.join(self.navigation_root_path.split('/')[:-1])
+            INFOP = True
         else:
             # in the main site, exclude sub
             path = "/osha/portal AND -/osha/portal/sub AND -/osha/portal/fop"
+            INFOP = False
 
         subject = list(self.data.subject)
         limit = self.data.count
@@ -167,10 +170,13 @@ class Renderer(base.Renderer):
         if subject:
             query += ' AND Subject:(%s)' % ' OR '.join(subject)
 
-        lf_search_view = self.context.restrictedTraverse(
-            "@@language-fallback-search")
-        results = lf_search_view.search_solr(
-            query, sort='Date desc', rows=limit)  # lang_query=False)
+        if INFOP:
+            results = search_solr(query, sort='Date desc', rows=limit)
+        else:
+            lf_search_view = self.context.restrictedTraverse(
+                "@@language-fallback-search")
+            results = lf_search_view.search_solr(
+                query, sort='Date desc', rows=limit)  # lang_query=False)
         items = list()
         for res in results[:limit]:
             if isExpired(res) and getattr(res, 'outdated', False):

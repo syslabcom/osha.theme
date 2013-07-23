@@ -2,6 +2,7 @@ import Acquisition
 from collective.solr.mangler import iso8601date
 from DateTime.DateTime import DateTime
 
+from osha.theme.browser.utils import search_solr
 from plone.memoize.instance import memoize
 from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
@@ -154,9 +155,11 @@ class Renderer(events.Renderer):
         if len(current_path) > 3 and current_path[3] in ('sub', 'fop'):
             # in a subsite, take only the subsite or fop site
             path = '/'.join(self.navigation_root_path.split('/')[:-1])
+            INFOP = True
         else:
             # in the main site, limit to the events folder #7932
             path = "/osha/portal/en/events"
+            INFOP = False
 
         oshaview = getMultiAdapter((context, self.request),
             name=u'oshaview')
@@ -182,9 +185,14 @@ class Renderer(events.Renderer):
         if subject:
             query += ' AND Subject:(%s)' % ' OR '.join(subject)
 
-        lf_search_view = self.context.restrictedTraverse("@@language-fallback-search")
-        results = lf_search_view.search_solr(
-            query, sort='start asc', rows=limit, lang_query=False)
+        if INFOP:
+            results = search_solr(
+                query, lang_query=False, sort='start asc', rows=limit)
+        else:
+            lf_search_view = self.context.restrictedTraverse(
+                "@@language-fallback-search")
+            results = lf_search_view.search_solr(
+                query, sort='start asc', rows=limit, lang_query=False)
 
         items = list()
         for res in results[:limit]:
