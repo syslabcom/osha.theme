@@ -134,7 +134,6 @@ class Renderer(base.Renderer):
         return (newsfolder_path, preflang, subject, navigation_root_path)
 
     @ram.cache(_render_cachekey)
-    @property
     def available(self):
         return len(self._data())
 

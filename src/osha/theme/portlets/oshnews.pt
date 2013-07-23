@@ -1,9 +1,10 @@
 <dl class="portlet portletNews"
+    tal:condition="view/available"
     i18n:domain="plone">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <a href="#" 
+        <a href="#"
            class="tile"
            tal:attributes="href view/all_news_link"
            i18n:translate="box_news">News</a>
@@ -53,4 +54,4 @@
         <span class="portletBottomRight"></span>
     </tal:block>
 </dl>
- 
+

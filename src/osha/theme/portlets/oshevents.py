@@ -134,9 +134,7 @@ class Renderer(events.Renderer):
     def render(self):
         return xhtml_compress(self._template())
 
-
     @ram.cache(_render_cachekey)
-    @property
     def available(self):
         return len(self._data())
 
