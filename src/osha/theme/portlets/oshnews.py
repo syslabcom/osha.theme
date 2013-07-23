@@ -9,6 +9,7 @@ from plone.app.portlets.portlets import base
 from plone.app.portlets.interfaces import IPortletPermissionChecker
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFPlone.utils import isExpired
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from types import UnicodeType
 from zope import schema
@@ -173,6 +174,8 @@ class Renderer(base.Renderer):
             query, sort='Date desc', rows=limit)  # lang_query=False)
         items = list()
         for res in results[:limit]:
+            if isExpired(res) and getattr(res, 'outdated', False):
+                continue
             try:
                 items.append(res.getObject())
             except AttributeError:
