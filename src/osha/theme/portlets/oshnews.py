@@ -183,10 +183,8 @@ class Renderer(base.Renderer):
                 continue
             try:
                 items.append(res.getObject())
-            except AttributeError:
+            except Exception:
                 pass
-            if len(items) >= limit:
-                break
         return items
 
     def showRSS(self):
