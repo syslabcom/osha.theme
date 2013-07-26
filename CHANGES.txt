@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.37 (unreleased)
+1.5.37 (2013-07-26)
 -------------------
 
 - News portlet: bugfix to catch all potential errors, also Unauthorized [pilz]
