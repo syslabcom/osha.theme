@@ -15,7 +15,7 @@ from osha.theme import OSHAMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 
 
-class IMoreAboutPortlet(IPortletDataProvider):    
+class IMoreAboutPortlet(IPortletDataProvider):
     pass
 
 class Assignment(base.Assignment):
@@ -41,42 +41,42 @@ class Renderer(base.Renderer):
     @ram.cache(_render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
-        
+
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
 
         portal_state = getMultiAdapter((self.context, self.request), name=u'plone_portal_state')
-        
+
         self.portal = portal_state.portal()
 
     @property
     def available(self):
         return self._data()
-        
+
     def title(self):
         return _(u"More about...")
-        
+
     def editable(self):
         f = self._getfile()
         mtool = getToolByName(self.context, 'portal_membership')
         return mtool.checkPermission('Modify portal content', f)
-        
+
     def editlink(self):
         f = self._getfile()
-        return f.absolute_url()+'/edit'        
-                
-    @memoize                
+        return f.absolute_url()+'/edit'
+
+    @memoize
     def _getfile(self):
         context = Acquisition.aq_inner(self.context)
         portlet_moreabout = getattr(context, 'more-about', getattr(context.getCanonical(), 'more-about', None))
         if portlet_moreabout is None:
-            return None        
+            return None
         return portlet_moreabout
 
-    @memoize                
+    @memoize
     def content(self):
         return self._getfile() and self._getfile().getText() or None
-        
+
     @memoize
     def _data(self):
         return True
