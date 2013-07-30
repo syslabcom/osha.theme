@@ -13,7 +13,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import PloneMessageFactory as _
+from osha.theme import OSHAMessageFactory as _
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from osha.theme.browser.utils import search_solr
@@ -39,7 +39,7 @@ class Assignment(base.Assignment):
 
     @property
     def title(self):
-        return "Practical Solutions"
+        return _(u"More about...")
 
 
 class Renderer(base.Renderer):
