@@ -54,7 +54,7 @@ class Renderer(base.Renderer):
         return self._data()
 
     def title(self):
-        return _(u"More about...")
+        return _(u"Related content")
 
     def editable(self):
         f = self._getfile()
