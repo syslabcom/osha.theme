@@ -37,7 +37,7 @@
             <span class="photoAlbumEntryWrapperWrapper"
                   tal:condition="view/has_section_image">
               <span class="photoAlbumEntryWrapper">
-                <img width="84" title="Section Title"
+                <img width="50" title="Section Title"
                      alt="Section Alt" src="../section-image.png"
                      tal:attributes="alt context/aq_parent/Title;
                                      title context/aq_parent/Title" />

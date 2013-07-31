@@ -5,6 +5,7 @@ osha.theme Changelog
 -------------------
 
 - The "Practical Solutions" portlet now also has title "More about..." #8097 [pysailor]
+- #7815 resize practical solution icons [deroiste]
 
 1.5.37 (2013-07-26)
 -------------------
