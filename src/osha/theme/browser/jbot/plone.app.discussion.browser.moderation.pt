@@ -103,11 +103,11 @@
                                     <input type="hidden" name="selected_obj_paths:list" value="#"
                                            tal:attributes="value item/getURL" />
                                 </td>
-                                <td tal:content="python:item.author_name or item.Creator" />
+                                <td tal:content="python:item.getObject().author_name or item.Creator" />
                                 <td tal:content="python:toLocalizedTime(item.ModificationDate, long_format=1)" />
                                 <td>
                                     <a tal:attributes="href item/getURL"
-                                       tal:content="item/in_response_to" />
+                                       tal:content="python:item.getObject().aq_parent.aq_parent.Title()" />
                                 </td>
                                 <td>
                                     <span tal:replace="structure item/Description" />
