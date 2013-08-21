@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.38 (unreleased)
+1.5.38 (2013-08-21)
 -------------------
 
 - The "Practical Solutions" portlet now also has title "More about..." #8097 [pysailor]
