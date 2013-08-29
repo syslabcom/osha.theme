@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.39 (unreleased)
+1.5.39 (2013-08-29)
 -------------------
 
 - OSHAHelpCenterView: Move all initialization that is not strictly needed from 
