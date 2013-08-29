@@ -4,7 +4,8 @@ osha.theme Changelog
 1.5.39 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- OSHAHelpCenterView: Move all initialization that is not strictly needed from 
+  __init__ to __call__ Attempt to fix #8417 [pysailor]
 
 
 1.5.38 (2013-08-21)

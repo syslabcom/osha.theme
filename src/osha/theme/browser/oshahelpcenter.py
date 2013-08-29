@@ -15,16 +15,16 @@ class OSHAHelpCenterView(BrowserView):
     def __init__(self, context, request):
         self.context = context
         self.request = request
+
+    def __call__(self):
         self.faq_form = self.request.form
         self.category = self.faq_form.get("category", "")
         self.portal = getSite()
         self.pc = self.portal.portal_catalog
-        self.faqfolder = getattr(getNavigationRoot(context), 'faq', None)
+        self.faqfolder = getattr(getNavigationRoot(self.context), 'faq', None)
 
         subcategory_vocab = self.portal.portal_vocabularies.Subcategory
         self.vocab_dict = subcategory_vocab.getVocabularyDict(self.context)
-
-    def __call__(self):
         return self.index()
 
     def getName(self):
@@ -40,7 +40,7 @@ class OSHAHelpCenterView(BrowserView):
         if searchable_text != "":
             query["SearchableText"] = searchable_text
 
-        subcategory = self.faq_form.get("subcategory", "")  or self.category
+        subcategory = self.faq_form.get("subcategory", "") or self.category
         if subcategory:
             query["subcategory"] = subcategory
 
