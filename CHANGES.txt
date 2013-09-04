@@ -1,12 +1,26 @@
 osha.theme Changelog
 ====================
 
-1.5.38 (unreleased)
+1.5.40 (unreleased)
+-------------------
+
+- #7716 blog-view: get total number of comments via p.a.discussion
+
+
+1.5.39 (2013-08-29)
+-------------------
+
+- OSHAHelpCenterView: Move all initialization that is not strictly needed from 
+  __init__ to __call__ Attempt to fix #8417 [pysailor]
+
+
+1.5.38 (2013-08-21)
 -------------------
 
 - The "Practical Solutions" portlet now also has title "More about..." #8097 [pysailor]
 - #7815 resize practical solution icons [deroiste]
-- #7716 blog-view: get total number of comments via p.a.discussion
+- #7716 Customize the p.a.discussion moderation template to avoid the
+  need for extra catalog indexes [deroiste]
 
 1.5.37 (2013-07-26)
 -------------------
