@@ -5,6 +5,7 @@ osha.theme Changelog
 -------------------
 
 - #7716 blog-view: get total number of comments via p.a.discussion
+- #8569 Fixed sitemap
 
 
 1.5.39 (2013-08-29)
