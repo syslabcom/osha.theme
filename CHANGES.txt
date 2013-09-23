@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.40 (unreleased)
+1.5.40 (2013-09-23)
 -------------------
 
 - #7716 blog-view: get total number of comments via p.a.discussion
