@@ -57,8 +57,6 @@
                             batch python:Batch(blog_items, b_size, int(b_start), orphan=1);
                             use_view_action site_properties/typesUseViewActionInListings|python:();
                             portal_discussion nocall:context/portal_discussion;
-                            isDiscussionAllowedFor nocall:portal_discussion/isDiscussionAllowedFor;
-                            getDiscussionFor nocall:portal_discussion/getDiscussionFor;
                             wtool here/portal_workflow;
                             ">
 
@@ -92,8 +90,7 @@
                                        item_creator item/Creator;
                                        item_start item/start/ISO|item/StartDate|nothing;
                                        item_end item/end/ISO|item/EndDate|nothing;
-                                       talkback python:isDiscussionAllowedFor(item) and getDiscussionFor(item);
-                                       reply_count python:talkback is not False and talkback.replyCount(item);
+                                       reply_count python:view.total_comments(item);
                                        item_text item/getText|nothing;"
                      tal:attributes="class string:tileItem visualIEFloatFix vevent ${item_type_class}">
 
