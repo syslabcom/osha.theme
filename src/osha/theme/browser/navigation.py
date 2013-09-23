@@ -2,8 +2,6 @@ from Acquisition import aq_inner
 from zope.interface import implements
 from zope.component import getMultiAdapter
 from Products.Five import BrowserView
-from Acquisition import aq_base
-from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.browser.interfaces import ISiteMap
 
 from navtree import SitemapQueryBuilder
@@ -23,4 +21,9 @@ class CatalogSiteMap(BrowserView):
 
         strategy = getMultiAdapter((context, self), INavtreeStrategy)
 
-        return buildFolderTree(context, obj=context, query=query, strategy=strategy)
+        # Fixes #8569: "Sitemap not working":
+        if 'is_default_page' in strategy.supplimentQuery:
+            del strategy.supplimentQuery['is_default_page']
+
+        return buildFolderTree(
+            context, obj=context, query=query, strategy=strategy)
