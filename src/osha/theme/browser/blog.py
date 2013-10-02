@@ -1,5 +1,6 @@
 from Products.Five.browser import BrowserView
 from plone import api
+from plone.app.discussion.interfaces import IConversation
 
 
 class BlogView(BrowserView):
@@ -43,6 +44,8 @@ class BlogView(BrowserView):
 
         return results
 
+    def total_comments(self, obj):
+        return IConversation(obj).total_comments
 
 class DirectorCornerView(BlogView):
     """View for the front page of Director's Corner."""

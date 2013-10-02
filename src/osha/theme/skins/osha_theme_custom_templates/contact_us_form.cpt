@@ -7,8 +7,8 @@
     <meta name="robots" content="noindex,follow" />
 </tal:head>
 
-<body>          
-          
+<body>
+
 <div metal:fill-slot="main" i18n:domain="osha"
      tal:define="errors options/state/getErrors;
                 referer request/referer|python:request.get('HTTP_REFERER', '');
@@ -20,25 +20,25 @@
 
     <h1 class="documentFirstHeading" i18n:translate="heading_feedback_contact_us">Contact us</h1>
 
-    <!--p i18n:translate="info_feedback_message_checkbefore">    
-        Before you send a question, please check our <span i18n:name="link1"><a 
+    <!--p i18n:translate="info_feedback_message_checkbefore">
+        Before you send a question, please check our <span i18n:name="link1"><a
         href="/good_practice/" i18n:translate="">Good Practice</a></span> and <span i18n:name="link2"><a href="/research/" i18n:translate="">Research</a></span> pages.
     </p>
 
-    <p i18n:translate="info_feedback_message_publications">    
-        All the Agency's publications are <span i18n:name="link"><a href="/publications" i18n:translate="">available for download</a></span>. 
+    <p i18n:translate="info_feedback_message_publications">
+        All the Agency's publications are <span i18n:name="link"><a href="/publications" i18n:translate="">available for download</a></span>.
         We have no additional information apart from that which is on our network of websites.
     </p>
 
-    <p i18n:translate="info_feedback_message_writemessage">     
-        You can write to us in any of the 20 official EU languages, 
-        but please bear in mind that there may be some delay while 
-        we translate your message and our reply. Messages in English 
-        are likely to be answered more quickly because it is spoken 
+    <p i18n:translate="info_feedback_message_writemessage">
+        You can write to us in any of the 20 official EU languages,
+        but please bear in mind that there may be some delay while
+        we translate your message and our reply. Messages in English
+        are likely to be answered more quickly because it is spoken
         by all Agency staff. We aim to answer questions as soon as possible.
     </p-->
 
-    
+
     <span tal:condition="not:fields">
 
         <form name="comments_form"
@@ -46,11 +46,11 @@
               method="post"
               enctype="multipart/form-data"
               tal:attributes="action string:${here/absolute_url}/${template/getId}">
-            
+
             <fieldset>
-        
+
                 <legend i18n:translate="legend_message_details">Message Details</legend>
-                
+
                 <div class="field" tal:define="names python:[ 'Individual'
                                                 , 'Journalist'
                                                 , 'Labour inspector'
@@ -65,20 +65,20 @@
                                                 , 'Trade union'
                                                 , 'Training / Accreditation institution'
                                                 , 'Other'
-    
+
                                                 ];
                     sel_name request/sender|string:;
                     error errors/sender|nothing;"
                     tal:attributes="class python:test(error, 'field error', 'field')">
-                     
+
                     <label for="sender" i18n:translate="label_type_of_sender">I am ...</label>
                          <span class="fieldRequired" title="Required"
                                   i18n:attributes="title"
                                   i18n:translate="label_required">(Required)</span>
                           <br/>
-                          
+
                           <div i18n:translate="" tal:content="error">Validation error output</div>
-                    
+
                     <select name="sender" id="sender">
                          <option value="" i18n:translate="Please select one">Please select one</option>
                         <tal:block repeat="n names">
@@ -87,25 +87,25 @@
                         </tal:block>
                     </select>
                 </div>
-                
-                
-                
-                <div class="field" 
+
+
+
+                <div class="field"
                 span tal:define="subject_objs python:here.contact_data.objectValues('RichDocument');
                     subjects python:[{'title': x.Title(), 'id': x.getId()} for x in subject_objs];
                     sel_name subject;
                     error errors/subject|nothing"
                     tal:attributes="class python:test(error, 'field error', 'field')">
-                    
-                     
+
+
                     <label for="subject" i18n:translate="label_subject">Subject</label>
                             <span class="fieldRequired" title="Required"
                                   i18n:attributes="title"
                                   i18n:translate="label_required">(Required)</span>
                           <br/>
-                          
+
                     <div i18n:translate="" tal:content="error">Validation error output</div>
-            
+
                     <select name="subject" id="subject">
                         <option value="" i18n:translate="Please select one">Please select one</option>
                         <tal:block repeat="s subjects">
@@ -114,8 +114,8 @@
                         </tal:block>
                     </select>
                 </div>
-    
-            
+
+
                 <div class="formControls" i18n:domain="plone">
                     <input class="context"
                            type="submit"
@@ -128,65 +128,65 @@
                            value="Reset" i18n:attributes="value"
                            />
                 </div>
-                
+
                 <input type="hidden" name="referer" value="" tal:attributes="value referer">
-    
+
                 <input type="hidden" name="form.submitted" value="1" />
-            
+
             </fieldset>
-            
+
         </form>
     </span>
-    
+
     <span tal:condition="fields">
         <form name="comments_form"
               action="comments_form"
               method="post"
               enctype="multipart/form-data"
               tal:attributes="action string:${here/absolute_url}/${template/getId}">
-            
+
             <fieldset>
-            
+
             <legend i18n:translate="legend_message_details">Message Details</legend>
-            
+
             <div class="field"
                 tal:define="sender request/sender|string:No sender given">
-                
+
                 <label for="sender" i18n:translate="label_type_of_sender">I am ...</label>
                 <br/>
                 <span tal:content="sender" i18n:translate="" >Type of sender</span>
-                
+
                 <input type="hidden" name="sender" value="sender" tal:attributes="value sender" />
             </div>
-                            
-            
-                <div class="field" 
+
+
+                <div class="field"
                  tal:define="obj python:getattr(here.contact_data, subject, None);
                             subject_title obj/Title|string:No subject given">
-                    
+
                     <label for="subject" i18n:translate="label_subject">Subject</label>
                           <br/>
                           <span tal:content="subject_title"/>
-            
+
                     <input type="hidden" name="subject" value="subject" tal:attributes="value subject"/>
-                        
+
                 </div>
-             
-           
-                
+
+
+
             <div class="field"
                  tal:condition="python:fields.has_key('fullname') and fields['fullname']"
                  tal:define="error errors/fullname|nothing;"
                  tal:attributes="class python:test(error, 'field error', 'field')">
-                 
+
                 <label for="fullname" i18n:translate="label_fullname">Full name</label>
-        
+
                 <span class="fieldRequired" title="Required"
                       i18n:attributes="title"
                       i18n:translate="label_required">(Required)</span>
-        
+
                 <div i18n:translate="" tal:content="error">Validation error output</div>
-        
+
                 <input type="text"
                        id="fullname"
                        name="fullname"
@@ -194,33 +194,33 @@
                        tal:attributes="value request/fullname | nothing;"
                        />
             </div>
-        
+
             <div class="field"
                  tal:condition="python:fields.has_key('email') and fields['email']"
                  tal:define="error errors/email|nothing;"
                  tal:attributes="class python:test(error, 'field error', 'field')">
-                 
+
                 <label for="email" i18n:translate="label_email">E-mail</label>
-        
+
                 <span class="fieldRequired" title="Required"
                       i18n:attributes="title"
                       i18n:translate="label_required">(Required)</span>
-        
+
                 <div class="formHelp" i18n:translate="help_send_from">
                 Your email address.
                 </div>
 
                 <div i18n:translate="" tal:content="error">Validation error output</div>
-    
+
                 <input type="text"
                        id="email"
-                       name="email"     
+                       name="email"
                        size="60"
                        tal:attributes="value python: request.get('email', member.getProperty('email',''));"
                        />
             </div>
-            
-            <div class="field" 
+
+            <div class="field"
             tal:condition="python:fields.has_key('country') and fields['country']"
             tal:define="names python:[ 'Africa'
                                                         , 'Asia'
@@ -261,9 +261,9 @@
                                                         , 'Unknown / not specified'
                                                         ];
                                     sel_name request/country|string:">
-                 
+
                 <label for="country" i18n:translate="label_country">Country</label><br/>
-                
+
                 <select name="country" id="country">
                         <option i18n:translate="Please select one">Please select one</option>
                     <tal:block repeat="n names">
@@ -272,8 +272,8 @@
                     </tal:block>
                 </select>
             </div>
-        
-            <div class="field" 
+
+            <div class="field"
                tal:condition="python:fields.has_key('size_org') and fields['size_org']"
                tal:define="names python:[ 'Not applicable'
                                         , '1-9 employees'
@@ -282,47 +282,47 @@
                                         , '250 or more employees'
                                         ];
                 sel_name request/size_org|string:">
-                 
+
                 <label for="size_org" i18n:translate="label_organization_size">Size of organization</label><br/>
-                
+
                 <select name="size_org" id="size_org">
                         <option i18n:translate="Please select one">Please select one</option>
                         <tal:block repeat="n names">
                         <option tal:attributes="value n;
                         selected python:test(n==sel_name, 'selected', '')" tal:content="n" i18n:translate="" />
                     </tal:block>
-    
+
                 </select>
             </div>
-            
-            
+
+
             <div class="field"
                  tal:condition="python:fields.has_key('name_org') and fields['name_org']"
                  tal:define="error errors/name_org|nothing;"
                  tal:attributes="class python:test(error, 'field error', 'field')">
-                 
+
                 <label for="fullname" i18n:translate="label_name_org">Name of organisation</label>
-        
-        
+
+
                 <div i18n:translate="" tal:content="error">Validation error output</div>
-        
+
                 <input type="text"
                        id="name_org"
                        name="name_org"
                        size="60"
                        tal:attributes="value request/name_org | nothing;"
                        />
-            </div>            
-            
+            </div>
+
             <div class="field"
                  tal:condition="python:fields.has_key('url_comment') and fields['url_comment']"
                  tal:define="error errors/url_comment|nothing;"
                  tal:attributes="class python:test(error, 'field error', 'field')">
-                 
+
                 <label for="url_comment" i18n:translate="label_url_comment">URL to be commented</label>
 
                 <div i18n:translate="" tal:content="error">Validation error output</div>
-    
+
                 <input type="text"
                        id="url_comment"
                        name="url_comment"
@@ -330,22 +330,22 @@
                        tal:define="url_comment python:request.get('url_comment', request.get('referer', ''))"
                        tal:attributes="value url_comment"
                        />
-            </div>       
-            
-            
+            </div>
+
+
             <div class="field"
                  tal:condition="python:fields.has_key('url_broken') and fields['url_broken']"
                  tal:define="error errors/url_broken|nothing;"
                  tal:attributes="class python:test(error, 'field error', 'field')">
-                 
+
                 <label for="url_broken" i18n:translate="label_url_broken">Broken link</label>
                 <span class="fieldRequired" title="Required"
                       i18n:attributes="title"
-                      i18n:translate="label_required">(Required)</span>                
-                
+                      i18n:translate="label_required">(Required)</span>
+
 
                 <div i18n:translate="" tal:content="error">Validation error output</div>
-    
+
                 <input type="text"
                        id="url_broken"
                        name="url_broken"
@@ -353,22 +353,22 @@
                        tal:define="url_broken python:request.get('url_broken', '')"
                        tal:attributes="value url_broken"
                        />
-            </div>   
-            
-            
+            </div>
+
+
             <div class="field"
                  tal:condition="python:fields.has_key('url_broken_location') and fields['url_broken_location']"
                  tal:define="error errors/url_broken_location|nothing;"
                  tal:attributes="class python:test(error, 'field error', 'field')">
-                 
+
                 <label for="url_broken_location" i18n:translate="label_url_broken_location">URL where broken link occured</label>
                 <span class="fieldRequired" title="Required"
                       i18n:attributes="title"
-                      i18n:translate="label_required">(Required)</span>                
-                
+                      i18n:translate="label_required">(Required)</span>
+
 
                 <div i18n:translate="" tal:content="error">Validation error output</div>
-    
+
                 <input type="text"
                        id="url_broken_location"
                        name="url_broken_location"
@@ -376,17 +376,17 @@
                        tal:define="url_broken_location python:request.get('url_broken_location', request.get('referer', ''))"
                        tal:attributes="value url_broken_location;"
                        />
-            </div> 
-            
+            </div>
+
             <div class="field"
                  tal:condition="python:fields.has_key('url_new') and fields['url_new']"
                  tal:define="error errors/url_new|nothing;"
                  tal:attributes="class python:test(error, 'field error', 'field')">
-                 
+
                 <label for="url_new" i18n:translate="label_url_new">New link</label>
 
                 <div i18n:translate="" tal:content="error">Validation error output</div>
-    
+
                 <input type="text"
                        id="url_new"
                        name="url_new"
@@ -394,21 +394,21 @@
                        tal:define="url_new python:request.get('url_new', '')"
                        tal:attributes="value url_new"
                        />
-            </div>             
-            
+            </div>
 
-            
+
+
             <div class="field"
                  tal:define="error errors/message|nothing;"
                  tal:attributes="class python:test(error, 'field error', 'field')">
                 <label for="message" i18n:translate="label_message">Message</label>
-        
+
                 <span class="fieldRequired" title="Required"
                       i18n:attributes="title"
                       i18n:translate="label_required">(Required)</span>
-        
+
                 <div i18n:translate="" tal:content="error">Validation error output</div>
-    
+
                 <textarea cols="80"
                           rows="5"
                           name="message"
@@ -419,8 +419,8 @@
                 Comment
                 </textarea>
             </div>
-            
-            
+
+            <div metal:use-macro="here/captcha_widget/macros/captcha"></div>
                 <div class="formControls" i18n:domain="plone">
                     <input class="context"
                            type="submit"
@@ -433,25 +433,25 @@
                            value="Reset" i18n:attributes="value"
                            />
                 </div>
-                
+
                 <input type="hidden" name="referer" value="" tal:attributes="value referer">
-                
+
                 <span tal:define="fnames fields/keys">
                   <span tal:repeat="fname fnames">
                     <input type="hidden" name="name" value="value" tal:attributes="name string:fields.${fname}:record:int;
                         value python:fields[fname]" />
                   </span>
                 </span>
-    
+
             <input type="hidden" name="form.submitted" value="1" />
-            
+
             </fieldset>
-            
-        </form>    
-    
+
+        </form>
+
     </span>
-    
-    
+
+
 </div>
 
 </body>
