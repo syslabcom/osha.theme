@@ -2,10 +2,12 @@
 title=Feedback message
 
 [validators]
+validators =
 validators..SenderSubject= validate_contact_us
-validators..Send= validate_contact_us
+validators..Send= validate_contact_us,captcha_validator
 
 [actions]
 action.success..SenderSubject = traverse_to:string:contact_us_method
 action.success..Send = traverse_to:string:contact_us_method
+action.success = traverse_to:string:contact_us_form
 action.failure = traverse_to:string:contact_us_form

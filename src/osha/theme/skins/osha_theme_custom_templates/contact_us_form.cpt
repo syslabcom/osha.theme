@@ -420,7 +420,7 @@
                 </textarea>
             </div>
 
-
+            <div metal:use-macro="here/captcha_widget/macros/captcha"></div>
                 <div class="formControls" i18n:domain="plone">
                     <input class="context"
                            type="submit"
