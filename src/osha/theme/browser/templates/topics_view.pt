@@ -9,11 +9,11 @@
     <div metal:fill-slot="main">
 
       <h1 class="documentFirstHeading"
-          i18n:translate="heading_topics">Topics</h1>
+          tal:content="view/parent/Title">Topics</h1>
 
       <div id="topic-view-heading-box">
 
-        <div id="relatedMedia" 
+        <div id="relatedMedia"
              tal:condition="view/hasRelatedMedia">
           <tal:related_media replace="structure python:view.getRelatedMedia('mini')" />
         </div>

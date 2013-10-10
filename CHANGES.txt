@@ -4,7 +4,8 @@ osha.theme Changelog
 1.5.41 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- The topics-view now takes its title from the folder, no longer
+  hard-coded to topics. #8665 [pysailor]
 
 
 1.5.40 (2013-09-23)

@@ -58,8 +58,8 @@ class TopicsView(TopicsBrowserView):
         List published sub folders
         """
         context = self.context
-        parent = aq_parent(aq_inner(context))
-        folders = parent.getFolderContents(
+        self.parent = aq_parent(aq_inner(context))
+        folders = self.parent.getFolderContents(
             {'portal_type':'Folder', 'review_state':'published'}
             )
         middle_index = len(folders) - len(folders) / 2
