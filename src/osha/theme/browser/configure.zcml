@@ -1100,4 +1100,13 @@
       permission="zope2.View"
       />
 
+  <!-- JSON Feed -->
+  <browser:page
+     for="*"
+     name="jsonfeed"
+     class=".jsonfeed.JSONFeedView"
+     attribute="query"
+     permission="zope2.View"
+     />
+
 </configure>
