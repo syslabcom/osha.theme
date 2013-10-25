@@ -56,7 +56,7 @@
       </div>
 
       <div id="in-focus-container">
-        <h2>In Focus</h2>
+        <h2 i18n:translate="In Focus">In Focus</h2>
         <div class="in-focus" id="in-focus"
             tal:define="items view/in_focus">
           <tal:rep repeat="news items">
