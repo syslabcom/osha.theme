@@ -3,6 +3,7 @@
 *.egg-info
 .installed.cfg
 .mr.developer.cfg
+*.mo
 bin/
 develop-eggs/
 downloads/
