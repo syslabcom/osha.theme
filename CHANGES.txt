@@ -4,7 +4,8 @@ osha.theme Changelog
 1.5.42 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- #6277 Fix alignment of belowcontent-portlets in the legacy theme
+  [deroiste]
 
 
 1.5.41 (2013-10-25)
