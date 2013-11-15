@@ -6,6 +6,7 @@ osha.theme Changelog
 
 - #6277 Fix alignment of belowcontent-portlets in the legacy theme
   [deroiste]
+- #9054 Fix style of the search button on the legacy theme [deroiste]
 
 
 1.5.41 (2013-10-25)
