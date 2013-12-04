@@ -1070,6 +1070,15 @@
      permission="cmf.ManagePortal"
      />
 
+    <!-- remove X items from Async queue -->
+    <browser:page
+        for="*"
+        name="remove_from_queue"
+        class=".async.RemoveFromQueue"
+        permission="cmf.ManagePortal"
+        />
+
+
   <!-- override the plone_layout util -->
   <interface interface=".interfaces.IFullWidth" />
   <browser:page
