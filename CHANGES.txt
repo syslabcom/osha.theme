@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.43 (unreleased)
+1.5.43 (2013-12-04)
 -------------------
 
 - Add maintenance view to remove items from async queue [pysailor]
