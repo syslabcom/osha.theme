@@ -1074,7 +1074,7 @@
     <browser:page
         for="*"
         name="remove_from_queue"
-        class=".async.RemoveFromQueue"
+        class=".maintenance.RemoveFromQueue"
         permission="cmf.ManagePortal"
         />
 
