@@ -32,11 +32,6 @@
                             content python:keyval[1];" />
 
       <style type="text/css" tal:define="sheet python:getattr(here.portal_url.getPortalObject(), 'oshmail.css')" tal:content="structure sheet"></style>
-      <style type="text/css">
-.documentByLine {
-    display: none;
-    }
-      </style>
     </head>
 
     <body leftmargin="5"
@@ -50,8 +45,6 @@
                       collage_id here/getId;
                       body_class python:plone_view.bodyClass(template, view);"
           tal:attributes="class body_class;">
-
-      <div tal:replace="structure provider:plone.belowcontenttitle" />
 
       <table id="oshmail-wrapper">
         <tr>
