@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.44 (unreleased)
+1.5.44 (2014-03-07)
 -------------------
 
 - Don't show belowcontenttitle viewlets in OSHMail, #9079 
