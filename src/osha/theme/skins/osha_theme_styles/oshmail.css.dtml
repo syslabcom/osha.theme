@@ -11,6 +11,7 @@ body {
     color: #191919;
     margin: 0;
     padding: 0;
+    background: url("<dtml-var portal_url>/top.gif") repeat-x scroll left -20px rgba(0, 0, 0, 0);
 }
 /* Outlook background http://www.campaignmonitor.com/blog/post/1777/body-background-images-outlook/ */
 
@@ -56,8 +57,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font: 18px/35px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
+  font: 18px/35px Verdana,Helvetica,"Lucida Grande",Lucida,Arial,sans-serif;
+  text-shadow: 2px 2px 5px #DDD;
 }
+
+h2 { font-weight: bold; };
 
 .socialMediaOSHMAILfg {
     background: #F2F4F6 none repeat scroll 0 0;
@@ -126,6 +130,10 @@ h1 {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#003399', endColorstr='#999ada');
 }
 
+.button.gray {
+  background: #eee;
+}
+
 .oshmail-blog-icon {
     color: #d9eef7 !important;
     font-size: 20px;
@@ -142,39 +150,29 @@ h1 {
 
 /* Experimental styles for new oshmail looks by Maite */
 
-body.subsection1-oshmail .collage-item:first-child h1 {
-    margin: 0px 0 24px;
-}
-
-body.subsection1-oshmail h1,
 .template-shortmessage_preview_view h1 {
-    font-family: Georgia, "Times new roman", serif;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 18px;
     margin: 36px 0 24px;
     border-bottom: 0;
     text-transform: uppercase;
     letter-spacing: 5px;
-    text-shadow: 2px 2px 2px #CCCCCC;
 }
 
 body.subsection1-oshmail h1.documentFirstHeading,
 .template-shortmessage_preview_view h1.documentFirstHeading {
-    font-size: 28px;
-    letter-spacing: 3px;
-    margin: 12px 0 24px !important;
-    margin-top: 12px !important;
+    font-size: 18px;
+    letter-spacing: 0;
+    margin: 12px 0 7px !important;
     text-transform: none;
 }
 
-body.subsection1-oshmail h2,
-.template-shortmessage_preview_view h2,
-body.subsection1-oshmail h3 {
+body.subsection1-oshmail h3,
+body.subsection1-oshmail h2 {
     text-shadow: 0 1px 0 #FFFFFF;
     font-weight: normal;
     font-size: 18px;
     padding: 0;
-    font-style: italic;
     margin-bottom: 10px;
     border-bottom: 0;
 }
@@ -186,6 +184,30 @@ span.description {
 
 body.subsection1-oshmail div.column-block.block_1 .collage-item table {
     width: 570px;
+}
+
+body.subsection1-oshmail .block_1 .collage-newsitem-teaser h2 {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 15px 0;
+  border-bottom: 0;
+}
+
+body.subsection1-oshmail .block_1 .collage-item:first-child h1 {
+  border: 0;
+  padding-bottom: 0;
+}
+
+body.subsection1-oshmail .block_1 h1 {
+  border-bottom: 1px dotted #d9d9d9;
+  padding-bottom: 11px;
+}
+
+body.subsection1-oshmail .block_1 h2 {
+  font-size: 14px;
+  font-weight: normal;
+  border-bottom: 1px dotted #d9d9d9;
+  padding: 0 0 11px 0;
 }
 
 body.subsection1-oshmail .collage-newsitem-teaser,
@@ -250,6 +272,10 @@ body.subsection1-oshmail .collage-file-publication img.cover-image {
     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
 
+#collage-table-cell2 table {
+  width: 195px;
+}
+
 body.subsection1-oshmail .collage-newsitem-rightcolumn i,
 body.subsection1-oshmail .collage-event-rightcolumn i {
     color: #666;
@@ -257,7 +283,7 @@ body.subsection1-oshmail .collage-event-rightcolumn i {
 
 body.subsection1-oshmail .collage-newsitem-rightcolumn,
 body.subsection1-oshmail .collage-event-rightcolumn {
-    padding: 20px;
+    padding: 10px;
     font: 13px/16px Verdana, Helvetica, "Lucida Grande", Lucida, Arial, sans-serif;
     /*-webkit-box-shadow: 0 0 20px rgba(0,0,0,0.2);
     -moz-box-shadow: 0 0 20px rgba(0,0,0,0.2);
@@ -277,16 +303,16 @@ body.subsection1-oshmail .boxing_styles_inner_content b {
 }
 
 body.subsection1-oshmail .socialMediaOSHMAILfg > tbody > tr > td > p > strong > span {
-    font-family: Georgia, "Times new roman", serif;
     font-weight: normal;
-    font-style: italic;
     font-size: 18px!important;
     letter-spacing: 3px;
     text-shadow: 2px 2px 2px #CCCCCC;
 }
 
+
 body.subsection1-oshmail #collage-table-cell2 {
     padding-left: 24px;
+    padding-top: 36px;
 }
 
 body.subsection1-oshmail .documentFirstHeading {
@@ -294,6 +320,27 @@ body.subsection1-oshmail .documentFirstHeading {
     margin-bottom: 1em;
     margin-top: 0;
     padding: 0 !important;
+}
+
+body.subsection1-oshmail .clickable h2 {
+  font-weight: normal;
+  font-size: 11px;
+  text-align: right;
+  margin: 1px 0;
+  padding: 6px 15px;
+}
+
+body.subsection1-oshmail .clickable {
+  background-color: #F2F4F6;
+  margin-bottom: 20px;
+}
+
+body.subsection1-oshmail .clickable h2::after {
+  content: "»";
+}
+
+body.subsection1-oshmail .block_2 .collage-item:last-child .clickable {
+  background-color: #DCE8F4;
 }
 
 /* End Experimental styles for new oshmail looks by Maite */
@@ -304,12 +351,33 @@ body.subsection1-oshmail {
 }
 
 #oshmail-wrapper {
-    width: 790px;
+  width: 790px;
 }
 
 #headertable {
     width: 790px;
 }
+
+#headertable h1 {
+  font-size: 18px;
+  letter-spacing: 0;
+  margin: 16px 0 5px;
+}
+
+#headertable .newsletter {
+  color: #bababa;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 19px;
+}
+
+#headertable .oshn {
+  color: white;
+  font-size: 17px;
+  margin: 5px 0;
+}
+
 
 #headertable td.col1 {
     width: 200px;
@@ -326,23 +394,81 @@ body.subsection1-oshmail {
     display: block;
 }
 
-#headertable h1 {
-    margin-top: 36px;
-}
-
 #language-list-wrapper {
-    width: 800px;
-    margin: 5px 0;
-    padding: 8px;
-    -webkit-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
-    -moz-box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
-    box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
-    font: italic 13px/16px Georgia, "Times New Roman", Times, serif;
-    background-color: #fdfdc8;
-    color: #6f5a44;
-    border: 1px solid #d3d4a7;
+  margin: 18px 0 0;
+  font-size: 12px;
 }
 
 #language-list {
     text-align: center;
+}
+
+.collage-item h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 34px 0 11px;
+}
+
+/* right column */
+.collage-column .block_2 .collage-item:first-child h3 {
+  margin-top: 32px;
+}
+.collage-column .block_2 h3,
+.collage-column .block_2 h2 {
+  margin: 12px 0 13px;
+}
+
+/* /right column */
+
+#footer {
+  border-top: 1px solid #004098;
+  text-align: center;
+  color: #666;
+  font-size: 11px;
+}
+
+#footer em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+#footer .oshn {
+  font-size: 13px;
+}
+
+#footer .alert {
+  margin: 20px;
+  font-size: 14px;
+}
+
+#footer .alert a {
+  font-size: 18px;
+}
+
+#footer .visit-us {
+  background-color: #F5F5F5;
+  margin-top: 1px;
+  padding: 10px 0;
+}
+
+#footer .button {
+  font-size: 18px;
+  margin-left: 25px;
+  padding-left: 1em;
+  padding-right: 1em;
+  letter-spacing: 1px;
+  box-shadow: -1px 1px 0 rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+}
+
+#footer .social {
+  margin: 28px 0;
+}
+
+#footer .social img {
+  margin-right: 5px;
+}
+
+#footer .unsubscribe {
+  margin: 45px 0 18px;
 }
