@@ -52,7 +52,7 @@
               <a tal:attributes="href film_details/video_ogv">Ogv</a>,
               <a tal:attributes="href film_details/video_webm">WebM</a>
               <!-- <tal:or i18n:translate="label_or">or</tal:or> -->
-              <span tal:condition="film_details/video_wmv">, <a tal:attributes="href film_details/video_wmv">Wmv</a><span>.
+              <span tal:condition="film_details/video_wmv">, <a tal:attributes="href film_details/video_wmv">Wmv</a></span>.
             </div>
           </div>
 
