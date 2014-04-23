@@ -47,12 +47,12 @@
               <tal:download i18n:translate="label_napo_download_film_as">
                 Download this film as
               </tal:download>
-              <a tal:attributes="href film_details/video_avi">Avi</a>,
+              <span tal:condition="film_details/video_avi"><a tal:attributes="href film_details/video_avi">Avi</a>,</span>
               <a tal:attributes="href film_details/video_mp4">Mp4</a>,
               <a tal:attributes="href film_details/video_ogv">Ogv</a>,
               <a tal:attributes="href film_details/video_webm">WebM</a>
-              <tal:or i18n:translate="label_or">or</tal:or>
-              <a tal:attributes="href film_details/video_wmv">Wmv</a>.
+              <!-- <tal:or i18n:translate="label_or">or</tal:or> -->
+              <span tal:condition="film_details/video_wmv">, <a tal:attributes="href film_details/video_wmv">Wmv</a><span>.
             </div>
           </div>
 
@@ -78,12 +78,12 @@
                   <tal:download i18n:translate="label_napo_download_episode_as">
                     Download this episode as
                   </tal:download>
-                  <a tal:attributes="href episode_details/video_avi">Avi</a>,
+                  <span tal:condition="episode_details/video_avi"><a tal:attributes="href episode_details/video_avi">Avi</a>,</span>
                   <a tal:attributes="href episode_details/video_mp4">Mp4</a>,
                   <a tal:attributes="href episode_details/video_ogv">Ogv</a>,
-                  <a tal:attributes="href episode_details/video_webm">WebM</a>,
-                  <tal:or i18n:translate="label_or">or</tal:or>
-                  <a tal:attributes="href episode_details/video_wmv">Wmv</a>.
+                  <a tal:attributes="href episode_details/video_webm">WebM</a>
+                  <!-- <tal:or i18n:translate="label_or">or</tal:or> -->
+                  <span tal:condition="episode_details/video_wmv">, <a tal:attributes="href episode_details/video_wmv">Wmv</a></span>.
                 </div>
               </div>
 
