@@ -62,7 +62,7 @@
                 <td class="col2">
                   <h1 tal:content="here/title_or_id" />
                   <div class="newsletter">Newsletter</div>
-                  <div class="oshn">&npsb;/div>
+                  <div class="oshn">&npsb;</div>
                 </td>
               </tr>
             </table>
