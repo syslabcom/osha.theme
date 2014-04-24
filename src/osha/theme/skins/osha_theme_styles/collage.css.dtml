@@ -7,6 +7,11 @@
     width: 100%;
 }
 
+div.collage-column img.newsImage{
+  max-width: 100px;
+  max-height: 150px;
+}
+
 .collage-featured-image {
     float: right;
 }
