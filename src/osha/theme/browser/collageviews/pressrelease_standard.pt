@@ -1,5 +1,5 @@
 <tal:manager replace="structure provider:collage.ContentManager" />
-<table class="collage-pressrelease-standard" 
+<table class="collage-pressrelease-standard"
 	tal:define="url here/absolute_url;
 	    obj_description here/Description;
 	    oshaview here/@@oshaview;
@@ -12,6 +12,9 @@
                 <a href="#" tal:attributes="href url" tal:content="title_or_id">Title</a>
         </h2>
         <p tal:content="structure obj_description">Description
+        </p>
+        <p><a tal:attributes="href url">
+            <span i18n:domain="osha" i18n:translate="alert_label_more" tal:omit-tag="">More</span>&hellip;</a>
         </p>
 </td></tr>
 </table>

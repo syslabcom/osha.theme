@@ -11,6 +11,15 @@
      for="Products.ATContentTypes.content.document.ATDocument"
      permission="zope.Public"
      template="collageviews/document_oshmail.pt"
+     class="osha.theme.browser.collageviews.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <browser:page
+     name="oshmail_title"
+     for="*"
+     permission="zope.Public"
+     template="collageviews/oshmail_title.pt"
      class=".collageviews.DocumentHeadlineView"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />

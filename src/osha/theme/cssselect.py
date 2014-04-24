@@ -13,6 +13,7 @@ import urllib
 import sys
 import re
 from lxml import etree
+from lxml.html.builder import E
 
 __all__ = ['SelectorSyntaxError', 'ExpressionError',
            'CSSSelector']
@@ -1047,6 +1048,8 @@ class Converter(object):
                 v = style.getCssText(separator=u'')
                 element.set('style', v)
 
+        self.replace_youtube_videos_with_links(document)
+
         #convert tree back to plain text html
         convertedHTML = etree.tostring(
             document, method="xml", pretty_print=True, encoding='UTF-8')
@@ -1138,3 +1141,36 @@ class Converter(object):
                         self.CSSErrors.append(str(sys.exc_info()[1]))
                     pass
         return view
+
+    def replace_youtube_videos_with_links(self, doc):
+        """Replace any iframe elements found with a link to the src and a
+        placeholder image from youtube"""
+
+        def get_yt_id(src):
+            """Return the youtube video id"""
+            split_src = src.split("/")
+            if "embed" in split_src:
+                yt_id_index = split_src.index("embed") + 1
+                return split_src[yt_id_index]
+
+        iframes = doc.xpath("//iframe")
+
+        for iframe in iframes:
+            src = iframe.get("src")
+            yt_id = get_yt_id(src)
+            if not yt_id:
+                continue
+            else:
+                yt_img = "//img.youtube.com/vi/{0}/0.jpg".format(yt_id)
+                yt_href = "//youtu.be/{0}".format(yt_id)
+                yt_link = E.a(
+                    E.img(
+                        src=yt_img,
+                        width="480",
+                        height="360",
+                    ),
+                    href=yt_href,
+                    target="_blank",
+                )
+                parent = iframe.getparent()
+                parent.replace(iframe, yt_link)
