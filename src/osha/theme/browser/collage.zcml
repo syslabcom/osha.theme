@@ -108,14 +108,33 @@
      name="standard"
      for="slc.publications.interfaces.IPublicationEnhanced"
      permission="zope.Public"
+     template="collageviews/oshmail_title.pt"
+     class=".collageviews.PublicationView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <browser:page
+     name="publication"
+     for="slc.publications.interfaces.IPublicationEnhanced"
+     permission="zope.Public"
      template="collageviews/file_publication.pt"
      class=".collageviews.PublicationView"
      layer="Products.Collage.interfaces.ICollageBrowserLayer"
      />
 
+
   <!-- Press Release -->
   <browser:page
      name="standard"
+     for="Products.PressRoom.content.PressRelease.PressRelease"
+     permission="zope.Public"
+     template="collageviews/oshmail_title.pt"
+     class="osha.theme.browser.collageviews.BaseView"
+     layer="Products.Collage.interfaces.ICollageBrowserLayer"
+     />
+
+  <browser:page
+     name="press_release"
      for="Products.PressRoom.content.PressRelease.PressRelease"
      permission="zope.Public"
      template="collageviews/pressrelease_standard.pt"
