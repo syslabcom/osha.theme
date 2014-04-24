@@ -7,10 +7,6 @@
     width: 100%;
 }
 
-div#collage.edit .collage-item {
-    overflow: scroll;
-}
-
 .collage-featured-image {
     float: right;
 }
@@ -184,6 +180,7 @@ span.collage-navigation a {
 #collage.edit .collage-item {
     border: 1px outset;
     margin: 5px;
+    overflow: scroll;
 }
 
 * html #collage .collage-row {
