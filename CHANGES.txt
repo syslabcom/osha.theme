@@ -4,8 +4,8 @@ osha.theme Changelog
 1.5.45 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Make it possible to have Napo films without .avi and .wmv versions. #9738
+  [pysailor]
 
 1.5.44 (2014-03-07)
 -------------------
