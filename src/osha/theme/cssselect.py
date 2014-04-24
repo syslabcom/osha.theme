@@ -1161,8 +1161,8 @@ class Converter(object):
             if not yt_id:
                 continue
             else:
-                yt_img = "https://img.youtube.com/vi/{0}/0.jpg".format(yt_id)
-                yt_href = "https://youtu.be/{0}".format(yt_id)
+                yt_img = "//img.youtube.com/vi/{0}/0.jpg".format(yt_id)
+                yt_href = "//youtu.be/{0}".format(yt_id)
                 yt_link = E.a(
                     E.img(
                         src=yt_img,

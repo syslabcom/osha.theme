@@ -1,11 +1,37 @@
 osha.theme Changelog
 ====================
 
-1.5.41 (unreleased)
+1.5.45 (unreleased)
+-------------------
+
+- Nothing changed yet.
+
+
+1.5.44 (2014-03-07)
+-------------------
+
+- Don't show belowcontenttitle viewlets in OSHMail, #9079 
+
+1.5.43 (2013-12-04)
+-------------------
+
+- Add maintenance view to remove items from async queue [pysailor]
+
+1.5.42 (2013-11-18)
+-------------------
+
+- #6277 Fix alignment of belowcontent-portlets in the legacy theme
+  [deroiste]
+- #9054 Fix style of the search button on the legacy theme [deroiste]
+
+
+1.5.41 (2013-10-25)
 -------------------
 
 - The topics-view now takes its title from the folder, no longer
   hard-coded to topics. #8665 [pysailor]
+- Add CAPTCHA to mail passworf form. Fixes #8761 [pysailor]
+- Add CAPTCHA to contact_us_form. Fixes #8773 [pysailor]
 
 
 1.5.40 (2013-09-23)

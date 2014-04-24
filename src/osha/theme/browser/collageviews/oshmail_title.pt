@@ -1,0 +1,10 @@
+<tal:manager replace="structure provider:collage.ContentManager" />
+
+<span tal:define="url here/absolute_url;
+    oshaview here/@@oshaview;
+    collage_id view/getCollageId;
+    url python:oshaview.handleOSHMailUrls(url, collage_id);">
+
+    <h2> <a href="#" tal:attributes="href url"><span tal:content="here/Title">title</span></a></h2>
+
+</span>

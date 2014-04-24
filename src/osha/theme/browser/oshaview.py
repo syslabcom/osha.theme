@@ -396,20 +396,17 @@ class OSHA(BrowserView):
         return text
 
     def collage2table(self, data, u=False):
-        """ Takes an html page generated from collage in the oshmail format and
-            converts some divs to a table layout. The collage builds a system
-            of nested divs for rows and columns. What we need is a table with
-            two rows.
-            The first row contains two columns, the second one only one.
-            into 1.1 and 1.2 we put the content of the div.content-column
-            into 2.1 we put the div.collage-row>div.collage-row
-            """
+        """
+        Takes an html page generated from collage in the oshmail format and
+        converts some divs to a table layout. The collage builds a system
+        of nested divs for rows and columns. What we need is a table with
+        one row, with two columns: 1.1 and 1.2.
+        """
         soup = BeautifulSoup(data)
 
         # find the real content cells
         cell_11, cell_12 = soup.findAll(
             attrs={'class': 'collage-column'}, limit=2)
-        cell_21 = soup.findAll(attrs={'class': 'collage-row'})[1]
 
         # create a table
         table = Tag(soup, "table", [("id", 'collage-table')])
@@ -424,19 +421,14 @@ class OSHA(BrowserView):
         col2 = Tag(soup, "td", [
             ("valign", "top"), ("id", "collage-table-cell2"), ("width", "200")
         ])
-        col3 = Tag(soup, "td", [
-            ("colspan", "2"), ("id", "collage-table-cell3"), ("width", "790")])
 
         col1.insert(0, cell_11)
         col2.insert(0, cell_12)
-        col3.insert(0, cell_21)
 
         row1.insert(0, col1)
         row1.insert(1, col2)
-        row2.insert(0, col3)
 
         table.insert(0, row1)
-        table.insert(1, row2)
 
         if u:
             return unicode(table)

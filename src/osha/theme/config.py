@@ -80,7 +80,7 @@ GERMAN_NETWORK = (
     ('NRW', 'www.arbeitsschutz.nrw.de/bp/index.html'),
     ('Rhld.-Pfalz', 'msagd.rlp.de/arbeit/arbeitsschutz/'),
     ('Saarland', 'sl.osha.de'),
-    ('Sachsen', 'sn.osha.de'),
+    ('Sachsen', 'www.arbeitsschutz.sachsen.de'),
     ('Sachsen-Anh.', 'st.de.osha.europa.eu'),
     ('Thüringen', 'th.de.osha.europa.eu'),
 )

@@ -12,8 +12,11 @@ from osha.theme.browser.interfaces import IMaintenanceView
 from Products.CMFCore.utils import getToolByName
 
 from Products.ATContentTypes.content.folder import ATFolder
+import logging
+log = logging.getLogger('osha.theme/maintenance.py')
 
 log_file = open("converted_large_plone_folders.log", "a")
+
 
 def convertLPFolder(parent, folder):
     """ convert Large Plone Folders to Folders """
@@ -79,3 +82,31 @@ class QueueSize(BrowserView):
             return "No default queue found"
         return "The default queue has %d items" % len(queue)
 
+
+class RemoveFromQueue(BrowserView):
+    """ remove the first x items from the queue """
+
+    def __call__(self):
+        async = getUtility(IAsyncService)
+        queues = async.getQueues()
+        queue = queues.get('', None)
+        if queue is None:
+            return "No default queue found"
+        amount = self.request.get('amount', 1)
+        try:
+            amount = int(amount)
+        except:
+            amount = 1
+        cnt = 0
+        for item in queue:
+            if cnt < amount:
+                path = "/".join(item.args[0])
+                log.info('Remove item with path %s' % path)
+                queue.remove(item)
+                cnt += 1
+            else:
+                break
+        res = "I removed %d items from the queue, it now has %d items" % (cnt,
+            len(queue))
+        log.info(res)
+        return res
