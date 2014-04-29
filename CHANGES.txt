@@ -4,8 +4,7 @@ osha.theme Changelog
 1.5.46 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Implemented revamped OSHMail #9323 [deroiste, pysailor]
 
 1.5.45 (2014-04-24)
 -------------------
