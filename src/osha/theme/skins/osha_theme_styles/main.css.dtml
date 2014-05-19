@@ -1775,11 +1775,16 @@ body.template-competitions-view #competitionSchwusch li {
     border: 0px solid white;
 }
 
-.template-oshmail-view #subscriptionBox dd {
+.template-oshmail-view #subscriptionBox dd,
+.template-oshmail-view #subscriptionBox div.field {
     margin: 0;
     background: white;
     padding: 0.5em 2em;
     text-align: right;
+}
+
+.template-oshmail-view #subscriptionBox div.field .fieldRequired {
+    display: none;
 }
 
 .template-oshmail-view #blockLatestIssue img {

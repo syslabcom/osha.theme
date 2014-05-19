@@ -18,7 +18,9 @@
 
   <body>
     <div metal:fill-slot="main"
-         tal:define="templateId template/getId; currlang here/portal_languages/getPreferredLanguage">
+         tal:define="templateId template/getId;
+         currlang here/portal_languages/getPreferredLanguage;
+         error request/err|string:">
 
       <dl class="portalMessage info"
           tal:define="msg request/msg | nothing"
@@ -36,12 +38,22 @@
             <dt>
               <h4 i18n:translate="heading_oshmail_subscribe">Subscription</h4>
             </dt>
-            <dd>
-              <label><span i18n:translate="label_email" tal:omit-tag="">E-mail</span>* <input type="text" name="emailaddress" class="span-4" /></label>
-            </dd>
+            <div class="error" tal:attributes="class python:error=='email' and 'error' or ''">
+              <div class="field">
+                <label><span i18n:translate="label_email" tal:omit-tag="">E-mail</span>* <input type="text" name="emailaddress" tal:attributes="value request/emailaddress|nothing"/></label>
+              </div>
+            </div>
+
+            <div class="error" tal:attributes="class python:error=='captcha' and 'error' or ''">
+              <metal:macro metal:use-macro="here/captcha_widget/macros/captcha"></metal:macro>
+            </div>
+
             <dd>
               <button type="submit" name="subscribe" i18n:translate="Subscribe" onclick="pageTracker._trackPageview('/Events/oshmail/sub/en')">Subscribe</button>
             </dd>
+
+
+
             <dd class="discreet rounded-bottom-corners">
               <span i18n:translate="">Not interested any more?</span><br/>
               <a href="#unsubscribe" i18n:translate="">Unsubscribe</a>

@@ -1,7 +1,13 @@
+from DateTime import DateTime
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-
 from osha.theme import OSHAMessageFactory as _
+from quintagroup.captcha.core.utils import (
+    decrypt,
+    parseKey,
+    encrypt1,
+)
+
 
 class OSHmailSubscribe(BrowserView):
     """View for displaying oshmail
@@ -10,8 +16,6 @@ class OSHmailSubscribe(BrowserView):
     def __call__(self, emailaddress, name=''):
 
         """ helper method to enable osh mail subscription to anonymous user """
-        ptool = getToolByName(self.context, 'portal_url')
-        portal = ptool.getPortalObject()
 
         reg_tool = getToolByName(self.context, 'portal_registration')
         host = getToolByName(self.context, 'MailHost')
@@ -27,8 +31,30 @@ class OSHmailSubscribe(BrowserView):
 
         if not reg_tool.isValidEmail(emailaddress):
             msg = _(u'You did not enter a valid email address.')
-            referer += "msg=%s&" % msg
+            referer += "err=email&msg=%s&" % msg
             return REQUEST.RESPONSE.redirect(referer)
+
+        # validate captcha
+        test_key = REQUEST.get('key', '')
+        hashkey = REQUEST.get('hashkey', '')
+        decrypted_key = decrypt(self.context.captcha_key, hashkey)
+        parsed_key = parseKey(decrypted_key)
+
+        index = parsed_key['key']
+        date = parsed_key['date']
+
+        img = getattr(self.context, '%s.jpg' % index)
+        solution = img.title
+        enc = encrypt1(test_key)
+        captcha_tool = getToolByName(self.context, 'portal_captchas')
+        if (enc != solution) or (captcha_tool.has_key(decrypted_key)) \
+                or (DateTime().timeTime() - float(date) > 3600):
+            msg = _(u"Please re-enter validation code.")
+            referer += "err=captcha&msg={msg}&emailaddress={emailaddress}&".format(
+                msg=msg, emailaddress=emailaddress)
+            return REQUEST.RESPONSE.redirect(referer)
+        else:
+            captcha_tool.addExpiredKey(decrypted_key)
 
         if REQUEST.has_key('unsubscribe'):
             return REQUEST.RESPONSE.redirect(
@@ -39,7 +65,6 @@ class OSHmailSubscribe(BrowserView):
             mssg = _(
                 "Thank you for subscribing to the OSHmail newsletter. You will "
                 "receive an email to confirm your subscription.")
-
 
         recipient = 'listserv@list.osha.europa.eu'
 
