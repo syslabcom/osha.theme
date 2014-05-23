@@ -4,8 +4,7 @@ osha.theme Changelog
 1.5.47 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Add CAPTCHA to OSHMail subscription page #9922 [pysailor]
 
 1.5.46 (2014-04-29)
 -------------------
