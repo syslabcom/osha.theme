@@ -52,7 +52,7 @@
           <td>
             <background></background>
             <table id="headertable"
-                   tal:attributes="background string:${context/portal_url}/en/news/oshmailheaderbackground.jpg">
+                   tal:attributes="background string:${context/portal_url}/++resource++osha.theme.browser.resources.oshmail/headerbackground_${prefLang}.png">
               <tr>
                 <td class="col1">
                   <a href="#" accesskey="1"

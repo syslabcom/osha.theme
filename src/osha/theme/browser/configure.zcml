@@ -83,6 +83,11 @@
      layer=".interfaces.IOSHAThemeLayer"
      />
 
+  <browser:resourceDirectory
+     name="osha.theme.browser.resources.oshmail"
+     directory="resources/oshmail"
+     />
+
   <!-- OSHA Properties panel -->
   <utility
      component=".osha_properties_controlpanel.AvailableLanguagesVocabularyFactory"
