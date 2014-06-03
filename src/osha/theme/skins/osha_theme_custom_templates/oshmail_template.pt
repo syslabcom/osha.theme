@@ -61,7 +61,7 @@
                 </td>
                 <td class="col2">
                   <h1 tal:content="here/title_or_id" />
-                  <div class="newsletter">Newsletter</div>
+                  <div class="newsletter" i18n:domain="osha"  tal:content="python:context.translate(target_language=prefLang, msgid='Newsletter', domain='osha')">Newsletter</div>
                   <div class="oshn">&nbsp;</div>
                 </td>
               </tr>
@@ -105,11 +105,11 @@
             </metal:bodytext>
             <div id="footer">
               <div class="visit-us">
-                <div class="oshn">Occupational Safety and Health News - Europe</div>
-                Brought to you by EU-OSHA. <em>Visit us at:</em> <a href="http://osha.europa.eu">http://osha.europa.eu</a>
+                <div class="oshn" tal:content="python:context.translate(target_language=prefLang, msgid='Occupational Safety and Health News - Europe', domain='osha', default='Occupational Safety and Health News - Europe')">Occupational Safety and Health News - Europe</div>
+                <span tal:content="python:context.translate(target_language=prefLang, domain='osha', msgid='Brought to you by EU-OSHA.')">Brought to you by EU-OSHA.</span> <em tal:content="python:context.translate(target_language=prefLang, domain='osha', msgid='Visit us at:')">Visit us at:</em> <a href="http://osha.europa.eu">http://osha.europa.eu</a>
               </div>
 
-              <div class="alert">Subscribe to our <a tal:attributes="href string:${lang_root}/alertservice">Alert service</a> for customised content delivery</div>
+              <div class="alert"><span tal:replace="python:context.translate(target_language=prefLang, msgid='Subscribe to our', domain='osha')">Subscribe to our</span> <a tal:attributes="href string:${lang_root}/alertservice" tal:content="python:context.translate(target_language=prefLang, msgid='Alert service', domain='osha')">Alert service</a> <span tal:replace="python:context.translate(target_language=prefLang, msgid='for customised content delivery', domain='osha')">for customised content delivery</span></div>
 
               <div class="social">
                 <a href="https://twitter.com/eu_osha" alt="Twitter"><img tal:attributes="src string:${context/portal_url}/oshmail-twitter-icon.png"/></a>
@@ -118,10 +118,10 @@
                 <a href="http://www.flickr.com/people/euosha" alt="Flickr"><img tal:attributes="src string:${context/portal_url}/oshmail-flickr-icon.png"/></a>
                 <a href="https://www.youtube.com/EUOSHA" alt="YouTube"><img tal:attributes="src string:${context/portal_url}/oshmail-youtube-icon.png"/></a>
 
-                <span class="button gray">Like what you're reading? <a tal:attributes="href string:${lang_root}/news/oshmail/sendto_form">Tell a colleague</a></span>
+                <span class="button gray"><span tal:replace="python:context.translate(target_language=prefLang, msgid='Like what you\'re reading?', domain='osha')">Like what you're reading?</span> <a tal:content="python:context.translate(target_language=prefLang, msgid='Tell a colleague', domain='osha')" tal:attributes="href string:${lang_root}/news/oshmail/sendto_form">Tell a colleague</a></span>
               </div>
 
-              <div class="unsubscribe">No longer wish to receive OSHmail? <a tal:attributes="href string:${lang_root}/news/oshmail/#unsubscribe" alt="unsubscribe">Unsubscribe here.</a></div>
+              <div class="unsubscribe"><span tal:replace="python:context.translate(target_language=prefLang, msgid='No longer wish to receive OSHmail?', domain='osha')">No longer wish to receive OSHmail?</span> <a tal:attributes="href string:${lang_root}/news/oshmail/#unsubscribe" alt="unsubscribe" tal:content="python:context.translate(target_language=prefLang, msgid='Unsubscribe here.', domain='osha')">Unsubscribe here.</a></div>
             </div>
 
           </td>
