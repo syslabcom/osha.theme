@@ -4,7 +4,7 @@ osha.theme Changelog
 1.5.48 (unreleased)
 -------------------
 
-- #9808 OSHMail, add translated bg images for the header [deroiste]
+- #9808 OSHMail, add translations for header image and other text [deroiste]
 
 
 1.5.47 (2014-05-23)
