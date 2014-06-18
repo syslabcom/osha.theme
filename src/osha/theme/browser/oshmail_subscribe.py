@@ -43,6 +43,11 @@ class OSHmailSubscribe(BrowserView):
         index = parsed_key['key']
         date = parsed_key['date']
 
+        if REQUEST.has_key('unsubscribe'):
+            return REQUEST.RESPONSE.redirect(
+                self.context.absolute_url() +
+                "/confirm-unsubscription?emailaddress=%s" % (emailaddress))
+
         img = getattr(self.context, '%s.jpg' % index)
         solution = img.title
         enc = encrypt1(test_key)
@@ -56,15 +61,10 @@ class OSHmailSubscribe(BrowserView):
         else:
             captcha_tool.addExpiredKey(decrypted_key)
 
-        if REQUEST.has_key('unsubscribe'):
-            return REQUEST.RESPONSE.redirect(
-                self.context.absolute_url() +
-                "/confirm-unsubscription?emailaddress=%s" % (emailaddress))
-        else:
-            mesg = "subscribe OSHMail anonymous\n"
-            mssg = _(
-                "Thank you for subscribing to the OSHmail newsletter. You will "
-                "receive an email to confirm your subscription.")
+        mesg = "subscribe OSHMail anonymous\n"
+        mssg = _(
+            "Thank you for subscribing to the OSHmail newsletter. You will "
+            "receive an email to confirm your subscription.")
 
         recipient = 'listserv@list.osha.europa.eu'
 

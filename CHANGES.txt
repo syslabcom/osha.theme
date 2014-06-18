@@ -4,8 +4,8 @@ osha.theme Changelog
 1.5.49 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Don't try to validate non-existing CAPTCHA when unsubscribing OSHMail
+  #10252 [pysailor]
 
 1.5.48 (2014-06-03)
 -------------------
