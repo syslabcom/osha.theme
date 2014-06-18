@@ -186,8 +186,7 @@ class Renderer(events.Renderer):
             query += ' AND Subject:(%s)' % ' OR '.join(subject)
 
         if INFOP:
-            results = search_solr(
-                query, lang_query=False, sort='start asc', rows=limit)
+            results = search_solr(query, sort='start asc', rows=limit)
         else:
             lf_search_view = self.context.restrictedTraverse(
                 "@@language-fallback-search")
