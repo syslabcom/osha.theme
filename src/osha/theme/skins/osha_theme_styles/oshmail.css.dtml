@@ -367,6 +367,7 @@ body.subsection1-oshmail {
 #headertable .newsletter {
   color: #bababa;
   text-transform: uppercase;
+  font-family: Verdana,Helvetica,'Lucida Grande',Lucida,Arial,sans-serif;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 19px;
