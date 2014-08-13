@@ -84,12 +84,13 @@
                          tal:define="thisurl string:${here/absolute_url}/${template/id}">
 
                       <span tal:omit-tag="" tal:repeat="lang served_languages">
-                        <a tal:omit-tag="python:prefLang == lang"
+                        <a tal:condition="python:prefLang != lang"
                            tal:define="lang_url python:thisurl+'?set_language='+lang;
                                        url python:oshaview.handleOSHMailUrls(lang_url, collage_id);"
                            href="" tal:attributes="href url"
                            tal:content="python:oshaview.get_native_language_by_code(lang)">
                           lang</a>
+                        <span tal:condition="python:prefLang == lang" class="currentlang" tal:content="python:oshaview.get_native_language_by_code(lang)">lang</span>
                         <span tal:omit-tag="" tal:condition="not:repeat/lang/end"> | </span> </span>
                     </div>
                   </tal:block>
