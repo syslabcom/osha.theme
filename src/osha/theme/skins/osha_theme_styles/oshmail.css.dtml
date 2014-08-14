@@ -326,7 +326,7 @@ body.subsection1-oshmail .clickable h2 {
   font-weight: normal;
   font-size: 11px;
   text-align: right;
-  margin: 1px 0;
+  margin-top: 0;
   padding: 6px 15px;
 }
 
@@ -341,6 +341,18 @@ body.subsection1-oshmail .clickable h2::after {
 
 body.subsection1-oshmail .block_2 .collage-item:last-child .clickable {
   background-color: #DCE8F4;
+}
+
+
+/* Explicit definition of font on some sections to make Outlook happy */
+body.subsection1-oshmail #language-list a,
+body.subsection1-oshmail #language-list .currentlang {
+  font-family: Verdana,Helvetica,'Lucida Grande',Lucida,Arial,sans-serif;
+}
+body.subsection1-oshmail #footer .visit-us,
+body.subsection1-oshmail #footer .alert,
+body.subsection1-oshmail #footer .unsubscribe {
+  font-family: Verdana,Helvetica,'Lucida Grande',Lucida,Arial,sans-serif;
 }
 
 /* End Experimental styles for new oshmail looks by Maite */
@@ -361,7 +373,7 @@ body.subsection1-oshmail {
 #headertable h1 {
   font-size: 18px;
   letter-spacing: 0;
-  margin: 16px 0 5px;
+  margin: 13px 0 5px;
 }
 
 #headertable .newsletter {
@@ -371,6 +383,7 @@ body.subsection1-oshmail {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 19px;
+  padding-bottom: 4px;
 }
 
 #headertable .oshn {
