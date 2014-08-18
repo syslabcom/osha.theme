@@ -4,8 +4,7 @@ osha.theme Changelog
 1.5.50 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- Update OSHMail template to allow for explicit styling of the currently selected language #10325
 
 1.5.49 (2014-06-18)
 -------------------
