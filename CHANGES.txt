@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.51 (unreleased)
+1.5.51 (2015-04-15)
 -------------------
 
 - Practical Solutions Search: don't break if a single county is selected. Fixes #11620 [pysailor]
