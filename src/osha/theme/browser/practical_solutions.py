@@ -272,6 +272,8 @@ class PracticalSolutionView(DBFilterView):
 
         country = self.request.get('country', '')
         if country:
+            if isinstance(country, basestring):
+                country = [country]
             query = '%(query)s AND %(country)s' % {
                 'query': query,
                 'country': 'country:(%s)' % ' OR '.join(country)}
