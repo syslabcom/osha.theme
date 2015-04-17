@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.52 (unreleased)
+1.5.52 (2015-04-17)
 -------------------
 
 - Sort competitions by publication date (descending) #11633 [pysailor]
