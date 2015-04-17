@@ -30,7 +30,8 @@ class CompetitionsView(BrowserView):
         """ Get upcoming competitions """
         query = dict(portal_type='Folder', path=self.path,
             review_state='published', show_inactive=True,
-            effective=dict(query=self.now, range='min'))
+            effective=dict(query=self.now, range='min'),
+            sort_on='effective', sort_order='reverse',)
         competitions = self._getCompetitionsWithImages(query)
         print "upcoming:", competitions
         return competitions
@@ -40,7 +41,8 @@ class CompetitionsView(BrowserView):
         query = dict(portal_type='Folder', path=self.path,
             review_state='published', show_inactive=True,
             effective=dict(query=self.now, range='max'),
-            expires=dict(query=self.now, range='min'))
+            expires=dict(query=self.now, range='min'),
+            sort_on='effective', sort_order='reverse',)
         competitions = self._getCompetitionsWithImages(query)
         print "ongoing:", competitions
         return competitions
@@ -51,7 +53,8 @@ class CompetitionsView(BrowserView):
         query = dict(portal_type='Folder', path=self.path,
             review_state='published', show_inactive=True,
             effective=dict(query=self.now, range='max'),
-            expires=dict(query=self.now, range='max'))
+            expires=dict(query=self.now, range='max'),
+            sort_on='effective', sort_order='reverse',)
         competitions = self._getCompetitions(query)
         return self.sortByDate(competitions)
 
