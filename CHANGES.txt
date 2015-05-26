@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.53 (unreleased)
+1.5.53 (2015-05-26)
 -------------------
 
 - Remove unused/broken vPIP imports from Napo header #11782
