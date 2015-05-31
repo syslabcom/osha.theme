@@ -265,13 +265,13 @@ class OSHAEsenerPathBarViewlet(OSHAPathBarViewlet):
         context = self.context
         # ptool = getToolByName(self.context, 'portal_url')
         # portal = ptool.getPortalObject()
-        osha_view = getMultiAdapter((self.context, self.context.REQUEST), name=u'oshaview')
+        # osha_view = getMultiAdapter((self.context, self.context.REQUEST), name=u'oshaview')
         lang = getToolByName(
             self.context, 'portal_languages').getPreferredLanguage()
         # portal_lang = portal.get(lang, portal.get('en'))
 
         # self.navigation_root_url = "/".join(portal_lang.getPhysicalPath())
-        self.navigation_root_url = "{0}/{1}".format(osha_view.subsiteRootPath(), lang)
+        self.navigation_root_url = "/sub/esener/{0}".format(lang)
         self.breadcrumbs = (dict(
             absolute_url=context.absolute_url(), Title=context.Title(),
         ),)
