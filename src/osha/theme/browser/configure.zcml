@@ -309,6 +309,24 @@
      class="plone.app.viewletmanager.manager.OrderedViewletManager"
      />
 
+  <!-- Viewlet manager that will wrap top actions especially for Esener -->
+  <browser:viewletManager
+     name="osha.header.esener"
+     provides=".interfaces.IOSHAHeaderEsener"
+     permission="zope2.View"
+     layer=".interfaces.IOSHAThemeLayer"
+     class="plone.app.viewletmanager.manager.OrderedViewletManager"
+     />
+
+  <!-- Viewlet manager that will wrap top actions especially for Esener -->
+  <browser:viewletManager
+     name="osha.portaltop.esener"
+     provides=".interfaces.IEsenerPortalTop"
+     permission="zope2.View"
+     layer=".interfaces.IOSHAThemeLayer"
+     class="plone.app.viewletmanager.manager.OrderedViewletManager"
+     />
+
   <!-- Viewlet manager for top dropdowns with language selector -->
   <browser:viewletManager
      name="osha.header.dropdowns"
@@ -427,6 +445,17 @@
      for="*"
      />
 
+  <!-- ESENER -->
+  <browser:viewlet
+     name="osha.languageselector"
+     manager=".interfaces.IOSHAHeaderEsener"
+     class=".viewlets.OSHALanguageSelector"
+     layer=".interfaces.IOSHAThemeLayer"
+     permission="zope2.View"
+     for="*"
+     />
+
+
   <!-- Render the browser title - overwritten so we can insert OSHA specific title -->
   <browser:viewlet
      name="osha.htmlhead.title"
@@ -493,7 +522,7 @@
   <browser:viewlet
      for="osha.surveyanswers.interfaces.ISurvey"
      name="osha.path_bar"
-     manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+     manager=".interfaces.IEsenerPortalTop"
      class=".viewlets.OSHAEsenerPathBarViewlet"
      layer=".interfaces.IOSHAThemeLayer"
      permission="zope2.View"

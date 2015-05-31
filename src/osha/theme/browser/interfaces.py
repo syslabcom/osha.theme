@@ -261,6 +261,14 @@ class IOSHAHeaderTopactions(IViewletManager):
     """A viewlet manager that sits in the portal-header and wraps top actions
     """
 
+class IEsenerPortalTop(IViewletManager):
+    """ For Esener, we only want to show a limited amount of portles in the portal top
+    """
+
+class IOSHAHeaderEsener(IViewletManager):
+    """A viewlet manager that sits in the portal-header and wraps top actions for Esener
+    """
+
 class IOSHAHeaderDropdowns(IViewletManager):
     """A viewlet manager with top dropdowns, incl. language selector
     """
