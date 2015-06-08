@@ -1,7 +1,7 @@
 osha.theme Changelog
 ====================
 
-1.5.54 (unreleased)
+1.5.54 (2015-06-08)
 -------------------
 
 - Nothing changed yet.
