@@ -212,6 +212,7 @@
               <tal:results repeat="result batch">
                 <tal:entry define="provider_helper context/@@provider_helper;
                                    result_url result/getURL|string:;
+                                   result_url python:result_url.replace('/osha/portal/', '/');
                                    url result/getRemoteUrl | result_url;
                                    title result/Title|string:;
                                    item_cas result/getCas|string:;
