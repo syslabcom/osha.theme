@@ -4,8 +4,7 @@ osha.theme Changelog
 1.5.55 (unreleased)
 -------------------
 
-- Nothing changed yet.
-
+- remove /osha/portal in results. JIRA SC-354 #12468
 
 1.5.54 (2015-06-08)
 -------------------
